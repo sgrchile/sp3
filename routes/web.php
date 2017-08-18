@@ -995,11 +995,28 @@ Route::group(['prefix' => 'modulo'], function () {
         return view('ModuloReservaDeSala.AgregarParticipantes');
       })->name('AgregarParticipantes');
 
-
-
-
-
   // INICIO DE RUTAS RESERVA DE SALA
+  });
+  // INICIO DE RUTAS EVENTOS
+
+  Route::group(['prefix' => 'Eventos'], function () {
+      Route::get('/', function () {
+          return view('ModuloEventos.eventos');
+      })->name('eventos');
+
+      Route::get('listaDeEventos', function () {
+        return view('ModuloEventos.listaDeEventos');
+      })->name('listaDeEventos');
+
+      Route::get('crearEvento', function () {
+        return view('ModuloEventos.crearEvento');
+      })->name('crearEvento');
+
+      Route::get('modificarEvento', function () {
+        return view('ModuloEventos.modificarEvento');
+      })->name('modificarEvento');
+
+  // INICIO DE RUTAS EVENTOS
   });
 
 });

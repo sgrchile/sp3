@@ -193,6 +193,12 @@
             <li> <a href="#"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>REGISTRO FOTGRAFICO</b> </a> </li>
           </ul>
         </li>
+        <li> <a href="javascript:void(0);"> <i class="fa fa-th"></i> EVENTOS <span class="plus"><i class="fa fa-plus"></i></span> </a>
+          <ul>
+            <li> <a href="{{route('listaDeEventos')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>LISTA DE EVENTOS</b> </a> </li>
+            <li> <a href="{{route('crearEvento')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>CREAR EVENTOS</b> </a> </li>
+          </ul>
+        </li>
         <li> <a href="javascript:void(0);"> <i class="fa fa-glass"></i> EXTRA <span class="plus"><i class="fa fa-plus"></i></span></a>
           <ul>
             <li> <a href="{{route('error')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Timeline</b> </a> </li>

@@ -117,13 +117,16 @@
                               <p style="text-align:center;">RESERVA DE SALA</p>
 
                           </td>
+                        </tr>
+                        <tr>
 
-                          <td><a href=""><img src="{{ asset('images/rrhh.png') }}" class="img-responsive"
+
+                          <td><a href="{{route('eventos')}}"><img src="{{ asset('images/rrhh.png') }}" class="img-responsive"
                                                                width="113" height="128"/></a>
                               <p style="text-align:center;">EVENTOS</p>
 
                           </td>
-                      </tr>
+                        </tr>
                     </table>
 
 
