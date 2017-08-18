@@ -43,10 +43,6 @@
 
 
         </div>
-        <div class="container-fluid" align="left">
-          <a href="javascript:history.back(1)"><button class="btn btn-primary btn-lg">Volver</button></a>
-
-        </div>
 
 
 
@@ -59,9 +55,17 @@
 
 
 
+
+
 <br>
 
 </div>
 <br>
+<div class="container">
 
+<a href="javascript:history.back(1)"><button class="btn btn-primary btn-lg">Volver</button></a>
+
+</div>
+</a>
+<br>
 @endsection
