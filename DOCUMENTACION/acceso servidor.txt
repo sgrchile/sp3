@@ -1,0 +1,30 @@
+dominio:
+sp3.sgrchile.com
+
+usuario:
+sp3sgr
+
+clave
+sp3sgr0405
+
+Base de datos
+sp3.sgrchile.com/phpmyadmin/
+
+usuario:
+admin_sp3
+
+clave:
+sp3123
+
+bd:
+sp3
+
+correo:
+projectosp3@gmail.com
+
+clave:
+sp3sgr0405
+
+chmod -rwx storage
+chmod +R 777 storage
+chmod 755 -R /storage/

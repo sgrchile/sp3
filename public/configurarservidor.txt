@@ -1,0 +1,52 @@
+PARA EL SERVIDOR
+
+-ServerName proyecto.net
+ -ServerAlias www.sp3.sgr.chile.com/projectosp3/public
+ -Alias /proyecto /var/www/html/projectosp3/public
+ -DocumentRoot "/var/www/html/projectosp3/public"
+ -
+ -      AllowOverride All
+ -      Order allow,deny
+ -      Allow from all
+
+      <IfModule mod_negotiation.c>
+          Options -MultiViews
+     </IfModule>
+
+     RewriteEngine On
+
+     # Redirect Trailing Slashes If Not A Folder...
+     RewriteCond %{REQUEST_FILENAME} !-d
+     RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+     # Handle Front Controller...
+     RewriteCond %{REQUEST_FILENAME} !-d
+     RewriteCond %{REQUEST_FILENAME} !-f
+     RewriteRule ^ index.php [L]
+
+     # Handle Authorization Header
+     RewriteCond %{HTTP:Authorization} .
+     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+PARA LOCAL
+
+     <IfModule mod_rewrite.c>
+         <IfModule mod_negotiation.c>
+             Options -MultiViews
+         </IfModule>
+
+         RewriteEngine On
+
+         # Redirect Trailing Slashes If Not A Folder...
+         RewriteCond %{REQUEST_FILENAME} !-d
+         RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+         # Handle Front Controller...
+         RewriteCond %{REQUEST_FILENAME} !-d
+         RewriteCond %{REQUEST_FILENAME} !-f
+         RewriteRule ^ index.php [L]
+
+         # Handle Authorization Header
+         RewriteCond %{HTTP:Authorization} .
+         RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+     </IfModule>

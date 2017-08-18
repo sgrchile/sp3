@@ -1,0 +1,37 @@
+php artisan make:migration create_documentos_personal_table --create=RH_DPER_DOCUMENTOS_PERSONAL
+php artisan migrate:refresh
+php artisan make:seeder RegistroMovimientoTableSeeder
+php artisan db:seed --class=RegistroMovimientoTableSeeder
+composer dump-autoload
+
+php artisan make:model PrevisionSalud
+php artisan make:controller RrhhMiCarpetaController --resource
+Route::resource('mi_carpeta', 'RrhhMiCarpetaController');
+
+php artisan list
+git reset --hard HEAD   (volver al último commit)
+git reset --hard hhfyrye   (volver a commit específico)
+
+clave foranea=belongsTo()/belongsToMany()
+inverso=hasOne()/hasMany()
+
+git clone -b develop https://hary87@github.com/dazjavier/projectosp3
+git clone -b develop https://github.com/nanotco/ambienteTest
+git clone https://github.com/pablomarambio/jquery.rut.git
+git clone https://github.com/kadumedia/jQuery.rut.chileno.git
+git clone https://github.com/yajra/dt54.git
+
+composer require barryvdh/laravel-dompdf
+
+https://www.youtube.com/watch?v=FY6Pmrmz0Ws
+https://github.com/spatie/laravel-permission
+drop DATABASE sgrhernan;
+create DATABASE sgrhernan;
+
+@section('scripts')
+<script>
+$(document).ready(function(){
+   alert("documento listo");
+});
+</script>
+@endsection

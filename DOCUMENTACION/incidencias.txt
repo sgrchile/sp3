@@ -1,0 +1,41 @@
+incidencias
+
+-historico se debe de corregir
+-registro de egreso:
+	empresa es automatico
+	tipo de cuenta tambien es automatico
+	fecha automatica al dia de hoy pero modificable
+	causa herededada desde solicitud de fondo 
+	monto heredado desde el formulario solicitud de fondo, al momento de registrar el egreso
+	numero de documento es el numero de la solicitud 
+	registro de egreso al ejecutar lleva a una vista sin contenido
+-ingresar documentos arroja error de base de datos 
+
+condiciones en solicitud de fondo
+
+
+en rendir solo se muestran las que estan con estado por rendir
+en consolidar solo se muestran las que estan con estado por consolidar
+
+-flujo de caja no funciona
+-el volver de agregar cartola no funciona
+-libros contables boton imprimir
+-OT se carga la empresa segun login
+-al momento de loguearse se debe serleccionar la empresa como medida de seguridad
+-modificar orden de trabajo, al solicitar fondo debe mostrar un cuadro de texto  
+con la causa read only
+-asociado a tiene que estar ligado al ID de la orden de trabajo
+-solicitante cargado por login
+-agregar mascara de rut a receptor rut
+-cuenta debe mostar un cbx con los tipos de cuenta bancaria
+-tipo de documento se debe llenar por base de datos
+-tipo de factura debe ser afecta o excenta
+-el monto neto es una diferencia entre el monto neto de la orden de trabajo y la suma
+de las facturas asociadas a esa ORDEN DE TRABAJO
+-el cbx de estado es dependiente del centro de negocios en modificar ot
+-en configuracion se deben crear o editar los centros de negocio consus respetivos estados
+en sus procesos debe llenarse un cbx con los centros de negocios, dejando el codigo jerarquico a decision del usuario
+-en modulo de orden de trabajo  entre clientes y configuracion, poner un boton que diga redactar informe
+-grafico ot debe mostrar los cnetros de negocio por empresa 
+
+

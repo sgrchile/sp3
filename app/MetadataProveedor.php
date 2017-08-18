@@ -1,0 +1,18 @@
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class MetadataProveedor extends Model
+{
+  protected $table = 'RH_MP_METADATA_PROVEEDOR';
+  protected $primaryKey = "MP_COD";
+  public $timestamps = false;
+  protected $fillable = [
+    'MP_COD', 'MP_HOBBY', 'MP_DEPORTES', 'MP_ZONA_PREF_TRABAJAR', 'MP_AREA_MEJOR_DESEMPEÑO', 'MP_TRABAJO_EQUIPO', 
+    'MP_EMPRENDIMIENTOS', 'MP_LUGAR_NACIMIENTO', 'MP_ESTABLECIMIENTO_ED_BASICA', 'MP_ESTABLECIMIENTO_ED_MEDIA', 'MP_RESIDENCIA_ACTUAL',
+     'MP_LUGAR_IDEAL_VIVIR_TRABAJAR', 'MP_EQUIPO_PERSONAL', 'MP_INTERNET', 'MP_ESPACIO_ADECUADO_PARA_TRABAJAR', 'MP_VEHICULO',
+     'MP_LISTA_INSTRUMENTAL', 'MP_MARCA', 'MP_MOD', 'MP_TIPO', 'MP_PERTENENCIA_INSTITUCIONES', 'MP_PRO_RUN'
+  ];
+}
