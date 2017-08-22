@@ -1016,7 +1016,58 @@ Route::group(['prefix' => 'modulo'], function () {
         return view('ModuloEventos.modificarEvento');
       })->name('modificarEvento');
 
-  // INICIO DE RUTAS EVENTOS
+  // FIN DE RUTAS EVENTOS
+  });
+  // INICIO DE RUTAS FORO
+
+  Route::group(['prefix' => 'FORO'], function () {
+      Route::get('/', function () {
+          return view('ModuloForo.foro');
+      })->name('foro');
+
+      //ADMINISTRATIVA
+      Route::get('inicioAdministrativa', function () {
+        return view('ModuloForo.administrativa.inicio');
+      })->name('inicioAdministrativa');
+
+      Route::get('HacerPreguntasAdministrativa', function () {
+        return view('ModuloForo.administrativa.HacerPreguntas');
+      })->name('HacerPreguntasAdministrativa');
+
+      Route::get('respuestasAdministrativa', function () {
+        return view('ModuloForo.Administrativa.respuestas');
+      })->name('respuestasAdministrativa');
+
+      //COMERCIAL
+
+      Route::get('inicioComercial', function () {
+        return view('ModuloForo.Comercial.inicio');
+      })->name('inicioAComercial');
+
+      Route::get('respuestasComercial', function () {
+        return view('ModuloForo.Comercial.respuestas');
+      })->name('respuestasComercial');
+
+      Route::get('HacerPreguntasComercial', function () {
+        return view('ModuloForo.Comercial.HacerPreguntas');
+      })->name('HacerPreguntasComercial');
+
+      //TECNICA
+
+      Route::get('inicioTecnica', function () {
+        return view('ModuloForo.Tecnica.inicio');
+      })->name('inicioTecnica');
+
+      Route::get('respuestasTecnica', function () {
+        return view('ModuloForo.Tecnica.respuestas');
+      })->name('respuestasTecnica');
+
+      Route::get('HacerPreguntasTecnica', function () {
+        return view('ModuloForo.Tecnica.HacerPreguntas');
+      })->name('HacerPreguntasTecnica');
+
+
+  // FIN DE RUTAS FORO
   });
 
 });

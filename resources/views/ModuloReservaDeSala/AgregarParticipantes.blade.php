@@ -20,10 +20,13 @@
             <tr>
               <td>SALA</td>
               <td>FECHA</td>
-              <td>HORA</td>
+              <td>HORA INICIO</td>
+              <td>HORA TERMINO</td>
               <td style="width:200px;">ACCION</td>
             </tr>
             <tr>
+              <td></td>
+              <td></td>
               <td></td>
               <td></td>
               <td></td>
@@ -77,14 +80,19 @@
 
 
   </div>
-  <div class="container-fluid" align="left">
-    <a href="javascript:history.back(1)"><button class="btn btn-primary btn-lg">Volver</button></a>
 
-  </div>
 </div><!--/porlets-content-->
 </div><!--/block-web-->
 </div><!--/col-md-12-->
 </div><!--/row-->
 
 </div>
+<br>
+<div class="container">
+
+<a href="javascript:history.back(1)"><button class="btn btn-primary btn-lg">Volver</button></a>
+
+</div>
+</a>
+<br>  
 @endsection

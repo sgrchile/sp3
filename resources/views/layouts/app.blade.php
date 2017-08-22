@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -134,9 +134,7 @@
   <!--\\\\\\\ inner start \\\\\\--><div class="left_nav">
 
     <!--\\\\\\\left_nav start \\\\\\-->
-    <div class="search_bar"> <i class="fa fa-search"></i>
-      <input name="" type="text" class="search" placeholder="Buscar.." />
-    </div>
+
     <div class="left_nav_slidebar">
       <ul>
         <li class=" theme_border"><a href="{{route('menu')}}"><i class="fa fa-home"></i> MENU  <span class="plus"></span> </a></li>
@@ -193,6 +191,21 @@
             <li> <a href="#"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>REGISTRO FOTGRAFICO</b> </a> </li>
           </ul>
         </li>
+        <li> <a href="javascript:void(0);"> <i class="fa fa-th"></i> VENTAS <span class="plus"><i class="fa fa-plus"></i></span> </a>
+          <ul>
+            <li> <a href="{{route('Ventas')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>INICIO</b> </a> </li>
+            <li> <a href="{{route('historialDeVentas')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>HISTORIAL DE VENTAS</b> </a> </li>
+            <li> <a href="{{route('fichaDeVenta')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>FICHA DE VENTA</b> </a> </li>
+            <li> <a href="{{route('formularioDeVentas')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>FORMULARIO DE VENTAS</b> </a> </li>
+
+          </ul>
+        </li>
+        <li> <a href="{{route('PROV')}}"> <i class="fa fa-th"></i> PROVEEDORES <span class="plus"><i class="fa fa-plus"></i></span> </a>
+
+        </li>
+        <li> <a href="http://www.kutralco.com/clubrecepcionista/login.php"> <i class="fa fa-th"></i> RECEPCION <span class="plus"><i class="fa fa-plus"></i></span> </a>
+
+        </li>
         <li> <a href="javascript:void(0);"> <i class="fa fa-th"></i> RESERVA DE SALA <span class="plus"><i class="fa fa-plus"></i></span> </a>
           <ul>
             <li> <a href="{{route('horario')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>HORARIO</b> </a> </li>
@@ -206,8 +219,15 @@
             <li> <a href="{{route('crearEvento')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>CREAR EVENTOS</b> </a> </li>
           </ul>
         </li>
-      
+        <li> <a href="javascript:void(0);"> <i class="fa fa-th"></i> FORO <span class="plus"><i class="fa fa-plus"></i></span> </a>
+          <ul>
+            <li> <a href="{{route('listaDeEventos')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>RESPUESTAS</b> </a> </li>
+            <li> <a href="{{route('crearEvento')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>PREGUNTAS Y RESPUESTAS/b> </a> </li>
+          </ul>
+        </li>
+
       </ul>
+
     </div>
   </div>
   <!--\\\\\\\left_nav end \\\\\\-->

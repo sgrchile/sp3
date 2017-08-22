@@ -17,11 +17,13 @@
               <td>SALA</td>
               <td>DESCRIPCION</td>
               <td>FECHA</td>
-              <td>HORA</td>
+              <td>HORA INICIO</td>
+              <td>HORA TERMINO</td>
               <td style="width:200px;">ACCION</td>
             </tr>
 
             <tr>
+              <td></td>
               <td></td>
               <td></td>
               <td></td>

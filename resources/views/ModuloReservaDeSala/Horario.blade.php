@@ -21,11 +21,13 @@
                 <td>PARTICIPANTES</td>
                 <td>DESCRIPCION</td>
                 <td>FECHA</td>
-                <td>HORA</td>
+                <td>HORA INICIO</td>
+                <td>HORA TERMINO</td>
                 <td style="width:300px;">ACCION</td>
               </tr>
 
               <tr>
+                <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -37,11 +39,7 @@
 
             </table>
           </div>
-          <br />
-          <div class="container-fluid" align="left">
-            <a href="javascript:history.back(1)"><button class="btn btn-primary btn-lg">Volver</button></a>
-
-          </div>
+        
 
         </div><!--/porlets-content-->
       </div><!--/block-web-->
@@ -49,4 +47,12 @@
   </div><!--/row-->
 
 </div>
+<br>
+<div class="container">
+
+<a href="javascript:history.back(1)"><button class="btn btn-primary btn-lg">Volver</button></a>
+
+</div>
+</a>
+<br>
 @endsection

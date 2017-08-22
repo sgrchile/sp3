@@ -37,7 +37,11 @@
               </tr>
 
               <tr>
-                <td>HORA</td>
+                <td>HORA INICIO </td>
+                <td><input type="time" style="max-width:175px;"  class="form-control"  /> </td>
+              </tr>
+              <tr>
+                <td>HORA TERMINO</td>
                 <td><input type="time" style="max-width:175px;"  class="form-control"  /> </td>
               </tr>
             </table>
