@@ -13,9 +13,9 @@
         <!-- FORM INICIO -->
 
 
-          <a href="{{route('respuestas')}}"><button class="btn btn-primary btn-lg" style="width:150px;">COMERCIAL</button></a>
-          <a href="{{route('respuestas')}}"><button class="btn btn-primary btn-lg" style="width:150px;">ADMINISTRAR</button></a>
-          <a href="{{route('respuestas')}}"><button class="btn btn-primary btn-lg" style="width:150px;">TECNICA</button></a>
+          <a href="{{route('inicioAComercial')}}"><button class="btn btn-primary btn-lg" style="width:150px;">COMERCIAL</button></a>
+          <a href="{{route('inicioAdministrativa')}}"><button class="btn btn-primary btn-lg" style="width:150px;">ADMINISTRATIVA</button></a>
+          <a href="{{route('inicioTecnica')}}"><button class="btn btn-primary btn-lg" style="width:150px;">TECNICA</button></a>
 
 
 

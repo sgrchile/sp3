@@ -7,13 +7,30 @@
     <div class="block-web">
       <div class="header">
         <div class="actions"></div>
-        <h1 class="text-center text-uppercase">FORO</h1>
+        <h1 class="text-center text-uppercase">FORO TECNICO</h1>
       </div>
       <div class="porlets-content">
         <!-- FORM INICIO -->
+        <div class="table-responsive">
+          <table class="table-condensed ">
+            <tr>
+              <td>PREGUNTA</td>
+              <td>
+                <textarea class="form-control" style="width:500px; max-width:500px;" readonly></textarea>
+              </td>
 
+            </tr>
+            <tr>
 
+              <td>RESPUESTA</td>
+              <td>
+                <textarea class="form-control" style="width:500px; max-width:500px;"></textarea>
+              </td>
+            </tr>
+          </table>
+          <button class="btn btn-primary btn-lg">RESPONDER PREGUNTA</button>
 
+        </div>
         <!-- FORM FINAL -->
 
       </div><!--/porlets-content-->

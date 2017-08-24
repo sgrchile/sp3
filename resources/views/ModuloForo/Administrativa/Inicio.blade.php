@@ -7,26 +7,32 @@
     <div class="block-web">
       <div class="header">
         <div class="actions"></div>
-        <h1 class="text-center text-uppercase">FORO COMERCIAL</h1>
+        <h1 class="text-center text-uppercase">FORO ADMINISTRATIVA  </h1>
       </div>
       <div class="porlets-content">
         <!-- FORM INICIO -->
         <div class="table-responsive">
-          <table>
+          <table class="table table-bordered">
             <tr>
-              <td class="text-center"> <h4>PREGUNTA</h4></td>
+              <td>PREGUNTA</td>
+              <td>RESPUESTA</td>
+              <td style="width:172px;">ACCION</td>
             </tr>
             <tr>
-
+              <td></td>
+              <td></td>
               <td>
-                <textarea class="form-control" style="width:500px;  max-width:500px;"></textarea>
+                <a href="{{route('respuestasAdministrativa')}}"<button class="btn btn-primary btn-md" style="width:172px;">RESPONDER</button>
               </td>
             </tr>
+
           </table>
-          <br />
-          <button class="btn btn-primary btn-lg">REALIZAR PREGUNTA</button>
+          <a href="{{route('HacerPreguntasAdministrativa')}}"><button class="btn btn-primary btn-md" style="width:172px;">REALIZAR PREGUNTA</button></a>
 
         </div>
+
+
+
         <!-- FORM FINAL -->
 
       </div><!--/porlets-content-->
