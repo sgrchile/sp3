@@ -1070,4 +1070,28 @@ Route::group(['prefix' => 'modulo'], function () {
   // FIN DE RUTAS FORO
   });
 
+  Route::group(['prefix' => 'Licitaciones'], function () {
+      Route::get('/', function () {
+          return view('ModuloLicitaciones.Licitaciones');
+      })->name('inicioLicitacion');
+
+      Route::get('Asignar', function () {
+        return view('ModuloLicitaciones.Asignar');
+      })->name('Asignar');
+
+      Route::get('propietariosLicitacion', function () {
+        return view('ModuloLicitaciones.propietariosLicitacion');
+      })->name('propietariosLicitacion');
+
+      Route::get('NuevaLicitacion', function () {
+        return view('ModuloLicitaciones.NuevaLicitacion');
+      })->name('NuevaLicitacion');
+
+      Route::get('fichaLicitacion', function () {
+        return view('ModuloLicitaciones.fichaLicitacion');
+      })->name('fichaLicitacion');
+
+
+   });
+
 });
