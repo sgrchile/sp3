@@ -155,6 +155,14 @@
 
                           </td>
 
+
+                        </tr>
+                        <tr>
+                          <td><a href="{{route('inicioLicitacion')}}"><img src="{{ asset('images/rrhh.png') }}" class="img-responsive"
+                            width="113" height="128"/></a>
+                            <p style="text-align:center;">LICITACION</p>
+
+                          </td>
                         </tr>
                     </table>
 
