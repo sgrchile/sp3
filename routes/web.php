@@ -1069,7 +1069,7 @@ Route::group(['prefix' => 'modulo'], function () {
 
   // FIN DE RUTAS FORO
   });
-
+  // INICIO DE RUTAS LICITACIONES
   Route::group(['prefix' => 'Licitaciones'], function () {
       Route::get('/', function () {
           return view('ModuloLicitaciones.Licitaciones');
@@ -1091,7 +1091,33 @@ Route::group(['prefix' => 'modulo'], function () {
         return view('ModuloLicitaciones.fichaLicitacion');
       })->name('fichaLicitacion');
 
-
+  // FIN DE RUTAS LICITACIONES
    });
+
+   // INICIO DE RUTAS FINANCIERO
+   Route::group(['prefix' => 'Financiero'], function () {
+       Route::get('/', function () {
+           return view('ModuloFinanciero.cuentasPorCobrar');
+       })->name('cuentasPorCobrar');
+
+       Route::get('cuentasPorPagar', function () {
+         return view('ModuloFinanciero.cuentasPorPagar');
+       })->name('cuentasPorPagar');
+
+       Route::get('panelDeInformes', function () {
+         return view('ModuloFinanciero.panelDeInformes');
+       })->name('panelDeInformes');
+
+       Route::get('ReporteDeCaja', function () {
+         return view('ModuloFinanciero.ReporteDeCaja');
+       })->name('ReporteDeCaja');
+
+       Route::get('valorEmpresa', function () {
+         return view('ModuloFinanciero.valorEmpresa');
+       })->name('valorEmpresa');
+
+   // FIN DE RUTAS FINANCIERO
+    });
+
 
 });

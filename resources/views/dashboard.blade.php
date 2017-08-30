@@ -62,7 +62,7 @@
               <h3 class="content-header">Graph</h3>
             </div>
             <div class="porlets-content">
-              <div id="graph"></div>
+              <div id="graph">a</div>
             </div>
             <!--/porlets-content-->
           </div>

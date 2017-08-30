@@ -43,17 +43,19 @@
             <td>
               <button class="btn btn-primary btn-lg"  style="width:240px;  margin-bottom: 15px;" data-toggle="modal" data-target="#regMov" > Registro de movimientos</button>
               <a href="{{route('Fluca')}}"><button class="btn btn-primary btn-lg"  style="width:240px; margin-bottom: 15px;"> Flujo de caja</button></a>
+              <a href="{{route('panelDeInformes')}}"><button class="btn btn-primary btn-lg"  style="width:240px; margin-bottom: 15px;"> Financiero</button></a>
+
               <button type="button" class="btn btn-primary btn-lg"  style="width:240px; margin-bottom: 15px;" data-toggle="modal" data-target="#myModal">Cartola bancaria</button>
             </td>
           </tr>
 
-          <tr>
+          <!-- <tr>
             <td>
               <button type="button" class="btn btn-primary btn-lg"  style="width:240px; margin-bottom: 15px;">Datos Empresas</button>
               <button type="button" class="btn btn-primary btn-lg"  style="width:240px; margin-bottom: 15px;">Indicadores</button>
               <button type="button" class="btn btn-primary btn-lg"  style="width:240px; margin-bottom: 15px;">Configuracion</button>
             </td>
-          </tr>
+          </tr> -->
 
         </table>
         <br>
@@ -109,7 +111,7 @@
           </div>
           <br>
           <div class="container">
-          <a href="../sp3/index.php"><button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">Volver</button>
+            <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">Volver</button>
           </div>
           <br>
           </div>

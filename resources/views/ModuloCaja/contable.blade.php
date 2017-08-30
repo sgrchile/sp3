@@ -14,23 +14,25 @@
         </div>
         <div class="porlets-content">
           <!-- FORM INICIO -->
-<div class="container" align="center">
+            <div class="container" align="center">
 
-          <table class="table-condensed">
+                      <table class="table-condensed">
 
-          <tr>
+                      <tr>
 
-          <td><a href="{{route('LibrosContables')}}"><button class="btn btn-primary btn-lg" style="width:220px;">Libros contables</button></a></td>
-          <td><button class="btn btn-primary btn-lg" style="width:220px;"> Plan de Cuentas</button>
-          </tr>
-          <tr>
+                      <td><a href="{{route('LibrosContables')}}"><button class="btn btn-primary btn-lg" style="width:220px;">Libros contables</button></a></td>
+                      <!-- <td><button class="btn btn-primary btn-lg" style="width:220px;"> Plan de Cuentas</button> -->
+                      <!-- <td><button class="btn btn-primary btn-lg" style="width:220px;"> Informes</button></td>  -->
+                      </tr>
+                      <tr>
 
-          <td><button class="btn btn-primary btn-lg" style="width:220px;"> Movimientos contables</button></td>
-          <td><button class="btn btn-primary btn-lg" style="width:220px;"> Informes</button></td>
+                      <!-- <td><button class="btn btn-primary btn-lg" style="width:220px;"> Movimientos contables</button></td> -->
+                      <!--
+                    -->
 
-          </tr>
-          </table>
-</div>
+                      </tr>
+                      </table>
+            </div>
 
           <!-- FORM FINAL -->
 
