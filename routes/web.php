@@ -1119,29 +1119,45 @@ Route::group(['prefix' => 'modulo'], function () {
    // FIN DE RUTAS FINANCIERO
     });
 
+  // INICIO DE RUTAS lICITACIONES
+   Route::group(['prefix' => 'Licitaciones'], function () {
+        Route::get('/', function () {
+            return view('ModuloLicitaciones.Licitaciones');
+        })->name('inicioLicitacion');
 
-  Route::group(['prefix' => 'Licitaciones'], function () {
-      Route::get('/', function () {
-          return view('ModuloLicitaciones.Licitaciones');
-      })->name('inicioLicitacion');
+        Route::get('Asignar', function () {
+          return view('ModuloLicitaciones.Asignar');
+        })->name('Asignar');
 
-      Route::get('Asignar', function () {
-        return view('ModuloLicitaciones.Asignar');
-      })->name('Asignar');
+        Route::get('propietariosLicitacion', function () {
+          return view('ModuloLicitaciones.propietariosLicitacion');
+        })->name('propietariosLicitacion');
 
-      Route::get('propietariosLicitacion', function () {
-        return view('ModuloLicitaciones.propietariosLicitacion');
-      })->name('propietariosLicitacion');
+        Route::get('NuevaLicitacion', function () {
+          return view('ModuloLicitaciones.NuevaLicitacion');
+        })->name('NuevaLicitacion');
 
-      Route::get('NuevaLicitacion', function () {
-        return view('ModuloLicitaciones.NuevaLicitacion');
-      })->name('NuevaLicitacion');
-
-      Route::get('fichaLicitacion', function () {
-        return view('ModuloLicitaciones.fichaLicitacion');
-      })->name('fichaLicitacion');
-
-
+        Route::get('fichaLicitacion', function () {
+          return view('ModuloLicitaciones.fichaLicitacion');
+        })->name('fichaLicitacion');
    });
+   // FIN DE RUTAS lICITACIONES
 
+   // INICIO DE RUTAS INFORMES DE GESTION
+    Route::group(['prefix' => 'InformesDeGestion'], function () {
+         Route::get('/', function () {
+             return view('ModuloInformesDeGestion.InformesDeGestionIndex');
+         })->name('InformesDeGestion');
+
+         Route::get('nivelAdministracion', function () {
+           return view('ModuloInformesDeGestion.nivelAdministracion');
+         })->name('nivelAdministracion');
+
+         Route::get('nivelGerencia', function () {
+           return view('ModuloInformesDeGestion.nivelGerencia');
+         })->name('nivelGerencia');
+
+
+    });
+    // FIN DE RUTAS  INFORMES DE GESTION
 });

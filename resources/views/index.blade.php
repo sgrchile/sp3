@@ -31,24 +31,19 @@
 
                           -->
                             <td>
-                                <a href="{{route('moduloCaja')}}"><img src="{{ asset('images/caja.png') }}"
-                                                                       class="img-responsive" width="113" height="128 "
-                                                                       border="0"/>
+                                <a href="{{route('moduloCaja')}}"><img src="{{ asset('images/caja.png') }}"   class="img-responsive" width="113" height="128 " border="0"/>
                                     <p>CAJA</p>
                                 </a>
                             </td>
 
                             <td>
-                              <a href="{{Route('inventario')}}">  <img src="{{ asset('images/inventario.png') }}" class="img-responsive" width="113"
-                                     height="128"/>
+                              <a href="{{Route('inventario')}}">  <img src="{{ asset('images/inventario.png') }}" class="img-responsive" width="113" height="128"/>
                                 <p>INVENTARIO</p></a>
                             </td>
 
 
                             <td>
-                                <a href="{{route('ModuloOt')}}"><img src="{{ asset('images/orden-trabajo.png') }}"
-                                                                     class="img-responsive" width="113" height="128"
-                                                                     border="0"/>
+                                <a href="{{route('ModuloOt')}}"><img src="{{ asset('images/orden-trabajo.png') }}"  class="img-responsive" width="113" height="128"  border="0"/>
                                     <p>ORDEN DE TRABAJO</p>
                                 </a>
                             </td>
@@ -57,17 +52,14 @@
                           <tr>
 
                             <td>
-                                <a href="{{route('PROV')}}"><img src="{{ asset('images/proveedores.png') }}"
-                                                                 class="img-responsive" width="113" height="128"/></a>
+                                <a href="{{route('PROV')}}"><img src="{{ asset('images/proveedores.png') }}" class="img-responsive" width="113" height="128"/></a>
                                 <p>PROVEEDORES</p>
                             </td>
 
 
 
                             <td>
-                                <a href="http://www.kutralco.com/clubrecepcionista/login.php"><img
-                                            src="{{ asset('images/recepcion.png') }}" class="img-responsive" width="113"
-                                            height="128" border="0"></a>
+                                <a href="http://www.kutralco.com/clubrecepcionista/login.php"><img  src="{{ asset('images/recepcion.png') }}" class="img-responsive" width="113"  height="128" border="0"></a>
                                 <p>RECEPCION</p>
 
                             </td>
@@ -76,10 +68,12 @@
                               <a href="{{route('Ventas')}}"><img src="{{ asset('images/pto-venta.png') }}" class="img-responsive" width="113" height="128"/></a>
                               <p style="text-align:center;">PUNTO DE VENTAS</p>
                             </td>
+
                         </tr>
                         <tr>
-                            <td><a href="{{route('RRHH')}}"><img src="{{ asset('images/rrhh.png') }}" class="img-responsive"
-                                                                 width="113" height="128"/></a>
+                            <td>
+
+                                <a href="{{route('RRHH')}}"><img src="{{ asset('images/rrhh.png') }}" class="img-responsive" width="113" height="128"/></a>
                                 <p style="text-align:center;">RRHH</p>
 
                             </td>
@@ -100,67 +94,64 @@
                         </tr>
                         <tr>
 
-                          <td><a href="{{route('Documental')}}"><img src="{{ asset('images/rrhh.png') }}" class="img-responsive"
-                                                               width="113" height="128"/></a>
+                          <td><a href="{{route('Documental')}}"><img src="{{ asset('images/rrhh.png') }}" class="img-responsive" width="113" height="128"/></a>
                               <p style="text-align:center;">DOCUMENTAL</p>
 
                           </td>
 
 
-                          <td><a href="{{route('ReservaDeSala')}}"><img src="{{ asset('images/rrhh.png') }}" class="img-responsive"
-                                                               width="113" height="128"/></a>
+                          <td><a href="{{route('ReservaDeSala')}}"><img src="{{ asset('images/rrhh.png') }}" class="img-responsive" width="113" height="128"/></a>
                               <p style="text-align:center;">RESERVA DE SALA</p>
 
                           </td>
 
-                          <td><a href="{{route('eventos')}}"><img src="{{ asset('images/rrhh.png') }}" class="img-responsive"
-                            width="113" height="128"/></a>
+                          <td><a href="{{route('eventos')}}"><img src="{{ asset('images/rrhh.png') }}" class="img-responsive"  width="113" height="128"/></a>
                             <p style="text-align:center;">EVENTOS</p>
 
                           </td>
                         </tr>
                         <tr>
-                          <td><a href="{{route('foro')}}"><img src="{{ asset('images/rrhh.png') }}" class="img-responsive"
-                            width="113" height="128"/></a>
+                          <td><a href="{{route('foro')}}"><img src="{{ asset('images/rrhh.png') }}" class="img-responsive"  width="113" height="128"/></a>
                             <p style="text-align:center;">FORO</p>
 
                           </td>
-                          <td><a href="{{route('eventos')}}"><img src="{{ asset('images/rrhh.png') }}" class="img-responsive"
-                            width="113" height="128"/></a>
-                            <p style="text-align:center;">MARKETING</p>
+                          <td><a href="{{route('InformesDeGestion')}}"><img src="{{ asset('images/rrhh.png') }}" class="img-responsive"  width="113" height="128"/></a>
+                            <p style="text-align:center;">INFORMES DE GESTION</p>
+                          </td>
+
+                          <td><a href="{{route('panelDeInformes')}}"><img src="{{ asset('images/rrhh.png') }}" class="img-responsive"  width="113" height="128"/></a>
+                            <p style="text-align:center;">FINANCIERO</p>
 
                           </td>
-                          <td><a href="{{route('eventos')}}"><img src="{{ asset('images/rrhh.png') }}" class="img-responsive"
-                            width="113" height="128"/></a>
-                            <p style="text-align:center;">INFORMES DE GESTION</p>
                         </tr>
 
 
                         <tr>
+
+                          <td>
+
+                            <a href="{{route('inicioLicitacion')}}"><img src="{{ asset('images/rrhh.png') }}" class="img-responsive" width="113" height="128"/></a>
+                            <p style="text-align:center;">LICITACION</p>
+
                           </td>
-                          <td><a href="{{route('eventos')}}"><img src="{{ asset('images/rrhh.png') }}" class="img-responsive"
-                            width="113" height="128"/></a>
+                          <td>
+
+                            <a href="{{route('eventos')}}"><img src="{{ asset('images/rrhh.png') }}" class="img-responsive" width="113" height="128"/></a>
                             <p style="text-align:center;">MEJORA CONTINUA</p>
 
                           </td>
 
-                          <td><a href="{{route('eventos')}}"><img src="{{ asset('images/rrhh.png') }}" class="img-responsive"
-                            width="113" height="128"/></a>
+                          <td>
+
+                            <a href="{{route('eventos')}}"><img src="{{ asset('images/rrhh.png') }}" class="img-responsive" width="113" height="128"/></a>
                             <p style="text-align:center;">CAPACITACION</p>
 
                           </td>
-                          <td><a href="{{route('eventos')}}"><img src="{{ asset('images/rrhh.png') }}" class="img-responsive"
-                            width="113" height="128"/></a>
-                            <p style="text-align:center;">FINANCIERO</p>
-
-                          </td>
-
-
                         </tr>
                         <tr>
-                          <td><a href="{{route('inicioLicitacion')}}"><img src="{{ asset('images/rrhh.png') }}" class="img-responsive"
-                            width="113" height="128"/></a>
-                            <p style="text-align:center;">LICITACION</p>
+                          <td>
+                            <a href="{{route('eventos')}}"><img src="{{ asset('images/rrhh.png') }}" class="img-responsive" width="113" height="128"/></a>
+                            <p style="text-align:center;">MARKETING</p>
 
                           </td>
                         </tr>
