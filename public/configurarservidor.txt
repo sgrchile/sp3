@@ -1,9 +1,9 @@
 PARA EL SERVIDOR
 
--ServerName proyecto.net
- -ServerAlias www.sp3.sgr.chile.com/projectosp3/public
- -Alias /proyecto /var/www/html/projectosp3/public
- -DocumentRoot "/var/www/html/projectosp3/public"
+-ServerName https://ivp.000webhostapp.com/
+ -ServerAlias https://ivp.000webhostapp.com/public
+ -Alias /proyecto /var/www/html/public_html
+ -DocumentRoot "/public_html"
  -
  -      AllowOverride All
  -      Order allow,deny
