@@ -1,10 +1,6 @@
 @extends('layouts.app')
 @section('content')
 
-
-
-
-
   <div class="row">
     <div class="col-xs-12 col-md-12 col-sm-12">
       <div class="block-web">
@@ -21,8 +17,8 @@
                       <tr>
 
                       <td><a href="{{route('LibrosContables')}}"><button class="btn btn-primary btn-lg" style="width:220px;">Libros contables</button></a></td>
-                      <!-- <td><button class="btn btn-primary btn-lg" style="width:220px;"> Plan de Cuentas</button> -->
-                      <!-- <td><button class="btn btn-primary btn-lg" style="width:220px;"> Informes</button></td>  -->
+                      <td><a href="{{route('AsientosContables')}}"><button class="btn btn-primary btn-lg" style="width:220px;"> PLAN DE CUENTAS</button></a></td>
+                      <td><a href="{{route('PlanDeCuentas')}}"><button class="btn btn-primary btn-lg" style="width:220px;"> ASIENTOS CONTABLES</button></a></td>
                       </tr>
                       <tr>
 
@@ -45,7 +41,7 @@
 
 
 <div class="container">
-<a href="javascript:history.back(1)"><button class="btn btn-primary btn-lg">Volver</button></a>
+<a href="{{route('moduloCaja')}}"><button class="btn btn-primary btn-lg">Volver</button></a>
 
 </div>
 </a>

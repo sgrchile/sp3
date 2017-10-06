@@ -21,7 +21,7 @@
           <table class="table-condensed">
 
             <tr>
-              <td><a href=""><button class='btn btn-primary btn-lg' style="width:185px; margin-bottom: 15px;"> RESUMEN</button></a></td>
+              <td><a href="{{route('resumen')}}"><button class='btn btn-primary btn-lg' style="width:185px; margin-bottom: 15px;"> RESUMEN</button></a></td>
               <td><a href="{{route('clientes')}}"><button class='btn btn-primary btn-lg'   style="width:185px; margin-bottom: 15px;"> CLIENTES</button></a></td>
               <td><a href="{{route('listaOportunidades')}}"><button class='btn btn-primary btn-lg'  style="width:185px; margin-bottom: 15px;">OPORTUNIDADES</button></a></td>
             </tr>

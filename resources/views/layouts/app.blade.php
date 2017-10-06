@@ -176,7 +176,7 @@
         <li> <a href="javascript:void(0);"> <i class="fa fa-tasks"></i>CRM<span class="plus"><i class="fa fa-plus"></i></span></a>
           <ul>
             <li> <a href="{{route('CRM')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>INICIO</b> </a> </li>
-            <li> <a href=""> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>RESUMEN</b> </a> </li>
+            <li> <a href="{{route('resumen')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>RESUMEN</b> </a> </li>
             <li> <a href="{{route('cotizaciones')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>COTIZACIONES</b> </a> </li>
             <li> <a href="{{route('clientes')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>CLIENTES</b> </a> </li>
             <li> <a href="{{route('listaOportunidades')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>OPORTUNIDADES</b> </a> </li>

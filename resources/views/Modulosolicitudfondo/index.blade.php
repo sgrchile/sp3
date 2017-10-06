@@ -30,7 +30,7 @@
         </div>
         <br>
         <br>
-        <a href="javascript:history.back(1)"><button class="btn btn-primary btn-lg">Volver</button></a>
+        <a href="{{route('moduloCaja')}}"><button class="btn btn-primary btn-lg">Volver</button></a>
 
         <!-- FORM FINAL -->
 

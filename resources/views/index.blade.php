@@ -136,7 +136,7 @@
                           </td>
                           <td>
 
-                            <a href="{{route('eventos')}}"><img src="{{ asset('images/rrhh.png') }}" class="img-responsive" width="113" height="128"/></a>
+                            <a href="{{route('IndexMejoraContinua')}}"><img src="{{ asset('images/rrhh.png') }}" class="img-responsive" width="113" height="128"/></a>
                             <p style="text-align:center;">MEJORA CONTINUA</p>
 
                           </td>
@@ -150,7 +150,7 @@
                         </tr>
                         <tr>
                           <td>
-                            <a href="{{route('eventos')}}"><img src="{{ asset('images/rrhh.png') }}" class="img-responsive" width="113" height="128"/></a>
+                            <a href="{{route('IndexMarketing')}}"><img src="{{ asset('images/rrhh.png') }}" class="img-responsive" width="113" height="128"/></a>
                             <p style="text-align:center;">MARKETING</p>
 
                           </td>

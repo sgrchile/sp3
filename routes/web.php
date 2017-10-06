@@ -74,22 +74,30 @@ Route::group(['prefix' => 'modulo'], function () {
             return view('ModuloCaja.flujoCaja');
         })->name('Fluca');
 
-        Route::get('/librosContables', function () {
-            return view('ModuloCaja.librosContables');
-        })->name('LibrosContables');
 
         Route::get('/Finanzas', [
             'uses' => 'ModuloCajaController@financiero',
             'as' => 'Finanzas',
         ]);
 
+        //RUTAS DE CONTABILIDAD
         Route::get('/Contable', function () {
-            return view('ModuloCaja.contable');
+          return view('ModuloCaja.contable');
         })->name('Contable');
+
+        Route::get('/librosContables', function () {
+          return view('ModuloCaja.librosContables');
+        })->name('LibrosContables');
+
+
+        Route::get('/AsientosContables', function () {
+            return view('ModuloCaja.AsientosContables');
+        })->name('AsientosContables');
 
         Route::get('/PlanDeCuentas', function () {
             return view('ModuloCaja.PlanDeCuentas');
         })->name('PlanDeCuentas');
+
 
 
 
@@ -925,6 +933,11 @@ Route::group(['prefix' => 'modulo'], function () {
         return view('ModuloCrm.listaCotizaciones');
       })->name('listaCotizaciones');
 
+      Route::get('resumen', function () {
+        return view('ModuloCrm.resumen');
+      })->name('resumen');
+
+
       //FIN CRM
 
     });
@@ -1160,4 +1173,42 @@ Route::group(['prefix' => 'modulo'], function () {
 
     });
     // FIN DE RUTAS  INFORMES DE GESTION
+
+    // INICIO DE RUTAS MARKETING
+     Route::group(['prefix' => 'Marketing'], function () {
+          Route::get('/', function () {
+              return view('ModuloMarketing.IndexMarketing');
+          })->name('IndexMarketing');
+
+          Route::get('satisfaccionCliente', function () {
+            return view('ModuloMarketing.satisfaccionCliente');
+          })->name('satisfaccionCliente');
+
+          Route::get('satisfaccionAlProveedor', function () {
+            return view('ModuloMarketing.satisfaccionAlProveedor');
+          })->name('satisfaccionAlProveedor');
+
+
+
+
+     });
+     // FIN DE RUTAS  MARKETING
+
+     // INICIO DE RUTAS MEJORA CONTINUA
+      Route::group(['prefix' => 'MejoraContinua'], function () {
+           Route::get('/', function () {
+               return view('ModuloMejoraContinua.IndexMejoraContinua');
+           })->name('IndexMejoraContinua');
+
+           Route::get('resumenEvaluacion', function () {
+             return view('ModuloMejoraContinua.resumenEvaluacion');
+           })->name('resumenEvaluacion');
+
+           Route::get('FichaDeEvaluacion', function () {
+             return view('ModuloMejoraContinua.FichaDeEvaluacion');
+           })->name('FichaDeEvaluacion');
+
+
+      });
+      // FIN DE MEJORA CONTINUA
 });

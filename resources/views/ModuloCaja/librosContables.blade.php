@@ -110,5 +110,5 @@
 </div>
 
 </div>
- <div class="container">  <a href="{{route('SolFon')}}"><button class="btn btn-primary btn-lg">Volver</button></a></div>
+ <div class="container">  <a href="{{route('Contable')}}"><button class="btn btn-primary btn-lg">Volver</button></a></div>
 @endsection

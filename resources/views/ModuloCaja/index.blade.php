@@ -20,7 +20,7 @@
 
           <td><a href="{{route('Contable')}}"><img src="{{ asset('images/contabilidad.png') }}"> <p>CONTABILIDAD</p></a></td>
 
-          <td><img src="{{ asset('images/presupuesto.png') }}"> <p>PRESUPUESTO</p></td>
+          <!-- <td><img src="{{ asset('images/presupuesto.png') }}"> <p>PRESUPUESTO</p></td> -->
           </tr>
 
 
