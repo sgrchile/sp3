@@ -51,7 +51,12 @@ php artisan make:controller *nombreControlador* --resource
 ## Para volver atras 
 ```
 <a href="javascript:history.back(1)"><button class="btn btn-primary btn-lg">Volver</button></a>
+
 ```
+ACCESO CHAMILLO 1.11.2 
+
+admin
+7XXGHZpq23
 
 NOTAS DE DESARROLLO:
 

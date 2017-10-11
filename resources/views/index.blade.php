@@ -143,7 +143,7 @@
 
                           <td>
 
-                            <a href="{{route('eventos')}}"><img src="{{ asset('images/rrhh.png') }}" class="img-responsive" width="113" height="128"/></a>
+                            <a href="http://localhost/chamilo-lms-1.11.2"><img src="{{ asset('images/rrhh.png') }}" class="img-responsive" width="113" height="128"/></a>
                             <p style="text-align:center;">CAPACITACION</p>
 
                           </td>
