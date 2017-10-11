@@ -10,7 +10,33 @@
         </div>
         <div class="porlets-content">
           <!-- FORM INICIO -->
+          <h3 class="text-center">PLAN DE CUENTAS</h3>
 
+          <div class="table-responsive"  >
+
+            <table class="table table-bordered">
+              <tr>
+                <td>CLASE</td>
+                <td>TIPO DE CUENTA</td>
+                <td>CUENTA</td>
+                <td>MONTO</td>
+                <td>ACCION</td>
+              </tr>
+
+              <tr>
+                <td>CLASE</td>
+                <td>TIPO DE CUENTA</td>
+                <td>CUENTA</td>
+                <td>MONTO</td>
+                <td><button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#editarCuenta" data-backdrop="static" >EDITAR</button></td>
+              </tr>
+
+            </table>
+          </div>
+          <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#nuevaCuenta" data-backdrop="static">NUEVA CUENTA</button>
+
+          @include('modals.editarCuenta')
+          @include('modals.NuevaCuenta')
 
           <!-- FORM FINAL -->
         </div><!--/porlets-content-->
