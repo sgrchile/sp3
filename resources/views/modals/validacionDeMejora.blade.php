@@ -10,7 +10,7 @@
             </div>
             <div class="modal-body">
 
-              <table class="table-condensed text-right">
+              <table  align="left" class="table-condensed text-right">
                 <tr >
                   <td  rowspan="9">
                     <h1>LOGO</h1>
@@ -46,7 +46,7 @@
                     VALIDAR:
                   </td>
                   <td>
-                    <input type="checkbox" class="form-control" style="width:175px;" />
+                    <input type="radio"  name="validacion" class="form-control" style="width:175px;" />
                   </td>
                 </tr>
 
@@ -55,7 +55,7 @@
                     RECHAZAR:
                   </td>
                   <td>
-                    <input type="checkbox" class="form-control" style="width:175px;" />
+                    <input type="radio"  name="validacion"  class="form-control" style="width:175px;" />
                   </td>
                 </tr>
 
@@ -68,17 +68,22 @@
                   </td>
                 </tr>
 
+
+
+              </table>
+              <table >
+
                 <tr>
-                  <td colspan="2" align="center">
-                    RECOMENDACIONES:
+                  <td rowspan="2" align="center">
                   </td>
                 </tr>
 
-                <tr>
-                  <td colspan="2" align="center">
-                    <textarea name="name " class="form-control" style="width:175px; max-width:175px;"></textarea>
-                  </td>
-                </tr>
+              <tr>
+                <td colspan="2" align="center">
+                  RECOMENDACIONES:
+                  <textarea name="name " class="form-control" style="width:175px; max-width:175px; height:270px; max-height:250px;"></textarea>
+                </td>
+              </tr>
 
               </table>
 
