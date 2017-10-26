@@ -1196,7 +1196,17 @@ Route::group(['prefix' => 'modulo'], function () {
             return view('ModuloMarketing.satisfaccionAlProveedor');
           })->name('satisfaccionAlProveedor');
 
+          Route::get('dashBoardMarketing', function () {
+            return view('ModuloMarketing.dashBoardMarketing');
+          })->name('dashBoardMarketing');
 
+          Route::get('comparativoDeVentas', function () {
+            return view('ModuloMarketing.comparativoDeVentas');
+          })->name('comparativoDeVentas');
+
+          Route::get('encuesta', function () {
+            return view('ModuloMarketing.encuesta');
+          })->name('encuesta');
 
 
      });
@@ -1212,9 +1222,17 @@ Route::group(['prefix' => 'modulo'], function () {
              return view('ModuloMejoraContinua.resumenEvaluacion');
            })->name('resumenEvaluacion');
 
+           Route::get('evaluaciones', function () {
+             return view('ModuloMejoraContinua.evaluaciones');
+           })->name('evaluaciones');
+
            Route::get('FichaDeEvaluacion', function () {
              return view('ModuloMejoraContinua.FichaDeEvaluacion');
            })->name('FichaDeEvaluacion');
+
+           Route::get('mejoramientoContinuo', function () {
+             return view('ModuloMejoraContinua.mejoramientoContinuo');
+           })->name('mejoramientoContinuo');
 
 
       });

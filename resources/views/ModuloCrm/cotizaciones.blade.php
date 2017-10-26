@@ -44,7 +44,7 @@
 
          </table>
 
-         <table class="table-condensed table-bordered  " align="center">
+         <table class="table-condensed table-bordered  ">
            <tr>
              <td>TIPO</td>
 
@@ -96,34 +96,34 @@
            <tr>
 
              <td colspan="6" align="right">SUB TOTAL:</td>
-             <td><input type="text"  style="width:175px;" class="form-control"  readOnly/></td>
+             <td><input type="text"  style="width:100px;" class="form-control"  readOnly/></td>
            </tr>
            <tr>
 
              <td colspan="6" align="right">DESCUENTO:</td>
-             <td><input type="text"  style="width:175px;" class="form-control"  readOnly/></td>
+             <td><input type="text"  style="width:100px;" class="form-control"  readOnly/></td>
            </tr>
            <tr>
 
              <td colspan="6" align="right">TOTAL DESCUENTO:</td>
-             <td><input type="text"  style="width:175px;" class="form-control"  readOnly/></td>
+             <td><input type="text"  style="width:100px;" class="form-control"  readOnly/></td>
            </tr>
            <tr>
 
              <td colspan="6" align="right">TOTAL NETO:</td>
-             <td><input type="text"  style="width:175px;" class="form-control"  readOnly/></td>
+             <td><input type="text"  style="width:100px;" class="form-control"  readOnly/></td>
            </tr>
 
 
            <tr>
 
              <td colspan="6" align="right">IVA:</td>
-             <td><input type="text"  style="width:175px;" class="form-control"  readOnly/></td>
+             <td><input type="text"  style="width:100px;" class="form-control"  readOnly/></td>
            </tr>
            <tr>
 
              <td colspan="6" align="right">BRUTO:</td>
-             <td><input type="text"  style="width:175px;" class="form-control"  readOnly/></td>
+             <td><input type="text"  style="width:100px;" class="form-control"  readOnly/></td>
            </tr>
 
 

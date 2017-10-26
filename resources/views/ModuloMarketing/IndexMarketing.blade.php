@@ -15,16 +15,34 @@
         </div>
         <div class="porlets-content">
 
-          <a href="{{route('satisfaccionCliente')}}"><button class="btn btn-primary btn-lg"> SATISFACCION CLIENTE </button></a>
+          <table class="table-condensed">
 
-          <a href="{{route('satisfaccionAlProveedor')}}"><button class="btn btn-primary btn-lg"> SATISFACCION PROVEEDOR</button></a>
+            <tr>
+              <td>
+                <a href="{{route('dashBoardMarketing')}}"><button class="btn btn-primary btn-lg" style="width:265px;"> ANALISIS DE VENTAS</button></a>
+              </td>
+              <td>
+                <a href="{{route('encuesta')}}"><button class="btn btn-primary btn-lg" style="width:265px;"> ENCUESTA </button></a>
+              </td>
+              <td>
 
+                <a href="{{route('comparativoDeVentas')}}"><button class="btn btn-primary btn-lg" style="width:265px;"> COMPARATIVO DE VENTAS </button></a>
+              </td>
 
+            </tr>
 
-          <br />
+            <tr>
+              <td>
+                <a href="{{route('satisfaccionCliente')}}"><button class="btn btn-primary btn-lg" style="width:265px;"> SATISFACCION CLIENTE </button></a>
 
+              </td>
+              <td>
+                <a href="{{route('satisfaccionAlProveedor')}}"><button class="btn btn-primary btn-lg" style="width:265px;"> SATISFACCION PROVEEDOR</button></a>
+              </td>
 
+            </tr>
 
+          </table>
 
         </div><!--/porlets-content-->
       </div><!--/block-web-->

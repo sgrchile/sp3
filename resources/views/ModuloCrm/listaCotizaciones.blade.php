@@ -54,7 +54,7 @@
                   <br />
                   <button class="btn btn-primary btn-xs" style="width:90px; margin-bottom:5px;">VENDER</button>
                   <br />
-                  <button class="btn btn-primary btn-xs" style="width:90px; margin-bottom:5px;">VER FICHA</button><br />
+                  <a href="{{route('cotizaciones')}}"<button class="btn btn-primary btn-xs" style="width:90px; margin-bottom:5px;">VER FICHA</button><br />
                 </td>
 
               </tr>

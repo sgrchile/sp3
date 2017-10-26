@@ -32,6 +32,17 @@
               <td><textarea  style ="width:175px; height:200px;  max-width:175px;  max-height:200px;" placeholder="¿Cual es el motivo de su licencia?"></textarea></td>
               </tr>
 
+              <tr>
+
+              <td>FOTO LICENCIA MEDICA:</td>
+              <td>
+                    <input type="file" name="fileToUpload" id="fileToUpload">
+                    <input type="submit" value="Upload Image" name="submit">
+              </td>
+
+              </tr>
+
+
 
               <tr>
 

@@ -84,6 +84,12 @@
                   </tr>
 
                   <tr>
+                    <td><label>DIAS TRABAJADOS</label></td>
+                    <td><input type=number required min="0"  style="width:100px;"></td>
+                  </tr>
+
+
+                  <tr>
                     <td><label>BONO PRODUCCION:</label></td>
                     <td><input type=number required min="0"  style="width:100px;"></td>
                   </tr>
@@ -114,10 +120,7 @@
                     <td><input type=number required min="0"  style="width:100px;"></td>
                   </tr>
 
-                  <tr>
-                    <td><label>&nbsp;</label></td>
-                  </tr>
-
+                
                   <tr>
                     <td><label>TOTAL HABERES</label></td>
                     <td><input type=number readonly min="0"  style="width:100px;"></td>
@@ -168,6 +171,13 @@
                   <tr>
                     <td><label>&nbsp;</label></td>
                   </tr>
+
+
+                  <tr>
+                    <td><label>&nbsp;</label></td>
+                  </tr>
+
+
 
 
                   <tr>

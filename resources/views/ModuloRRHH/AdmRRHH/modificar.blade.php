@@ -224,7 +224,22 @@
             <div class="col-sm-6 col-md-4">
             <h4>TELÉFONO:</h4>
             <input type="text" class="form-control" name="telefono" value="{{ $personal->PRO_TEL  or '' }}" required>
-          </div>
+            </div>
+
+            <div class="col-sm-6 col-md-4">
+            <h4>SUELDO BASE:</h4>
+            <input type="number" min="0" class="form-control" name="telefono" required>
+            </div>
+
+            <div class="col-sm-6 col-md-4">
+            <h4>DURACION DE CONTRATO:</h4>
+            <input type="number" min="0" class="form-control" name="telefono" required>
+            </div>
+
+            <div class="col-sm-6 col-md-4">
+            <h4>FECHA DE INGRESO:</h4>
+            <input type="date" readonly class="form-control" name="telefono" >
+            </div>
 
             <div class="col-sm-12">
             <h4>CONTRATO</h4>

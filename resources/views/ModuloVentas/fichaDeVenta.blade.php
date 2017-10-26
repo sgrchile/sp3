@@ -6,7 +6,7 @@
     <div class="block-web">
       <div class="header">
         <div class="actions"></div>
-        <h1 class="content-header text-center text-uppercase"><b>TÍTULO</b></h1>
+        <h1 class="content-header text-center text-uppercase"><b>FICHA DE VENTA</b></h1>
       </div>
       <div class="porlets-content">
         <!-- FORM INICIO -->
