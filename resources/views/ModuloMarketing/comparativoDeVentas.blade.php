@@ -341,7 +341,7 @@
               <div class="table-responsive">
                 <table class="table-condensed">
                   <tr>
-                    <td>FECHA</td>
+                    <td>AÑO</td>
                     <td>
                       <input type="date" class="form-control" />
                     </td>

@@ -54,8 +54,8 @@
               <div class="table-responsive">
                  <table class="table table-bordered">
                    <tr>
-                     <td>EVALUACION</td>
-                     <td>FECHA</td>
+                     <td>DESCRIPCION</td>
+                     <td style="width:100px;">EVALUACION</td>
 
                    </tr>
 
