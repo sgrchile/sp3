@@ -137,7 +137,7 @@
                           <td>
 
                             <a href="{{route('IndexMejoraContinua')}}"><img src="{{ asset('images/rrhh.png') }}" class="img-responsive" width="113" height="128"/></a>
-                            <p style="text-align:center;">MEJORA CONTINUA</p>
+                            <p style="text-align:center;">MEJORAMIENTO CONTINUO</p>
 
                           </td>
 

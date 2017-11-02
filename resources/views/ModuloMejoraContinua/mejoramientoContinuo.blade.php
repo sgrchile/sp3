@@ -11,7 +11,7 @@
       <div class="block-web">
         <div class="header">
           <div class="actions"></div>
-          <h1 class="text-center text-uppercase">MODULO MEJORA CONTINUA</h1>
+          <h1 class="text-center text-uppercase">MODULO MEJORAMIENTO CONTINUO</h1>
         </div>
         <div class="porlets-content">
 
@@ -54,12 +54,14 @@
               <div class="table-responsive">
                  <table class="table table-bordered">
                    <tr>
+                     <td>ID</td>
+                     <td>DESCRIPCION</td>
                      <td>EVALUACION</td>
-                     <td>FECHA</td>
 
                    </tr>
 
                    <tr>
+                     <td>1</td>
                      <td>1</td>
                      <td>1</td>
 
@@ -153,34 +155,7 @@
             </div>
 
 
-                          <table class="table-condensed" align="left">
-                            <tr>
-                              <td>
-                                <button class="btn btn-primary btn-lg" style="width:172px;"  data-toggle="modal" data-target="#Desempeno">DESEMPEÑO</button>
-                                @include('modals.Desempeno')
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <button class="btn btn-primary btn-lg" style="width:172px;" >REDES SOCIALES</button>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <button class="btn btn-primary btn-lg" style="width:172px;" >DOCUMENTAL</button>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <button class="btn btn-primary btn-lg" style="width:172px;" >PROVEEDORES</button>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <button class="btn btn-primary btn-lg" style="width:172px;" >PRESUPUESTO </button>
-                              </td>
-                            </tr>
-                          </table>
+
             <table class="table-condensed">
               <tr>
                 <td>
@@ -205,24 +180,23 @@
 
                   </select>
                 </td>
-                <td>
-                  <button class="btn btn-primary btn-md" data-toggle="modal" data-target="#Indicador" >INDICADOR</button>
-                  @include('modals.indicador')
-                </td>
 
                 <td>
                   TIPO DE MEJORA
                 </td>
                 <td>
                   <select class="form-control">
-                    <option>PREVENTIVA</option>
-                    <option>CONECTIVA</option>
+                    <option>CORRECTIVA</option>
                     <option>DE SISTEMA</option>
                     <option>DE PROGRESO</option>
                     <option>INOVACION</option>
                   </select>
                 </td>
 
+                <td>
+                  <button class="btn btn-primary btn-md" data-toggle="modal" data-target="#Indicador" >INDICADOR</button>
+                  @include('modals.indicador')
+                </td>
               </tr>
             </table>
 
@@ -235,9 +209,41 @@
 
             </div>
             <div class="col-sm-10">
+              <table class="table-condensed" align="left">
+                <tr>
+                  <td>
+                    <button class="btn btn-primary btn-lg" style="width:172px;"  data-toggle="modal" data-target="#Desempeno">DESEMPEÑO</button>
+                    @include('modals.Desempeno')
+                    @include('modals.validacionDeMejora')
+                    @include('modals.recomendaciones')
 
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <button class="btn btn-primary btn-lg" style="width:172px;" >REDES SOCIALES</button>
+                  </td>
+                </tr>
+                <!-- <tr>
+                  <td>
+                    <button class="btn btn-primary btn-lg" style="width:172px;" >DOCUMENTAL</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <button class="btn btn-primary btn-lg" style="width:172px;" >PROVEEDORES</button>
+                  </td>
+                </tr> -->
+                <tr>
+                  <td>
+                    <button class="btn btn-primary btn-lg" style="width:172px;" >PRESUPUESTO </button>
+                  </td>
+                </tr>
+              </table>
             </div>
           </div>
+
+
 
         </div><!--/porlets-content-->
       </div><!--/block-web-->

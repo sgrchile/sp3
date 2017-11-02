@@ -20,9 +20,10 @@
             <tr>
               <td>BUSCAR PRODUCTO A EVALUAR:</td>
               <td ><input type="text" required class="form-control" style="width:175px;"/></td>
-              <td align="left"><button type="button" class="btn btn-primary btn-xs">  <i class="fa fa-search" style="font-size:29px"></i></button></td>
+              <td align="left"><button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#seleccionProducto" data-backdrop="static">    <i class="fa fa-search" style="font-size:29px"></i></button></td>
             </tr>
           </table>
+          @include('modals.seleccionProducto')
 
           <div class="table-responsive">
 
@@ -49,6 +50,18 @@
                   </select>
                 </td>
                 <td>
+                  <table class="table-condensed table-bordered" style="width:200px;">
+                    <tr>
+                      <td>ID</td>
+                      <td>COMENTARIO</td>
+                      <td>FECHA</td>
+                    </tr>
+                    <tr>
+                      <td>####</td>
+                      <td>####</td>
+                      <td>####</td>
+                    </tr>
+                  </table>
                   <textarea class="form-control" style="width:200px; max-width:200px; min-width:200px;  height:200px; min-height:200px;"></textarea>
                 </td>
               </tr>
@@ -66,6 +79,18 @@
                   </select>
                 </td>
                 <td>
+                  <table class="table-condensed table-bordered" style="width:200px;">
+                    <tr>
+                      <td>ID</td>
+                      <td>COMENTARIO</td>
+                      <td>FECHA</td>
+                    </tr>
+                    <tr>
+                      <td>####</td>
+                      <td>####</td>
+                      <td>####</td>
+                    </tr>
+                  </table>
                   <textarea class="form-control" style="width:200px; max-width:200px; min-width:200px;  height:200px; min-height:200px;"></textarea>
                 </td>
               </tr>
@@ -82,6 +107,18 @@
                   </select>
                 </td>
                 <td>
+                  <table class="table-condensed table-bordered" style="width:200px;">
+                    <tr>
+                      <td>ID</td>
+                      <td>COMENTARIO</td>
+                      <td>FECHA</td>
+                    </tr>
+                    <tr>
+                      <td>####</td>
+                      <td>####</td>
+                      <td>####</td>
+                    </tr>
+                  </table>
                   <textarea class="form-control" style="width:200px; max-width:200px; min-width:200px;  height:200px; min-height:200px;"></textarea>
                 </td>
               </tr>
@@ -99,6 +136,18 @@
                   </select>
                 </td>
                 <td>
+                  <table class="table-condensed table-bordered" style="width:200px;">
+                    <tr>
+                      <td>ID</td>
+                      <td>COMENTARIO</td>
+                      <td>FECHA</td>
+                    </tr>
+                    <tr>
+                      <td>####</td>
+                      <td>####</td>
+                      <td>####</td>
+                    </tr>
+                  </table>
                   <textarea class="form-control" style="width:200px; max-width:200px; min-width:200px;  height:200px; min-height:200px;"></textarea>
                 </td>
               </tr>
@@ -115,6 +164,18 @@
                   </select>
                 </td>
                 <td>
+                  <table class="table-condensed table-bordered" style="width:200px;">
+                    <tr>
+                      <td>ID</td>
+                      <td>COMENTARIO</td>
+                      <td>FECHA</td>
+                    </tr>
+                    <tr>
+                      <td>####</td>
+                      <td>####</td>
+                      <td>####</td>
+                    </tr>
+                  </table>
                   <textarea class="form-control" style="width:200px; max-width:200px; min-width:200px;  height:200px; min-height:200px;"></textarea>
                 </td>
               </tr>
@@ -132,6 +193,18 @@
                 </td>
 
                 <td>
+                  <table class="table-condensed table-bordered" style="width:200px;">
+                    <tr>
+                      <td>ID</td>
+                      <td>COMENTARIO</td>
+                      <td>FECHA</td>
+                    </tr>
+                    <tr>
+                      <td>####</td>
+                      <td>####</td>
+                      <td>####</td>
+                    </tr>
+                  </table>
                   <textarea class="form-control" style="width:200px; max-width:200px; min-width:200px;  height:200px; min-height:200px;"></textarea>
                 </td>
 
@@ -166,6 +239,18 @@
                       </select>
                     </td>
                     <td>
+                      <table class="table-condensed table-bordered" style="width:200px;">
+                        <tr>
+                          <td>ID</td>
+                          <td>COMENTARIO</td>
+                          <td>FECHA</td>
+                        </tr>
+                        <tr>
+                          <td>####</td>
+                          <td>####</td>
+                          <td>####</td>
+                        </tr>
+                      </table>
                       <textarea class="form-control" style="width:200px; max-width:200px; min-width:200px;  height:200px; min-height:200px;"></textarea>
                     </td>
                   </tr>
@@ -183,6 +268,18 @@
                       </select>
                     </td>
                     <td>
+                      <table class="table-condensed table-bordered" style="width:200px;">
+                        <tr>
+                          <td>ID</td>
+                          <td>COMENTARIO</td>
+                          <td>FECHA</td>
+                        </tr>
+                        <tr>
+                          <td>####</td>
+                          <td>####</td>
+                          <td>####</td>
+                        </tr>
+                      </table>
                       <textarea class="form-control" style="width:200px; max-width:200px; min-width:200px;  height:200px; min-height:200px;"></textarea>
                     </td>
                   </tr>
@@ -200,6 +297,18 @@
                       </select>
                     </td>
                     <td>
+                      <table class="table-condensed table-bordered" style="width:200px;">
+                        <tr>
+                          <td>ID</td>
+                          <td>COMENTARIO</td>
+                          <td>FECHA</td>
+                        </tr>
+                        <tr>
+                          <td>####</td>
+                          <td>####</td>
+                          <td>####</td>
+                        </tr>
+                      </table>
                       <textarea class="form-control" style="width:200px; max-width:200px; min-width:200px;  height:200px; min-height:200px;"></textarea>
                     </td>
                   </tr>
@@ -217,6 +326,18 @@
                       </select>
                     </td>
                     <td>
+                      <table class="table-condensed table-bordered" style="width:200px;">
+                        <tr>
+                          <td>ID</td>
+                          <td>COMENTARIO</td>
+                          <td>FECHA</td>
+                        </tr>
+                        <tr>
+                          <td>####</td>
+                          <td>####</td>
+                          <td>####</td>
+                        </tr>
+                      </table>
                       <textarea class="form-control" style="width:200px; max-width:200px; min-width:200px;  height:200px; min-height:200px;"></textarea>
                     </td>
                   </tr>
@@ -248,6 +369,18 @@
                       </select>
                     </td>
                     <td>
+                      <table class="table-condensed table-bordered" style="width:200px;">
+                        <tr>
+                          <td>ID</td>
+                          <td>COMENTARIO</td>
+                          <td>FECHA</td>
+                        </tr>
+                        <tr>
+                          <td>####</td>
+                          <td>####</td>
+                          <td>####</td>
+                        </tr>
+                      </table>
                       <textarea class="form-control" style="width:200px; max-width:200px; min-width:200px;  height:200px; min-height:200px;"></textarea>
                     </td>
                   </tr>
@@ -265,6 +398,18 @@
                       </select>
                     </td>
                     <td>
+                      <table class="table-condensed table-bordered" style="width:200px;">
+                        <tr>
+                          <td>ID</td>
+                          <td>COMENTARIO</td>
+                          <td>FECHA</td>
+                        </tr>
+                        <tr>
+                          <td>####</td>
+                          <td>####</td>
+                          <td>####</td>
+                        </tr>
+                      </table>
                       <textarea class="form-control" style="width:200px; max-width:200px; min-width:200px;  height:200px; min-height:200px;"></textarea>
                     </td>
                   </tr>
@@ -282,6 +427,18 @@
                       </select>
                     </td>
                     <td>
+                      <table class="table-condensed table-bordered" style="width:200px;">
+                        <tr>
+                          <td>ID</td>
+                          <td>COMENTARIO</td>
+                          <td>FECHA</td>
+                        </tr>
+                        <tr>
+                          <td>####</td>
+                          <td>####</td>
+                          <td>####</td>
+                        </tr>
+                      </table>
                       <textarea class="form-control" style="width:200px; max-width:200px; min-width:200px;  height:200px; min-height:200px;"></textarea>
                     </td>
                   </tr>

@@ -15,7 +15,7 @@
         </div>
         <div class="porlets-content">
 
-          <h2 class="text-center">ANALISIS DE VENTAS</h2>
+          <h2 class="text-center">ENCUESTAS</h2>
 
           <div class="row">
             <div class="col-md-2">
@@ -52,7 +52,7 @@
                     <button class="btn btn-primary btn-lg" style="width:172px;" >REDES SOCIALES</button>
                   </td>
                 </tr>
-                <tr>
+                <!-- <tr>
                   <td>
                     <button class="btn btn-primary btn-lg" style="width:172px;" >DOCUMENTAL</button>
                   </td>
@@ -62,7 +62,7 @@
                     <button class="btn btn-primary btn-lg" style="width:172px;" >PROVEEDORES</button>
                   </td>
                 </tr>
-                <tr>
+                <tr> -->
                   <td>
                     <button class="btn btn-primary btn-lg" style="width:172px;" >PRESUPUESTO </button>
                   </td>
@@ -107,9 +107,10 @@
                   function drawChart() {
                     var data = google.visualization.arrayToDataTable([
                     ['Task', 'INDICADORES'],
-                    ['ORIGINAL', 8],
-                    ['MEJORA', 2],
-                    ['OBSERVADO', 4]
+                    ['POR CERRARSE', 8],
+                    ['PROMEDIO', 2],
+                    ['MAXIMA', 2],
+                    ['MINIMA', 2]
 
                   ]);
 
@@ -159,18 +160,108 @@
                       </td>
                     </tr>
 
+
+                  </table>
+                  <table class="table-condensed text-right" align="right">
+
                     <tr>
-                      <td align="right">
-                        <button class="btn btn-primary btn-xs" >EXAMINAR</button>
+                      <td>
+                          TIPO DE MEJORA
+                      </td>
+                      <td>
+                        <select class="form-control" style="width:175px;" name="">
+                          <option value="">PREVENTIVA</option>
+                          <option value="">CORRECTIVA</option>
+                          <option value="">DE SISTEMA</option>
+                          <option value="">DE PROCESO</option>
+                          <option value="">INNOVACION</option>
+
+                        </select>
                       </td>
                     </tr>
 
-                  </table>
+                    <tr>
+                      <td colspan="2" >
 
+
+                        <input  class="form-control" type="file" value="EXAMINAR" name="EXAMINAR">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <button class="btn btn-primary btn-lg">ENVIAR</button>
+                      </td>
+                    </tr>
+                  </table>
 
                 </div>
 
             </div>
+          </div>
+
+          <div class="row">
+
+            <div class="col-md-2">
+
+            </div>
+
+            <div class="col-md-10">
+              <table class="table-condensed text-right" >
+                <tr>
+                  <td>
+                    AÑO:
+                  </td>
+                  <td>
+                    <input type="date" class="form-control"style="width:175px;" />
+                  </td>
+                  <td>
+                    UNIDAD:
+                  </td>
+                  <td>
+                    <select class="form-control" style="width:175px;">
+                      <option value="">%</option>
+                      <option value="">$</option>
+                    </select>
+                  </td>
+
+                  <td>
+                    PERIODO:
+                  </td>
+                  <td>
+                    <select class="form-control" style="width:175px;">
+                      <option value="">SEMANAL</option>
+                      <option value="">MENSUAL</option>
+                      <option value="">ANUAL</option>
+                    </select>
+                  </td>
+                </tr>
+
+                <tr>
+
+
+                  <td>
+                    ITEM:
+                  </td>
+                  <td>
+                    <select class="form-control" style="width:175px;">
+                      <option value="">####</option>
+                      <option value="">####</option>
+                      <option value="">####</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+
+                  <td>
+                    <button class="btn btn-primary btn-lg">ENCUESTAS</button>
+                  </td>
+
+                </tr>
+
+              </table>
+
+            </div>
+
           </div>
 
 

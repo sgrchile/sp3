@@ -52,16 +52,16 @@
                     <button class="btn btn-primary btn-lg" style="width:172px;" >REDES SOCIALES</button>
                   </td>
                 </tr>
-                <tr>
+                <!-- <tr>
                   <td>
                     <button class="btn btn-primary btn-lg" style="width:172px;" >DOCUMENTAL</button>
                   </td>
-                </tr>
-                <tr>
+                </tr> -->
+                <!-- <tr>
                   <td>
                     <button class="btn btn-primary btn-lg" style="width:172px;" >PROVEEDORES</button>
                   </td>
-                </tr>
+                </tr> -->
                 <tr>
                   <td>
                     <button class="btn btn-primary btn-lg" style="width:172px;" >PRESUPUESTO </button>
@@ -139,7 +139,7 @@
               <table align="right" >
                 <tr>
                   <td>
-                    <h4 >FUENTE SISTEMA SGI 2018</h4>
+                    <h4 >FUENTE: SISTEMA SGI 2018</h4>
                   </td>
                 </tr>
               </table>
@@ -241,7 +241,7 @@
                             <table align="right" >
                               <tr>
                                 <td>
-                                  <h4 >FUENTE SISTEMA SGI 2018</h4>
+                                  <h4 >FUENTE:: SISTEMA SGI 2018</h4>
                                 </td>
                               </tr>
                             </table>
@@ -297,7 +297,7 @@
                       chart.draw(data, options);
                     }
                   </script>
-                  <h4 class="text-right">FUENTE SISTEMA SGI 2018</h4>
+                  <h4 class="text-right">FUENTE: SISTEMA SGI 2018</h4>
                 </div>
 
                 <div class="col-md-5">
@@ -329,7 +329,7 @@
                         chart.draw(data, options);
                       }
                     </script>
-                    <h4 class="text-right">FUENTE SISTEMA SGI 2018</h4>
+                    <h4 class="text-right">FUENTE: SISTEMA SGI 2018</h4>
               </div>
           </div>
           <div class="row">
@@ -375,7 +375,7 @@
                     <a href="{{route('dashBoardMarketing')}}"><button class="btn btn-primary btn-lg" style="width:265px;"> ANALISIS DE VENTAS</button></a>
                   </td>
                   <td>
-                    <a href="{{route('encuesta')}}"><button class="btn btn-primary btn-lg" style="width:265px;"> ENCUESTA </button></a>
+                    <a href="{{route('encuesta')}}"><button class="btn btn-primary btn-lg" style="width:265px;"> ENCUESTAS </button></a>
                   </td>
                 </table>
               </div>

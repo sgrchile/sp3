@@ -16,13 +16,14 @@
         <div class="porlets-content">
 
 
-          <!-- <table class="table-condensed text-right" align="center">
+          <table class="table-condensed text-right" align="center">
             <tr>
-              <td>BUSCAR PRODUCTO A EVALUAR:</td>
+              <td>BUSCAR PROVEEDOR A EVALUAR:</td>
               <td ><input type="text" required class="form-control" style="width:175px;"/></td>
-              <td align="left"><button type="button" class="btn btn-primary btn-xs">  <i class="fa fa-search" style="font-size:29px"></i></button></td>
+              <td align="left"><button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#seleccionProducto" data-backdrop="static">    <i class="fa fa-search" style="font-size:29px"></i></button></td>
             </tr>
-          </table> -->
+          </table>
+          @include('modals.seleccionProveedor')
 
 
           <div class="table-responsive">

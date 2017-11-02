@@ -83,7 +83,7 @@
               </div>
               <div id="piechart2"></div>
 
-              <h4 class="text-center text-uppercase">PUNTUACION SIN MEJORA VS/PUNTACION CON MEJORA:</h4>
+              <p class="text-center text-uppercase">PUNTUACION SIN MEJORA VS/PUNTACION CON MEJORA:</p>
 
               <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
@@ -112,7 +112,7 @@
               </script>
 
                 <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#validacionDeMejora" data-backdrop="static">VALIDACION</button>
-                @include('modals.validacionDeMejora')
+                
 
 
 

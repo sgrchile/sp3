@@ -37,7 +37,7 @@
               <td>FOTO LICENCIA MEDICA:</td>
               <td>
                     <input type="file" name="fileToUpload" style="width:175px;" id="fileToUpload">
-                    <input type="submit" style="width:175px;" value="Upload Image" name="submit">
+                    <input type="submit" style="width:175px;"   value="Upload Image" name="submit">
               </td>
 
               </tr>
