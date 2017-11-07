@@ -1,8 +1,8 @@
 
 @extends('layouts.app')
 @section('content')
-
-<div class="container-fluid " align="center">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<div class="container-fluid " align="center" ng-app="">
 
   <br>
 
@@ -47,72 +47,116 @@
 
             <div class="col-md-6">
 
-              <div class="block-web">
+              <!--TORTA-->
+              <div ng-switch="grafico1">
+                <div ng-switch-when="TORTA1">
+                  <p>
+                    torta
+                  </p>
+                  <div id="piechart1"></div>
+                  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-                <div class="custom-bar-chart">
-                  <ul class="y-axis">
-                    <li><span>100</span></li>
-                    <li><span>80</span></li>
-                    <li><span>60</span></li>
-                    <li><span>40</span></li>
-                    <li><span>20</span></li>
-                    <li><span>0</span></li>
-                  </ul>
+                  <script type="text/javascript">
+                    // Load google charts
+                    google.charts.load('current', {'packages':['corechart']});
+                    google.charts.setOnLoadCallback(drawChart);
 
-                  <div class="bar">
-                    <div class="value tooltips" data-original-title="30%" data-toggle="tooltip" data-placement="top">0%</div>
-                    <div class="title"></div>
-                  </div><!--/bar-->
-                  <div class="bar">
-                    <div class="value tooltips bar-bg-color" data-original-title="50%" data-toggle="tooltip" data-placement="top">50%</div>
-                    <div class="title">Fab</div>
-                  </div><!--/bar-->
-                  <div class="bar ">
-                    <div class="value tooltips" data-original-title="40%" data-toggle="tooltip" data-placement="top">40%</div>
-                    <div class="title">Mar</div>
-                  </div><!--/bar-->
-                  <div class="bar ">
-                    <div class="value tooltips" data-original-title="80%" data-toggle="tooltip" data-placement="top">80%</div>
-                    <div class="title">Apr</div>
-                  </div><!--/bar-->
-                  <div class="bar">
-                    <div class="value tooltips bar-bg-color" data-original-title="70%" data-toggle="tooltip" data-placement="top">70%</div>
-                    <div class="title">May</div>
-                  </div><!--/bar-->
-                  <div class="bar ">
-                    <div class="value tooltips" data-original-title="50%" data-toggle="tooltip" data-placement="top">50%</div>
-                    <div class="title">Jun</div>
-                  </div><!--/bar-->
-                  <div class="bar">
-                    <div class="value tooltips" data-original-title="40%" data-toggle="tooltip" data-placement="top">40%</div>
-                    <div class="title">Jul</div>
-                  </div><!--/bar-->
-                  <div class="bar">
-                    <div class="value tooltips" data-original-title="35%" data-toggle="tooltip" data-placement="top">35%</div>
-                    <div class="title">Aug</div>
-                  </div><!--/bar-->
+                    // Draw the chart and set the chart values
+                    function drawChart() {
+                      var data = google.visualization.arrayToDataTable([
+                      ['Task', 'INDICADORES'],
+                      ['ORIGINAL', 8],
+                      ['MEJORA', 2],
+                      ['OBSERVADO', 4]
 
-                  <div class="bar ">
-                    <div class="value tooltips" data-original-title="80%" data-toggle="tooltip" data-placement="top">80%</div>
-                    <div class="title">Sep</div>
-                  </div><!--/bar-->
-                  <div class="bar">
-                    <div class="value tooltips bar-bg-color" data-original-title="70%" data-toggle="tooltip" data-placement="top">70%</div>
-                    <div class="title">Oct</div>
-                  </div><!--/bar-->
-                  <div class="bar ">
-                    <div class="value tooltips" data-original-title="50%" data-toggle="tooltip" data-placement="top">50%</div>
-                    <div class="title">Nov</div>
-                  </div><!--/bar-->
-                  <div class="bar">
-                    <div class="value tooltips" data-original-title="40%" data-toggle="tooltip" data-placement="top">40%</div>
-                    <div class="title">Dec</div>
-                  </div><!--/bar-->
+                    ]);
 
+                      // Optional; add a title and set the width and height of the chart
+                      var options = {'title':' ', 'width':500, 'height':400};
 
+                      // Display the chart inside the <div> element with id="piechart"
+                      var chart = new google.visualization.PieChart(document.getElementById('piechart1'));
+                      chart.draw(data, options);
+                    }
+                  </script>
                 </div>
-                <!--/custom-bar-chart-->
-              </div><!--/block-web-->
+                <!--barra-->
+                <div ng-switch-when="BARRA1">
+
+                  <div class="block-web">
+                    <div class="custom-bar-chart">
+                      <ul class="y-axis">
+                        <li><span>100</span></li>
+                        <li><span>80</span></li>
+                        <li><span>60</span></li>
+                        <li><span>40</span></li>
+                        <li><span>20</span></li>
+                        <li><span>0</span></li>
+                      </ul>
+
+                      <div class="bar">
+                        <div class="value tooltips" data-original-title="30%" data-toggle="tooltip" data-placement="top">0%</div>
+                        <div class="title"></div>
+                      </div><!--/bar-->
+                      <div class="bar">
+                        <div class="value tooltips bar-bg-color" data-original-title="50%" data-toggle="tooltip" data-placement="top">50%</div>
+                        <div class="title">Fab</div>
+                      </div><!--/bar-->
+                      <div class="bar ">
+                        <div class="value tooltips" data-original-title="40%" data-toggle="tooltip" data-placement="top">40%</div>
+                        <div class="title">Mar</div>
+                      </div><!--/bar-->
+                      <div class="bar ">
+                        <div class="value tooltips" data-original-title="80%" data-toggle="tooltip" data-placement="top">80%</div>
+                        <div class="title">Apr</div>
+                      </div><!--/bar-->
+                      <div class="bar">
+                        <div class="value tooltips bar-bg-color" data-original-title="70%" data-toggle="tooltip" data-placement="top">70%</div>
+                        <div class="title">May</div>
+                      </div><!--/bar-->
+                      <div class="bar ">
+                        <div class="value tooltips" data-original-title="50%" data-toggle="tooltip" data-placement="top">50%</div>
+                        <div class="title">Jun</div>
+                      </div><!--/bar-->
+                      <div class="bar">
+                        <div class="value tooltips" data-original-title="40%" data-toggle="tooltip" data-placement="top">40%</div>
+                        <div class="title">Jul</div>
+                      </div><!--/bar-->
+                      <div class="bar">
+                        <div class="value tooltips" data-original-title="35%" data-toggle="tooltip" data-placement="top">35%</div>
+                        <div class="title">Aug</div>
+                      </div><!--/bar-->
+
+                      <div class="bar ">
+                        <div class="value tooltips" data-original-title="80%" data-toggle="tooltip" data-placement="top">80%</div>
+                        <div class="title">Sep</div>
+                      </div><!--/bar-->
+                      <div class="bar">
+                        <div class="value tooltips bar-bg-color" data-original-title="70%" data-toggle="tooltip" data-placement="top">70%</div>
+                        <div class="title">Oct</div>
+                      </div><!--/bar-->
+                      <div class="bar ">
+                        <div class="value tooltips" data-original-title="50%" data-toggle="tooltip" data-placement="top">50%</div>
+                        <div class="title">Nov</div>
+                      </div><!--/bar-->
+                      <div class="bar">
+                        <div class="value tooltips" data-original-title="40%" data-toggle="tooltip" data-placement="top">40%</div>
+                        <div class="title">Dec</div>
+                      </div><!--/bar-->
+
+
+                    </div>
+                    <!--/custom-bar-chart-->
+                  </div><!--/block-web-->
+                </div>
+                <!--LINEA-->
+                <div ng-switch-when="LINEA1">
+                  <p>
+                    LINEA
+                  </p>
+                </div>
+              </div>
+
               <table align="right">
                 <tr>
                   <td>TOTAL PROMEDIO</td>
@@ -138,10 +182,11 @@
                     TIPO:
                   </td>
                   <td>
-                    <select class="form-control" style="width:175px;">
-                      <option value="">TORTA</option>
-                      <option value="">BARRA</option>
-                      <option value="">LINEA</option>
+                    <select class="form-control" style="width:175px;"  ng-model="grafico1">
+                      <option value="">SELECCIONAR</option>
+                      <option value="TORTA1">TORTA</option>
+                      <option value="BARRA1">BARRA</option>
+                      <option value="LINEA1">LINEA</option>
                     </select>
                   </td>
                 </tr>
@@ -184,72 +229,116 @@
 
             </div>
             <div class="col-md-6">
-              <div class="block-web">
+            
+                <!--TORTA-->
+                <div ng-switch="grafico2">
+                  <div ng-switch-when="TORTA2">
+                    <p>
+                      torta
+                    </p>
+                    <div id="piechart1"></div>
+                    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-                <div class="custom-bar-chart">
-                  <ul class="y-axis">
-                    <li><span>100</span></li>
-                    <li><span>80</span></li>
-                    <li><span>60</span></li>
-                    <li><span>40</span></li>
-                    <li><span>20</span></li>
-                    <li><span>0</span></li>
-                  </ul>
+                    <script type="text/javascript">
+                      // Load google charts
+                      google.charts.load('current', {'packages':['corechart']});
+                      google.charts.setOnLoadCallback(drawChart);
 
-                  <div class="bar">
-                    <div class="value tooltips" data-original-title="30%" data-toggle="tooltip" data-placement="top">0%</div>
-                    <div class="title"></div>
-                  </div><!--/bar-->
-                  <div class="bar">
-                    <div class="value tooltips bar-bg-color" data-original-title="50%" data-toggle="tooltip" data-placement="top">50%</div>
-                    <div class="title">Fab</div>
-                  </div><!--/bar-->
-                  <div class="bar ">
-                    <div class="value tooltips" data-original-title="40%" data-toggle="tooltip" data-placement="top">40%</div>
-                    <div class="title">Mar</div>
-                  </div><!--/bar-->
-                  <div class="bar ">
-                    <div class="value tooltips" data-original-title="80%" data-toggle="tooltip" data-placement="top">80%</div>
-                    <div class="title">Apr</div>
-                  </div><!--/bar-->
-                  <div class="bar">
-                    <div class="value tooltips bar-bg-color" data-original-title="70%" data-toggle="tooltip" data-placement="top">70%</div>
-                    <div class="title">May</div>
-                  </div><!--/bar-->
-                  <div class="bar ">
-                    <div class="value tooltips" data-original-title="50%" data-toggle="tooltip" data-placement="top">50%</div>
-                    <div class="title">Jun</div>
-                  </div><!--/bar-->
-                  <div class="bar">
-                    <div class="value tooltips" data-original-title="40%" data-toggle="tooltip" data-placement="top">40%</div>
-                    <div class="title">Jul</div>
-                  </div><!--/bar-->
-                  <div class="bar">
-                    <div class="value tooltips" data-original-title="35%" data-toggle="tooltip" data-placement="top">35%</div>
-                    <div class="title">Aug</div>
-                  </div><!--/bar-->
+                      // Draw the chart and set the chart values
+                      function drawChart() {
+                        var data = google.visualization.arrayToDataTable([
+                        ['Task', 'INDICADORES'],
+                        ['ORIGINAL', 8],
+                        ['MEJORA', 2],
+                        ['OBSERVADO', 4]
 
-                  <div class="bar ">
-                    <div class="value tooltips" data-original-title="80%" data-toggle="tooltip" data-placement="top">80%</div>
-                    <div class="title">Sep</div>
-                  </div><!--/bar-->
-                  <div class="bar">
-                    <div class="value tooltips bar-bg-color" data-original-title="70%" data-toggle="tooltip" data-placement="top">70%</div>
-                    <div class="title">Oct</div>
-                  </div><!--/bar-->
-                  <div class="bar ">
-                    <div class="value tooltips" data-original-title="50%" data-toggle="tooltip" data-placement="top">50%</div>
-                    <div class="title">Nov</div>
-                  </div><!--/bar-->
-                  <div class="bar">
-                    <div class="value tooltips" data-original-title="40%" data-toggle="tooltip" data-placement="top">40%</div>
-                    <div class="title">Dec</div>
-                  </div><!--/bar-->
+                      ]);
+
+                        // Optional; add a title and set the width and height of the chart
+                        var options = {'title':' ', 'width':500, 'height':400};
+
+                        // Display the chart inside the <div> element with id="piechart"
+                        var chart = new google.visualization.PieChart(document.getElementById('piechart1'));
+                        chart.draw(data, options);
+                      }
+                    </script>
+                  </div>
+                  <!--barra-->
+                  <div ng-switch-when="BARRA2">
+
+                    <div class="block-web">
+                      <div class="custom-bar-chart">
+                        <ul class="y-axis">
+                          <li><span>100</span></li>
+                          <li><span>80</span></li>
+                          <li><span>60</span></li>
+                          <li><span>40</span></li>
+                          <li><span>20</span></li>
+                          <li><span>0</span></li>
+                        </ul>
+
+                        <div class="bar">
+                          <div class="value tooltips" data-original-title="30%" data-toggle="tooltip" data-placement="top">0%</div>
+                          <div class="title"></div>
+                        </div><!--/bar-->
+                        <div class="bar">
+                          <div class="value tooltips bar-bg-color" data-original-title="50%" data-toggle="tooltip" data-placement="top">50%</div>
+                          <div class="title">Fab</div>
+                        </div><!--/bar-->
+                        <div class="bar ">
+                          <div class="value tooltips" data-original-title="40%" data-toggle="tooltip" data-placement="top">40%</div>
+                          <div class="title">Mar</div>
+                        </div><!--/bar-->
+                        <div class="bar ">
+                          <div class="value tooltips" data-original-title="80%" data-toggle="tooltip" data-placement="top">80%</div>
+                          <div class="title">Apr</div>
+                        </div><!--/bar-->
+                        <div class="bar">
+                          <div class="value tooltips bar-bg-color" data-original-title="70%" data-toggle="tooltip" data-placement="top">70%</div>
+                          <div class="title">May</div>
+                        </div><!--/bar-->
+                        <div class="bar ">
+                          <div class="value tooltips" data-original-title="50%" data-toggle="tooltip" data-placement="top">50%</div>
+                          <div class="title">Jun</div>
+                        </div><!--/bar-->
+                        <div class="bar">
+                          <div class="value tooltips" data-original-title="40%" data-toggle="tooltip" data-placement="top">40%</div>
+                          <div class="title">Jul</div>
+                        </div><!--/bar-->
+                        <div class="bar">
+                          <div class="value tooltips" data-original-title="35%" data-toggle="tooltip" data-placement="top">35%</div>
+                          <div class="title">Aug</div>
+                        </div><!--/bar-->
+
+                        <div class="bar ">
+                          <div class="value tooltips" data-original-title="80%" data-toggle="tooltip" data-placement="top">80%</div>
+                          <div class="title">Sep</div>
+                        </div><!--/bar-->
+                        <div class="bar">
+                          <div class="value tooltips bar-bg-color" data-original-title="70%" data-toggle="tooltip" data-placement="top">70%</div>
+                          <div class="title">Oct</div>
+                        </div><!--/bar-->
+                        <div class="bar ">
+                          <div class="value tooltips" data-original-title="50%" data-toggle="tooltip" data-placement="top">50%</div>
+                          <div class="title">Nov</div>
+                        </div><!--/bar-->
+                        <div class="bar">
+                          <div class="value tooltips" data-original-title="40%" data-toggle="tooltip" data-placement="top">40%</div>
+                          <div class="title">Dec</div>
+                        </div><!--/bar-->
 
 
+                      </div>
+                      <!--/custom-bar-chart-->
+                    </div><!--/block-web-->
+                  </div>
+                  <!--LINEA-->
+                  <div ng-switch-when="LINEA2">
+                    <p>
+                      LINEA
+                    </p>
+                  </div>
                 </div>
-                <!--/custom-bar-chart-->
-              </div><!--/block-web-->
               <table align="right">
                 <tr>
                   <td>TOTAL PROMEDIO</td>
@@ -275,10 +364,11 @@
                     TIPO:
                   </td>
                   <td>
-                    <select class="form-control" style="width:175px;">
-                      <option value="">TORTA</option>
-                      <option value="">BARRA</option>
-                      <option value="">LINEA</option>
+                    <select class="form-control" style="width:175px;"  ng-model="grafico2">
+                      <option value="">SELECCIONAR</option>
+                      <option value="TORTA2">TORTA</option>
+                      <option value="BARRA2">BARRA</option>
+                      <option value="LINEA2">LINEA</option>
                     </select>
                   </td>
                 </tr>
