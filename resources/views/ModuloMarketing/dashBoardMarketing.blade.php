@@ -513,7 +513,7 @@
 
             <div class="col-md-12">
 
-              <button class="btn btn-primary btn-lg">ENCUENTAS</button>
+              <a href="{{route('evaluaciones')}}"><button class="btn btn-primary btn-lg">ENCUENTAS</button></a>
             </div>
 
           </div>
