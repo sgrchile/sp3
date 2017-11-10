@@ -16,7 +16,7 @@
       </div>
         <div class="porlets-content">
 
-          <textarea class="form-control" style="max-width:1000px; width:1000px;"></textarea>
+          <textarea class="form-control" style="max-width:1000px; min-width:1000px; width:1000px;"></textarea>
 
           <table class="table-condensed text-right" align="center">
 
