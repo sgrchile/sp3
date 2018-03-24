@@ -183,7 +183,7 @@ class ProveedoresController extends Controller
       $createProveedorEmpresa = $this->createProveedorEmpresa($request->all());
 
       if (! $createProveedorEmpresa) {
-          return redirect()->route('registroProv')->with('error', "Hubo un problema al crear el proveedor persona.");
+          return redirect()->route('registroProv')->with('error', "Hubo un problema al crear el proveedor empresa.");
       }
 
       return redirect()->route('registroProv')->with('success', "El proveedor ha sido creado exitosamente.");

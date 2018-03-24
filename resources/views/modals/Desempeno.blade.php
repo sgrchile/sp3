@@ -103,7 +103,7 @@
                 ]);
 
                 // Optional; add a title and set the width and height of the chart
-                var options = {'title':'GRAFICO ', 'width':320, 'height':160};
+                var options = {'title':'RESULTADOS ', 'width':320, 'height':160};
 
                 // Display the chart inside the <div> element with id="piechart"
                 var chart = new google.visualization.PieChart(document.getElementById('piechart2'));
@@ -112,7 +112,7 @@
               </script>
 
                 <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#validacionDeMejora" data-backdrop="static">VALIDACION</button>
-                
+
 
 
 

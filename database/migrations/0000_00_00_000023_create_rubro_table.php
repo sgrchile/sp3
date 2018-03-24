@@ -13,10 +13,7 @@ class CreateRubroTable extends Migration
      */
     public function up()
     {
-        Schema::create('RUB_RUBRO', function (Blueprint $table) {
-            $table->increments('RUB_COD');
-            $table->string('RUB_DESC', 45);            
-        });
+        //
     }
 
     /**
@@ -26,6 +23,6 @@ class CreateRubroTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('RUB_RUBRO');
+        //Schema::dropIfExists('RUB_RUBRO');
     }
 }

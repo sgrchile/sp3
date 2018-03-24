@@ -26,6 +26,9 @@ class CreateTipoCuentaTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('CLI_CLIENTE');
+        Schema::drop('CLI_CLIENTE');
         Schema::dropIfExists('TCTA');
+        Schema::drop('TCTA');
     }
 }

@@ -1,6 +1,9 @@
 @extends('layouts.app')
 @section('content')
 
+  {!! Html::script('js/jquery-2.1.1.min.js') !!}
+  {!! Html::script('js/dropdown.js') !!}
+
 <div align="center">
   <div class="row">
     <div class="col-xs-12 col-md-12 col-sm-12">
@@ -16,59 +19,52 @@
             {{ csrf_field() }}
             <table class="table-condensed text-right" align="center">
               <tr>
-                <td>NOMBRE:</td>
+                <td><a style="color: #9A0000">* </a> NOMBRE:</td>
                 <td>
-                  <input name="nombre" type="text"  style="width:175px;" class="form-control" id="nombre" pattern="[A-Za-z]{4-16}" required="required"/>
+                  {{ Form::text('nombre',null,['class'=>'form-control','style'=>'width:175px', 'required', 'pattern'=>'[A-Za-z]{4-16}']) }}
                 </td>
 
                 <td>NOMBRE DE FANTASIA:</td>
                 <td>
-                  <input name="nombre" type="text"  style="width:175px;" class="form-control" id="nombre" pattern="[A-Za-z]{4-16}" required="required"/>
+                  {{ Form::text('nombref',null,['class'=>'form-control', 'required', 'pattern'=>'[A-Za-z]{4-16}','style'=>'width:175px']) }}
                 </td>
               </tr>
               <tr>
 
-                <td>RUT:</td>
+                <td><a style="color: #9A0000">* </a> RUT:</td>
                 <td>
-
-                  <input type="text" id="rut" name="rut"  style="width:175px;" class="form-control" maxlength="10" required oninput="checkRut(this)" />
-                  <script src="{{asset('js/validarRUT.js')}}"></script>
-
+                  {{ Form::text('rut',null,['class'=>'form-control', 'required', 'pattern'=>'[A-Za-z]{4-16}','maxlength'=>'11','style'=>'width:175px']) }}
+                  <!--<input type="text" id="rut" name="rut"  style="width:175px;" class="form-control" maxlength="10" required /><!--oninput="checkRut(this)"-->
+                  <!--<script src="{{asset('js/validarRUT.js')}}"></script>-->
                 </td>
-
-                <td>CONTACTO:</td>
+                <td><a style="color: #9A0000">* </a> CONTACTO:</td>
                 <td>
-                  <input type="text"  style="width:175px;" class="form-control" required/>
+                  {{ Form::text('contacto',null,['class'=>'form-control','style'=>'width:175px']) }}
                 </td>
-
-
-
               </tr>
-
               <tr>
-
-                <td>EMAIL:</td>
+                <td><a style="color: #9A0000">* </a> EMAIL:</td>
                 <td>
-                  <input type="text"  style="width:175px;" class="form-control" required/>
+                  {{ Form::email('email', null,['class'=>'form-control','placeholder'=>'example@gmail.com','required','style'=>'width:175px']) }}
                 </td>
 
-                <td>TELEFONO:</td>
+                <td><a style="color: #9A0000">* </a> TELEFONO:</td>
                 <td>
-                  <input type="text"  style="width:175px;" class="form-control" required/>
+                  {{ Form::number('telefono',null,['class'=>'form-control','required','style'=>'width:175px']) }}
                 </td>
 
               </tr>
 
               <tr>
 
-                <td>ACTIVIDAD COMERCIAL: </td>
+                <td><a style="color: #9A0000">* </a> ACTIVIDAD COMERCIAL: </td>
                 <td >
-                  <input name="actividad" type="text"   style="width:175px;" id="actividad" class="form-control" required/>
+                  {{ Form::text('actcomercial',null,['class'=>'form-control', 'required','style'=>'width:175px']) }}
                 </td>
 
                 <td>SITIO WEB: </td>
                 <td >
-                  <input  type="text"   style="width:175px;" class="form-control" required/>
+                  {{ Form::text('sitioweb',null,['class'=>'form-control', 'required','style'=>'width:175px']) }}
                 </td>
 
               </tr>
@@ -76,16 +72,12 @@
               <tr>
                 <td>GLOSA: </td>
                 <td >
-                  <input  type="text"   style="width:175px;" class="form-control" required/>
+                  {{ Form::text('glosa',null,['class'=>'form-control','class'=>'form-control', 'required','style'=>'width:175px']) }}
                 </td>
 
                 <td>RUBRO:</td>
                 <td>
-                  <select style="width:175px;" class="form-control"  required>
-
-                    <option value=""></option>
-
-                  </select>
+                  {!! Form::select('rubro',$rubro,null,['class'=>'form-control','style'=>'width:175px']) !!}
                 </td>
 
               </tr>
@@ -94,20 +86,11 @@
 
                 <td>SUB RUBRO:</td>
                 <td>
-                  <select style="width:175px;" class="form-control"  required>
-
-                    <option value=""></option>
-
-                  </select>
+                  {!! Form::select('subrubro',$subrubro,null ,['class'=>'form-control','style'=>'width:175px','placeholder'=>'Seleccione']) !!}
                 </td>
-
                 <td>ACTIVIDAD:</td>
                 <td>
-                  <select style="width:175px;" class="form-control"  required>
-
-                    <option value=""></option>
-
-                  </select>
+                  {!! Form::select('actividad',$actividad,null ,['class'=>'form-control','id'=>'actividad','style'=>'width:175px']) !!}
                 </td>
 
               </tr>
@@ -115,20 +98,12 @@
 
                 <td>BANCO:</td>
                 <td>
-                  <select style="width:175px;" class="form-control"  required>
-
-                    <option value=""></option>
-
-                  </select>
+                  {!! Form::select('banco',$banco,null,['class'=>'form-control','id'=>'banco','style'=>'width:175px']) !!}
                 </td>
 
                 <td>TIPO DE CUENTA:</td>
                 <td>
-                  <select style="width:175px;" class="form-control"  required>
-
-                    <option value=""></option>
-
-                  </select>
+                  {!! Form::select('tipocuenta',$tipocuenta,null,['class'=>'form-control','id'=>'tipocuenta','style'=>'width:175px']) !!}
                 </td>
 
               </tr>
@@ -137,12 +112,12 @@
 
                 <td>Nº DE CUENTA: </td>
                 <td >
-                  <input  type="text"   style="width:175px;" class="form-control" required/>
+                  {{ Form::number('nrocuenta',null,['class'=>'form-control','required','style'=>'width:175px']) }}
                 </td>
 
                 <td>ORIGEN: </td>
                 <td >
-                  <input  type="text"   style="width:175px;" class="form-control" required/>
+                  {{ Form::text('origen',null,['class'=>'form-control', 'required','style'=>'width:175px']) }}
                 </td>
               </tr>
 
@@ -151,52 +126,52 @@
 
                 <td>PAIS:</td>
                 <td>
-                  <select style="width:175px;" class="form-control"  required>
-
-                    <option value=""></option>
-
-                  </select>
+                  {!! Form::select('pais',$pais,null,['class'=>'form-control','id'=>'pais','style'=>'width:175px']) !!}
                 </td>
                 <td>REGION:</td>
                 <td>
-                  <select style="width:175px;" class="form-control"  required>
-
-                    <option value=""></option>
-
-                  </select>
+                  {!! Form::select('region',$region,null,['class'=>'form-control','id'=>'region','style'=>'width:175px']) !!}
                 </td>
 
               </tr>
 
               <tr>
 
-                <td>COMUNA:</td>
+                <td>PROVINCIA:</td>
                 <td>
-                  <select style="width:175px;" class="form-control"  required>
-
-                    <option value=""></option>
-
-                  </select>
+                  {!! Form::select('provincia',$provincia,null,['class'=>'form-control','id'=>'provincia','style'=>'width:175px']) !!}
                 </td>
 
                 <td>CIUDAD:</td>
                 <td>
-                  <select style="width:175px;" class="form-control"  required>
-
-                    <option value=""></option>
-
-                  </select>
+                  {!! Form::select('ciudad',$ciudad,null,['class'=>'form-control','id'=>'ciudad','style'=>'width:175px']) !!}
                 </td>
-
-
               </tr>
               <tr>
-
-                <td>DIRECCION:</td>
+                <td><a style="color: #9A0000">* </a> DIRECCION:</td>
                 <td>
-                  <input  type="text"   style="width:175px;" class="form-control" required/>
+                  {{ Form::text('direccion',null,['class'=>'form-control', 'required','style'=>'width:175px']) }}
+                </td>
+                <td><a style="color: #9A0000">* </a> TEMPERATURA:</td>
+                <td>
+                  {{ Form::select('temperatura',App\Temperatura::pluck('desc_temp','id_temp'),['class'=>'form-control','style'=>'width:175px']) }}
                 </td>
               </tr>
+
+             <!-- <script>
+                  $(document).ready(function(){
+                      $('#rubro').change(function(){
+                          $.get("{{ url('dropdown')}}",
+                              { option: $(this).val() },
+                              function(data) {
+                                  $('#proceso_id').empty();
+                                  $.each(data, function(key, element) {
+                                      $('#proceso_id').append("<option value='" + key + "'>" + element + "</option>");
+                                  });
+                              });
+                      });
+                  });
+              </script> -->
 
             </table>
             <button class="btn btn-primary btn-lg">REGISTRAR</button>

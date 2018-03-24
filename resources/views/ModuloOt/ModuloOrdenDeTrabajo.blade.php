@@ -39,8 +39,8 @@
                 </div>
                 <div class="modal-body">
                   <center>
-                    <a href="{{route('regcli')}}"><button type="button" class="btn btn-primary btn-lg">Registro clientes</button></a>
-                    <a href="{{route('listaCli')}}"><button type="button" class="btn btn-primary btn-lg">Listado Clientes</button></a>
+                    <a href=""><button type="button" class="btn btn-primary btn-lg">Registro clientes</button></a>
+                    <a href=""><button type="button" class="btn btn-primary btn-lg">Listado Clientes</button></a>
                   </center>
                 </div>
                 <div class="modal-footer">

@@ -14,7 +14,7 @@ class CreateProvinciaTable extends Migration
     public function up()
     {
         Schema::create('PV_PROVINCIA', function (Blueprint $table) {
-            $table->increments('PV_COD');
+            $table->increments('PV_COD')->unsigned();
             $table->string('PV_DESC', 45);
 
             $table->integer('PV_REG_COD')->unsigned();

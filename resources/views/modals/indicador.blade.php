@@ -54,7 +54,7 @@
 
               </table>
 
-              <button class="btn btn-primary btn-lg">REGISTRAR</button>
+              <button class="btn btn-primary btn-lg">ACEPTAR</button>
 
 
             </div>

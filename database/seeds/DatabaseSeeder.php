@@ -23,6 +23,10 @@ class DatabaseSeeder extends Seeder
         $this->call(EstadoTableSeeder::class);
         $this->call(BancoTableSeeder::class);
         $this->call(ProcesoTableSeeder::class);
+        $this->call(RubroTableSeeder::class);
+        $this->call(RegionTableSeeder::class);
+        $this->call(ProvinciaTableSeeder::class);
+        $this->call(CiudadTableSeeder::class);
         $this->call(CargoTableSeeder::class);
         $this->call(CentroNegocioTableSeeder::class);
         $this->call(CuentaEmpresaTableSeeder::class);
@@ -36,6 +40,9 @@ class DatabaseSeeder extends Seeder
         $this->call(OrientacionTableSeeder::class);
         $this->call(EstadoOfertaProveedorTableSeeder::class);
         $this->call(EstadoOfertaAdministradorTableSeeder::class);
+        $this->call(EtapaTable::class);
+        $this->call(MonedaTable::class);
+        $this->call(TpActividadTable::class);
 
     }
 }

@@ -19,6 +19,8 @@ use App\Fuente;
 use App\RegistroMovimiento;
 use App\TipoCuenta;
 use App\TipoDocumento;
+use Illuminate\Support\Facades\Session;
+use Symfony\Component\HttpKernel\EventListener\SessionListener;
 
 class ModuloCajaController extends Controller
 {
@@ -39,6 +41,8 @@ class ModuloCajaController extends Controller
       $tipo_cuentas = TipoCuenta::all();
       $tipo_documentos = TipoDocumento::all();
       $cuentas = CuentaEmpresa::all();
+
+        //dd($empresas);
 
       return view('ModuloCaja.financiero')
           ->with('fuentes', $fuentes)

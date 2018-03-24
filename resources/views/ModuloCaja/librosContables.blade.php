@@ -22,8 +22,8 @@
             <td><select ng-model="myVar" style="width:175px;">
               <option value="1" >Libro de compras</option>
               <option value="2">libro de ventas</option>
-              <option value="3">Libo de honorarios</option>
-              <option value="4">Libo de remuneracion</option>
+              <option value="3">Libro de honorarios</option>
+              <option value="4">Libro de remuneracion</option>
             </select>
           </td>
         </tr>

@@ -117,18 +117,13 @@
 
 
 <div class="container">
-
-
-<select  class="btn btn-default dropdown-toggle " style="width:175px;" 	name="Empresas">
-        <option value="empresa1">empresa1</option>
-        <option value="empresa2">empresa2</option>
-        <option value="empresa3">empresa3</option>
-        <option value="empresa4">empresa4</option>
-</select>
+    {{ Form::select('empresas',App\Empresa::pluck('EMP_DESC','EMP_ID'),null,['class'=>'btn btn-default dropdown-toggle','style'=>'width:175px']) }}
+<br>
+{{ Form::label('periodo','PERIODO :') }}
 <input type="date" name="fechaini">
 <input type="date" name="fechafin">
+    <td><button type="button" class="btn btn-primary btn-xs">  <i class="fa fa-search" style="font-size:30px;"></i></button></td>
 </div>
-
 
 <br>
 <!--tabla-->
@@ -1075,12 +1070,11 @@
       <td id="n">&nbsp;</td>
       <td id="n">&nbsp;</td>
       <td id="n">&nbsp;</td>
-     s
     </tr>
 
     <tr>
 
-      <td id="n">Acumulados</p></td>
+      <td id="n"><p>Acumulados</p></td>
       <td id="n">&nbsp;</td>
       <td id="n">&nbsp;</td>
       <td id="n">&nbsp;</td>
@@ -1439,6 +1433,7 @@ button       <td id="p">&nbsp;</td>
 
   <!--//capital-->
   </tbody>
+</table>
 </table>
 
 <br>

@@ -6,6 +6,7 @@
     <div class="block-web">
       <div class="header">
         <div class="actions"></div>
+        <br>
         <h1 class="content-header text-center text-uppercase"><b>FINANZAS</b></h1>
       </div>
       <div class="porlets-content">
@@ -18,24 +19,26 @@
 
           <td>Empresa:</td>
           <td>
-          <select style="width:125px;" name="empresa" id="empresa"  class="form-control">
-          <option value="0" selected> TRENER</option>
-          <option value="1"> LOICA</option>
-          <option value="2"> KUTRALCO</option>
-          <option value="3"> SGR</option>
-          <option value="4"> IMPROTOUR</option>
-          <option value="5"> BIOGEST</option>
-          </select>
+            {{ Form::select('empresa',App\Empresa::pluck('EMP_DESC','EMP_ID'),null,['class'=>'form-control','style'=>'width:125px']) }}
           </td>
 
-          <td>Total Caja Chica</td>
-          <td><input type="text" class="form-control" style="width:100px;" /></td>
+          <td>Saldo Caja Chica</td>
+          <td><input type="text" class="form-control" style="width:100px;" readonly/></td>
 
-          <td>Total Cuenta Corriente</td>
-          <td><input type="text" class="form-control" style="width:100px;" /></td>
+          <td>Saldo Cuenta Corriente</td>
+            <td>
+              {{ Form::select('saldcuenta',App\CuentaEmpresa::where('CTAE_EMP_ID','=','1')->pluck('CTAE_NUMERO_CUENTA','CTAE_ID'),['class'=>'form-control',
+              'style'=>'width:100px']) }}
+            </td>
+          <td><input type="text" class="form-control" style="width:100px;" readonly/></td>
 
           </tr>
         </table>
+        <div>
+          <br>
+
+          <br>
+        </div>
 
 
         <table class="table-condensed text-center" align="center">
@@ -64,7 +67,7 @@
         <div class="modal fade " id="regMov" role="dialog" >
           <div class="modal-dialog modal-lg" align="center">
           <!-- Modal content-->
-          <div class="modal-content " style="width:900" >
+          <div class="modal-content " style="width: 900px;" >
           <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">×</button>
           <h4 class="modal-title">REGISTRO DE MOVIMIENTO</h4>

@@ -20,6 +20,8 @@ class TipoCuenta extends Model
      */
     protected $primaryKey = "TCTA_BCO";
 
+    protected $fillable = ['TCTA_DESC'];
+
     /**
      * Declara que la tabla no tenga timestamps
      *

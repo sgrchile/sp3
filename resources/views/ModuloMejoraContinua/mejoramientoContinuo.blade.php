@@ -90,7 +90,7 @@
                     var data = google.visualization.arrayToDataTable([
                     ['Task', 'INDICADORES'],
                     ['ORIGINAL', 8],
-                    ['MEJORA', 2],
+                    ['MEJORADO', 2],
                     ['OBSERVADO', 4]
 
                   ]);
@@ -164,7 +164,7 @@
                 <td>
                   <select class="form-control">
                     <option>SERVICIO</option>
-                    <option>PRODUCTO</option>
+                    <option>ARTICULO</option>
 
                   </select>
                 </td>

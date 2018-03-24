@@ -48,35 +48,35 @@
             <tr>
               <td>ESTADO</td>
               <td>ID</td>
+              <td>NOMBRE</td>
               <td>DESCRIPCION</td>
               <td>GARANTIAS</td>
-              <td>ORIENTACION</td>
               <td>COSTO TOTAL</td>
               <td>MARGEN</td>
               <td>VALOR VENTA</td>
               <td>DSCTO. MAX.</td>
               <td>COM. DE VENTA</td>
-              <td>CREADOR</td>
               <td colspan=3>ACCION</td>
             </tr>
 
+            @foreach($invprod as $pro)
             <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td>{{ App\EstadoProducto::find($pro->PROD_ESTADO)->DESC_EST_PROD }}</td>
+              <td>{{ $pro->PROD_PRO_COD }}</td>
+              <td>{{ $pro->PROD_NOMBRE }}</td>
+              <td>{{ $pro->PROD_DESC }}</td>
+              <td>{{ $pro->PROD_GARANTIAS }}</td>
+              <td>{{ $pro->PROD_PRECIO_COSTO }}</td>
+              <td>{{ $pro->PROD_MARGEN }}</td>
+              <td>{{ $pro->PROD_PRECIO_VENTA }}</td>
+              <td>{{ $pro->PROD_DSCTO_MAX }}</td>
+              <td>{{ $pro->PROD_COMISION_VENTA }}</td>
               <td><button type="button" class="btn btn-primary btn-xs">ELIMINAR</button></td>
               <td><a href="{{route('modificarProductos')}}"><button type="button" class="btn btn-primary btn-xs">MODIFICAR</button></a></td>
               <td><a href="{{route('fichaDeProducto')}}"><button type="button" class="btn btn-primary btn-xs">VER</button></a></td>
             </td>
           </tr>
+            @endforeach
 
           <tr>
             <td></td>

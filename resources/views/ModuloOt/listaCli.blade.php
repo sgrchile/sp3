@@ -33,11 +33,12 @@
                 <td>{{ $cliente->tipo_cuenta->TCTA_DESC }}</td>
                 <td>{{ $cliente->CLI_FONO }}</td>
                 <td>{{ $cliente->CLI_EMAIL }}</td>
-                <td><a href="{{ 'as' }}"> Editar </a></td>
-                <td><a href="{{ 'as' }}"> Seleccionar </a></td>
+                <td><a href="{{ route('editCli', $cliente->CLI_RUT) }}"> Editar </a></td>
+                <td><a href="{{ route('cotizaciones', $cliente) }}"> Seleccionar </a></td>
               </tr>
             @endforeach
             </table>
+          {!! $clientes->render() !!}
 
 
             <br>

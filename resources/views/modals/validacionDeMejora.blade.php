@@ -58,15 +58,18 @@
              </tr>
 
              <tr>
+               <td>
+                 COMPLEMENTAR:
+               </td>
 
-               <td  >
-                   <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#recomenacion" data-backdrop="static">RECOMENDACION</button>
+               <td align="center">
+                   <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#recomenacion" data-backdrop="static"><i class="fa fa-circle-o" style="font-size:24px" ></i></button>
                </td>
              </tr>
            </table>
 
 
-           <!-- <button class="btn btn-primary btn-lg">ACEPTAR</button> -->
+           <button class="btn btn-primary btn-lg">ACEPTAR</button>
 
        </div>
        <div class="modal-footer">

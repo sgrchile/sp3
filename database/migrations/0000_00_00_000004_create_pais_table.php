@@ -14,7 +14,7 @@ class CreatePaisTable extends Migration
     public function up()
     {
         Schema::create('PAI_PAIS', function (Blueprint $table) {
-            $table->increments('PAI_COD');
+            $table->increments('PAI_COD')->unsigned();
             $table->string('PAI_DESC', 45);
         });
     }

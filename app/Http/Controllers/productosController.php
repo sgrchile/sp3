@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\InventarioProducto;
+use App\Producto;
 use Illuminate\Http\Request;
 
 class ProductosController extends Controller
@@ -13,7 +15,10 @@ class ProductosController extends Controller
      */
     public function index()
     {
-        //
+        $invprod = InventarioProducto::orderBy('PROD_COD')->where('PROD_EXISTENCIAS','>',0)->paginate(20);
+        //$prod = Producto::find($invprod->PROD_PRO_COD)->get();
+        //dd($invprod);
+        return view('ModuloInventario.Productos.catalogoProductos')->with('invprod',$invprod);
     }
 
     /**

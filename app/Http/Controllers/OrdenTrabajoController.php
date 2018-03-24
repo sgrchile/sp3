@@ -79,15 +79,15 @@ class OrdenTrabajoController extends Controller
 
     public function getAllClientes()
     {
-        $clientes = Cliente::all();
-
+        $clientes = Cliente::orderBy('CLI_NOMBRE','ASC')->paginate(10);
         return view('ModuloOt.listaCli')
             ->with('clientes', $clientes);
     }
 
     public function postClientes(Request $request)
     {
-        $this->validateCliente($request);
+        dd($request->all());
+        /*$this->validateCliente($request);*/
         $createCliente = $this->createCliente($request->all());
         if (!$createCliente) {
             return redirect()->route('regcli')->with('success', false);

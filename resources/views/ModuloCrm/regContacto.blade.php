@@ -13,7 +13,7 @@
           <div class="porlets-content">
             <!-- FORM INICIO -->
 
-            <form id="form1" name="form1" method="post" action="{{ route('post.clientes') }}">
+            <form id="form1" name="form1" method="post" action="{{ route('post.contacto') }}">
               {{ csrf_field() }}
               <table class="table-condensed text-right" align="center">
 
@@ -39,15 +39,6 @@
                   <td>EMAIL PERSONAL:</td>
                   <td><input type="email"  style="width:175px;" class="form-control" required/></td>
                 </tr>
-
-                <tr>
-                  <td>EMPRESA:</td>
-                  <td><input type="text"  style="width:175px;" class="form-control" readOnly/></td>
-
-                  <td>SUCURSAL:</td>
-                  <td><input type="text"  style="width:175px;" class="form-control" required/></td>
-                </tr>
-
 
               </table>
               <button class="btn btn-primary btn-lg">REGISTRAR</button>

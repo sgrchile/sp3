@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
+
 <div class="row">
   <div class="col-xs-12 col-md-12 col-sm-12">
     <div class="block-web">
@@ -18,38 +19,53 @@
 
           <tr>
           <td>NOMBRE:</td>
-          <td><input type="text" class="form-control" name="nombre" required  style="width:175px;"></td>
+              <td>
+                  {{ Form::text('nombre',null,['class'=>'form-control','required','style'=>'width:175px']) }}
+              </td>
 
           <td>APELLIDO PATERNO:</td>
-          <td><input type="text" class="form-control" name="apellido_paterno"  required  style="width:175px;"></td>
-
-
+              <td>
+                  {{ Form::text('apellido_paterno',null,['class'=>'form-control','required','style'=>'width:175px']) }}
+              </td>
           <td>APELLIDO MATERNO:</td>
-          <td><input type="text" class="form-control" name="apellido_materno" required  style="width:175px;"></td>
+              <td>
+                  {{ Form::text('apellido_materno',null,['class'=>'form-control','required','style'=>'width:175px']) }}
+              </td>
 
         </tr>
-
         <tr>
             <td>RUT:</td>
-            <td><input type="text" class="form-control" name="rut"  required  style="width:175px;"></td>
+            <td>
+                {{ Form::text('rut',null,['class'=>'form-control','required','style'=>'width:175px','oninput'=>'checkRut(this)']) }}
+            </td>
+
 
             <td>FECHA DE NAC.:</td>
-            <td><input type="text"  class="form-control form-control-inline input-medium default-date-picker" name="fecha_nacimiento" required  style="width:175px;"></td>
-
+            <td>
+                {{ Form::date('fecha_nacimiento', \Carbon\Carbon::now()->format('d-m-Y'),['class'=>'form-control form-control-inline input-medium default-date-picker',
+                'required','style'=>'width:175px']) }}
+            </td>
 
             <td>CELULAR:</td>
-            <td><input type="text" class="form-control" name="celular" required  style="width:175px;"></td>
+            <td>
+                {{ Form::number('celular',null,['class'=>'form-control','required','style'=>'width:175px']) }}
+            </td>
           </tr>
           <tr>
 
             <td>CONTACTO SECUNDARIO:</td>
-            <td><input type="text " class="form-control" name="celular_dos" required  style="width:175px;"></td>
+              <td>
+                  {{ Form::number('celular_dos',null,['class'=>'form-control','required','style'=>'width:175px']) }}
+              </td>
 
             <td>REFERENCIA:</td>
-            <td><input type="text" class="form-control" name="referencia" required  style="width:175px;"></td>
-
+              <td>
+                  {{ Form::text('referencia',null,['class'=>'form-control','required','style'=>'width:175px']) }}
+              </td>
             <td>EMAIL:</td>
-            <td><input type="EMAIL" class="form-control" name="email" required  style="width:175px;"></td>
+              <td>
+                  {{ Form::email('email',null,['class'=>'form-control','required','style'=>'width:175px','placeholder'=>'example@gmail.com']) }}
+              </td>
 
         </tr>
         <tr>
@@ -73,11 +89,12 @@
             </td>
 
             <td>DIRECCION:</td>
-            <td><input type="text" class="form-control" name="direccion" required  style="width:175px;"></td>
+            <td>
+                {{ Form::text('direccion',null,['class'=>'form-control','required','style'=>'width:175px']) }}
+            </td>
+        </tr>
         <tr>
-
             <td>PAIS:</td>
-
             <td>
               <select style="width:175px;" class="form-control" name="pais">
                 <option>Seleccionar</option>
@@ -86,8 +103,6 @@
                 @endforeach
               </select>
             </td>
-
-
             <td>REGION:</td>
             <td>
               <select style="width:175px;" class="form-control" name="region" id="region">
@@ -100,25 +115,22 @@
 
             <td>PROVINCIA:</td>
             <td>
-              <select style="width:175px;" class="form-control" name="provincia" id="provincia">
-                <option>Seleccionar</option>
-                </select>
+                {{ Form::select('provincia',App\Provincia::pluck('PV_DESC','PV_COD'),null,['class'=>'form-control','style'=>'width:175px;','placeholder'=>'Seleccione']) }}
             </td>
         </tr>
+         <tr>
             <td>CIUDAD:</td>
-
             <td>
-              <select style="width:175px;" class="form-control" name="ciudad" id="ciudad">
-                <option>Seleccionar</option>
-              </select>
+                {{ Form::select('ciudad',App\Ciudad::pluck('CIU_DESC','CIU_COD'),null,['class'=>'form-control','style'=>'width:175px','placeholder'=>'Seleccione']) }}
             </td>
-
-
           <td>PASSWORD:</td>
-          <td><input type="password" class="form-control" name="password" required  style="width:175px;"></td>
-
+              <td>
+                  {{ Form::password('password',['class'=>'form-control','required'=>'required','style'=>'width:175px','placeholder'=>'******']) }}
+              </td>
           <td>CONFIRMAR PASSWORD:</td>
-          <td><input type="password" class="form-control" name="password_confirmation" required  style="width:175px;"></td>
+              <td>
+                  {{ Form::password('password_confirmation',['class'=>'form-control','required'=>'required','style'=>'width:175px','placeholder'=>'******']) }}
+              </td>
 
         </tr>
         <tr>
@@ -166,23 +178,17 @@
         <tr>
 
           <td>RUBRO</td>
-          <td>
-            <select style="width:175px;" class="form-control" name="rubro" id="rubro">
-              <option>Seleccionar</option>
-            </select>
-          </td>
-
+            <td>
+                {{ Form::select('rubro',App\Rubro::pluck('RUB_DESC','RUB_COD'),['class'=>'form-control','style'=>'width:175px','placeholder'=>'Seleccione']) }}
+            </td>
           <td>SUB-RUBRO</td>
-
           <td>
             <select style="width:175px;" class="form-control" name="sub_rubro" id="subrubro">
               <option>Seleccionar</option>
             </select>
           </td>
-
           <td>Nº CUENTA:</td>
           <td><input type="text" class="form-control" name="nro_cuenta" required  style="width:175px;"></td>
-
         </tr>
         <tr>
             <td>BANCO:</td>

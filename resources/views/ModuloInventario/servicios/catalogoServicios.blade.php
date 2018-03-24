@@ -12,7 +12,7 @@
       <div class="block-web">
         <div class="header">
           <div class="actions"></div>
-          <h1 class="text-center text-uppercase">CATALOGO DE PRODUCTOS</h1>
+          <h1 class="text-center text-uppercase">CATALOGO DE SERVICIOS</h1>
         </div>
         <div class="porlets-content">
           <!-- FORM INICIO -->
@@ -37,13 +37,7 @@
             <tr>
               <td>BUSCAR POR CENTRO DE NEGOCIO:</td>
               <td>
-                <select required class="form-control" style="width:175px;">
-                  <option></option>
-                  <option></option>
-                  <option></option>
-                  <option></option>
-                  <option></option>
-                </select>
+                {{ Form::select('cent_negocio',App\CentroNegocio::pluck('CT_PROCESO','CT_ID'),null,['class'=>'form-control']) }}
               </td>
               <td><button type="button" class="btn btn-primary btn-xs">  <i class="fa fa-search" style="font-size:29px"></i></button></td>
             </tr>

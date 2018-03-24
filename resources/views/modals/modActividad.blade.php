@@ -11,30 +11,32 @@
 </div>
 <div class="modal-body">
 
-
-
-    <form id="form1" name="form1" method="post" action="{{ route('post.clientes') }}">
+    <form id="form1" name="form1" method="put" action="{{ route('update.actividad')}}">
       {{ csrf_field() }}
       <table class="table-condensed text-right" align="center">
         <tr>
           <td>FECHA:</td>
           <td>
-              <input type="date"  style="width:175px;" class="form-control" required="required"/>
+            {{ Form::date('fechaingreso',$act->FECHA_ACT,['class'=>'form-control','style'=>'width:175px','required']) }}
           </td>
 
           <td>HORA:</td>
           <td>
-              <input type="text"  style="width:175px;" class="form-control"required="required"/>
+            {{ Form::time('hora', $act->HORA,['class'=>'form-control','style'=>'width:175px','required']) }}
+            <!-- <input type="text"  style="width:175px;" class="form-control" required="required"/>-->
           </td>
         </tr>
         <tr>
 
           <td>CLIENTE:</td>
-          <td><input type="text"  style="width:175px;" class="form-control"required="required"/></td>
+            <td>
+            {{ Form::text('cliente',$act->ID_CLIENTE_ACT,['class'=>'form-control','style'=>'width:175px;','required','readOnly']) }}
+          </td>
 
           <td>CONTACTO:</td>
           <td>
-              <input type="text"  style="width:175px;" class="form-control" required/>
+              {{ Form::select('contacto',App\Contactos::where('CONT_CLI_ID','=',$act->ID_CLIENTE_ACT)->pluck('CONT_NOM','ID_CONT'),$act->NOM_CONT_ACT,
+              ['class'=>'form-control','style'=>'width:175px']) }}
           </td>
 
         </tr>

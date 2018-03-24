@@ -18,17 +18,14 @@
             <tr>
               <td>TIPO DE MOVIMIENTO</td>
               <td>
-                <select class="form-control" style="width:175px;" name="">
-                  <option value=""></option>
-                  <option value=""></option>
-                  <option value=""></option>
-                  <option value=""></option>
-                </select>
+                {{ Form::select('tp_movimiento',App\TipoMovimiento::pluck('TMOV_DESC','TMOV_ID'),null,['class'=>'form-control']) }}
               </td>
             </tr>
             <tr>
               <td>FECHA</td>
-              <td> <input type="date" required class="form-control" style="width:175px;"></td>
+              <td>
+                {{ Form::date('fecasiento',\Carbon\Carbon::now()->format('d-m-Y'),['class'=>'form-control']) }}
+              </td>
             </tr>
 
             <tr>
@@ -45,40 +42,26 @@
 
             <tr>
               <td>CUENTA</td>
-
-
               <td>DEBE</td>
               <td>HABER</td>
               <td>ACCION</td>
             </tr>
 
             <tr>
-              <td><input type="number" readonly class="form-control" style="width:175px;"</td>
-              <td><input type="number" readonly class="form-control" style="width:175px;"</td>
-              <td><input type="number" readonly  class="form-control" style="width:175px;"</td>
+              <td><input type="number" readonly class="form-control" style="width:175px;"></td>
+              <td><input type="number" readonly class="form-control" style="width:175px;"></td>
+              <td><input type="number" readonly  class="form-control" style="width:175px;"></td>
               <td>    <button class="btn btn-primary btn-sm">ELIMINAR</button></td>
-
             </tr>
-
             <tr>
-
               <td>
-                <select class="form-control" style="width:175px;" name="">
-                  <option value=""></option>
-                  <option value=""></option>
-                  <option value=""></option>
-                  <option value=""></option>
-                </select>
+                {{ Form::select('tp_cuenta',App\Tp_Cuenta::pluck('DESC_TP_CUENTA','ID_TP_CUENTA'),null,['class'=>'form-control']) }}
               </td>
-              <td><input type="number"  class="form-control" style="width:175px;"</td>
-              <td><input type="number"  class="form-control" style="width:175px;"</td>
+              <td><input type="number"  class="form-control" style="width:175px;"></td>
+              <td><input type="number"  class="form-control" style="width:175px;"></td>
               <td>  <button class="btn btn-primary btn-sm">AGREGAR</button></td>
 
             </tr>
-
-
-
-
           </table>
 
           <div class="container" align="center">            

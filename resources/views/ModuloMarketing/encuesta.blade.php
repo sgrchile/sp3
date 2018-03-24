@@ -93,7 +93,7 @@
             </div>
 
             <div class="col-md-6">
-              <h4 class="text-center text-uppercase">total de servicios:</h4>
+              <h4 class="text-center text-uppercase">TOTALES:</h4>
                 <div id="piechart"></div>
 
                 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -107,7 +107,9 @@
                   function drawChart() {
                     var data = google.visualization.arrayToDataTable([
                     ['Task', 'INDICADORES'],
-                    ['POR CERRARSE', 8],
+                    ['NUMERO DE ENCUESTAS', 8],
+                    
+                    ['PORCENTAJE', 8],
                     ['PROMEDIO', 2],
                     ['MAXIMA', 2],
                     ['MINIMA', 2]
@@ -212,17 +214,9 @@
                     AÑO:
                   </td>
                   <td>
-                    <input type="date" class="form-control"style="width:175px;" />
+                    <input type="number" min="2017" max="9999" class="form-control"style="width:175px;" />
                   </td>
-                  <td>
-                    UNIDAD:
-                  </td>
-                  <td>
-                    <select class="form-control" style="width:175px;">
-                      <option value="">%</option>
-                      <option value="">$</option>
-                    </select>
-                  </td>
+
 
                   <td>
                     PERIODO:
@@ -234,10 +228,6 @@
                       <option value="">ANUAL</option>
                     </select>
                   </td>
-                </tr>
-
-                <tr>
-
 
                   <td>
                     ITEM:
@@ -250,13 +240,14 @@
                     </select>
                   </td>
                 </tr>
+<!--
                 <tr>
 
                   <td>
                     <button class="btn btn-primary btn-lg">ENCUESTAS</button>
                   </td>
 
-                </tr>
+                </tr> -->
 
               </table>
 

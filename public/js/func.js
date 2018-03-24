@@ -66,7 +66,7 @@ $(document).ready(function () {
             });
         });
     }
-
+/*
     var regiones = $("#region");
     if (regiones.length) {
         $(regiones).change(function (e) {
@@ -101,14 +101,15 @@ $(document).ready(function () {
             append_what(window.subrubros[$valor], $el);
         });
     }
+    */
 });
-
+/*
 function append_what(array, element) {
     for (i in array) {
         $(element).append(`<option value="${array[i]}" data-val="${i}">${array[i]}</option>`);
     }
 }
-
+*/
   $("#documentos").on("show.bs.modal", function(e) {
     var id = $(e.relatedTarget).data('solicitud-id');
     $.get('/verDocumentos/' + id, function( data ) {

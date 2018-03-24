@@ -20,7 +20,8 @@ class ListaOtController extends Controller
 
     public function ListaOt()
     {
-        $ots = OrdenTrabajo::all();
+        /*$ots = OrdenTrabajo::all();*/
+        $ots = OrdenTrabajo::orderBy('OT_FECHA_INI','ASC')->paginate(10);
 
         return view('ModuloOt.listaOt')
             ->with('ots', $ots);

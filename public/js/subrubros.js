@@ -154,3 +154,60 @@ subrubros["Q"] = new Array();
 subrubros["Q"]["950"] = "CONSEJO DE ADMINISTRACION DE EDIFICIOS Y CONDOMINIOS";
 subrubros["R"] = new Array();
 subrubros["R"]["990"] = "ORGANIZACIONES Y ÓRGANOS EXTRATERRITORIALES";
+
+
+function cambia_subrubro(){
+    //tomo el valor del select del rubro elegido
+    var rubro
+    rubro = document.form1.rubro[document.form1.rubro.selectedIndex].value
+    //miro a ver si el pais está definido
+    //calculo el numero de rubros
+    num_rubros = subrubros.length
+    if (rubro != 0) {
+        for (a=0;a<num_rubros;a++){
+            if (rubro = subrubros[a]){
+                //calculo el numero de subrubros
+                num_subrubros = subrubros[a].length
+                //marco el número de provincias en el select
+                document.form1.subrubro.length = num_subrubros
+                for(i=0;i<num_subrubros;i++){
+                    document.form1.subrubro.options[i].value=num_subrubros[i]
+                    document.form1.subrubro.options[i].text=num_subrubros[i]
+                }
+            }
+        }
+    }else{
+        //si no había provincia seleccionada, elimino las provincias del select
+        document.f1.provincia.length = 1
+        //coloco un guión en la única opción que he dejado
+        document.f1.provincia.options[0].value = "-"
+        document.f1.provincia.options[0].text = "-"
+    }
+    //marco como seleccionada la opción primera de provincia
+    document.f1.provincia.options[0].selected = true
+}
+
+function lista(rubro) {
+    $('#subrubro option').remove();
+
+    subrubros.forEach(function (valor, indice, array) {
+
+    });
+
+    if (rubro == 1 || rubro == 2 || rubro == 4) {
+        $('#ddlCategoria').append('<option value="0" ">Todos...</option>');
+        $('#ddlCategoria').append('<option value="1" ">1 Estrella</option>');
+        $('#ddlCategoria').append('<option value="2" ">2 Estrellas</option>');
+        $('#ddlCategoria').append('<option value="3" ">3 Estrellas</option>');
+        $('#ddlCategoria').append('<option value="4" ">4 Estrellas</option>');
+        $('#ddlCategoria').append('<option value="5" ">5 Estrellas</option>');
+    }
+    if (rubro == 3 || rubro == 5) {
+        $('#ddlCategoria').append('<option value="0" ">Todos...</option>');
+        $('#ddlCategoria').append('<option value="1" ">1 Llave</option>');
+        $('#ddlCategoria').append('<option value="2" ">2 Llaves</option>');
+        $('#ddlCategoria').append('<option value="3" ">3 Llaves</option>');
+        $('#ddlCategoria').append('<option value="4" ">4 Llaves</option>');
+        $('#ddlCategoria').append('<option value="5" ">5 Llaves</option>');
+    }
+}

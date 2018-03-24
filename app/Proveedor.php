@@ -199,6 +199,15 @@ class Proveedor extends Authenticatable
     {
         return $this->hasOne('App\Rubro', 'RUB_COD', 'PRO_RUB_COD');
     }
+    /**
+     * Obtiene el SubRubro asociado al Proveedor
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function SubRubro()
+    {
+        return $this->hasMany('App\SubRubro', 'SUB_RUB_COD', 'PRO_SUBRUBRO');
+    }
 
     public function servicio()
     {

@@ -9,7 +9,7 @@
               <h4 class="modal-title">REGISTRO DE CONTACTO</h4>
           </div>
           <div class="modal-body">
-            <form id="form1" name="form1" method="post" action="{{ route('post.clientes') }}">
+            <form id="form1" name="form1" method="post" action="{{ route('post.contacto') }}">
               {{ csrf_field() }}
               <table class="table-condensed text-right" align="center">
 
@@ -21,27 +21,28 @@
 
                     <td>CELULAR:</td>
                     <td>
-                    <input type="text"  style="width:175px;" class="form-control" required/>
+                    <input name="celular" type="text"  style="width:175px;" class="form-control" id="celular" required/>
                     </td>
                 </tr>
                 <tr>
 
                     <td>EMAIL EMPRESARIAL:</td>
                     <td>
-                    <input type="email"  style="width:175px;" class="form-control"  required/>
+                    <input type="email" name="email empresarial" style="width:175px;" class="form-control" id="email_emp" required/>
 
                     </td>
 
                     <td>EMAIL PERSONAL:</td>
-                    <td><input type="email"  style="width:175px;" class="form-control" required/></td>
+                    <td><input type="email" name="email" style="width:175px;" class="form-control" id="email" required/></td>
                 </tr>
 
                 <tr>
-                  <td>EMPRESA:</td>
-                  <td><input type="text"  style="width:175px;" class="form-control" readOnly/></td>
-
-                  <td>SUCURSAL:</td>
-                  <td><input type="text"  style="width:175px;" class="form-control" required/></td>
+                  <td>CLIENTE:</td>
+                <td><input type="text" value="{{ $cliente->CLI_RUT }}" name="cliente" style="width:175px;" class="form-control" id="cliente" readOnly/></td>
+                    <td>CIUDAD:</td>
+                    <td>
+                        {!! Form::select('ciudad', App\Ciudad::pluck('CIU_DESC', 'CIU_COD')) !!}
+                    </td>
                 </tr>
 
 

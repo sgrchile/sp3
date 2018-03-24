@@ -13,6 +13,8 @@ class Banco extends Model
      */
     protected $table = "BCO_BANCO";
 
+    protected $fillable = ['BCO_DESC'];
+
     /**
      * Llave primaria de la tabla
      *
@@ -66,4 +68,16 @@ class Banco extends Model
     {
         return $this->belongsTo('App\Proveedor', 'PRO_BCO_ID');
     }
+
+    /**
+     * Obtiene el Cliente asociado a Banco
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function cliente()
+    {
+        return $this->belongsTo('App\Cliente', 'CLI_BANCO');
+    }
+
+
 }

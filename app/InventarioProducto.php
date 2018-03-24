@@ -29,7 +29,7 @@ class InventarioProducto extends Model
     protected $fillable = [
         'PROD_PRO_RUN',
         'PROD_DESC',
-        'PROD_INFO',
+        'PROD_NOMBRE',
         'PROD_MARCA',
         'PROD_PRECIO_VENTA',
         'PROD_PRECIO_COSTO',
@@ -63,4 +63,20 @@ class InventarioProducto extends Model
     *    return $this->belongsTo('App\Proveedor', 'PRO_RUN', 'PRO_PROVEEDOR');
     *}
     */
+
+    /**
+     * obtener producto asociado al inventario
+     */
+    public  function productos()
+    {
+        return $this->hasOne('App\Producto');
+    }
+
+    /**
+     * obtener producto asociado al inventario
+     */
+    public  function estproductos()
+    {
+        return $this->belongsTo('App\EstadoProducto');
+    }
 }

@@ -20,6 +20,8 @@ class Region extends Model
      */
     protected $primaryKey = "REG_COD";
 
+    protected $fillable = ['REG_DESC'];
+
     /**
      * Declara que la tabla no tenga timestamps
      *
@@ -36,4 +38,15 @@ class Region extends Model
     {
         return $this->belongsTo('App\Proveedor', 'PRO_REG_COD');
     }
+
+    /**
+     * Obtiene el Cliente asociado a Region
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function cliente()
+    {
+        return $this->belongsTo('App\Cliente', 'CLI_REGION');
+    }
+
 }

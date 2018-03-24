@@ -13,6 +13,8 @@ class Rubro extends Model
      */
     protected $table = "RUB_RUBRO";
 
+    protected $fillable = ['RUB_DESC'];
+
     /**
      * Llave primaria de la tabla
      *
@@ -36,4 +38,15 @@ class Rubro extends Model
     {
         return $this->belongsTo('App\Proveedor', 'PRO_RUB_COD');
     }
+
+    /**
+     * Obtiene el Cliente asociado a Rubro
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function cliente()
+    {
+        return $this->belongsTo('App\Cliente', 'CLI_RUBRO');
+    }
+
 }

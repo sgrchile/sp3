@@ -9,7 +9,15 @@
 
         El cliente ha sido registrado exitosamente.
       </div>
-    @endif
+        @else
+            <div class="alert alert-warning" data-dismiss="alert" aria-label="Close">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+
+                El cliente ya existe.
+            </div>
+        @endif
     <H1 class="text-center"><strong>Registro Clientes </strong></H1>
     <form id="form1" name="form1" method="post" action="{{ route('post.clientes') }}">
       {{ csrf_field() }}
@@ -22,9 +30,7 @@
           <td>Tipo cuenta : </td>
           <td colspan="3"><label>
               <select style="width:200px;" class="form-control" name="tipo_cuenta" required>
-                @foreach($tipo_cuentas as $tipo_cuenta)
-                  <option value="{{ $tipo_cuenta->TCTA_BCO }}">{{ $tipo_cuenta->TCTA_DESC }}</option>
-                @endforeach
+
               </select>
             </label></td>
         </tr>

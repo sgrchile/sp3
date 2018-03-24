@@ -11,16 +11,21 @@
             <div class="modal-body">
 
               <table  align="left" class="table-condensed text-right">
+                <tr>
 
-                  <td colspan="2" align="center">
+                  <td>
+
                     RECOMENDACIONES:
-                    <textarea name="name " class="form-control" style="width:175px; max-width:175px; height:270px; max-height:250px;"></textarea>
                   </td>
+                  <td align="center">
+                    <textarea  class="form-control" style="width:175px; max-width:175px; height:270px; max-height:250px;"></textarea>
+                  </td>
+                </tr>
 
 
               </table>
 
-              <button class="btn btn-primary btn-lg">COMPLEMENTAR</button>
+              <button class="btn btn-primary btn-lg">ACEPTAR</button>
 
 
             </div>

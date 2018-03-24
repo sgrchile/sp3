@@ -20,6 +20,8 @@ class Ciudad extends Model
      */
     protected $primaryKey = "CIU_COD";
 
+    protected $fillable = ['CIU_DESC', 'CIU_PV_COD'];
+
     /**
      * Declara que la tabla no tenga timestamps
      *
@@ -36,4 +38,15 @@ class Ciudad extends Model
     {
         return $this->belongsTo('App\Proveedor', 'PRO_CIU_COD');
     }
+
+    /**
+     * Obtiene el Cliente asociado a Ciudad
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function cliente()
+    {
+        return $this->belongsTo('App\Cliente', 'CLI_CIUDAD');
+    }
+
 }

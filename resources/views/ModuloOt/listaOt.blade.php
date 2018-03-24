@@ -52,6 +52,7 @@
 
             @endforeach
             </table>
+          {!! $ots->render() !!}
           </div>
           <div class="panel-body">
 

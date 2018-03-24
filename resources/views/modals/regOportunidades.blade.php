@@ -12,18 +12,14 @@
 
               <table class="table-condensed text-right" align="center">
                 <tr>
-                  <td>NOMBRE:</td>
+                  <td>ETIQUETA:</td>
                   <td>
                       <input name="nombre" type="text"  style="width:175px;" class="form-control" id="nombre" pattern="[A-Za-z]{4-16}" required="required"/>
                   </td>
 
                   <td>CONTACTO:</td>
                   <td>
-                    <select style="width:175px;" class="form-control"  required>
-
-                      <option value=""></option>
-
-                    </select>
+                    {{ Form::select('contacto', App\Contactos::pluck('CONT_NOM','CONT_CLI_ID')->where('CONT_CLI_ID','=',$cliente->CLI_RUT)) }}
                   </td>
                 </tr>
 
@@ -31,22 +27,12 @@
 
                   <td>PROCESO DE NEGOCIO:</td>
                   <td>
-
-                    <select style="width:175px;" class="form-control"  required>
-
-                      <option value=""></option>
-
-                    </select>
-
+                    {{ Form::select('procneg', App\Proceso::pluck('PRO_DESC','PRO_ID')) }}
                   </td>
 
                   <td>ETAPA:</td>
                   <td>
-                    <select style="width:175px;" class="form-control"  required>
-
-                    <option value=""></option>
-
-                    </select>
+                    {{ Form::select('etapa', App\Etapa::pluck('DESC_ETAPA','ID_ETAPA')) }}
                   </td>
 
 
@@ -57,12 +43,12 @@
 
                   <td>PROBABILIDAD:</td>
                   <td>
-                    <input type="text"  style="width:175px;" class="form-control" required/>
+                    {{ Form::selectRange('number', 10, 100) }}
                   </td>
 
                   <td>TASA:</td>
                   <td>
-                    <input type="text"  style="width:175px;" class="form-control" required/>
+                    {{ Form::number('tasa',null,['class'=>'form-control', 'required']) }}
                   </td>
                 </tr>
 
@@ -70,12 +56,12 @@
 
                   <td>MONEDA: </td>
                   <td >
-                      <input  type="text"   style="width:175px;" class="form-control" required/>
+                    {{ Form::select('moneda', App\Moneda::pluck('DESC_MONEDA','ID_MONEDA')) }}
                   </td>
 
                   <td>TOTAL: </td>
                   <td >
-                      <input  type="text"   style="width:175px;" class="form-control" required/>
+                    {{ Form::number('total',null,['class'=>'form-control', 'required']) }}
                   </td>
 
                 </tr>
@@ -85,37 +71,31 @@
 
                   <td>FECHA DE INGRESO:</td>
                   <td>
-                    <input  type="date"   style="width:175px;" class="form-control" required/>
+                    {{ Form::date('fechaingreso',\Carbon\Carbon::now()->format('d-m-Y')) }}
                   </td>
 
                   <td>FECHA DE CIERRRE:</td>
                   <td>
-                    <input  type="date"   style="width:175px;" class="form-control" required/>
+                    {{ Form::date('fechacierre',\Carbon\Carbon::now()->format('d-m-Y')) }}
+                    <!--<input  type="date"   style="width:175px;" class="form-control" required/>-->
                   </td>
-
-
-
                 </tr>
                 <tr>
 
                   <td>CENTRO DE NEGOCIO:</td>
                   <td>
-                    <select style="width:175px;" class="form-control"  required>
-
-                    <option value=""></option>
-
-                    </select>
-
+                    {{ Form::select('centoneg', App\CentroNegocio::pluck('CT_PROCESO','CT_ID')) }}
                   </td>
 
                   <td>ESTADO DE PROPUESTA:</td>
                   <td>
-                    <select style="width:175px;" class="form-control"  required>
-
-                    <option value=""></option>
-
-                    </select>
+                    {{ Form::select('estpro', App\Estado::pluck('EST_DESC','EST_ID')) }}
                   </td>
+
+                </tr>
+                <tr>
+                  <td>CLIENTE:</td>
+                  <td><input type="text" value="{{ $cliente->CLI_RUT }}" name="cliente" style="width:175px;" class="form-control" id="cliente" readOnly/></td>
 
                 </tr>
 

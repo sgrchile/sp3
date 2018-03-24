@@ -14,7 +14,7 @@ class CreateCiudadTable extends Migration
     public function up()
     {
         Schema::create('CIU_CIUDAD', function (Blueprint $table) {
-            $table->increments('CIU_COD');
+            $table->increments('CIU_COD')->unsigned();
             $table->string('CIU_DESC', 45);
 
             $table->integer('CIU_PV_COD')->unsigned();

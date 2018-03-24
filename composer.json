@@ -8,8 +8,10 @@
         "php": ">=5.6.4",
         "barryvdh/laravel-dompdf": "^0.8.0",
         "kunalvarma05/dropbox-php-sdk": "^0.2.0",
+        "laracasts/flash": "~3.0",
         "laravel/framework": "5.4.*",
-        "laravel/tinker": "~1.0"
+        "laravel/tinker": "~1.0",
+        "laravelcollective/html": "^5.3.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -37,8 +39,8 @@
             "php artisan key:generate"
         ],
         "post-install-cmd": [
-            "Illuminate\\Foundation\\ComposerScripts::postInstall",
-            "php artisan optimize"
+            "chmod -R 755 bootstrap\/cache",
+            "php artisan cache:clear"
         ],
         "post-update-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",

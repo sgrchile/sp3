@@ -6,20 +6,17 @@
     <div class="block-web">
       <div class="header">
         <div class="actions"></div>
-        <h1 class="content-header text-center text-uppercase"><b>TÍTULO</b></h1>
+        <h1 class="content-header text-center text-uppercase"><b>VENTA</b></h1>
       </div>
       <div class="porlets-content">
         <!-- FORM INICIO -->
         <div class="container" align="center">
 
-
-          <h1 class="text-center">VENTA</h1>
-
           <table class=" table-condensed text-right">
 
             <tr>
               <td><h4>FECHA:</h4></td>
-              <td> <input  type="text"  class="form-control" readOnly style="width:175px;"/></td>
+              <td> <input  type="text" value={!! $fecha=strftime( "%Y-%m-%d", time() ) !!} class="form-control" readOnly style="width:175px;"/></td>
             </tr>
             <tr>
               <td><h4>VENDEDOR:</h4></td>

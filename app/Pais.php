@@ -13,6 +13,8 @@ class Pais extends Model
      */
     protected $table = "PAI_PAIS";
 
+    protected $fillable = ['PAI_DESC'];
+
     /**
      * Llave primaria de la tabla
      *
@@ -36,4 +38,15 @@ class Pais extends Model
     {
         return $this->belongsTo('App\Proveedor', 'PRO_PAI_COD');
     }
+
+    /**
+     * Obtiene el Cliente asociado a Pais
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function cliente()
+    {
+        return $this->belongsTo('App\Cliente', 'CLI_PAIS');
+    }
+
 }

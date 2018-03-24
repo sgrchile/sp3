@@ -9,68 +9,140 @@
         <div class="header">
           <div class="actions"></div>
           <h1 class="text-center text-uppercase">LISTADO DE CLIENTES</h1>
+
         </div>
         <div class="porlets-content">
           <!-- FORM INICIO -->
           <h1>CLIENTES CONSOLIDADOS</h1>
-          <table class="table table-bordered table-hover">
-
+          <table class="table table-bordered table-hover" id="clients-table">
+            <thead>
             <tr>
-              <td>ID</td>
-              <td>RUT</td>
-              <td>NOMBRE</td>
-              <td>EMAIL</td>
-              <td>TELEFONO</td>
-              <td>CONTACTO</td>
+              <td>{{ __('RUT') }}</td>
+              <td>{{ __('NOMBRE') }}</td>
+              <td>{{ __('EMAIL') }}</td>
+              <td>{{ __('TELEFONO') }}</td>
+              <td>{{ __('CONTACTO') }}</td>
               <td style="width:210px;">ACCION</td>
             </tr>
-
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td>
-               <a href="{{route('fichaClienteConsolidado')}}"><button class="btn btn-primary btn-xs" style="width:130px;"> VER FICHA</button></a>
-              </td>
-
-
-            </tr>
+            </thead>
+            <tbody>
+            @foreach($clientes as $cliente)
+              @if(valida_rut($cliente->CLI_RUT))
+              <tr>
+                <td>{{ $cliente->CLI_RUT }}</td>
+                <td>{{ $cliente->CLI_NOMBRE }}</td>
+                <td>{{ $cliente->CLI_EMAIL }}</td>
+                <td>{{ $cliente->CLI_FONO }}</td>
+                <td>{{ $cliente->CLI_CONTACTO }}</td>
+                <td>
+                  <a href="{{route('fichaClienteConsolidado',$cliente->CLI_RUT)}}"><button class="btn btn-primary btn-xs" onclick="" style="width:130px;"> VER FICHA</button></a>
+                </td>
+              </tr>
+              @endif
+            @endforeach
+            </tbody>
 
           </table>
+
 
           <h1>CLIENTES PROSPECTO</h1>
           <table class="table table-bordered table-hover">
 
             <tr>
-              <td>ID</td>
-              <td>RUT</td>
-              <td>NOMBRE</td>
-              <td>EMAIL</td>
-              <td>TELEFONO</td>
-              <td>CONTACTO</td>
+              <td>{{ __('RUT') }}</td>
+              <td>{{ __('NOMBRE') }}</td>
+              <td>{{ __('EMAIL') }}</td>
+              <td>{{ __('TELEFONO') }}</td>
+              <td>{{ __('CONTACTO') }}</td>
               <td style="width:210px;">ACCION</td>
             </tr>
 
+            <tbody>
+            @foreach($clientes as $cliente)
             <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td>
+              @if(!valida_rut($cliente->CLI_RUT))
+                <td>{{ $cliente->CLI_RUT }}</td>
+                <td>{{ $cliente->CLI_NOMBRE }}</td>
+                <td>{{ $cliente->CLI_EMAIL }}</td>
+                <td>{{ $cliente->CLI_FONO }}</td>
+                <td>{{ $cliente->CLI_CONTACTO }}</td>
+                <td>
                 <button class="btn btn-primary btn-xs" style="width:130px; margin-bottom:10px;"> CONVERTIR</button>
-                <a href="{{route('fichaClienteProspecto')}}"><button class="btn btn-primary btn-xs" style="width:130px;"> VER FICHA</button></a>
+                <a href="{{route('fichaClienteProspecto', $cliente)}}"><button class="btn btn-primary btn-xs" style="width:130px;"> VER FICHA</button></a>
               </td>
-
+              @endif
             </tr>
-
+            @endforeach
+            </tbody>
           </table>
+        {{ $clientes->links() }}
+
 
           <!-- FORM FINAL -->
+
+            <?php
+            function validaRut($rut){
+                if(strpos($rut,"-")==false){
+                    $RUT[0] = substr($rut, 0, -1);
+                    $RUT[1] = substr($rut, -1);
+                }else{
+                    $RUT = explode("-", trim($rut));
+                }
+                $elRut = str_replace(".", "", trim($RUT[0]));
+                $factor = 2;
+                for($i = strlen($elRut)-1; $i >= 0; $i--):
+                    $factor = $factor > 7 ? 2 : $factor;
+                    $suma = $elRut{$i}*$factor++;
+                endfor;
+                $resto = $suma % 11;
+                $dv = 11 - $resto;
+                if($dv == 11){
+                    $dv=0;
+                }else if($dv == 10){
+                    $dv="k";
+                }else{
+                    $dv=$dv;
+                }
+                if($dv == trim(strtolower($RUT[1]))){
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+
+            /**
+             * Comprueba si el rut ingresado es valido
+             *
+             * @param $rut string
+             * @return true o false
+             */
+            function valida_rut($rut)
+            {
+                $rut = preg_replace('/[^k0-9]/i', '', $rut);
+                $dv  = substr($rut, -1);
+                $numero = substr($rut, 0, strlen($rut)-1);
+                $i = 2;
+                $suma = 0;
+                foreach(array_reverse(str_split($numero)) as $v)
+                {
+                    if($i==8)
+                        $i = 2;
+                    $suma += $v * $i;
+                    ++$i;
+                }
+                $dvr = 11 - ($suma % 11);
+
+                if($dvr == 11)
+                    $dvr = 0;
+                if($dvr == 10)
+                    $dvr = 'K';
+                if($dvr == strtoupper($dv))
+                    return true;
+                else
+                    return false;
+            }
+
+            ?>
 
         </div><!--/porlets-content-->
       </div><!--/block-web-->

@@ -49,7 +49,7 @@
   </tr>
   <tr>
   <td><label>FECHA:</label></td>
-  <td><input type="date" style="width:225px;" class="form-control" name="fecha" required> </td>
+  <td><input type="date" style="width:225px;" value="{!! $fecha=strftime( "%Y-%m-%d", time() ) !!}" class="form-control" name="fecha" readonly> </td>
   </tr>
   <tr>
   <td><label>FUENTE:</label></td>

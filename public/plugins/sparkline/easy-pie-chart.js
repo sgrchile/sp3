@@ -1,7 +1,7 @@
 var Script = function () {
 
 // easy pie chart
-
+/*
     $('.percentage').easyPieChart({
         animate: 1000,
         size: 135,
@@ -18,7 +18,7 @@ var Script = function () {
         lineWidth: 15,
         animate: 1000
     });
-
+*/
     $('.update-easy-pie-chart').click(function(){
         $('.easy-pie-chart .percentage').each(function() {
             var newValue = Math.floor(100*Math.random());

@@ -23,7 +23,8 @@ class VentasController extends Controller
      */
     public function create()
     {
-        //
+        //dd($sesion);
+        // return view('ModuloVentas.formularioDeVentas');
     }
 
     /**
@@ -34,7 +35,8 @@ class VentasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        // return view('ModuloVentas.fichaDeVenta');
     }
 
     /**

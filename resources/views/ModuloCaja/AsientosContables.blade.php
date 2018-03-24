@@ -31,14 +31,7 @@
             <tr>
               <td>TIPO DE MOVIMIENTO:</td>
               <td>
-                <select class="form-control" style="width:175px;" name="">
-                  <option value=""></option>
-                  <option value=""></option>
-                  <option value=""></option>
-                  <option value=""></option>
-                  <option value=""></option>
-                </select>
-
+                {{ Form::select('tp_movimiento',App\TipoMovimiento::pluck('TMOV_DESC','TMOV_ID'),null,['class'=>'form-control']) }}
               </td>
             </tr>
             <tr>
@@ -91,13 +84,13 @@
                 </tr>
 
                 <tr>
-                  <td>05-10-2017 </td>
-                  <td>152</td>
-                  <td>wilfried  </td>
-                  <td>06-10-2017</td>
-                  <td>06-10-2017</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                   <td>
-                  <a href="{{route('NuevoAsientoContable')}}"  <button class="btn btn-primary btn-md" style="margin-right:15px;">NUEVO</button>
+                  <a href="{{route('NuevoAsientoContable')}}"></a>  <button class="btn btn-primary btn-md" style="margin-right:15px;">NUEVO</button>
                   </td>
                 </tr>
               </table>

@@ -17,16 +17,16 @@
                 <h4 class="text-left text-uppercase">FECHA:</h4>
             </div>
             <div class="col-sm-6">
-              <h4 class="text-right text-uppercase">LOGO </h4>
+              <h4 class="text-right text-uppercase">{!! $fecha=strftime( "%Y-%m-%d", time() ) !!} </h4>
             </div>
           </div>
 
          <h1>DATOS DE CLIENTE</h1>
          <table class="table table-condensed  text-right" align="center">
 
-            <tr>
+            <td>
               <td>ID:</td>
-              <td><input type="text"  style="width:175px;" class="form-control"  readOnly/></td>
+              <td> {!! Form::select('cliente',$cliente, null,['placeholder' => 'Seleccione...', 'class' => 'form-control']) !!}</td>
               <td>RUT:</td>
               <td><input type="text"  style="width:175px;" class="form-control"  readOnly/></td>
             </tr>

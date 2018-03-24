@@ -23,7 +23,7 @@
       <td>Rut:</td>
       <td><label>
       <input type="text" id="rut" name="rut" class="form-control" maxlength="10" required oninput="checkRut(this)" />
-      	 <script src="validarRUT.js"></script>
+      	 <script src="../../../public/js/validarRUT.js"></script>
 
       </label></td>
       <td>Actividad Comercial : </td>

@@ -222,7 +222,7 @@
         <li> <a href="javascript:void(0);"> <i class="fa fa-th"></i> FORO <span class="plus"><i class="fa fa-plus"></i></span> </a>
           <ul>
             <li> <a href="{{route('listaDeEventos')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>RESPUESTAS</b> </a> </li>
-            <li> <a href="{{route('crearEvento')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>PREGUNTAS Y RESPUESTAS/b> </a> </li>
+            <li> <a href="{{route('crearEvento')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>PREGUNTAS Y RESPUESTAS</b> </a> </li>
           </ul>
         </li>
 
@@ -288,7 +288,7 @@
 <!--\\\\\\\ inner end\\\\\\-->
 </div>
 <!--\\\\\\\ wrapper end\\\\\\-->
-
+</div>
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

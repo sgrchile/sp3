@@ -20,6 +20,7 @@ class Cliente extends Model
      */
     protected $primaryKey = "CLI_RUT";
 
+
     /**
      * Atributos que pueden ser asignados masivamente
      *
@@ -27,6 +28,7 @@ class Cliente extends Model
      */
     protected $fillable = [
         'CLI_RUT',
+        'CLI_ID',
         'CLI_FONO',
         'CLI_EMAIL',
         'CLI_NOMBRE',
@@ -34,6 +36,19 @@ class Cliente extends Model
         'CLI_ACT_COMERCIAL',
         'CLI_DIRECCION',
         'CLI_TCTA_BCO',
+        'CLI_SITIO_WEB',
+        'CLI_GLOSA',
+        'CLI_RUBRO',
+        'CLI_SUB_RUBRO',
+        'CLI_ACTIVIDAD',
+        'CLI_BANCO',
+        'CLI_NRO_CTA',
+        'CLI_ORIGEN',
+        'CLI_PAIS',
+        'CLI_REGION',
+        'CLI_PROVINCIA',
+        'CLI_CIUDAD',
+        'CLI_TEMP'
     ];
 
     /**
@@ -88,5 +103,75 @@ class Cliente extends Model
     public function proveedor()
     {
         return $this->belongsTo('App\Proveedor', 'PRO_CAR_ID');
+    }
+
+    /**
+     * Obtiene el Banco asociado a Cliente
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function Banco()
+    {
+        return $this->hasMany('App\Banco');
+    }
+
+    /**
+     * Obtiene el Rubro asociado a Cliente
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function Rubro()
+    {
+        return $this->hasMany('App\Rubro');
+    }
+
+    /**
+     * Obtiene el SubRubro asociado a Cliente
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function SubRubro()
+    {
+        return $this->hasMany('App\SubRubro');
+    }
+
+    /**
+     * Obtiene el Pais asociado a Cliente
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function pais()
+    {
+        return $this->hasOne('App\Pais');
+    }
+
+    /**
+     * Obtiene la Region asociada a Cliente
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function region()
+    {
+        return $this->hasOne('App\Region');
+    }
+
+    /**
+     * Obtiene la Provincia asociada a Cliente
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function provincia()
+    {
+        return $this->hasOne('App\Provincia');
+    }
+
+    /**
+     * Obtiene la Ciudad asociada a Cliente
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function ciudad()
+    {
+        return $this->hasOne('App\Ciudad');
     }
 }

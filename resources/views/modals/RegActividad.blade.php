@@ -13,31 +13,40 @@
 
 
 
-    <form id="form1" name="form1" method="post" action="{{ route('post.clientes') }}">
+    <form id="form1" name="form1" method="post" action="{{ route('post.actividad') }}">
       {{ csrf_field() }}
       <table class="table-condensed text-right" align="center">
+          <tr>
+
+              <td>CLIENTE:</td>
+              <td>
+                  <input type="text" value="{{ $actividad->ID_CLIENTE_ACT }}" name="cliente" style="width:175px;" class="form-control" id="cliente" readOnly/>
+              </td>
+              <td>DESCRIPCION:</td>
+              <td>
+                  <input type="text" id="descripcion" name="descripcion" style="width:175px;" class="form-control" required/>
+              </td>
+
+          </tr>
         <tr>
           <td>FECHA:</td>
           <td>
-              <input type="date"  style="width:175px;" class="form-control" required="required"/>
+              {{ Form::date('fecha', \Carbon\Carbon::now()->format('d-m-Y'),['class'=>'form-control','style'=>'width:175px']) }}
+              <!--<input type="date"  style="width:175px;" class="form-control" required="required"/>-->
           </td>
 
           <td>HORA:</td>
           <td>
-              <input type="text"  style="width:175px;" class="form-control"required="required"/>
+              {{ Form::time('hora', \Carbon\Carbon::now(),['class'=>'form-control','style'=>'width:175px']) }}
+              <!-- <input type="text"  style="width:175px;" class="form-control"required="required"/>-->
           </td>
         </tr>
-        <tr>
-
-          <td>CLIENTE:</td>
-          <td><input type="text"  style="width:175px;" class="form-control"required="required"/></td>
-
-          <td>CONTACTO:</td>
-          <td>
-              <input type="text"  style="width:175px;" class="form-control" required/>
-          </td>
-
-        </tr>
+          <tr>
+              <td>CONTACTO</td>
+              <td>
+                  {{ Form::select('contacto',App\Contactos::where('CONT_CLI_ID','=',$actividad->ID_CLIENTE_ACT)->pluck('CONT_NOM','ID_CONT'),null,['class'=>'form-control','style'=>'width:175px']) }}
+              </td>
+          </tr>
 
       </table>
 

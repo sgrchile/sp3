@@ -70,6 +70,8 @@
               </table>
             </div>
             <div class="col-md-8">
+
+              <h4 class="text-center">HISTORICO</h4>
               <div class="block-web">
 
                 <div class="custom-bar-chart">
@@ -171,7 +173,7 @@
             <div class="col-md-2">
             </div>
             <div class="col-md-8">
-
+              <h4 class="text-center">PROYECTADO</h4>
               <div class="block-web">
 
                 <div class="custom-bar-chart">

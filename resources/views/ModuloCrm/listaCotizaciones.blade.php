@@ -31,7 +31,7 @@
                 <td>CLIENTE</td>
                 <td>CONTACTO</td>
                 <td>OPORTUNIDAD</td>
-                <td>CREADOR</td>
+                <td>VENDEDOR</td>
                 <td>VALOR NETO</td>
                 <td>FECHA DE CIERRE</td>
                 <td>ESTADO</td>
@@ -51,10 +51,9 @@
                   <button class="btn btn-primary btn-xs" style="width:90px; margin-bottom:5px;">BORRAR</button>
                   <br />
                   <button class="btn btn-primary btn-xs" style="width:90px; margin-bottom:5px;">MODIFICAR</button>
+
                   <br />
-                  <button class="btn btn-primary btn-xs" style="width:90px; margin-bottom:5px;">VENDER</button>
-                  <br />
-                  <a href="{{route('cotizaciones')}}"<button class="btn btn-primary btn-xs" style="width:90px; margin-bottom:5px;">VER FICHA</button><br />
+                  <a href="{{route('cotizaciones')}}"></a><button class="btn btn-primary btn-xs" style="width:90px; margin-bottom:5px;">VER FICHA</button><br />
                 </td>
 
               </tr>
@@ -71,7 +70,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td colspan="3"><a href="{{route('Oportunidades')}}"<button class="btn btn-primary btn-xs" style="width:90px;">AGREGAR</button></td>
+                <td colspan="3"><a href="{{route('CRM')}}"></a><button class="btn btn-primary btn-xs" style="width:90px;">AGREGAR</button></td>
               </tr>
             </table>
           <!-- FORM FINAL -->

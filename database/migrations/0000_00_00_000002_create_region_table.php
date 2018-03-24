@@ -14,7 +14,7 @@ class CreateRegionTable extends Migration
     public function up()
     {
         Schema::create('REG_REGION', function (Blueprint $table) {
-            $table->increments('REG_COD');
+            $table->increments('REG_COD')->unsigned();
             $table->string('REG_DESC', 45);
             $table->string('ISO_3166_2_CL', 5);
         });
