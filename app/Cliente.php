@@ -28,7 +28,6 @@ class Cliente extends Model
      */
     protected $fillable = [
         'CLI_RUT',
-        'CLI_ID',
         'CLI_FONO',
         'CLI_EMAIL',
         'CLI_NOMBRE',

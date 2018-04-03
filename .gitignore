@@ -10,3 +10,4 @@ Homestead.json
 Homestead.yaml
 .env
 /.php_cs.cache
+composer.lock
