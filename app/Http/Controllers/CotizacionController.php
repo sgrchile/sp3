@@ -25,7 +25,7 @@ class CotizacionController extends Controller
      */
     public function create()
     {
-        $cliente = Cliente::pluck('CLI_NOMBRE','CLI_ID');
+        $cliente = Cliente::pluck('CLI_NOMBRE','CLI_RUT');
 
         return view('ModuloCrm.listacotizaciones');
     }
