@@ -27,7 +27,7 @@ class ClientesController extends Controller
      */
     public function index()
     {
-        $clientes = Cliente::orderBy('CLI_ID','ASC')->paginate(10);
+        $clientes = Cliente::orderBy('CLI_NOMBRE','ASC')->paginate(10);
 
         //dd($clientes);
 

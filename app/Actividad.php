@@ -11,7 +11,7 @@ class Actividad extends Model
      *
      * @var string
      */
-    protected $table = 'actividad';
+    protected $table = 'ACTIVIDAD';
 
     protected $fillable = ['ACT_DESC','SUB_RUB_COD'];
 

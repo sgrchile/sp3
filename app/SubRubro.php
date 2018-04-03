@@ -11,7 +11,7 @@ class SubRubro extends Model
      *
      * @var string
      */
-    protected $table = 'sub_rub_rubro';
+    protected $table = 'SUB_RUB_RUBRO';
 
     protected $fillable = ['SUB_RUB_DESC'];
 
