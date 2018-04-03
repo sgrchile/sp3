@@ -56,7 +56,7 @@ class OportunidadController extends Controller
         $oportunidad = new Oportunidad();
 
         $oportunidad->setAttribute('NOMBRE', $request->get('nombre', null));
-        $cliente = Cliente::pluck('CLI_RUT', 'CLI_ID');
+        $cliente = Cliente::pluck('CLI_RUT', 'CLI_RUT');
         $oportunidad->setAttribute('ID_CLIENTE', $cliente{$request->get('clientes')});
         $proneg = Proceso::find($request->get('procneg'));
         $oportunidad->setAttribute('PROC_NEGOCIO', $proneg->getAttribute('PRO_DESC'));
