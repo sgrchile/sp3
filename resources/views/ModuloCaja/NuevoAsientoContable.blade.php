@@ -1,6 +1,8 @@
 @extends('layouts.app')
 @section('content')
 
+  {!! Html::script('js/jquery-2.1.1.min.js') !!}
+
   <div class="row">
     <div class="col-xs-12 col-md-12 col-sm-12">
       <div class="block-web">
@@ -11,6 +13,7 @@
         <div class="porlets-content">
           <!-- FORM INICIO -->
 
+	{!! Form::open(['route' => 'post.asientocontable']) !!}
           <h3 class="text-center">NUEVO ASIENTO CONTABLE</h3>
 
           <table class="table-condensed" align="center" style="text-align:right;">
@@ -18,35 +21,28 @@
             <tr>
               <td>TIPO DE MOVIMIENTO</td>
               <td>
-                <select class="form-control" style="width:175px;" name="">
-                  <option value=""></option>
-                  <option value=""></option>
-                  <option value=""></option>
-                  <option value=""></option>
-                </select>
+                {{ Form::select('tp_movimiento',$tpmov,null,['class'=>'form-control','required']) }}
               </td>
             </tr>
             <tr>
-              <td>FECHA</td>
-              <td> <input type="date" required class="form-control" style="width:175px;"></td>
+              <td>FECHA CONTABLE</td>
+              <td>
+                {{ Form::date('fecasiento',\Carbon\Carbon::now()->format('d-m-Y'),['class'=>'form-control','required']) }}
+              </td>
             </tr>
 
             <tr>
               <td>COMENTARIO</td>
-              <td> <textarea  class="form-control" style=" width:175px; max-width:175px; max-height:175px;"></textarea></td>
+              <td> <textarea id="comentario" name="comentario" class="form-control" style=" width:175px; max-width:175px; max-height:175px;" required></textarea></td>
             </tr>
-
-
-
-
           </table>
 
-          <table class="table table-bordered">
+          <br>
+
+          <table class="table table-bordered" id="mytable">
 
             <tr>
               <td>CUENTA</td>
-
-
               <td>DEBE</td>
               <td>HABER</td>
               <td>ACCION</td>
@@ -59,25 +55,38 @@
               <td>    <button class="btn btn-primary btn-sm">ELIMINAR</button></td>
 
             </tr>
+	    <tr>
+              <td>
+                {{ Form::select('cta_cont',$cuenta,null,['class'=>'form-control','style'=>'width:175px']) }}
+              </td>
+              <td>
+                {{ Form::number('debe',null,['id'=>'debe','class'=>'form-control','style'=>'width:175px']) }}
+              </td>
+              <td>
+                {{ Form::number('haber',null,['id'=>'haber','class'=>'form-control','style'=>'width:175px']) }}
+              </td>
+              <td>
+                <a id="masfilas"><button class="btn btn-primary btn-sm">AGREGAR</button></a>
+              </td>
 
+            </tr>
+          </table>
+	  
+	  <table class="table table-bordered" id="mytableresult">
             <tr>
 
               <td>
-                <select class="form-control" style="width:175px;" name="">
-                  <option value=""></option>
-                  <option value=""></option>
-                  <option value=""></option>
-                  <option value=""></option>
-                </select>
+                {{ Form::label('total','TOTAL',['id'=>'total','class'=>'form-control','style'=>'width:175px']) }}
               </td>
-              <td><input type="number"  class="form-control" style="width:175px;"</td>
-              <td><input type="number"  class="form-control" style="width:175px;"</td>
-              <td>  <button class="btn btn-primary btn-sm">AGREGAR</button></td>
+              <td>
+                {{ Form::number('debe',null,['class'=>'form-control','style'=>'width:175px','readonly']) }}
+              </td>
+              <td>
+                {{ Form::number('haber',null,['class'=>'form-control','style'=>'width:175px','readonly']) }}
+              </td>
+              <td>  <button class="btn btn-primary btn-sm">ACTUALIZAR</button></td>
 
             </tr>
-
-
-
 
           </table>
 
@@ -85,6 +94,7 @@
 
           <button class="btn btn-primary btn-lg">REGISTAR</button>
           </div>
+	{!! Form::close() !!}
 
           <!-- FORM FINAL -->
         </div><!--/porlets-content-->
