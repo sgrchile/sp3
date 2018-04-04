@@ -36,7 +36,7 @@
             </tr>
             <tr>
               <td>
-                  DESDE
+                DESDE
               </td>
               <td>
                 <input type="date" class="form-control" style="width:175px;" />
@@ -58,61 +58,64 @@
 
           </table>
 
-            <div class="table-responsive">
-              <table class="table table-bordered">
-                <tr>
-                  <td>FECHA CONTABLE</td>
-                  <td>ID</td>
-                  <td>USUARIO</td>
-                  <td>TIPO DE MOVIMIENTO</td>
-                  <td>FECHA DE REGISTRO</td>
-                  <td>ACCION</td>
-                </tr>
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <tr>
+                <td>FECHA CONTABLE</td>
+                <td>ID</td>
+                <td>USUARIO</td>
+                <td>TIPO DE MOVIMIENTO</td>
+                <td>FECHA DE REGISTRO</td>
+                <td>ACCION</td>
+              </tr>
 
+              @foreach($asientos as $asiento)
                 <tr>
-                  <td>05-10-2017 </td>
-                  <td>152</td>
-                  <td>wilfried  </td>
-                  <td>06-10-2017</td>
-                  <td>06-10-2017</td>
+                  <td>{{ $asiento->FECHA_CONT }}</td>
+                  <td>{{ $asiento->ID_ASIENTO_CONT }}</td>
+                  <td>{{ $asiento->ID_USUARIO_ASIENTO }}  </td>
+                  <td>{{ App\TipoMovimiento::find($asiento->TP_MOVIMIENTO)->TMOV_DESC }}</td>
+                  <td>{{ $asiento->CREATED_AT }}</td>
                   <td>
-                    <button class="btn btn-primary btn-md" style="margin-right:15px;" data-toggle="modal" data-target="#asientoContable" data-backdrop="static">VER</button>
-                    <a href="{{route('editarAsientoContable')}}"><button class="btn btn-primary btn-md" style="margin-right:15px;">EDITAR</button></a>
-                    <button class="btn btn-primary btn-md" style="margin-right:15px;">ANULAR</button>
-                    <button class="btn btn-primary btn-md" style="margin-right:15px;">ELIMINAR</button>
+                    <a href="{{action('AsientoContableController@show',$asiento->ID_ASIENTO_CONT)}}"><button class="btn btn-primary btn-md" style="margin-right:15px;" data-toggle="modal" data-target="#asientoContable" data-backdrop="static">VER</button></a>
+                    <a href="{{route('asiento.edit',$asiento->ID_ASIENTO_CONT)}}"><button class="btn btn-primary btn-md" style="margin-right:15px;">EDITAR</button></a>
+                    <a href="{{ route('asiento.destroy',$asiento->ID_ASIENTO_CONT) }}" onclick="return confirm('¿Desea eliminar éste Asiento Contable?')" >
+                      <button class="btn btn-primary btn-md" style="margin-right:15px;">ELIMINAR</button></a>
                   </td>
                 </tr>
+              @endforeach
 
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td>
-                  <a href="{{route('NuevoAsientoContable')}}"></a>  <button class="btn btn-primary btn-md" style="margin-right:15px;">NUEVO</button>
-                  </td>
-                </tr>
-              </table>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                  <a href="{{route('NuevoAsientoContable')}}">  <button class="btn btn-primary btn-md" style="margin-right:15px;">NUEVO</button></a>
+                </td>
+              </tr>
+            </table>
+            {!! $asientos->links() !!}
 
-            </div>
+          </div>
 
-            @include('modals.asientoContable')
+        @include('modals.asientoContable')
 
-          <!-- FORM FINAL -->
+        <!-- FORM FINAL -->
         </div><!--/porlets-content-->
       </div><!--/block-web-->
     </div><!--/col-md-12-->
   </div><!--/row-->
-</div>
-<br>
+  </div>
+  <br>
 
 
-<div class="container">
-<a href="javascript:history.back(1)"><button class="btn btn-primary btn-lg">Volver</button></a>
+  <div class="container">
+    <a href="javascript:history.back(1)"><button class="btn btn-primary btn-lg">Volver</button></a>
 
-</div>
-</a>
-<br>
+  </div>
+  </a>
+  <br>
 
 @endsection

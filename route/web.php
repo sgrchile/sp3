@@ -41,12 +41,13 @@ Route::get('/test', function () {
 
 Route::get('/send', 'EmailController@send');
 
-/*{Route::get('/api/dropdown', function(){
+Route::get('dropdown', function(){
     $id = Input::get('option');
-    $id_num = DB::table('countries')->where('iso',$id)->pluck('id');
-    $states = DB::table('states')->where('country_id',$id_num)->lists('name', 'id');
-    return $states;
-});*/
+    $procesos = Empresa::find($id)->procesos;
+    return $procesos->lists('proceso', 'id');
+});
+
+
 
 /**
  * Todas las rutas con prefijo 'modulo'
@@ -92,26 +93,81 @@ Route::group(['prefix' => 'modulo'], function () {
           return view('ModuloCaja.contable');
         })->name('Contable');
 
-        Route::get('/librosContables', function () {
+        /*Route::get('/librosContables', function () {
           return view('ModuloCaja.librosContables');
-        })->name('LibrosContables');
+        })->name('LibrosContables');*/
 
+        Route::get('/librosContables', [
+            'uses' => 'LibrosContablesController@index',
+            'as' => 'LibrosContables',
+        ]);
 
-        Route::get('/AsientosContables', function () {
+        /*Route::get('/AsientosContables', function () {
             return view('ModuloCaja.AsientosContables');
-        })->name('AsientosContables');
+        })->name('AsientosContables');*/
 
-        Route::get('/NuevoAsientoContable', function () {
+        Route::get('/AsientosContables', [
+            'uses' => 'AsientoContableController@index',
+            'as' => 'AsientosContables',
+        ]);
+
+        /*Route::get('/NuevoAsientoContable', function () {
             return view('ModuloCaja.NuevoAsientoContable');
-        })->name('NuevoAsientoContable');
+        })->name('NuevoAsientoContable');*/
 
-        Route::get('/editarAsientoContable', function () {
+        Route::get('/NuevoAsientoContable', [
+            'uses' => 'AsientoContableController@create',
+            'as' => 'NuevoAsientoContable',
+        ]);
+
+        Route::post('/AgregaAsientoContable', [
+            'uses' => 'AsientoContableController@store',
+            'as' => 'post.asientocontable',
+        ]);
+
+        Route::post('/', [
+            'uses' => 'AsientoContableController@update',
+            'as' => 'post.cuentacontable',
+        ]);
+
+        Route::get('EliminarAsiento/{id}', [
+            'uses' => 'AsientoContableController@destroy',
+            'as' => 'asiento.destroy',
+        ]);
+
+        Route::get('EditarAsientoContable/{id}', [
+            'uses' => 'AsientoContableController@edit',
+            'as' => 'asiento.edit',
+        ]);
+
+        Route::get('VerAsientoContable/{id}', [
+            'uses' => 'AsientoContableController@show',
+            'as' => 'asiento.ver',
+        ]);
+
+        /*Route::get('/editarAsientoContable', function () {
             return view('ModuloCaja.editarAsientoContable');
-        })->name('editarAsientoContable');
+        })->name('editarAsientoContable');*/
 
-        Route::get('/PlanDeCuentas', function () {
+        /*Route::get('/PlanDeCuentas', function () {
             return view('ModuloCaja.PlanDeCuentas');
-        })->name('PlanDeCuentas');
+        })->name('PlanDeCuentas');*/
+
+        Route::get('/PlanDeCuentas', [
+            'uses' => 'CuentaContableController@index',
+            'as' => 'PlanDeCuentas',
+        ]);
+
+        Route::post('/CrearCuenta', [
+            'uses' => 'CuentaContableController@store',
+            'as' => 'post.ctacontable',
+        ]);
+
+        Route::put('/EditarCuenta', [
+            'uses' => 'CuentaContableController@update',
+            'as' => 'put.editarCuenta',
+        ]);
+
 
 
 
@@ -863,9 +919,16 @@ Route::group(['prefix' => 'modulo'], function () {
                       return view('ModuloInventario.Productos.modificarProductos');
                     })->name('modificarProductos');
 
-                    Route::get('/registrarProductos', function () {
+                    /*Route::get('/registrarProductos', function () {
                       return view('ModuloInventario.Productos.registrarProductos');
-                    })->name('registrarProductos');
+                    })->name('registrarProductos');*/
+
+                      Route::get('/registrarProductos', [
+                          'uses' => 'productosController@create',
+                          'as' => 'registrarProductos',
+                      ]);
+
+
                   });
                   // FIN PRODUCTOS
 
@@ -1110,20 +1173,21 @@ Route::group(['prefix' => 'modulo'], function () {
               return view('ModuloVentas.indexVentas');
           })->name('Ventas');
 
-          Route::get('historialDeVentas', function () {
+          /*Route::get('historialDeVentas', function () {
             return view('ModuloVentas.historialDeVentas');
-          })->name('historialDeVentas');
+          })->name('historialDeVentas');*/
 
-          Route::get('historialDeVentas', function () {
-            return view('ModuloVentas.historialDeVentas');
-          })->name('historialDeVentas');
+          Route::get('historialDeVentas', [
+              'uses' => 'ventasController@index',
+              'as' => 'historialDeVentas',
+          ]);
 
           Route::get('fichaDeVenta', function () {
             return view('ModuloVentas.fichaDeVenta');
           })->name('fichaDeVenta');
 
-          Route::get('fichaDeVenta', [
-              'uses' => 'ventasController@create',
+          /*Route::get('/FichaDeVenta/{id}', [
+              'uses' => 'ventasController@show',
               'as' => 'fichaDeVenta',
           ]);
 
