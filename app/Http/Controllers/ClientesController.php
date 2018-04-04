@@ -308,7 +308,7 @@ class ClientesController extends Controller
         $ciu = Ciudad::find($request->get('ciudad'));
         $contacto->setAttribute('CONT_SUCURSAL', $ciu->getAttribute('CIU_DESC'));
 
-        dd($contacto);
+        //dd($contacto);
         $contacto->save();
 
 

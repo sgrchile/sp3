@@ -20,7 +20,7 @@
 
               <td>CLIENTE:</td>
               <td>
-                  <input type="text" value="{{ $actividad->ID_CLIENTE_ACT }}" name="cliente" style="width:175px;" class="form-control" id="cliente" readOnly/>
+                  <input type="text" value="{{ $cliente->CLI_RUT }}" name="cliente" style="width:175px;" class="form-control" id="cliente" readOnly/>
               </td>
               <td>DESCRIPCION:</td>
               <td>
@@ -44,7 +44,7 @@
           <tr>
               <td>CONTACTO</td>
               <td>
-                  {{ Form::select('contacto',App\Contactos::where('CONT_CLI_ID','=',$actividad->ID_CLIENTE_ACT)->pluck('CONT_NOM','ID_CONT'),null,['class'=>'form-control','style'=>'width:175px']) }}
+                  {{ Form::select('contacto',App\Contactos::where('CONT_CLI_ID','=',$cliente->CLI_RUT)->pluck('CONT_NOM','ID_CONT'),null,['class'=>'form-control','style'=>'width:175px']) }}
               </td>
           </tr>
 

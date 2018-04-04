@@ -322,8 +322,8 @@
             </tr>
           </table>
             {{ $actividades->links() }}
-          @include('modals.RegActividad',$actividad)
-            @include('modals.modActividad',$act = App\ActActividad::find($actividad->ID_ACT))
+          @include('modals.RegActividad',$cliente)
+            @include('modals.modActividad',$cliente))
           </div>
 
           <!--<h3 class="text-center text-uppercase">COTIZACIONES</h3>

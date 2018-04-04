@@ -49,15 +49,15 @@
             </tr>
 
             <tr>
-              <td><input type="number" readonly class="form-control" style="width:175px;"</td>
-              <td><input type="number" readonly class="form-control" style="width:175px;"</td>
-              <td><input type="number" readonly  class="form-control" style="width:175px;"</td>
+              <td><input type="number" readonly class="form-control" style="width:175px;"></td>
+              <td><input type="number" readonly class="form-control" style="width:175px;"></td>
+              <td><input type="number" readonly  class="form-control" style="width:175px;"></td>
               <td>    <button class="btn btn-primary btn-sm">ELIMINAR</button></td>
 
             </tr>
 	    <tr>
               <td>
-                {{ Form::select('cta_cont',$cuenta,null,['class'=>'form-control','style'=>'width:175px']) }}
+                {{ Form::select('cta_cont',App\CuentaContable::pluck('NOM_CTA_CONT','ID_CTA_CONT'),null,['class'=>'form-control','style'=>'width:175px']) }}
               </td>
               <td>
                 {{ Form::number('debe',null,['id'=>'debe','class'=>'form-control','style'=>'width:175px']) }}

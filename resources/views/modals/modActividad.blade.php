@@ -17,12 +17,12 @@
         <tr>
           <td>FECHA:</td>
           <td>
-            {{ Form::date('fechaingreso',$act->FECHA_ACT,['class'=>'form-control','style'=>'width:175px','required']) }}
+            {{ Form::date('fechaingreso',null,['class'=>'form-control','style'=>'width:175px','required']) }}
           </td>
 
           <td>HORA:</td>
           <td>
-            {{ Form::time('hora', $act->HORA,['class'=>'form-control','style'=>'width:175px','required']) }}
+            {{ Form::time('hora', null,['class'=>'form-control','style'=>'width:175px','required']) }}
             <!-- <input type="text"  style="width:175px;" class="form-control" required="required"/>-->
           </td>
         </tr>
@@ -30,12 +30,12 @@
 
           <td>CLIENTE:</td>
             <td>
-            {{ Form::text('cliente',$act->ID_CLIENTE_ACT,['class'=>'form-control','style'=>'width:175px;','required','readOnly']) }}
+            {{ Form::text('cliente',null,['class'=>'form-control','style'=>'width:175px;','required','readOnly']) }}
           </td>
 
           <td>CONTACTO:</td>
           <td>
-              {{ Form::select('contacto',App\Contactos::where('CONT_CLI_ID','=',$act->ID_CLIENTE_ACT)->pluck('CONT_NOM','ID_CONT'),$act->NOM_CONT_ACT,
+              {{ Form::select('contacto',App\Contactos::where('CONT_CLI_ID','=',$cliente->CLI_RUT)->pluck('CONT_NOM','ID_CONT'),
               ['class'=>'form-control','style'=>'width:175px']) }}
           </td>
 
