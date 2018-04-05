@@ -6,7 +6,7 @@
       <div class="block-web">
         <div class="header">
           <div class="actions"></div>
-          <h1 class="text-center text-uppercase">MODULO DE CAJA</h1>
+          <h1 class="text-center text-uppercase">CONTABILIDAD</h1>
         </div>
         <div class="porlets-content">
           <!-- FORM INICIO -->

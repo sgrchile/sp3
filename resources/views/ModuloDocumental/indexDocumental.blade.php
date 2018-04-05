@@ -10,9 +10,13 @@
 <div class="row">
   <div class="col-md-12 col-sm-9" >
     <div class="block-web">
+      <div class="alert alert-info" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>MODULO EN DESARROLLO!</strong>
+      </div>
       <div class="header">
         <div class="actions"></div>
-        <h1 class="text-center text-uppercase">MODULO DOCUMENTAL</h1>
+        <h1 class="text-center text-uppercase">DOCUMENTAL</h1>
       </div>
         <div class="porlets-content" align="center">
 

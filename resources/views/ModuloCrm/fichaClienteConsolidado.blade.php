@@ -21,7 +21,7 @@
 
               <td>NOMBRE DE FANTASIA:</td>
               <td>
-                <input name="nombref" type="text"  style="width:175px;" class="form-control" id="nombref" pattern="[A-Za-z]{4-16}" readOnly/>
+                <input name="nombref" type="text" VALUE="{{ $cliente->CLI_NOM_FANT }}" style="width:175px;" class="form-control" id="nombref" pattern="[A-Za-z]{4-16}" readOnly/>
               </td>
 
               <td>RUT:</td>
@@ -34,9 +34,9 @@
             </tr>
             <tr>
 
-              <td>CONTACTO:</td>
+              <td>TELEFONO:</td>
               <td>
-                <input type="text" ID="contacto" value="{{ $cliente->CLI_CONTACTO }}" style="width:175px;" class="form-control" readOnly/>
+                <input type="text" ID="TELEFONO" value="{{ $cliente->CLI_FONO }}" style="width:175px;" class="form-control" readOnly/>
               </td>
 
               <td>EMAIL:</td>
@@ -44,9 +44,9 @@
                 <input type="text" ID="EMAIL" value="{{ $cliente->CLI_EMAIL }}" style="width:175px;" class="form-control" readOnly/>
               </td>
 
-              <td>TELEFONO:</td>
+              <td>TELEFONO 2:</td>
               <td>
-                <input type="text" ID="TELEFONO" value="{{ $cliente->CLI_FONO }}" style="width:175px;" class="form-control" readOnly/>
+                <input type="text" ID="TELEFONO2" value="{{ $cliente->CLI_FONO2 }}" style="width:175px;" class="form-control" readOnly/>
               </td>
 
             </tr>

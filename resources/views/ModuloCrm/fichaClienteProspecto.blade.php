@@ -11,6 +11,13 @@
           <div class="actions"></div>
           <h1 class=" text-center text-uppercase" >FICHA CLIENTE PROSPECTO</h1>
         </div>
+        <div>
+          @if (session('status_cliente'))
+            <div class="alert alert-success">
+              {{ session('status_cliente') }}
+            </div>
+          @endif
+        </div>
         <div class="porlets-content">
           <!-- FORM INICIO -->
 
@@ -34,9 +41,9 @@
               </tr>
               <tr>
 
-                <td>CONTACTO:</td>
+                <td>TELEFONO:</td>
                 <td>
-                  <input type="text" value="{{ $cliente->CLI_CONTACTO }}"  style="width:175px;" class="form-control" readOnly/>
+                  <input type="text" value="{{ $cliente->CLI_FONO }}"  style="width:175px;" class="form-control" readOnly/>
                 </td>
 
 
@@ -46,9 +53,9 @@
                   <input type="text" value="{{ $cliente->CLI_EMAIL }}"  style="width:175px;" class="form-control" readOnly/>
                 </td>
 
-                <td>TELEFONO:</td>
+                <td>TELEFONO 2:</td>
                 <td>
-                  <input type="text" value="{{ $cliente->CLI_FONO }}" style="width:175px;" class="form-control" readOnly/>
+                  <input type="text" value="{{ $cliente->CLI_FONO2 }}" style="width:175px;" class="form-control" readOnly/>
                 </td>
 
               </tr>

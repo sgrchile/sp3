@@ -7,10 +7,14 @@
 <div class="row">
   <div class="col-xs-12 col-md-12 col-sm-12">
     <div class="block-web">
+      <div class="alert alert-info" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>MODULO EN DESARROLLO!</strong>
+      </div>
       <div class="header">
         <div class="actions"></div>
 
-        <h1 class=" text-center text-uppercase" >MÓDULO RECURSOS HUMANOS</h1>
+        <h1 class=" text-center text-uppercase" >RECURSOS HUMANOS</h1>
       </div>
       <div class="porlets-content">
         <!-- FORM INICIO -->

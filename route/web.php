@@ -1110,6 +1110,11 @@ Route::group(['prefix' => 'modulo'], function () {
             'as' => 'editarcliente',
         ]);
 
+        Route::post('/Convertir,{id}', [
+            'uses' => 'ClientesController@convertir',
+            'as' => 'convertir',
+        ]);
+
 
         Route::get('subrubros/{id]', 'ClienteController@getSubRubros');
 

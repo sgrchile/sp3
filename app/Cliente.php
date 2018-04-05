@@ -31,7 +31,7 @@ class Cliente extends Model
         'CLI_FONO',
         'CLI_EMAIL',
         'CLI_NOMBRE',
-        'CLI_CONTACTO',
+        'CLI_FONO2',
         'CLI_ACT_COMERCIAL',
         'CLI_DIRECCION',
         'CLI_TCTA_BCO',

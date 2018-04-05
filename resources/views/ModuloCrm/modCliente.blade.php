@@ -10,7 +10,7 @@
                 <div class="block-web">
                     <div class="header">
                         <div class="actions"></div>
-                        <H1 class="text-center"><strong>MODIFICAR CLIENTES {!! $cliente->CLI_NOMBRE !!} </strong></H1>
+                        <H1 class="text-center"><strong>COMVERTIR EN CLIENTE </strong></H1>
                     </div>
                     <div class="porlets-content">
                         <!-- FORM INICIO -->
@@ -37,9 +37,9 @@
                                     <!--<input type="text" id="rut" name="rut"  style="width:175px;" class="form-control" maxlength="10" required /><!--oninput="checkRut(this)"-->
                                     <script src="{{asset('js/validarRUT.js')}}"></script>
                                     </td>
-                                    <td><a style="color: #9A0000">* </a> CONTACTO:</td>
+                                    <td><a style="color: #9A0000">* </a> TELEFONO :</td>
                                     <td>
-                                        {{ Form::text('contacto',$cliente->CLI_CONTACTO,['class'=>'form-control','style'=>'width:175px']) }}
+                                        {{ Form::text('telefono',$cliente->CLI_FONO,['class'=>'form-control','style'=>'width:175px']) }}
                                     </td>
                                 </tr>
                                 <tr>
@@ -48,9 +48,9 @@
                                         {{ Form::email('email', $cliente->CLI_EMAIL,['class'=>'form-control','required','style'=>'width:175px']) }}
                                     </td>
 
-                                    <td><a style="color: #9A0000">* </a> TELEFONO:</td>
+                                    <td> TELEFONO 2:</td>
                                     <td>
-                                        {{ Form::number('telefono',$cliente->CLI_FONO,['class'=>'form-control','required','style'=>'width:175px']) }}
+                                        {{ Form::text('telefono2',$cliente->CLI_FONO2,['class'=>'form-control','required','style'=>'width:175px']) }}
                                     </td>
                                 </tr>
                                 <tr>
@@ -72,27 +72,27 @@
 
                                     <td>RUBRO:</td>
                                     <td>
-                                        {!! Form::select('rubro',App\Rubro::find($cliente->CLI_RUBRO)->RUB_DESC,['class'=>'form-control','style'=>'width:175px']) !!}
+                                        {!! Form::select('rubro',App\Rubro::where('RUB_COD','=',$cliente->CLI_RUBRO)->pluck('RUB_DESC','RUB_COD'),['class'=>'form-control','style'=>'width:175px']) !!}
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>SUB RUBRO:</td>
                                     <td>
-                                        {!! Form::select('subrubro',App\SubRubro::find($cliente->CLI_SUB_RUBRO)->SUB_RUB_DESC,['class'=>'form-control','style'=>'width:175px']) !!}
+                                        {!! Form::select('subrubro',App\SubRubro::where('SUB_RUB_COD','=',$cliente->CLI_SUB_RUBRO)->pluck('SUB_RUB_DESC','SUB_RUB_COD'),['class'=>'form-control','style'=>'width:175px']) !!}
                                     </td>
                                     <td>ACTIVIDAD:</td>
                                     <td>
-                                        {!! Form::select('actividad',App\Actividad::find($cliente->CLI_CLI_ACTIVIDAD)->ACT_DESC,['class'=>'form-control','id'=>'actividad','style'=>'width:175px']) !!}
+                                        {!! Form::select('actividad',App\Actividad::where('ACT_COD_COD','=',$cliente->CLI_CLI_ACTIVIDAD)->pluck('ACT_DESC','ACT_COD_COD'),['class'=>'form-control','id'=>'actividad','style'=>'width:175px']) !!}
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>BANCO:</td>
                                     <td>
-                                        {!! Form::select('banco',App\Banco::find($cliente->CLI_BANCO)->BCO_DESC,['class'=>'form-control','id'=>'banco','style'=>'width:175px']) !!}
+                                        {!! Form::select('banco',App\Banco::where('BCO_ID','=',$cliente->CLI_BANCO)->pluck('BCO_DESC','BCO_ID'),['class'=>'form-control','id'=>'banco','style'=>'width:175px']) !!}
                                     </td>
                                     <td>TIPO DE CUENTA:</td>
                                     <td>
-                                        {!! Form::select('tipocuenta',App\TipoCuenta::find($cliente->CLI_TCTA_BCO)->TCTA_DESC,['class'=>'form-control','id'=>'tipocuenta','style'=>'width:175px']) !!}
+                                        {!! Form::select('tipocuenta',App\TipoCuenta::where('TCTA_BCO','=',$cliente->CLI_TCTA_BCO)->pluck('TCTA_DESC','TCTA_BCO'),['class'=>'form-control','id'=>'tipocuenta','style'=>'width:175px']) !!}
                                     </td>
                                 </tr>
                                 <tr>
@@ -108,31 +108,27 @@
                                 <tr>
                                     <td>PAIS:</td>
                                     <td>
-                                        {!! Form::select('pais',App\Pais::find($cliente->CLI_PAIS)->PAI_DESC,['class'=>'form-control','id'=>'pais','style'=>'width:175px']) !!}
+                                        {!! Form::select('pais',App\Pais::where('PAI_COD','=',$cliente->CLI_PAIS)->pluck('PAI_DESC','PAI_COD'),['class'=>'form-control','id'=>'pais','style'=>'width:175px']) !!}
                                     </td>
                                     <td>REGION:</td>
                                     <td>
-                                        {!! Form::select('region',App\Region::find($cliente->CLI_REGION)->REG_DESC,['class'=>'form-control','id'=>'region','style'=>'width:175px']) !!}
+                                        {!! Form::select('region',App\Region::where('REG_COD','=',$cliente->CLI_REGION)->pluck('REG_DESC','REG_COD'),['class'=>'form-control','id'=>'region','style'=>'width:175px']) !!}
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>PROVINCIA:</td>
                                     <td>
-                                        {!! Form::select('provincia',App\Provincia::find($cliente->CLI_PROVINCIA)->PV_DESC,['class'=>'form-control','id'=>'provincia','style'=>'width:175px']) !!}
+                                        {!! Form::select('provincia',App\Provincia::where('PV_COD','=',$cliente->CLI_PROVINCIA)->pluck('PV_DESC','PV_COD'),['class'=>'form-control','id'=>'provincia','style'=>'width:175px']) !!}
                                     </td>
                                     <td>CIUDAD:</td>
                                     <td>
-                                        {!! Form::select('ciudad',App\Ciudad::find($cliente->CLI_CIUDAD)->CIU_DESC,['class'=>'form-control','id'=>'ciudad','style'=>'width:175px']) !!}
+                                        {!! Form::select('ciudad',App\Ciudad::where('CIU_COD','=',$cliente->CLI_CIUDAD)->pluck('CIU_DESC','CIU_COD'),['class'=>'form-control','id'=>'ciudad','style'=>'width:175px']) !!}
                                     </td>
                                 </tr>
                                 <tr>
                                     <td><a style="color: #9A0000">* </a> DIRECCION:</td>
                                     <td>
                                         {{ Form::text('direccion',$cliente->CLI_DIRECCION,['class'=>'form-control', 'required','style'=>'width:175px']) }}
-                                    </td>
-                                    <td><a style="color: #9A0000">* </a> TEMPERATURA:</td>
-                                    <td>
-                                        {{ Form::select('temperatura',App\Temperatura::pluck('desc_temp','id_temp'),['class'=>'form-control','style'=>'width:175px']) }}
                                     </td>
                                 </tr>
                             </table>

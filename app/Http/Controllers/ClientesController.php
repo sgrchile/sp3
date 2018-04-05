@@ -76,9 +76,10 @@ class ClientesController extends Controller
         $cliente = new Cliente();
         $cliente->setAttribute('CLI_RUT',$request->get('rut',null));
         $cliente->setAttribute('CLI_NOMBRE',$request->get('nombre',null));
-        $cliente->setAttribute('CLI_CONTACTO',$request->get('contacto',null));
-        $cliente->setAttribute('CLI_EMAIL',$request->get('email',null));
+        $cliente->setAttribute('CLI_NOM_FANT',$request->get('nombref',null));
         $cliente->setAttribute('CLI_FONO',$request->get('telefono',null));
+        $cliente->setAttribute('CLI_EMAIL',$request->get('email',null));
+        $cliente->setAttribute('CLI_FONO2',$request->get('telefono2',null));
         $cliente->setAttribute('CLI_ACT_COMERCIAL',$request->get('actcomercial',null));
         $cliente->setAttribute('CLI_DIRECCION',$request->get('direccion',null));
         $cliente->setAttribute('CLI_TCTA_BCO',$request->get('tipocuenta',null));
@@ -108,7 +109,7 @@ class ClientesController extends Controller
             //return redirect()->route('result')->with('success', true);
         }else{
             //dd("false");
-            return redirect()->route('regCliente')->with('error', "Hubo un problema al crear el CLIENTE.");
+            return redirect()->route('regCliente')->with('error', "El CLIENTE ya existe.");
             //return view('ModuloOt.result')->with('success', false);
         }
 
@@ -126,7 +127,6 @@ class ClientesController extends Controller
             'rut' => 'required',
             'actividad' => 'required',
             'direccion' => 'required',
-            'contacto' => 'required',
             'email' => 'required',
             'fono' => 'required',
         ]);
@@ -141,7 +141,6 @@ class ClientesController extends Controller
             'CLI_FONO' => $data['fono'],
             'CLI_EMAIL' => $data['email'],
             'CLI_NOMBRE' => $data['nombre'],
-            'CLI_CONTACTO' => $data['contacto'],
             'CLI_ACT_COMERCIAL' => $data['actividad'],
             'CLI_DIRECCION' => $data['direccion'],
             'CLI_TCTA_BCO' => $tipo_cuenta_id,
@@ -162,9 +161,9 @@ class ClientesController extends Controller
             $cliente = new Client();
             $cliente->setAttribute('CLI_RUT',$results->get('CLI_RUT',null));
             $cliente->setAttribute('CLI_NOMBRE',$results->get('CLI_NOMBRE',null));
-            $cliente->setAttribute('CLI_CONTACTO',$results->get('CLI_CONTACTO',null));
-            $cliente->setAttribute('CLI_EMAIL',$results->get('CLI_EMAIL',null));
             $cliente->setAttribute('CLI_FONO',$results->get('CLI_FONO',null));
+            $cliente->setAttribute('CLI_EMAIL',$results->get('CLI_EMAIL',null));
+            $cliente->setAttribute('CLI_FONO2',$results->get('CLI_FONO2',null));
             $cliente->setAttribute('CLI_ACT_COMERCIAL',$results->get('CLI_ACT_COMERCIAL',null));
             $cliente->setAttribute('CLI_DIRECCION',$results->get('CLI_DIRECCION',null));
             $cliente->setAttribute('CLI_TCTA_BCO',$results->get('CLI_TCTA_BCO',null));
@@ -176,7 +175,7 @@ class ClientesController extends Controller
 
     public function regcliente($rut){
 
-        $cliente = DB::select('select CLI_RUT from cli_cliente where CLI_RUT = ?', [$rut]);
+        $cliente = Cliente::find($rut);
 
         //dd($cliente);
         if (empty($cliente)){
@@ -196,7 +195,7 @@ class ClientesController extends Controller
     {
         $cliente = Cliente::find($id);
         //dd($cliente);
-        return view('ModuloCrm.modCliente')->with('cliente',$cliente);
+        return view('ModuloCrm.convertirCliente')->with('cliente',$cliente);
 
     }
 
@@ -316,6 +315,32 @@ class ClientesController extends Controller
 
 
         return redirect()->back();
+    }
+
+    public function convertir(Request $request, $id){
+        $cliente = Cliente::find($id);
+        //dd($id);
+        $cliente->setAttribute('CLI_NOMBRE',$request->get('nombre',null));
+        $cliente->setAttribute('CLI_RUT',$request->get('rut'));
+        $cliente->setAttribute('CLI_RUBRO',$request->get('rubro'));
+        $cliente->setAttribute('CLI_SUB_RUBRO',$request->get('subrubro'));
+        $cliente->setAttribute('CLI_ACTIVIDAD',$request->get('actividad'));
+
+        //dd($cliente);
+
+        if ($this->regcliente($cliente->getAttribute('CLI_RUT'))){
+
+            $cliente->save();
+            //dd("true");
+            //return view('ModuloOt.result')->with('success', true);
+            return redirect()->action(fichaclicons)->with('success', "ha sido convertido exitosamente.");
+            //return redirect()->route('result')->with('success', true);
+        }else{
+            //dd("false");
+            return redirect()->back()->with('error', "El CLIENTE ya está registrado favor comunicarce con administrador.");
+            //return view('ModuloOt.result')->with('success', false);
+        }
+        return redirect();
     }
 
     function valida_rut($rut)

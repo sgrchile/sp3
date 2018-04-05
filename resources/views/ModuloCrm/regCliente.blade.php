@@ -37,9 +37,9 @@
                   <!--<input type="text" id="rut" name="rut"  style="width:175px;" class="form-control" maxlength="10" required /><!--oninput="checkRut(this)"-->
                   <!--<script src="{{asset('js/validarRUT.js')}}"></script>-->
                 </td>
-                <td><a style="color: #9A0000">* </a> CONTACTO:</td>
+                <td><a style="color: #9A0000">* </a> TELEFONO:</td>
                 <td>
-                  {{ Form::text('contacto',null,['class'=>'form-control','style'=>'width:175px']) }}
+                  {{ Form::number('telefono',null,['class'=>'form-control','style'=>'width:175px']) }}
                 </td>
               </tr>
               <tr>
@@ -48,9 +48,9 @@
                   {{ Form::email('email', null,['class'=>'form-control','placeholder'=>'example@gmail.com','required','style'=>'width:175px']) }}
                 </td>
 
-                <td><a style="color: #9A0000">* </a> TELEFONO:</td>
+                <td> TELEFONO 2:</td>
                 <td>
-                  {{ Form::number('telefono',null,['class'=>'form-control','required','style'=>'width:175px']) }}
+                  {{ Form::number('telefono2',null,['class'=>'form-control','style'=>'width:175px']) }}
                 </td>
 
               </tr>
