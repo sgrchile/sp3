@@ -36,7 +36,7 @@
                                   <p>SOLICITUD DE FONDOS</p>
                               </td>
                               <td>
-                                  <a href="{{route('CRM')}}"><img src="{{ asset('images/marketing.png') }}" class="img-responsive" width="113" height="128"/></a>
+                                  <a href="{{route('CRM')}}"><img src="{{ asset('images/Marketing.png') }}" class="img-responsive" width="113" height="128"/></a>
                                   <p style="text-align:center;">CRM</p>
                               </td>
                         </tr>
