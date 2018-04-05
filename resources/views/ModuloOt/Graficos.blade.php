@@ -2,7 +2,7 @@
 @section('content')
 <div ng-app="">
 
-<h1 class="text-center text-uppercase">grafico de ordenes</h1>
+<h1 class="text-center text-uppercase">Estado de Orden de Trabajo</h1>
 
 
 <div class="container " align="center">

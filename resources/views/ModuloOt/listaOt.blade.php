@@ -7,7 +7,7 @@
     <div class="block-web">
       <div class="header">
         <div class="actions"></div>
-        <h1 class="text-center text-uppercase">LISTA ot</h1>
+        <h1 class="text-center text-uppercase">LISTADO DE OT</h1>
       </div>
       <div class="porlets-content">
         <!-- FORM INICIO -->
@@ -44,9 +44,9 @@
 
               <td width='200px'>
 
-              <a href={{route('modificaOt', $ot->OT_ID)}}><button class='btn btn-primary btn-sm'> Modificar</button></a>
-              <a href={{route('verOT', $ot->OT_ID)}}> <button class='btn btn-primary btn-sm'> Resumen</button></a>
-              <a href=""> <button class='btn btn-primary btn-sm'> Sel. prov</button></a>
+              <a href={{route('modificaOt', $ot->OT_ID)}}><button class='btn btn-primary btn-sm'> Procesar </button></a>
+              <a href={{route('verOT', $ot->OT_ID)}}> <button class='btn btn-primary btn-sm'> Ficha </button></a>
+              <a href=""> <button class='btn btn-primary btn-sm'> Proveedor </button></a>
               </td>
               </tr>
 

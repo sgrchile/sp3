@@ -1104,6 +1104,13 @@ Route::group(['prefix' => 'modulo'], function () {
             'uses' => 'ClientesController@create',
             'as' => 'regCliente',
         ]);
+
+        Route::get('/EditarCliente,{id}', [
+            'uses' => 'ClientesController@edit',
+            'as' => 'editarcliente',
+        ]);
+
+
         Route::get('subrubros/{id]', 'ClienteController@getSubRubros');
 
       Route::get('/RegistroDeContacto', function () {
@@ -1149,11 +1156,6 @@ Route::group(['prefix' => 'modulo'], function () {
         Route::get('/listaClientes', [
             'uses' => 'ClientesController@index',
             'as' => 'listaCli',
-        ]);
-
-        Route::get('/edit/{id}', [
-            'uses' => 'ClientesController@edit',
-            'as' => 'editCli',
         ]);
 
         Route::get('/delete/{id}', [

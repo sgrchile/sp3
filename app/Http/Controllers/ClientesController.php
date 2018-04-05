@@ -94,7 +94,7 @@ class ClientesController extends Controller
         $cliente->setAttribute('CLI_REGION',$request->get('region',null));
         $cliente->setAttribute('CLI_CIUDAD',$request->get('ciudad',null));
         $cliente->setAttribute('CLI_PROVINCIA',$request->get('provincia', null));
-        $cliente->setAttribute('CLI_TEMP',$request->get('temperatura'));
+        $cliente->setAttribute('CLI_TEMP',$request->get('temperatura', null));
 
 
         //dd($this->regcliente($cliente->getAttribute('CLI_RUT')));
@@ -194,7 +194,10 @@ class ClientesController extends Controller
      */
     public function edit($id)
     {
-        dd($id);
+        $cliente = Cliente::find($id);
+        //dd($cliente);
+        return view('ModuloCrm.modCliente')->with('cliente',$cliente);
+
     }
 
     /**

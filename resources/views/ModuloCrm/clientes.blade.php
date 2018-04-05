@@ -67,7 +67,7 @@
                 <td>{{ $cliente->CLI_FONO }}</td>
                 <td>{{ $cliente->CLI_CONTACTO }}</td>
                 <td>
-                <button class="btn btn-primary btn-xs" style="width:130px; margin-bottom:10px;"> CONVERTIR</button>
+                  <a href="{{route('editarcliente', $cliente)}}"><button class="btn btn-primary btn-xs" style="width:130px; margin-bottom:10px;"> CONVERTIR</button></a>
                 <a href="{{route('fichaClienteProspecto', $cliente)}}"><button class="btn btn-primary btn-xs" style="width:130px;"> VER FICHA</button></a>
               </td>
               @endif

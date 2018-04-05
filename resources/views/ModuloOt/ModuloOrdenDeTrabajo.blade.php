@@ -6,7 +6,7 @@
     <div class="block-web">
       <div class="header">
         <div class="actions"></div>
-        <h1 class="content-header text-center text-uppercase"><b>Módulo Orden De Trabajo</b></h1>
+        <h1 class="content-header text-center text-uppercase"><b>Orden De Trabajo</b></h1>
       </div>
       <div class="porlets-content">
         <!-- FORM INICIO -->
@@ -16,8 +16,8 @@
 
 
               <a href="{{ route('ModuloOt.IngresoOt') }}" ><button type="button" class="btn btn-primary btn-lg" style="width:250px; margin-bottom:15px;">AGREGAR OT</button></a> </td>
-             <a href="{{ route('ModuloOt.listaOt')}}"><button type="button" class="btn btn-primary btn-lg" style="width:250px; margin-bottom:15px;">ESTADOS OT</button></a>
-             <a href="{{ route('Graficos')}}"><button type="button" class="btn btn-primary btn-lg" style="width:250px; margin-bottom:15px;">GRAFICO OT</button></a>
+             <a href="{{ route('ModuloOt.listaOt')}}"><button type="button" class="btn btn-primary btn-lg" style="width:250px; margin-bottom:15px;">PROCESAR OT</button></a>
+             <a href="{{ route('Graficos')}}"><button type="button" class="btn btn-primary btn-lg" style="width:250px; margin-bottom:15px;">ESTADO OT</button></a>
              <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" style="width:250px; margin-bottom:15px;">CLIENTES</button>
              <button type="button" class="btn btn-primary btn-lg" style="width:250px; margin-bottom:15px;">REDACCION DE INFORMES</button>
 
@@ -39,8 +39,8 @@
                 </div>
                 <div class="modal-body">
                   <center>
-                    <a href=""><button type="button" class="btn btn-primary btn-lg">Registro clientes</button></a>
-                    <a href=""><button type="button" class="btn btn-primary btn-lg">Listado Clientes</button></a>
+                    <a href="{{ route('regCliente')}}"><button type="button" class="btn btn-primary btn-lg">Registro clientes</button></a>
+                    <a href="{{ route('listaCli')}}"><button type="button" class="btn btn-primary btn-lg">Listado Clientes</button></a>
                   </center>
                 </div>
                 <div class="modal-footer">

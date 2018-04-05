@@ -14,7 +14,7 @@ DATOS QUE SE REGISTRAN POR DEFECTO
     <div class="block-web">
       <div class="header">
         <div class="actions"></div>
-        <h1 class="content-header text-center text-uppercase"><b>CREAR ORDEN DE TRABAJO</b></h1>
+        <h1 class="content-header text-center text-uppercase"><b>ORDEN DE TRABAJO</b></h1>
       </div>
       <div class="porlets-content">
         <!-- FORM INICIO -->

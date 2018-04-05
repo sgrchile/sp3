@@ -6,7 +6,7 @@
     <div class="block-web">
       <div class="header">
         <div class="actions"></div>
-        <h1 class=" text-center text-uppercase" >MÓDULO RECURSOS HUMANOS</h1>
+        <h1 class=" text-center text-uppercase" >RECURSOS HUMANOS</h1>
       </div>
       <div class="porlets-content">
         <!-- FORM INICIO -->
@@ -26,13 +26,13 @@
                 <a href="{{route('regPersonal')}}"><button class="btn btn-primary" style="width:200px;margin-bottom: 15px;">REGISTRAR RRHH</button></a>
                 <a href="{{route('modPers')}}"><button class="btn btn-primary" style="width:200px;margin-bottom: 15px;">MODIFICAR RRHH</button></a>
                 <a href="{{route('resetContrasenaPersonal')}}"><button class="btn btn-primary" style="width:200px;margin-bottom: 15px; ">RESETEAR CONTRASEÑA</button></a>
-                <a href="{{route('asigACT')}}"><button class="btn btn-primary" style="width:200px; margin-bottom: 15px;">ASIGNACION DE ACTIVOS</button></a>
+                <a href="{{route('asigACT')}}"><button class="btn btn-primary" style="width:200px; margin-bottom: 15px;">ASIGNAR ACTIVOS</button></a>
               </td>
             </tr>
           </table>
           <br>
 
-          <h3>GESTIONES ADMINISTRATIVAS</h3>
+          <h3>GESTION ADMINISTRATIVA</h3>
 
           <table align="center">
             <tr>
@@ -57,7 +57,7 @@
 
                 <a href="{{route('visualizarPostulantes')}}"><button class="btn btn-primary" style="width:250px;margin-bottom: 15px;">CONSULTAR POSTULANTES</button></a>
                 <a href="{{route('EstPost')}}"><button class="btn btn-primary " style="width:250px;margin-bottom: 15px;">ESTADO DE OFERTA</button></a>
-                <a href="{{route('regOferta')}}"><button class="btn btn-primary  " style="width:250px;margin-bottom: 15px;">REGISTRO DE OFERTA </button></a>
+                <a href="{{route('regOferta')}}"><button class="btn btn-primary  " style="width:250px;margin-bottom: 15px;">REGISTRAR DE OFERTA </button></a>
                 <a href="{{route('modOf')}}"><button class="btn btn-primary  " style="width:250px;margin-bottom: 15px;">MODIFICAR OFERTA </button></a>
 
               </td>

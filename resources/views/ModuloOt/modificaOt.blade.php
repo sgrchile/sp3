@@ -9,7 +9,7 @@
       <div class="block-web">
         <div class="header">
           <div class="actions"></div>
-          <h1 class="text-center text-uppercase">Modificar OT</h1>
+          <h1 class="text-center text-uppercase">Procesar OT</h1>
         </div>
         <div class="porlets-content">
           <!-- FORM INICIO -->
@@ -119,7 +119,7 @@
                 </tr>
 
                 <tr>
-                  <td colspan="8" align="center"><label>Descripcion:</label>
+                  <td colspan="8" align="center"><label>Descripción:</label>
                     <br>
                     <textarea rows="4" cols="50" style="width:500px; max-width:500px" name="descripcion" class="form-control">{{ $orden_trabajo->OT_DESC }}</textarea></td>
                   </tr>
@@ -129,7 +129,7 @@
                   <tr>
 
                     <td colspan="8" align="center"><label>
-                      <button type="submit" class="btn btn-primary btn-md" id="myBtn3">Modificar OT</button>
+                      <button type="submit" class="btn btn-primary btn-md" id="myBtn3">Procesar</button>
                     </label>
                   </td>
                 </tr>
@@ -142,7 +142,7 @@
             <br>
 
 
-            <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#solFondo" data-backdrop="static">Solicitar fondo</button>
+            <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#solFondo" data-backdrop="static">Solicitar fondos</button>
 
             <!-- Modal SOLICITAR FONDO-->
             <div class="modal fade " id="solFondo" role="dialog" >
@@ -152,7 +152,6 @@
                 <div class="modal-content " style="width:900px" >
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">×</button>
-                    <h4 class="modal-title">SOLICITAR FONDO</h4>
                   </div>
                   <div class="modal-body ">
 
@@ -211,22 +210,7 @@
                         <tr>
                           <td><label>BANCO:</label> </td>
                           <td>
-                            <select name="bco" style="width:175px">
-                              <option>BancoEstado</option>
-                              <option>Banco Chile</option>
-                              <option>Banco Scotiabank</option>
-                              <option>Corp banca</option>
-                              <option>Banco Bice</option>
-                              <option>Banco Santander</option>
-                              <option>banco Itau</option>
-                              <option>Banco Security</option>
-                              <option>Banco Falabella</option>
-                              <option>Banco Repley</option>
-                              <option>Banco Consorsio</option>
-                              <option>Banco Paris</option>
-                              <option>Banco BBVA</option>
-                              <option>Banco BCI</option>
-                            </select>
+                            {{ Form::select('banco',App\Banco::pluck('BCO_DESC','BCO_ID'),null,['class'=>'form-control','style'=>'width:175px','placeholder'=>'Seleccione']) }}
 
                           </td>
                         </tr>
@@ -395,7 +379,7 @@
             <!--// Modal INGRESO DE DOCUMENTO PENDIENTE-->
 
 
-            <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#solfact" data-backdrop="static">Solicitar facturacion</button>
+            <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#solfact" data-backdrop="static">Solicitar facturación</button>
 
             <!-- Modal SOLICITAR FACTURACION-->
             <div class="modal fade " id="solfact" role="dialog" >
@@ -433,8 +417,14 @@
                           <td><input type="text" required></td>
                         </tr>
 
-                        <tr><td colspan="2" align="center"><button type="submit" id="ingDoc" class="btn btn-primary btn-lg">Solicitar facturacion</button></td></tr>
-
+                        <tr>
+                          <td colspan="2" align="center"><button type="submit" id="ingDoc" class="btn btn-primary btn-lg">Solicitar facturación</button>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td colspan="2" align="center"><a href=""> <button type="submit" class="btn btn-primary btn-lg"> Proveedor </button></a>
+                          </td>
+                        </tr>
                       </table>
 
                     </form>

@@ -323,7 +323,12 @@
           </table>
             {{ $actividades->links() }}
           @include('modals.RegActividad',$cliente)
-            @include('modals.modActividad',$cliente))
+            @include('modals.modActividad',$cliente)
+          </div>
+
+          <div>
+            <div class="container">  <a href="{{route('clientes')}}"><button class="btn btn-primary btn-lg">Reasignar</button></a></div>
+            <div class="container">  <a href="{{route('clientes')}}"><button class="btn btn-primary btn-lg">Editar</button></a></div>
           </div>
 
           <!--<h3 class="text-center text-uppercase">COTIZACIONES</h3>

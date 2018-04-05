@@ -138,26 +138,10 @@
     <div class="left_nav_slidebar">
       <ul>
         <li class=" theme_border"><a href="{{route('menu')}}"><i class="fa fa-home"></i> MENU  <span class="plus"></span> </a></li>
-        <li class=" theme_border"><a href="{{route('dashboard')}}"><i class="fa fa-home"></i> DASHBOARD  <span class="plus"></span> </a></li>
-        <li> <a href="javascript:void(0);"> <i class="fa fa-edit"></i>ORDEN DE TRABAJO<span class="plus"><i class="fa fa-plus"></i></span></a>
-          <ul>
-            <li> <a href="{{route('ModuloOt') }}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>INICIO</b> </a> </li>
-            <li> <a href="{{route('ModuloOt.IngresoOt') }}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>INGRESO OT</b> </a> </li>
-            <li> <a href="{{route('ModuloOt.listaOt')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>LISTA OT</b> </a> </li>
-            <li> <a href="{{route('Graficos')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>GRAFICO OT</b> </a> </li>
-            <li> <a href="{{route('confOT')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>CONFIGURACION</b> </a> </li>
-          </ul>
-        </li>
-        <li> <a href="javascript:void(0);"> <i class="fa fa-folder-open-o"></i> CAJA <span class="plus"><i class="fa fa-plus"></i></span> </a>
-          <ul>
-            <li> <a href="{{route('moduloCaja')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>INICIO</b> </a> </li>
-            <li> <a href="{{route('SolFon')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>SOLICITUD DE FONDO</b> </a> </li>
-            <li> <a href="{{route('Finanzas')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>FINANZAS </b> </a> </li>
-            <li> <a href="{{route('Contable')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b> CONTABILIDAD</b> </a> </li>
-            <li> <a href=""> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>PRESUPUESTO </b> </a> </li>
-
-          </ul>
-        </li>
+        <li class=" theme_border"><a href="{{route('dashboard')}}"><i class="fa fa-home"></i> CONTROL GLOBAL  <span class="plus"></span> </a></li>
+        <li><a href="{{route('Contable')}}"><i class="fa fa-folder-open-o"></i>CONTABILIDAD</a> </li>
+        <li><a href="{{route('Finanzas')}}"><i class="fa fa-folder-open-o"></i>FINANZAS</a> </li>
+        <li><a href=""><i class="fa fa-folder-open-o"></i>PRESUPUESTO</a> </li>
         <li> <a href="javascript:void(0);"> <i class="fa fa-users icon"></i> RRHH <span class="plus"><i class="fa fa-plus"></i></span> </a>
           <ul>
             <li> <a href="{{route('CarpetaPersonal')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Mi carpeta RRHH</b> </a> </li>
@@ -165,14 +149,7 @@
 
           </ul>
         </li>
-        <li> <a href="javascript:void(0);"> <i class="fa fa-envelope"></i> INVENTARIO <span class="plus"><i class="fa fa-plus"></i></span> </a>
-          <ul>
-            <li> <a href="{{route('inventario')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>INICIO</b> </a> </li>
-            <li> <a href="{{route('Catalogo')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>CATALOGO</b> </a> </li>
-            <li> <a href="{{route('Adquisiciones')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>ADQUISICIONES</b> </a> </li>
-            <li> <a href="{{route('Bodega')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>BODEGA</b> </a> </li>
-          </ul>
-        </li>
+        <li><a href="{{route('SolFon')}}"><i class="fa fa-folder-open-o"></i>SOLICITUD DE FONDOS</a> </li>
         <li> <a href="javascript:void(0);"> <i class="fa fa-tasks"></i>CRM<span class="plus"><i class="fa fa-plus"></i></span></a>
           <ul>
             <li> <a href="{{route('CRM')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>INICIO</b> </a> </li>
@@ -185,26 +162,39 @@
             <li> <a href="{{route('ajustes')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>AJUSTES</b> </a> </li>
           </ul>
         </li>
-        <li> <a href="javascript:void(0);"> <i class="fa fa-th"></i> DOCUMENTAL <span class="plus"><i class="fa fa-plus"></i></span> </a>
+        <li> <a href="javascript:void(0);"> <i class="fa fa-edit"></i>ORDEN DE TRABAJO<span class="plus"><i class="fa fa-plus"></i></span></a>
           <ul>
-            <li> <a href="{{route('documentosInternos')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>DOCUMENTOS</b> </a> </li>
-            <li> <a href="#"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>REGISTRO FOTGRAFICO</b> </a> </li>
+            <li> <a href="{{route('ModuloOt') }}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>INICIO</b> </a> </li>
+            <li> <a href="{{route('ModuloOt.IngresoOt') }}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>INGRESO OT</b> </a> </li>
+            <li> <a href="{{route('ModuloOt.listaOt')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>LISTA OT</b> </a> </li>
+            <li> <a href="{{route('Graficos')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>GRAFICO OT</b> </a> </li>
+            <li> <a href="{{route('confOT')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>CONFIGURACION</b> </a> </li>
           </ul>
         </li>
-        <li> <a href="javascript:void(0);"> <i class="fa fa-th"></i> VENTAS <span class="plus"><i class="fa fa-plus"></i></span> </a>
+        <li> <a href="{{route('PROV')}}"> <i class="fa fa-th"></i> PROVEEDORES <span class="plus"><i class="fa fa-plus"></i></span> </a>
+        </li>
+        <li> <a href="javascript:void(0);"> <i class="fa fa-th"></i> PUNTO DE VENTA <span class="plus"><i class="fa fa-plus"></i></span> </a>
           <ul>
             <li> <a href="{{route('Ventas')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>INICIO</b> </a> </li>
             <li> <a href="{{route('historialDeVentas')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>HISTORIAL DE VENTAS</b> </a> </li>
             <li> <a href="{{route('fichaDeVenta')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>FICHA DE VENTA</b> </a> </li>
             <li> <a href="{{route('formularioDeVentas')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>FORMULARIO DE VENTAS</b> </a> </li>
-
           </ul>
         </li>
-        <li> <a href="{{route('PROV')}}"> <i class="fa fa-th"></i> PROVEEDORES <span class="plus"><i class="fa fa-plus"></i></span> </a>
-
+        <li> <a href="javascript:void(0);"> <i class="fa fa-envelope"></i> INVENTARIO <span class="plus"><i class="fa fa-plus"></i></span> </a>
+          <ul>
+            <li> <a href="{{route('inventario')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>INICIO</b> </a> </li>
+            <li> <a href="{{route('Catalogo')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>CATALOGO</b> </a> </li>
+            <li> <a href="{{route('Adquisiciones')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>ADQUISICIONES</b> </a> </li>
+            <li> <a href="{{route('Bodega')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>BODEGA</b> </a> </li>
+          </ul>
         </li>
-        <li> <a href="http://www.kutralco.com/clubrecepcionista/login.php"> <i class="fa fa-th"></i> RECEPCION <span class="plus"><i class="fa fa-plus"></i></span> </a>
-
+        <li><a href=""><i class="fa fa-folder-open-o"></i>LICITACIONES</a> </li>
+        <li> <a href="javascript:void(0);"> <i class="fa fa-th"></i> EVENTOS <span class="plus"><i class="fa fa-plus"></i></span> </a>
+          <ul>
+            <li> <a href="{{route('listaDeEventos')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>LISTA DE EVENTOS</b> </a> </li>
+            <li> <a href="{{route('crearEvento')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>CREAR EVENTOS</b> </a> </li>
+          </ul>
         </li>
         <li> <a href="javascript:void(0);"> <i class="fa fa-th"></i> RESERVA DE SALA <span class="plus"><i class="fa fa-plus"></i></span> </a>
           <ul>
@@ -213,10 +203,14 @@
             <li> <a href="{{route('sala')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>SALA</b> </a> </li>
           </ul>
         </li>
-        <li> <a href="javascript:void(0);"> <i class="fa fa-th"></i> EVENTOS <span class="plus"><i class="fa fa-plus"></i></span> </a>
+        <li><a href=""><i class="fa fa-th"></i>MARKETING</a> </li>
+        <li><a href=""><i class="fa fa-th"></i>MEJORA CONTINUA</a> </li>
+        <li><a href=""><i class="fa fa-th"></i>INFORMES DE GESTION</a> </li>
+        <li><a href=""><i class="fa fa-th"></i>CAPACITACIÓN</a> </li>
+        <li> <a href="javascript:void(0);"> <i class="fa fa-th"></i> DOCUMENTAL <span class="plus"><i class="fa fa-plus"></i></span> </a>
           <ul>
-            <li> <a href="{{route('listaDeEventos')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>LISTA DE EVENTOS</b> </a> </li>
-            <li> <a href="{{route('crearEvento')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>CREAR EVENTOS</b> </a> </li>
+            <li> <a href="{{route('documentosInternos')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>DOCUMENTOS</b> </a> </li>
+            <li> <a href="#"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>REGISTRO FOTGRAFICO</b> </a> </li>
           </ul>
         </li>
         <li> <a href="javascript:void(0);"> <i class="fa fa-th"></i> FORO <span class="plus"><i class="fa fa-plus"></i></span> </a>
@@ -225,6 +219,25 @@
             <li> <a href="{{route('crearEvento')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>PREGUNTAS Y RESPUESTAS</b> </a> </li>
           </ul>
         </li>
+        <li> <a href="http://www.kutralco.com/clubrecepcionista/login.php"> <i class="fa fa-th"></i> CLUBS <span class="plus"><i class="fa fa-plus"></i></span> </a>
+        </li>
+        <li><a href=""><i class="fa fa-th"></i>ASISTENCIA TECNICA</a> </li>
+
+        <!--<li> <a href="javascript:void(0);"> <i class="fa fa-folder-open-o"></i> CAJA <span class="plus"><i class="fa fa-plus"></i></span> </a>
+          <ul>
+            <li> <a href="{{route('moduloCaja')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>INICIO</b> </a> </li>
+          </ul>
+        </li>-->
+
+
+
+
+
+
+
+
+
+
 
       </ul>
 

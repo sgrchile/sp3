@@ -143,7 +143,7 @@
             </table>
             <br>
 
-            <h3 class="text-center text-uppercase">CONTACTOS DE CLIENTE</h3>
+        <!-- <h3 class="text-center text-uppercase">CONTACTOS DE CLIENTE</h3>
             <table class="table table-bordered table-hover">
 
               @if (session('status_contacto'))
@@ -192,7 +192,7 @@
         {{ $contacto->links() }}
         @include('modals.RegContactoCliente', $cliente)
 
-          <!-- FORM FINAL -->
+           FORM FINAL -->
 
         </div><!--/porlets-content-->
       </div><!--/block-web-->
