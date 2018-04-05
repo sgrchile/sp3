@@ -9,7 +9,7 @@
     <div class="block-web">
       <div class="alert alert-info" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <strong>MODULO EN DESARROLLO!</strong>
+        <strong><i>La sección a la que usted acaba de ingresar, se encuentra en etapa de programación. Disculpe las molestias</i></strong>
       </div>
       <div class="header">
         <div class="actions"></div>
