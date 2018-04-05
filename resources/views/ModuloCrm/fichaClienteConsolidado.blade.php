@@ -189,7 +189,7 @@
               <td></td>
               <td></td>
               <td></td>
-              <td><button class="btn btn-primary btn-xs" style="width:65px;" data-toggle="modal" data-target="#regContactoCliente" data-backdrop="false">AGREGAR</button></td>
+              <td><button class="btn btn-primary btn-xs" style="width:65px;" data-toggle="modal" data-target="#regContactoCliente" data-backdrop="false">NUEVO</button></td>
 
             </tr>
 
@@ -263,7 +263,7 @@
                 <td></td>
                 <td colspan="1">
                   <!--<button class="btn btn-primary btn-xs" style="width:90px; margin-bottom:5px;" data-toggle="modal" data-target="#Oportunidades" data-backdrop="false">AGREGAR</button>-->
-                  <button class="btn btn-primary btn-xs" style="width:90px; margin-bottom:5px;" data-toggle="modal" data-target="#regOportunidad" data-backdrop="false">AGREGAR</button></td>
+                  <button class="btn btn-primary btn-xs" style="width:90px; margin-bottom:5px;" data-toggle="modal" data-target="#regOportunidad" data-backdrop="false">NUEVO</button></td>
               </tr>
             </table>
             {{ $oportunidades->links() }}
@@ -305,7 +305,7 @@
                   <button class="btn btn-primary btn-xs" style="width:90px; margin-bottom:5px;">ELIMINAR</button></a>
               <!--<a href="{{ action('ActividadesController@edit',$actividad->ID_ACT) }} ">
                   <button class="btn btn-primary btn-xs" style="width:90px; margin-bottom:5px;">MODIFICAR</button></a>-->
-                <button class="btn btn-primary btn-xs" style="width:90px; margin-bottom:5px;"  data-toggle="modal" data-target="#ModActividad">MODIFICAR</button>
+                <button class="btn btn-primary btn-xs" style="width:90px; margin-bottom:5px;"  data-toggle="modal" data-target="#ModActividad">EDITAR</button>
               </td>
             </tr>
             @endforeach
@@ -317,7 +317,7 @@
               <td></td>
               <td></td>
               <td>
-                <button class="btn btn-primary btn-xs" style="width:90px;" data-toggle="modal" data-target="#regActividad" >AGREGAR</button>
+                <button class="btn btn-primary btn-xs" style="width:90px;" data-toggle="modal" data-target="#regActividad" >NUEVO</button>
               </td>
             </tr>
           </table>

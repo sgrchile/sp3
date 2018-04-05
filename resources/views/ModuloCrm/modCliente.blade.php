@@ -52,11 +52,8 @@
                                     <td>
                                         {{ Form::number('telefono',$cliente->CLI_FONO,['class'=>'form-control','required','style'=>'width:175px']) }}
                                     </td>
-
                                 </tr>
-
                                 <tr>
-
                                     <td><a style="color: #9A0000">* </a> ACTIVIDAD COMERCIAL: </td>
                                     <td >
                                         {{ Form::text('actcomercial',$cliente->CLI_ACT_COMERCIAL,['class'=>'form-control', 'required','style'=>'width:175px']) }}
@@ -66,9 +63,7 @@
                                     <td >
                                         {{ Form::text('sitioweb',$cliente->CLI_SITIO_WEB,['class'=>'form-control', 'required','style'=>'width:175px']) }}
                                     </td>
-
                                 </tr>
-
                                 <tr>
                                     <td>GLOSA: </td>
                                     <td >
@@ -79,11 +74,8 @@
                                     <td>
                                         {!! Form::select('rubro',App\Rubro::find($cliente->CLI_RUBRO)->RUB_DESC,['class'=>'form-control','style'=>'width:175px']) !!}
                                     </td>
-
                                 </tr>
-
                                 <tr>
-
                                     <td>SUB RUBRO:</td>
                                     <td>
                                         {!! Form::select('subrubro',App\SubRubro::find($cliente->CLI_SUB_RUBRO)->SUB_RUB_DESC,['class'=>'form-control','style'=>'width:175px']) !!}
@@ -92,38 +84,28 @@
                                     <td>
                                         {!! Form::select('actividad',App\Actividad::find($cliente->CLI_CLI_ACTIVIDAD)->ACT_DESC,['class'=>'form-control','id'=>'actividad','style'=>'width:175px']) !!}
                                     </td>
-
                                 </tr>
                                 <tr>
-
                                     <td>BANCO:</td>
                                     <td>
                                         {!! Form::select('banco',App\Banco::find($cliente->CLI_BANCO)->BCO_DESC,['class'=>'form-control','id'=>'banco','style'=>'width:175px']) !!}
                                     </td>
-
                                     <td>TIPO DE CUENTA:</td>
                                     <td>
                                         {!! Form::select('tipocuenta',App\TipoCuenta::find($cliente->CLI_TCTA_BCO)->TCTA_DESC,['class'=>'form-control','id'=>'tipocuenta','style'=>'width:175px']) !!}
                                     </td>
-
                                 </tr>
-
                                 <tr>
-
                                     <td>Nº DE CUENTA: </td>
                                     <td >
                                         {{ Form::number('nrocuenta',$cliente->CLI_NRO_CTA,['class'=>'form-control','required','style'=>'width:175px']) }}
                                     </td>
-
                                     <td>ORIGEN: </td>
                                     <td >
                                         {{ Form::text('origen',$cliente->CLI_ORIGEN,['class'=>'form-control', 'required','style'=>'width:175px']) }}
                                     </td>
                                 </tr>
-
-
                                 <tr>
-
                                     <td>PAIS:</td>
                                     <td>
                                         {!! Form::select('pais',App\Pais::find($cliente->CLI_PAIS)->PAI_DESC,['class'=>'form-control','id'=>'pais','style'=>'width:175px']) !!}
@@ -132,16 +114,12 @@
                                     <td>
                                         {!! Form::select('region',App\Region::find($cliente->CLI_REGION)->REG_DESC,['class'=>'form-control','id'=>'region','style'=>'width:175px']) !!}
                                     </td>
-
                                 </tr>
-
                                 <tr>
-
                                     <td>PROVINCIA:</td>
                                     <td>
                                         {!! Form::select('provincia',App\Provincia::find($cliente->CLI_PROVINCIA)->PV_DESC,['class'=>'form-control','id'=>'provincia','style'=>'width:175px']) !!}
                                     </td>
-
                                     <td>CIUDAD:</td>
                                     <td>
                                         {!! Form::select('ciudad',App\Ciudad::find($cliente->CLI_CIUDAD)->CIU_DESC,['class'=>'form-control','id'=>'ciudad','style'=>'width:175px']) !!}
@@ -157,36 +135,14 @@
                                         {{ Form::select('temperatura',App\Temperatura::pluck('desc_temp','id_temp'),['class'=>'form-control','style'=>'width:175px']) }}
                                     </td>
                                 </tr>
-
-                            <!-- <script>
-                  $(document).ready(function(){
-                      $('#rubro').change(function(){
-                          $.get("{{ url('dropdown')}}",
-                              { option: $(this).val() },
-                              function(data) {
-                                  $('#proceso_id').empty();
-                                  $.each(data, function(key, element) {
-                                      $('#proceso_id').append("<option value='" + key + "'>" + element + "</option>");
-                                  });
-                              });
-                      });
-                  });
-              </script> -->
-
                             </table>
                             <button class="btn btn-primary btn-lg">REGISTRAR</button>
                         </form>
-
-
                         <!-- FORM FINAL -->
-
                     </div><!--/porlets-content-->
                 </div><!--/block-web-->
             </div><!--/col-md-12-->
         </div><!--/row-->
-
-
-
     </div>
     <br>
     <div class="container">  <a href="{{ route('CRM') }}"><button class="btn btn-primary btn-lg">Volver</button></a></div>

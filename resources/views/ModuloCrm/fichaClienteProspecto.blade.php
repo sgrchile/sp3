@@ -142,41 +142,43 @@
               </tr>
             </table>
             <br>
-
-        <!-- <h3 class="text-center text-uppercase">CONTACTOS DE CLIENTE</h3>
-            <table class="table table-bordered table-hover">
-
-              @if (session('status_contacto'))
-                <div class="alert alert-warning">
-                  {{ session('status_contacto') }}
-                </div>
-              @endif
-
+          <h3 class="text-center text-uppercase">ACTIVIDADES</h3>
+          @if (session('status_actividad'))
+            <div class="alert alert-warning">
+              {{ session('status_actividad') }}
+            </div>
+          @endif
+          <div class="table-responsive">
+            <table class="display  table-bordered  text-uppercase" id="dynamic-table">
+              <!--  EN EL INDEX AGREGAR DESPUES DE CLIENTE, CONTACTO-->
               <tr>
                 <td>ID</td>
-                <td>NOMBRE</td>
-                <td>CELULAR</td>
-                <td>EMAIL EMPRESARIAL</td>
-                <td>EMAIL PERSONAL</td>
-                <td>SUCURSAL</td>
-                <td colspan="1">ACCION</td>
+                <td>DESCRIPCIÓN</td>
+                <td>FECHA</td>
+                <td>HORA</td>
+                <td>NOMBRE CONTACTO</td>
+                <td>TELEFONO CONTACTO</td>
+                <td colspan="2">ACCION</td>
               </tr>
 
-
-              @foreach($contacto as $contac)
+              @foreach($actividades as $actividad)
                 <tr>
-                  <td>{{ $contac->ID_CONT }}</td>
-                  <td>{{ $contac->CONT_NOM }}</td>
-                  <td>{{ $contac->CONT_CEL }}</td>
-                  <td>{{ $contac->CONT_EMAIL_EMP }}</td>
-                  <td>{{ $contac->CONT_EMAIL }}</td>
-                  <td>{{ $contac->CONT_SUCURSAL }}</td>
-                  <td><a href="{{ route('contacto.destroy',$contac->ID_CONT) }}" onclick="return confirm('¿Desea eliminar éste contacto?')">
-                      <button class="btn btn-primary btn-xs" style="width:65px;" >ELIMINAR</button></a></td>
+                  <td>{{ $actividad->ID_ACT }}</td>
+                  <td>{{ $actividad->DESC_ACT }}</td>
+                  <td>{{ $actividad->FECHA_ACT }}</td>
+                  <td>{{ $actividad->HORA }}</td>
+                  <td>{{ $actividad->NOM_CONT_ACT }}</td>
+                  <td>{{ $actividad->CONTACT_ACT }}</td>
 
+                  <td>
+                    <a href="{{ route('actividad.destroy',$actividad->ID_ACT) }}" onclick="return confirm('¿Desea eliminar ésta Actividad?')" >
+                      <button class="btn btn-primary btn-xs" style="width:90px; margin-bottom:5px;">ELIMINAR</button></a>
+                  <!--<a href="{{ action('ActividadesController@edit',$actividad->ID_ACT) }} ">
+                  <button class="btn btn-primary btn-xs" style="width:90px; margin-bottom:5px;">MODIFICAR</button></a>-->
+                    <button class="btn btn-primary btn-xs" style="width:90px; margin-bottom:5px;"  data-toggle="modal" data-target="#ModActividad">EDITAR</button>
+                  </td>
                 </tr>
               @endforeach
-
               <tr>
                 <td></td>
                 <td></td>
@@ -184,15 +186,17 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td><button class="btn btn-primary btn-xs" style="width:65px;" data-toggle="modal" data-target="#regContactoCliente" data-backdrop="false">AGREGAR</button></td>
+                <td>
+                  <button class="btn btn-primary btn-xs" style="width:90px;" data-toggle="modal" data-target="#regActividad" >NUEVO</button>
+                </td>
+              </tr>
+            </table>
+            {{ $actividades->links() }}
+            @include('modals.RegActividad',$cliente)
+            @include('modals.modActividad',$cliente)
+          </div>
 
-                </tr>
-
-              </table>
-        {{ $contacto->links() }}
-        @include('modals.RegContactoCliente', $cliente)
-
-           FORM FINAL -->
+        <!--FORM FINAL -->
 
         </div><!--/porlets-content-->
       </div><!--/block-web-->

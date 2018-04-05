@@ -291,7 +291,7 @@ class ClientesController extends Controller
         $actividades = ActActividad::orderBy('ID_ACT','ASC')->where('ID_CLIENTE_ACT','=',$rut)->paginate(10);
 
         //return view('ModuloCrm.fichaClienteProspecto',compact('contacto','oportunidades','actividades'));
-        return view('ModuloCrm.fichaClienteProspecto',compact('contacto'))->with('cliente',$cliente);
+        return view('ModuloCrm.fichaClienteProspecto',compact('contacto','oportunidades','actividades'))->with('cliente',$cliente);
     }
 
     /**
