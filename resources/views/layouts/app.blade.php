@@ -141,7 +141,7 @@
         <li class=" theme_border"><a href="{{route('dashboard')}}"><i class="fa fa-home"></i> CONTROL GLOBAL  <span class="plus"></span> </a></li>
         <li><a href="{{route('Contable')}}"><i class="fa fa-folder-open-o"></i>CONTABILIDAD</a> </li>
         <li><a href="{{route('Finanzas')}}"><i class="fa fa-folder-open-o"></i>FINANZAS</a> </li>
-        <li><a href=""><i class="fa fa-folder-open-o"></i>PRESUPUESTO</a> </li>
+        <li><a href="{{route('Finanzas')}}"><i class="fa fa-folder-open-o"></i>PRESUPUESTO</a> </li>
         <li> <a href="javascript:void(0);"> <i class="fa fa-users icon"></i> RRHH <span class="plus"><i class="fa fa-plus"></i></span> </a>
           <ul>
             <li> <a href="{{route('CarpetaPersonal')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Mi carpeta RRHH</b> </a> </li>
@@ -189,7 +189,7 @@
             <li> <a href="{{route('Bodega')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>BODEGA</b> </a> </li>
           </ul>
         </li>
-        <li><a href=""><i class="fa fa-folder-open-o"></i>LICITACIONES</a> </li>
+        <li><a href="{{route('inicioLicitacion')}}"><i class="fa fa-folder-open-o"></i>LICITACIONES</a> </li>
         <li> <a href="javascript:void(0);"> <i class="fa fa-th"></i> EVENTOS <span class="plus"><i class="fa fa-plus"></i></span> </a>
           <ul>
             <li> <a href="{{route('listaDeEventos')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>LISTA DE EVENTOS</b> </a> </li>
@@ -203,9 +203,9 @@
             <li> <a href="{{route('sala')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>SALA</b> </a> </li>
           </ul>
         </li>
-        <li><a href=""><i class="fa fa-th"></i>MARKETING</a> </li>
-        <li><a href=""><i class="fa fa-th"></i>MEJORA CONTINUA</a> </li>
-        <li><a href=""><i class="fa fa-th"></i>INFORMES DE GESTION</a> </li>
+        <li><a href="{{route('IndexMarketing')}}"><i class="fa fa-th"></i>MARKETING</a> </li>
+        <li><a href="{{route('IndexMejoraContinua')}}"><i class="fa fa-th"></i>MEJORA CONTINUA</a> </li>
+        <li><a href="{{route('InformesDeGestion')}}"><i class="fa fa-th"></i>INFORMES DE GESTION</a> </li>
         <li><a href=""><i class="fa fa-th"></i>CAPACITACIÓN</a> </li>
         <li> <a href="javascript:void(0);"> <i class="fa fa-th"></i> DOCUMENTAL <span class="plus"><i class="fa fa-plus"></i></span> </a>
           <ul>
@@ -221,7 +221,7 @@
         </li>
         <li> <a href="http://www.kutralco.com/clubrecepcionista/login.php"> <i class="fa fa-th"></i> CLUBS <span class="plus"><i class="fa fa-plus"></i></span> </a>
         </li>
-        <li><a href=""><i class="fa fa-th"></i>ASISTENCIA TECNICA</a> </li>
+        <li><a href="{{route('soporte')}}"><i class="fa fa-th"></i>SOPORTE</a> </li>
 
         <!--<li> <a href="javascript:void(0);"> <i class="fa fa-folder-open-o"></i> CAJA <span class="plus"><i class="fa fa-plus"></i></span> </a>
           <ul>

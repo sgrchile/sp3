@@ -55,12 +55,12 @@
 
             <td>CONTACTO SECUNDARIO:</td>
               <td>
-                  {{ Form::number('celular_dos',null,['class'=>'form-control','required','style'=>'width:175px']) }}
+                  {{ Form::number('celular_dos',null,['class'=>'form-control','style'=>'width:175px']) }}
               </td>
 
             <td>REFERENCIA:</td>
               <td>
-                  {{ Form::text('referencia',null,['class'=>'form-control','required','style'=>'width:175px']) }}
+                  {{ Form::text('referencia',null,['class'=>'form-control','style'=>'width:175px']) }}
               </td>
             <td>EMAIL:</td>
               <td>

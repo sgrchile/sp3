@@ -219,7 +219,10 @@ class ClientesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $cliente = Cliente::find($id);
+        $cliente->delete();
+        //dd($contac);
+        return redirect()->back()->with('status_cliente', 'Cliente eliminado!');
     }
 
     public function fichaclicons($rut)
@@ -246,6 +249,7 @@ class ClientesController extends Controller
 
         $cli = $cliente->getAttributes();
 
+        //dd($cliente);
         //$contacto = Contactos::find($rut)->get();
 
         //$contacto = Contactos::where('CONT_CLI_ID','=',$rut)->get();

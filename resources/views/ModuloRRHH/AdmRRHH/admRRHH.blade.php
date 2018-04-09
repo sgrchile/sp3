@@ -57,7 +57,7 @@
 
                 <a href="{{route('visualizarPostulantes')}}"><button class="btn btn-primary" style="width:250px;margin-bottom: 15px;">CONSULTAR POSTULANTES</button></a>
                 <a href="{{route('EstPost')}}"><button class="btn btn-primary " style="width:250px;margin-bottom: 15px;">ESTADO DE OFERTA</button></a>
-                <a href="{{route('regOferta')}}"><button class="btn btn-primary  " style="width:250px;margin-bottom: 15px;">REGISTRAR DE OFERTA </button></a>
+                <a href="{{route('regOferta')}}"><button class="btn btn-primary  " style="width:250px;margin-bottom: 15px;">REGISTRAR OFERTA </button></a>
                 <a href="{{route('modOf')}}"><button class="btn btn-primary  " style="width:250px;margin-bottom: 15px;">MODIFICAR OFERTA </button></a>
 
               </td>

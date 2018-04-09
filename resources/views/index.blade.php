@@ -22,7 +22,7 @@
                               <td><a href="{{route('Finanzas')}}"><img src="{{ asset('images/Finanzas.png') }}" class="img-responsive"  width="113" height="128"/></a>
                                   <p style="text-align:center;">FINANZAS</p>
                               </td>
-                              <td><a href="{{route('moduloCaja')}}"><img src="{{ asset('images/presupuesto.png') }}" class="img-responsive"  width="113" height="128"/></a>
+                              <td><a href="{{route('Finanzas')}}"><img src="{{ asset('images/presupuesto.png') }}" class="img-responsive"  width="113" height="128"/></a>
                                   <p style="text-align:center;">PRESUPUESTO</p>
                               </td>
                           </tr>
@@ -102,9 +102,9 @@
                                 <p>CLUBS</p>
                             </td>
                             <td>
-                                <a href="#"><img src="{{ asset('images/asist-tec.png') }}" class="img-responsive" width="113"
+                                <a href="{{route('soporte')}}"><img src="{{ asset('images/asist-tec.png') }}" class="img-responsive" width="113"
                                                  height="128"></a>
-                                <p>ASISTENCIA TECNICA</p>
+                                <p>SOPORTE</p>
                             </td>
                         <!--
                             <td>

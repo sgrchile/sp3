@@ -20,7 +20,7 @@
             <td>PERSONAL:</td>
             <td><input type="text" width="175px"></td>
             <td>
-            <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#selPer" data-backdrop="static">SEL. TRABAJADOR</button>
+            <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#selPer" data-backdrop="static"><i class="fa fa-search" style="font-size:30px;"></i></button>
             </td>
 
 

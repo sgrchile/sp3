@@ -14,6 +14,11 @@
         <div class="porlets-content">
           <!-- FORM INICIO -->
           <h1>CLIENTES CONSOLIDADOS</h1>
+          @if (session('status_contacto'))
+            <div class="alert alert-warning">
+              {{ session('status_contacto') }}
+            </div>
+          @endif
           <table class="table table-bordered table-hover" id="clients-table">
             <thead>
             <tr>
@@ -27,7 +32,6 @@
             </thead>
             <tbody>
             @foreach($clientes as $cliente)
-              @if(valida_rut($cliente->CLI_RUT))
               <tr>
                 <td>{{ $cliente->CLI_RUT }}</td>
                 <td>{{ $cliente->CLI_NOMBRE }}</td>
@@ -36,16 +40,17 @@
                 <td>{{ $cliente->CLI_CONTACTO }}</td>
                 <td>
                   <a href="{{route('fichaClienteConsolidado',$cliente->CLI_RUT)}}"><button class="btn btn-primary btn-xs" onclick="" style="width:130px;"> VER FICHA</button></a>
+                  <a href="{{ route('cliente.destroy',$cliente->CLI_RUT) }}" onclick="return confirm('¿Desea eliminar éste cliente?')" ><button class="btn btn-primary btn-xs"
+                                                                                                                                                 style="width:65px;" >ELIMINAR</button></a>
                 </td>
               </tr>
-              @endif
             @endforeach
             </tbody>
-
           </table>
+          {{ $clientes->links() }}
 
 
-          <h1>CLIENTES PROSPECTO</h1>
+          <!--<h1>CLIENTES PROSPECTO</h1>
           <table class="table table-bordered table-hover">
 
             <tr>
@@ -69,13 +74,14 @@
                 <td>
                   <a href="{{route('editarcliente', $cliente)}}"><button class="btn btn-primary btn-xs" style="width:130px; margin-bottom:10px;"> CONVERTIR</button></a>
                 <a href="{{route('fichaClienteProspecto', $cliente)}}"><button class="btn btn-primary btn-xs" style="width:130px;"> VER FICHA</button></a>
+                  <a href="{{ route('contacto.destroy',$cliente->ID_CONT) }}" onclick="return confirm('¿Desea eliminar éste cliente?')" ><button class="btn btn-primary btn-xs"
+                                                                                                                                                 style="width:65px;" >ELIMINAR</button></a>
               </td>
               @endif
             </tr>
             @endforeach
             </tbody>
-          </table>
-        {{ $clientes->links() }}
+          </table>-->
 
 
           <!-- FORM FINAL -->

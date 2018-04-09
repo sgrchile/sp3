@@ -20,8 +20,10 @@
           <tr>
             <td><label>NOMBRE:</label></td>
             <td><input type="text" required name="nombre" class="form-control"  style="width:175px;"></td>
+
             <td><label>RUT:</label></td>
             <td><input type="text" required name="rut" class="form-control" style="width:175px;"></td>
+
             <td><label>RAZON SOCIAL:</label></td>
             <td><input type="text" required name="razon_social" class="form-control" style="width:175px;"></td>
           </tr>
@@ -75,7 +77,8 @@
             {{ Form::select('ciudad',App\Ciudad::pluck('CIU_DESC','CIU_COD'),null,['class'=>'form-control','placeholder'=>'Seleccione','style'=>'width:175px']) }}
           </td>
           <td><label>CONTACTO SECUNDARIO:</label></td>
-          <td><input type="text" required name="contacto_secundario" style="width:175px;" class="form-control"></td>
+          <td><input type="text"  name="contacto_secundario" style="width:175px;" class="form-control"></td>
+
           <td><label>EMAIL:</label></td>
           <td><input type="email" required name="email" style="width:175px;" class="form-control"></td>
         </tr>
@@ -86,7 +89,7 @@
           </td>
 
           <td><label>FACEBOOK:</label></td>
-          <td><input type="text" required name="facebook" style="width:175px;" class="form-control"></td>
+          <td><input type="text" name="facebook" style="width:175px;" class="form-control"></td>
 
           <td><label>PASSWORD:</label></td>
           <td><input type="password" class="form-control" name="password" required  style="width:175px;"></td>

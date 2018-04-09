@@ -355,6 +355,11 @@ Route::group(['prefix' => 'modulo'], function () {
                 'as' => 'post.clientes',
             ]);
 
+            Route::post('/', [
+                'uses' => 'ProspectoController@store',
+                'as' => 'post.prospecto',
+            ]);
+
             Route::post('/cont', [
                 /* 'uses' => 'OrdenTrabajoController@postClientes'*/
                 'uses' => 'ClientesController@regcontac',
@@ -1023,6 +1028,11 @@ Route::group(['prefix' => 'modulo'], function () {
             'as' => 'clientes',
         ]);
 
+        Route::get('/Prospectos', [
+            'uses' => 'ProspectoController@index',
+            'as' => 'prospectos',
+        ]);
+
         /**
          * Clients
          */
@@ -1105,6 +1115,15 @@ Route::group(['prefix' => 'modulo'], function () {
             'as' => 'regCliente',
         ]);
 
+        Route::get('/RegistroDeProspecto', [
+            'uses' => 'ProspectoController@create',
+            'as' => 'regProspecto',
+        ]);
+
+        Route::get('/Registro', function () {
+            return view('ModuloCRM.registro');
+        })->name('registro');
+
         Route::get('/EditarCliente,{id}', [
             'uses' => 'ClientesController@edit',
             'as' => 'editarcliente',
@@ -1168,6 +1187,10 @@ Route::group(['prefix' => 'modulo'], function () {
             'as' => 'cliente.destroy',
         ]);
 
+        Route::get('/delete/{id}', [
+            'uses' => 'ProspectoController@destroy',
+            'as' => 'prospecto.destroy',
+        ]);
 
       //FIN CRM
 
@@ -1324,6 +1347,17 @@ Route::group(['prefix' => 'modulo'], function () {
 
   // FIN DE RUTAS FORO
   });
+
+    // INICIO DE RUTAS SOPORTE
+
+    Route::group(['prefix' => 'SOPORTE'], function () {
+        Route::get('/Soporte', function () {
+            return view('ModuloSoporte.indexSoporte');
+        })->name('soporte');
+
+        // FIN DE RUTAS SOPORTE
+    });
+
   // INICIO DE RUTAS LICITACIONES
   Route::group(['prefix' => 'Licitaciones'], function () {
       Route::get('/', function () {
