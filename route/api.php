@@ -35,3 +35,9 @@ Route::get('/rubro/{rubro}', [
     'uses' => 'LocationController@getRubro',
     'as' => 'get.rubro',
 ]);
+
+Route::get('/crm/oportunidades', function(){
+
+    $oportunidades = Oportunidad::orderBy('CREATED_AT','DESC')->take(10);
+    return response()->json($oportunidades);
+});
