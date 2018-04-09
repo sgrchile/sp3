@@ -36,7 +36,8 @@ Route::get('/rubro/{rubro}', [
     'as' => 'get.rubro',
 ]);
 
-Route::get('/crm/oportunidades', [
-    'uses' => 'OportunidadController@last',
-    'as' => 'get.oportunidad',
-]);
+Route::get('/crm/oportunidades', function(){
+
+    $db = App\Oportunidad::orderBy('CREATED_AT','DESC')->toJson();
+    return response()->json($db);
+});
