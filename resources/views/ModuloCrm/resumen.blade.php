@@ -135,23 +135,23 @@
                         </div>
                         <div id="candidatosT" class="panel-collapse collapse in" role="tabpanel">
                             <div class="panel-body">
-                            <table class="table table-hover table-striped">
-                                <thead>
-                                    <tr>
-                                        <th scope="col"></th>
-                                        <th scope="col">Indetificador</th>
-                                        <th scope="col">Nombre</th>
-                                        <th scope="col">Empresa</th>
-                                        <th scope="col">Procedencia</th>
-                                        <th scope="col">Fecha</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row" colspan="6">(sin datos)</th>
-                                    </tr>
-                                </tbody>
-                            </table>
+                                <table class="table table-hover table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col"></th>
+                                            <th scope="col">Idetificador</th>
+                                            <th scope="col">Nombre</th>
+                                            <th scope="col">Empresa</th>
+                                            <th scope="col">Procedencia</th>
+                                            <th scope="col">Fecha</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row" colspan="6">(sin datos)</th>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -165,20 +165,22 @@
                         </div>
                         <div id="cuentasT" class="panel-collapse collapse in" role="tabpanel">
                             <div class="panel-body">
-                                <thead>
-                                    <tr>
-                                        <th scope="col"></th>
-                                        <th scope="col">Indetificador</th>
-                                        <th scope="col">Nombre</th>
-                                        <th scope="col">Empresa</th>
-                                        <th scope="col">Propietario</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row" colspan="5">(sin datos)</th>
-                                    </tr>
-                                </tbody>
+                                <table class="table table-hover table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col"></th>
+                                            <th scope="col">Idetificador</th>
+                                            <th scope="col">Nombre</th>
+                                            <th scope="col">Empresa</th>
+                                            <th scope="col">Propietario</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row" colspan="5">(sin datos)</th>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
