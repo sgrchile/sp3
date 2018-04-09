@@ -13,54 +13,58 @@
 @section('content')
 <div class="container">
     <div class="col-md-12">
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <h3 class="panel-title" style="color:#FFF;">Búsqueda</h3>
-            </div>
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-md-6">
-                         <div class="row">
-                             <div class="col-md-6">
-                                 <div class="form-group">
-                                     <label>Equipo</label>
-                                     <select class="form-control">
-                                     </select>
-                                  </div>
-                                  <div class="form-group">
-                                     <label>Periodicidad de cierre</label>
-                                     <select class="form-control">
-                                     </select>
-                                  </div>
-                             </div>
-                             <div class="col-md-6">
-                                  <div class="form-group">
-                                     <label>Proceso de negocio</label>
-                                     <select class="form-control">
-                                     </select>
-                                  </div>
-                             </div>
-                         </div>
-                         <div class="row">
-                             <div class="col-md-6">
-                                  <div class="form-group">
-                                     <label>Mes</label>
-                                     <select class="form-control">
-                                     </select>
-                                  </div>
-                             </div>
-                             <div class="col-md-6">
-                                  <div class="form-group">
-                                     <label>Año</label>
-                                     <select class="form-control">
-                                     </select>
-                                  </div>
-                             </div>
-                         </div>
-                         <button type="button" class="btn btn-default">Limpiar</button>
-                         <button type="button" class="btn btn-primary">Buscar</button>
-                    </div>
-                    <div class="col-md-6">
+        <div class="panel-group" id="busqueda" role="tablist">
+            <div class="panel panel-primary">
+                <div class="panel-heading" role="tab">
+                    <h3 class="panel-title" style="color:#FFF;"><a role="button" data-toggle="collapse" data-parent="#busqueda" href="#busquedaT">Búsqueda</a></h3>
+                </div>
+                <div id="busquedaT" class="panel-collapse collapse in" role="tabpanel">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Equipo</label>
+                                            <select class="form-control">
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Periodicidad de cierre</label>
+                                            <select class="form-control">
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Proceso de negocio</label>
+                                            <select class="form-control">
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Mes</label>
+                                            <select class="form-control">
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Año</label>
+                                            <select class="form-control">
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-default">Limpiar</button>
+                                <button type="button" class="btn btn-primary">Buscar</button>
+                            </div>
+                            <div class="col-md-6">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
