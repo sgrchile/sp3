@@ -222,7 +222,7 @@ $(document).ready(function(){
     },
     credits:{
         enabled: false
-    }
+    },
     series: [{
         name: 'Unique users',
         data: [
