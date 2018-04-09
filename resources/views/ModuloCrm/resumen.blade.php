@@ -235,7 +235,7 @@ $(document).ready(function(){
         }]
     });
 
-    $.get("https://plataforma.sgrchile.com/api/crm/oportunidades", funtion(data){
+    $.get("https://plataforma.sgrchile.com/api/crm/oportunidades",).done(function(data){
         if (data !== null){
             if (Object.keys(data).length > 0 ){
                 $.each(data, function( index, value ){
