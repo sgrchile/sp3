@@ -86,15 +86,12 @@
                                     <th scope="col"></th>
                                     <th scope="col">Proceso de negocio</th>
                                     <th scope="col">Etapa</th>
-                                    <th scope="col">Cantidad</th>
+                                    <th scope="col">Probabilidad</th>
                                     <th scope="col">Esperado</th>
                                     <th scope="col">Real</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row" colspan="6">(sin datos)</th>
-                                </tr>
+                            <tbody id="oportunidades.table">
                             </tbody>
                         </table>
                     </div>
@@ -200,40 +197,63 @@
 
 $(document).ready(function(){
     Highcharts.chart('funel', {
-    chart: {
-        type: 'funnel'
-    },
-    plotOptions: {
-        series: {
-            dataLabels: {
-                enabled: true,
-                format: '<b>{point.name}</b> ({point.y:,.0f})',
-                color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black',
-                softConnector: true
-            },
-            center: ['40%', '50%'],
-            neckWidth: '30%',
-            neckHeight: '25%',
-            width: '80%'
+        chart: {
+            type: 'funnel'
+        },
+        title: {
+            text: ''
+        },
+        plotOptions: {
+            series: {
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b> ({point.y:,.0f})',
+                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black',
+                    softConnector: true
+                },
+                center: ['40%', '50%'],
+                neckWidth: '30%',
+                neckHeight: '25%',
+                width: '80%'
+            }
+        },
+        legend: {
+            enabled: false
+        },
+        credits:{
+            enabled: false
+        },
+        series: [{
+            name: 'Unique users',
+            data: [
+                ['Website visits', 15654],
+                ['Downloads', 4064],
+                ['Requested price list', 1987],
+                ['Invoice sent', 976],
+                ['Finalized', 846]
+            ]
+        }]
+    });
+
+    $.get("https://plataforma.sgrchile.com/api/crm/oportunidades", funtion(data){
+        if (data !== null){
+            if (Object.keys(data).length > 0 ){
+                $.each(data, function( index, value ){
+                    let row = "<tr><th scope="row">' + (index + 1) +'</th><td>' + value.PROC_NEGOCIO +'</td><td>' + value.ETAPA +'</td><td>' + value.PROBABILIDAD +'</td><td>' + value.TASA +'</td><td>' + value.TOTAL +'</td></tr>";
+                    $("oportunidades\\.table").append(row);
+                });
+            }
+            else
+            {
+                let row = "<tr><th scope='row' colspan='6'>(sin datos)</th></tr>";
+                $("oportunidades\\.table").append(row);  
+            }
         }
-    },
-    legend: {
-        enabled: false
-    },
-    credits:{
-        enabled: false
-    },
-    series: [{
-        name: 'Unique users',
-        data: [
-            ['Website visits', 15654],
-            ['Downloads', 4064],
-            ['Requested price list', 1987],
-            ['Invoice sent', 976],
-            ['Finalized', 846]
-        ]
-    }]
-});
+        else{
+            let row = "<tr><th scope='row' colspan='6'>(sin datos)</th></tr>";
+            $("oportunidades\\.table").append(row);  
+        }
+    });
 });
 </script>
 </body>
