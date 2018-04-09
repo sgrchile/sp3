@@ -240,7 +240,7 @@ $(document).ready(function(){
             if (Object.keys(data).length > 0 ){
                 $.each(data, function( index, value ){
                     let row = "<tr><th scope='row'>" + (index + 1) +"</th><td>" + value.PROC_NEGOCIO +"</td><td>" + value.ETAPA +"</td><td>" + value.PROBABILIDAD +"</td><td>" + value.TASA +"</td><td>" + value.TOTAL +"</td></tr>";
-                    $("oportunidades\\.table").append(row);
+                    $("#oportunidades\\.table").append(row);
                 });
             }
             else
