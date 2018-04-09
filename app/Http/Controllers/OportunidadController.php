@@ -27,6 +27,12 @@ class OportunidadController extends Controller
         //return view('ModuloCrm.Oportunidades');
     }
 
+    public function last()
+    {
+        $oportunidades = Oportunidad::orderBy('CREATED_AT','DESC')->take(10);
+        return response()->json($oportunidades);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
