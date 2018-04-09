@@ -199,7 +199,7 @@
 <script>
 
 $(document).ready(function(){
-    $("#funel").chart({
+    $("#funel").highcharts({
         chart: {
             type: 'funnel'
         },
