@@ -38,6 +38,6 @@ Route::get('/rubro/{rubro}', [
 
 Route::get('/crm/oportunidades', function(){
 
-    $db = App\Oportunidad::orderBy('CREATED_AT','DESC')->get()->toJson();
+    $db = App\Oportunidad::orderBy('CREATED_AT','DESC')->take(10)->get()->toJson();
     return response()->json($db);
 });
