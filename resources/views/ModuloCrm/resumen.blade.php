@@ -203,9 +203,6 @@ $(document).ready(function(){
     chart: {
         type: 'funnel'
     },
-    title: {
-        text: 'Sales funnel'
-    },
     plotOptions: {
         series: {
             dataLabels: {
@@ -223,6 +220,9 @@ $(document).ready(function(){
     legend: {
         enabled: false
     },
+    credits:{
+        enabled: false
+    }
     series: [{
         name: 'Unique users',
         data: [
