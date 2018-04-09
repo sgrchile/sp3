@@ -38,5 +38,5 @@ Route::get('/rubro/{rubro}', [
 
 Route::get('/crm/oportunidades', [
     'uses' => 'OportunidadController@last',
-    'as' => 'get.rubro',
+    'as' => 'get.oportunidad',
 ]);

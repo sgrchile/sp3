@@ -29,7 +29,7 @@ class OportunidadController extends Controller
 
     public function last()
     {
-        $oportunidades = Oportunidad::orderBy('CREATED_AT','DESC')->take(10);
+        $oportunidades = Oportunidad::orderBy('CREATED_AT','DESC')->take(10)->toJson();
         return response()->json($oportunidades);
     }
 
