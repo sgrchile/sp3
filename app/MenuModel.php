@@ -11,7 +11,7 @@ class MenuModel extends Model
      *
      * @var string
      */
-    protected $table = "MN_MENU";
+    protected $table = "MN_MENUS";
 
     /**
      * Llave primaria de la tabla
