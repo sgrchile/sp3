@@ -12,7 +12,9 @@ $(document).ready(function(){
                             $( "#menu"+ value.MENU_PARENT ).children("ul").append(li);
                         }
                         else{
-                            $( "#menu"+ value.MENU_PARENT ).append("<ul>" + li +"</ul>");
+                            $( "#menu"+ value.MENU_PARENT ).addClass("dropdown");
+                            $( "#menu"+ value.MENU_PARENT ).children("a").data("toggle", "dropdown");
+                            $( "#menu"+ value.MENU_PARENT ).append("<ul class='dropdown-menu'>" + li +"</ul>");
                         }
                     }
                 });
