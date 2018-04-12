@@ -29,6 +29,17 @@ img {border: 0!important;}
 .menutoggle{float:left; margin:-3px 0px 0px 10px; font-size:20px; padding:12px; color:#6E778C;}
 .menutoggle:hover{color:#5DCFF3;}
 
+.dropdown-menu-left {
+    position: inherit !important;
+    float: none !important;
+    background-color:black !important;
+    border: 1px solid black !important;
+    border: 1px solid black !important;
+    border-radius: 0 !important;
+    -webkit-box-shadow: 0 6px 12px black !important;
+    box-shadow: 0 6px 12px black !important;
+}
+
 .top_left{ width:90px; float:left;}
 .top_left_menu ul{padding:9px 0px 0px 0px; margin:0px;}
 .top_left_menu ul li{list-style-type:none;}

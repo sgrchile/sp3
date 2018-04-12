@@ -14,7 +14,7 @@ $(document).ready(function(){
                         else{
                             $( "#menu"+ value.MENU_PARENT ).addClass("dropdown");
                             $( "#menu"+ value.MENU_PARENT ).children("a").attr("data-toggle", "dropdown");
-                            $( "#menu"+ value.MENU_PARENT ).append("<ul class='dropdown-menu'>" + li +"</ul>");
+                            $( "#menu"+ value.MENU_PARENT ).append("<ul class='dropdown-menu-left'>" + li +"</ul>");
                         }
                     }
                 });

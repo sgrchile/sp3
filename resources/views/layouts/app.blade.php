@@ -130,7 +130,7 @@
 <div class="inner">
   <div class="left_nav">
     <div class="left_nav_slidebar">
-      <ul class="nav nav-pills nav-stacked" id="menu.principal">
+      <ul class="nav nav-stacked" id="menu.principal">
       </ul>
     </div>
   </div>
