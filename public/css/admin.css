@@ -38,6 +38,10 @@ img {border: 0!important;}
     border-radius: 0 !important;
     -webkit-box-shadow: 0 6px 12px black !important;
     box-shadow: 0 6px 12px black !important;
+    display: none;
+}
+.open>.dropdown-menu-left {
+    display: block;
 }
 
 .top_left{ width:90px; float:left;}
