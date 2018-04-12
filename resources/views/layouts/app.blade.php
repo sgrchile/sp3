@@ -23,9 +23,6 @@
   <link href="{{ asset('plugins/bootstrap-datepicker/css/datepicker.css') }}" rel="stylesheet" type="text/css"  />
   <link href="{{ asset('plugins/bootstrap-timepicker/compiled/timepicker.css') }}" rel="stylesheet" type="text/css"  />
   <link href="{{ asset('plugins/bootstrap-colorpicker/css/colorpicker.css') }}" rel="stylesheet" type="text/css"  />
-
-
-
 </head>
 
 <body class="dark_theme  fixed_header left_nav_fixed">
@@ -131,116 +128,10 @@
 </div>
 <!--\\\\\\\ header end \\\\\\-->
 <div class="inner">
-  <!--\\\\\\\ inner start \\\\\\--><div class="left_nav">
-
-    <!--\\\\\\\left_nav start \\\\\\-->
-
+  <div class="left_nav">
     <div class="left_nav_slidebar">
-      <ul>
-        <li class=" theme_border"><a href="{{route('menu')}}"><i class="fa fa-home"></i> MENU  <span class="plus"></span> </a></li>
-        <li class=" theme_border"><a href="{{route('dashboard')}}"><i class="fa fa-home"></i> CONTROL GLOBAL  <span class="plus"></span> </a></li>
-        <li><a href="{{route('Contable')}}"><i class="fa fa-folder-open-o"></i>CONTABILIDAD</a> </li>
-        <li><a href="{{route('Finanzas')}}"><i class="fa fa-folder-open-o"></i>FINANZAS</a> </li>
-        <li><a href="{{route('Finanzas')}}"><i class="fa fa-folder-open-o"></i>PRESUPUESTO</a> </li>
-        <li> <a href="javascript:void(0);"> <i class="fa fa-users icon"></i> RRHH <span class="plus"><i class="fa fa-plus"></i></span> </a>
-          <ul>
-            <li> <a href="{{route('CarpetaPersonal')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Mi carpeta RRHH</b> </a> </li>
-            <li> <a href="{{route('admRRHH')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Administrador RRHH</b> </a> </li>
-
-          </ul>
-        </li>
-        <li><a href="{{route('SolFon')}}"><i class="fa fa-folder-open-o"></i>SOLICITUD DE FONDOS</a> </li>
-        <li> <a href="javascript:void(0);"> <i class="fa fa-tasks"></i>CRM<span class="plus"><i class="fa fa-plus"></i></span></a>
-          <ul>
-            <li> <a href="{{route('CRM')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>INICIO</b> </a> </li>
-            <li> <a href="{{route('resumen')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>RESUMEN</b> </a> </li>
-            <li> <a href="{{route('cotizaciones')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>COTIZACIONES</b> </a> </li>
-            <li> <a href="{{route('clientes')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>CLIENTES</b> </a> </li>
-            <li> <a href="{{route('listaOportunidades')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>OPORTUNIDADES</b> </a> </li>
-            <li> <a href="{{route('listaActividades')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>ACTIVIDADES</b> </a> </li>
-            <li> <a href="{{route('regCliente')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>REGISTRO</b> </a> </li>
-            <li> <a href="{{route('ajustes')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>AJUSTES</b> </a> </li>
-          </ul>
-        </li>
-        <li> <a href="javascript:void(0);"> <i class="fa fa-edit"></i>ORDEN DE TRABAJO<span class="plus"><i class="fa fa-plus"></i></span></a>
-          <ul>
-            <li> <a href="{{route('ModuloOt') }}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>INICIO</b> </a> </li>
-            <li> <a href="{{route('ModuloOt.IngresoOt') }}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>INGRESO OT</b> </a> </li>
-            <li> <a href="{{route('ModuloOt.listaOt')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>LISTA OT</b> </a> </li>
-            <li> <a href="{{route('Graficos')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>GRAFICO OT</b> </a> </li>
-            <li> <a href="{{route('confOT')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>CONFIGURACION</b> </a> </li>
-          </ul>
-        </li>
-        <li> <a href="{{route('PROV')}}"> <i class="fa fa-th"></i> PROVEEDORES <span class="plus"><i class="fa fa-plus"></i></span> </a>
-        </li>
-        <li> <a href="javascript:void(0);"> <i class="fa fa-th"></i> PUNTO DE VENTA <span class="plus"><i class="fa fa-plus"></i></span> </a>
-          <ul>
-            <li> <a href="{{route('Ventas')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>INICIO</b> </a> </li>
-            <li> <a href="{{route('historialDeVentas')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>HISTORIAL DE VENTAS</b> </a> </li>
-            <li> <a href="{{route('fichaDeVenta')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>FICHA DE VENTA</b> </a> </li>
-            <li> <a href="{{route('formularioDeVentas')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>FORMULARIO DE VENTAS</b> </a> </li>
-          </ul>
-        </li>
-        <li> <a href="javascript:void(0);"> <i class="fa fa-envelope"></i> INVENTARIO <span class="plus"><i class="fa fa-plus"></i></span> </a>
-          <ul>
-            <li> <a href="{{route('inventario')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>INICIO</b> </a> </li>
-            <li> <a href="{{route('Catalogo')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>CATALOGO</b> </a> </li>
-            <li> <a href="{{route('Adquisiciones')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>ADQUISICIONES</b> </a> </li>
-            <li> <a href="{{route('Bodega')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>BODEGA</b> </a> </li>
-          </ul>
-        </li>
-        <li><a href="{{route('inicioLicitacion')}}"><i class="fa fa-folder-open-o"></i>LICITACIONES</a> </li>
-        <li> <a href="javascript:void(0);"> <i class="fa fa-th"></i> EVENTOS <span class="plus"><i class="fa fa-plus"></i></span> </a>
-          <ul>
-            <li> <a href="{{route('listaDeEventos')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>LISTA DE EVENTOS</b> </a> </li>
-            <li> <a href="{{route('crearEvento')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>CREAR EVENTOS</b> </a> </li>
-          </ul>
-        </li>
-        <li> <a href="javascript:void(0);"> <i class="fa fa-th"></i> RESERVA DE SALA <span class="plus"><i class="fa fa-plus"></i></span> </a>
-          <ul>
-            <li> <a href="{{route('horario')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>HORARIO</b> </a> </li>
-            <li> <a href="{{route('Reservar')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>RESERVAR</b> </a> </li>
-            <li> <a href="{{route('sala')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>SALA</b> </a> </li>
-          </ul>
-        </li>
-        <li><a href="{{route('IndexMarketing')}}"><i class="fa fa-th"></i>MARKETING</a> </li>
-        <li><a href="{{route('IndexMejoraContinua')}}"><i class="fa fa-th"></i>MEJORA CONTINUA</a> </li>
-        <li><a href="{{route('InformesDeGestion')}}"><i class="fa fa-th"></i>INFORMES DE GESTION</a> </li>
-        <li><a href=""><i class="fa fa-th"></i>CAPACITACIÓN</a> </li>
-        <li> <a href="javascript:void(0);"> <i class="fa fa-th"></i> DOCUMENTAL <span class="plus"><i class="fa fa-plus"></i></span> </a>
-          <ul>
-            <li> <a href="{{route('documentosInternos')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>DOCUMENTOS</b> </a> </li>
-            <li> <a href="#"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>REGISTRO FOTGRAFICO</b> </a> </li>
-          </ul>
-        </li>
-        <li> <a href="javascript:void(0);"> <i class="fa fa-th"></i> FORO <span class="plus"><i class="fa fa-plus"></i></span> </a>
-          <ul>
-            <li> <a href="{{route('listaDeEventos')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>RESPUESTAS</b> </a> </li>
-            <li> <a href="{{route('crearEvento')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>PREGUNTAS Y RESPUESTAS</b> </a> </li>
-          </ul>
-        </li>
-        <li> <a href="http://www.kutralco.com/clubrecepcionista/login.php"> <i class="fa fa-th"></i> CLUBS <span class="plus"><i class="fa fa-plus"></i></span> </a>
-        </li>
-        <li><a href="{{route('soporte')}}"><i class="fa fa-th"></i>SOPORTE</a> </li>
-
-        <!--<li> <a href="javascript:void(0);"> <i class="fa fa-folder-open-o"></i> CAJA <span class="plus"><i class="fa fa-plus"></i></span> </a>
-          <ul>
-            <li> <a href="{{route('moduloCaja')}}"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>INICIO</b> </a> </li>
-          </ul>
-        </li>-->
-
-
-
-
-
-
-
-
-
-
-
+      <ul class="nav nav-pills nav-stacked" id="menu.principal">
       </ul>
-
     </div>
   </div>
   <!--\\\\\\\left_nav end \\\\\\-->
@@ -334,6 +225,7 @@
 <script src="{{ asset('js/jquery.slimscroll.min.js') }}"></script>
 <script src="{{ asset('js/func.js')}}"></script>
 <script src="{{ asset('js/jquery.rut.chileno.js')}}"></script>
+<script src="{{ asset('js/menu.controller.js')}}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 
 @section('scripts')
@@ -373,12 +265,11 @@
 
 <script src="{{ asset('js/jPushMenu.js')}}"></script>
 <script src="{{ asset('js/side-chats.js')}}"></script>
-
-
 <script src="{{ asset('plugins/data-tables/jquery.dataTables.js')}}"></script>
 <script src="{{ asset('plugins/data-tables/DT_bootstrap.js')}}"></script>
 <script src="{{ asset('plugins/data-tables/dynamic_table_init.js')}}"></script>
 <script src="{{ asset('plugins/edit-table/edit-table.js')}}"></script>
+
 @endsection
 
 @yield('scripts')
