@@ -8,11 +8,11 @@ $(document).ready(function(){
                         $("#menu\\.principal").append(li);
                     }
                     else{
-                        if ($( "#menu"+ value.MENU_ID ).children("ul").length > 0){
-                            $( "#menu"+ value.MENU_ID ).children("ul").append(li);
+                        if ($( "#menu"+ value.MENU_PARENT ).children("ul").length > 0){
+                            $( "#menu"+ value.MENU_PARENT ).children("ul").append(li);
                         }
                         else{
-                            $( "#menu"+ value.MENU_ID ).append("<ul>" + li +"</ul>");
+                            $( "#menu"+ value.MENU_PARENT ).append("<ul>" + li +"</ul>");
                         }
                     }
                 });
