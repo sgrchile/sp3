@@ -3,8 +3,18 @@ $(document).ready(function(){
         if (data !== null){
             if (Object.keys(data).length > 0 ){
                 $.each(data, function( index, value ){
-                    let li = "<li><a href='" + value.MENU_URL +"'>" + value.MENU_NAME +"</a></li>";
-                    $("#menu\\.principal").append(li);
+                    let li = "<li id='menu"+ value.MENU_ID + "'><a href='" + value.MENU_URL +"'>" + value.MENU_NAME +"</a></li>";
+                    if (value.MENU_PARENT !== null){
+                        $("#menu\\.principal").append(li);
+                    }
+                    else{
+                        if ($( "#menu"+ value.MENU_ID ).children("ul").length > 0){
+                            $( "#menu"+ value.MENU_ID ).children("ul").append(li);
+                        }
+                        else{
+                            $( "#menu"+ value.MENU_ID ).append("<ul>" + li +"</ul>");
+                        }
+                    }
                 });
             }
             else
