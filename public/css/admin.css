@@ -342,7 +342,6 @@ box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.2);}
 
 @media (max-width:320px) { /* smartphones, iPhone, portrait 480x320 phones */
 .brand{width:210px; display:none;}
-.header_top_bar{ }
 .top_left{ display:none;}
 .top_right{ display:none;}
 .add_user{ display:none;}
@@ -356,7 +355,6 @@ box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.2);}
 }
 @media (min-width:320px) { /* smartphones, iPhone, portrait 480x320 phones */
 .brand{width:210px; display:none;}
-.header_top_bar{ }
 .top_left{ display:none;}
 .top_right{ display:none;}
 .add_user{ display:none;}
@@ -370,7 +368,6 @@ box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.2);}
 }
 @media (min-width:481px) { /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
 .brand{width:210px; display:none;}
-.header_top_bar{ }
 .top_left{ display:none;}
 .top_right{ display:none;}
 .add_user{ display:none;}
@@ -384,7 +381,6 @@ box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.2);}
 }
 @media (min-width:641px) { /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
 .brand{width:210px; display:none;}
-.header_top_bar{ }
 .top_left{ display:block;}
 .top_right{display:none;}
 .add_user{ display:block;}
@@ -398,7 +394,6 @@ box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.2);}
 }
 @media (min-width:961px) { /* tablet, landscape iPad, lo-res laptops ands desktops */
 .brand{width:210px;display:block;}
-.header_top_bar{ }
 .left_nav{width: 210px;}
 .top_left{ display:block;}
 .top_right{display:none;}
@@ -414,7 +409,6 @@ box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.2);}
 }
 @media (min-width:1025px) { /* big landscape tablets, laptops, and desktops */
 .brand{width:210px;display:block;}
-.header_top_bar{ }
 .left_nav{width: 210px;}
 .top_left{ display:block;}
 .top_right{display:block;}
@@ -430,7 +424,6 @@ box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.2);}
 }
 @media (min-width:1281px) { /* hi-res laptops and desktops */
 .brand{width:210px;display:block;}
-.header_top_bar{ }
 .left_nav{width: 210px;}
 .top_left{ display:block;}
 .top_right{display:block;}
@@ -819,8 +812,6 @@ h5{padding:10px;}
     margin-right: -75px;
     margin-top: 30px;
     position: relative;
-}
-.timeline .time-show.first {
 }
 .time-show .btn {
     width: 150px;
@@ -1401,7 +1392,6 @@ input {
 /* SuperBox end */
 
 /* invoice start */
-.invoice{}
 .invoice_header{ background:#FFFFFF; border:1px solid #CCCCCC; min-height:42px; padding: 8px 10px; margin-bottom:20px;}
 .input-group .form-control { float: left; margin-bottom: 0; position: relative; width: 100%;height:34px; border-radius:0px;}
 .invoice_body{  background:#FFFFFF; padding:30px 20px 0px 20px; border:1px solid #CCCCCC; clear:both;}
@@ -1495,7 +1485,6 @@ input {
 .upload_btn{ width:100%; margin-bottom:20px;}
 .file_sidebar h6{font-size:14px;}
 .file_sidebar h6 span{color:#979797;}
-.file_sidebar_list{}
 .file_sidebar_list ul{padding:0px; margin:0px;}
 .file_sidebar_list ul li{list-style-type:none;border-bottom: 1px solid #DDDDDD; display:block;}
 .file_sidebar_list ul li i{margin-right:10px;}
@@ -1515,7 +1504,6 @@ input {
 
 .contact_people{ padding:20px; background-color:#FFFFFF; margin-bottom:20px; clear:both; display:block;}
 .contact_people a{ float:left; margin-right:20px;}
-.contact_people_body{}
 .contact_people_body h5{padding:0px; color:#428BCA;}
 .contact_people_body span{margin-bottom:10px; display:block; color:#999999;}
 .contact_people_body span i{margin-right:8px;}
@@ -1587,7 +1575,6 @@ input {
 .task-header{padding:15px; border-bottom:1px solid #E7E7E7; font-size:16px; color:#999999;}
 .task-header i{ margin-right:5px; font-size:18px;}
 .task-header span{float:right;}
-.task_inner{}
 .task_inner p{margin-bottom:15px; line-height:15px;}
 .task_inner span{ margin-bottom:15px; display:block;line-height:15px;}
 .task-footer {content: ""; clear:both; padding:15px 0px 20px 15px; border-top:1px solid #E7E7E7; }
@@ -1849,8 +1836,6 @@ input {
 .widget_profile_heading i{font-size:40px;}
 .profile_status{display:block;  font-size:20px; margin-bottom:15px; font-weight:bold;}
 .profile_status_last{ margin-top:80px; margin-bottom:30px;display:block; font-size:20px;font-weight:bold;}
-.item-text{}
-.item-count{}
 .widget_p{ padding:0px;}
 .item-count_border{padding:10px; background-color:#1dae90; border-radius:4px;}
 .widget_profile_right_top{ display:block;}
