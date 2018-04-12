@@ -4,7 +4,7 @@ $(document).ready(function(){
             if (Object.keys(data).length > 0 ){
                 $.each(data, function( index, value ){
                     let li = "<li id='menu"+ value.MENU_ID + "'><a href='" + value.MENU_URL +"'>" + value.MENU_NAME +"</a></li>";
-                    if (value.MENU_PARENT !== null){
+                    if (value.MENU_PARENT == null){
                         $("#menu\\.principal").append(li);
                     }
                     else{
