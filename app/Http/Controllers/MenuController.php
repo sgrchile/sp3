@@ -11,7 +11,7 @@ class MenuController extends Controller
 
     public function getMenus()
     {
-        $mn = MN_MENU::get();
+        $mn = MenuModel::get();
 
         return response()->json($mn);
     }
