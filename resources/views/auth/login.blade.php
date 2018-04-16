@@ -70,25 +70,26 @@
                                             <label class="form-check-label" for="remember">Recordarme</label>
                                         </div>
                                         <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+                                        <a href="">Regístrate</a>
                                     </form>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="row justify-content-md-center mt-3">
-                        <div class="col-2">
+                        <div class="col-2 pl-0 pr-0 mr-1">
                             <img src="images/empresas/logo_biogest.png" class="img-fluid" alt="Logo biogest">
                         </div>
-                        <div class="col-2">
+                        <div class="col-2 pl-0 pr-0 mr-1">
                             <img src="images/empresas/logo_kutralco.png" class="img-fluid" alt="Logo kutralco">
                         </div>
-                        <div class="col-2">
+                        <div class="col-2 pl-0 pr-0 mr-1">
                             <img src="images/empresas/logo_loica.png" class="img-fluid" alt="Logo loica">
                         </div>
-                        <div class="col-2">
+                        <div class="col-2 pl-0 pr-0 mr-1">
                             <img src="images/empresas/logo_sgr.png" class="img-fluid" alt="Logo sgr">
                         </div>
-                        <div class="col-2">
+                        <div class="col-2 pl-0 pr-0 mr-1">
                             <img src="images/empresas/logo_trener.png" class="img-fluid" alt="Logo trener">
                         </div>
                     </div>
