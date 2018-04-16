@@ -20,13 +20,35 @@
     <section>
         <div class="container">
             <div class="row justify-content-md-center">
-                <div class="col-6">
-                    <p class="h3 text-center">Bienvenido a Servicios Profesionales SP3</p>
+                <div class="col-8 my-3">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Bienvenido a Servicios Profesionales SP3</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                            <h5 class="card-title text-center">Bienvenido a Servicios Profesionales SP3</h5>
+                            <div class="row">
+                                <div class="col-6">
+
+                                </div>
+                                <div class="col-6">
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-2">
+                                    <img src="images/empresas/logo_biogest.png" class="img-fluid" alt="Logo SP3">
+                                </div>
+                                <div class="col-2">
+                                    <img src="images/empresas/logo_kutralco.png" class="img-fluid" alt="Logo SP3">
+                                </div>
+                                <div class="col-2">
+                                    <img src="images/empresas/logo_loica.png" class="img-fluid" alt="Logo SP3">
+                                </div>
+                                <div class="col-2">
+                                    <img src="images/empresas/logo_sgr.png" class="img-fluid" alt="Logo SP3">
+                                </div>
+                                <div class="col-2">
+                                    <img src="images/empresas/logo_trener.png" class="img-fluid" alt="Logo SP3">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
