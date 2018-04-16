@@ -8,20 +8,27 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
   </head>
   <body>
-    <header style="background-color:#000;">
+    <header style="background-color:#000;border-bottom: solid 8px #FFCC00;">
         <div class="container">
             <div class="row justify-content-md-center">
-                <div class="col-3">
-                    <img src="images/log_sp3_horizontal.png" alt="Logo SP3">
+                <div class="col-5 my-3">
+                    <img src="images/log_sp3_horizontal.png" class="img-fluid" alt="Logo SP3">
                 </div>
             </div>
         </div>
     </header>
     <section>
         <div class="container">
-            <div class="row">
+            <div class="row justify-content-md-center">
                 <div class="col-6">
-                    <h1>Bienvenido a Servicios Profesionales SP3</h1>
+                    <p class="h3 text-center">Bienvenido a Servicios Profesionales SP3</p>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Bienvenido a Servicios Profesionales SP3</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
