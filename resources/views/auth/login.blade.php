@@ -21,7 +21,7 @@
         <div class="container">
             <div class="row justify-content-md-center">
                 <div class="col-8 my-3">
-                    <div class="card" style="border:1px solid #000;">
+                    <div class="card" style="border:1px solid #000;background: linear-gradient(white, #cfcdce);">
                         <div class="card-body pb-0">
                             <h5 class="card-title text-center">Bienvenido a Servicios Profesionales SP3</h5>
                             <div class="row">
