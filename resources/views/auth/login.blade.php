@@ -17,7 +17,7 @@
             </div>
         </div>
     </header>
-    <section>
+    <section style="background-image:url(images/login-fondo.jpg);background-size: cover;background-repeat:no-repeat;">
         <div class="container">
             <div class="row justify-content-md-center">
                 <div class="col-8 my-3">
@@ -32,23 +32,23 @@
 
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-2">
-                                    <img src="images/empresas/logo_biogest.png" class="img-fluid" alt="Logo SP3">
-                                </div>
-                                <div class="col-2">
-                                    <img src="images/empresas/logo_kutralco.png" class="img-fluid" alt="Logo SP3">
-                                </div>
-                                <div class="col-2">
-                                    <img src="images/empresas/logo_loica.png" class="img-fluid" alt="Logo SP3">
-                                </div>
-                                <div class="col-2">
-                                    <img src="images/empresas/logo_sgr.png" class="img-fluid" alt="Logo SP3">
-                                </div>
-                                <div class="col-2">
-                                    <img src="images/empresas/logo_trener.png" class="img-fluid" alt="Logo SP3">
-                                </div>
-                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-md-center mt-3">
+                        <div class="col-2">
+                            <img src="images/empresas/logo_biogest.png" class="img-fluid" alt="Logo biogest">
+                        </div>
+                        <div class="col-2">
+                            <img src="images/empresas/logo_kutralco.png" class="img-fluid" alt="Logo kutralco">
+                        </div>
+                        <div class="col-2">
+                            <img src="images/empresas/logo_loica.png" class="img-fluid" alt="Logo loica">
+                        </div>
+                        <div class="col-2">
+                            <img src="images/empresas/logo_sgr.png" class="img-fluid" alt="Logo sgr">
+                        </div>
+                        <div class="col-2">
+                            <img src="images/empresas/logo_trener.png" class="img-fluid" alt="Logo trener">
                         </div>
                     </div>
                 </div>
