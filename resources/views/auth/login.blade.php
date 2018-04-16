@@ -21,7 +21,7 @@
         <div class="container">
             <div class="row justify-content-md-center">
                 <div class="col-8 my-3">
-                    <div class="card">
+                    <div class="card" style="border:1px solid #000;">
                         <div class="card-body pb-0">
                             <h5 class="card-title text-center">Bienvenido a Servicios Profesionales SP3</h5>
                             <div class="row">
@@ -48,7 +48,7 @@
                                             @endif
                                         </div>
                                         <div class="form-group{{ $errors->has('PRO_RUN') ? ' has-error' : '' }}">
-                                            <label for="rut" class="col-md-4 control-label">RUT</label>
+                                            <label for="rut">RUT</label>
                                             <input id="PRO_RUN" type="text" class="form-control" name="PRO_RUN" value="{{ old('PRO_RUN') }}" required autofocus>
                                             @if ($errors->has('PRO_RUN'))
                                                 <span class="help-block">
@@ -57,7 +57,7 @@
                                             @endif
                                         </div>
                                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                                            <label for="password" class="col-md-4 control-label">Contraseña</label>
+                                            <label for="password">Contraseña</label>
                                             <input id="password" type="password" class="form-control" name="password" required>
                                             @if ($errors->has('password'))
                                                 <span class="help-block">
