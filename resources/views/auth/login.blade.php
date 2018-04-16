@@ -22,9 +22,9 @@
             <div class="row justify-content-md-center">
                 <div class="col-8 my-3">
                     <div class="card">
-                        <div class="card-body">
+                        <div class="card-body pb-0">
                             <h5 class="card-title text-center">Bienvenido a Servicios Profesionales SP3</h5>
-                            <div class="row">login_card_bg.png
+                            <div class="row">
                                 <div class="col-6">
                                     <img src="images/login_anfitrion.png" class="img-fluid" alt="Ejecutiva Bienvenida">
                                 </div>
