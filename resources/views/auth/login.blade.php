@@ -7,7 +7,7 @@
     <title>Plataforma SP3</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
   </head>
-  <body>
+  <body style="background-image:url(images/login-fondo.jpg);background-size: cover;background-repeat:no-repeat;">
     <header style="background-color:#000;border-bottom: solid 8px #FFCC00;">
         <div class="container">
             <div class="row justify-content-md-center">
@@ -17,16 +17,16 @@
             </div>
         </div>
     </header>
-    <section style="background-image:url(images/login-fondo.jpg);background-size: cover;background-repeat:no-repeat;">
+    <section>
         <div class="container">
             <div class="row justify-content-md-center">
                 <div class="col-8 my-3">
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title text-center">Bienvenido a Servicios Profesionales SP3</h5>
-                            <div class="row">
+                            <div class="row">login_card_bg.png
                                 <div class="col-6">
-
+                                    <img src="images/login_anfitrion.png" class="img-fluid" alt="Ejecutiva Bienvenida">
                                 </div>
                                 <div class="col-6">
 
