@@ -1506,7 +1506,7 @@ Route::group(['prefix' => 'modulo'], function () {
       });
       // FIN DE MEJORA CONTINUA
       // Registrar
-      Route::get('/register', function () {
+      Route::get('/registrar', function () {
         return view('ModuloUsuarios/registerPublic');
     })->name('register');
 
