@@ -1506,12 +1506,8 @@ Route::group(['prefix' => 'modulo'], function () {
       });
       // FIN DE MEJORA CONTINUA
       // Registrar
-      Route::post('/register', function(){
-        return view('ModuloCaja.VisualizarCartola')
-        ->with('cartolas', $cartolas);
-      });
       Route::get('/register', function () {
         return view('ModuloUsuarios/registerPublic');
-    })->name('login');
+    })->name('register');
 
 });
