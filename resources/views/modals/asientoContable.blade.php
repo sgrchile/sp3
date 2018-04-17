@@ -24,13 +24,12 @@
           <td>HABER</td>
         </tr>
 
-        <!--@foreach($ctasiento as $cta)
         <tr>
-          <td>{!! App\CuentaContable::find($cta->ID_CTA_CONT) !!}</td>
-          <td>{!! App\CuentaContable::find($cta->ASIENTO_DEBE) !!}</td>
-          <td>{!! App\CuentaContable::find($cta->ASIENTO_HABER) !!}</td>
+          <td></td>
+          <td></td>
+          <td></td>
         </tr>
-        @endforeach-->
+
 
       </table>
 
