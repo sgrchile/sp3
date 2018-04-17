@@ -154,9 +154,6 @@ Route::group(['prefix' => 'modulo'], function () {
             return view('ModuloCaja.editarAsientoContable');
         })->name('editarAsientoContable');*/
 
-        /*Route::get('/PlanDeCuentas', function () {
-            return view('ModuloCaja.PlanDeCuentas');
-        })->name('PlanDeCuentas');*/
 
         Route::get('/PlanDeCuentas', [
             'uses' => 'CuentaContableController@index',

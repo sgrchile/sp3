@@ -117,7 +117,7 @@
 
 
   <div class="container">
-    <a href="javascript:history.back(1)"><button class="btn btn-primary btn-lg">Volver</button></a>
+    <a href="{{route('Contable')}}"><button class="btn btn-primary btn-lg">Volver</button></a>
 
   </div>
   </a>
