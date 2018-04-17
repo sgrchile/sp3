@@ -77,7 +77,7 @@
                   <td>{{ App\TipoMovimiento::find($asiento->TP_MOVIMIENTO)->TMOV_DESC }}</td>
                   <td>{{ $asiento->CREATED_AT }}</td>
                   <td>
-                    <a href="{{action('AsientoContableController@show',$asiento->ID_ASIENTO_CONT)}}"><button class="btn btn-primary btn-md" style="margin-right:15px;" data-toggle="modal" data-target="#asientoContable" data-backdrop="static">VER</button></a>
+                    <a href="{{route('asiento.ver',$asiento->ID_ASIENTO_CONT)}}"><button class="btn btn-primary btn-md" style="margin-right:15px;" data-toggle="modal" data-target="#asientoContable" data-backdrop="static">VER</button></a>
                     <a href="{{route('asiento.edit',$asiento->ID_ASIENTO_CONT)}}"><button class="btn btn-primary btn-md" style="margin-right:15px;">EDITAR</button></a>
                     <a href="{{ route('asiento.destroy',$asiento->ID_ASIENTO_CONT) }}" onclick="return confirm('¿Desea eliminar éste Asiento Contable?')" >
                       <button class="btn btn-primary btn-md" style="margin-right:15px;">ELIMINAR</button></a>

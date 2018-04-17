@@ -9,47 +9,37 @@
     <h4 class="modal-title text-center">NUEVA CUENTA</h4>
     </div>
     <div class="modal-body" align="center">
+      {!! Form::open(['route' => 'post.ctacontable', 'method' => 'post']) !!}
+      {{ csrf_field() }}
 
       <table class="table-condensed text-right">
 
         <tr>
-          <td>CLASE DE CUENTA:</td>
+          <td>TIPO DE CUENTA:</td>
           <td>
-              <select class="form-control" style="width:175px;"  name="">
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
-              </select>
-          </td>
-          <td>
-
-                <input type='checkbox' name='' value='' >
-
+              {{ Form::select('tpcuenta',App\Tp_Cuenta::pluck('DESC_TP_CUENTA','ID_TP_CUENTA'),null,
+              ['class'=>'form-control','style'=>'width:175px','placeholder'=>'Seleccione','id'=>'tpcuenta','require']) }}
           </td>
         </tr>
 
         <tr>
-          <td>TIPO DE CUENTA:</td>
+          <td>CLASE DE CUENTA:</td>
           <td>
-              <select class="form-control" style="width:175px;"  name="">
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
-              </select>
+            {{ Form::select('clasecuenta',App\ClaseCuenta::pluck('DESC_CL_CUENTA','ID_CL_CUENTA'),null,
+            ['class'=>'form-control','style'=>'width:175px','placeholder'=>'Seleccione','id'=>'clasecuenta','require']) }}
           </td>
         </tr>
 
         <tr>
           <td>NOMBRE DE LA CUENTA</td>
-          <td><input type="text" required class="form-control" style="width:175px;"></td>
+          <td>{{ Form::text('nomcta',null,['class'=>'form-control','style'=>'width:175px','require' ]) }}</td>
         </tr>
 
       </table>
 
-      <button class="btn btn-primary btn-lg">REGISTRAR</button>
+      <a><button class="btn btn-primary btn-lg">REGISTRAR</button></a>
 
+      {!! Form::close() !!}
     </div>
       <div class="modal-footer">
       <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>

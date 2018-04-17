@@ -39,8 +39,8 @@ class CuentaContableController extends Controller
     {
         $cuenta = new CuentaContable();
         $cuenta->setAttribute('NOM_CTA_CONT',$request->get('nomcta'));
-        $cuenta->setAttribute('CL_CTA_CONT',$request->get('clasecta'));
-        $cuenta->setAttribute('TP_CTA_CON',$request->get('tipocta'));
+        $cuenta->setAttribute('CL_CTA_CONT',$request->get('clasecuenta'));
+        $cuenta->setAttribute('TP_CTA_CON',$request->get('tpcuenta'));
         //$cuenta->setAttribute('MONTO_CTA_CONT',$request->get('montocta',null));
         //$cuenta->setAttribute('USUARIO_CTA_CONT',$request->session->get('login_web'));
         //dd($request);

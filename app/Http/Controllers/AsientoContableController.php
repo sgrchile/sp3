@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\AsientoContable;
 use App\AsientoCuenta;
+use App\ClaseCuenta;
 use App\CuentaContable;
 use App\TipoMovimiento;
+use function GuzzleHttp\Promise\all;
 use Illuminate\Http\Request;
 
 class AsientoContableController extends Controller
@@ -30,8 +32,11 @@ class AsientoContableController extends Controller
     public function create()
     {
         $tpmov = TipoMovimiento::pluck('TMOV_DESC','TMOV_ID');
-        $cuenta = CuentaContable::pluck('NOM_CTA_CONT','ID_CTA_CONT');
-        return view('ModuloCaja.NuevoAsientoContable',['tpmov'=>$tpmov,'cuenta'=>$cuenta]);
+        $clases = ClaseCuenta::all();
+        $cuentas = CuentaContable::all();
+        return view('ModuloCaja.NuevoAsientoContable')
+            ->with('cuentas',$cuentas)
+            ->with('clases',$clases);
     }
 
     /**
@@ -42,23 +47,124 @@ class AsientoContableController extends Controller
      */
     public function store(Request $request)
     {
+
         //dd($request);
         $asiento = new AsientoContable();
         $asiento->COMENT_ASIENT = $request->comentario;
         $asiento->TP_MOVIMIENTO = $request->tp_movimiento;
         $asiento->FECHA_CONT = $request->fecasiento;
-        $asiento->TOTAL_DEBE = $request->debe;
-        $asiento->TOTAL_HABER = $request->haber;
         $asiento->ID_USUARIO_ASIENTO = null;
+        $tdebe=0;
+        $thaber=0;
+        $asiento->TOTAL_DEBE = $tdebe;
+        $asiento->TOTAL_HABER = $thaber;
+        $asiento->save();
+        $count=0;
+        $nreg=(($request->request->count())-6)/4;
+        for ($i=0;$i<$nreg;$i++){
+            if($request->exists("cuentas$count")){
+                $asicta = new AsientoCuenta();
+                $asicta->ID_ASIENTO_CONT = $asiento->ID_ASIENTO_CONT;
+                $ctacont=CuentaContable::find($request->get("cuentas$count"));
+                $asicta->setAttribute('ID_CTA_CONT',$ctacont->getAttribute('ID_CTA_CONT')) ;
+                //dd($ctacont->getAttribute('TP_CTA_CON'));
+                $monto=intval($ctacont->getAttribute('MONTO_CTA_CONT'));
+                //dd($ctacont->tpcuenta());
+                switch  ($ctacont->getAttribute('TP_CTA_CON')){
+                    case 1:
+                        if ($request->get("debe$count")!=null){
+                            $monto=$monto + intval($request->get("debe$count"));
+                            $tdebe = $tdebe + intval($request->get("debe$count"));
+                            $asicta->setAttribute('ASIENTO_DEBE',$request->get("debe$count"));
+                        }
+                        if ($request->get("haber$count")!=null){
+                            $monto=$monto - intval($request->get("haber$count"));
+                            $thaber = $thaber + intval($request->get("haber$count"));
+                            $asicta->setAttribute('ASIENTO_HABER',$request->get("haber$count"));
+                        }
+                        //dd($monto);
+                        $ctacont->setAttribute('MONTO_CTA_CONT',$monto);
+                        break;
+                    case 2:
+                        if ($request->get("debe$count")!=null){
+                            $monto=$monto - intval($request->get("debe$count"));
+                            $tdebe = $tdebe + intval($request->get("debe$count"));
+                            $asicta->setAttribute('ASIENTO_DEBE',$request->get("debe$count"));
+                        }
+                        if ($request->get("haber$count")!=null){
+                            $monto=$monto + intval($request->get("haber$count"));
+                            $thaber = $thaber + intval($request->get("haber$count"));
+                            $asicta->setAttribute('ASIENTO_HABER',$request->get("haber$count"));
+                        }
+                        $ctacont->setAttribute('MONTO_CTA_CONT',$monto);
+                        break;
+                    case 3:
+                        if ($request->get("debe$count")!=null){
+                            $monto=$monto - intval($request->get("debe$count"));
+                            $tdebe = $tdebe + intval($request->get("debe$count"));
+                            $asicta->setAttribute('ASIENTO_DEBE',$request->get("debe$count"));
+                        }
+                        if ($request->get("haber$count")!=null){
+                            $monto=$monto + intval($request->get("haber$count"));
+                            $thaber = $thaber + intval($request->get("haber$count"));
+                            $asicta->setAttribute('ASIENTO_HABER',$request->get("haber$count"));
+                        }
+                        $ctacont->setAttribute('MONTO_CTA_CONT',$monto);
+                        break;
+                    case 4:
+                        if ($request->get("debe$count")!=null){
+                            $monto=$monto + intval($request->get("debe$count"));
+                            $tdebe = $tdebe + intval($request->get("debe$count"));
+                            $asicta->setAttribute('ASIENTO_DEBE',$request->get("debe$count"));
+                        }
+                        if ($request->get("haber$count")!=null){
+                            $monto=$monto - intval($request->get("haber$count"));
+                            $thaber = $thaber + intval($request->get("haber$count"));
+                            $asicta->setAttribute('ASIENTO_HABER',$request->get("haber$count"));
+                        }
+                        $ctacont->setAttribute('MONTO_CTA_CONT',$monto);
+                        break;
+                    case 5:
+                        if ($request->get("debe$count")!=null){
+                            $monto=$monto - intval($request->get("debe$count"));
+                            $tdebe = $tdebe + intval($request->get("debe$count"));
+                            $asicta->setAttribute('ASIENTO_DEBE',$request->get("debe$count"));
+                        }
+                        if ($request->get("haber$count")!=null){
+                            $monto=$monto + intval($request->get("haber$count"));
+                            $thaber = $thaber + intval($request->get("haber$count"));
+                            $asicta->setAttribute('ASIENTO_HABER',$request->get("haber$count"));
+                        }
+                        $ctacont->setAttribute('MONTO_CTA_CONT',$monto);
+                        break;
+                    case 6:
+                        if ($request->get("debe$count")!=null){
+                            $monto=$monto - intval($request->get("debe$count"));
+                            $tdebe = $tdebe + intval($request->get("debe$count"));
+                            $asicta->setAttribute('ASIENTO_DEBE',$request->get("debe$count"));
+                        }
+                        if ($request->get("haber$count")!=null){
+                            $monto=$monto + intval($request->get("haber$count"));
+                            $thaber = $thaber + intval($request->get("haber$count"));
+                            $asicta->setAttribute('ASIENTO_HABER',$request->get("haber$count"));
+                        }
+                        $ctacont->setAttribute('MONTO_CTA_CONT',$monto);
+                        break;
+                }//FIN switch
+                //dd($asicta);
+                $ctacont->save();
+                $asicta->save();
+            }//FIN IF
+            $count++;
+        }//FIN FOR
+
+        //dd($asiento);
+        $asiento->TOTAL_DEBE = $tdebe;
+        $asiento->TOTAL_HABER = $thaber;
         $asiento->save();
         //dd($asiento);
-        //$cuenta = new AsientoCuenta();
-        //$cuenta->ID_ASIENTO_CONT = $asiento->ID_ASIENTO_CONT;
-        //$cuenta->ASIENTO_DEBE = $request->debe;
-        //$cuenta->ASIENTO_HABER = $request->haber;
-        //$cuenta->ID_CTA_CONT = $request->cta_cont;
-        //$cuenta->save();
-        return redirect()->back()->with('status_asiento', $asiento);
+
+        return redirect()->back()->with('status_asiento', 'Asiento almacenado con exito!');
     }
 
     /**
@@ -70,8 +176,9 @@ class AsientoContableController extends Controller
     public function show($id)
     {
         $asiento = AsientoContable::find($id);
-        return redirect()->back()->with('idasiento',$asiento);
-        //dd($id);
+        $ctasiento = AsientoCuenta::all()->where('ID_ASIENTO_CONT','=',$id);
+        //dd($ctasiento);
+        return redirect('modals.asientoContable',compact('$ctasiento'))->with('asiento',$asiento);
     }
 
     /**
