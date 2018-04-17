@@ -15,6 +15,11 @@ Route::get('/',function(){
        return view('auth/login');
    })->name('login');
 
+   // Registrar
+Route::get('/registrar', function () {
+    return view('ModuloUsuarios/registerPublic');
+})->name('register');
+
 Route::get('/menu', function () {
          return view('index');
      })->name('menu');
@@ -1504,5 +1509,5 @@ Route::group(['prefix' => 'modulo'], function () {
 
 
       });
-      // FIN DE MEJORA CONTINUA
+      // FIN DE MEJORA CONTINUA;
 });

@@ -29,49 +29,6 @@
                                     <img src="images/login_anfitrion.png" class="img-fluid" alt="Ejecutiva Bienvenida">
                                 </div>
                                 <div class="col-6">
-                                    <form class="form-horizontal" role="form" method="POST" action="{{ route('login') }}">
-                                        {{ csrf_field() }}
-                                        <div class="form-group{{ $errors->has('PRO_RUN') ? ' has-error' : '' }}">
-                                            <label for="rut">Empresa</label>
-                                            <select class="form-control" required autofocus>
-                                                <option value="0">Seleccione </option>
-                                                <option value="1">BIOGEST </option>
-                                                <option value="2">TRENER </option>
-                                                <option value="3">LOICA </option>
-                                                <option value="4">KUTRALCO </option>
-                                                <option value="5">IMPROTOUR </option>
-                                            </select>
-                                            @if ($errors->has('PRO_RUN'))
-                                                <span class="help-block">
-                                                    <strong>{{ $errors->first('PRO_RUN') }}</strong>
-                                                </span>
-                                            @endif
-                                        </div>
-                                        <div class="form-group{{ $errors->has('PRO_RUN') ? ' has-error' : '' }}">
-                                            <label for="rut">RUT</label>
-                                            <input id="PRO_RUN" type="text" class="form-control" name="PRO_RUN" value="{{ old('PRO_RUN') }}" required autofocus>
-                                            @if ($errors->has('PRO_RUN'))
-                                                <span class="help-block">
-                                                    <strong>{{ $errors->first('PRO_RUN') }}</strong>
-                                                </span>
-                                            @endif
-                                        </div>
-                                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                                            <label for="password">Contraseña</label>
-                                            <input id="password" type="password" class="form-control" name="password" required>
-                                            @if ($errors->has('password'))
-                                                <span class="help-block">
-                                                    <strong>{{ $errors->first('password') }}</strong>
-                                                </span>
-                                            @endif
-                                        </div>
-                                        <div class="form-group form-check">
-                                            <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>
-                                            <label class="form-check-label" for="remember">Recordarme</label>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary">Iniciar sesión</button>
-                                        <a href="">Regístrate</a>
-                                    </form>
                                 </div>
                             </div>
                         </div>

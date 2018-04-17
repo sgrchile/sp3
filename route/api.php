@@ -35,3 +35,14 @@ Route::get('/rubro/{rubro}', [
     'uses' => 'LocationController@getRubro',
     'as' => 'get.rubro',
 ]);
+
+Route::get('/crm/oportunidades', function(){
+
+    $db = App\Oportunidad::orderBy('CREATED_AT','DESC')->take(10)->get();
+    return response()->json($db);
+});
+
+Route::get('/menus/all', [
+    'uses' => 'MenuController@getMenus',
+    'as' => 'get.menus',
+]);
