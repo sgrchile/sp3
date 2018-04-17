@@ -24,7 +24,7 @@
           <td>HABER</td>
         </tr>
 
-        @foreach($ctaasiento as $cta)
+        @foreach($ctasiento as $cta)
         <tr>
           <td>{!! App\CuentaContable::find($cta->ID_CTA_CONT) !!}</td>
           <td>{!! App\CuentaContable::find($cta->ASIENTO_DEBE) !!}</td>
