@@ -157,7 +157,7 @@ Route::group(['prefix' => 'modulo'], function () {
 
         Route::get('/PlanDeCuentas', [
             'uses' => 'CuentaContableController@index',
-            'as' => 'PlanDeCuentas',
+            'as' => 'plandecuentas',
         ]);
 
         Route::post('/CrearCuenta', [
