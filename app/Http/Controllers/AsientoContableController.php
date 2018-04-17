@@ -215,8 +215,104 @@ class AsientoContableController extends Controller
     public function destroy($id)
     {
         $asient = AsientoContable::find($id);
+        $asientcta = AsientoCuenta::all()->where('ID_ASIENTO_CONT','=',$id);
+        //dd($asientcta);
+        foreach ($asientcta as $ascta){
+            $cta = CuentaContable::find($ascta->ID_CTA_CONT);
+            switch  ($cta->getAttribute('TP_CTA_CON')){
+                case 1:
+                    if ($ascta->ASIENTO_DEBE>0){
+                        $monto = 0;
+                        $monto = $cta->MONTO_CTA_CONT - $ascta->ASIENTO_DEBE;
+                        $cta->setAttribute('MONTO_CTA_CONT',$monto);
+                        $cta->save();
+                    }
+                    if ($ascta->ASIENTO_HABER>0){
+                        $monto = 0;
+                        $monto = $cta->MONTO_CTA_CONT + $ascta->ASIENTO_HABER;
+                        $cta->setAttribute('MONTO_CTA_CONT',$monto);
+                        $cta->save();
+                    }
+                    //dd($monto);
+                    break;
+                case 2:
+                    if ($ascta->ASIENTO_DEBE>0){
+                        $monto = 0;
+                        $monto = $cta->MONTO_CTA_CONT + $ascta->ASIENTO_DEBE;
+                        $cta->setAttribute('MONTO_CTA_CONT',$monto);
+                        $cta->save();
+                    }
+                    if ($ascta->ASIENTO_HABER>0){
+                        $monto = 0;
+                        $monto = $cta->MONTO_CTA_CONT - $ascta->ASIENTO_HABER;
+                        $cta->setAttribute('MONTO_CTA_CONT',$monto);
+                        $cta->save();
+                    }
+                    //dd($monto);
+                    break;
+                case 3:
+                    if ($ascta->ASIENTO_DEBE>0){
+                        $monto = 0;
+                        $monto = $cta->MONTO_CTA_CONT + $ascta->ASIENTO_DEBE;
+                        $cta->setAttribute('MONTO_CTA_CONT',$monto);
+                        $cta->save();
+                    }
+                    if ($ascta->ASIENTO_HABER>0){
+                        $monto = 0;
+                        $monto = $cta->MONTO_CTA_CONT - $ascta->ASIENTO_HABER;
+                        $cta->setAttribute('MONTO_CTA_CONT',$monto);
+                        $cta->save();
+                    }
+                    //dd($monto);
+                    break;
+                case 4:
+                    if ($ascta->ASIENTO_DEBE>0){
+                        $monto = 0;
+                        $monto = $cta->MONTO_CTA_CONT - $ascta->ASIENTO_DEBE;
+                        $cta->setAttribute('MONTO_CTA_CONT',$monto);
+                        $cta->save();
+                    }
+                    if ($ascta->ASIENTO_HABER>0){
+                        $monto = 0;
+                        $monto = $cta->MONTO_CTA_CONT + $ascta->ASIENTO_HABER;
+                        $cta->setAttribute('MONTO_CTA_CONT',$monto);
+                        $cta->save();
+                    }
+                    //dd($monto);
+                    break;
+                case 5:
+                    if ($ascta->ASIENTO_DEBE>0){
+                        $monto = 0;
+                        $monto = $cta->MONTO_CTA_CONT + $ascta->ASIENTO_DEBE;
+                        $cta->setAttribute('MONTO_CTA_CONT',$monto);
+                        $cta->save();
+                    }
+                    if ($ascta->ASIENTO_HABER>0){
+                        $monto = 0;
+                        $monto = $cta->MONTO_CTA_CONT - $ascta->ASIENTO_HABER;
+                        $cta->setAttribute('MONTO_CTA_CONT',$monto);
+                        $cta->save();
+                    }
+                    //dd($monto);
+                    break;
+                case 6:
+                    if ($ascta->ASIENTO_DEBE>0){
+                        $monto = 0;
+                        $monto = $cta->MONTO_CTA_CONT + $ascta->ASIENTO_DEBE;
+                        $cta->setAttribute('MONTO_CTA_CONT',$monto);
+                        $cta->save();
+                    }
+                    if ($ascta->ASIENTO_HABER>0){
+                        $monto = 0;
+                        $monto = $cta->MONTO_CTA_CONT - $ascta->ASIENTO_HABER;
+                        $cta->setAttribute('MONTO_CTA_CONT',$monto);
+                        $cta->save();
+                    }
+                    //dd($monto);
+                    break;
+            }//FIN switch
+        }//FIN FOREACH
         $asient->delete();
-        //dd($contac);
         return redirect()->back()->with('status_asiento', 'Asiento eliminado!');
     }
 }

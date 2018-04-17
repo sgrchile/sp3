@@ -10,7 +10,7 @@
     </div>
     <div class="modal-body" align="center">
 
-      <textarea name="name" rows="8" cols="80" readonly class="form-control" style="max-width:560px; max-height:150px;">{!! $asiento->COMENT_ASIENT !!}</textarea>
+      <textarea name="name" rows="8" cols="80" readonly class="form-control" style="max-width:560px; max-height:150px;"></textarea>
       <br />
       <br />
 

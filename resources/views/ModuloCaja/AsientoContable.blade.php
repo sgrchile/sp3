@@ -23,7 +23,7 @@
                         <tr>
                             <td>TIPO DE MOVIMIENTO:</td>
                             <td>
-                                {{ Form::text('tp_movimiento',$asiento->TP_MOVIMIENTO,['class'=>'form-control', 'style'=>'width:175px;','readonly']) }}
+                                {{ Form::text('tp_movimiento',App\TipoMovimiento::find($asiento->TP_MOVIMIENTO)->TMOV_DESC,['class'=>'form-control', 'style'=>'width:175px;','readonly']) }}
                             </td>
                         </tr>
                         <tr>
