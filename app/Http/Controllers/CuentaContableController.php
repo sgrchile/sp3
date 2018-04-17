@@ -16,7 +16,7 @@ class CuentaContableController extends Controller
     {
         $cuentas = CuentaContable::orderby('NOM_CTA_CONT','ASC')->paginate(20);
         //dd('hola');
-        return view('ModuloCaja.PlanDeCuentas')->with('cuentas',$cuentas);
+        return view('ModuloCaja.plandecuentas')->with('cuentas',$cuentas);
     }
 
     /**
