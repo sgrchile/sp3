@@ -178,7 +178,7 @@ class AsientoContableController extends Controller
         $asiento = AsientoContable::find($id);
         $ctasiento = AsientoCuenta::all()->where('ID_ASIENTO_CONT','=',$id);
         //dd($ctasiento);
-        return redirect('modals.asientoContable',compact('$ctasiento'))->with('asiento',$asiento);
+        return view('ModuloCaja.AsientoContable',compact('ctasiento'))->with('asiento',$asiento);
     }
 
     /**
@@ -217,6 +217,6 @@ class AsientoContableController extends Controller
         $asient = AsientoContable::find($id);
         $asient->delete();
         //dd($contac);
-        return redirect()->back();
+        return redirect()->back()->with('status_asiento', 'Asiento eliminado!');
     }
 }
