@@ -107,6 +107,11 @@ Route::group(['prefix' => 'modulo'], function () {
             'as' => 'LibrosContables',
         ]);
 
+        Route::get('/BalanceGeneral', [
+            'uses' => 'LibrosContablesController@balance',
+            'as' => 'Balance',
+        ]);
+
         /*Route::get('/AsientosContables', function () {
             return view('ModuloCaja.AsientosContables');
         })->name('AsientosContables');*/

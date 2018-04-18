@@ -88,4 +88,11 @@ class LibrosContablesController extends Controller
     {
         //
     }
+
+    /**
+     * Balance General
+     */
+    public function balance(){
+        return view('ModuloCaja.Balance');
+    }
 }
