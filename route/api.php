@@ -46,3 +46,8 @@ Route::get('/menus/all', [
     'uses' => 'MenuController@getMenus',
     'as' => 'get.menus',
 ]);
+
+Route::get('/pais/all', [
+    'uses' => 'PaisControllerc@getPaises',
+    'as' => 'get.pais',
+]);
