@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="es">
   <head>
-    <meta NAME="robots" CONTENT="NoIndex, NoFollow">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Plataforma SP3</title>
@@ -117,7 +116,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Persona</h5>
                                 <p class="card-text text-justify">Registro para personas que prestan servicios de forma particular, con o sin emisión de boletas de Honorario (Gásfiter, profesionales freelance). Toda persona registrada en la plataforma es un potencial provedor para una empresa .</p>
-                                <a class="btn btn-secondary" href="registrar">Registrar una Persona</a>
+                                <a class="btn btn-warning" href="registrar">Registrar una Persona</a>
                             </div>
                         </div>
                     </div>
@@ -127,7 +126,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Empresa</h5>
                                 <p class="card-text text-justify">Registro para empresas que ofrecen productos o servicios, la cuenta creada representa a la empresa y es administrada por su representante legal, una vez creada puede registrar o asociar a personas como provedores o recursos humanos.</p>
-                                <a class="btn btn-secondary"  href="empresa">Registrar una Empresa</a>
+                                <a class="btn btn-warning"  href="empresa">Registrar una Empresa</a>
                             </div>
                         </div>
                     </div>
