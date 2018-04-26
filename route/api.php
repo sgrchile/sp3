@@ -59,3 +59,7 @@ Route::get('/bancos/cuentas', [
     'uses' => 'BancosController@getCuentas',
     'as' => 'get.bancocuentas',
 ]);
+Route::get('/salud', [
+    'uses' => 'SaludController@getPrevisiones',
+    'as' => 'get.previsiones',
+]);
