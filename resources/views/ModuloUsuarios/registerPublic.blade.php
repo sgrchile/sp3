@@ -120,8 +120,8 @@
                                             </div>
                                         </div>
                                         <div class="card-footer">
-                                            <a href="#" data-toggle="collapse" data-target="#collapseOne">Volver al paso 2</a>
-                                            <a href="#" data-toggle="collapse" data-target="#collapseThree">Paso 3</a>
+                                            <a href="#" class="btn btn-secondary" data-toggle="collapse" data-target="#collapseOne">Volver al paso 2</a>
+                                            <a href="#" class="btn btn-primary" data-toggle="collapse" data-target="#collapseThree">Paso 3</a>
                                         </div>
                                     </div>
                                 </div>
@@ -166,8 +166,8 @@
                                             </div>
                                         </div>
                                         <div class="card-footer">
-                                            <a href="#" data-toggle="collapse" data-target="#collapseTwo">Volver al paso 3</a>
-                                            <a href="#" data-toggle="collapse" data-target="#collapsefour">Paso 4</a>
+                                            <a href="#" class="btn btn-secondary" data-toggle="collapse" data-target="#collapseTwo">Volver al paso 3</a>
+                                            <a href="#" class="btn btn-primary" data-toggle="collapse" data-target="#collapsefour">Paso 4</a>
                                         </div>
                                     </div>
                                 </div>
@@ -195,8 +195,8 @@
                                             </div>
                                         </div>
                                         <div class="card-footer">
-                                            <a href="#" data-toggle="collapse" data-target="#collapseThree">Volver al paso 4</a>
-                                            <a href="#" data-toggle="collapse" data-target="#collapsefive">Paso 5</a>
+                                            <a href="#" class="btn btn-secondary" data-toggle="collapse" data-target="#collapseThree">Volver al paso 4</a>
+                                            <a href="#" class="btn btn-primary" data-toggle="collapse" data-target="#collapsefive">Paso 5</a>
                                         </div>
                                     </div>
                                 </div>
@@ -232,7 +232,7 @@
                                             </div>
                                         </div>
                                         <div class="card-footer">
-                                            <a href="#" data-toggle="collapse" data-target="#collapsefour">Volver al paso 4</a>
+                                            <a href="#" class="btn btn-secondary" data-toggle="collapse" data-target="#collapsefour">Volver al paso 4</a>
                                             <button type="button" class="btn btn-primary">Registrar</button>
                                         </div>
                                     </div>
