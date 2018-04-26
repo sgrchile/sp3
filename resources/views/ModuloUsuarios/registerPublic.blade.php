@@ -21,7 +21,7 @@
             <div class="row justify-content-md-center">
                 <div class="col-8 my-3">
                     <div class="card" style="border:1px solid #000;background: linear-gradient(white, #cfcdce);">
-                        <div class="card-body pb-0">
+                        <div class="card-body">
                             <h5 class="card-title text-center">Registro de Personas</h5>
                             <div id="accordion">
                                 <nav aria-label="breadcrumb">
@@ -38,45 +38,45 @@
                                         <div class="card-header">
                                             <h5 class="mb-0">General</h5>
                                         </div>
-                                        <div class="card-body">
-                                            <div class="form-group">
+                                        <div class="card-body row">
+                                            <div class="form-group col-12 col-md-6">
                                                 <label for="exampleInputEmail1">Nombre</label>
                                                 <input type="email" class="form-control" id="exampleInputEmail1">
                                             </div>
-                                            <div class="form-group">
+                                            <div class="form-group col-12 col-md-6">
                                                 <label for="exampleInputPassword1">Apellido Paterno</label>
                                                 <input type="password" class="form-control" id="exampleInputPassword1">
                                             </div>
-                                            <div class="form-group">
+                                            <div class="form-group col-12 col-md-6">
                                                 <label for="exampleInputEmail1">Apellido Materno</label>
                                                 <input type="email" class="form-control" id="exampleInputEmail1">
                                             </div>
-                                            <div class="form-group">
+                                            <div class="form-group col-12 col-md-6">
                                                 <label for="exampleInputEmail1">R.U.T</label>
                                                 <input type="email" class="form-control" id="exampleInputEmail1">
                                             </div>
-                                            <div class="form-group">
+                                            <div class="form-group col-12 col-md-6">
                                                 <label for="exampleInputEmail1">Fecha de Nacimiento</label>
                                                 <input type="email" class="form-control" id="exampleInputEmail1">
                                             </div>
-                                            <div class="form-group">
+                                            <div class="form-group col-12 col-md-6">
                                                 <label for="exampleInputEmail1">Sexo</label>
                                                 <input type="email" class="form-control" id="exampleInputEmail1">
                                             </div>
-                                            <div class="form-group">
+                                            <div class="form-group col-12 col-md-6">
                                                 <label for="exampleInputEmail1">Email</label>
                                                 <input type="email" class="form-control" id="exampleInputEmail1">
                                             </div>
-                                            <div class="form-group">
+                                            <div class="form-group col-12 col-md-6">
                                                 <label for="exampleInputEmail1">Nacionalidad</label>
                                                 <input type="email" class="form-control" id="exampleInputEmail1">
                                             </div>
                                             
-                                            <div class="form-group">
+                                            <div class="form-group col-12 col-md-6">
                                                 <label for="exampleInputEmail1">Contraseña</label>
                                                 <input type="email" class="form-control" id="exampleInputEmail1">
                                             </div>
-                                            <div class="form-group">
+                                            <div class="form-group col-12 col-md-6">
                                                 <label for="exampleInputEmail1">Repita contraseña</label>
                                                 <input type="email" class="form-control" id="exampleInputEmail1">
                                             </div>
