@@ -35,6 +35,9 @@
                                 </nav>
                                 <div class="card">
                                     <div id="collapseOne" class="collapse show" aria-labelledby="step1" data-parent="#accordion">
+                                        <div class="card-header">
+                                            <h5 class="mb-0">General</h5>
+                                        </div>
                                         <div class="card-body">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Nombre</label>
@@ -82,6 +85,9 @@
                                 </div>
                                 <div class="card">
                                     <div id="collapseTwo" class="collapse" aria-labelledby="step2" data-parent="#accordion">
+                                        <div class="card-header">
+                                            <h5 class="mb-0">Contacto</h5>
+                                        </div>
                                         <div class="card-body">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Teléfono</label>
@@ -100,6 +106,9 @@
                                 </div>
                                 <div class="card">
                                     <div id="collapseThree" class="collapse" aria-labelledby="step3" data-parent="#accordion">
+                                        <div class="card-header">
+                                            <h5 class="mb-0">Ubicación</h5>
+                                        </div>
                                         <div class="card-body">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Dirección</label>
@@ -126,6 +135,9 @@
                                 </div>
                                 <div class="card">
                                     <div id="collapsefour" class="collapse" aria-labelledby="step4" data-parent="#accordion">
+                                        <div class="card-header">
+                                            <h5 class="mb-0">Pagos</h5>
+                                        </div>
                                         <div class="card-body">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Fecha de Pago</label>
@@ -148,6 +160,9 @@
                                 </div>
                                 <div class="card">
                                     <div id="collapsefive" class="collapse" aria-labelledby="step5" data-parent="#accordion">
+                                        <div class="card-header">
+                                            <h5 class="mb-0">Extras</h5>
+                                        </div>
                                         <div class="card-body">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Seguro Médico</label>
