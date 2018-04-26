@@ -70,7 +70,7 @@
                                             <label class="form-check-label" for="remember">Recordarme</label>
                                         </div>
                                         <button type="submit" class="btn btn-primary">Iniciar sesión</button>
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#register\\.modal">Regístrate</button>
+                                        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#registerModal">Regístrate</button>
                                     </form>
                                 </div>
                             </div>
@@ -99,7 +99,7 @@
     </section>
     <footer>
     </footer>
-    <div class="modal" role="dialog" id="register.modal">
+    <div class="modal" role="dialog" id="registerModal">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
             <div class="modal-header">
