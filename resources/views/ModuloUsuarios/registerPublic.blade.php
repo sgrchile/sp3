@@ -85,8 +85,8 @@
                                             <div class="form-group col-12 col-md-6">
                                                 <label for="nacionalidad">Nacionalidad</label>
                                                 <select class="form-control" id="nacionalidad">
-                                                    <option value="1">Chileno</option>
-                                                    <option value="2">Otro</option>
+                                                    <option value="1">Chilena</option>
+                                                    <option value="2">Extranjera</option>
                                                 </select>
                                             </div>
                                             <div class="form-group col-12 col-md-6">
@@ -99,7 +99,7 @@
                                             </div>
                                         </div>
                                         <div class="card-footer">
-                                            <button type="button" class="btn btn-secondary">Paso 2</button>
+                                            <button type="button" class="btn btn-primary">Paso 2</button>
                                         </div>
                                     </div>
                                 </div>
@@ -110,14 +110,16 @@
                                         </div>
                                         <div class="card-body">
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">Teléfono</label>
-                                                <input type="email" class="form-control" id="exampleInputEmail1">
+                                                <label for="telefono">Teléfono</label>
+                                                <input type="number" class="form-control" id="telefono">
                                             </div>
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">Teléfono secundario</label>
-                                                <input type="email" class="form-control" id="exampleInputEmail1">
+                                                <label for="telefonodos">Teléfono secundario</label>
+                                                <input type="number" class="form-control" id="telefonodos">
                                             </div>
-                                            <button type="button" class="btn btn-secondary">Paso 3</button>
+                                        </div>
+                                        <div class="card-footer">
+                                            <button type="button" class="btn btn-primary">Paso 3</button>
                                         </div>
                                     </div>
                                 </div>
@@ -128,30 +130,41 @@
                                         </div>
                                         <div class="card-body">
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">Dirección</label>
-                                                <input type="text" class="form-control" id="exampleInputEmail1">
+                                                <label for="direccion">Dirección</label>
+                                                <input type="text" class="form-control" id="direccion">
                                             </div>
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">País</label>
-                                                <input type="text" class="form-control" id="exampleInputEmail1">
+                                                <label for="pais">País</label>
+                                                <select class="form-control" id="pais">
+                                                    <option value="1">Otro</option>
+                                                    <option value="2">Chile</option>
+                                                </select>
                                             </div>
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">Región</label>
-                                                <input type="text" class="form-control" id="exampleInputEmail1">
+                                                <label for="region">Región</label>
+                                                <select class="form-control" id="region">
+                                                    <option value="1">No corresponde</option>
+                                                </select>
                                             </div>
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">Provincia</label>
-                                                <input type="text" class="form-control" id="exampleInputEmail1">
+                                                <label for="provincia">Provincia</label>
+                                                <select class="form-control" id="provincia">
+                                                    <option value="1">No corresponde</option>
+                                                </select>
                                             </div>
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">Ciudad</label>
-                                                <input type="text" class="form-control" id="exampleInputEmail1">
+                                                <label for="ciudad">Ciudad</label>
+                                                <select class="form-control" id="ciudad">
+                                                    <option value="1">No corresponde</option>
+                                                </select>
                                             </div>
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">Referencia</label>
-                                                <input type="text" class="form-control" id="exampleInputEmail1">
+                                                <label for="referencia">Referencia</label>
+                                                <input type="text" class="form-control" id="referencia">
                                             </div>
-                                            <button type="button" class="btn btn-secondary">Paso 4</button>
+                                        </div>
+                                        <div class="card-footer">
+                                            <button type="button" class="btn btn-primary">Paso 4</button>
                                         </div>
                                     </div>
                                 </div>
@@ -162,22 +175,24 @@
                                         </div>
                                         <div class="card-body">
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">Fecha de Pago</label>
-                                                <input type="email" class="form-control" id="exampleInputEmail1">
+                                                <label for="fechapago">Fecha de Pago</label>
+                                                <input type="email" class="form-control" id="fechapago">
                                             </div>
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">Número de cuenta</label>
-                                                <input type="text" class="form-control" id="exampleInputEmail1"lder="Email">
+                                                <label for="ncuenta">Número de cuenta</label>
+                                                <input type="text" class="form-control" id="ncuenta">
                                             </div>
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">Banco</label>
-                                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                                                <label for="banco">Banco</label>
+                                                <input type="text" class="form-control" id="banco">
                                             </div>
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">Tipo de cuenta</label>
-                                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                                                <label for="bancocuenta">Tipo de cuenta</label>
+                                                <input type="text" class="form-control" id="bancocuenta">
                                             </div>
-                                            <button type="button" class="btn btn-secondary">Paso 5</button>
+                                        </div>
+                                        <div class="card-footer">
+                                            <button type="button" class="btn btn-primary">Paso 5</button>
                                         </div>
                                     </div>
                                 </div>
@@ -188,31 +203,32 @@
                                         </div>
                                         <div class="card-body">
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">Seguro Médico</label>
-                                                <input type="text" class="form-control" id="exampleInputEmail1">
+                                                <label for="medico">Seguro Médico</label>
+                                                <input type="text" class="form-control" id="medico">
                                             </div>
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">AFP</label>
-                                                <input type="text" class="form-control" id="exampleInputEmail1">
-                                            </div>
-                                            
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1">Rubro</label>
-                                                <input type="text" class="form-control" id="exampleInputEmail1">
+                                                <label for="afp">AFP</label>
+                                                <input type="text" class="form-control" id="afp">
                                             </div>
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">Sub-Rubro</label>
-                                                <input type="text" class="form-control" id="exampleInputEmail1">
+                                                <label for="rubro">Rubro</label>
+                                                <input type="text" class="form-control" id="rubro">
                                             </div>
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">Sitio Web</label>
-                                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                                                <label for="subrubro">Sub-Rubro</label>
+                                                <input type="text" class="form-control" id="subrubro">
                                             </div>
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">Facebook</label>
-                                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                                                <label for="web">Sitio Web</label>
+                                                <input type="text" class="form-control" id="web">
                                             </div>
-                                            <button type="button" class="btn btn-secondary">Registrar</button>
+                                            <div class="form-group">
+                                                <label for="facebook">Facebook</label>
+                                                <input type="text" class="form-control" id="facebook">
+                                            </div>
+                                        </div>
+                                        <div class="card-footer">
+                                            <button type="button" class="btn btn-primary">Registrar</button>
                                         </div>
                                     </div>
                                 </div>
