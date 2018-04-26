@@ -41,27 +41,42 @@
                                         <div class="card-body row">
                                             <div class="form-group col-12 col-md-6">
                                                 <label for="exampleInputEmail1">Nombre</label>
-                                                <input type="email" class="form-control" id="exampleInputEmail1">
+                                                <input type="text" class="form-control" id="nombre">
                                             </div>
                                             <div class="form-group col-12 col-md-6">
                                                 <label for="exampleInputPassword1">Apellido Paterno</label>
-                                                <input type="password" class="form-control" id="exampleInputPassword1">
+                                                <input type="text" class="form-control" id="paterno">
                                             </div>
                                             <div class="form-group col-12 col-md-6">
                                                 <label for="exampleInputEmail1">Apellido Materno</label>
-                                                <input type="email" class="form-control" id="exampleInputEmail1">
+                                                <input type="text" class="form-control" id="materno">
                                             </div>
                                             <div class="form-group col-12 col-md-6">
                                                 <label for="exampleInputEmail1">R.U.T</label>
-                                                <input type="email" class="form-control" id="exampleInputEmail1">
+                                                <input type="text" class="form-control" id="rut">
                                             </div>
                                             <div class="form-group col-12 col-md-6">
                                                 <label for="exampleInputEmail1">Fecha de Nacimiento</label>
-                                                <input type="email" class="form-control" id="exampleInputEmail1">
+                                                <input type="date" class="form-control" id="fecha">
                                             </div>
                                             <div class="form-group col-12 col-md-6">
                                                 <label for="exampleInputEmail1">Sexo</label>
-                                                <input type="email" class="form-control" id="exampleInputEmail1">
+                                                <select class="form-control" id="sexo">
+                                                    <option value="1">Hombre</option>
+                                                    <option value="2">Mujer</option>
+                                                    <option value="3">Indefinido</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-12 col-md-6">
+                                                <label for="exampleInputEmail1">Estado civil</label>
+                                                <select class="form-control" id="estado">
+                                                    <option value="1">Viudo</option>
+                                                    <option value="2">Soltero (a)</option>
+                                                    <option value="3">Separado(a)</option>
+                                                    <option value="4">Divorciado(a)</option>
+                                                    <option value="5">Convive</option>
+                                                    <option value="6">Casado(a)</option>
+                                                </select>
                                             </div>
                                             <div class="form-group col-12 col-md-6">
                                                 <label for="exampleInputEmail1">Email</label>
@@ -69,9 +84,8 @@
                                             </div>
                                             <div class="form-group col-12 col-md-6">
                                                 <label for="exampleInputEmail1">Nacionalidad</label>
-                                                <input type="email" class="form-control" id="exampleInputEmail1">
+                                                <input type="text" class="form-control" id="exampleInputEmail1">
                                             </div>
-                                            
                                             <div class="form-group col-12 col-md-6">
                                                 <label for="exampleInputEmail1">Contraseña</label>
                                                 <input type="email" class="form-control" id="exampleInputEmail1">
@@ -80,6 +94,7 @@
                                                 <label for="exampleInputEmail1">Repita contraseña</label>
                                                 <input type="email" class="form-control" id="exampleInputEmail1">
                                             </div>
+                                            <button type="button" class="btn btn-secondary">Paso 2</button>
                                         </div>
                                     </div>
                                 </div>
@@ -97,10 +112,7 @@
                                                 <label for="exampleInputEmail1">Teléfono secundario</label>
                                                 <input type="email" class="form-control" id="exampleInputEmail1">
                                             </div>
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1">Referencia</label>
-                                                <input type="email" class="form-control" id="exampleInputEmail1">
-                                            </div>
+                                            <button type="button" class="btn btn-secondary">Paso 3</button>
                                         </div>
                                     </div>
                                 </div>
@@ -112,24 +124,29 @@
                                         <div class="card-body">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Dirección</label>
-                                                <input type="email" class="form-control" id="exampleInputEmail1">
+                                                <input type="text" class="form-control" id="exampleInputEmail1">
                                             </div>
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">País</label>
-                                                <input type="email" class="form-control" id="exampleInputEmail1">
+                                                <input type="text" class="form-control" id="exampleInputEmail1">
                                             </div>
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Región</label>
-                                                <input type="email" class="form-control" id="exampleInputEmail1">
+                                                <input type="text" class="form-control" id="exampleInputEmail1">
                                             </div>
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Provincia</label>
-                                                <input type="email" class="form-control" id="exampleInputEmail1">
+                                                <input type="text" class="form-control" id="exampleInputEmail1">
                                             </div>
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Ciudad</label>
-                                                <input type="email" class="form-control" id="exampleInputEmail1">
+                                                <input type="text" class="form-control" id="exampleInputEmail1">
                                             </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Referencia</label>
+                                                <input type="text" class="form-control" id="exampleInputEmail1">
+                                            </div>
+                                            <button type="button" class="btn btn-secondary">Paso 4</button>
                                         </div>
                                     </div>
                                 </div>
@@ -145,16 +162,17 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Número de cuenta</label>
-                                                <input type="email" class="form-control" id="exampleInputEmail1"lder="Email">
+                                                <input type="text" class="form-control" id="exampleInputEmail1"lder="Email">
                                             </div>
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Banco</label>
-                                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Email">
                                             </div>
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Tipo de cuenta</label>
-                                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Email">
                                             </div>
+                                            <button type="button" class="btn btn-secondary">Paso 5</button>
                                         </div>
                                     </div>
                                 </div>
@@ -166,29 +184,30 @@
                                         <div class="card-body">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Seguro Médico</label>
-                                                <input type="email" class="form-control" id="exampleInputEmail1">
+                                                <input type="text" class="form-control" id="exampleInputEmail1">
                                             </div>
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">AFP</label>
-                                                <input type="email" class="form-control" id="exampleInputEmail1">
+                                                <input type="text" class="form-control" id="exampleInputEmail1">
                                             </div>
                                             
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Rubro</label>
-                                                <input type="email" class="form-control" id="exampleInputEmail1">
+                                                <input type="text" class="form-control" id="exampleInputEmail1">
                                             </div>
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Sub-Rubro</label>
-                                                <input type="email" class="form-control" id="exampleInputEmail1">
+                                                <input type="text" class="form-control" id="exampleInputEmail1">
                                             </div>
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Sitio Web</label>
-                                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Email">
                                             </div>
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Facebook</label>
-                                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Email">
                                             </div>
+                                            <button type="button" class="btn btn-secondary">Registrar</button>
                                         </div>
                                     </div>
                                 </div>
