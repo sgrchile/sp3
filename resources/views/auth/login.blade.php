@@ -100,7 +100,7 @@
     <footer>
     </footer>
     <div class="modal" role="dialog" id="registerModal">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Registro en Plataforma SP3</h5>
@@ -108,18 +108,28 @@
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <h5 class="text-center">Elija la modalidad de registro</h5>
+            <div class="modal-body p-0">
+                <h5 class="text-center my-3">Elija la modalidad de registro</h5>
                 <div class="row">
                     <div class="col">
-                        <h6>Persona</h6>
-                        <p>Registro para personas que prestan servicios de forma particular, con o sin emisión de boletas de Honorario (Gásfiter, profesionales freelance).</p>
-                        <a class="btn btn-secondary" href="registrar">Registrar una Persona</a>
+                        <div class="card">
+                            <img class="card-img-top" src=".../100px180/" alt="Registro personas">
+                            <div class="card-body">
+                                <h5 class="card-title">Persona</h5>
+                                <p class="card-text">Registro para personas que prestan servicios de forma particular, con o sin emisión de boletas de Honorario (Gásfiter, profesionales freelance).</p>
+                                <a class="btn btn-secondary" href="registrar">Registrar una Persona</a>
+                            </div>
+                        </div>
                     </div>
                     <div class="col">
-                        <h6>Empresa</h6>
-                        <p>Registro para empresas que ofrecen produictos o servicios, la cuenta creada representa a la empresa y es administrada por su representante legal, una vez creada puede registrar o asociar a personas como provedores o recursos humanos.</p>
-                        <a class="btn btn-secondary"  href="empresa">Registrar una Empresa</a>
+                        <div class="card">
+                            <img class="card-img-top" src=".../100px180/" alt="Registro empresas">
+                            <div class="card-body">
+                                <h5 class="card-title">Empresa</h5>
+                                <p class="card-text">Registro para empresas que ofrecen produictos o servicios, la cuenta creada representa a la empresa y es administrada por su representante legal, una vez creada puede registrar o asociar a personas como provedores o recursos humanos.</p>
+                                <a class="btn btn-secondary"  href="empresa">Registrar una Empresa</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
