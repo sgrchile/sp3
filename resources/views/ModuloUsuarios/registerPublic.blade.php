@@ -224,22 +224,6 @@
                                                 <select class="form-control" id="afp">
                                                 </select>
                                             </div>
-                                            <div class="form-group">
-                                                <label for="rubro">Rubro</label>
-                                                <input type="text" class="form-control" id="rubro">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="subrubro">Sub-Rubro</label>
-                                                <input type="text" class="form-control" id="subrubro">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="web">Sitio Web</label>
-                                                <input type="text" class="form-control" id="web">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="facebook">Facebook</label>
-                                                <input type="text" class="form-control" id="facebook">
-                                            </div>
                                         </div>
                                         <div class="card-footer">
                                             <a href="#" class="btn btn-secondary" data-toggle="collapse" data-target="#collapsefour">Volver al paso 4</a>
@@ -383,7 +367,7 @@
             $("#pago").on("change", function(){
                 let pago = $(this).val();
 
-                if (pago == 0){
+                if (pago != 1){
                     $("#select\\.fecha").addClass("d-none");
                     $("#fechapago").val(0);
                 }
