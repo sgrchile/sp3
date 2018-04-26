@@ -266,19 +266,35 @@
                     }
                 }
             });
-            $.get("https://plataforma.sgrchile.com/api/region").done(function(data){
-                if (data !== null){
-                    if (Object.keys(data).length > 0 ){
-                        $.each(data, function( index, value ){
-                            let option = "<option value='"+ value.REG_COD + "'>" + value.REG_DESC+ "</option>";
-                            $("#region").append(option);
-                        });
-                    }
+            $("#pais").on("change", function(){
+                let pais = $(this).val();
+
+                if (pais == 1){
+                    $("#region").empty();
+                    $.get("https://plataforma.sgrchile.com/api/region").done(function(data){
+                        if (data !== null){
+                            if (Object.keys(data).length > 0 ){
+                                $.each(data, function( index, value ){
+                                    let option = "<option value='"+ value.REG_COD + "'>" + value.REG_DESC+ "</option>";
+                                    $("#region").append(option);
+                                });
+                            }
+                        }
+                    });
+                }
+                else{
+                    $("#region").empty();
+                    $("#provincia").empty();
+                    $("#ciudad").empty();
+                    let option = "<option value='0'>No corresponde</option>";
+                    $("#region").append(option);
+                    $("#provincia").append(option);
+                    $("#ciudad").append(option);
                 }
             });
             $("#region").on("change", function(){
                 let region = $(this).val();
-
+                $("#provincia").empty();
                 $.get("https://plataforma.sgrchile.com/api/provincia/" + region).done(function(data){
                     if (data !== null){
                         if (Object.keys(data).length > 0 ){
@@ -293,7 +309,7 @@
 
             $("#provincia").on("change", function(){
                 let provincia = $(this).val();
-
+                $("#ciudad").empty();
                 $.get("https://plataforma.sgrchile.com/api/ciudad/" + provincia).done(function(data){
                     if (data !== null){
                         if (Object.keys(data).length > 0 ){
