@@ -163,16 +163,17 @@
                                         <div class="card-body">
                                             <div class="form-group">
                                                 <label for="fechapago">Pago</label>
-                                                <select class="form-control" id="fechapago">
+                                                <select class="form-control" id="pago">
                                                     <option value="1">Día</option>
                                                     <option value="2">Semana</option>
                                                     <option value="3">Quincena</option>
                                                     <option value="4">Mes</option>
                                                 </select>
                                             </div>
-                                            <div class="form-group">
+                                            <div class="form-group d-none" id="select.fecha">
                                                 <label for="fechapago">Fecha de Pago</label>
                                                 <select class="form-control" id="fechapago">
+                                                    <option value="0">No corresponde</option>
                                                     <option value="1">25</option>
                                                     <option value="2">26</option>
                                                     <option value="3">27</option>
@@ -192,7 +193,8 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="banco">Banco</label>
-                                                <input type="text" class="form-control" id="banco">
+                                                <select class="form-control" id="banco">
+                                                </select>
                                             </div>
                                             <div class="form-group">
                                                 <label for="bancocuenta">Tipo de cuenta</label>
@@ -268,6 +270,18 @@
                     }
                 }
             });
+            $.get("https://plataforma.sgrchile.com/api/bancos").done(function(data){
+                let option = "<option value='0'>Seleccione</option>";
+                $("#banco").append(option);
+                if (data !== null){
+                    if (Object.keys(data).length > 0 ){
+                        $.each(data, function( index, value ){
+                            let option = "<option value='"+ value.BCO_ID + "'>" + value.BCO_DESC+ "</option>";
+                            $("#banco").append(option);
+                        });
+                    }
+                }
+            });
             $("#pais").on("change", function(){
                 let pais = $(this).val();
 
@@ -325,6 +339,18 @@
                         }
                     }
                 });
+            });
+
+            $("#pago").on("change", function(){
+                let pago = $(this).val();
+
+                if (pago == 0){
+                    $("#select\\.fecha").addClass("d-none");
+                    $("#fechapago").val(0);
+                }
+                else{
+                    $("#select\\.fecha").removeClass("d-none");
+                }
             });
         });
     </script>
