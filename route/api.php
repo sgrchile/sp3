@@ -63,3 +63,7 @@ Route::get('/salud', [
     'uses' => 'SaludController@getPrevisiones',
     'as' => 'get.previsiones',
 ]);
+Route::get('/afp', [
+    'uses' => 'AfpController@getAfps',
+    'as' => 'get.afp',
+]);
