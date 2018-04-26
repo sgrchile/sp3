@@ -257,6 +257,8 @@
     <script>
         $(document).ready(function(){
             $.get("https://plataforma.sgrchile.com/api/pais").done(function(data){
+                let option = "<option value='0'>Seleccione</option>";
+                $("#pais").append(option);
                 if (data !== null){
                     if (Object.keys(data).length > 0 ){
                         $.each(data, function( index, value ){
