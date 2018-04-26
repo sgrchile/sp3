@@ -51,3 +51,7 @@ Route::get('/pais', [
     'uses' => 'PaisController@getPaises',
     'as' => 'get.pais',
 ]);
+Route::get('/bancos', [
+    'uses' => 'BancosController@getBancos',
+    'as' => 'get.banco',
+]);
