@@ -35,156 +35,146 @@
                                 </nav>
                                 <div class="card">
                                     <div id="collapseOne" class="collapse show" aria-labelledby="step1" data-parent="#accordion">
-                                    <div class="card-body">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                    </div>
+                                        <div class="card-body">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Nombre</label>
+                                                <input type="email" class="form-control" id="exampleInputEmail1">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputPassword1">Apellido Paterno</label>
+                                                <input type="password" class="form-control" id="exampleInputPassword1">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Apellido Materno</label>
+                                                <input type="email" class="form-control" id="exampleInputEmail1">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">R.U.T</label>
+                                                <input type="email" class="form-control" id="exampleInputEmail1">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Fecha de Nacimiento</label>
+                                                <input type="email" class="form-control" id="exampleInputEmail1">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Sexo</label>
+                                                <input type="email" class="form-control" id="exampleInputEmail1">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Email</label>
+                                                <input type="email" class="form-control" id="exampleInputEmail1">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Nacionalidad</label>
+                                                <input type="email" class="form-control" id="exampleInputEmail1">
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Contraseña</label>
+                                                <input type="email" class="form-control" id="exampleInputEmail1">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Repita contraseña</label>
+                                                <input type="email" class="form-control" id="exampleInputEmail1">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="card">
                                     <div id="collapseTwo" class="collapse" aria-labelledby="step2" data-parent="#accordion">
-                                    <div class="card-body">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                    </div>
+                                        <div class="card-body">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Teléfono</label>
+                                                <input type="email" class="form-control" id="exampleInputEmail1">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Teléfono secundario</label>
+                                                <input type="email" class="form-control" id="exampleInputEmail1">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Referencia</label>
+                                                <input type="email" class="form-control" id="exampleInputEmail1">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="card">
                                     <div id="collapseThree" class="collapse" aria-labelledby="step3" data-parent="#accordion">
-                                    <div class="card-body">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                    </div>
+                                        <div class="card-body">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Dirección</label>
+                                                <input type="email" class="form-control" id="exampleInputEmail1">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">País</label>
+                                                <input type="email" class="form-control" id="exampleInputEmail1">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Región</label>
+                                                <input type="email" class="form-control" id="exampleInputEmail1">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Provincia</label>
+                                                <input type="email" class="form-control" id="exampleInputEmail1">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Ciudad</label>
+                                                <input type="email" class="form-control" id="exampleInputEmail1">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="card">
                                     <div id="collapsefour" class="collapse" aria-labelledby="step4" data-parent="#accordion">
-                                    <div class="card-body">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                    </div>
+                                        <div class="card-body">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Fecha de Pago</label>
+                                                <input type="email" class="form-control" id="exampleInputEmail1">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Número de cuenta</label>
+                                                <input type="email" class="form-control" id="exampleInputEmail1"lder="Email">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Banco</label>
+                                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Tipo de cuenta</label>
+                                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="card">
                                     <div id="collapsefive" class="collapse" aria-labelledby="step5" data-parent="#accordion">
-                                    <div class="card-body">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                    </div>
-                                    </div>
-                                </div>
-                            <div class="row">
-                                <div class="col">
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Nombre</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">Apellido Paterno</label>
-                                        <input type="password" class="form-control" id="exampleInputPassword1">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Apellido Materno</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">R.U.T</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Fecha de Nacimiento</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Teléfono</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Teléfono secundario</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Referencia</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Email</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Nacionalidad</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Sexo</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Dirección</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">País</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Región</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Provincia</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Ciudad</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Contraseña</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Repita contraseña</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Seguro Médico</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">AFP</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Fecha de Pago</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Rubro</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Sub-Rubro</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Número de cuenta</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1"lder="Email">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Banco</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Tipo de cuenta</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Sitio Web</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Facebook</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Empresa</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                                        <div class="card-body">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Seguro Médico</label>
+                                                <input type="email" class="form-control" id="exampleInputEmail1">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">AFP</label>
+                                                <input type="email" class="form-control" id="exampleInputEmail1">
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Rubro</label>
+                                                <input type="email" class="form-control" id="exampleInputEmail1">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Sub-Rubro</label>
+                                                <input type="email" class="form-control" id="exampleInputEmail1">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Sitio Web</label>
+                                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Facebook</label>
+                                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
