@@ -55,3 +55,7 @@ Route::get('/bancos', [
     'uses' => 'BancosController@getBancos',
     'as' => 'get.banco',
 ]);
+Route::get('/bancos/cuentas', [
+    'uses' => 'BancosController@getCuentas',
+    'as' => 'get.bancocuentas',
+]);
