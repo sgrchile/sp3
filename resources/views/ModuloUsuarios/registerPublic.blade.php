@@ -280,7 +280,7 @@
                                     let option = "<option value='"+ value.REG_COD + "'>" + value.REG_DESC+ "</option>";
                                     $("#region").append(option);
                                 });
-                                $("#region").trigger("click");
+                                $("#region").trigger("change");
                             }
                         }
                     });
@@ -305,7 +305,7 @@
                                 let option = "<option value='"+ value.PV_COD + "'>" + value.PV_DESC+ "</option>";
                                 $("#provincia").append(option);
                             });
-                            $("#provincia").trigger("click");
+                            $("#provincia").trigger("change");
                         }
                     }
                 });
@@ -321,7 +321,7 @@
                                 let option = "<option value='"+ value.CIU_COD + "'>" + value.CIU_DESC+ "</option>";
                                 $("#ciudad").append(option);
                             });
-                            $("#ciudad").trigger("click");
+                            $("#ciudad").trigger("change");
                         }
                     }
                 });
