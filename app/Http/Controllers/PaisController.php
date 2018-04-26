@@ -11,7 +11,7 @@ class PaisController extends Controller
 
     public function getPaises()
     {
-        $mn = Pais::get();
+        $mn = PaisModel::get();
 
         return response()->json($mn);
     }
