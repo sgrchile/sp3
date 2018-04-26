@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="es">
   <head>
-    <meta NAME="robots" CONTENT="NoIndex, NoFollow">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Plataforma SP3</title>
@@ -23,31 +22,152 @@
                 <div class="col-8 my-3">
                     <div class="card" style="border:1px solid #000;background: linear-gradient(white, #cfcdce);">
                         <div class="card-body pb-0">
-                            <h5 class="card-title text-center">Bienvenido a Servicios Profesionales SP3</h5>
-                            <div class="row">
-                                <div class="col-6">
-                                    <img src="images/login_anfitrion.png" class="img-fluid" alt="Ejecutiva Bienvenida">
+                            <h5 class="card-title text-center">Registro de Personas</h5>
+                            <div id="accordion">
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item active" id="step1">General</li>
+                                        <li class="breadcrumb-item" id="step2">Contacto</li>
+                                        <li class="breadcrumb-item" id="step3">Ubicación</li>
+                                        <li class="breadcrumb-item" id="step4">Pagos</li>
+                                        <li class="breadcrumb-item" id="step5">Extras</li>
+                                    </ol>
+                                </nav>
+                                <div class="card">
+                                    <div class="card-header" id="headingOne">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        Collapsible Group Item #1
+                                        </button>
+                                    </h5>
+                                    </div>
+
+                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                    <div class="card-body">
+                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                    </div>
+                                    </div>
                                 </div>
-                                <div class="col-6">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Nombre</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Apellido Paterno</label>
+                                        <input type="password" class="form-control" id="exampleInputPassword1">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Apellido Materno</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">R.U.T</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Fecha de Nacimiento</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Teléfono</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Teléfono secundario</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Referencia</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Email</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Nacionalidad</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Sexo</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Dirección</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">País</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Región</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Provincia</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Ciudad</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Contraseña</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Repita contraseña</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Seguro Médico</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">AFP</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Fecha de Pago</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Rubro</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Sub-Rubro</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Número de cuenta</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1"lder="Email">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Banco</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Tipo de cuenta</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Sitio Web</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Facebook</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Empresa</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="row justify-content-md-center mt-3">
-                        <div class="col-2 pl-0 pr-0 mr-2">
-                            <img src="images/empresas/logo_biogest.png" class="img-fluid" alt="Logo biogest">
-                        </div>
-                        <div class="col-2 pl-0 pr-0 mr-2">
-                            <img src="images/empresas/logo_kutralco.png" class="img-fluid" alt="Logo kutralco">
-                        </div>
-                        <div class="col-2 pl-0 pr-0 mr-2">
-                            <img src="images/empresas/logo_loica.png" class="img-fluid" alt="Logo loica">
-                        </div>
-                        <div class="col-2 pl-0 pr-0 mr-2">
-                            <img src="images/empresas/logo_sgr.png" class="img-fluid" alt="Logo sgr">
-                        </div>
-                        <div class="col-2 pl-0 pr-0 mr-1">
-                            <img src="images/empresas/logo_trener.png" class="img-fluid" alt="Logo trener">
                         </div>
                     </div>
                 </div>
