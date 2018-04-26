@@ -24,15 +24,6 @@
                         <div class="card-body">
                             <h5 class="card-title text-center">Registro de Personas</h5>
                             <div id="accordion">
-                                <nav aria-label="breadcrumb">
-                                    <ol class="breadcrumb">
-                                        <li class="breadcrumb-item active" id="step1"><a href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">General</a></li>
-                                        <li class="breadcrumb-item" id="step2"><a href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Contacto</a></li>
-                                        <li class="breadcrumb-item" id="step3"><a href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseTwo">Ubicación</a></li>
-                                        <li class="breadcrumb-item" id="step4"><a href="#" data-toggle="collapse" data-target="#collapsefour" aria-expanded="false" aria-controls="collapseTwo">Pagos</a></li>
-                                        <li class="breadcrumb-item" id="step5"><a href="#" data-toggle="collapse" data-target="#collapsefive" aria-expanded="false" aria-controls="collapseTwo">Extras</a></li>
-                                    </ol>
-                                </nav>
                                 <div class="card">
                                     <div id="collapseOne" class="collapse show" data-parent="#accordion">
                                         <div class="card-header">
@@ -105,7 +96,7 @@
                                     </div>
                                 </div>
                                 <div class="card">
-                                    <div id="collapseTwo" class="collapse" aria-labelledby="step2" data-parent="#accordion">
+                                    <div id="collapseTwo" class="collapse" data-parent="#accordion">
                                         <div class="card-header">
                                             <h5 class="mb-0">Contacto</h5>
                                         </div>
@@ -120,13 +111,13 @@
                                             </div>
                                         </div>
                                         <div class="card-footer">
-                                            <a href="#" class="btn btn-secondary" data-toggle="collapse" data-target="#collapseOne">Volver al paso 2</a>
+                                            <a href="#" class="btn btn-secondary" data-toggle="collapse" data-target="#collapseOne">Volver al paso 1</a>
                                             <a href="#" class="btn btn-primary" data-toggle="collapse" data-target="#collapseThree">Paso 3</a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card">
-                                    <div id="collapseThree" class="collapse" aria-labelledby="step3" data-parent="#accordion">
+                                    <div id="collapseThree" class="collapse" data-parent="#accordion">
                                         <div class="card-header">
                                             <h5 class="mb-0">Ubicación</h5>
                                         </div>
@@ -166,13 +157,13 @@
                                             </div>
                                         </div>
                                         <div class="card-footer">
-                                            <a href="#" class="btn btn-secondary" data-toggle="collapse" data-target="#collapseTwo">Volver al paso 3</a>
+                                            <a href="#" class="btn btn-secondary" data-toggle="collapse" data-target="#collapseTwo">Volver al paso 2</a>
                                             <a href="#" class="btn btn-primary" data-toggle="collapse" data-target="#collapsefour">Paso 4</a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card">
-                                    <div id="collapsefour" class="collapse" aria-labelledby="step4" data-parent="#accordion">
+                                    <div id="collapsefour" class="collapse" data-parent="#accordion">
                                         <div class="card-header">
                                             <h5 class="mb-0">Pagos</h5>
                                         </div>
@@ -195,13 +186,13 @@
                                             </div>
                                         </div>
                                         <div class="card-footer">
-                                            <a href="#" class="btn btn-secondary" data-toggle="collapse" data-target="#collapseThree">Volver al paso 4</a>
+                                            <a href="#" class="btn btn-secondary" data-toggle="collapse" data-target="#collapseThree">Volver al paso 3</a>
                                             <a href="#" class="btn btn-primary" data-toggle="collapse" data-target="#collapsefive">Paso 5</a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card">
-                                    <div id="collapsefive" class="collapse" aria-labelledby="step5" data-parent="#accordion">
+                                    <div id="collapsefive" class="collapse" data-parent="#accordion">
                                         <div class="card-header">
                                             <h5 class="mb-0">Extras</h5>
                                         </div>
