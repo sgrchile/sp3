@@ -10,10 +10,10 @@
     </div>
     <div class="modal-body" align="center">
 
-      <textarea    name="name" rows="8" cols="80" readonly class="form-control" style="max-width:560px; max-height:150px;"></textarea>
+      <textarea name="name" rows="8" cols="80" readonly class="form-control" style="max-width:560px; max-height:150px;"></textarea>
       <br />
       <br />
-      <br />
+
 
       <table class="table table-bordered">
 
@@ -25,9 +25,9 @@
         </tr>
 
         <tr>
-          <td>CUENTA</td>
-          <td><input type="number" readonly class="form-control" style="width:175px;"</td>
-          <td><input type="number" readonly class="form-control" style="width:175px;"</td>
+          <td></td>
+          <td></td>
+          <td></td>
         </tr>
 
 

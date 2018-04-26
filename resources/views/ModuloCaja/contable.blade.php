@@ -17,8 +17,9 @@
                       <tr>
 
                       <td><a href="{{route('LibrosContables')}}"><button class="btn btn-primary btn-lg" style="width:220px;">LIBROS CONTABLES</button></a></td>
-                      <td><a href="{{route('PlanDeCuentas')}}"><button class="btn btn-primary btn-lg" style="width:220px;"> PLAN DE CUENTAS</button></a></td>
+                      <td><a href="{{route('plandecuentas')}}"><button class="btn btn-primary btn-lg" style="width:220px;"> PLAN DE CUENTAS</button></a></td>
                       <td><a href="{{route('AsientosContables')}}"><button class="btn btn-primary btn-lg" style="width:220px;"> ASIENTOS CONTABLES</button></a></td>
+                      <td><a href="{{route('Balance')}}"><button class="btn btn-primary btn-lg" style="width:220px;"> BALANCE</button></a></td>
                       </tr>
                       <tr>
 

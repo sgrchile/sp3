@@ -8,8 +8,13 @@
       <div class="block-web">
         <div class="header">
           <div class="actions"></div>
-          <h1 class="text-center text-uppercase">MODULO DE CAJA</h1>
+          <h1 class="text-center text-uppercase">CAJA</h1>
         </div>
+        @if (session('status_asiento'))
+          <div class="alert alert-success">
+            {{ session('status_asiento') }}
+          </div>
+        @endif
         <div class="porlets-content">
           <!-- FORM INICIO -->
 
@@ -21,7 +26,7 @@
             <tr>
               <td>TIPO DE MOVIMIENTO</td>
               <td>
-                {{ Form::select('tp_movimiento',$tpmov,null,['class'=>'form-control','required']) }}
+                {{ Form::select('tp_movimiento',App\TipoMovimiento::pluck('TMOV_DESC','TMOV_ID'),null,['class'=>'form-control','required']) }}
               </td>
             </tr>
             <tr>
@@ -38,53 +43,63 @@
           </table>
 
           <br>
+          <div>
+            <a href="#" class="btn btn-primary btn-lg" onclick='masfilas("mytable")'>Agregar Cuenta</a>
+          </div>
 
           <table class="table table-bordered" id="mytable">
 
             <tr>
+              <td>CLASE</td>
               <td>CUENTA</td>
               <td>DEBE</td>
               <td>HABER</td>
               <td>ACCION</td>
             </tr>
 
-            <tr>
-              <td><input type="number" readonly class="form-control" style="width:175px;"></td>
-              <td><input type="number" readonly class="form-control" style="width:175px;"></td>
-              <td><input type="number" readonly  class="form-control" style="width:175px;"></td>
-              <td>    <button class="btn btn-primary btn-sm">ELIMINAR</button></td>
+	    <tr id="fila0">
+              <td>
+                <select name="clase0" required class="form-control" id="clase0" >
+                  @foreach($clases as $clase)
+                    <option value="{{ $clase->ID_CL_CUENTA }}">{{ $clase->DESC_CL_CUENTA }}</option>
+                  @endforeach
+                </select>
+              </td>
+              <td>
+                <select name="cuentas0" required class="form-control" id="cuentas0">
+                  @foreach($cuentas as $cuenta)
+                    <option value="{{ $cuenta->ID_CTA_CONT }}">{{ $cuenta->NOM_CTA_CONT }}</option>
+                  @endforeach
+                </select>
+              </td>
+                <td><input type="number" class="numerod" name="debe0"></td>
 
-            </tr>
-	    <tr>
+                <td><input type="number" class="numeroh" name="haber0"></td>
               <td>
-                {{ Form::select('cta_cont',App\CuentaContable::pluck('NOM_CTA_CONT','ID_CTA_CONT'),null,['class'=>'form-control','style'=>'width:175px']) }}
-              </td>
-              <td>
-                {{ Form::number('debe',null,['id'=>'debe','class'=>'form-control','style'=>'width:175px']) }}
-              </td>
-              <td>
-                {{ Form::number('haber',null,['id'=>'haber','class'=>'form-control','style'=>'width:175px']) }}
-              </td>
-              <td>
-                <a id="masfilas"><button class="btn btn-primary btn-sm">AGREGAR</button></a>
+                 <input type="button" class="borrar" value="Eliminar" />
               </td>
 
             </tr>
           </table>
+
 	  
 	  <table class="table table-bordered" id="mytableresult">
             <tr>
 
               <td>
+                <div style="width: 175px" />
+              </td>
+
+              <td>
                 {{ Form::label('total','TOTAL',['id'=>'total','class'=>'form-control','style'=>'width:175px']) }}
               </td>
               <td>
-                {{ Form::number('debe',null,['class'=>'form-control','style'=>'width:175px','readonly']) }}
+                {{ Form::number('tdebe',null,['id'=>'totald','class'=>'form-control','style'=>'width:175px','readonly']) }}
               </td>
               <td>
-                {{ Form::number('haber',null,['class'=>'form-control','style'=>'width:175px','readonly']) }}
+                {{ Form::number('thaber',null,['id'=>'totalh','class'=>'form-control','style'=>'width:175px','readonly']) }}
               </td>
-              <td>  <button class="btn btn-primary btn-sm">ACTUALIZAR</button></td>
+              <td>  <a href="#" class="btn btn-primary btn-sm" onclick='calcular_totald()'>Actualizar</a></td>
 
             </tr>
 
@@ -95,6 +110,75 @@
           <button class="btn btn-primary btn-lg">REGISTAR</button>
           </div>
 	{!! Form::close() !!}
+          <script type='text/javascript'>
+              var count = 0;
+              function masfilas(arg) {
+                  if (document.getElementById(arg)) {
+                      count++;
+                      var texto =
+                          '<tr id="fila' + count + '">' +
+                          '              <td>' +
+                          '                <select name="clase' + count + '" required class="form-control" id="clase' + count + '">' +
+                          '                  @foreach($clases as $clase)' +
+                          '                    <option value="{{ $clase->ID_CL_CUENTA }}">{{ $clase->DESC_CL_CUENTA }}</option>' +
+                          '                  @endforeach' +
+                          '                </select>' +
+                          '              </td>' +
+                          '              <td>' +
+                          '                <select name="cuentas' + count + '" required class="form-control" id="cuentas' + count + '">' +
+                          '                  @foreach($cuentas as $cuenta)' +
+                          '                    <option value="{{ $cuenta->ID_CTA_CONT }}">{{ $cuenta->NOM_CTA_CONT }}</option>' +
+                          '                  @endforeach' +
+                          '                </select>' +
+                          '              </td>' +
+
+                          '<td><input type="number" class="numerod" name="debe' + count + '"></td>' +
+
+                          '<td><input type="number" class="numeroh" name="haber' + count + '"></td>' +
+
+                          '<td><input type="button" class="borrar" value="Eliminar" /></td></tr>';
+                      $("#mytable").append(texto);
+                      calcular_totald();
+                      calcular_totalh();
+                  }
+              }
+                  function calcular_totald() {
+
+                      var importe_total = 0
+                      $('.numerod').keyup(function (){
+                          $(".numerod").each(
+                              function(index, value) {
+                                  importe_total = importe_total + eval($(this).val());
+                              }
+                          );
+                      });
+                      $("#totald").val(importe_total);
+                  }
+                  function calcular_totalh() {
+
+                      var importe_total = 0
+                      $('.numeroh').keyup(function (){
+                          $(".numeroh").each(
+                              function(index, value) {
+                                  importe_total = importe_total + eval($(this).val());
+                              }
+                          );
+                      });
+                      $("#totalh").val(importe_total);
+                  }
+                  $(document).ready(function(){
+
+                      calcular_totald();
+                      calcular_totalh();
+
+                  });
+              $(function () {
+                  $(document).on('click', '.borrar', function (event) {
+                      event.preventDefault();
+                      $(this).closest('tr').remove();
+                  });
+              });
+          </script>
 
           <!-- FORM FINAL -->
         </div><!--/porlets-content-->
@@ -106,7 +190,7 @@
 
 
 <div class="container">
-<a href="javascript:history.back(1)"><button class="btn btn-primary btn-lg">Volver</button></a>
+<a href="{{route('AsientosContables')}}"><button class="btn btn-primary btn-lg">Volver</button></a>
 
 </div>
 </a>
