@@ -198,7 +198,8 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="bancocuenta">Tipo de cuenta</label>
-                                                <input type="text" class="form-control" id="bancocuenta">
+                                                <select class="form-control" id="bancocuenta">
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="card-footer">
@@ -215,11 +216,13 @@
                                         <div class="card-body">
                                             <div class="form-group">
                                                 <label for="medico">Seguro Médico</label>
-                                                <input type="text" class="form-control" id="medico">
+                                                <select class="form-control" id="medico">
+                                                </select>
                                             </div>
                                             <div class="form-group">
                                                 <label for="afp">AFP</label>
-                                                <input type="text" class="form-control" id="afp">
+                                                <select class="form-control" id="afp">
+                                                </select>
                                             </div>
                                             <div class="form-group">
                                                 <label for="rubro">Rubro</label>
@@ -278,6 +281,42 @@
                         $.each(data, function( index, value ){
                             let option = "<option value='"+ value.BCO_ID + "'>" + value.BCO_DESC+ "</option>";
                             $("#banco").append(option);
+                        });
+                    }
+                }
+            });
+            $.get("https://plataforma.sgrchile.com/api/bancos/cuentas").done(function(data){
+                let option = "<option value='0'>Seleccione</option>";
+                $("#bancocuenta").append(option);
+                if (data !== null){
+                    if (Object.keys(data).length > 0 ){
+                        $.each(data, function( index, value ){
+                            let option = "<option value='"+ value.CUENTA_ID + "'>" + value.CUENTA_NAME+ "</option>";
+                            $("#bancocuenta").append(option);
+                        });
+                    }
+                }
+            });
+            $.get("https://plataforma.sgrchile.com/api/salud").done(function(data){
+                let option = "<option value='0'>Seleccione</option>";
+                $("#medico").append(option);
+                if (data !== null){
+                    if (Object.keys(data).length > 0 ){
+                        $.each(data, function( index, value ){
+                            let option = "<option value='"+ value.SALUD_ID + "'>" + value.SALUD_NOMBRE+ "</option>";
+                            $("#medico").append(option);
+                        });
+                    }
+                }
+            });
+            $.get("https://plataforma.sgrchile.com/api/afp").done(function(data){
+                let option = "<option value='0'>Seleccione</option>";
+                $("#afp").append(option);
+                if (data !== null){
+                    if (Object.keys(data).length > 0 ){
+                        $.each(data, function( index, value ){
+                            let option = "<option value='"+ value.AFP_ID + "'>" + value.AFP_NOMBRE+ "</option>";
+                            $("#afp").append(option);
                         });
                     }
                 }
