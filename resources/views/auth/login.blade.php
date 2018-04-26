@@ -70,7 +70,7 @@
                                             <label class="form-check-label" for="remember">Recordarme</label>
                                         </div>
                                         <button type="submit" class="btn btn-primary">Iniciar sesión</button>
-                                        <a href="">Regístrate</a>
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#register\\.modal">Regístrate</button>
                                     </form>
                                 </div>
                             </div>
@@ -99,6 +99,36 @@
     </section>
     <footer>
     </footer>
+    <div class="modal" role="dialog" id="register.modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Registro en Plataforma SP3</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h5 class="text-center">Elija la modalidad de registro</h5>
+                <div class="row">
+                    <div class="col">
+                        <h6>Persona</h6>
+                        <p>Registro para personas que prestan servicios de forma particular, con o sin emisión de boletas de Honorario (Gásfiter, profesionales freelance).</p>
+                        <a class="btn btn-secondary" href="registrar">Registrar una Persona</a>
+                    </div>
+                    <div class="col">
+                        <h6>Empresa</h6>
+                        <p>Registro para empresas que ofrecen produictos o servicios, la cuenta creada representa a la empresa y es administrada por su representante legal, una vez creada puede registrar o asociar a personas como provedores o recursos humanos.</p>
+                        <a class="btn btn-secondary"  href="empresa">Registrar una Empresa</a>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            </div>
+            </div>
+        </div>
+    </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
