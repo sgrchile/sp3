@@ -44,10 +44,10 @@ class LoginController extends Controller
     }
 
     public function authenticated(Request $request, $user)
-    {
-        if (!$user->verified) {
+    {//{{ Auth::user()->PRO_RUN }}
+        if (!$user->PRO_ALTA) {
             auth()->logout();
-            return back()->with('warning', 'You need to confirm your account. We have sent you an activation code, please check your email.');
+            return back()->with('warning', 'Tu cuenta no ha sido activada por el administrador');
         }
         return redirect()->intended($this->redirectPath());
     }
