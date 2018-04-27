@@ -598,6 +598,10 @@ Route::group(['prefix' => 'modulo'], function () {
             'uses' => 'ProveedoresController@admin',
             'as' => 'get.proveedores.admin',
         ]);
+        Route::get('admin/autorizar/{usuario}', [
+            'uses' => 'ProveedoresController@altaUsuario',
+            'as' => 'get.proveedores.admin.alta',
+        ]);
 
         Route::get('api/provincia/{region}', [
             'uses' => 'LocationController@getProvincia',

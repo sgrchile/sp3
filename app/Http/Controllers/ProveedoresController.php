@@ -51,6 +51,15 @@ class ProveedoresController extends Controller
         return view('ModuloProv.admin')->with('proveedores',$prov);
     }
 
+    public function altaUsuario($idUsuario)
+	{
+		$updateAlta = Proveedor::findOrFail($idUsuario)->update([
+            'PRO_ALTA' => 1,
+        ]);
+            
+        return redirect()->route('get.proveedores.admin');
+	}
+
     public function getProveedorPersona()
     {
         $regiones = Region::all();

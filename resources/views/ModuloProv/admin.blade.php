@@ -51,6 +51,14 @@
         $("#tabla\\.proveedores tr").on('click', function() {
             activate(this);
         });
+
+        $("#alta").on("click", function(){
+            let filas = $("#tabla\\.proveedores tr");
+
+            $.each(filas, function(i, val) {
+                $(val).removeClass('active');
+            });
+        })
     });
 
     function activate(element) {
