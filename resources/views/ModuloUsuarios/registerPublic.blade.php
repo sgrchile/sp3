@@ -447,9 +447,35 @@
                     }
                 }
 
+                if (i == "fecha"){
+                    let nacimiento = new Date($("#fecha").val()).getTime();
+                    let hoy = new Date().getTime();
+
+                    let diff = hoy - nacimiento;
+                    diff = diff/(1000*60*60*24*365);
+
+                    if (diff < 18){
+                        alert("Debes ser mayor de 18 años");
+                        $('#collapseOne').collapse('show');
+                        $("#"+i).focus();
+                        $("#"+i).addClass("is-invalid");
+                        return false;
+                    }
+                }
+
                 if (i == "email"){
                     if (validarEmail(value) == false){
                         alert("Email Inválido");
+                        $('#collapseOne').collapse('show');
+                        $("#"+i).focus();
+                        $("#"+i).addClass("is-invalid");
+                        return false;
+                    }
+                }
+
+                if (i == "contrasenar"){
+                    if (value !== $("#contrasena").val()){
+                        alert("La contraseña no coincide con su repetición");
                         $('#collapseOne').collapse('show');
                         $("#"+i).focus();
                         $("#"+i).addClass("is-invalid");
