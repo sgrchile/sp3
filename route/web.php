@@ -22,7 +22,7 @@ Route::get('/registrar', function () {
 
 Route::post('/registrar_action', [
     'uses' => 'ProveedoresPublicController@NewProveedor',
-    'as' => 'registrar.prooveedor.persona',
+    'as' => 'registrar.proveedor.persona',
 ]);
 
 Route::get('/menu', function () {

@@ -99,7 +99,6 @@ class ProveedoresPublicController extends Controller
             'nacionalidad' => 'required',
             'password' => 'required|min:6',
             'telefono' => 'required',
-            'telefonodos' => 'required',
             'direccion' => 'required',
             'pais' => 'required',
             'region' => 'required',

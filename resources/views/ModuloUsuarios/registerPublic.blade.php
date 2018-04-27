@@ -225,6 +225,7 @@
                                                 </select>
                                             </div>
                                         </div>
+                                        {{ csrf_field() }}
                                         <div class="card-footer">
                                             <a href="#" class="btn btn-secondary" data-toggle="collapse" data-target="#collapsefour">Volver al paso 4</a>
                                             <button type="button" class="btn btn-primary" onclick="validateInput()">Registrar</button>
@@ -403,7 +404,8 @@
                 banco: $("#banco").val(),
                 bancocuenta: $("#bancocuenta").val(),
                 medico: $("#medico").val(),
-                afp: $("#afp").val()
+                afp: $("#afp").val(),
+                _token: $('input[name="_token"]').val();
             };
 
             $.each( inputs, function( i, val ) {
@@ -483,7 +485,7 @@
                     }
                 }
 
-                $.post("{{ route('registrar.prooveedor.persona') }}",inputs).done(function(data){
+                $.post("{{ route('registrar.proveedor.persona') }}",inputs).done(function(data){
                     alert(data);
                 });
             });
