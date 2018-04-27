@@ -118,7 +118,7 @@
           <li> <a href="{{route('error')}}"><i class="fa fa-user"></i> Perfil</a> </li>
           <li> <a href="{{route('error')}}"><i class="fa fa-question-circle"></i> Ayuda</a> </li>
           <li> <a href="{{route('error')}}"><i class="fa fa-cog"></i> Ajustes </a></li>
-          <li> <a href="{{route('error')}}"><i class="fa fa-power-off"></i> Cerrar sesión</a> </li>
+          <li> <a href="{{route('app.logout')}}"><i class="fa fa-power-off"></i> Cerrar sesión</a> </li>
         </ul>
       </div>
 
