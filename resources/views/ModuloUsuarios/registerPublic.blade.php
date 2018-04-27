@@ -405,7 +405,7 @@
                 bancocuenta: $("#bancocuenta").val(),
                 medico: $("#medico").val(),
                 afp: $("#afp").val(),
-                _token: $('input[name="_token"]').val();
+                _token: $('input[name="_token"]').val()
             };
 
             $.each( inputs, function( i, val ) {
