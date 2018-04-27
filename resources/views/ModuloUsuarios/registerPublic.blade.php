@@ -389,6 +389,8 @@
         });
 
         function validateInput(){
+            var respuesta = true;
+
             let inputs = {
                 nombre: $("#nombre").val(),
                 paterno: $("#paterno").val(),
@@ -444,6 +446,7 @@
                     }
                     $("#"+i).focus();
                     $("#"+i).addClass("is-invalid");
+                    respuesta = false;
                     return false;
                 }
 
@@ -455,6 +458,7 @@
                         $('#collapseOne').collapse('show');
                         $("#"+i).focus();
                         $("#"+i).addClass("is-invalid");
+                        respuesta = false;
                         return false;
                     }
                 }
@@ -471,6 +475,7 @@
                         $('#collapseOne').collapse('show');
                         $("#"+i).focus();
                         $("#"+i).addClass("is-invalid");
+                        respuesta = false;
                         return false;
                     }
                 }
@@ -481,6 +486,7 @@
                         $('#collapseOne').collapse('show');
                         $("#"+i).focus();
                         $("#"+i).addClass("is-invalid");
+                        respuesta = false;
                         return false;
                     }
                 }
@@ -491,11 +497,12 @@
                         $('#collapseOne').collapse('show');
                         $("#"+i).focus();
                         $("#"+i).addClass("is-invalid");
+                        respuesta = false;
                         return false;
                     }
                 }
             });
-            return true;
+            return respuesta;
         }
 
         function checkRut(rut) {
