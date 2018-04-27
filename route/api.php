@@ -67,3 +67,8 @@ Route::get('/afp', [
     'uses' => 'AfpController@getAfps',
     'as' => 'get.afp',
 ]);
+
+Route::get('/datoslogin', [
+    'uses' => 'LoginController@username',
+    'as' => 'get.afp',
+]);
