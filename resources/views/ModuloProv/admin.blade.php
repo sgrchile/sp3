@@ -12,7 +12,7 @@
                             <li role="presentation" class="active"><a href="#alta" aria-controls="alta" role="tab" data-toggle="tab">Alta de Proveedor</a></li>
                         </ul>
                         <div class="tab-content">
-                            <a href="#" class="btn btn-primary pull-left">Autorizar ingreso al sistema</a>
+                            <a href="#" class="btn btn-primary pull-left" id="btnAlta">Autorizar ingreso al sistema</a>
                             <div role="tabpanel" class="tab-pane active" id="alta">
                                 <table class="table table-hover" id="tabla.proveedores">
                                     <thead>
@@ -27,7 +27,7 @@
                                     <tbody>
                                     @foreach($proveedores as $proveedor)
                                         <tr>
-                                            <td>{{ $proveedor->PRO_RUN }}</td>
+                                            <th>{{ $proveedor->PRO_RUN }}</th>
                                             <td>{{ $proveedor->PRO_NOMBRE }}</td>
                                             <td>{{ $proveedor->PRO_APE_PAT }}</td>
                                             <td>{{ $proveedor->PRO_APE_MAT }}</td>
@@ -52,11 +52,14 @@
             activate(this);
         });
 
-        $("#alta").on("click", function(){
+        $("#btnAlta").on("click", function(){
             let filas = $("#tabla\\.proveedores tr");
 
             $.each(filas, function(i, val) {
-                $(val).removeClass('active');
+                if ($(val).hasClass('active') == true){
+                    let user = $(val).children("th").html();
+                    $.get("{{route('get.proveedores.admin.alta')}}"+ user);
+                }
             });
         })
     });
