@@ -17,7 +17,7 @@ Route::get('/',function(){
 
 Route::get('logout', [
     'uses' => '\App\Http\Controllers\Auth\LoginController@logout',
-    'as' => 'app.logout',
+    'as' => 'sp3.logout',
 ]);
    // Registrar
 Route::get('/registrar', function () {
