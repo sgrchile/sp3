@@ -411,8 +411,8 @@
                 if (validos == true){
                     $.post("{{ route('registrar.proveedor.persona') }}",inputs).done(function(data){
                         alert(data.respuesta);
-                    }).fail(function(data){
-                        $.each( data, function( i, val ) {
+                    }).fail(function(data.){
+                        $.each( data.responseJSON, function( i, val ) {
                             alert(val);
                             if (i =="nombre" || i =="paterno" || i =="materno" || i =="rut" || i =="fecha" || i =="genero" || i =="estado" || i =="email" || i =="nacionalidad" || i =="contrasena" || i =="contrasenar"){
                                 $('#collapseOne').collapse('show');
