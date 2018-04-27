@@ -411,6 +411,24 @@
                 if (validos == true){
                     $.post("{{ route('registrar.proveedor.persona') }}",inputs).done(function(data){
                         alert(data.respuesta);
+                    }).fail(function(data){
+                        $.each( data, function( i, val ) {
+                            alert(val);
+                            if (i =="nombre" || i =="paterno" || i =="materno" || i =="rut" || i =="fecha" || i =="genero" || i =="estado" || i =="email" || i =="nacionalidad" || i =="contrasena" || i =="contrasenar"){
+                                $('#collapseOne').collapse('show');
+                            }
+                            else if (i == "telefono" || i == "telefonodos"){
+                                $('#collapseTwo').collapse('show');
+                            }
+                            else if (i == "direccion" || i == "pais" || i == "region" || i == "provincia" || i == "ciudad"){
+                                $('#collapseThree').collapse('show');
+                            }
+                            else if(i == "pago" || i == "fechapago" || i == "ncuenta" || i == "banco" || i == "bancocuenta"){
+                                $('#collapsefour').collapse('show');
+                            }
+                            $("#"+i).focus();
+                            $("#"+i).addClass("is-invalid");
+                        });
                     });
                 }
             });
@@ -468,9 +486,6 @@
                     }
                     else if(i == "pago" || i == "fechapago" || i == "ncuenta" || i == "banco" || i == "bancocuenta"){
                         $('#collapsefour').collapse('show');
-                    }
-                    else{
-                        $('#collapsefive').collapse('show');
                     }
                     $("#"+i).focus();
                     $("#"+i).addClass("is-invalid");
