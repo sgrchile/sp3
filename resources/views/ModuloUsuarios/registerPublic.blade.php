@@ -407,7 +407,10 @@
             };
 
             $.each( inputs, function( i, val ) {
+                $("#"+i).removeClass("is-invalid");
+            });
 
+            $.each( inputs, function( i, val ) {
                 let value = $.trim(val);
 
                 if (value.length < 1 ){
@@ -428,6 +431,7 @@
                         $('#collapsefive').collapse('show');
                     }
                     $("#"+i).focus();
+                    $("#"+i).addClass("is-invalid");
                     return false;
                 }
             });
