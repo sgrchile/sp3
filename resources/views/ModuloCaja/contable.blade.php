@@ -19,7 +19,7 @@
                       <td><a href="{{route('LibrosContables')}}"><button class="btn btn-primary btn-lg" style="width:220px;">LIBROS CONTABLES</button></a></td>
                       <td><a href="{{route('plandecuentas')}}"><button class="btn btn-primary btn-lg" style="width:220px;"> PLAN DE CUENTAS</button></a></td>
                       <td><a href="{{route('AsientosContables')}}"><button class="btn btn-primary btn-lg" style="width:220px;"> ASIENTOS CONTABLES</button></a></td>
-                      <td><a href="{{route('Balance')}}"><button class="btn btn-primary btn-lg" style="width:220px;"> BALANCE</button></a></td>
+                      <td><button class="btn btn-primary btn-lg" style="width:220px;" data-toggle="modal" data-target="#filtroBalance" data-backdrop="false">BALANCE</button></td>
                       </tr>
                       <tr>
 
@@ -29,6 +29,7 @@
 
                       </tr>
                       </table>
+                @include('modals.filtroBalance')
             </div>
 
           <!-- FORM FINAL -->

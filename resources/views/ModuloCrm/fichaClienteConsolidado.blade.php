@@ -153,7 +153,7 @@
           <table class="display  table-bordered text-uppercase" id="dynamic-table">
 
             @if (session('status_contacto'))
-              <div class="alert alert-warning">
+              <div class="alert alert-success">
                 {{ session('status_contacto') }}
               </div>
             @endif
@@ -202,7 +202,7 @@
           <div class="table-responsive">
 
             @if (session('status_oportunidad'))
-              <div class="alert alert-warning">
+              <div class="alert alert-success">
                 {{ session('status_oportunidad') }}
               </div>
             @endif
@@ -328,7 +328,7 @@
 
           <div>
             <div class="container">  <a href="{{route('clientes')}}"><button class="btn btn-primary btn-lg">Reasignar</button></a></div>
-            <div class="container">  <a href="{{route('clientes')}}"><button class="btn btn-primary btn-lg">Editar</button></a></div>
+            <div class="container">  <a href="{{route('editarcliente',$cliente)}}"><button class="btn btn-primary btn-lg">Editar</button></a></div>
           </div>
 
           <!--<h3 class="text-center text-uppercase">COTIZACIONES</h3>

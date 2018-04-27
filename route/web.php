@@ -112,9 +112,9 @@ Route::group(['prefix' => 'modulo'], function () {
             'as' => 'LibrosContables',
         ]);
 
-        Route::get('/BalanceGeneral', [
+        Route::post('/BalanceGeneral', [
             'uses' => 'LibrosContablesController@balance',
-            'as' => 'Balance',
+            'as' => 'post.balance',
         ]);
 
         /*Route::get('/AsientosContables', function () {
@@ -362,7 +362,6 @@ Route::group(['prefix' => 'modulo'], function () {
                     ]);
 
             Route::post('/', [
-               /* 'uses' => 'OrdenTrabajoController@postClientes'*/
                  'uses' => 'ClientesController@store',
                 'as' => 'post.clientes',
             ]);
@@ -608,6 +607,11 @@ Route::group(['prefix' => 'modulo'], function () {
         Route::any('/ofertas', [
             'uses' => 'ProveedoresController@getEvaluarOfertas',
             'as' => 'Lista',
+        ]);
+
+        Route::get('/proveedores', [
+            'uses' => 'ProveedoresController@index',
+            'as' => 'listapro',
         ]);
 
         Route::get('evaluarArticulo/{id}', [
@@ -1141,6 +1145,11 @@ Route::group(['prefix' => 'modulo'], function () {
             'as' => 'editarcliente',
         ]);
 
+        Route::post('/,{id}',[
+            'uses' => 'ClientesController@update',
+            'as' => 'update.cliente',
+        ]);
+
         Route::post('/Convertir,{id}', [
             'uses' => 'ClientesController@convertir',
             'as' => 'convertir',
@@ -1194,7 +1203,7 @@ Route::group(['prefix' => 'modulo'], function () {
             'as' => 'listaCli',
         ]);
 
-        Route::get('/delete/{id}', [
+        Route::get('/delete/{rut}', [
             'uses' => 'ClientesController@destroy',
             'as' => 'cliente.destroy',
         ]);

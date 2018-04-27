@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\FolioOrdenCompra;
 use App\ListaVenta;
 use App\Remuneracion;
+use App\Empresa;
 use Illuminate\Http\Request;
 
 class LibrosContablesController extends Controller
@@ -92,7 +93,12 @@ class LibrosContablesController extends Controller
     /**
      * Balance General
      */
-    public function balance(){
-        return view('ModuloCaja.Balance');
+    public function balance(Request $request){
+
+        $desde=$request->get('desde');
+        $hasta=$request->get('hasta');
+        $emp = Empresa::find($request->get('empresa'));
+        //dd($emp);
+        return view('ModuloCaja.Balance')->with('desde',$desde)->with('emp',$emp)->with('hasta',$hasta);
     }
 }

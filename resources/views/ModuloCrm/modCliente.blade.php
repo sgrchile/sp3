@@ -10,33 +10,36 @@
                 <div class="block-web">
                     <div class="header">
                         <div class="actions"></div>
-                        <H1 class="text-center"><strong>COMVERTIR EN CLIENTE </strong></H1>
+                        <H1 class="text-center"><strong>ACTUALIZAR CLIENTE {!! $cliente->CLI_RUT !!}</strong></H1>
                     </div>
+                    @if (session('status_cliente'))
+                        <div class="alert alert-success">
+                            {{ session('status_cliente') }}
+                        </div>
+                    @endif
                     <div class="porlets-content">
                         <!-- FORM INICIO -->
 
-                        <form id="form1" name="form1" method="post" action="{{ route('post.clientes') }}">
+                        <form id="form1" name="form1" method="post" action="{{ route('update.cliente',[$cliente->CLI_RUT]) }}">
                             {{ csrf_field() }}
                             <table class="table-condensed text-right" align="center">
                                 <tr>
+                                    <td> RUT:</td>
+                                    <td>
+                                    {{ Form::text('rut',$cliente->CLI_RUT,['class'=>'form-control', 'required','readOnly', 'pattern'=>'[A-Za-z]{4-16}','maxlength'=>'11','style'=>'width:175px']) }}
+                                    </td>
                                     <td><a style="color: #9A0000">* </a> NOMBRE:</td>
                                     <td>
                                         {{ Form::text('nombre',$cliente->CLI_NOMBRE,['class'=>'form-control','style'=>'width:175px', 'required', 'pattern'=>'[A-Za-z]{4-16}']) }}
                                     </td>
 
+                                </tr>
+                                <tr>
                                     <td>NOMBRE DE FANTASIA:</td>
                                     <td>
                                         {{ Form::text('nombref',$cliente->CLI_NOMBRE,['class'=>'form-control', 'required', 'pattern'=>'[A-Za-z]{4-16}','style'=>'width:175px']) }}
                                     </td>
-                                </tr>
-                                <tr>
 
-                                    <td><a style="color: #9A0000">* </a> RUT:</td>
-                                    <td>
-                                    {{ Form::text('rut',$cliente->CLI_RUT,['class'=>'form-control', 'required', 'pattern'=>'[A-Za-z]{4-16}','maxlength'=>'11','style'=>'width:175px']) }}
-                                    <!--<input type="text" id="rut" name="rut"  style="width:175px;" class="form-control" maxlength="10" required /><!--oninput="checkRut(this)"-->
-                                    <script src="{{asset('js/validarRUT.js')}}"></script>
-                                    </td>
                                     <td><a style="color: #9A0000">* </a> TELEFONO :</td>
                                     <td>
                                         {{ Form::text('telefono',$cliente->CLI_FONO,['class'=>'form-control','style'=>'width:175px']) }}
@@ -82,7 +85,7 @@
                                     </td>
                                     <td>ACTIVIDAD:</td>
                                     <td>
-                                        {!! Form::select('actividad',App\Actividad::where('ACT_COD_COD','=',$cliente->CLI_CLI_ACTIVIDAD)->pluck('ACT_DESC','ACT_COD_COD'),['class'=>'form-control','id'=>'actividad','style'=>'width:175px']) !!}
+                                        {!! Form::select('actividad',App\Actividad::where('ACT_COD_COD','=',$cliente->CLI_ACTIVIDAD)->pluck('ACT_DESC','ACT_COD_COD'),['class'=>'form-control','id'=>'actividad','style'=>'width:175px']) !!}
                                     </td>
                                 </tr>
                                 <tr>
@@ -132,7 +135,7 @@
                                     </td>
                                 </tr>
                             </table>
-                            <button class="btn btn-primary btn-lg">REGISTRAR</button>
+                            <button class="btn btn-primary btn-lg">GUARDAR</button>
                         </form>
                         <!-- FORM FINAL -->
                     </div><!--/porlets-content-->

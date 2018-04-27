@@ -31,6 +31,19 @@ class ProveedoresController extends Controller
   {
       $this->middleware('auth');
   }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $prov = Proveedor::orderBy('PRO_NOMBRE','ASC')->paginate(10);
+
+        //dd($clientes);
+
+        return view('ModuloProv.prov.listaProv')->with('proveedores',$prov);
+    }
 
     public function getProveedorPersona()
     {

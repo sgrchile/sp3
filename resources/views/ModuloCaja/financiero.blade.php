@@ -27,7 +27,7 @@
           </td>
 
           <td>Saldo Caja Chica</td>
-          <td><input type="text" class="form-control" style="width:100px;" readonly/></td>
+          <td><input type="text" value="{!! App\CuentaContable::all()->where('NOM_CTA_CONT','=','CAJA')->pull('MONTO_CTA_CONT') !!}" class="form-control" style="width:100px;" readonly/></td>
 
           <td>Saldo Cuenta Corriente</td>
             <td>
