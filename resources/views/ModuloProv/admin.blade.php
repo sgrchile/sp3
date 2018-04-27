@@ -46,11 +46,11 @@
     </div>
 @endsection
 <script>
-    $(document).ready(){
+    $(document).ready(function(){
         $("#tabla\\.proveedores tr").on('click', function() {
             activate(this);
         });
-    }
+    });
 
     function activatePaciente(element) {
         $.each($(element).parent().children(), function(i, val) {
