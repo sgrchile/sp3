@@ -112,7 +112,7 @@
         </div>
       </div>
 
-      <div class="user_admin dropdown"> <a href="javascript:void(0);" data-toggle="dropdown"><img src={{ asset('images/5.png') }} /><span class="user_adminname" style="color:#f9ff00;">{{ Auth::user()->PRO_NOMBRE }} {{ Auth::user()->PRO_APE_PAT }}</span> <b class="caret"></b> </a>
+      <div class="user_admin dropdown"> <a href="javascript:void(0);" data-toggle="dropdown"><img src={{ asset('images/5.png') }} /><span class="user_adminname" style="color:#f9ff00;">{{ Auth::user()->PRO_NOMBRE }} {{ Auth::user()->PRO_APE_PAT }} {{ Auth::user()->PRO_RUN }}</span> <b class="caret"></b> </a>
         <ul class="dropdown-menu">
           <div class="top_pointer"></div>
           <li> <a href="{{route('error')}}"><i class="fa fa-user"></i> Perfil</a> </li>
