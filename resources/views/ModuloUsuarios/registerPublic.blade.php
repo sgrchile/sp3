@@ -451,7 +451,13 @@
             rut.value = cuerpo + '-'+ dv
             
             // Si no cumple con el mínimo ej. (n.nnn.nnn)
-            if(cuerpo.length < 7) { rut.setCustomValidity("RUT Incompleto"); return false;}
+            if(cuerpo.length < 7) { 
+                $(rut).addClass("is-invalid");
+                return false;
+            }
+            else{
+                $(rut).removeClass("is-invalid");
+            }
             
             // Calcular Dígito Verificador
             suma = 0;
@@ -479,7 +485,13 @@
             dv = (dv == 0)?11:dv;
             
             // Validar que el Cuerpo coincide con su Dígito Verificador
-            if(dvEsperado != dv) { rut.setCustomValidity("RUT Inválido"); return false; }
+            if(dvEsperado != dv) {
+                $(rut).addClass("is-invalid");
+                return false;
+            }
+            else{
+                $(rut).removeClass("is-invalid");
+            }
             
             // Si todo sale bien, eliminar errores (decretar que es válido)
             rut.setCustomValidity('');
