@@ -15,7 +15,6 @@ Route::get('/',function(){
        return view('auth/login');
    })->name('login');
 
-Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
    // Registrar
 Route::get('/registrar', function () {
     return view('ModuloUsuarios/registerPublic');
