@@ -44,7 +44,7 @@
                                             </div>
                                             <div class="form-group col-12 col-md-6">
                                                 <label for="rut">R.U.T</label>
-                                                <input type="text" class="form-control" oninput="checkRut(this)" id="rut">
+                                                <input type="text" class="form-control" id="rut">
                                             </div>
                                             <div class="form-group col-12 col-md-6">
                                                 <label for="fecha">Fecha de Nacimiento</label>
@@ -434,9 +434,20 @@
                     $("#"+i).addClass("is-invalid");
                     return false;
                 }
+                oninput="checkRut(this)"
+
+                if (i == "rut"){
+                    let element = $("#"+i)
+                    if (checkRut(element) == false){
+                        alert("RUT inválido");
+                        $("#"+i).focus();
+                        $("#"+i).addClass("is-invalid");
+                        return false;
+                    }
+                }
 
                 if (i == "email"){
-                    if ($('#email').checkValidity() == false){
+                    if (validarEmail(value) == false){
                         alert("Email Inválido");
                         $("#"+i).focus();
                         $("#"+i).addClass("is-invalid");
@@ -461,11 +472,7 @@
             
             // Si no cumple con el mínimo ej. (n.nnn.nnn)
             if(cuerpo.length < 7) { 
-                $(rut).addClass("is-invalid");
                 return false;
-            }
-            else{
-                $(rut).removeClass("is-invalid");
             }
             
             // Calcular Dígito Verificador
@@ -495,15 +502,18 @@
             
             // Validar que el Cuerpo coincide con su Dígito Verificador
             if(dvEsperado != dv) {
-                $(rut).addClass("is-invalid");
                 return false;
-            }
-            else{
-                $(rut).removeClass("is-invalid");
             }
             
             // Si todo sale bien, eliminar errores (decretar que es válido)
-            rut.setCustomValidity('');
+            return true;
+        }
+
+        function validarEmail(valor) {
+            if (/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(valor)){
+                return true;
+            } 
+            return false;
         }
     </script>
   </body>
