@@ -97,7 +97,7 @@ class ProveedoresPublicController extends Controller
             'estado' => 'required',
             'email' => 'required|email|unique:PRO_PROVEEDOR,PRO_EMAIL',
             'nacionalidad' => 'required',
-            'password' => 'required|min:6',
+            'contrasena' => 'required|min:6',
             'telefono' => 'required',
             'direccion' => 'required',
             'pais' => 'required',

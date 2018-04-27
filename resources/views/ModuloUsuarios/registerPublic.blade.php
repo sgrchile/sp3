@@ -228,7 +228,7 @@
                                         {{ csrf_field() }}
                                         <div class="card-footer">
                                             <a href="#" class="btn btn-secondary" data-toggle="collapse" data-target="#collapsefour">Volver al paso 4</a>
-                                            <button type="button" class="btn btn-primary" onclick="validateInput()">Registrar</button>
+                                            <button type="button" class="btn btn-primary" id="btnRegistrar">Registrar</button>
                                         </div>
                                     </div>
                                 </div>
@@ -376,6 +376,16 @@
                     $("#select\\.fecha").removeClass("d-none");
                 }
             });
+
+            $("#btnRegistrar").on("click", function(){
+                let validos = validateInput();
+
+                if (validos == true){
+                    $.post("{{ route('registrar.proveedor.persona') }}",inputs).done(function(data){
+                        alert(data.respuesta);
+                    });
+                }
+            });
         });
 
         function validateInput(){
@@ -415,7 +425,7 @@
             $.each( inputs, function( i, val ) {
                 let value = $.trim(val);
 
-                if (value.length < 1 ){
+                if (value.length < 1 && i !== "telefonodos"){
                     alert("Falta un campo obligatorio");
                     if (i =="nombre" || i =="paterno" || i =="materno" || i =="rut" || i =="fecha" || i =="genero" || i =="estado" || i =="email" || i =="nacionalidad" || i =="contrasena" || i =="contrasenar"){
                         $('#collapseOne').collapse('show');
@@ -484,10 +494,6 @@
                         return false;
                     }
                 }
-
-                $.post("{{ route('registrar.proveedor.persona') }}",inputs).done(function(data){
-                    alert(data);
-                });
             });
         }
 
