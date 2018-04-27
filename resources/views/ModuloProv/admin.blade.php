@@ -14,7 +14,7 @@
                         <div class="tab-content">
                             <a href="#" class="btn btn-primary pull-left">Autorizar ingreso al sistema</a>
                             <div role="tabpanel" class="tab-pane active" id="alta">
-                                <table class="table table-hover">
+                                <table class="table table-hover" id="tabla.proveedores">
                                     <thead>
                                         <tr>
                                             <th>#</th>
@@ -45,3 +45,17 @@
         </div>
     </div>
 @endsection
+<script>
+    $(document).ready(){
+        $("#tabla\\.proveedores tr").on('click', function() {
+            activate(this);
+        });
+    }
+
+    function activatePaciente(element) {
+        $.each($(element).parent().children(), function(i, val) {
+            $(val).removeClass('active');
+        });
+        $(element).addClass('active');
+    }
+<script>
