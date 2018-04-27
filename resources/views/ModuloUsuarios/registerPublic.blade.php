@@ -436,7 +436,7 @@
                 }
 
                 if (i == "email"){
-                    if ($('#email')[0].checkValidity() == false){
+                    if ($('#email').checkValidity() == false){
                         alert("Email Inválido");
                         $("#"+i).focus();
                         $("#"+i).addClass("is-invalid");
