@@ -412,8 +412,24 @@
 
                 if (value.length < 1 ){
                     alert("Falta un campo obligatorio");
+                    if (i =="nombre" || i =="paterno" || i =="materno" || i =="rut" || i =="fecha" || i =="genero" || i =="estado" || i =="email" || i =="nacionalidad" || i =="contrasena" || i =="contrasenar"){
+                        $('#collapseOne').collapse();
+                    }
+                    else if (i == "telefono" || i == "telefonodos"){
+                        $('#collapseTwo').collapse();
+                    }
+                    else if (i == "direccion" || i == "pais" || i == "region" || i == "provincia" || i == "ciudad"){
+                        $('#collapseThree').collapse();
+                    }
+                    else if(i == "pago" || i == "fechapago" || i == "ncuenta" || i == "banco" || i == "bancocuenta"){
+                        $('#collapsefour').collapse();
+                    }
+                    else{
+                        $('#collapsefive').collapse();
+                    }
+                    $("#"+i).focus();
+                    return false;
                 }
-                $( "#" + i ).focus();
             });
         }
     </script>
