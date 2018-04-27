@@ -494,6 +494,8 @@
                         return false;
                     }
                 }
+
+                return true;
             });
         }
 
