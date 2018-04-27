@@ -58,7 +58,7 @@
             $.each(filas, function(i, val) {
                 if ($(val).hasClass('active') == true){
                     let user = $(val).children("th").html();
-                    $.get(location.protocol + "://" + window.location.hostname + '/modulo/proveedores/admin/autorizar/' + user);
+                    $.get(window.location.protocol + "://" + window.location.hostname + '/modulo/proveedores/admin/autorizar/' + user);
                 }
             });
         })
