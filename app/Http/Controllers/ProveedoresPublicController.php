@@ -31,11 +31,11 @@ class ProveedoresPublicController extends Controller
         $createProveedorPersona = $this->createProveedorPersona($request->all());
 
         if (! $createProveedorPersona) {
-            $respuesta = json_encode('{"respuesta": "Hubo un problema al crear el proveedor persona."}');
+            $respuesta = '{"respuesta": "Hubo un problema al crear el proveedor persona."}';
             return response()->json($respuesta);
         }
 
-        $respuesta = json_encode('{"respuesta": "El proveedor ha sido creado exitosamente."}');
+        $respuesta = '{"respuesta": "El proveedor ha sido creado exitosamente."}';
         return response()->json($respuesta);
     }
 
