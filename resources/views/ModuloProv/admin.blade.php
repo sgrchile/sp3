@@ -12,15 +12,7 @@
                             <li role="presentation" class="active"><a href="#alta" aria-controls="alta" role="tab" data-toggle="tab">Alta de Proveedor</a></li>
                         </ul>
                         <div class="tab-content">
-                            <nav class="navbar navbar-default">
-                                <div class="container-fluid">
-                                    <div class="collapse navbar-collapse">
-                                        <ul class="nav navbar-nav">
-                                            <li><a href="#">Autorizar ingreso al sistema</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </nav>
+                            <a href="#" class="btn btn-primary">Autorizar ingreso al sistema</a>
                             <div role="tabpanel" class="tab-pane active" id="alta">
                                 <table class="table table-hover">
                                     <thead>
