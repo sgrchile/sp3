@@ -45,10 +45,9 @@ class LoginController extends Controller
 
     public function authenticated(Request $request, $user)
     {//{{ Auth::user()->PRO_RUN }}
-        if (!$user->PRO_ALTA) {
+        if ($user->PRO_ALTA == false) {
             auth()->logout();
-            return back()->with('warning', $user);
-            //return back()->with('warning', 'Tu cuenta no ha sido activada por el administrador');
+            return back()->with('warning', 'Tu cuenta no ha sido activada por el administrador');
         }
         return redirect()->intended($this->redirectPath());
     }
