@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\CuentaContable;
+use Grpc\ServerCredentials;
 use Illuminate\Http\Request;
 
 class CuentaContableController extends Controller
@@ -14,8 +15,10 @@ class CuentaContableController extends Controller
      */
     public function index()
     {
-        $cuentas = CuentaContable::orderby('NOM_CTA_CONT','ASC')->paginate(20);
-        //dd('hola');
+        $cuentas = CuentaContable::orderby('NOM_CTA_CONT','ASC')
+            ->where('EMP_CTA_CONT','=',4)
+            ->paginate(20);
+        //dd( session());
         return view('ModuloCaja.planDeCuentas')->with('cuentas',$cuentas);
     }
 
@@ -38,12 +41,13 @@ class CuentaContableController extends Controller
     public function store(Request $request)
     {
         $cuenta = new CuentaContable();
+        $cuenta->setAttribute('EMP_CTA_CONT',$request->get('empresa'));
         $cuenta->setAttribute('NOM_CTA_CONT',$request->get('nomcta'));
         $cuenta->setAttribute('CL_CTA_CONT',$request->get('clasecuenta'));
         $cuenta->setAttribute('TP_CTA_CON',$request->get('tpcuenta'));
         //$cuenta->setAttribute('MONTO_CTA_CONT',$request->get('montocta',null));
         //$cuenta->setAttribute('USUARIO_CTA_CONT',$request->session->get('login_web'));
-        //dd($request);
+        //dd($request->session()->all());
         $cuenta->save();
         return redirect()->back();
     }

@@ -24,6 +24,13 @@
           <table class="table-condensed" align="center" style="text-align:right;">
 
             <tr>
+              <td>EMPRESA</td>
+              <td>
+                {{ Form::select('empresa',App\Empresa::pluck('EMP_DESC','EMP_ID'),null,
+                ['class'=>'form-control','style'=>'width:175px','placeholder'=>'Seleccione','id'=>'empresa','require']) }}
+              </td>
+            </tr>
+            <tr>
               <td>TIPO DE MOVIMIENTO</td>
               <td>
                 {{ Form::select('tp_movimiento',App\TipoMovimiento::pluck('TMOV_DESC','TMOV_ID'),null,['class'=>'form-control','required']) }}

@@ -15,6 +15,14 @@
       <table class="table-condensed text-right">
 
         <tr>
+          <td>EMPRESA</td>
+          <td>
+            {{ Form::select('empresa',App\Empresa::pluck('EMP_DESC','EMP_ID'),null,
+            ['class'=>'form-control','style'=>'width:175px','placeholder'=>'Seleccione','id'=>'empresa','require']) }}
+          </td>
+        </tr>
+
+        <tr>
           <td>TIPO DE CUENTA:</td>
           <td>
               {{ Form::select('tpcuenta',App\Tp_Cuenta::pluck('DESC_TP_CUENTA','ID_TP_CUENTA'),null,

@@ -54,6 +54,7 @@ class AsientoContableController extends Controller
         $asiento->TP_MOVIMIENTO = $request->tp_movimiento;
         $asiento->FECHA_CONT = $request->fecasiento;
         $asiento->ID_USUARIO_ASIENTO = null;
+        $asiento->ID_EMP_ASIENTO = $request->empresa;
         $tdebe=0;
         $thaber=0;
         $asiento->TOTAL_DEBE = $tdebe;
@@ -65,7 +66,7 @@ class AsientoContableController extends Controller
             if($request->exists("cuentas$count")){
                 $asicta = new AsientoCuenta();
                 $asicta->ID_ASIENTO_CONT = $asiento->ID_ASIENTO_CONT;
-                $ctacont=CuentaContable::find($request->get("cuentas$count"));
+                $ctacont=CuentaContable::find($request->get("cuentas$count"))->where();
                 $asicta->setAttribute('ID_CTA_CONT',$ctacont->getAttribute('ID_CTA_CONT')) ;
                 //dd($ctacont->getAttribute('TP_CTA_CON'));
                 $monto=intval($ctacont->getAttribute('MONTO_CTA_CONT'));
