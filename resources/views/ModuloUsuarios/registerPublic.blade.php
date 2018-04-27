@@ -434,6 +434,15 @@
                     $("#"+i).addClass("is-invalid");
                     return false;
                 }
+
+                if (i == "email"){
+                    if ($('#email')[0].checkValidity() == false){
+                        alert("Email Inválido");
+                        $("#"+i).focus();
+                        $("#"+i).addClass("is-invalid");
+                        return false;
+                    }
+                }
             });
         }
 
