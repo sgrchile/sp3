@@ -380,6 +380,34 @@
             $("#btnRegistrar").on("click", function(){
                 let validos = validateInput();
 
+                let inputs = {
+                    nombre: $("#nombre").val(),
+                    paterno: $("#paterno").val(),
+                    materno: $("#materno").val(),
+                    rut: $("#rut").val(),
+                    fecha: $("#fecha").val(),
+                    genero: $("#genero").val(),
+                    estado: $("#estado").val(),
+                    email: $("#email").val(),
+                    nacionalidad: $("#nacionalidad").val(),
+                    contrasena: $("#contrasena").val(),
+                    contrasenar: $("#contrasenar").val(),
+                    telefono: $("#telefono").val(),
+                    telefonodos: $("#telefonodos").val(),
+                    direccion: $("#direccion").val(),
+                    pais: $("#pais").val(),
+                    region: $("#region").val(),
+                    provincia: $("#provincia").val(),
+                    ciudad: $("#ciudad").val(),
+                    pago: $("#pago").val(),
+                    fechapago: $("#fechapago").val(),
+                    ncuenta: $("#ncuenta").val(),
+                    banco: $("#banco").val(),
+                    bancocuenta: $("#bancocuenta").val(),
+                    medico: $("#medico").val(),
+                    afp: $("#afp").val(),
+                    _token: $('input[name="_token"]').val()
+                };
                 if (validos == true){
                     $.post("{{ route('registrar.proveedor.persona') }}",inputs).done(function(data){
                         alert(data.respuesta);
