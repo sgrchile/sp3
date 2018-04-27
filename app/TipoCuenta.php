@@ -13,7 +13,7 @@ class TipoCuenta extends Model
      */
     protected $table = "TCTA";
 
-    /**
+    /** 
      * Llave primaria de la tabla
      *
      * @var string

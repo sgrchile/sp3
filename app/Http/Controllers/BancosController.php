@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Banco;
-use App\BancoCuentas;
+use App\TipoCuenta;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -19,7 +19,7 @@ class BancosController extends Controller
 
     public function getCuentas()
     {
-        $mn = BancoCuentas::get();
+        $mn = TipoCuenta::get();
 
         return response()->json($mn);
     }

@@ -275,7 +275,7 @@
                 if (data !== null){
                     if (Object.keys(data).length > 0 ){
                         $.each(data, function( index, value ){
-                            let option = "<option value='"+ value.CUENTA_ID + "'>" + value.CUENTA_NAME+ "</option>";
+                            let option = "<option value='"+ value.TCTA_BCO + "'>" + value.TCTA_DESC+ "</option>";
                             $("#bancocuenta").append(option);
                         });
                     }
