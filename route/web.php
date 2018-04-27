@@ -594,6 +594,10 @@ Route::group(['prefix' => 'modulo'], function () {
             return view('ModuloProv.provIndex');
         })->name('PROV');
 
+        Route::get('admin', function () {
+            return view('ModuloProv.admin');
+        })->name('proveedoresadmin');
+
         Route::get('api/provincia/{region}', [
             'uses' => 'LocationController@getProvincia',
             'as' => 'get.provincia',

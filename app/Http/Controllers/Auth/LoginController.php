@@ -45,6 +45,34 @@ class LoginController extends Controller
 
     public function authenticated(Request $request, $user)
     {//{{ Auth::user()->PRO_RUN }}
+
+
+    $this->validate($request, [
+        'nombre' => 'required',
+        'paterno' => 'required',
+        'materno' => 'required',
+        'rut' => 'required|unique:PRO_PROVEEDOR,PRO_RUN',
+        'fecha' => 'required',
+        'genero' => 'required',
+        'estado' => 'required',
+        'email' => 'required|email|unique:PRO_PROVEEDOR,PRO_EMAIL',
+        'nacionalidad' => 'required',
+        'contrasena' => 'required|min:6',
+        'telefono' => 'required',
+        'direccion' => 'required',
+        'pais' => 'required',
+        'region' => 'required',
+        'provincia' => 'required',
+        'ciudad' => 'required',
+        'pago' => 'required',
+        'fechapago' => 'required',
+        'ncuenta' => 'required',
+        'banco' => 'required',
+        'bancocuenta' => 'required',
+        'medico' => 'required',
+        'afp' => 'required'
+    ]);
+
         if ($user->PRO_ALTA === 0) {
             auth()->logout();
             return back()->with('warning', 'Tu cuenta no ha sido activada por el administrador');
