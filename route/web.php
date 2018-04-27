@@ -20,6 +20,11 @@ Route::get('/registrar', function () {
     return view('ModuloUsuarios/registerPublic');
 })->name('register');
 
+Route::post('/registrar_action', [
+    'uses' => 'ProveedoresPublicController@NewProveedor',
+    'as' => 'registrar.prooveedor.persona',
+]);
+
 Route::get('/menu', function () {
          return view('index');
      })->name('menu');

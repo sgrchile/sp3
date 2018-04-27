@@ -482,6 +482,10 @@
                         return false;
                     }
                 }
+
+                $.post("{{ route('registrar.prooveedor.persona') }}",inputs).done(function(data){
+                    alert(data);
+                });
             });
         }
 
