@@ -17,7 +17,6 @@ $factory->define(App\Proveedor::class, function (Faker\Generator $faker) {
         'PRO_RAZON_SOCIAL' => $faker->jobTitle,
         'PRO_TEL' => $faker->phoneNumber,
         'PRO_CELULAR' => $faker->phoneNumber,
-        'PRO_RUT' => '16512070-5',
         'PRO_FECHA_PAGO' => $faker->dateTime,
         'PRO_FECHA_NAC' => $faker->dateTime,
         'PRO_CONTACTO_SECUNDARIO' => $faker->phoneNumber,

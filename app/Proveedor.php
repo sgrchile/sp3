@@ -37,7 +37,6 @@ class Proveedor extends Authenticatable
     'PRO_RAZON_SOCIAL',
     'PRO_TEL',
     'PRO_CELULAR',
-    'PRO_RUT',
     'PRO_FECHA_PAGO',
     'PRO_CONTACTO_SECUNDARIO',
     'PRO_PAGINA_WEB',

@@ -27,7 +27,6 @@ class CreateProveedorTable extends Migration
             $table->string('PRO_RAZON_SOCIAL', 45)->nullable();
             $table->string('PRO_TEL', 45)->nullable();
             $table->string('PRO_CELULAR', 45)->nullable();
-            $table->string('PRO_RUT', 10)->nullable();
             $table->string('PRO_RUBRO')->nullable();
             $table->string('PRO_SUBRUBRO')->nullable();
             $table->date('PRO_FECHA_PAGO')->nullable();

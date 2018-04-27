@@ -95,7 +95,6 @@ class RrhhAdminController extends Controller
              'PRO_N_CUENTA' => $data['nro_cuenta'],
              'PRO_CELULAR' => $data['celular'],
              'PRO_TEL' => $data['celular_dos'],
-             'PRO_RUT' => $data['rut'],
              'PRO_FECHA_PAGO' => $data['fecha_pago'],
              'PRO_CONTACTO_SECUNDARIO' => $data['celular_dos'],
              'PRO_EMAIL' => $data['email'],
