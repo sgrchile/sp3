@@ -438,6 +438,7 @@
 
                 if (i == "rut"){
                     let element = $("#"+i)
+                    element = element[0];
                     if (checkRut(element) == false){
                         alert("RUT inválido");
                         $("#"+i).focus();
