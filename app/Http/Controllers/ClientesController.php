@@ -195,7 +195,7 @@ class ClientesController extends Controller
     {
         $cliente = Cliente::find($id);
         //dd($cliente);
-        return view('ModuloCrm.convertirCliente')->with('cliente',$cliente);
+        return view('ModuloCrm.modCliente')->with('cliente',$cliente);
 
     }
 
@@ -208,7 +208,29 @@ class ClientesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $cliente = Cliente::find($id);
+        //dd($request);
+        $cliente->setAttribute('CLI_FONO',$request->get('telefono'));
+        $cliente->setAttribute('CLI_EMAIL',$request->get('email'));
+        $cliente->setAttribute('CLI_FONO2',$request->get('telefono2'));
+        $cliente->setAttribute('CLI_ACT_COMERCIAL',$request->get('actcomercial'));
+        $cliente->setAttribute('CLI_SITIO_WEB',$request->get('sitioweb'));
+        $cliente->setAttribute('CLI_GLOSA',$request->get('glosa'));
+        $cliente->setAttribute('CLI_RUBRO',$request->get('rubro'));
+        $cliente->setAttribute('CLI_SUB_RUBRO',$request->get('subrubro'));
+        $cliente->setAttribute('CLI_ACTIVIDAD',$request->get('actividad'));
+        $cliente->setAttribute('CLI_BANCO',$request->get('banco'));
+        $cliente->setAttribute('CLI_TCTA_BCO',$request->get('tipocuenta'));
+        $cliente->setAttribute('CLI_NRO_CTA',$request->get('nrocuenta'));
+        $cliente->setAttribute('CLI_ORIGEN',$request->get('origen'));
+        $cliente->setAttribute('CLI_PAIS',$request->get('pais'));
+        $cliente->setAttribute('CLI_REGION',$request->get('region'));
+        $cliente->setAttribute('CLI_PROVINCIA',$request->get('provincia'));
+        $cliente->setAttribute('CLI_CIUDAD',$request->get('ciudad'));
+        $cliente->setAttribute('CLI_DIRECCION',$request->get('direccion'));
+        $cliente->save();
+        return redirect()->back()->with('status_cliente', 'Cliente Actualizado Correctamente');
+
     }
 
     /**
@@ -220,8 +242,8 @@ class ClientesController extends Controller
     public function destroy($id)
     {
         $cliente = Cliente::find($id);
+        //dd($cliente);
         $cliente->delete();
-        //dd($contac);
         return redirect()->back()->with('status_cliente', 'Cliente eliminado!');
     }
 

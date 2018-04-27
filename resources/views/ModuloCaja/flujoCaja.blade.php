@@ -136,38 +136,38 @@
       <td></td>
       <th>Tipo de cuenta</th>
       <th><p>Detalle</p></th>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
+      <td>{!! 'ENERO' !!}</td>
+      <td>{!! 'FEBRERO' !!}</td>
+      <td>{!! 'MARZO' !!}</td>
+      <td>{!! 'ABRIL' !!}</td>
+      <td>{!! 'MAYO' !!}</td>
+      <td>{!! 'JUNIO' !!}</td>
+      <td>{!! 'JULIO' !!}</td>
+      <td>{!! 'AGOSTO' !!}</td>
+      <td>{!! 'SEPTIEMBRE' !!}</td>
+      <td>{!! 'OCTUBRE' !!}</td>
+      <td>{!! 'NOVIEMBRE' !!}</td>
+      <td>{!! 'DICIEMBRE' !!}</td>
     </tr>
 
 
 <!--VENTAS-->
      <tr >
         <td rowspan="5"><button type="button" class="btn btn-primary btn-sm" data-dismiss="modal" id="boton1">+</button></td>
-        <td id="a" rowspan="5">Ventas</td>
-        <td id="a"><p id="a">Total</p></td>
-        <td id="a">&nbsp;</td>
-        <td id="a">&nbsp;</td>
-        <td id="a">&nbsp;</td>
-        <td id="a">&nbsp;</td>
-        <td id="a">&nbsp;</td>
-        <td id="a">&nbsp;</td>
-        <td id="a">&nbsp;</td>
-        <td id="a">&nbsp;</td>
-        <td id="a">&nbsp;</td>
-        <td id="a">&nbsp;</td>
-        <td id="a">&nbsp;</td>
-        <td id="a">&nbsp;</td>
+        <td id="a1" rowspan="5">Ventas</td>
+        <td id="a1"><p id="a1">Total</p></td>
+        <td id="a1">&nbsp;</td>
+        <td id="a1">&nbsp;</td>
+        <td id="a1">&nbsp;</td>
+        <td id="a1">&nbsp;</td>
+        <td id="a1">&nbsp;</td>
+        <td id="a1">&nbsp;</td>
+        <td id="a1">&nbsp;</td>
+        <td id="a1">&nbsp;</td>
+        <td id="a1">&nbsp;</td>
+        <td id="a1">&nbsp;</td>
+        <td id="a1">&nbsp;</td>
+        <td id="a1">&nbsp;</td>
      </tr>
 
      <tr >
@@ -240,7 +240,7 @@
 <!--COMISIONES-->
     <tr>
       <td rowspan="3"><button type="button" class="btn btn-primary btn-sm" data-dismiss="modal" id="boton2">+</button></td>
-      <td id="b" rowspan="3">Comisiones</td>
+      <td id="b1" rowspan="3">Comisiones</td>
     </tr>
 
      <tr>
@@ -283,7 +283,7 @@
 <!--Cuentas por cobrar-->
     <tr>
       <td rowspan="4"><button type="button" class="btn btn-primary btn-sm" data-dismiss="modal" id="boton3">+</button></td>
-      <td id="c"  rowspan="4">Cuentas por cobrar</td>
+      <td id="c1"  rowspan="4">Cuentas por cobrar</td>
 
 
     </tr>
@@ -351,26 +351,24 @@
 <!--Ingresos-->
     <tr>
       <td rowspan="5"><button type="button" class="btn btn-primary btn-sm" data-dismiss="modal" id="boton4">+</button></td>
-      <td id="d" rowspan="5">Ingresos </td>
-
+      <td id="d1" rowspan="5">Ingresos </td>
     </tr>
-
     <tr>
-      <td id="d">
-        <p id="d">Total</p>
+      <td id="d1">
+        <p id="d1">Total</p>
       </td>
-      <td id="d">&nbsp;</td>
-      <td id="d">&nbsp;</td>
-      <td id="d">&nbsp;</td>
-      <td id="d">&nbsp;</td>
-      <td id="d">&nbsp;</td>
-      <td id="d">&nbsp;</td>
-      <td id="d">&nbsp;</td>
-      <td id="d">&nbsp;</td>
-      <td id="d">&nbsp;</td>
-      <td id="d">&nbsp;</td>
-      <td id="d">&nbsp;</td>
-      <td id="d">&nbsp;</td>
+      <td id="den">&nbsp;</td>
+      <td id="dfe">&nbsp;</td>
+      <td id="dmr">&nbsp;</td>
+      <td id="dab">&nbsp;</td>
+      <td id="dmy">&nbsp;</td>
+      <td id="djn">&nbsp;</td>
+      <td id="djl">&nbsp;</td>
+      <td id="dag">&nbsp;</td>
+      <td id="dse">&nbsp;</td>
+      <td id="doc">&nbsp;</td>
+      <td id="dno">&nbsp;</td>
+      <td id="ddi">&nbsp;</td>
     </tr>
 
     <tr>
@@ -432,7 +430,7 @@
     <tr>
 
       <td rowspan="4"><button type="button" class="btn btn-primary btn-sm" data-dismiss="modal" id="boton5">+</button></td>
-      <td id="e" rowspan="4"><p>Costos Variables </p></td>
+      <td id="e1" rowspan="4"><p>Costos Variables </p></td>
 
       <td id="e">
         <p id="e">G operativos </p>
@@ -483,28 +481,28 @@
       <td id="e">&nbsp;</td>
       <td id="e">&nbsp;</td>
     </tr>
-    <td id="e">
-        <p id="e">Total CV </p>
+    <td id="e1">
+        <p id="e1">Total CV </p>
       </td>
-      <td id="e">&nbsp;</td>
-      <td id="e">&nbsp;</td>
-      <td id="e">&nbsp;</td>
-      <td id="e">&nbsp;</td>
-      <td id="e">&nbsp;</td>
-      <td id="e">&nbsp;</td>
-      <td id="e">&nbsp;</td>
-      <td id="e">&nbsp;</td>
-      <td id="e">&nbsp;</td>
-      <td id="e">&nbsp;</td>
-      <td id="e">&nbsp;</td>
-      <td id="e">&nbsp;</td>
+      <td id="e1">&nbsp;</td>
+      <td id="e1">&nbsp;</td>
+      <td id="e1">&nbsp;</td>
+      <td id="e1">&nbsp;</td>
+      <td id="e1">&nbsp;</td>
+      <td id="e1">&nbsp;</td>
+      <td id="e1">&nbsp;</td>
+      <td id="e1">&nbsp;</td>
+      <td id="e1">&nbsp;</td>
+      <td id="e1">&nbsp;</td>
+      <td id="e1">&nbsp;</td>
+      <td id="e1">&nbsp;</td>
     </tr>
 <!--//Costos Variables -->
 
 <!--Cuentas por pagar -->
     <tr>
       <td rowspan="3"><button type="button" class="btn btn-primary btn-sm" data-dismiss="modal" id="boton6">+</button></td>
-      <td id="f"  rowspan="3">Cuentas por pagar </td>
+      <td id="f1"  rowspan="3">Cuentas por pagar </td>
     </tr>
 
     <tr>
@@ -552,7 +550,7 @@
 <!--Costos fijos -->
     <tr>
       <td rowspan="6"><button type="button" class="btn btn-primary btn-sm" data-dismiss="modal" id="boton7">+</button></td>
-      <td id="g" rowspan="6">Costos fijos </td>
+      <td id="g1" rowspan="6">Costos fijos </td>
     </tr>
     <tr>
       <td id="g">
@@ -634,22 +632,22 @@
     </tr>
     <tr>
 
-      <td id="g">
+      <td id="g1">
 
         <p>Total cf </p>
       </td>
-      <td id="g">&nbsp;</td>
-      <td id="g">&nbsp;</td>
-      <td id="g">&nbsp;</td>
-      <td id="g">&nbsp;</td>
-      <td id="g">&nbsp;</td>
-      <td id="g">&nbsp;</td>
-      <td id="g">&nbsp;</td>
-      <td id="g">&nbsp;</td>
-      <td id="g">&nbsp;</td>
-      <td id="g">&nbsp;</td>
-      <td id="g">&nbsp;</td>
-      <td id="g">&nbsp;</td>
+      <td id="g1">&nbsp;</td>
+      <td id="g1">&nbsp;</td>
+      <td id="g1">&nbsp;</td>
+      <td id="g1">&nbsp;</td>
+      <td id="g1">&nbsp;</td>
+      <td id="g1">&nbsp;</td>
+      <td id="g1">&nbsp;</td>
+      <td id="g1">&nbsp;</td>
+      <td id="g1">&nbsp;</td>
+      <td id="g1">&nbsp;</td>
+      <td id="g1">&nbsp;</td>
+      <td id="g1">&nbsp;</td>
     </tr>
 
 
@@ -658,7 +656,7 @@
 <!--bonos-->
     <tr>
       <td rowspan="5"><button type="button" class="btn btn-primary btn-sm" data-dismiss="modal" id="boton8">+</button></td>
-      <td id="h" rowspan="5">Bonos </td>
+      <td id="h1" rowspan="5">Bonos </td>
     </tr>
 
     <tr>
@@ -716,21 +714,21 @@
       </tr>
 
       <tr>
-        <td id="h">
-        <p id="h">Total Bonos </p>
+        <td id="h1">
+        <p id="h1">Total Bonos </p>
         </td>
-        <td id="h">&nbsp;</td>
-        <td id="h">&nbsp;</td>
-        <td id="h">&nbsp;</td>
-        <td id="h">&nbsp;</td>
-        <td id="h">&nbsp;</td>
-        <td id="h">&nbsp;</td>
-        <td id="h">&nbsp;</td>
-        <td id="h">&nbsp;</td>
-        <td id="h">&nbsp;</td>
-        <td id="h">&nbsp;</td>
-        <td id="h">&nbsp;</td>
-        <td id="h">&nbsp;</td>
+        <td id="h1">&nbsp;</td>
+        <td id="h1">&nbsp;</td>
+        <td id="h1">&nbsp;</td>
+        <td id="h1">&nbsp;</td>
+        <td id="h1">&nbsp;</td>
+        <td id="h1">&nbsp;</td>
+        <td id="h1">&nbsp;</td>
+        <td id="h1">&nbsp;</td>
+        <td id="h1">&nbsp;</td>
+        <td id="h1">&nbsp;</td>
+        <td id="h1">&nbsp;</td>
+        <td id="h1">&nbsp;</td>
       </tr>
 
 <!--//bonos-->
@@ -738,7 +736,7 @@
 <!--Item de gasto-->
     <tr>
       <td rowspan="5"><button type="button" class="btn btn-primary btn-sm" data-dismiss="modal" id="boton9">+</button></td>
-      <td id="i" rowspan="5">Item de gastos </td>
+      <td id="i1" rowspan="5">Item de gastos </td>
 
     </tr>
 
@@ -826,7 +824,7 @@
 <!--BALANCE-->
    <tr>
    <td rowspan="4"><button type="button" class="btn btn-primary btn-sm" data-dismiss="modal" id="boton10">+</button></td>
-   <td id="j" rowspan="4">Balance</td>
+   <td id="j1" rowspan="4">Balance</td>
 
     </tr>
 
@@ -897,7 +895,7 @@
 <!--DISTRIBCION-->
     <tr>
       <td rowspan="4"><button type="button" class="btn btn-primary btn-sm" data-dismiss="modal" id="boton11">+</button></td>
-      <td id="k" rowspan="4">Distribucion </td>
+      <td id="k1" rowspan="4">Distribucion </td>
 
     </tr>
 
@@ -968,7 +966,7 @@
 
     <tr>
       <td rowspan="4"><button type="button" class="btn btn-primary btn-sm" data-dismiss="modal" id="boton12">+</button></td>
-      <td id="m" rowspan="4">Retiros </td>
+      <td id="m1" rowspan="4">Retiros </td>
 
     </tr>
 
@@ -1036,7 +1034,7 @@
 <!--prestamos-->
     <tr>
       <td rowspan="4"><button type="button" class="btn btn-primary btn-sm" data-dismiss="modal" id="boton13">+</button></td>
-      <td id="n" rowspan="4">Prestamos </td>
+      <td id="n1" rowspan="4">Prestamos </td>
     </tr>
 
     <tr>
@@ -1074,26 +1072,26 @@
 
     <tr>
 
-      <td id="n"><p>Acumulados</p></td>
-      <td id="n">&nbsp;</td>
-      <td id="n">&nbsp;</td>
-      <td id="n">&nbsp;</td>
-      <td id="n">&nbsp;</td>
-      <td id="n">&nbsp;</td>
-      <td id="n">&nbsp;</td>
-      <td id="n">&nbsp;</td>
-      <td id="n">&nbsp;</td>
-      <td id="n">&nbsp;</td>
-      <td id="n">&nbsp;</td>
-      <td id="n">&nbsp;</td>
-      <td id="n">&nbsp;</td>
+      <td id="n1"><p>Acumulados</p></td>
+      <td id="nen">&nbsp;</td>
+      <td id="nfe">&nbsp;</td>
+      <td id="nmr">&nbsp;</td>
+      <td id="nab">&nbsp;</td>
+      <td id="nmy">&nbsp;</td>
+      <td id="njn">&nbsp;</td>
+      <td id="njl">&nbsp;</td>
+      <td id="nag">&nbsp;</td>
+      <td id="nse">&nbsp;</td>
+      <td id="noc">&nbsp;</td>
+      <td id="nno">&nbsp;</td>
+      <td id="ndi">&nbsp;</td>
     </tr>
 <!--//prestamos-->
 
 <!--impuestos-->
     <tr>
       <td rowspan="6"><button type="button" class="btn btn-primary btn-sm" data-dismiss="modal" id="boton14">+</button></td>
-      <td id="o" rowspan="6">Impuestos </td>
+      <td id="o1" rowspan="6">Impuestos </td>
     </tr>
 
     <tr>
@@ -1182,29 +1180,29 @@
 
     <tr>
 
-      <td id="o">
+      <td id="o1">
 
-          <p id="o">Total impuestos</p>
+          <p id="o1">Total impuestos</p>
       </td>
-      <td id="o">&nbsp;</td>
-      <td id="o">&nbsp;</td>
-      <td id="o">&nbsp;</td>
-      <td id="o">&nbsp;</td>
-      <td id="o">&nbsp;</td>
-      <td id="o">&nbsp;</td>
-      <td id="o">&nbsp;</td>
-      <td id="o">&nbsp;</td>
-      <td id="o">&nbsp;</td>
-      <td id="o">&nbsp;</td>
-      <td id="o">&nbsp;</td>
-      <td id="o">&nbsp;</td>
+      <td id="oe">&nbsp;</td>
+      <td id="of">&nbsp;</td>
+      <td id="om">&nbsp;</td>
+      <td id="oa">&nbsp;</td>
+      <td id="om">&nbsp;</td>
+      <td id="oj">&nbsp;</td>
+      <td id="ojl">&nbsp;</td>
+      <td id="oa">&nbsp;</td>
+      <td id="os">&nbsp;</td>
+      <td id="oo">&nbsp;</td>
+      <td id="on">&nbsp;</td>
+      <td id="od">&nbsp;</td>
     </tr>
 <!--//impuestos-->
 
 <!--Caja-->
     <tr>
       <td rowspan="5"><button type="button" class="btn btn-primary btn-sm" data-dismiss="modal" id="boton15">+</button></td>
-      <td id="p" rowspan="5">Caja </td>
+      <td id="p1" rowspan="5">Caja </td>
 
     </tr>
 
@@ -1270,40 +1268,35 @@ button       <td id="p">&nbsp;</td>
 
     <tr>
 
-      <td  id="p">
+      <td  id="p1">
 
-          <p id="p">Cuenta</p>
+          <p id="p1">Cuenta</p>
       </td>
-      <td id="p">&nbsp;</td>
-      <td id="p">&nbsp;</td>
-      <td id="p">&nbsp;</td>
-      <td id="p">&nbsp;</td>
-      <td id="p">&nbsp;</td>
-      <td id="p">&nbsp;</td>
-      <td id="p">&nbsp;</td>
-      <td id="p">&nbsp;</td>
-      <td id="p">&nbsp;</td>
-      <td id="p">&nbsp;</td>
-      <td id="p">&nbsp;</td>
-      <td id="p">&nbsp;</td>
+      <td id="pen">&nbsp;</td>
+      <td id="pfe">&nbsp;</td>
+      <td id="pmr">&nbsp;</td>
+      <td id="pab">&nbsp;</td>
+      <td id="pmy">&nbsp;</td>
+      <td id="pjn">&nbsp;</td>
+      <td id="pjl">&nbsp;</td>
+      <td id="pag">&nbsp;</td>
+      <td id="pse">&nbsp;</td>
+      <td id="poc">&nbsp;</td>
+      <td id="pno">&nbsp;</td>
+      <td id="pdi">&nbsp;</td>
     </tr>
 <!--//Caja-->
 
 <!--capital-->
     <tr>
       <td rowspan="7"><button type="button" class="btn btn-primary btn-sm" data-dismiss="modal" id="boton16">+</button></td>
-      <td id="q" rowspan="7">capital</td>
+      <td id="q1" rowspan="7">capital</td>
 
     </tr>
 
     <tr>
       <td id="q">
           <p id="q">Empresa</p>
-
-
-
-
-
       </td>
       <td id="q">&nbsp;</td>
       <td id="q">&nbsp;</td>
@@ -1323,10 +1316,6 @@ button       <td id="p">&nbsp;</td>
       <td id="q">
 
           <p id="q">Prestamos</p>
-
-
-
-
       </td>
       <td id="q">&nbsp;</td>
       <td id="q">&nbsp;</td>
@@ -1344,12 +1333,7 @@ button       <td id="p">&nbsp;</td>
 
     <tr>
       <td id="q">
-
-
           <p id="q">Inversiones</p>
-
-
-
       </td>
       <td id="q">&nbsp;</td>
       <td id="q">&nbsp;</td>
@@ -1364,15 +1348,9 @@ button       <td id="p">&nbsp;</td>
        <td id="q">&nbsp;</td>
       <td id="q">&nbsp;</td>
     </tr>
-
     <tr>
       <td id="q">
-
-
-
           <p id="q">Creditos</p>
-
-
       </td>
       <td id="q">&nbsp;</td>
       <td id="q">&nbsp;</td>
@@ -1387,15 +1365,9 @@ button       <td id="p">&nbsp;</td>
        <td id="q">&nbsp;</td>
       <td id="q">&nbsp;</td>
     </tr>
-
     <tr>
       <td id="q">
-
-
-
-
           <p id="q">Compras</p>
-
       </td>
       <td id="q">&nbsp;</td>
       <td id="q">&nbsp;</td>
@@ -1410,24 +1382,22 @@ button       <td id="p">&nbsp;</td>
        <td id="q">&nbsp;</td>
       <td id="q">&nbsp;</td>
     </tr>
-
     <tr>
-      <td id="q">
-
-          <p id="q">TOTAL</p>
+      <td id="q1">
+          <p id="q1">TOTAL</p>
       </td>
-      <td id="q">&nbsp;</td>
-      <td id="q">&nbsp;</td>
-      <td id="q">&nbsp;</td>
-      <td id="q">&nbsp;</td>
-      <td id="q">&nbsp;</td>
-      <td id="q">&nbsp;</td>
-      <td id="q">&nbsp;</td>
-      <td id="q">&nbsp;</td>
-      <td id="q">&nbsp;</td>
-      <td id="q">&nbsp;</td>
-       <td id="q">&nbsp;</td>
-      <td id="q">&nbsp;</td>
+      <td id="qen">&nbsp;</td>
+      <td id="qfe">&nbsp;</td>
+      <td id="qmr">&nbsp;</td>
+      <td id="qab">&nbsp;</td>
+      <td id="qmy">&nbsp;</td>
+      <td id="qjn">&nbsp;</td>
+      <td id="qjl">&nbsp;</td>
+      <td id="qag">&nbsp;</td>
+      <td id="qse">&nbsp;</td>
+      <td id="qoc">&nbsp;</td>
+       <td id="qno">&nbsp;</td>
+      <td id="qdi">&nbsp;</td>
     </tr>
 
 

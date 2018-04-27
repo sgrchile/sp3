@@ -14,9 +14,9 @@
         <div class="porlets-content">
           <!-- FORM INICIO -->
           <h1>CLIENTES CONSOLIDADOS</h1>
-          @if (session('status_contacto'))
-            <div class="alert alert-warning">
-              {{ session('status_contacto') }}
+          @if (session('status_cliente'))
+            <div class="alert alert-success">
+              {{ session('status_cliente') }}
             </div>
           @endif
           <table class="table table-bordered table-hover" id="clients-table">
@@ -40,7 +40,7 @@
                 <td>{{ $cliente->CLI_CONTACTO }}</td>
                 <td>
                   <a href="{{route('fichaClienteConsolidado',$cliente->CLI_RUT)}}"><button class="btn btn-primary btn-xs" onclick="" style="width:130px;"> VER FICHA</button></a>
-                  <a href="{{ route('cliente.destroy',$cliente->CLI_RUT) }}" onclick="return confirm('¿Desea eliminar éste cliente?')" ><button class="btn btn-primary btn-xs"
+                  <a href="{{route('cliente.destroy',$cliente->CLI_RUT) }}" onclick="return confirm('¿Desea eliminar éste cliente?')" ><button class="btn btn-primary btn-xs"
                                                                                                                                                  style="width:65px;" >ELIMINAR</button></a>
                 </td>
               </tr>
@@ -48,40 +48,6 @@
             </tbody>
           </table>
           {{ $clientes->links() }}
-
-
-          <!--<h1>CLIENTES PROSPECTO</h1>
-          <table class="table table-bordered table-hover">
-
-            <tr>
-              <td>{{ __('RUT') }}</td>
-              <td>{{ __('NOMBRE') }}</td>
-              <td>{{ __('EMAIL') }}</td>
-              <td>{{ __('TELEFONO') }}</td>
-              <td>{{ __('CONTACTO') }}</td>
-              <td style="width:210px;">ACCION</td>
-            </tr>
-
-            <tbody>
-            @foreach($clientes as $cliente)
-            <tr>
-              @if(!valida_rut($cliente->CLI_RUT))
-                <td>{{ $cliente->CLI_RUT }}</td>
-                <td>{{ $cliente->CLI_NOMBRE }}</td>
-                <td>{{ $cliente->CLI_EMAIL }}</td>
-                <td>{{ $cliente->CLI_FONO }}</td>
-                <td>{{ $cliente->CLI_CONTACTO }}</td>
-                <td>
-                  <a href="{{route('editarcliente', $cliente)}}"><button class="btn btn-primary btn-xs" style="width:130px; margin-bottom:10px;"> CONVERTIR</button></a>
-                <a href="{{route('fichaClienteProspecto', $cliente)}}"><button class="btn btn-primary btn-xs" style="width:130px;"> VER FICHA</button></a>
-                  <a href="{{ route('contacto.destroy',$cliente->ID_CONT) }}" onclick="return confirm('¿Desea eliminar éste cliente?')" ><button class="btn btn-primary btn-xs"
-                                                                                                                                                 style="width:65px;" >ELIMINAR</button></a>
-              </td>
-              @endif
-            </tr>
-            @endforeach
-            </tbody>
-          </table>-->
 
 
           <!-- FORM FINAL -->

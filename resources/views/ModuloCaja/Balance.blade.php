@@ -8,34 +8,30 @@
                     <div class="actions"></div>
                     <h1 class="text-center text-uppercase">BALANCE GENERAL TRIBUTARIO</h1>
                 </div>
-                @if (session('status_asiento'))
-                    <div class="alert alert-success">
-                        {{ session('status_asiento') }}
-                    </div>
-                @endif
+
                 <div class="porlets-content">
 
                     <table class="table-condensed text-right" align="center">
                         <tr>
                             <td>
-                                {{Form::label('nombre','empresa',['id'=>'nombre','class'=>'form-control','style'=>'width:175px'])}}
+                                {{Form::label('nombre',$emp->EMP_DESC,['id'=>'nombre','class'=>'form-control','style'=>'width:175px'])}}
                             </td>
                             <td>
-                                {{Form::label('rut','rut_empresa',['id'=>'rut','class'=>'form-control','style'=>'width:175px'])}}
+                                {{Form::label('rut',$emp->RUT_EMP,['id'=>'rut','class'=>'form-control','style'=>'width:175px'])}}
                             </td>
                             <td>
-                                {{Form::label('rlegal','Rep.Legal',['id'=>'rlegal','class'=>'form-control','style'=>'width:175px'])}}
+                                {{Form::label('rlegal',$emp->REP_LEG_EMP,['id'=>'rlegal','class'=>'form-control','style'=>'width:175px'])}}
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                {{Form::label('direccion','Direccion',['id'=>'direccion','class'=>'form-control','style'=>'width:175px'])}}
+                                {{Form::label('direccion',$emp->DIREC_EMP,['id'=>'direccion','class'=>'form-control','style'=>'width:175px'])}}
                             </td>
                             <td>
-                                {{Form::label('ciudad','Ciudad',['id'=>'ciudad','class'=>'form-control','style'=>'width:175px'])}}
+                                {{Form::label('ciudad',App\Ciudad::find($emp->CIUDAD_EMP)->CIU_DESC,['id'=>'ciudad','class'=>'form-control','style'=>'width:175px'])}}
                             </td>
                             <td>
-                                {{Form::label('comuna','Comuna',['id'=>'comuna','class'=>'form-control','style'=>'width:175px'])}}
+                                {{Form::label('comuna',App\Provincia::find($emp->COMUNA_EMP)->PV_DESC,['id'=>'comuna','class'=>'form-control','style'=>'width:175px'])}}
                             </td>
                         </tr>
                         <tr>
@@ -43,7 +39,7 @@
                                 {{Form::label('giro','Giro',['id'=>'giro','class'=>'form-control','style'=>'width:175px'])}}
                             </td>
                             <td>
-                                {{Form::label('codac','Cod.AC',['id'=>'codac','class'=>'form-control','style'=>'width:175px'])}}
+                                {{Form::label('codac',$emp->COD_AC_EMP,['id'=>'codac','class'=>'form-control','style'=>'width:175px'])}}
                             </td>
                         </tr>
                     </table>
@@ -76,7 +72,10 @@
                         $tperd=0;
                         $tgan=0;
                         ?>
-                        @foreach($ctas = App\CuentaContable::all() as $cta)
+                        @foreach($ctas = App\CuentaContable::all()
+                        ->where('FECHA_CONT','>',$desde)
+                        ->where('FECHA_CONT','<',$hasta)
+                        ->where('EMP_CTA_CONT','=',$emp->EMP_ID) as $cta)
                         <tr>
                             <td>
                                 {!! $cta->ID_CTA_CONT !!}
@@ -216,10 +215,26 @@
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <?php
+                                $utilp=0;
+                                $utilg=0;
+                                $utila=0;
+                                $utilpa=0;
+                                if ($tact>$tpas){
+                                    $utilpa=$tact-$tpas;
+                                }else{
+                                    $utila=$tpas-$tact;
+                                }
+                                if ($tperd>$tgan){
+                                    $utilg=$tperd-$tgan;
+                                }else{
+                                    $utilp=$tgan-$tperd;
+                                }
+                                    ?>
+                            <td>{!! $utila !!}</td>
+                            <td>{!! $utilpa !!}</td>
+                            <td>{!! $utilp !!}</td>
+                            <td>{!! $utilg !!}</td>
                         </tr>
                         <tr style="border: 5px solid black;">
                             <th colspan="2" style="border-right: 5px solid black;">TOTALES</th>
@@ -227,10 +242,10 @@
                             <td>{!! $thaber !!}</td>
                             <td>{!! $tdeu !!}</td>
                             <td>{!! $tacre !!}</td>
-                            <td>{!! $tact !!}</td>
-                            <td>{!! $tpas !!}</td>
-                            <td>{!! $tperd !!}</td>
-                            <td>{!! $tgan !!}</td>
+                            <td>{!! $tact+$utila !!}</td>
+                            <td>{!! $tpas+$utilpa !!}</td>
+                            <td>{!! $tperd+$utilp !!}</td>
+                            <td>{!! $tgan+$utilg !!}</td>
                         </tr>
 
                     </table>

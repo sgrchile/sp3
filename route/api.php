@@ -46,24 +46,3 @@ Route::get('/menus/all', [
     'uses' => 'MenuController@getMenus',
     'as' => 'get.menus',
 ]);
-
-Route::get('/pais', [
-    'uses' => 'PaisController@getPaises',
-    'as' => 'get.pais',
-]);
-Route::get('/bancos', [
-    'uses' => 'BancosController@getBancos',
-    'as' => 'get.banco',
-]);
-Route::get('/bancos/cuentas', [
-    'uses' => 'BancosController@getCuentas',
-    'as' => 'get.bancocuentas',
-]);
-Route::get('/salud', [
-    'uses' => 'SaludController@getPrevisiones',
-    'as' => 'get.previsiones',
-]);
-Route::get('/afp', [
-    'uses' => 'AfpController@getAfps',
-    'as' => 'get.afp',
-]);

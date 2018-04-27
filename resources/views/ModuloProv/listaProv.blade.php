@@ -32,9 +32,9 @@
                             <tbody>
                             @foreach($proveedores as $proveedor)
                                 <tr>
-                                    <td>{{ $proveedor->CLI_RUT }}</td>
-                                    <td>{{ $proveedor->CLI_NOMBRE }}</td>
-                                    <td>{{ $proveedor->CLI_EMAIL }}</td>
+                                    <td>{{ $proveedor->PRO_RUN }}</td>
+                                    <td>{{ $proveedor->PRO_NOMBRE }}</td>
+                                    <td>{{ $proveedor->PRO_APE_PAT }}</td>
                                     <td>{{ $proveedor->CLI_FONO }}</td>
                                     <td>{{ $proveedor->CLI_CONTACTO }}</td>
                                     <td>

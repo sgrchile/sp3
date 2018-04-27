@@ -30,7 +30,7 @@
 
               <td><a href="{{route('listaActividades')}}"><button class='btn btn-primary btn-lg' style="width:185px; margin-bottom: 15px;"> ACTIVIDADES</button></a></td>
               <td><a href="{{route('registro')}}"><button class='btn btn-primary btn-lg' style="width:185px; margin-bottom: 15px;"> REGISTRO</button></a></td>
-              <td><a href=""><button class='btn btn-primary btn-lg' style="width:185px; margin-bottom: 15px;"> AJUSTES</button></a></td>
+              <td><a href="{{route('ajustes')}}"><button class='btn btn-primary btn-lg' style="width:185px; margin-bottom: 15px;"> AJUSTES</button></a></td>
               <td><a href="{{route('cotizaciones')}}"><button class='btn btn-primary btn-lg' style="width:185px; margin-bottom: 15px;"> COTIZACIONES</button></a></td>
 
             </tr>
@@ -47,5 +47,5 @@
 <br>
 <br>
 </div>
-<a href="javascript:history.back(1)"><button class="btn btn-primary btn-lg">Volver</button></a>
+<a href="{{route('menu')}}"><button class="btn btn-primary btn-lg">Volver</button></a>
 @endsection

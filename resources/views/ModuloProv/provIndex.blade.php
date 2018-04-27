@@ -20,6 +20,7 @@
           <a href="{{route('Lista')}}"><button type="button" class="btn btn-primary btn-lg" style="width:230px;margin-bottom:15px;">EV. DE PROVEEDORES</button></a>
           <a href="{{route('perfil')}}" ><button type="button" class="btn btn-primary btn-lg" style="width:230px;margin-bottom:15px;">MI PERFIL</button></a>
           <button type="button" class="btn btn-primary btn-lg" style="width:230px;margin-bottom:15px;" data-toggle="modal" data-target="#selReg" data-backdrop="static">REGISTRO</button>
+          <a href="{{route('listapro')}}" ><button type="button" class="btn btn-primary btn-lg" style="width:230px;margin-bottom:15px;">LISTA PROVEEDORES</button></a>
 
 
           <!-- Modal -->

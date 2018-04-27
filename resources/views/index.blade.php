@@ -86,7 +86,7 @@
                                 <p style="text-align:center;">INFORMES DE GESTION</p>
                             </td>
                             <td>
-                                <a href="http://localhost/chamilo-lms-1.11.2"><img src="{{ asset('images/capacitacion.png') }}" class="img-responsive" width="113" height="128"/></a>
+                                <a href="{{ url('/chamilo-lms-1.11.2') }}"><img src="{{ asset('images/capacitacion.png') }}" class="img-responsive" width="113" height="128"/></a>
                                 <p style="text-align:center;">CAPACITACION</p>
                             </td>
                             <td><a href="{{route('Documental')}}"><img src="{{ asset('images/documental.png') }}" class="img-responsive" width="113" height="128"/></a>
