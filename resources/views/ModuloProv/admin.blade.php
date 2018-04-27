@@ -58,4 +58,4 @@
         });
         $(element).addClass('active');
     }
-<script>
+</script>
