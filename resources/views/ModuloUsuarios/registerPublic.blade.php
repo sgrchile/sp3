@@ -434,13 +434,13 @@
                     $("#"+i).addClass("is-invalid");
                     return false;
                 }
-                oninput="checkRut(this)"
 
                 if (i == "rut"){
                     let element = $("#"+i)
                     element = element[0];
                     if (checkRut(element) == false){
                         alert("RUT inválido");
+                        $('#collapseOne').collapse('show');
                         $("#"+i).focus();
                         $("#"+i).addClass("is-invalid");
                         return false;
@@ -450,6 +450,7 @@
                 if (i == "email"){
                     if (validarEmail(value) == false){
                         alert("Email Inválido");
+                        $('#collapseOne').collapse('show');
                         $("#"+i).focus();
                         $("#"+i).addClass("is-invalid");
                         return false;
