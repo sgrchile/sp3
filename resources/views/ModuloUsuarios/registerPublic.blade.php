@@ -170,7 +170,7 @@
                                                     <option value="4">Mes</option>
                                                 </select>
                                             </div>
-                                            <div class="form-group d-none" id="select.fecha">
+                                            <div class="form-group" id="select.fecha">
                                                 <label for="fechapago">Fecha de Pago</label>
                                                 <select class="form-control" id="fechapago">
                                                     <option value="0">No corresponde</option>
@@ -227,7 +227,7 @@
                                         </div>
                                         <div class="card-footer">
                                             <a href="#" class="btn btn-secondary" data-toggle="collapse" data-target="#collapsefour">Volver al paso 4</a>
-                                            <button type="button" class="btn btn-primary">Registrar</button>
+                                            <button type="button" class="btn btn-primary" onclick="validateInput()">Registrar</button>
                                         </div>
                                     </div>
                                 </div>
@@ -376,6 +376,46 @@
                 }
             });
         });
+
+        function validateInput(){
+            let inputs = {
+                nombre: $("#nombre").val(),
+                paterno: $("#paterno").val(),
+                materno: $("#materno").val(),
+                rut: $("#rut").val(),
+                fecha: $("#fecha").val(),
+                genero: $("#genero").val(),
+                estado: $("#estado").val(),
+                email: $("#email").val(),
+                nacionalidad: $("#nacionalidad").val(),
+                contrasena: $("#contrasena").val(),
+                contrasenar: $("#contrasenar").val(),
+                telefono: $("#telefono").val(),
+                telefonodos: $("#telefonodos").val(),
+                direccion: $("#direccion").val(),
+                pais: $("#pais").val(),
+                region: $("#region").val(),
+                provincia: $("#provincia").val(),
+                ciudad: $("#ciudad").val(),
+                pago: $("#pago").val(),
+                fechapago: $("#fechapago").val(),
+                ncuenta: $("#ncuenta").val(),
+                banco: $("#banco").val(),
+                bancocuenta: $("#bancocuenta").val(),
+                medico: $("#medico").val(),
+                afp: $("#afp").val()
+            };
+
+            $.each( inputs, function( i, val ) {
+
+                let value = $.trim(val);
+
+                if (value.length < 1 ){
+                    alert("Falta un campo obligatorio");
+                }
+                $( "#" + i ).focus();
+            });
+        }
     </script>
   </body>
 </html>
