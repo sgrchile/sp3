@@ -12,7 +12,7 @@
                             <li role="presentation" class="active"><a href="#alta" aria-controls="alta" role="tab" data-toggle="tab">Alta de Proveedor</a></li>
                         </ul>
                         <div class="tab-content">
-                            <a href="#" class="btn btn-primary">Autorizar ingreso al sistema</a>
+                            <a href="#" class="btn btn-primary pull-left">Autorizar ingreso al sistema</a>
                             <div role="tabpanel" class="tab-pane active" id="alta">
                                 <table class="table table-hover">
                                     <thead>
@@ -25,26 +25,18 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    @foreach($proveedores as $proveedor)
                                         <tr>
-                                            <th scope="row">1</th>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>@mdo</td>
+                                            <td>{{ $proveedor->PRO_RUN }}</td>
+                                            <td>{{ $proveedor->PRO_NOMBRE }}</td>
+                                            <td>{{ $proveedor->PRO_APE_PAT }}</td>
+                                            <td>{{ $proveedor->PRO_APE_MAT }}</td>
+                                            <td>{{ $proveedor->PRO_EMAIL }}</td>
                                         </tr>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                            <td>@fat</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">3</th>
-                                            <td>Larry</td>
-                                            <td>the Bird</td>
-                                            <td>@twitter</td>
-                                        </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
+                                {{ $proveedores->links() }}
                             </div>
                         </div>
                     </div>

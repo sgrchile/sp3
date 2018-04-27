@@ -411,7 +411,7 @@
                 if (validos == true){
                     $.post("{{ route('registrar.proveedor.persona') }}",inputs).done(function(data){
                         alert(data.respuesta);
-                        alert("Su cuenta fue creada, validaremos sus datos a la brevedad activaremos su cuenta");
+                        alert("Su cuenta fue creada, validaremos sus datos a la brevedad para activar su cuenta");
                         location.href ="https://plataforma.sgrchile.com/";
                     }).fail(function(data){
                         $.each( data.responseJSON, function( i, val ) {
