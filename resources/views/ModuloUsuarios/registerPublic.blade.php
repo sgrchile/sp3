@@ -225,9 +225,10 @@
                                                 </select>
                                             </div>
                                         </div>
+                                        {{ csrf_field() }}
                                         <div class="card-footer">
                                             <a href="#" class="btn btn-secondary" data-toggle="collapse" data-target="#collapsefour">Volver al paso 4</a>
-                                            <button type="button" class="btn btn-primary" onclick="validateInput()">Registrar</button>
+                                            <button type="button" class="btn btn-primary" id="btnRegistrar">Registrar</button>
                                         </div>
                                     </div>
                                 </div>
@@ -375,9 +376,69 @@
                     $("#select\\.fecha").removeClass("d-none");
                 }
             });
+
+            $("#btnRegistrar").on("click", function(){
+                let validos = validateInput();
+
+                let inputs = {
+                    nombre: $("#nombre").val(),
+                    paterno: $("#paterno").val(),
+                    materno: $("#materno").val(),
+                    rut: $("#rut").val(),
+                    fecha: $("#fecha").val(),
+                    genero: $("#genero").val(),
+                    estado: $("#estado").val(),
+                    email: $("#email").val(),
+                    nacionalidad: $("#nacionalidad").val(),
+                    contrasena: $("#contrasena").val(),
+                    contrasenar: $("#contrasenar").val(),
+                    telefono: $("#telefono").val(),
+                    telefonodos: $("#telefonodos").val(),
+                    direccion: $("#direccion").val(),
+                    pais: $("#pais").val(),
+                    region: $("#region").val(),
+                    provincia: $("#provincia").val(),
+                    ciudad: $("#ciudad").val(),
+                    pago: $("#pago").val(),
+                    fechapago: $("#fechapago").val(),
+                    ncuenta: $("#ncuenta").val(),
+                    banco: $("#banco").val(),
+                    bancocuenta: $("#bancocuenta").val(),
+                    medico: $("#medico").val(),
+                    afp: $("#afp").val(),
+                    _token: $('input[name="_token"]').val()
+                };
+                if (validos == true){
+                    $.post("{{ route('registrar.proveedor.persona') }}",inputs).done(function(data){
+                        alert(data.respuesta);
+                        alert("Su cuenta fue creada, validaremos sus datos a la brevedad para activar su cuenta");
+                        location.href ="https://plataforma.sgrchile.com/";
+                    }).fail(function(data){
+                        $.each( data.responseJSON, function( i, val ) {
+                            alert(val);
+                            if (i =="nombre" || i =="paterno" || i =="materno" || i =="rut" || i =="fecha" || i =="genero" || i =="estado" || i =="email" || i =="nacionalidad" || i =="contrasena" || i =="contrasenar"){
+                                $('#collapseOne').collapse('show');
+                            }
+                            else if (i == "telefono" || i == "telefonodos"){
+                                $('#collapseTwo').collapse('show');
+                            }
+                            else if (i == "direccion" || i == "pais" || i == "region" || i == "provincia" || i == "ciudad"){
+                                $('#collapseThree').collapse('show');
+                            }
+                            else if(i == "pago" || i == "fechapago" || i == "ncuenta" || i == "banco" || i == "bancocuenta"){
+                                $('#collapsefour').collapse('show');
+                            }
+                            $("#"+i).focus();
+                            $("#"+i).addClass("is-invalid");
+                        });
+                    });
+                }
+            });
         });
 
         function validateInput(){
+            var respuesta = true;
+
             let inputs = {
                 nombre: $("#nombre").val(),
                 paterno: $("#paterno").val(),
@@ -403,7 +464,8 @@
                 banco: $("#banco").val(),
                 bancocuenta: $("#bancocuenta").val(),
                 medico: $("#medico").val(),
-                afp: $("#afp").val()
+                afp: $("#afp").val(),
+                _token: $('input[name="_token"]').val()
             };
 
             $.each( inputs, function( i, val ) {
@@ -413,7 +475,7 @@
             $.each( inputs, function( i, val ) {
                 let value = $.trim(val);
 
-                if (value.length < 1 ){
+                if (value.length < 1 && i !== "telefonodos"){
                     alert("Falta un campo obligatorio");
                     if (i =="nombre" || i =="paterno" || i =="materno" || i =="rut" || i =="fecha" || i =="genero" || i =="estado" || i =="email" || i =="nacionalidad" || i =="contrasena" || i =="contrasenar"){
                         $('#collapseOne').collapse('show');
@@ -427,11 +489,9 @@
                     else if(i == "pago" || i == "fechapago" || i == "ncuenta" || i == "banco" || i == "bancocuenta"){
                         $('#collapsefour').collapse('show');
                     }
-                    else{
-                        $('#collapsefive').collapse('show');
-                    }
                     $("#"+i).focus();
                     $("#"+i).addClass("is-invalid");
+                    respuesta = false;
                     return false;
                 }
 
@@ -443,6 +503,7 @@
                         $('#collapseOne').collapse('show');
                         $("#"+i).focus();
                         $("#"+i).addClass("is-invalid");
+                        respuesta = false;
                         return false;
                     }
                 }
@@ -459,6 +520,7 @@
                         $('#collapseOne').collapse('show');
                         $("#"+i).focus();
                         $("#"+i).addClass("is-invalid");
+                        respuesta = false;
                         return false;
                     }
                 }
@@ -469,6 +531,7 @@
                         $('#collapseOne').collapse('show');
                         $("#"+i).focus();
                         $("#"+i).addClass("is-invalid");
+                        respuesta = false;
                         return false;
                     }
                 }
@@ -479,14 +542,12 @@
                         $('#collapseOne').collapse('show');
                         $("#"+i).focus();
                         $("#"+i).addClass("is-invalid");
+                        respuesta = false;
                         return false;
                     }
                 }
-
-                $.post("{{ route('registrar.prooveedor.persona') }}",inputs).done(function(data){
-                    alert(data);
-                });
             });
+            return respuesta;
         }
 
         function checkRut(rut) {

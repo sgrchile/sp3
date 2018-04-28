@@ -22,7 +22,7 @@ Route::get('/registrar', function () {
 
 Route::post('/registrar_action', [
     'uses' => 'ProveedoresPublicController@NewProveedor',
-    'as' => 'registrar.prooveedor.persona',
+    'as' => 'registrar.proveedor.persona',
 ]);
 
 Route::get('/menu', function () {
@@ -593,6 +593,15 @@ Route::group(['prefix' => 'modulo'], function () {
         Route::get('/', function () {
             return view('ModuloProv.provIndex');
         })->name('PROV');
+
+        Route::get('admin', [
+            'uses' => 'ProveedoresController@admin',
+            'as' => 'get.proveedores.admin',
+        ]);
+        Route::get('admin/autorizar/{usuario}', [
+            'uses' => 'ProveedoresController@altaUsuario',
+            'as' => 'get.proveedores.admin.alta',
+        ]);
 
         Route::get('api/provincia/{region}', [
             'uses' => 'LocationController@getProvincia',

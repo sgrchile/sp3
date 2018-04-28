@@ -45,6 +45,18 @@ class ProveedoresController extends Controller
         return view('ModuloProv.prov.listaProv')->with('proveedores',$prov);
     }
 
+    public function admin()
+    {  
+        $prov = Proveedor::where('PRO_ALTA', 0)->orderBy('CREATED_AT','DESC')->paginate(10);
+        return view('ModuloProv.admin')->with('proveedores',$prov);
+    }
+
+    public function altaUsuario($idUsuario)
+	{
+        $updateAlta = Proveedor::where('PRO_RUN', $idUsuario)->firstOrFail()->increment('PRO_ALTA'); 
+        return response()->json($updateAlta);
+	}
+
     public function getProveedorPersona()
     {
         $regiones = Region::all();

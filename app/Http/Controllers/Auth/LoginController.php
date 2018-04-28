@@ -42,4 +42,13 @@ class LoginController extends Controller
     {
         return 'PRO_RUN';
     }
+
+    public function authenticated(Request $request, $user)
+    {//{{ Auth::user()->PRO_RUN }}
+        if ($user->PRO_ALTA === 0) {
+            auth()->logout();
+            return back()->with('warning', 'Tu cuenta no ha sido activada por el administrador');
+        }
+        return redirect()->intended($this->redirectPath());
+    }
 }
