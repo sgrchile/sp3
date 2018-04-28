@@ -53,10 +53,7 @@ class ProveedoresController extends Controller
 
     public function altaUsuario($idUsuario)
 	{
-		$updateAlta = Proveedor::where('PRO_RUN', $idUsuario)->firstOrFail()->update([
-            'PRO_ALTA' => 1,
-        ]);
-            
+		$updateAlta = Proveedor::where('PRO_RUN', $idUsuario)->firstOrFail()->update(['PRO_ALTA' => 1]);
         return $idUsuario;
 	}
 
