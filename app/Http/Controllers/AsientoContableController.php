@@ -66,7 +66,7 @@ class AsientoContableController extends Controller
             if($request->exists("cuentas$count")){
                 $asicta = new AsientoCuenta();
                 $asicta->ID_ASIENTO_CONT = $asiento->ID_ASIENTO_CONT;
-                $ctacont=CuentaContable::find($request->get("cuentas$count"))->where();
+                $ctacont=CuentaContable::find($request->get("cuentas$count"))->where('EMP_CTA_CONT','=',$request->empresa);
                 $asicta->setAttribute('ID_CTA_CONT',$ctacont->getAttribute('ID_CTA_CONT')) ;
                 //dd($ctacont->getAttribute('TP_CTA_CON'));
                 $monto=intval($ctacont->getAttribute('MONTO_CTA_CONT'));
