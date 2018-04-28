@@ -53,11 +53,11 @@ class ProveedoresController extends Controller
 
     public function altaUsuario($idUsuario)
 	{
-		$updateAlta = Proveedor::where('PRO_RUN', '=' ,$idUsuario)->firstOrFail()->update([
+		$updateAlta = Proveedor::where('PRO_RUN', $idUsuario)->firstOrFail()->update([
             'PRO_ALTA' => 1,
         ]);
             
-        return redirect()->route('get.proveedores.admin');
+        return $idUsuario;
 	}
 
     public function getProveedorPersona()
