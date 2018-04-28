@@ -590,8 +590,6 @@ h1,h2,h3,h4,h5,h6{margin-bottom:14px;}
 .fc-button-today{background:#996633; color:#FFFFFF;}
 
 .white_bg{background:#FFFFFF; padding:15px;}
-
-.btn{ border:none; border-radius:2px;}
 .btn_round{border-radius:6px;}
 
 .btn-default {
@@ -1588,17 +1586,6 @@ input {
 .panel-heading .actions{float:right;}
 .panel-heading .actions a{color: rgba(0, 0, 0, 0.3);
     margin-left: 6px;}
-
-/*portlets start*/
-	.btn, .ui-button, .icon-separator-vertical {
-    box-shadow: none;
-    display: inline-block;
-    position: relative;
-    text-align: center;
-    vertical-align: middle;
-    white-space: nowrap;
-
-}
 
 .block {
 
