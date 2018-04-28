@@ -58,7 +58,9 @@
             $.each(filas, function(i, val) {
                 if ($(val).hasClass('active') == true){
                     let user = $(val).children("th").html();
-                    $.get('admin/autorizar/' + user);
+                    $.get('admin/autorizar/' + user).done(function(){
+                        location.href ="https://plataforma.sgrchile.com/modulo/proveedores/admin";
+                    });
                 }
             });
         })
