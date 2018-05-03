@@ -9,8 +9,10 @@ use App\Etapa;
 use App\Moneda;
 use App\Oportunidad;
 use App\Proceso;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class OportunidadController extends Controller
 {
@@ -34,14 +36,18 @@ class OportunidadController extends Controller
      */
     public function create()
     {
+        $user = Auth::user();
         $clientes = Cliente::pluck('CLI_NOMBRE','CLI_RUT')->prepend('Seleccione');
-        $procneg = Proceso::pluck('PRO_DESC','PRO_ID')->prepend('Seleccione');
-        $etapa = Etapa::pluck('DESC_ETAPA','ID_ETAPA')->prepend('Seleccione');
+        $procneg = Proceso::all()->where('PRO_JERARQUIA','=',$user->PRO_EMP );
+        //dd($procneg);
+        //$etapa = Etapa::all();
+        //dd($etapa);
         $moneda = Moneda::pluck('DESC_MONEDA', 'ID_MONEDA')->prepend('Seleccione');
         $centneg = CentroNegocio::pluck('CT_PROCESO', 'CT_ID')->prepend('Seleccione');
         $estprop = Estado::pluck('EST_DESC', 'EST_ID')->prepend('Seleccione');
+        //dd($procneg);
 
-        return view('ModuloCrm.oportunidades',['clientes'=>$clientes, 'procneg'=>$procneg, 'etapa'=>$etapa, 'moneda'=>$moneda,
+        return view('ModuloCrm.oportunidades',['clientes'=>$clientes, 'procneg'=>$procneg, 'moneda'=>$moneda,
             'centneg'=>$centneg, 'estprop'=>$estprop]);
     }
 

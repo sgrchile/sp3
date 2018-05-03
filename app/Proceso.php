@@ -36,4 +36,9 @@ class Proceso extends Model
     {
         return $this->belongsTo('App\CentroNegocio', 'CT_PRO_ID');
     }
+
+
+    public function etapas() {
+        return $this->hasMany('Etapa');
+    }
 }

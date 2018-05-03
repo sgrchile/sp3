@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Etapa;
+use App\Proceso;
 use App\Region;
 use App\Provincia;
 use App\Ciudad;
@@ -34,4 +36,10 @@ class LocationController extends Controller
 		return response()
 			->json(Rubro::where('RUB_COD', '=', (int) $rubro)->get(), 200);
 	}
+
+    public function getEtapa($proceso)
+    {
+        return response()
+            ->json(Etapa::where('ID_PROCESO', '=', (int) $proceso)->get(), 200);
+    }
 }

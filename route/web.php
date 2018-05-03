@@ -51,11 +51,7 @@ Route::get('/test', function () {
 
 Route::get('/send', 'EmailController@send');
 
-Route::get('dropdown', function(){
-    $id = Input::get('option');
-    $procesos = Empresa::find($id)->procesos;
-    return $procesos->lists('proceso', 'id');
-});
+
 
 
 

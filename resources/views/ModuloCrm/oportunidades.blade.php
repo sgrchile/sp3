@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+  {!! Html::script('js/jquery-2.1.1.min.js') !!}
 <div align="center">
 
   <div class="row">
@@ -17,7 +18,7 @@
             <tr>
               <td>NOMBRE:</td>
               <td>
-                {{ Form::text('nombre',null,['class'=>'form-control','required','pattern'=>'[A-Za-z]{4-16}']) }}
+                {{ Form::text('nombre', Auth::user()->PRO_NOMBRE ,['class'=>'form-control','required','pattern'=>'[A-Za-z]{4-16}']) }}
                 <!--<input name="nombre" type="text"  style="width:175px;" class="form-control" id="nombre" pattern="[A-Za-z]{4-16}" required="required"/>-->
               </td>
               <td>CUENTA ASOCIADA:</td>
@@ -28,11 +29,18 @@
             <tr>
               <td>PROCESO DE NEGOCIO:</td>
               <td>
-                {!! Form::select('procneg',$procneg,null,['id'=>'procneg']) !!}
+                <select name="procneg" required class="form-control" id="procneg">
+                  <option value="">Seleccione</option>
+                  @foreach($procneg as $proc)
+                  <option value="{{ $proc->PRO_ID }}">{{ $proc->PRO_DESC }}</option>
+                  @endforeach
+                  </select>
               </td>
               <td>ETAPA:</td>
               <td>
-                {!! Form::select('etapa',$etapa,null,['id'=>'etapa']) !!}
+                <select name="etapa" required class="form-control" id="etapa" >
+                    <option value="">Seleccione un proceso</option>
+                </select>
               </td>
             </tr>
             <tr>
@@ -85,10 +93,35 @@
     </div><!--/col-md-12-->
   </div><!--/row-->
 
+  <script>
 
+  </script>
+
+
+  <script  type='text/javascript'>
+      $(document).ready(function(){
+          $("#procneg").on("change", function(){
+              let procneg = $(this).val();
+              $("#etapa").empty();
+              $.get("https://plataforma.sgrchile.com/api/etapa/" + procneg).done(function(data){
+                  if (data !== null){
+                      if (Object.keys(data).length > 0 ){
+                          $.each(data, function( index, value ){
+                              let option = "<option value='"+ value.ID_ETAPA + "'>" + value.DESC_ETAPA+ "</option>";
+                              $("#etapa").append(option);
+                          });
+                          $("#etapa").trigger("change");
+                      }
+                  }
+              });
+          });
+
+      });
+  </script>
 
 
   </div>
   <br>
   <div class="container">  <a href="{{ route('listaOportunidades') }}"><button class="btn btn-primary btn-lg">Volver</button></a></div>
 @endsection
+

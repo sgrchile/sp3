@@ -35,4 +35,8 @@ class Etapa extends Model
      * @var boolean
      */
     public $timestamps = false;
+
+    public function proceso() {
+        return $this->belongsTo('Proceso', 'PRO_ID');
+    }
 }
