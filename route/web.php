@@ -1143,7 +1143,7 @@ Route::group(['prefix' => 'modulo'], function () {
         ]);
 
         Route::get('/Registro', function () {
-            return view('ModuloCRM.registro');
+            return view('ModuloCrm.registro');
         })->name('registro');
 
         Route::get('/EditarCliente,{id}', [
