@@ -22,13 +22,7 @@
             <tr>
               <td>USUARIO:</td>
               <td>
-                <select class="form-control" style="width:175px;" name="">
-                  <option value=""></option>
-                  <option value=""></option>
-                  <option value=""></option>
-                  <option value=""></option>
-                  <option value=""></option>
-                </select>
+                {{ Auth::user()->PRO_NOMBRE }} {{ Auth::user()->PRO_APE_PAT }}
               </td>
 
             </tr>

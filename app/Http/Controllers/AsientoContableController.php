@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\AsientoContable;
 use App\AsientoCuenta;
 use App\ClaseCuenta;
+use App\Empresa;
 use App\CuentaContable;
 use App\TipoMovimiento;
 use function GuzzleHttp\Promise\all;
@@ -17,9 +18,12 @@ class AsientoContableController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $asientos = AsientoContable::orderby('ID_ASIENTO_CONT','ASC')->paginate(20);
+        $emp = Empresa::find($request->get('empresa'));
+        $asientos = AsientoContable::orderby('ID_ASIENTO_CONT','ASC')
+            ->where('ID_EMP_ASIENTO','=',$emp->EMP_ID)
+            ->paginate(20);
         return view('ModuloCaja.AsientosContables')->with('asientos',$asientos);
 
     }

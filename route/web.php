@@ -103,9 +103,9 @@ Route::group(['prefix' => 'modulo'], function () {
           return view('ModuloCaja.librosContables');
         })->name('LibrosContables');*/
 
-        Route::get('/librosContables', [
+        Route::post('/librosContables', [
             'uses' => 'LibrosContablesController@index',
-            'as' => 'LibrosContables',
+            'as' => 'post.lbs',
         ]);
 
         Route::post('/BalanceGeneral', [
@@ -117,9 +117,9 @@ Route::group(['prefix' => 'modulo'], function () {
             return view('ModuloCaja.AsientosContables');
         })->name('AsientosContables');*/
 
-        Route::get('/AsientosContables', [
+        Route::post('/AsientosContables', [
             'uses' => 'AsientoContableController@index',
-            'as' => 'AsientosContables',
+            'as' => 'post.asients',
         ]);
 
         /*Route::get('/NuevoAsientoContable', function () {
@@ -161,9 +161,9 @@ Route::group(['prefix' => 'modulo'], function () {
         })->name('editarAsientoContable');*/
 
 
-        Route::get('/PlanDeCuentas', [
+        Route::post('/PlanDeCuentas', [
             'uses' => 'CuentaContableController@index',
-            'as' => 'plandecuentas',
+            'as' => 'post.cta',
         ]);
 
         Route::post('/CrearCuenta', [

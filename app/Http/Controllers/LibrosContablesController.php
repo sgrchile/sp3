@@ -15,11 +15,18 @@ class LibrosContablesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $libcompras = FolioOrdenCompra::orderby('FOL_COD','ASC')->paginate(10);
-        $libventas = ListaVenta::orderby('LVS_V_ID','ASC')->paginate(10);
-        $librems = Remuneracion::orderby('REM_ID', 'ASC')->paginate(10);
+        $emp = Empresa::find($request->get('empresa'));
+        $libcompras = FolioOrdenCompra::orderby('FOL_COD','ASC')
+            ->where('FOL_EMP_ID','=',$emp->EMP_ID)
+            ->paginate(10);
+        $libventas = ListaVenta::orderby('LVS_V_ID','ASC')
+            //->where('FOL_EMP_ID','=',$emp->EMP_ID)
+            ->paginate(10);
+        $librems = Remuneracion::orderby('REM_ID', 'ASC')
+            //->where('FOL_EMP_ID','=',$emp->EMP_ID)
+            ->paginate(10);
 
         return view('ModuloCaja.librosContables',compact('libcompras','libventas','librems'));
     }

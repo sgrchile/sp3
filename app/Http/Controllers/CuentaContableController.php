@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\CuentaContable;
+use App\Empresa;
 use Grpc\ServerCredentials;
 use Illuminate\Http\Request;
 
@@ -13,13 +14,16 @@ class CuentaContableController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $emp = Empresa::find($request->get('empresa'));
         $cuentas = CuentaContable::orderby('NOM_CTA_CONT','ASC')
-            ->where('EMP_CTA_CONT','=',4)
+            ->where('EMP_CTA_CONT','=',$emp->EMP_ID)
             ->paginate(20);
         //dd( session());
-        return view('ModuloCaja.planDeCuentas')->with('cuentas',$cuentas);
+        return view('ModuloCaja.planDeCuentas')
+            ->with('cuentas',$cuentas)
+            ->with('emp',$emp);
     }
 
     /**

@@ -11,7 +11,9 @@
         <div class="porlets-content">
           <!-- FORM INICIO -->
           <h3 class="text-center">PLAN DE CUENTAS</h3>
+          <div>
 
+          </div>
           <div class="table-responsive"  >
 
             <table class="table table-bordered">

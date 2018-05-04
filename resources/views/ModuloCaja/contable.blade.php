@@ -16,9 +16,9 @@
 
                       <tr>
 
-                      <td><a href="{{route('LibrosContables')}}"><button class="btn btn-primary btn-lg" style="width:220px;">LIBROS CONTABLES</button></a></td>
-                      <td><a href="{{route('plandecuentas')}}"><button class="btn btn-primary btn-lg" style="width:220px;"> PLAN DE CUENTAS</button></a></td>
-                      <td><a href="{{route('AsientosContables')}}"><button class="btn btn-primary btn-lg" style="width:220px;"> ASIENTOS CONTABLES</button></a></td>
+                      <td><button class="btn btn-primary btn-lg" style="width:220px;" data-toggle="modal" data-target="#SelecEmpLbs" data-backdrop="false">LIBROS CONTABLES</button></td>
+                      <td><button class="btn btn-primary btn-lg" style="width:220px;" data-toggle="modal" data-target="#SelecEmpCta" data-backdrop="false"> PLAN DE CUENTAS</button></td>
+                      <td><button class="btn btn-primary btn-lg" style="width:220px;" data-toggle="modal" data-target="#SelecEmpAsients" data-backdrop="false"> ASIENTOS CONTABLES</button></td>
                       <td><button class="btn btn-primary btn-lg" style="width:220px;" data-toggle="modal" data-target="#filtroBalance" data-backdrop="false">BALANCE</button></td>
                       </tr>
                       <tr>
@@ -30,6 +30,9 @@
                       </tr>
                       </table>
                 @include('modals.filtroBalance')
+                @include('modals.SelecEmpCta')
+                @include('modals.SelecEmpLbs')
+                @include('modals.SelecEmpAsients')
             </div>
 
           <!-- FORM FINAL -->
@@ -43,7 +46,7 @@
 
 
 <div class="container">
-<a href="javascript:history.back(1)"><button class="btn btn-primary btn-lg">Volver</button></a>
+<a href="{{route('menu')}}"><button class="btn btn-primary btn-lg">Volver</button></a>
 
 </div>
 </a>
