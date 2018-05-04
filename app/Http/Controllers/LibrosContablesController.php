@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\AsientoContable;
+use App\AsientoCuenta;
+use App\CuentaContable;
 use App\FolioOrdenCompra;
 use App\ListaVenta;
 use App\Remuneracion;
 use App\Empresa;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class LibrosContablesController extends Controller
@@ -107,5 +111,25 @@ class LibrosContablesController extends Controller
         $emp = Empresa::find($request->get('empresa'));
         //dd($emp);
         return view('ModuloCaja.Balance')->with('desde',$desde)->with('emp',$emp)->with('hasta',$hasta);
+    }
+    /**
+     * Flujo de caja
+     */
+    public function flujodecaja(Request $request){
+        $desde=Carbon::parse($request->get('desde'));
+        $hasta=Carbon::parse($request->get('hasta'));
+        $emp = Empresa::find($request->get('empresa'));
+        $mes = $desde->copy();
+        //dd($mes);
+        $asientos = AsientoContable::all()
+            ->where('ID_EMP_ASIENTO','=',$emp->EMP_ID)
+            ->where('FECHA_CONT','>',$desde)
+            ->where('FECHA_CONT','<',$hasta);
+       // $ctas= AsientoCuenta::all()->where('ID_ASIENTO_CONT','=',$asientos->ID_ASIENTO_CONT);
+        return view('ModuloCaja.flujoCaja')
+            ->with('desde',$desde)
+            ->with('emp',$emp)
+            ->with('hasta',$hasta)
+            ->with('asientos',$asientos);
     }
 }

@@ -130,109 +130,104 @@
 <div class=" container table-responsive">
 <table class="table-responsive .table-hover">
 <table class="table-bordered">
-
+<?php
+    $mes = $desde->copy();
+    $tafecta = 0;
+    $tventa = 0;
+    $exentas = 0;
+        ?>
   <tbody>
+  @while($mes <= $hasta)
    <tr>
       <td></td>
       <th>Tipo de cuenta</th>
       <th><p>Detalle</p></th>
-      <td>{!! 'ENERO' !!}</td>
-      <td>{!! 'FEBRERO' !!}</td>
-      <td>{!! 'MARZO' !!}</td>
-      <td>{!! 'ABRIL' !!}</td>
-      <td>{!! 'MAYO' !!}</td>
-      <td>{!! 'JUNIO' !!}</td>
-      <td>{!! 'JULIO' !!}</td>
-      <td>{!! 'AGOSTO' !!}</td>
-      <td>{!! 'SEPTIEMBRE' !!}</td>
-      <td>{!! 'OCTUBRE' !!}</td>
-      <td>{!! 'NOVIEMBRE' !!}</td>
-      <td>{!! 'DICIEMBRE' !!}</td>
+      <td>{!! $desde->month !!}</td>
+      <td>{!! $desde->addMonth()->month !!}</td>
     </tr>
 
 
 <!--VENTAS-->
-     <tr >
+     <tr>
         <td rowspan="5"><button type="button" class="btn btn-primary btn-sm" data-dismiss="modal" id="boton1">+</button></td>
         <td id="a1" rowspan="5">Ventas</td>
         <td id="a1"><p id="a1">Total</p></td>
+
+         @foreach($asientos as $asiento)
+             <?php
+                 $fechcont = Carbon\Carbon::parse($asiento->FECHA_CONT);
+
+                 foreach (App\AsientoCuenta::all()
+                 ->where('ID_ASIENTO_CONT','=',$asientos->ID_ASIENTO_CONT) as $cta){
+                     while ($fechcont->month == $mes->month && $cta->ID_CTA_CONT == 11){
+                         $tventa = $tventa + ($cta->ASIENTO_HABER);
+                         $tventa = $tventa - ($cta->ASIENTO_DEBE);
+                     }
+                 }
+                 ?>
+         @endforeach
+        <td id="a1">{!! $tventa !!}</td>
         <td id="a1">&nbsp;</td>
-        <td id="a1">&nbsp;</td>
-        <td id="a1">&nbsp;</td>
-        <td id="a1">&nbsp;</td>
-        <td id="a1">&nbsp;</td>
-        <td id="a1">&nbsp;</td>
-        <td id="a1">&nbsp;</td>
-        <td id="a1">&nbsp;</td>
-        <td id="a1">&nbsp;</td>
-        <td id="a1">&nbsp;</td>
-        <td id="a1">&nbsp;</td>
-        <td id="a1">&nbsp;</td>
+
+
+
      </tr>
 
      <tr >
 
         <td id="a"><p id="a">Afectas neta</p></td>
+
+         @foreach($asientos as $asiento)
+             <?php
+             $fechcont = Carbon\Carbon::parse($asiento->FECHA_CONT);
+
+             foreach (App\AsientoCuenta::all()
+                          ->where('ID_ASIENTO_CONT','=',$asientos->ID_ASIENTO_CONT) as $cta){
+                 while ($fechcont->month == $mes->month && $cta->ID_CTA_CONT == 9){
+                     $tafecta = $tventa + ($cta->ASIENTO_HABER);
+                     $tafecta = $tventa - ($cta->ASIENTO_DEBE);
+                 }
+             }
+             ?>
+         @endforeach
+        <td id="a">{!! $tafecta !!}</td>
         <td id="a">&nbsp;</td>
-        <td id="a">&nbsp;</td>
-        <td id="a">&nbsp;</td>
-        <td id="a">&nbsp;</td>
-        <td id="a">&nbsp;</td>
-        <td id="a">&nbsp;</td>
-        <td id="a">&nbsp;</td>
-        <td id="a">&nbsp;</td>
-        <td id="a">&nbsp;</td>
-        <td id="a">&nbsp;</td>
-        <td id="a">&nbsp;</td>
-        <td id="a">&nbsp;</td>
+
+
      </tr>
 
      <tr >
         <td id="a"><p id="a">Exentas</p></td>
+         @foreach($asientos as $asiento)
+             <?php
+             $fechcont = Carbon\Carbon::parse($asiento->FECHA_CONT);
+
+             foreach (App\AsientoCuenta::all()
+                          ->where('ID_ASIENTO_CONT','=',$asientos->ID_ASIENTO_CONT) as $cta){
+                 while ($fechcont->month == $mes->month && $cta->ID_CTA_CONT == 1){
+                     $tafecta = $tventa + ($cta->ASIENTO_HABER);
+                     $tafecta = $tventa - ($cta->ASIENTO_DEBE);
+                 }
+             }
+             ?>
+         @endforeach
+        <td id="a">{!! $exentas !!}</td>
         <td id="a"></td>
-        <td id="a">&nbsp;</td>
-        <td id="a">&nbsp;</td>
-        <td id="a">&nbsp;</td>
-        <td id="a">&nbsp;</td>
-        <td id="a">&nbsp;</td>
-        <td id="a">&nbsp;</td>
-        <td id="a">&nbsp;</td>
-        <td id="a">&nbsp;</td>
-        <td id="a">&nbsp;</td>
-        <td id="a">&nbsp;</td>
-        <td id="a">&nbsp;</td>
+
      </tr>
 
       <tr >
         <td id="a"><p id="a">Proyectadas</p></td>
         <td id="a">&nbsp;</td>
         <td id="a">&nbsp;</td>
-        <td id="a">&nbsp;</td>
-        <td id="a">&nbsp;</td>
-        <td id="a">&nbsp;</td>
-        <td id="a">&nbsp;</td>
-        <td id="a">&nbsp;</td>
-        <td id="a">&nbsp;</td>
-        <td id="a">&nbsp;</td>
-        <td id="a">&nbsp;</td>
-        <td id="a">&nbsp;</td>
-        <td id="a">&nbsp;</td>
+
      </tr>
 
      <tr >
         <td id="a"><p id="a">Cumplimiento</p></td>
         <td id="a">&nbsp;</td>
         <td id="a" >&nbsp;</td>
-        <td id="a">&nbsp;</td>
-        <td id="a">&nbsp;</td>
-        <td id="a">&nbsp;</td>
-        <td id="a">&nbsp;</td>
-        <td id="a">&nbsp;</td>
-        <td id="a">&nbsp;</td>
-        <td id="a">&nbsp;</td>
-        <td id="a">&nbsp;</td>
-        <td id="a">&nbsp;</td>
-        <td id="a">&nbsp;</td>
+
      </tr>
 
 <!--//VENTAS-->
@@ -249,16 +244,7 @@
       </td>
       <td id="b">&nbsp;</td>
       <td id="b">&nbsp;</td>
-      <td id="b">&nbsp;</td>
-      <td id="b">&nbsp;</td>
-      <td id="b">&nbsp;</td>
-      <td id="b">&nbsp;</td>
-      <td id="b">&nbsp;</td>
-      <td id="b">&nbsp;</td>
-      <td id="b">&nbsp;</td>
-      <td id="b">&nbsp;</td>
-      <td id="b">&nbsp;</td>
-      <td id="b">&nbsp;</td>
+
     </tr>
 
     <tr>
@@ -267,16 +253,7 @@
       </td>
       <td id="b">&nbsp;</td>
       <td id="b">&nbsp;</td>
-      <td id="b">&nbsp;</td>
-      <td id="b">&nbsp;</td>
-      <td id="b">&nbsp;</td>
-      <td id="b">&nbsp;</td>
-      <td id="b">&nbsp;</td>
-      <td id="b">&nbsp;</td>
-      <td id="b">&nbsp;</td>
-      <td id="b">&nbsp;</td>
-      <td id="b">&nbsp;</td>
-      <td id="b">&nbsp;</td>
+
     </tr>
 <!--//COMISIONES-->
 
@@ -295,16 +272,7 @@
       </td>
       <td id="c">&nbsp;</td>
       <td id="c">&nbsp;</td>
-      <td id="c">&nbsp;</td>
-      <td id="c">&nbsp;</td>
-      <td id="c">&nbsp;</td>
-      <td id="c">&nbsp;</td>
-      <td id="c">&nbsp;</td>
-      <td id="c">&nbsp;</td>
-      <td id="c">&nbsp;</td>
-      <td id="c">&nbsp;</td>
-      <td id="c">&nbsp;</td>
-      <td id="c">&nbsp;</td>
+
     </tr>
 
     <tr>
@@ -316,16 +284,7 @@
       </td>
       <td id="c">&nbsp;</td>
       <td id="c">&nbsp;</td>
-      <td id="c">&nbsp;</td>
-      <td id="c">&nbsp;</td>
-      <td id="c">&nbsp;</td>
-      <td id="c">&nbsp;</td>
-      <td id="c">&nbsp;</td>
-      <td id="c">&nbsp;</td>
-      <td id="c">&nbsp;</td>
-      <td id="c">&nbsp;</td>
-      <td id="c">&nbsp;</td>
-      <td id="c">&nbsp;</td>
+
     </tr>
 
     <tr>
@@ -334,16 +293,7 @@
       </td>
       <td id="c">&nbsp;</td>
       <td id="c">&nbsp;</td>
-      <td id="c">&nbsp;</td>
-      <td id="c">&nbsp;</td>
-      <td id="c">&nbsp;</td>
-      <td id="c">&nbsp;</td>
-      <td id="c">&nbsp;</td>
-      <td id="c">&nbsp;</td>
-      <td id="c">&nbsp;</td>
-      <td id="c">&nbsp;</td>
-      <td id="c">&nbsp;</td>
-      <td id="c">&nbsp;</td>
+
     </tr>
 
 <!--//Cuentas por cobrar-->
@@ -359,16 +309,7 @@
       </td>
       <td id="den">&nbsp;</td>
       <td id="dfe">&nbsp;</td>
-      <td id="dmr">&nbsp;</td>
-      <td id="dab">&nbsp;</td>
-      <td id="dmy">&nbsp;</td>
-      <td id="djn">&nbsp;</td>
-      <td id="djl">&nbsp;</td>
-      <td id="dag">&nbsp;</td>
-      <td id="dse">&nbsp;</td>
-      <td id="doc">&nbsp;</td>
-      <td id="dno">&nbsp;</td>
-      <td id="ddi">&nbsp;</td>
+
     </tr>
 
     <tr>
@@ -377,16 +318,7 @@
       </td>
       <td id="d">&nbsp;</td>
       <td id="d">&nbsp;</td>
-      <td id="d">&nbsp;</td>
-      <td id="d">&nbsp;</td>
-      <td id="d">&nbsp;</td>
-      <td id="d">&nbsp;</td>
-      <td id="d">&nbsp;</td>
-      <td id="d">&nbsp;</td>
-      <td id="d">&nbsp;</td>
-      <td id="d">&nbsp;</td>
-      <td id="d">&nbsp;</td>
-      <td id="d">&nbsp;</td>
+
     </tr>
 
     <tr>
@@ -395,16 +327,7 @@
       </td>
       <td id="d">&nbsp;</td>
       <td id="d">&nbsp;</td>
-      <td id="d">&nbsp;</td>
-      <td id="d">&nbsp;</td>
-      <td id="d">&nbsp;</td>
-      <td id="d">&nbsp;</td>
-      <td id="d">&nbsp;</td>
-      <td id="d">&nbsp;</td>
-      <td id="d">&nbsp;</td>
-      <td id="d">&nbsp;</td>
-      <td id="d">&nbsp;</td>
-      <td id="d">&nbsp;</td>
+
     </tr>
 
      <tr>
@@ -413,16 +336,7 @@
       </td>
       <td id="d">&nbsp;</td>
       <td id="d">&nbsp;</td>
-      <td id="d">&nbsp;</td>
-      <td id="d">&nbsp;</td>
-      <td id="d">&nbsp;</td>
-      <td id="d">&nbsp;</td>
-      <td id="d">&nbsp;</td>
-      <td id="d">&nbsp;</td>
-      <td id="d">&nbsp;</td>
-      <td id="d">&nbsp;</td>
-      <td id="d">&nbsp;</td>
-      <td id="d">&nbsp;</td>
+
     </tr>
 <!--//Ingresos-->
 
@@ -438,64 +352,28 @@
       </td>
       <td id="e">&nbsp;</td>
       <td id="e">&nbsp;</td>
-      <td id="e">&nbsp;</td>
-      <td id="e">&nbsp;</td>
-      <td id="e">&nbsp;</td>
-      <td id="e">&nbsp;</td>
-      <td id="e">&nbsp;</td>
-      <td id="e">&nbsp;</td>
-      <td id="e">&nbsp;</td>
-      <td id="e">&nbsp;</td>
-      <td id="e">&nbsp;</td>
-      <td id="e">&nbsp;</td>
+
     </tr>
     <td id="e">
         <p id="e">Proveedores</p>
       </td>
       <td id="e">&nbsp;</td>
       <td id="e">&nbsp;</td>
-      <td id="e">&nbsp;</td>
-      <td id="e">&nbsp;</td>
-      <td id="e">&nbsp;</td>
-      <td id="e">&nbsp;</td>
-      <td id="e">&nbsp;</td>
-      <td id="e">&nbsp;</td>
-      <td id="e">&nbsp;</td>
-      <td id="e">&nbsp;</td>
-      <td id="e">&nbsp;</td>
-      <td id="e">&nbsp;</td>
+
     </tr>
     <td id="e">
         <p id="e">Impuestos</p>
       </td>
       <td id="e">&nbsp;</td>
       <td id="e">&nbsp;</td>
-      <td id="e">&nbsp;</td>
-      <td id="e">&nbsp;</td>
-      <td id="e">&nbsp;</td>
-      <td id="e">&nbsp;</td>
-      <td id="e">&nbsp;</td>
-      <td id="e">&nbsp;</td>
-      <td id="e">&nbsp;</td>
-      <td id="e">&nbsp;</td>
-      <td id="e">&nbsp;</td>
-      <td id="e">&nbsp;</td>
+
     </tr>
     <td id="e1">
         <p id="e1">Total CV </p>
       </td>
       <td id="e1">&nbsp;</td>
       <td id="e1">&nbsp;</td>
-      <td id="e1">&nbsp;</td>
-      <td id="e1">&nbsp;</td>
-      <td id="e1">&nbsp;</td>
-      <td id="e1">&nbsp;</td>
-      <td id="e1">&nbsp;</td>
-      <td id="e1">&nbsp;</td>
-      <td id="e1">&nbsp;</td>
-      <td id="e1">&nbsp;</td>
-      <td id="e1">&nbsp;</td>
-      <td id="e1">&nbsp;</td>
+
     </tr>
 <!--//Costos Variables -->
 
@@ -513,16 +391,7 @@
       </td>
       <td id="f">&nbsp;</td>
       <td id="f">&nbsp;</td>
-      <td id="f">&nbsp;</td>
-      <td id="f">&nbsp;</td>
-      <td id="f">&nbsp;</td>
-      <td id="f">&nbsp;</td>
-      <td id="f">&nbsp;</td>
-      <td id="f">&nbsp;</td>
-      <td id="f">&nbsp;</td>
-      <td id="f">&nbsp;</td>
-      <td id="f">&nbsp;</td>
-      <td id="f">&nbsp;</td>
+
     </tr>
 
     <tr>
@@ -532,16 +401,7 @@
       </td>
       <td id="f">&nbsp;</td>
       <td id="f">&nbsp;</td>
-      <td id="f">&nbsp;</td>
-      <td id="f">&nbsp;</td>
-      <td id="f">&nbsp;</td>
-      <td id="f">&nbsp;</td>
-      <td id="f">&nbsp;</td>
-      <td id="f">&nbsp;</td>
-      <td id="f">&nbsp;</td>
-      <td id="f">&nbsp;</td>
-      <td id="f">&nbsp;</td>
-      <td id="f">&nbsp;</td>
+
     </tr>
 
 
@@ -559,16 +419,7 @@
       </td>
       <td id="g">&nbsp;</td>
       <td id="g">&nbsp;</td>
-      <td id="g">&nbsp;</td>
-      <td id="g">&nbsp;</td>
-      <td id="g">&nbsp;</td>
-      <td id="g">&nbsp;</td>
-      <td id="g">&nbsp;</td>
-      <td id="g">&nbsp;</td>
-      <td id="g">&nbsp;</td>
-      <td id="g">&nbsp;</td>
-      <td id="g">&nbsp;</td>
-      <td id="g">&nbsp;</td>
+
     </tr>
     <tr>
 
@@ -579,16 +430,7 @@
       </td>
       <td id="g">&nbsp;</td>
       <td id="g">&nbsp;</td>
-      <td id="g">&nbsp;</td>
-      <td id="g">&nbsp;</td>
-      <td id="g">&nbsp;</td>
-      <td id="g">&nbsp;</td>
-      <td id="g">&nbsp;</td>
-      <td id="g">&nbsp;</td>
-      <td id="g">&nbsp;</td>
-      <td id="g">&nbsp;</td>
-      <td id="g">&nbsp;</td>
-      <td id="g">&nbsp;</td>
+
     </tr>
     <tr>
 
@@ -599,16 +441,7 @@
       </td>
       <td id="g">&nbsp;</td>
       <td id="g">&nbsp;</td>
-      <td id="g">&nbsp;</td>
-      <td id="g">&nbsp;</td>
-      <td id="g">&nbsp;</td>
-      <td id="g">&nbsp;</td>
-      <td id="g">&nbsp;</td>
-      <td id="g">&nbsp;</td>
-      <td id="g">&nbsp;</td>
-      <td id="g">&nbsp;</td>
-      <td id="g">&nbsp;</td>
-      <td id="g">&nbsp;</td>
+
     </tr>
     <tr>
 
@@ -619,16 +452,7 @@
       </td>
       <td id="g">&nbsp;</td>
       <td id="g">&nbsp;</td>
-      <td id="g">&nbsp;</td>
-      <td id="g">&nbsp;</td>
-      <td id="g">&nbsp;</td>
-      <td id="g">&nbsp;</td>
-      <td id="g">&nbsp;</td>
-      <td id="g">&nbsp;</td>
-      <td id="g">&nbsp;</td>
-      <td id="g">&nbsp;</td>
-      <td id="g">&nbsp;</td>
-      <td id="g">&nbsp;</td>
+
     </tr>
     <tr>
 
@@ -638,16 +462,7 @@
       </td>
       <td id="g1">&nbsp;</td>
       <td id="g1">&nbsp;</td>
-      <td id="g1">&nbsp;</td>
-      <td id="g1">&nbsp;</td>
-      <td id="g1">&nbsp;</td>
-      <td id="g1">&nbsp;</td>
-      <td id="g1">&nbsp;</td>
-      <td id="g1">&nbsp;</td>
-      <td id="g1">&nbsp;</td>
-      <td id="g1">&nbsp;</td>
-      <td id="g1">&nbsp;</td>
-      <td id="g1">&nbsp;</td>
+
     </tr>
 
 
@@ -665,16 +480,7 @@
       </td>
       <td id="h">&nbsp;</td>
       <td id="h">&nbsp;</td>
-      <td id="h">&nbsp;</td>
-      <td id="h">&nbsp;</td>
-      <td id="h">&nbsp;</td>
-      <td id="h">&nbsp;</td>
-      <td id="h">&nbsp;</td>
-      <td id="h">&nbsp;</td>
-      <td id="h">&nbsp;</td>
-      <td id="h">&nbsp;</td>
-      <td id="h">&nbsp;</td>
-      <td id="h">&nbsp;</td>
+
     </tr>
 
      <tr>
@@ -683,16 +489,7 @@
         </td>
         <td id="h">&nbsp;</td>
         <td id="h">&nbsp;</td>
-        <td id="h">&nbsp;</td>
-        <td id="h">&nbsp;</td>
-        <td id="h">&nbsp;</td>
-        <td id="h">&nbsp;</td>
-        <td id="h">&nbsp;</td>
-        <td id="h">&nbsp;</td>
-        <td id="h">&nbsp;</td>
-        <td id="h">&nbsp;</td>
-        <td id="h">&nbsp;</td>
-        <td id="h">&nbsp;</td>
+
       </tr>
 
       <tr>
@@ -701,16 +498,7 @@
         </td>
         <td id="h">&nbsp;</td>
         <td id="h">&nbsp;</td>
-        <td id="h">&nbsp;</td>
-        <td id="h">&nbsp;</td>
-        <td id="h">&nbsp;</td>
-        <td id="h">&nbsp;</td>
-        <td id="h">&nbsp;</td>
-        <td id="h">&nbsp;</td>
-        <td id="h">&nbsp;</td>
-        <td id="h">&nbsp;</td>
-        <td id="h">&nbsp;</td>
-        <td id="h">&nbsp;</td>
+
       </tr>
 
       <tr>
@@ -719,16 +507,7 @@
         </td>
         <td id="h1">&nbsp;</td>
         <td id="h1">&nbsp;</td>
-        <td id="h1">&nbsp;</td>
-        <td id="h1">&nbsp;</td>
-        <td id="h1">&nbsp;</td>
-        <td id="h1">&nbsp;</td>
-        <td id="h1">&nbsp;</td>
-        <td id="h1">&nbsp;</td>
-        <td id="h1">&nbsp;</td>
-        <td id="h1">&nbsp;</td>
-        <td id="h1">&nbsp;</td>
-        <td id="h1">&nbsp;</td>
+
       </tr>
 
 <!--//bonos-->
@@ -748,16 +527,7 @@
       </td>
       <td id="i">&nbsp;</td>
       <td id="i">&nbsp;</td>
-      <td id="i">&nbsp;</td>
-      <td id="i">&nbsp;</td>
-      <td id="i">&nbsp;</td>
-      <td id="i">&nbsp;</td>
-      <td id="i">&nbsp;</td>
-      <td id="i">&nbsp;</td>
-      <td id="i">&nbsp;</td>
-      <td id="i">&nbsp;</td>
-      <td id="i">&nbsp;</td>
-      <td id="i">&nbsp;</td>
+
     </tr>
 
     <tr>
@@ -769,16 +539,7 @@
       </td>
       <td id="i">&nbsp;</td>
       <td id="i">&nbsp;</td>
-      <td id="i">&nbsp;</td>
-      <td id="i">&nbsp;</td>
-      <td id="i">&nbsp;</td>
-      <td id="i">&nbsp;</td>
-      <td id="i">&nbsp;</td>
-      <td id="i">&nbsp;</td>
-      <td id="i">&nbsp;</td>
-      <td id="i">&nbsp;</td>
-      <td id="i">&nbsp;</td>
-      <td id="i">&nbsp;</td>
+
     </tr>
 
     <tr>
@@ -789,16 +550,7 @@
       </td>
       <td id="i">&nbsp;</td>
       <td id="i">&nbsp;</td>
-      <td id="i">&nbsp;</td>
-      <td id="i">&nbsp;</td>
-      <td id="i">&nbsp;</td>
-      <td id="i">&nbsp;</td>
-      <td id="i">&nbsp;</td>
-      <td id="i">&nbsp;</td>
-      <td id="i">&nbsp;</td>
-      <td id="i">&nbsp;</td>
-      <td id="i">&nbsp;</td>
-      <td id="i">&nbsp;</td>
+
     </tr>
       <tr>
 
@@ -808,16 +560,7 @@
       </td>
       <td id="i">&nbsp;</td>
       <td id="i">&nbsp;</td>
-      <td id="i">&nbsp;</td>
-      <td id="i">&nbsp;</td>
-      <td id="i">&nbsp;</td>
-      <td id="i">&nbsp;</td>
-      <td id="i">&nbsp;</td>
-      <td id="i">&nbsp;</td>
-      <td id="i">&nbsp;</td>
-      <td id="i">&nbsp;</td>
-      <td id="i">&nbsp;</td>
-      <td id="i">&nbsp;</td>
+
     </tr>
 <!--//Item de gasto-->
 
@@ -834,18 +577,9 @@
       <p id="j">Facturado (Neto + Exento)</p>
 
     </td>
-    <td id="j">&nbsp;</td>
       <td id="j">&nbsp;</td>
       <td id="j">&nbsp;</td>
-      <td id="j">&nbsp;</td>
-      <td id="j">&nbsp;</td>
-      <td id="j">&nbsp;</td>
-      <td id="j">&nbsp;</td>
-      <td id="j">&nbsp;</td>
-      <td id="j">&nbsp;</td>
-      <td id="j">&nbsp;</td>
-      <td id="j">&nbsp;</td>
-      <td id="j">&nbsp;</td>
+
     </tr>
 
   <tr>
@@ -855,18 +589,9 @@
       <p id="j">Egresos</p>
 
     </td>
-    <td id="j">&nbsp;</td>
       <td id="j">&nbsp;</td>
       <td id="j">&nbsp;</td>
-      <td id="j">&nbsp;</td>
-      <td id="j">&nbsp;</td>
-      <td id="j">&nbsp;</td>
-      <td id="j">&nbsp;</td>
-      <td id="j">&nbsp;</td>
-      <td id="j">&nbsp;</td>
-      <td id="j">&nbsp;</td>
-      <td id="j">&nbsp;</td>
-      <td id="j">&nbsp;</td>
+
     </tr>
 
   <tr>
@@ -878,15 +603,7 @@
     <td id="j">&nbsp;</td>
       <td id="j">&nbsp;</td>
       <td id="j">&nbsp;</td>
-      <td id="j">&nbsp;</td>
-      <td id="j">&nbsp;</td>
-      <td id="j">&nbsp;</td>
-      <td id="j">&nbsp;</td>
-      <td id="j">&nbsp;</td>
-      <td id="j">&nbsp;</td>
-      <td id="j">&nbsp;</td>
-      <td id="j">&nbsp;</td>
-      <td id="j">&nbsp;</td>
+
     </tr>
 
 
@@ -907,16 +624,7 @@
       </td>
       <td id="k">&nbsp;</td>
       <td id="k">&nbsp;</td>
-      <td id="k">&nbsp;</td>
-      <td id="k">&nbsp;</td>
-      <td id="k">&nbsp;</td>
-      <td id="k">&nbsp;</td>
-      <td id="k">&nbsp;</td>
-      <td id="k">&nbsp;</td>
-      <td id="k">&nbsp;</td>
-      <td id="k">&nbsp;</td>
-      <td id="k">&nbsp;</td>
-      <td id="k">&nbsp;</td>
+
     </tr>
 
     <tr>
@@ -1235,7 +943,7 @@
       <td id="p">&nbsp;</td>
       <td id="p">&nbsp;</td>
       <td id="p">&nbsp;</td>
-button       <td id="p">&nbsp;</td>
+      <td id="p">&nbsp;</td>
       <td id="p">&nbsp;</td>
       <td id="p">&nbsp;</td>
       <td id="p">&nbsp;</td>
@@ -1399,9 +1107,11 @@ button       <td id="p">&nbsp;</td>
        <td id="qno">&nbsp;</td>
       <td id="qdi">&nbsp;</td>
     </tr>
-
-
   <!--//capital-->
+<?php
+   $mes = $mes->addMonth();
+?>
+  @endwhile
   </tbody>
 </table>
 </table>
@@ -1412,5 +1122,5 @@ button       <td id="p">&nbsp;</td>
 
 </div>
 <!--//tabla-->
-<div><a href="index.php"><button type="button" class="btn btn-primary btn-lg">  volver </button></a></div>
+<div><a href="{{route('Finanzas')}}"><button type="button" class="btn btn-primary btn-lg">  volver </button></a></div>
 @endsection

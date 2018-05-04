@@ -49,7 +49,7 @@
           <tr>
             <td>
               <button class="btn btn-primary btn-lg"  style="width:240px;  margin-bottom: 15px;" data-toggle="modal" data-target="#regMov" > Registro de movimientos</button>
-              <a href="{{route('Fluca')}}"><button class="btn btn-primary btn-lg"  style="width:240px; margin-bottom: 15px;"> Flujo de caja</button></a>
+              <button class="btn btn-primary btn-lg"  style="width:240px;  margin-bottom: 15px;" data-toggle="modal" data-target="#FiltroFlujo" > Flujo de caja</button>
               <a href="{{route('panelDeInformes')}}"><button class="btn btn-primary btn-lg"  style="width:240px; margin-bottom: 15px;"> Financiero</button></a>
 
               <button type="button" class="btn btn-primary btn-lg"  style="width:240px; margin-bottom: 15px;" data-toggle="modal" data-target="#myModal">Cartola bancaria</button>
@@ -91,6 +91,7 @@
 
         @include('modals.ingreso')
         @include('modals.egreso')
+        @include('modals.FiltroFlujo')
 
 
 

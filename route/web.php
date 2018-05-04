@@ -84,9 +84,10 @@ Route::group(['prefix' => 'modulo'], function () {
             'as' => 'searchMov',
         ]);
 
-        Route::get('/flujo', function () {
-            return view('ModuloCaja.flujoCaja');
-        })->name('Fluca');
+        Route::post('/flujo',[
+            'uses' => 'LibrosContablesController@flujodecaja',
+            'as' => 'post.flujo',
+        ]);
 
 
         Route::get('/Finanzas', [
