@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Afp;
+use App\Proveedor;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
