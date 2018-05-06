@@ -129,7 +129,7 @@
 <!--\\\\\\\ header end \\\\\\-->
 <div class="inner">
   <div class="left_nav">
-    <div class="left_nav_slidebar">
+    <div class="left_nav_slidebar" style="height: 81%;">
       <ul class="nav nav-stacked" id="menu.principal">
       </ul>
     </div>
