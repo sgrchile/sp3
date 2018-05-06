@@ -27,7 +27,6 @@ class ProveedoresPublicController extends Controller
     /********************************/
     public function NewProveedor(Request $request)
     {
-        dd($request);
         $this->validateProveedorPersona($request);
         $createProveedorPersona = $this->createProveedorPersona($request->all());
 

@@ -15,6 +15,10 @@ Route::get('/',function(){
        return view('auth/login');
    })->name('login');
 
+Route::get('/configuracion', [
+    'uses' => 'ConfiguracionController@admin',
+    'as' => 'get.configuracion.admin',
+]);
    // Registrar
 Route::get('/registrar', function () {
     return view('ModuloUsuarios/registerPublic');

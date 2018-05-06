@@ -5,15 +5,14 @@
             <div class="col-xs-12 col-md-12 col-sm-12">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Administración de Módulo Proveedores</h3>
+                        <h3 class="panel-title">Configuración</h3>
                     </div>
                     <div class="panel-body">
                         <ul class="nav nav-tabs" role="tablist">
-                            <li role="presentation" class="active"><a href="#alta" aria-controls="alta" role="tab" data-toggle="tab">Alta de Proveedor</a></li>
-                            <li role="presentation" class="active"><a href="#alta" aria-controls="alta" role="tab" data-toggle="tab">Alta de Proveedor</a></li>
+                            <li role="presentation" class="active"><a href="#alta" aria-controls="alta" role="tab" data-toggle="tab">Asignación de nivel</a></li>
                         </ul>
                         <div class="tab-content">
-                            <a href="#" class="btn btn-primary pull-left" id="btnAlta">Autorizar ingreso al sistema</a>
+                            <a href="#" class="btn btn-primary pull-left" id="btnAlta">Asignar nivel a seleccionado</a>
                             <div role="tabpanel" class="tab-pane active" id="alta">
                                 <table class="table table-hover" id="tabla.proveedores">
                                     <thead>
