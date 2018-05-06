@@ -6,7 +6,7 @@ use App\Afp;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
-class AfpController extends Controller
+class ConfiguracionController extends Controller
 {
 
     public function admin()
