@@ -34,9 +34,9 @@
                         <tr>
                             <td><label>Nº DE CUENTA:</label></td>
                             <td>
-                                {{ Form::select('nro_cuenta',App\CuentaEmpresa::pluck('CTAE_NUMERO_CUENTA','CTAE_ID'),$solicitud->SF_CTAC,
+                                {{ Form::select('nro_cuenta',App\CuentaEmpresa::pluck('CTAE_NUMERO_CUENTA','CTAE_ID'),isset($solicitud) ? $solicitud->SF_CTAC : '',
                                 ['style'=>'width:175px;','class'=>'form-control','readOnly']) }}
-                                <!--<input type="text" style="width:175px;" class="form-control" name="nro_cuenta" readOnly  value="{{ $solicitud->SF_CTAC }}">-->
+                                <!--<input type="text" style="width:175px;" class="form-control" name="nro_cuenta" readOnly  value="{{ isset($solicitud) ? $solicitud->SF_CTAC : ''}}">-->
                             </td>
                         </tr>
 
@@ -60,7 +60,7 @@
 
                             <!--heredada por la solicitud de fondo, si  viene -->
                             <td>
-                                {{ Form::select('causa',App\Causa::pluck('CAU_DESC','CAU_ID'),$solicitud->causa->CAU_ID,
+                                {{ Form::select('causa',App\Causa::pluck('CAU_DESC','CAU_ID'),isset($solicitud) ? $solicitud->causa->CAU_ID : '',
                               ['style'=>'width:175px;','class'=>'form-control','readOnly']) }}
                             </td>
 
@@ -73,7 +73,7 @@
 
                         <tr>
                             <td><label>DESCRIPCION:</label></td>
-                            <td><textarea type="text" style="width:175px; max-width:175px;" class="form-control" name="descripcion" readOnly>{{ $solicitud->SF_DESC }}</textarea></td>
+                            <td><textarea type="text" style="width:175px; max-width:175px;" class="form-control" name="descripcion" readOnly>{{ isset($solicitud) ? $solicitud->SF_DESC : ''}}</textarea></td>
                         </tr>
 
                         <tr>
@@ -95,7 +95,7 @@
 
                         <tr>
                             <td><label>MONTO:</label></td>
-                            <td><input type="number" min="0" value="{{ $solicitud->SF_MONTO }}" style="width:175px;" class="form-control" name="monto"
+                            <td><input type="number" min="0" value="{{ isset($solicitud) ? $solicitud->SF_MONTO : '' }}" style="width:175px;" class="form-control" name="monto"
                                        readOnly></td>
                         </tr>
                         <tr>
