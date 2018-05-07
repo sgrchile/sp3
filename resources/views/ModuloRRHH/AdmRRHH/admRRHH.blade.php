@@ -32,7 +32,7 @@
           </table>
           <br>
 
-          <h3>GESTION ADMINISTRATIVA</h3>
+          <h3>ADMINISTRACION DE RRHH</h3>
 
           <table align="center">
             <tr>
@@ -41,7 +41,7 @@
                 <a href="{{route('Liquidaciones')}}"><button class="btn btn-primary  btn-md" style="width:200px;margin-bottom: 15px;">EMITIR REMUNERACION</button></a>
                 <a href="{{route('Solicitudes')}}"><button class="btn btn-primary  btn-md" style="width:200px; margin-bottom: 15px;">SOLICITUDES</button></a>
                 <a href="{{route('bonos')}}" ><button class="btn btn-primary  btn-md" style="width:200px;margin-bottom: 15px;">BONOS</button> </a>
-                <a href="{{route('consLiquidacion')}}"><button class="btn btn-primary  btn-md" style="width:200px;margin-bottom: 15px;">CONS. REMUNERACION</button></a>
+                <a href="{{route('consLiquidacion')}}"><button class="btn btn-primary  btn-md" style="width:200px;margin-bottom: 15px;">VER REMUNERACION</button></a>
                 <a href="{{route('configuracion')}}"><button class="btn btn-primary  btn-md" style="width:200px;margin-bottom: 15px;" >CONFIGURACION</button></a>
               </td>
             </tr>
@@ -49,13 +49,13 @@
 
           <br>
 
-          <h3>GESTION DE OFERTAS DE TRABAJO</h3>
+          <h3>OFERTAS DE TRABAJO</h3>
 
           <table align="center">
             <tr>
               <td align="center">
 
-                <a href="{{route('visualizarPostulantes')}}"><button class="btn btn-primary" style="width:250px;margin-bottom: 15px;">CONSULTAR POSTULANTES</button></a>
+                <a href="{{route('visualizarPostulantes')}}"><button class="btn btn-primary" style="width:250px;margin-bottom: 15px;">VER POSTULANTES</button></a>
                 <a href="{{route('EstPost')}}"><button class="btn btn-primary " style="width:250px;margin-bottom: 15px;">ESTADO DE OFERTA</button></a>
                 <a href="{{route('regOferta')}}"><button class="btn btn-primary  " style="width:250px;margin-bottom: 15px;">REGISTRAR OFERTA </button></a>
                 <a href="{{route('modOf')}}"><button class="btn btn-primary  " style="width:250px;margin-bottom: 15px;">MODIFICAR OFERTA </button></a>

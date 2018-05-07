@@ -15,14 +15,14 @@
           <table class="table-condensed">
             <tr>
 
-              <td><a href="{{route('Vacaciones')}}"><button class="btn btn-primary btn-lg" style="width:275px;">SOL. DE VACACIONES</button></a></td>
-              <td><a href="{{route('LicenciaMedica')}}"><button class="btn btn-primary btn-lg" style="width:275px;">SOL. DE LICENCIA</button></a></td>
+              <td><a href="{{route('Vacaciones')}}"><button class="btn btn-primary btn-lg" style="width:275px;">VACACIONES</button></a></td>
+              <td><a href="{{route('LicenciaMedica')}}"><button class="btn btn-primary btn-lg" style="width:275px;">LICENCIA</button></a></td>
 
             </tr>
             <tr>
 
-              <td><a href="{{route('PermisoEspecial')}}"><button class="btn btn-primary btn-lg" style="width:275px;">SOL. DE PERMISO ESPECIAL</button></a></td>
-              <td><a href="{{route('Adelanto')}}"><button class="btn btn-primary btn-lg" style="width:275px;">SOL. DE ADELANTO</button></a></td>
+              <td><a href="{{route('PermisoEspecial')}}"><button class="btn btn-primary btn-lg" style="width:275px;">PERMISO ESPECIAL</button></a></td>
+              <td><a href="{{route('Adelanto')}}"><button class="btn btn-primary btn-lg" style="width:275px;">ADELANTO</button></a></td>
 
             </tr>
 
