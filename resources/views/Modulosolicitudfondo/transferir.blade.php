@@ -24,7 +24,7 @@
 
         <td><label>Número de Solicitud:</label></td>
         <td><input style="width:175px" class="form-control" type="number" id="nro_solicitud" value="{{ isset($solicitud) ? $solicitud->SF_SOLICITUD_ID : '' }}" id="idsol" readonly></td>
-        <td><a class="btn btn-primary" data-toggle="modal" data-target="#selTransferir">Consultar Aquí</a></td>
+        <td><a class="btn btn-primary" data-toggle="modal" data-target="#selTransferir">traer</a></td>
     </tr>
 
     <tr>
@@ -65,7 +65,7 @@
       <td><input type="text" style="width:175px"  id="banco" readonly class="form-control" value="{{ isset($solicitud) ? $solicitud->banco->BCO_DESC : '' }}"></td>
     </tr>
     <tr>
-      <td><label>Nº DE CUENTA:</label></td>
+      <td><label>TIPO CUENTA:</label></td>
       <td><input style="width:175px" type="text" id="nCuenta" readonly class="form-control" value="{{ isset($solicitud) ? $solicitud->tipo_cuenta->TCTA_DESC: '' }}"></td>
     </tr>
 
@@ -98,7 +98,7 @@
 
     </select>
     -->
-    <a href={{ route('patch.modificar.espera', isset($solicitud) ? $solicitud->SF_SOLICITUD_ID : '')}}><button class="btn btn-primary btn-lg">En Espera</button></a>
+    <a href={{ route('patch.modificar.espera', isset($solicitud) ? $solicitud->SF_SOLICITUD_ID : '')}}><button class="btn btn-primary btn-lg">atrás</button></a>
     <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#regEgreso" data-backdrop="static">  Transferido </button>
     </td>
     </tr>
@@ -193,21 +193,23 @@ function fAgrega() {
                             <td><label>EMPRESA:</label></td>
                             <td>
                               <!--colocar en el value el nombre de la empresa por la cual esta logueado el usuario-->
-                              <input type="text" class="form-control" readOnly value="" style="width:175px;">
+                                {{ Form::select('empresa',App\Empresa::pluck('EMP_DESC','EMP_ID'),Auth::user()->PRO_EMP,
+                                ['style'=>'width:175px;','class'=>'form-control','readOnly']) }}
                             </td>
                         </tr>
 
                         <tr>
                             <td><label>TIPO CUENTA:</label></td>
                             <td>
-                                <input  type="text" style="width:175px;" class="form-control" name="tipo_cuenta" readOnly>
+                                {{ Form::select('tipo_cuenta',App\TipoCuenta::pluck('TCTA_DESC','TCTA_BCO'),Auth::user()->PRO_TCTA_BCO,
+                                ['style'=>'width:175px;','class'=>'form-control','readOnly']) }}
                             </td>
                         </tr>
 
                         <tr>
                             <td><label>Nº DE CUENTA:</label></td>
                             <td>
-                                <input type="text" style="width:175px;" class="form-control" name="nro_cuenta" readOnly  value="">
+                                <input type="text" style="width:175px;" class="form-control" name="nro_cuenta" readOnly  value="{{ isset($solicitud) ? $solicitud->SF_N_CTA_RECEPTOR : '' }}">
 
 
                             </td>
@@ -215,19 +217,27 @@ function fAgrega() {
 
                         <tr>
                             <td><label>FECHA:</label></td>
-                            <td><input type="date" style="width:175px;" class="form-control" name="fecha" readOnly></td>
+                            <td>
+                                <input type="date" value="{{ Carbon\Carbon::now()->toDateString() }}" style="width:175px;" class="form-control" name="fecha" readOnly>
+                            </td>
                         </tr>
 
                         <tr>
                             <td><label>FUENTE:</label></td>
-                            <td><input type="text" style="width:175px;" class="form-control"  readOnly></td>
+                            <td>
+                                {{ Form::select('fuente',App\Fuente::pluck('FTE_DESC','FTE_ID'),null,
+                                ['style'=>'width:175px;','class'=>'form-control','readOnly']) }}
+                            </td>
                         </tr>
 
                         <tr>
                             <td><label>CAUSA:</label></td>
 
                               <!--heredada por la solicitud de fondo, si  viene -->
-                              <td><input type="text" style="width:175px;" class="form-control"  readOnly></td>
+                              <td>
+                                  {{ Form::select('causa',App\Causa::pluck('CAU_DESC','CAU_ID'),isset($solicitud) ? $solicitud->causa->CAU_ID : '',
+                                ['style'=>'width:175px;','class'=>'form-control','readOnly']) }}
+                              </td>
 
                         </tr>
 
@@ -238,13 +248,17 @@ function fAgrega() {
 
                         <tr>
                             <td><label>DESCRIPCION:</label></td>
-                            <td><textarea type="text" style="width:175px; max-width:175px;" class="form-control" name="descripcion" readOnly></textarea></td>
+                            <td><textarea type="text" style="width:175px; max-width:175px;" class="form-control" name="descripcion" readOnly>{{ isset($solicitud) ? $solicitud->SF_DESC : '' }}</textarea></td>
                         </tr>
 
                         <tr>
                             <td><label>DOCUMENTO FUENTE:</label></td>
 
-                            <td><input type="text" style="width:175px;" class="form-control" name="docFte" readOnly value="SOLICITUD DE FONDO"></td>
+                            <td>
+                                {{ Form::select('tipo_documento',App\TipoDocumento::pluck('TDC_DESC','TDC_ID'),null,
+                               ['style'=>'width:175px;','class'=>'form-control']) }}
+                                <!--<input type="text" style="width:175px;" class="form-control" name="docFte" readOnly value="SOLICITUD DE FONDO">-->
+                            </td>
 
                         </tr>
 
@@ -256,7 +270,7 @@ function fAgrega() {
 
                         <tr>
                             <td><label>MONTO:</label></td>
-                            <td><input type="number" min="0" style="width:175px;" class="form-control" name="monto"
+                            <td><input type="number" min="0" value="{{ isset($solicitud) ? $solicitud->SF_MONTO : '' }}" style="width:175px;" class="form-control" name="monto"
                                        readOnly></td>
                         </tr>
                         <tr>
@@ -285,7 +299,7 @@ function fAgrega() {
 </div>
 <br>
 <div class="container">
-  <a href="javascript:history.back(1)"><button class="btn btn-primary btn-lg">Volver</button></a>
+  <a href="{{route('SolFon')}}"><button class="btn btn-primary btn-lg">Volver</button></a>
 </div>
 
 <br>

@@ -24,7 +24,7 @@
 
         <td><label>Número de Solicitud:</label></td>
         <td><input style="width:175px" class="form-control" type="number" id="nro_solicitud" value="{{ isset($solicitud) ? $solicitud->SF_SOLICITUD_ID : '' }}" id="idsol" readonly></td>
-        <td><a class="btn btn-primary" data-toggle="modal" data-target="#selTransferir">Consultar Aquí</a></td>
+        <td><a class="btn btn-primary" data-toggle="modal" data-target="#selTransferir">traer</a></td>
     </tr>
 
     <tr>
@@ -162,7 +162,7 @@
 </div>
 <br>
 <div class="container">
-  <a href="javascript:history.back(1)"><button class="btn btn-primary btn-lg">Volver</button></a>
+  <a href="{{route('SolFon')}}"><button class="btn btn-primary btn-lg">Volver</button></a>
 </div>
 
 <br>

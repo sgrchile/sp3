@@ -111,7 +111,7 @@
 
           <tr>
           <td><label>Nº DE CUENTA:</label></td>
-          <td><input type="text" style="width:275px" value="{{ Auth::user()->PRO_N_CUENTA}}" id="nCuenta" required class="form-control" name="rec_nrocuenta"></td>
+          <td><input type="text" style="width:275px" value="{{ Auth::user()->PRO_N_CUENTA}}" id="nCuenta" required readonly class="form-control" name="rec_nrocuenta"></td>
           </tr>
 
           <tr>

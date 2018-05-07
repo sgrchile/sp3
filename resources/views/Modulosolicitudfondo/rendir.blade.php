@@ -14,7 +14,7 @@
         </div>
         <div class="porlets-content">
           <!-- FORM INICIO -->
-          <a href={{route('verPrepRendicion')}}><button class='btn btn-primary btn-lg'> Preparación de rendición</button></a>
+          <a href={{route('verPrepRendicion')}}><button class='btn btn-primary btn-lg'> Preparar </button></a>
           <a href={{route('verConsolidar')}}><button class='btn btn-primary btn-lg'> Consolidar</button></a>
           <!-- FORM FINAL -->
 
@@ -28,6 +28,6 @@
 <br>
 <br>
 </div>
-<a href="javascript:history.back(1)"><button class="btn btn-primary btn-lg">Volver</button></a>
+<a href="{{route('SolFon')}}"><button class="btn btn-primary btn-lg">Volver</button></a>
 
 @endsection
