@@ -102,14 +102,14 @@
               </tr>
               <tr>
                 <td><label> SOLICITUD FONDO $</label></td>
-                <td><input type="date" readonly class="form-control" value="{{$sumaSF}}" /></td>
+                <td><input type="text" readonly class="form-control" value="{{$sumaSF}}" /></td>
                 <td><label> MARGEN $</label></td>
-                <td><input type="date" readonly class="form-control" value="{{$margen_pesos}}" /></td>
+                <td><input type="text" readonly class="form-control" value="{{$margen_pesos}}" /></td>
               </tr>
 
               <tr>
                 <td><label>MARGEN %</label></td>
-                <td><input type="date" readonly class="form-control" value="{{$margen_porcentual}}" /></td>
+                <td><input type="text" readonly class="form-control" value="{{$margen_porcentual}}" /></td>
               </tr>
 
               <tr>
@@ -155,8 +155,8 @@
                   </div>
                   <div class="modal-body ">
 
-                    <form id="form1" name="form1" method="post" action="solicitud_fondo.php">
-
+                    <form id="form1" name="form1" method="post" action="{{ route('insertSolFon') }}">
+                      {!! csrf_field () !!}
                       <h2 class="text-center text-uppercase">DATOS EMPRESA</h2>
                       <table class="table-condensed"  align="center" style="text-align:right" >
 
@@ -166,28 +166,42 @@
                           <td><label>TIPO DE CUENTA</label></td>
 
                           <td>
-                            <select  style="width:175px" name="sol_tipocuenta" id="sol_tipocuenta">
-                              <!--Este select se llena segun empresa con la tabla CTAE_CUENTA_EMPRESA-->
-                              <option value="Cta Corriente">Cuenta Corriente</option>
-                              <option value="Cja Chica">Caja Chica</option>
-                            </select>
+                            <!--Este select se llena segun empresa con la tabla CTAE_CUENTA_EMPRESA-->
+                            {{ Form::select('emp_tipocuenta',  App\TipoCuenta::all()
+                            ->where('TCTA_BCO','=',Auth::user()->PRO_TCTA_BCO)
+                            ->pluck('TCTA_DESC','TCTA_BCO'),
+                            ['id'=>'emp_tipocuenta','style'=>'width:175px']) }}
+                          </td>
+                        </tr>
+                        <tr>
+
+                          <td><label>NRO DE CUENTA</label></td>
+
+                          <td>
+                            <!--Este select se llena segun empresa con la tabla CTAE_CUENTA_EMPRESA-->
+                            {{ Form::select('emp_nrocuenta',  App\CuentaEmpresa::all()
+                            ->where('CTAE_EMP_ID','=',Auth::user()->PRO_EMP)->pluck('CTAE_NUMERO_CUENTA','CTAE_ID'),
+                            ['id'=>'emp_nrocuenta','style'=>'width:175px']) }}
                           </td>
                         </tr>
 
                         <tr>
                           <td><label>CAUSA:</label></td>
-                          <td><input type="text" id="causa" required="required"></td>
+                          <td>
+                            {{ Form::select('emp_causa',  App\Causa::pluck('CAU_DESC','CAU_ID'),
+                            ['id'=>'emp_causa','style'=>'width:175px','required']) }}
+                          </td>
                         </tr>
 
                         <tr>
                           <td><label>ASOCIADO A:</label></td><!--id de la orden de trabajo-->
-                          <td><input  style="width:175px" name="asoc" type="text" id="asoc" 	 required="required"/>
+                          <td><input  style="width:175px" name="emp_ot" type="text" id="emp_ot" value="{!! $orden_trabajo->OT_ID !!}" readonly required="required"/>
                           </td>
                         </tr>
 
                         <tr>
                           <td><label>SOLICITANTE:</label></td><!--id del login que esta logueado-->
-                          <td><input  style="width:175px" name="text" type="text" id="solRut"></td>
+                          <td><input  style="width:175px" name="emp_solicitante" value="{{ Auth::user()->PRO_RUN }}" readonly type="text" id="emp_solicitante"></td>
                         </tr>
 
                       </table>
@@ -198,31 +212,38 @@
 
                         <tr>
                           <td><label>RECEPTOR RUT:</label></td>
-                          <td><input type="text"></td>
+                          <td><input type="text" name="rec_id" id="rec_id" value="{{ Auth::user()->PRO_RUN }}" readonly></td>
                         </tr>
 
 
                         <tr>
-                          <td><label>CUENTA:</label></td>
-                          <td><input  style="width:175px" name="nCuentaAsoc" type="text" id="nCuentaAsoc" ></td>
+                          <td><label> TIPO CUENTA:</label></td>
+                          <td>
+                            {{ Form::select('rec_tipocuenta',App\TipoCuenta::all()
+                            ->where('TCTA_BCO','=',Auth::user()->PRO_TCTA_BCO)
+                            ->pluck('TCTA_DESC','TCTA_BCO'),null,
+                            ['id'=>'rec_tipocuenta','class'=>'form-control','style'=>'width:175px']) }}
+                          </td>
                         </tr>
 
                         <tr>
                           <td><label>BANCO:</label> </td>
                           <td>
-                            {{ Form::select('banco',App\Banco::pluck('BCO_DESC','BCO_ID'),null,['class'=>'form-control','style'=>'width:175px','placeholder'=>'Seleccione']) }}
-
+                            {{ Form::select('rec_banco',App\Banco::all()
+                            ->where('BCO_ID','=',Auth::user()->PRO_BCO_ID)
+                            ->pluck('BCO_DESC','BCO_ID'),null,
+                            ['class'=>'form-control','style'=>'width:175px']) }}
                           </td>
                         </tr>
 
                         <tr>
                           <td><label>Nº DE CUENTA:</label></td>
-                          <td><input type="text" id="nCuenta" required="required"></td>
+                          <td><input type="text" id="rec_nrocuenta" name="rec_nrocuenta" value="{{ Auth::user()->PRO_N_CUENTA }}" readonly required="required"></td>
                         </tr>
 
                         <tr>
                           <td><label>MONTO:</label></td>
-                          <td><input  style="width:175px" name="text" required="required" type="number"  min="0" id="monto"></td>
+                          <td><input  style="width:175px" name="rec_monto" required="required" type="number"  min="0" id="rec_monto"></td>
                         </tr>
 
                         <tr>
@@ -231,7 +252,7 @@
 
                         <tr>
                           <td colspan="2" align="center">
-                            <textarea  style="max-width:600px;" class="form-control" rows="5" name="desc" type="text" id="Descriocion" required/></textarea>
+                            <textarea  style="max-width:600px;" class="form-control" rows="5" name="rec_descripcion" type="text" id="rec_descripcion" required/></textarea>
                           </td>
                         </tr>
 

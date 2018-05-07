@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use DB;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 use App\SolicitudFondo;
 use App\Banco;
 use App\Proveedor;
@@ -36,12 +36,14 @@ class SolicitudFondoController extends Controller
     public function getAllOts()
     {
         $tipo_cuentas = TipoCuenta::all();
-        $cuentas = CuentaEmpresa::all();
+        $cuentas = CuentaEmpresa::all()->where('CTAE_EMP_ID','=',Auth::user()->PRO_EMP);
         $causas = Causa::all();
-        $ordenes_trabajo = OrdenTrabajo::all();
+        $ordenes_trabajo = OrdenTrabajo::all()->where('OT_PER_RUT_ENCARGADO','=',Auth::user()->PRO_RUN);
         $bancos = Banco::all();
-        $personales = Proveedor::all();
+        $personales = Proveedor::all()->where('PRO_RUN','=',Auth::user()->PRO_RUN);
         $sfondos = SolicitudFondo::all();
+
+        //dd( Auth::user());
 
         return view('Modulosolicitudfondo.solicitar')
             ->with('cuentas', $cuentas)

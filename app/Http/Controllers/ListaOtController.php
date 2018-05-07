@@ -10,6 +10,7 @@ use App\Proveedor;
 use App\SolicitudFondo;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ListaOtController extends Controller
 {
@@ -44,7 +45,7 @@ class ListaOtController extends Controller
         $ot = OrdenTrabajo::find($id);
         $clientes = Cliente::all();
         $centro_negocios = CentroNegocio::all();
-        $encargados = Proveedor::all();
+        $encargados = Proveedor::all()->where('PRO_RUN','=',Auth::user()->PRO_RUN);
         $estados = Estado::all();
         $sfondo = SolicitudFondo::where('SF_OT_ID', $id)->get();
         $sumaSF = $sfondo->map(function ($document) {

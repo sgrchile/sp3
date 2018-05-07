@@ -63,7 +63,7 @@ class OrdenTrabajoController extends Controller
             'OT_MARGEN_PORCENTUAL' => 100,
             'OT_EST_ID' => 1,
             'OT_CLI_RUT' => $cliente,
-            'OT_PER_RUT_ENCARGADO' => null,
+            'OT_PER_RUT_ENCARGADO' => Auth::user()->PRO_RUN,
             'OT_CENTRO_NEGOCIO_ID' => $centro_negocio,
         ]);
     }
