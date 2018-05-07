@@ -281,7 +281,7 @@ Route::group(['prefix' => 'modulo'], function () {
                 'uses' => 'SolicitudFondoController@putModIngDocSf',
                 'as' => 'patch.ModIngDocSf',
             ]);
-            
+
         });
 // Fin Rutas del Modulo de Solicitud de Fondo
         Route::group(['prefix' => 'cartola'], function () {

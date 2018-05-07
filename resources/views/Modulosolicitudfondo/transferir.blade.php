@@ -99,7 +99,6 @@
     </select>
     -->
     <a href={{ route('patch.modificar.espera', isset($solicitud) ? $solicitud->SF_SOLICITUD_ID : '')}}><button class="btn btn-primary btn-lg">atrás</button></a>
-    <!--<a href={{ route('post.regEgreso', isset($solicitud) ? $solicitud->SF_SOLICITUD_ID : '')}}><button class="btn btn-primary btn-lg">Transferido</button></a>-->
     <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#regEgreso" data-backdrop="static">  Transferido </button>
     </td>
     </tr>
