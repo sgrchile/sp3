@@ -124,7 +124,7 @@
             </td>
             <td>CAPACITACIONES</td>
             <td>
-              <textarea name="capacitaciones"  class="form-control" style ="max-width:175px; max-height:175px;" placeholder="Otras competencias y/o habilidades"></textarea>
+              <textarea name="capacitaciones"  class="form-control" style ="max-width:175px; max-height:175px;" placeholder="cursos, seminarios y/o especializaciones "></textarea>
             </td>
           </tr>
           <tr>
