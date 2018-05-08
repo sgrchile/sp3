@@ -10,7 +10,7 @@
       <div class="block-web">
         <div class="header">
           <div class="actions"></div>
-          <h1 class=" text-center text-uppercase" >MIS DATOS PERSONALES</h1>
+          <h1 class=" text-center text-uppercase" >MIS DATOS ADICIONALES</h1>
         </div>
         <div class="porlets-content">
           <!-- FORM INICIO -->
@@ -45,9 +45,9 @@
           <tr>
 
             <td>INSTRUMENTAL:</td>
-            <td><textarea name="instrumental" class="form-control" style ="max-width:175px; max-height:175px;" placeholder="¿Que deportes practica?"></textarea></td>
+            <td><textarea name="instrumental" class="form-control" style ="max-width:175px; max-height:175px;" placeholder="¿Que instrumentos técnicos posee?"></textarea></td>
             <td>LUGAR DE NACIMIENTO:</td>
-            <td><textarea name="lug_nac" class="form-control" style ="max-width:175px; max-height:175px;" placeholder="¿Donde nacio?"></textarea></td>
+            <td><textarea name="lug_nac" class="form-control" style ="max-width:175px; max-height:175px;" placeholder="¿Donde nació?"></textarea></td>
 
           </tr>
 
@@ -124,7 +124,7 @@
             </td>
             <td>CAPACITACIONES</td>
             <td>
-              {{Form::text('capacitaciones',null,['class' => 'form-control','style' => 'width:175px'])}}
+              {{Form::textarea('capacitaciones',null,['class' => 'form-control','style' => 'width:175px'])}}
             </td>
           </tr>
           <tr>
@@ -202,7 +202,7 @@
 
           <tr>
             <td>RESIDENCIA ACTUAL:</td>
-            <td><input type="text" name="resid_actual" readonly class="form-control"  style="width:175px;"></td>
+            <td><input type="text" name="resid_actual"  class="form-control"  style="width:175px;"></td>
 
             <td>VEHICULO:</td>
             <td>
@@ -218,22 +218,16 @@
             <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td>MODELO:</td>
-            <td><input type="text" readonly class="form-control" style="width:175px;"></td>
+            <td><input type="text"  class="form-control" style="width:175px;"></td>
           </tr>
 
           <tr>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td>MARCA:</td>
-            <td><input type="text" readonly class="form-control"  visible="false" style="width:175px;"></td>
+            <td><input type="text"  class="form-control"  visible="false" style="width:175px;"></td>
           </tr>
 
-          <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>TIPO:</td>
-            <td><input type="text" readonly  class="form-control" style="width:175px;"></td>
-          </tr>
 
           <tr>
             <td>PERTENENCIA A INSTITUCIONES:</td>
