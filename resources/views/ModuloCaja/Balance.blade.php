@@ -75,6 +75,7 @@
                         @foreach($ctas = App\CuentaContable::all()
                         ->where('FECHA_CONT','>',$desde)
                         ->where('FECHA_CONT','<',$hasta)
+                        ->where('MONTO_CTA_CONT','<>',0)
                         ->where('EMP_CTA_CONT','=',$emp->EMP_ID) as $cta)
                         <tr>
                             <td>
