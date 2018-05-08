@@ -56,16 +56,18 @@
             <td>TRABAJO EN EQUIPO:</td>
             <td>
               <select style="width:175px;" name="trab_equipo" class="form-control">
-                <option>SI</option>
-                <option>NO</option>
+                <option>Seleccione</option>
+                <option value="1">SI</option>
+                <option value="0">NO</option>
               </select>
             </td>
 
             <td>TIENE COMPUTADOR:</td>
             <td>
               <select style="width:175px;" name="compu" class="form-control">
-                <option>SI</option>
-                <option>NO</option>
+                <option>Seleccione</option>
+                <option value="1">SI</option>
+                <option value="0">NO</option>
               </select>
             </td>
           </tr>
@@ -74,16 +76,18 @@
             <td>CUENTA CON LUGAR ADECUADO DE TRABAJO:</td>
             <td>
               <select style="width:175px;" name="lug_trabajo" class="form-control">
-                <option>SI</option>
-                <option>NO</option>
+                <option>Seleccione</option>
+                <option value="1">SI</option>
+                <option value="0">NO</option>
               </select>
             </td>
 
             <td>TIENE INTERNET:</td>
             <td>
-              <select style="width:175px;" name="internet" class="form-control">
-                <option>SI</option>
-                <option>NO</option>
+              <select style="width:175px;" name="internet" class="form-control" >
+                <option>Seleccione</option>
+                <option value="1">SI</option>
+                <option value="0">NO</option>
               </select>
             </td>
 
@@ -95,7 +99,7 @@
             ['class' => 'form-control','style' => 'width:175px','placeholder'=>'Seleccione']) }}
             </td>
 
-            <td>AREA DE DESEMPEÑO</td>
+            <td>AREA A POSTULAR</td>
             <td>
               {{ Form::select('area_desemp',App\AreaDesempeño::pluck('DESC_AREA_DESEMP','ID_AREA_DESEMP'),null,
               ['class' => 'form-control','style' => 'width:175px','placeholder'=>'Seleccione']) }}
@@ -144,6 +148,7 @@
             <td>LICENCIA CONDUCIR</td>
             <td>
               <select id=lic_conducir name="lic_conducir" class="form-control" style="width:175px;">
+                <option>Seleccione</option>
                 <option value="1">SI</option>
                 <option value="0">NO</option>
               </select>
@@ -153,6 +158,7 @@
             <td>MOVILIZACION PROPIA</td>
             <td>
               <select id=mov_propia name="mov_propia" class="form-control" style="width:175px;">
+                <option>Seleccione</option>
                 <option value="1">SI</option>
                 <option value="0">NO</option>
               </select>
@@ -160,9 +166,25 @@
             <td>DISCAPACIDAD</td>
             <td>
               <select id=discapacidad name="discapacidad" class="form-control" style="width:175px;">
+                <option>Seleccione</option>
                 <option value="1">SI</option>
                 <option value="0">NO</option>
               </select>
+            </td>
+          </tr>
+          <tr>
+            <td>DICOM</td>
+            <td>
+              <select id=mov_propia name="mov_propia" class="form-control" style="width:175px;">
+                <option>Seleccione</option>
+                <option value="1">SI</option>
+                <option value="0">NO</option>
+              </select>
+            </td>
+            <td>JORNADA A POSTULAR</td>
+            <td>
+              {{ Form::select('jornada',App\Jornada::pluck('DESC_JORNADA','ID_JORNADA'),null,
+              ['class' => 'form-control','style' => 'width:175px','placeholder'=>'Seleccione']) }}
             </td>
           </tr>
           <tr>
@@ -185,6 +207,7 @@
             <td>VEHICULO:</td>
             <td>
               <select id=Selvehiculo class="form-control" style="width:175px;">
+                <option>Seleccione</option>
                 <option value="1">SI</option>
                 <option value="0">NO</option>
               </select>
