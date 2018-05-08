@@ -22,7 +22,7 @@
             <tr>
 
               <td><a href="{{route('PermisoEspecial')}}"><button class="btn btn-primary btn-lg" style="width:275px;">PERMISO ESPECIAL</button></a></td>
-              <td><a href="{{route('Adelanto')}}"><button class="btn btn-primary btn-lg" style="width:275px;">ADELANTO</button></a></td>
+              <td><a href="{{route('Adelanto')}}"><button class="btn btn-primary btn-lg" style="width:275px;">ICADELANTO</button></a></td>
 
             </tr>
 

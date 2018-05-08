@@ -57,7 +57,7 @@ class AsientoContableController extends Controller
         $asiento->COMENT_ASIENT = $request->comentario;
         $asiento->TP_MOVIMIENTO = $request->tp_movimiento;
         $asiento->FECHA_CONT = $request->fecasiento;
-        $asiento->ID_USUARIO_ASIENTO = Auth\user();
+        $asiento->ID_USUARIO_ASIENTO = Auth::user()->PRO_RUN;
         $asiento->ID_EMP_ASIENTO = $request->empresa;
         $tdebe=0;
         $thaber=0;

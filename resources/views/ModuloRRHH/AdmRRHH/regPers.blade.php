@@ -1,6 +1,8 @@
 @extends('layouts.app')
 @section('content')
 
+  {!! Html::script('js/jquery-2.1.1.min.js') !!}
+
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12">
       <div class="block-web">
@@ -31,21 +33,24 @@
               <div class="col-sm-6 col-md-4">
               <h4>RUT:</h4>
               <input type="text" class="form-control rut-container" name="rut" id="rut" placeholder="12.345.678-5" required>
+                <script src="{{asset('js/validarRUT.js')}}"></script>
               </div>
 
               <div class="col-sm-6 col-md-4">
               <h4>FECHA DE NAC.:</h4>
-              <input type="text"  class="form-control form-control-inline input-medium default-date-picker" name="fecha_nacimiento" required>
+                {{ Form::date('fecha_nacimiento',Carbon\Carbon::now()->toDateString(),
+                ['class'=>'form-control form-control-inline input-medium default-date-picker','required'] ) }}
+              <!--<input type="date"  class="form-control form-control-inline input-medium default-date-picker" name="fecha_nacimiento" placeholder="dd-mm-aaaa" required>-->
               </div>
 
               <div class="col-sm-6 col-md-4">
               <h4>CELULAR:</h4>
-              <input type="text" class="form-control" name="celular" required>
+              <input type="number" class="form-control" name="celular" required>
               </div>
 
               <div class="col-sm-6 col-md-4">
               <h4>CONTACTO SECUNDARIO:</h4>
-              <input type="text " class="form-control" name="celular_dos" required>
+              <input type="number " class="form-control" name="celular_dos" required>
               </div>
 
               <div class="col-sm-6 col-md-4">
@@ -106,6 +111,9 @@
                   <h4>PROVINCIA:</h4>
                 <select class="form-control" name="provincia" id="provincia">
                   <option>Seleccionar</option>
+                  @foreach($provincias as $provincia)
+                    <option value="{{ $provincia->PV_COD }}">{{ $provincia->PV_DESC }}</option>
+                    @endforeach
                   </select>
                   </div>
 
@@ -113,40 +121,20 @@
                     <h4>CIUDAD:</h4>
                 <select class="form-control" name="ciudad" id="ciudad">
                   <option>Seleccionar</option>
+                  @foreach($ciudades as $ciudad)
+                    <option value="{{ $ciudad->CIU_COD }}">{{ $ciudad->CIU_DESC }}</option>
+                  @endforeach
                 </select>
                 </div>
 
                 <div class="col-sm-6 col-md-4">
                 <h4>AFP:</h4>
-                  <select class="form-control" name="afp">
-                    <option>Seleccionar</option>
-                    <option value="Bansander S.A.">Bansander S.A.</option>
-                    <option value="Cuprum S.A.">Cuprum S.A.</option>
-                    <option value="Habitat S.A.">Habitat S.A.</option>
-                    <option value="Planvital S.A.">Planvital S.A.</option>
-                    <option value="Provida S.A.">Provida S.A.</option>
-                    <option value="Santa María S.A.">Santa María S.A.</option>
-                  </select>
+                  {{Form::select('afp',$afps,null,['class'=>'form-control','placeholder'=>'Seleccione'])}}
                   </div>
 
                 <div class="col-sm-6 col-md-4">
                 <h4>SEGURO MEDICO:</h4>
-                  <select class="form-control" name="seguro_medico">
-                    <option value=0>Seleccionar</option>
-                    <option value="Banmédica S.A.">Banmédica S.A.</option>
-                    <option value="Chuquicamata Ltda.">Chuquicamata Ltda.</option>
-                    <option value="Colmena Golden Cross S.A.">Colmena Golden Cross S.A.</option>
-                    <option value="Consalud S.A.">Consalud S.A.</option>
-                    <option value="Cruz Blanca S.A.">Cruz Blanca S.A.</option>
-                    <option value="Cruz del Norte Ltda.">Cruz del Norte Ltda.</option>
-                    <option value="Optima S.A.">Optima S.A.</option>
-                    <option value="Fundación Ltda.">Fundación Ltda.</option>
-                    <option value="Fusat Ltda.">Fusat Ltda.</option>
-                    <option value="Masvida S.A.">Masvida S.A.</option>
-                    <option value="Río Blanco Ltda.">Río Blanco Ltda.</option>
-                    <option value="San Lorenzo Ltda.">San Lorenzo Ltda.</option>
-                    <option value="Vida Tres S.A.">Vida Tres S.A.</option>
-                  </select>
+                  {{Form::select('seguro_medico',$salud,null,['class'=>'form-control','placeholder'=>'Seleccione'])}}
                   </div>
 
           <div class="col-sm-6 col-md-4">
@@ -188,7 +176,7 @@
 
           <div class="col-sm-6 col-md-4">
               <h4>Nº CUENTA:</h4>
-              <input type="text" class="form-control" name="nro_cuenta" required>
+              <input type="number" class="form-control" name="nro_cuenta" required>
           </div>
 
           <div class="col-sm-6 col-md-4">

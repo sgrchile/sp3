@@ -26,12 +26,11 @@
           <th>rut</th>
           <th>nombre</th>
           <th>paterno</th>
-          <th>materno</th>
-          <th>sexo</th>
+          <th>email</th>
           <th>nacionalidad</th>
           <th>dirección</th>
           <th>celular</th>
-          <th>teléfono</th>
+          <th>Cargo</th>
           <th>ACCIÓN</th>
         </tr>
         @if(!$personal->isEmpty())
@@ -42,11 +41,11 @@
         <td>{{ $consulta->PRO_NOMBRE }}</td>
         <td>{{ $consulta->PRO_APE_PAT }}</td>
         <td>{{ $consulta->PRO_APE_MAT }}</td>
-        <td>{{ $consulta->PRO_SEXO }}</td>
+        <td>{{ $consulta->PRO_EMAIL }}</td>
         <td>{{ $consulta->PRO_NACIONALIDAD }}</td>
         <td>{{ $consulta->PRO_DIRECCION }}</td>
         <td>{{ $consulta->PRO_CELULAR }}</td>
-        <td>{{ $consulta->PRO_TEL }}</td>
+        <td>{{ App\Cargo::find($consulta->PRO_CAR_ID)->CAR_DESC }}</td>
         <td><a href={{route('mostrarRh', $consulta->PRO_RUN)}}><button class="btn btn-success btn-sm">Detalles</button></a></td>
         </tr>
           @endforeach

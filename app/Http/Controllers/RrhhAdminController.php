@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Afp;
+use App\Salud;
 use Illuminate\Http\Request;
 use App\Proveedor;
 use App\Region;
@@ -22,6 +24,7 @@ use App\OfertaArticulo;
 use App\EstadoOfertaAdministrador;
 use App\EstadoOfertaProveedor;
 use App\Orientacion;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -44,6 +47,8 @@ class RrhhAdminController extends Controller
          $estado_proveedores = EstadoProveedor::all();
          $tipo_cuentas = TipoCuenta::all();
          $tipo_proveedores = TipoProveedor::all();
+         $afps = Afp::pluck('AFP_NOMBRE','AFP_ID');
+         $salud = Salud::pluck('SALUD_NOMBRE','SALUD_ID');
 
          return view('ModuloRRHH.AdmRRHH.regPers')
              ->with('bancos', $bancos)
@@ -55,7 +60,9 @@ class RrhhAdminController extends Controller
              ->with('tipo_proveedores', $tipo_proveedores)
              ->with('regiones', $regiones)
              ->with('ciudades', $ciudades)
-             ->with('provincias', $provincias);
+             ->with('provincias', $provincias)
+             ->with('afps', $afps)
+            ->with('salud', $salud);
      }
 
      public function postRegistroRh(Request $request)
