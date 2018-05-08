@@ -124,7 +124,7 @@
             </td>
             <td>CAPACITACIONES</td>
             <td>
-              {{Form::textarea('capacitaciones',null,['class' => 'form-control','style' => 'width:175px'])}}
+              <textarea name="capacitaciones"  class="form-control" style ="max-width:175px; max-height:175px;" placeholder="Otras competencias y/o habilidades"></textarea>
             </td>
           </tr>
           <tr>
@@ -216,9 +216,7 @@
 
           <tr>
             <td>COMENTARIOS</td>
-            <td>
-              {{Form::textarea('capacitaciones',null,['class' => 'form-control','style' => 'width:175px','placeholder'=>'Otras competencias y/o habilidades'])}}
-            </td>
+            <td><textarea name="comentarios"  class="form-control" style ="max-width:175px; max-height:175px;" placeholder="Otras competencias y/o habilidades"></textarea></td>
             <td>MODELO:</td>
             <td><input type="text"  class="form-control" style="width:175px;"></td>
           </tr>
