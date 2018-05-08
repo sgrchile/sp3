@@ -26,7 +26,7 @@
 
 
           </table>
-          <button class="btn btn-primary btn-lg">SOLICITAR ADELANTO</button>
+          <button class="btn btn-primary btn-lg">SOLICITAR</button>
 
           <!-- FORM FINAL -->
         </div><!--/container-->

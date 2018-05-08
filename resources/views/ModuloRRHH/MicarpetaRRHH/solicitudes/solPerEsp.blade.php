@@ -39,7 +39,7 @@
           </table>
 
           <br>
-          <button class="btn btn-primary btn-md">SOLICITUD PERMISO ESPECIAL</button>
+          <button class="btn btn-primary btn-md">SOLICITAR</button>
 
           <!-- FORM FINAL -->
 

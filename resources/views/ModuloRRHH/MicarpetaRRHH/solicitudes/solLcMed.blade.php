@@ -59,7 +59,7 @@
               </tr>
 
             </table>
-          <button class="btn btn-primary btn-lg">SOLICITUD DE LICENCIA MEDICA</button>
+          <button class="btn btn-primary btn-lg">SOLICITAR</button>
 
           <!-- FORM FINAL -->
 

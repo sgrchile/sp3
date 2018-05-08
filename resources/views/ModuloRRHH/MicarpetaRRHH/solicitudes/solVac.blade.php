@@ -30,7 +30,7 @@
 
           </table>
 
-          <button class="btn btn-primary btn-xs">SOLICITUD DE VACACIONES</button>
+          <button class="btn btn-primary btn-xs">SOLICITAR</button>
 
           <!-- FORM FINAL -->
 

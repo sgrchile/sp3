@@ -43,11 +43,11 @@
 
               <table class="table-condensed">
               <tr>
-              <td><a href="{{route('solAdelanto')}}"><button class="btn btn-primary" style="width:250px;">SOLICITUD DE ADELANTO</button></a></td>
-              <td><a href="{{route('solLM')}}"><button class="btn btn-primary" style="width:250px;">SOLICITUD DE LICENCIA MEDICA</button></a></td>
+              <td><a href="{{route('solAdelanto')}}"><button class="btn btn-primary" style="width:250px;">ADELANTO</button></a></td>
+              <td><a href="{{route('solLM')}}"><button class="btn btn-primary" style="width:250px;">LICENCIA MEDICA</button></a></td>
               <tr>
-              <td><a href="{{route('solPerEsp')}}"><button class="btn btn-primary " style="width:250px;">SOLICITAR PERMISO ESPECIAL</button></a></td>
-              <td><a href="{{route('solVac')}}"><button class="btn btn-primary " style="width:250px;">SOLICITAR VACACIONES</button></a>
+              <td><a href="{{route('solPerEsp')}}"><button class="btn btn-primary " style="width:250px;">PERMISO ESPECIAL</button></a></td>
+              <td><a href="{{route('solVac')}}"><button class="btn btn-primary " style="width:250px;">VACACIONES</button></a>
               </tr>
               </table>
               </div>
