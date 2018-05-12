@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\ActActividad;
+use Illuminate\Support\Facades\Auth;
 use App\Cliente;
 use App\Oportunidad;
 use App\Provincia;

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\AsientoContable;
+use Illuminate\Support\Facades\Auth;
 use App\AsientoCuenta;
 use App\ClaseCuenta;
 use App\Empresa;
@@ -24,6 +25,7 @@ class AsientoContableController extends Controller
         $asientos = AsientoContable::orderby('ID_ASIENTO_CONT','ASC')
             ->where('ID_EMP_ASIENTO','=',$emp->EMP_ID)
             ->paginate(20);
+        //dd($asientos);
         return view('ModuloCaja.AsientosContables')->with('asientos',$asientos);
 
     }
@@ -222,7 +224,7 @@ class AsientoContableController extends Controller
         $asient = AsientoContable::find($id);
         $asientcta = AsientoCuenta::all()->where('ID_ASIENTO_CONT','=',$id);
         //dd($asientcta);
-        foreach ($asientcta as $ascta){
+        /*foreach ($asientcta as $ascta){
             $cta = CuentaContable::find($ascta->ID_CTA_CONT);
             switch  ($cta->getAttribute('TP_CTA_CON')){
                 case 1:
@@ -316,7 +318,7 @@ class AsientoContableController extends Controller
                     //dd($monto);
                     break;
             }//FIN switch
-        }//FIN FOREACH
+        }//FIN FOREACH*/
         $asient->delete();
         return redirect()->back()->with('status_asiento', 'Asiento eliminado!');
     }

@@ -56,6 +56,7 @@
             </THEAD>
             <tbody>
             @foreach($oportunidades as $oportunidad)
+              @if($oportunidad->OPORT_EMP == Auth::user()->PRO_EMP)
                 <tr>
                   <td>{{ $oportunidad->ID_OPORTUNIDAD }}</td>
                   <td>{{ $oportunidad->NOMBRE }}</td>
@@ -78,23 +79,9 @@
                       <button class="btn btn-primary btn-xs" style="width:90px; margin-bottom:5px;">VER FICHA</button></a>
                   </td>
                 </tr>
+                @endif
             @endforeach
             </tbody>
-            </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              </tr>
           </table>
         {{ $oportunidades->links() }}
 
@@ -109,7 +96,7 @@
 
 </form>
 <br>
-<div class="container">  <a href=""><button class="btn btn-primary btn-lg">Volver</button></a></div>
+<div class="container">  <a href="{{ redirect()->back() }}"><button class="btn btn-primary btn-lg">Volver</button></a></div>
 
 <br>
 <br>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\CuentaContable;
+use Illuminate\Support\Facades\Auth;
 use App\Empresa;
 use Grpc\ServerCredentials;
 use Illuminate\Http\Request;

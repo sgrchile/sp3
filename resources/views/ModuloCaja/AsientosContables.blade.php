@@ -73,7 +73,7 @@
                   <td>{{ $asiento->FECHA_CONT }}</td>
                   <td>{{ $asiento->ID_ASIENTO_CONT }}</td>
                   <td>{{ $asiento->ID_USUARIO_ASIENTO }}  </td>
-                  <td>{{ App\TipoMovimiento::find($asiento->TP_MOVIMIENTO)->TMOV_DESC }}</td>
+                  <td>{{ $asiento->TP_MOVIMIENTO }}</td>
                   <td>{{ $asiento->CREATED_AT }}</td>
                   <td>
                     <a href="{{route('asiento.ver',$asiento->ID_ASIENTO_CONT)}}"><button class="btn btn-primary btn-md" style="margin-right:15px;" >VER</button></a>

@@ -91,7 +91,7 @@
 
 
     <div class="container">
-        <a href="{{route('AsientosContables')}}"><button class="btn btn-primary btn-lg">Volver</button></a>
+        <a href="{{redirect()->action('AsientoContableController@index')}}"><button class="btn btn-primary btn-lg">Volver</button></a>
 
     </div>
     </a>

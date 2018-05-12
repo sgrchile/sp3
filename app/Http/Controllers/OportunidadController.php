@@ -23,7 +23,7 @@ class OportunidadController extends Controller
      */
     public function index()
     {
-        $oportunidades = Oportunidad::orderBy('ID_OPORTUNIDAD','ASC')->paginate(5);
+        $oportunidades = Oportunidad::orderBy('ID_OPORTUNIDAD','ASC')->paginate(10);
         //dd($oportunidades);
         return view('ModuloCrm.listaOportunidades')->with('oportunidades',$oportunidades);
         //return view('ModuloCrm.Oportunidades');
@@ -37,7 +37,10 @@ class OportunidadController extends Controller
     public function create()
     {
         $user = Auth::user();
-        $clientes = Cliente::pluck('CLI_NOMBRE','CLI_RUT')->prepend('Seleccione');
+        $clientes = Cliente::all()
+            ->where('CLI_EMP','=',$user>PRO_EMP)
+            ->pluck('CLI_NOMBRE','CLI_RUT')
+            ->prepend('Seleccione');
         $procneg = Proceso::all()->where('PRO_JERARQUIA','=',$user->PRO_EMP );
         //dd($procneg);
         //$etapa = Etapa::all();
@@ -79,6 +82,7 @@ class OportunidadController extends Controller
         $oportunidad->setAttribute('CENT_NEGOCIO', $ceneg->getAttribute('CT_PROCESO'));
         $espro = Estado::find($request->get('estprop'));
         $oportunidad->setAttribute('EST_PROP', $espro->getAttribute('EST_DESC'));
+        $oportunidad->OPORT_EMP = Auth::user()->PRO_EMP;
 
         $oportunidad->save();
         //return view('CRM');

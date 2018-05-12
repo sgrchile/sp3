@@ -5,10 +5,13 @@ namespace App\Http\Controllers;
 
 use App\AsientoContable;
 use App\AsientoCuenta;
+use App\BonoPersonal;
 use App\CuentaContable;
+use App\Remuneracion;
 use DB;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 use App\SolicitudFondo;
 use App\Banco;
@@ -69,6 +72,7 @@ class ModuloCajaController extends Controller
             ], 400);
         }
 
+        $this->createAsiento($request->all());
       return redirect()->route('Finanzas')->with('success', 'Registro de movimiento fue creado exitosamente.');
     }
 
@@ -125,69 +129,165 @@ class ModuloCajaController extends Controller
             : $type_mov = TipoMovimiento::find(2);
         $asiento = new AsientoContable();
         $asiento->COMENT_ASIENT = $data['descripcion'];
-        $asiento->TP_MOVIMIENTO = $data['_type'];
+        $asiento->TP_MOVIMIENTO = $type_mov->TMOV_ID;
         $asiento->FECHA_CONT = $data['fecha'];
         $asiento->ID_USUARIO_ASIENTO = Auth::user()->PRO_RUN;
-        $asiento->ID_EMP_ASIENTO = $data['empresa'];
-        $asiento->TOTAL_DEBE = $data['monto'];
-        $asiento->TOTAL_HABER = $data['monto'];
+        $asiento->ID_EMP_ASIENTO = (int)$data['empresa'];
+        $asiento->TOTAL_DEBE = (int)$data['monto'];
+        $asiento->TOTAL_HABER = (int)$data['monto'];
+        //dd($type_mov->TMOV_ID);
         $asiento->save();
-        switch ($data['causa']){
+
+        switch ((int)$data['causa']){
             case 1:
                 $asicta = new AsientoCuenta();
-                $asicta->EMP_CTA_CONT = $data['empresa'];
+                //$asicta->EMP_CTA_CONT = (int)$data['empresa'];
                 $asicta->ID_ASIENTO_CONT = $asiento->ID_ASIENTO_CONT;
                 $cta = CuentaContable::all()
                     ->where('NOM_CTA_CONT','=','FONDOS POR RENDIR')
-                    ->where('EMP_CTA_CONT','=',$data['empresa'])->ID_CTA_CONT;
+                    ->where('EMP_CTA_CONT','=',$data['empresa'])->first()->ID_CTA_CONT;
+                //dd((int)$data['empresa']);
                 $asicta->ID_CTA_CONT = $cta;
                 $asicta->ASIENTO_DEBE = $data['monto'];
                 $asicta->save();
                 $asicta2 = new AsientoCuenta();
                 $asicta2->ID_ASIENTO_CONT = $asiento->ID_ASIENTO_CONT;
                 $cta_caja = CuentaContable::all()
-                    ->where('NOM_CTA_CONT','=','CAJA')
-                    ->where('EMP_CTA_CONT','=',$data['empresa'])->ID_CTA_CONT;
+                    ->where('NOM_CTA_CONT','=','BANCO')
+                    ->where('EMP_CTA_CONT','=',$data['empresa'])->first()->ID_CTA_CONT;
                 $asicta2->ID_CTA_CONT = $cta_caja;
-                $asicta2->ASIENTO_HABER = $data['monto'];
+                $asicta2->ASIENTO_HABER = (int)$data['monto'];
                 $asicta2->save();
                 break;
             case 2:
                 $asicta = new AsientoCuenta();
+                $asictav = new AsientoCuenta();
+                $asictac = new AsientoCuenta();
+                $asictam = new AsientoCuenta();
+                $asictap = new AsientoCuenta();
+                $asictasig = new AsientoCuenta();
+                $asictimp = new AsientoCuenta();
+                $asictapxp = new AsientoCuenta();
+                $asictarxp = new AsientoCuenta();
+                $asictarxp2 = new AsientoCuenta();
                 $asicta->ID_ASIENTO_CONT = $asiento->ID_ASIENTO_CONT;
-                $cta = CuentaContable::all()
-                    ->where('NOM_CTA_CONT','=','REMUNERACIONES POR PAGAR')
-                    ->where('EMP_CTA_CONT','=',$data['empresa'])->ID_CTA_CONT;
-                $asicta->ID_CTA_CONT = $cta;
-                $asicta->ASIENTO_HABER = $data['monto'];
+                $asictav->ID_ASIENTO_CONT = $asiento->ID_ASIENTO_CONT;
+                $asictac->ID_ASIENTO_CONT = $asiento->ID_ASIENTO_CONT;
+                $asictap->ID_ASIENTO_CONT = $asiento->ID_ASIENTO_CONT;
+                $asictasig->ID_ASIENTO_CONT = $asiento->ID_ASIENTO_CONT;
+                $asictimp->ID_ASIENTO_CONT = $asiento->ID_ASIENTO_CONT;
+                $asictapxp->ID_ASIENTO_CONT = $asiento->ID_ASIENTO_CONT;
+                $asictarxp->ID_ASIENTO_CONT = $asiento->ID_ASIENTO_CONT;
+                $asictarxp2->ID_ASIENTO_CONT = $asiento->ID_ASIENTO_CONT;
+                $rem = Remuneracion::all()
+                    ->where('RH_REM_EMP','=',$data['empresa']);
+                $simpt = 0;
+                $viat = 0;
+                $colt = 0;
+                $movt = 0;
+                $aport = 0;
+                $timpo =0;
+                $tliq = 0;
+                $tant = 0;
+
+                foreach ($rem as $remu){
+                    $sbase = $remu->REM_SUELDO_BASE;
+                    $grat = $remu->REM_GRATIFICACION_MENSUAL;
+                    $sbono = $remu->REM_BONO_PRODUCCION;
+                    $simp = $sbase + $grat + $sbono;
+                    $viat = $viat + $remu->REM_T_HAB_N_IMP_Y_N_TRIBUT;
+                    $aport = $aport + $remu->REM_T_LEYES_SOCIALES;
+                    //$colt = $colt + $remu->;
+                    $movt = $movt + $remu->REM_T_MOVILIZACION;
+                    $bonop = BonoPersonal::all()->where('BONOS_PRO_RUN','=',$remu->REM_PRO_RUN);
+                    $simpt = $simpt + $remu->REM_T_HAB_IMP_Y_TRIBUT;
+                    $timpo = $timpo + $remu->REM_AFC_TRAB_0 + $remu->REM_T_FONDO_PENSION;
+                    $tliq = $tliq + $remu->REM_SUELDO_LIQUIDO;
+                    $tant = $tant + $remu->REM_ANTICIPO_SUELDO;
+            }
+                $cta1 = CuentaContable::all()
+                    ->where('NOM_CTA_CONT','=','REMUNERACIONES')
+                    ->where('EMP_CTA_CONT','=',$data['empresa'])->first()->ID_CTA_CONT;
+
+                $asicta->ID_CTA_CONT = $cta1->ID_CTA_CONT;
+                $asicta->ASIENTO_DEBE = $simpt;
                 $asicta->save();
+                $cta2 = CuentaContable::all()
+                    ->where('NOM_CTA_CONT','=','BONOS  NO IMPONIBLE')
+                    ->where('EMP_CTA_CONT','=',$data['empresa'])->first()->ID_CTA_CONT;
+                $asictav->ID_CTA_CONT = $cta2;
+                $asictav->ASIENTO_DEBE = $viat;
+                $asictav->save();
+                $asictapxp->ID_CTA_CONT = CuentaContable::all()
+                    ->where('NOM_CTA_CONT','=','APORTE PATRONAL POR PAGAR')
+                    ->where('EMP_CTA_CONT','=',$data['empresa'])->first()->ID_CTA_CONT;
+                $asictapxp->ASIENTO_HABER = $aport;
+                $asictapxp->save();
+                $asictimp->ID_CTA_CONT = CuentaContable::all()
+                    ->where('NOM_CTA_CONT','=','IMPOSICIONES POR PAGAR')
+                    ->where('EMP_CTA_CONT','=',$data['empresa'])->first()->ID_CTA_CONT;
+                $asictimp->ASIENTO_HABER = $timpo;
+                $asictimp->save();
+                $asictarxp->ID_CTA_CONT = CuentaContable::all()
+                    ->where('NOM_CTA_CONT','=','REMUNERACIONES POR PAGAR')
+                    ->where('EMP_CTA_CONT','=',$data['empresa'])->first()->ID_CTA_CONT;
+                $asictarxp->ASIENTO_HABER = $tliq;
+                $asictarxp->save();
+                //asiento de pago de sueldo a banco
+                $asictarxp2->ID_CTA_CONT = CuentaContable::all()
+                    ->where('NOM_CTA_CONT','=','REMUNERACIONES POR PAGAR')
+                    ->where('EMP_CTA_CONT','=',$data['empresa'])->first()->ID_CTA_CONT;
+                $asictarxp2->ASIENTO_DEBE = $tliq;
+                $asictarxp2->save();
+                $asicta3 = new AsientoCuenta();
+                $asicta3->ID_ASIENTO_CONT = $asiento->ID_ASIENTO_CONT;
+                $asicta3->ID_CTA_CONT = CuentaContable::all()
+                    ->where('NOM_CTA_CONT','=','ANTICIPO DE REMUNERACION')
+                    ->where('EMP_CTA_CONT','=',$data['empresa'])->first()->ID_CTA_CONT;
+                $asicta3->ASIENTO_HABER = $tant;
+                $asicta3->save();
                 $asicta2 = new AsientoCuenta();
                 $asicta2->ID_ASIENTO_CONT = $asiento->ID_ASIENTO_CONT;
-                $cta_caja = CuentaContable::all()
-                    ->where('NOM_CTA_CONT','=','CAJA')
-                    ->where('EMP_CTA_CONT','=',$data['empresa'])->ID_CTA_CONT;
-                $asicta2->ID_CTA_CONT = $cta_caja;
-                $asicta2->ASIENTO_DEBE = $data['monto'];
-                $asicta2->ASIENTO_HABER = $data['monto'];
+                $cta_bco = CuentaContable::all()
+                    ->where('NOM_CTA_CONT','=','BANCO')
+                    ->where('EMP_CTA_CONT','=',$data['empresa'])->first()->ID_CTA_CONT;
+                $asicta2->ID_CTA_CONT = $cta_bco;
+                $asicta2->ASIENTO_HABER = $tliq-$tant;
                 $asicta2->save();
                 break;
             case 3:
                 $asicta = new AsientoCuenta();
                 $asicta->ID_ASIENTO_CONT = $asiento->ID_ASIENTO_CONT;
-                $cta = CuentaContable::all()
-                    ->where('NOM_CTA_CONT','=','PROVEEDORES')
-                    ->where('EMP_CTA_CONT','=',$data['empresa'])->ID_CTA_CONT;
-                $asicta->ID_CTA_CONT = $cta;
-                $asicta->ASIENTO_DEBE = $data['monto'];
-                $asicta->ASIENTO_HABER = $data['monto'];
-                $asicta->save();
+                if ($data['tipo_documento'] == 5){
+                    $cta = CuentaContable::all()
+                        ->where('NOM_CTA_CONT','=','COMPRAS EXENTAS')
+                        ->where('EMP_CTA_CONT','=',$data['empresa'])->first()->ID_CTA_CONT;
+                    $asicta->ID_CTA_CONT = $cta;
+                    $asicta->ASIENTO_DEBE = $data['monto'];
+                    $asicta->save();
+                }else{
+                    $asictacf = new AsientoCuenta();
+                    $asictacf->ID_ASIENTO_CONT = $asiento->ID_ASIENTO_CONT;
+                    $cta = CuentaContable::all()
+                        ->where('NOM_CTA_CONT','=','CREDITO FISCAL')
+                        ->where('EMP_CTA_CONT','=',$data['empresa'])->first()->ID_CTA_CONT;
+                    $asictacf->ID_CTA_CONT = $cta;
+                    $imp = $data['monto']*(0.19);
+                    $asictacf->ASIENTO_DEBE = $imp;
+                    $cta2 = CuentaContable::all()
+                        ->where('NOM_CTA_CONT','=','COMPRAS AFECTAS')
+                        ->where('EMP_CTA_CONT','=',$data['empresa'])->first()->ID_CTA_CONT;
+                    $asicta->ID_CTA_CONT = $cta2;
+                    $asicta->ASIENTO_DEBE = $data['monto']-$imp;
+                    $asicta->save();
+                    $asictacf->save();
+                }
                 $asicta2 = new AsientoCuenta();
                 $asicta2->ID_ASIENTO_CONT = $asiento->ID_ASIENTO_CONT;
                 $cta_caja = CuentaContable::all()
-                    ->where('NOM_CTA_CONT','=','CAJA')
-                    ->where('EMP_CTA_CONT','=',$data['empresa'])->ID_CTA_CONT;
+                    ->where('NOM_CTA_CONT','=','FONDOS POR RENDIR')
+                    ->where('EMP_CTA_CONT','=',$data['empresa'])->first()->ID_CTA_CONT;
                 $asicta2->ID_CTA_CONT = $cta_caja;
-                $asicta2->ASIENTO_DEBE = $data['monto'];
                 $asicta2->ASIENTO_HABER = $data['monto'];
                 $asicta2->save();
                 break;
@@ -198,7 +298,7 @@ class ModuloCajaController extends Controller
                     $asicta2->ID_ASIENTO_CONT = $asiento->ID_ASIENTO_CONT;
                     $cta_caja = CuentaContable::all()
                         ->where('NOM_CTA_CONT','=','CAJA')
-                        ->where('EMP_CTA_CONT','=',$data['empresa'])->ID_CTA_CONT;
+                        ->where('EMP_CTA_CONT','=',$data['empresa'])->first()->ID_CTA_CONT;
                     $asicta2->ID_CTA_CONT = $cta_caja;
                     $asicta2->ASIENTO_DEBE = $data['monto'];
                     $asicta2->save();
@@ -207,7 +307,7 @@ class ModuloCajaController extends Controller
                     $asicta->ID_ASIENTO_CONT = $asiento->ID_ASIENTO_CONT;
                     $cta = CuentaContable::all()
                         ->where('NOM_CTA_CONT','=','RETIROS')
-                        ->where('EMP_CTA_CONT','=',$data['empresa'])->ID_CTA_CONT;
+                        ->where('EMP_CTA_CONT','=',$data['empresa'])->first()->ID_CTA_CONT;
                     $asicta->ID_CTA_CONT = $cta;
                     $asicta->ASIENTO_HABER = $data['monto'];
                     $asicta->save();
@@ -216,7 +316,7 @@ class ModuloCajaController extends Controller
                     $asicta->ID_ASIENTO_CONT = $asiento->ID_ASIENTO_CONT;
                     $cta = CuentaContable::all()
                         ->where('NOM_CTA_CONT','=','RETIROS')
-                        ->where('EMP_CTA_CONT','=',$data['empresa'])->ID_CTA_CONT;
+                        ->where('EMP_CTA_CONT','=',$data['empresa'])->first()->ID_CTA_CONT;
                     $asicta->ID_CTA_CONT = $cta;
                     $asicta->ASIENTO_DEBE = $data['monto'];
                     $asicta->save();
@@ -224,7 +324,7 @@ class ModuloCajaController extends Controller
                     $asicta2->ID_ASIENTO_CONT = $asiento->ID_ASIENTO_CONT;
                     $cta_caja = CuentaContable::all()
                         ->where('NOM_CTA_CONT','=','CAJA')
-                        ->where('EMP_CTA_CONT','=',$data['empresa'])->ID_CTA_CONT;
+                        ->where('EMP_CTA_CONT','=',$data['empresa'])->first()->ID_CTA_CONT;
                     $asicta2->ID_CTA_CONT = $cta_caja;
                     $asicta2->ASIENTO_HABER = $data['monto'];
                     $asicta2->save();
@@ -237,8 +337,8 @@ class ModuloCajaController extends Controller
                     $asicta2 = new AsientoCuenta();
                     $asicta2->ID_ASIENTO_CONT = $asiento->ID_ASIENTO_CONT;
                     $cta_caja = CuentaContable::all()
-                        ->where('NOM_CTA_CONT','=','CAJA')
-                        ->where('EMP_CTA_CONT','=',$data['empresa'])->ID_CTA_CONT;
+                        ->where('NOM_CTA_CONT','=','BANCO')
+                        ->where('EMP_CTA_CONT','=',$data['empresa'])->first()->ID_CTA_CONT;
                     $asicta2->ID_CTA_CONT = $cta_caja;
                     $asicta2->ASIENTO_DEBE = $data['monto'];
                     $asicta2->save();
@@ -247,7 +347,7 @@ class ModuloCajaController extends Controller
                     $asicta->ID_ASIENTO_CONT = $asiento->ID_ASIENTO_CONT;
                     $cta = CuentaContable::all()
                         ->where('NOM_CTA_CONT','=','IMPOSICIONES POR PAGAR')
-                        ->where('EMP_CTA_CONT','=',$data['empresa'])->ID_CTA_CONT;
+                        ->where('EMP_CTA_CONT','=',$data['empresa'])->first()->ID_CTA_CONT;
                     $asicta->ID_CTA_CONT = $cta;
                     $asicta->ASIENTO_HABER = $data['monto'];
                     $asicta->save();
@@ -256,15 +356,15 @@ class ModuloCajaController extends Controller
                     $asicta->ID_ASIENTO_CONT = $asiento->ID_ASIENTO_CONT;
                     $cta = CuentaContable::all()
                         ->where('NOM_CTA_CONT','=','IMPOCISIONES POR PAGAR')
-                        ->where('EMP_CTA_CONT','=',$data['empresa'])->ID_CTA_CONT;
+                        ->where('EMP_CTA_CONT','=',$data['empresa'])->first()->ID_CTA_CONT;
                     $asicta->ID_CTA_CONT = $cta;
                     $asicta->ASIENTO_DEBE = $data['monto'];
                     $asicta->save();
                     $asicta2 = new AsientoCuenta();
                     $asicta2->ID_ASIENTO_CONT = $asiento->ID_ASIENTO_CONT;
                     $cta_caja = CuentaContable::all()
-                        ->where('NOM_CTA_CONT','=','CAJA')
-                        ->where('EMP_CTA_CONT','=',$data['empresa'])->ID_CTA_CONT;
+                        ->where('NOM_CTA_CONT','=','BANCO')
+                        ->where('EMP_CTA_CONT','=',$data['empresa'])->first()->ID_CTA_CONT;
                     $asicta2->ID_CTA_CONT = $cta_caja;
                     $asicta2->ASIENTO_HABER = $data['monto'];
                     $asicta2->save();
@@ -278,7 +378,7 @@ class ModuloCajaController extends Controller
                     $asicta2->ID_ASIENTO_CONT = $asiento->ID_ASIENTO_CONT;
                     $cta_caja = CuentaContable::all()
                         ->where('NOM_CTA_CONT','=','CAJA')
-                        ->where('EMP_CTA_CONT','=',$data['empresa'])->ID_CTA_CONT;
+                        ->where('EMP_CTA_CONT','=',$data['empresa'])->first()->ID_CTA_CONT;
                     $asicta2->ID_CTA_CONT = $cta_caja;
                     $asicta2->ASIENTO_DEBE = $data['monto'];
                     $asicta2->save();
@@ -287,7 +387,7 @@ class ModuloCajaController extends Controller
                     $asicta->ID_ASIENTO_CONT = $asiento->ID_ASIENTO_CONT;
                     $cta = CuentaContable::all()
                         ->where('NOM_CTA_CONT','=','PRESTAMOS POR PAGAR')
-                        ->where('EMP_CTA_CONT','=',$data['empresa'])->ID_CTA_CONT;
+                        ->where('EMP_CTA_CONT','=',$data['empresa'])->first()->ID_CTA_CONT;
                     $asicta->ID_CTA_CONT = $cta;
                     $asicta->ASIENTO_HABER = $data['monto'];
                     $asicta->save();
@@ -296,7 +396,7 @@ class ModuloCajaController extends Controller
                     $asicta->ID_ASIENTO_CONT = $asiento->ID_ASIENTO_CONT;
                     $cta = CuentaContable::all()
                         ->where('NOM_CTA_CONT','=','PRESTAMOS POR PAGAR')
-                        ->where('EMP_CTA_CONT','=',$data['empresa'])->ID_CTA_CONT;
+                        ->where('EMP_CTA_CONT','=',$data['empresa'])->first()->ID_CTA_CONT;
                     $asicta->ID_CTA_CONT = $cta;
                     $asicta->ASIENTO_DEBE = $data['monto'];
                     $asicta->save();
@@ -304,7 +404,7 @@ class ModuloCajaController extends Controller
                     $asicta2->ID_ASIENTO_CONT = $asiento->ID_ASIENTO_CONT;
                     $cta_caja = CuentaContable::all()
                         ->where('NOM_CTA_CONT','=','CAJA')
-                        ->where('EMP_CTA_CONT','=',$data['empresa'])->ID_CTA_CONT;
+                        ->where('EMP_CTA_CONT','=',$data['empresa'])->first()->ID_CTA_CONT;
                     $asicta2->ID_CTA_CONT = $cta_caja;
                     $asicta2->ASIENTO_HABER = $data['monto'];
                     $asicta2->save();
@@ -317,7 +417,7 @@ class ModuloCajaController extends Controller
                     $asicta2->ID_ASIENTO_CONT = $asiento->ID_ASIENTO_CONT;
                     $cta_caja = CuentaContable::all()
                         ->where('NOM_CTA_CONT','=','CAJA')
-                        ->where('EMP_CTA_CONT','=',$data['empresa'])->ID_CTA_CONT;
+                        ->where('EMP_CTA_CONT','=',$data['empresa'])->first()->ID_CTA_CONT;
                     $asicta2->ID_CTA_CONT = $cta_caja;
                     $asicta2->ASIENTO_DEBE = $data['monto'];
                     $asicta2->save();
@@ -325,8 +425,8 @@ class ModuloCajaController extends Controller
                     $asicta = new AsientoCuenta();
                     $asicta->ID_ASIENTO_CONT = $asiento->ID_ASIENTO_CONT;
                     $cta = CuentaContable::all()
-                        ->where('NOM_CTA_CONT','=','COMPRAS')
-                        ->where('EMP_CTA_CONT','=',$data['empresa'])->ID_CTA_CONT;
+                        ->where('NOM_CTA_CONT','=','GASTOS GENERALES')
+                        ->where('EMP_CTA_CONT','=',$data['empresa'])->first()->ID_CTA_CONT;
                     $asicta->ID_CTA_CONT = $cta;
                     $asicta->ASIENTO_HABER = $data['monto'];
                     $asicta->save();
@@ -334,8 +434,8 @@ class ModuloCajaController extends Controller
                     $asicta = new AsientoCuenta();
                     $asicta->ID_ASIENTO_CONT = $asiento->ID_ASIENTO_CONT;
                     $cta = CuentaContable::all()
-                        ->where('NOM_CTA_CONT','=','COMPRAS')
-                        ->where('EMP_CTA_CONT','=',$data['empresa'])->ID_CTA_CONT;
+                        ->where('NOM_CTA_CONT','=','GASTOS GENERALES')
+                        ->where('EMP_CTA_CONT','=',$data['empresa'])->first()->ID_CTA_CONT;
                     $asicta->ID_CTA_CONT = $cta;
                     $asicta->ASIENTO_DEBE = $data['monto'];
                     $asicta->save();
@@ -343,7 +443,7 @@ class ModuloCajaController extends Controller
                     $asicta2->ID_ASIENTO_CONT = $asiento->ID_ASIENTO_CONT;
                     $cta_caja = CuentaContable::all()
                         ->where('NOM_CTA_CONT','=','CAJA')
-                        ->where('EMP_CTA_CONT','=',$data['empresa'])->ID_CTA_CONT;
+                        ->where('EMP_CTA_CONT','=',$data['empresa'])->first()->ID_CTA_CONT;
                     $asicta2->ID_CTA_CONT = $cta_caja;
                     $asicta2->ASIENTO_HABER = $data['monto'];
                     $asicta2->save();
@@ -356,7 +456,7 @@ class ModuloCajaController extends Controller
                     $asicta2->ID_ASIENTO_CONT = $asiento->ID_ASIENTO_CONT;
                     $cta_caja = CuentaContable::all()
                         ->where('NOM_CTA_CONT','=','CAJA')
-                        ->where('EMP_CTA_CONT','=',$data['empresa'])->ID_CTA_CONT;
+                        ->where('EMP_CTA_CONT','=',$data['empresa'])->first()->ID_CTA_CONT;
                     $asicta2->ID_CTA_CONT = $cta_caja;
                     $asicta2->ASIENTO_DEBE = $data['monto'];
                     $asicta2->save();
@@ -365,7 +465,7 @@ class ModuloCajaController extends Controller
                     $asicta->ID_ASIENTO_CONT = $asiento->ID_ASIENTO_CONT;
                     $cta = CuentaContable::all()
                         ->where('NOM_CTA_CONT','=','INVENTARIO')
-                        ->where('EMP_CTA_CONT','=',$data['empresa'])->ID_CTA_CONT;
+                        ->where('EMP_CTA_CONT','=',$data['empresa'])->first()->ID_CTA_CONT;
                     $asicta->ID_CTA_CONT = $cta;
                     $asicta->ASIENTO_HABER = $data['monto'];
                     $asicta->save();
@@ -374,7 +474,7 @@ class ModuloCajaController extends Controller
                     $asicta->ID_ASIENTO_CONT = $asiento->ID_ASIENTO_CONT;
                     $cta = CuentaContable::all()
                         ->where('NOM_CTA_CONT','=','INVENTARIO')
-                        ->where('EMP_CTA_CONT','=',$data['empresa'])->ID_CTA_CONT;
+                        ->where('EMP_CTA_CONT','=',$data['empresa'])->first()->ID_CTA_CONT;
                     $asicta->ID_CTA_CONT = $cta;
                     $asicta->ASIENTO_DEBE = $data['monto'];
                     $asicta->save();
@@ -382,7 +482,7 @@ class ModuloCajaController extends Controller
                     $asicta2->ID_ASIENTO_CONT = $asiento->ID_ASIENTO_CONT;
                     $cta_caja = CuentaContable::all()
                         ->where('NOM_CTA_CONT','=','CAJA')
-                        ->where('EMP_CTA_CONT','=',$data['empresa'])->ID_CTA_CONT;
+                        ->where('EMP_CTA_CONT','=',$data['empresa'])->first()->ID_CTA_CONT;
                     $asicta2->ID_CTA_CONT = $cta_caja;
                     $asicta2->ASIENTO_HABER = $data['monto'];
                     $asicta2->save();
@@ -394,8 +494,8 @@ class ModuloCajaController extends Controller
                     $asicta2 = new AsientoCuenta();
                     $asicta2->ID_ASIENTO_CONT = $asiento->ID_ASIENTO_CONT;
                     $cta_caja = CuentaContable::all()
-                        ->where('NOM_CTA_CONT','=','CAJA')
-                        ->where('EMP_CTA_CONT','=',$data['empresa'])->ID_CTA_CONT;
+                        ->where('NOM_CTA_CONT','=','BANCO')
+                        ->where('EMP_CTA_CONT','=',$data['empresa'])->first()->ID_CTA_CONT;
                     $asicta2->ID_CTA_CONT = $cta_caja;
                     $asicta2->ASIENTO_DEBE = $data['monto'];
                     $asicta2->save();
@@ -404,7 +504,7 @@ class ModuloCajaController extends Controller
                     $asicta->ID_ASIENTO_CONT = $asiento->ID_ASIENTO_CONT;
                     $cta = CuentaContable::all()
                         ->where('NOM_CTA_CONT','=','CAPITAL')
-                        ->where('EMP_CTA_CONT','=',$data['empresa'])->ID_CTA_CONT;
+                        ->where('EMP_CTA_CONT','=',$data['empresa'])->first()->ID_CTA_CONT;
                     $asicta->ID_CTA_CONT = $cta;
                     $asicta->ASIENTO_HABER = $data['monto'];
                     $asicta->save();
@@ -413,15 +513,15 @@ class ModuloCajaController extends Controller
                     $asicta->ID_ASIENTO_CONT = $asiento->ID_ASIENTO_CONT;
                     $cta = CuentaContable::all()
                         ->where('NOM_CTA_CONT','=','CAPITAL')
-                        ->where('EMP_CTA_CONT','=',$data['empresa'])->ID_CTA_CONT;
+                        ->where('EMP_CTA_CONT','=',$data['empresa'])->first()->ID_CTA_CONT;
                     $asicta->ID_CTA_CONT = $cta;
                     $asicta->ASIENTO_DEBE = $data['monto'];
                     $asicta->save();
                     $asicta2 = new AsientoCuenta();
                     $asicta2->ID_ASIENTO_CONT = $asiento->ID_ASIENTO_CONT;
                     $cta_caja = CuentaContable::all()
-                        ->where('NOM_CTA_CONT','=','CAJA')
-                        ->where('EMP_CTA_CONT','=',$data['empresa'])->ID_CTA_CONT;
+                        ->where('NOM_CTA_CONT','=','BANCO')
+                        ->where('EMP_CTA_CONT','=',$data['empresa'])->first()->ID_CTA_CONT;
                     $asicta2->ID_CTA_CONT = $cta_caja;
                     $asicta2->ASIENTO_HABER = $data['monto'];
                     $asicta2->save();
