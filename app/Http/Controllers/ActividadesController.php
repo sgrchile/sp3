@@ -39,7 +39,7 @@ class ActividadesController extends Controller
     public function store(Request $request)
     {
         $actividad = new ActActividad();
-        dd($request);
+        //dd($request);
         $contacto=Contactos::find($request->get('contacto'));
         //dd($contacto);
         $actividad->setAttribute('DESC_ACT',$request->get('descripcion',null));
@@ -53,8 +53,7 @@ class ActividadesController extends Controller
         //dd($actividad);
         $actividad->save();
 
-
-        return redirect()->back();
+        return back()->with('success', 'Actividad creada exitosamente.');
     }
 
     /**

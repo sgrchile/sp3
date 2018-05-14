@@ -25,19 +25,21 @@
                 <td>HORA TERMINO</td>
                 <td style="width:300px;">ACCION</td>
               </tr>
-
+              @foreach($reservas as $reserva)
               <tr>
+                <td>{{ (App\Sala::find($reserva->RES_SALA))['SALA_DESC'] }}</td>
                 <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>{{ $reserva->RES_DESC }}</td>
+                <td>{{ $reserva->RES_FECHA }}</td>
+                <td>{{ $reserva->RES_HR_INICIO }}</td>
+                <td>{{ $reserva->RES_HR_FIN }}</td>
                 <td><button class="btn btn-primary btn-xs" style="margin-left:10px;">ELIMNAR</button>
-                  <a href="{{route('AgregarParticipantes')}}"<button class="btn btn-primary btn-xs" style="margin-left:10px;">AGREGAR PARTICIPANTES</button></td>
+                  <a href="{{route('AgregarParticipantes')}}"></a><button class="btn btn-primary btn-xs" style="margin-left:10px;">AGREGAR PARTICIPANTES</button></td>
               </tr>
+              @endforeach
 
             </table>
+            {!! $reservas->links() !!}
           </div>
         
 
@@ -50,7 +52,7 @@
 <br>
 <div class="container">
 
-<a href="javascript:history.back(1)"><button class="btn btn-primary btn-lg">Volver</button></a>
+<a href="{{route('ReservaDeSala')}}"><button class="btn btn-primary btn-lg">Volver</button></a>
 
 </div>
 </a>

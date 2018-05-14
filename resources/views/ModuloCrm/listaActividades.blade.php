@@ -22,7 +22,7 @@
                 </td>
                 <td><button type="button" class="btn btn-primary btn-xs">  <i class="fa fa-search" style="font-size:30px;"></i></button></td>
                 <td>
-                  <a href="{{ action('ActividadesController@create') }}"><button class="btn btn-primary btn-lg">AGREGAR</button></a>
+                  <a href="{{ route('RegActividad') }}"><button class="btn btn-primary btn-lg">AGREGAR</button></a>
                 </td>
               </tr>
             </table>
@@ -37,7 +37,6 @@
                 <td>HORA</td>
                 <td>CLIENTE</td>
                 <td>CONTACTO</td>
-                <td colspan="2">ACCION</td>
               </tr>
               </THEAD>
               <tbody>
@@ -53,20 +52,8 @@
                 </tr>
               @endforeach
               </tbody>
-              <tr>
-
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td colspan="3">
-                  <button class="btn btn-primary btn-xs" style="width:65px;" data-toggle="modal" data-target="#RegActividad" data-backdrop="false"> AGREGAR </button></td>
-              </tr>
             </table>
         {{ $actividades->links() }}
-            @include('modals.RegActividad',$actividad)
             </div>
 
 

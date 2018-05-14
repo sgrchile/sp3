@@ -91,8 +91,7 @@
 
 
     <div class="container">
-        <a href="{{redirect()->action('AsientoContableController@index')}}"><button class="btn btn-primary btn-lg">Volver</button></a>
-
+        <a href="javascript:history.back(1)"><button class="btn btn-primary btn-lg">Volver</button></a>
     </div>
     </a>
     <br>

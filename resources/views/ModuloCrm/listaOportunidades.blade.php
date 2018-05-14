@@ -96,7 +96,7 @@
 
 </form>
 <br>
-<div class="container">  <a href="{{ redirect()->back() }}"><button class="btn btn-primary btn-lg">Volver</button></a></div>
+<div class="container">  <a href="{{route('CRM') }}"><button class="btn btn-primary btn-lg">Volver</button></a></div>
 
 <br>
 <br>

@@ -18,7 +18,7 @@
                                 <tr>
                                     <td>CLIENTE:</td>
                                     <td>
-                                        {{ Form::select('cliente',App\Cliente::pluck('CLI_RUT','CLI_RUT'),null,
+                                        {{ Form::select('cliente',App\Cliente::pluck('CLI_NOMBRE','CLI_RUT'),null,
                                         ['class'=>'form-control','style'=>'width:175px','placeholder'=>'Seleccione']) }}
                                     </td>
                                     <td>DESCRIPCION:</td>
@@ -61,5 +61,5 @@
 
     </div>
     <br>
-    <div class="container">  <a href="{{ route('fichaClienteConsolidado') }}"><button class="btn btn-primary btn-lg">Volver</button></a></div>
+    <div class="container">  <a href="{{ route('CRM') }}"><button class="btn btn-primary btn-lg">Volver</button></a></div>
 @endsection

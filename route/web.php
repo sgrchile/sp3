@@ -1289,13 +1289,19 @@ Route::group(['prefix' => 'modulo'], function () {
           return view('ModuloReservaDeSala.ReservaDeSala');
       })->name('ReservaDeSala');
 
-      Route::get('Horario', function () {
-        return view('ModuloReservaDeSala.Horario');
-      })->name('horario');
+      Route::get('Horario', [
+          'uses' => 'ReservaSalaController@index',
+          'as' => 'horario',
+      ]);
 
       Route::get('Reservar', function () {
         return view('ModuloReservaDeSala.Reservar');
       })->name('Reservar');
+
+      Route::post('Reservar', [
+          'uses' => 'ReservaSalaController@store',
+          'as' => 'post.reserva',
+      ]);
 
       Route::get('sala', function () {
         return view('ModuloReservaDeSala.sala');

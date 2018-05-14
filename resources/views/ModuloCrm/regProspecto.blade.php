@@ -28,12 +28,21 @@
                                         {{ Form::text('nombre',null,['class'=>'form-control','style'=>'width:175px', 'required', 'pattern'=>'[A-Za-z]{4-16}']) }}
                                     </td>
 
-                                    <td>NOMBRE DE FANTASIA:</td>
+                                    <td><a style="color: #9A0000">* </a> APELLIDO PATERNO:</td>
                                     <td>
-                                        {{ Form::text('nombref',null,['class'=>'form-control', 'required', 'pattern'=>'[A-Za-z]{4-16}','style'=>'width:175px']) }}
+                                        {{ Form::text('ape_pat',null,['class'=>'form-control','style'=>'width:175px', 'required', 'pattern'=>'[A-Za-z]{4-16}']) }}
                                     </td>
+                                    <td><a style="color: #9A0000">* </a> APELLIDO MATERNO:</td>
+                                    <td>
+                                        {{ Form::text('ape_mat',null,['class'=>'form-control','style'=>'width:175px', 'required', 'pattern'=>'[A-Za-z]{4-16}']) }}
+                                    </td>
+
                                 </tr>
                                 <tr>
+                                    <td>DENOMINACION:</td>
+                                    <td>
+                                        {{ Form::text('denomin',null,['class'=>'form-control', 'required', 'pattern'=>'[A-Za-z]{4-16}','style'=>'width:175px']) }}
+                                    </td>
 
                                     <td><a style="color: #9A0000">* </a> IDENTIFICADOR:</td>
                                     <td>
@@ -56,10 +65,19 @@
                                     <td>
                                         {{ Form::number('telefono2',null,['class'=>'form-control','style'=>'width:175px']) }}
                                     </td>
+                                    <td> FECHA DE NACIMIENTO:</td>
+                                    <td>
+                                        {{ Form::date('fec_nac',null,['class'=>'form-control','style'=>'width:175px']) }}
+                                    </td>
 
                                 </tr>
 
                                 <tr>
+                                    <td>EMPRESA : </td>
+                                    <td>
+                                        {{ Form::text('emp',App\Empresa::pluck('EMP_DESC','EMP_ID'),null,
+                                        ['class'=>'form-control','style'=>'width:175px']) }}
+                                    </td>
 
                                     <td><a style="color: #9A0000">* </a> ACTIVIDAD COMERCIAL: </td>
                                     <td >
@@ -161,21 +179,6 @@
                                         {{ Form::select('temperatura',App\Temperatura::pluck('desc_temp','id_temp'),['class'=>'form-control','style'=>'width:175px']) }}
                                     </td>
                                 </tr>
-
-                            <!-- <script>
-                  $(document).ready(function(){
-                      $('#rubro').change(function(){
-                          $.get("{{ url('dropdown')}}",
-                              { option: $(this).val() },
-                              function(data) {
-                                  $('#proceso_id').empty();
-                                  $.each(data, function(key, element) {
-                                      $('#proceso_id').append("<option value='" + key + "'>" + element + "</option>");
-                                  });
-                              });
-                      });
-                  });
-              </script> -->
 
                             </table>
                             <button class="btn btn-primary btn-lg">REGISTRAR</button>
