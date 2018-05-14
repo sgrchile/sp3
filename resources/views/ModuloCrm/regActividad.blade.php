@@ -18,32 +18,33 @@
                                 <tr>
                                     <td>CLIENTE:</td>
                                     <td>
-                                        {{ Form::select('cliente',App\Cliente::pluck('CLI_NOMBRE','CLI_RUT'),null,
+                                        {{ Form::select('cliente',App\Cliente::all()->where('CLI_EMP','=',Auth::user()->PRO_EMP)->pluck('CLI_NOMBRE','CLI_RUT'),null,
                                         ['class'=>'form-control','style'=>'width:175px','placeholder'=>'Seleccione']) }}
+                                    </td>
+                                    <td>ACTIVIDAD</td>
+                                    <td>
+                                        {{ Form::select('tp_act',App\TpActividad::pluck('DESC_TP_ACTIVIDAD','ID_TP_ACTIVIDAD'),null,
+                                        ['class'=>'form-control','style'=>'width:175px','placeholder'=>'Seleccione']) }}
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>FECHA:</td>
+                                    <td>
+                                    {{ Form::date('fecha', \Carbon\Carbon::now(),['class'=>'form-control','style'=>'width:175px']) }}
+                                    <!--<input type="date"  style="width:175px;" class="form-control" required="required"/>-->
                                     </td>
                                     <td>DESCRIPCION:</td>
                                     <td>
                                         <input type="text" id="descripcion" name="descripcion" style="width:175px;" class="form-control" required/>
                                     </td>
                                 </tr>
+                                </tr>
                                 <tr>
-                                    <td>FECHA:</td>
-                                    <td>
-                                    {{ Form::date('fecha', \Carbon\Carbon::now()->format('d-m-Y'),['class'=>'form-control','style'=>'width:175px']) }}
-                                    <!--<input type="date"  style="width:175px;" class="form-control" required="required"/>-->
-                                    </td>
-
                                     <td>HORA:</td>
                                     <td>
                                     {{ Form::time('hora', \Carbon\Carbon::now(),['class'=>'form-control','style'=>'width:175px']) }}
                                     <!-- <input type="text"  style="width:175px;" class="form-control"required="required"/>-->
-                                    </td>
-                                </tr>
-                                </tr>
-                                <tr>
-                                    <td>CONTACTO</td>
-                                    <td>
-                                        {{ Form::select('contacto',App\Contactos::pluck('CONT_NOM','ID_CONT'),null,['class'=>'form-control','style'=>'width:175px']) }}
                                     </td>
                                 </tr>
 

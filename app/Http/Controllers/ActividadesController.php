@@ -38,22 +38,24 @@ class ActividadesController extends Controller
      */
     public function store(Request $request)
     {
-        $actividad = new ActActividad();
-        //dd($request);
-        $contacto=Contactos::find($request->get('contacto'));
-        //dd($contacto);
-        $actividad->setAttribute('DESC_ACT',$request->get('descripcion',null));
-        $actividad->setAttribute('ID_CLIENTE_ACT',$request->get('cliente',null));
-        $actividad->setAttribute('NOM_CONT_ACT', $contacto->getAttribute('CONT_NOM',null));
-        $actividad->setAttribute('CONTACT_ACT', $contacto->getAttribute('CONT_CEL',null));
-        $actividad->setAttribute('FECHA_ACT',$request->get('fecha',null));
-        $actividad->setAttribute('HORA',$request->get('hora',null));
-        $actividad->setAttribute('CREATED_AT',\Carbon\Carbon::now('CLST'));
+        //dd($request->all());
+        $createActividad = $this->createActividad($request->all());
+        if (!$createActividad) {
+            return back()->with('error', 'Actividad NO fue creada');
+        }
 
-        //dd($actividad);
-        $actividad->save();
+        return back()->with('success', 'Actividad fue creada exitosamente.');
+    }
+    public function createActividad(array $data)
+    {
 
-        return back()->with('success', 'Actividad creada exitosamente.');
+        return ActActividad::create([
+            'DESC_ACT' => $data['descripcion'],
+            'FECHA_ACT' => $data['fecha'],
+            'HORA' => $data['hora'],
+            'ID_CLIENTE_ACT' => $data['cliente'],
+            'TP_ACTIVIDAD' => (int)$data['tp_act'],
+        ]);
     }
 
     /**

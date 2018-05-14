@@ -18,7 +18,7 @@
             <tr>
               <td>NOMBRE:</td>
               <td>
-                {{ Form::text('nombre', Auth::user()->PRO_NOMBRE ,['class'=>'form-control','required','pattern'=>'[A-Za-z]{4-16}']) }}
+                {{ Form::text('nombre', null ,['class'=>'form-control','required','pattern'=>'[A-Za-z]{4-16}']) }}
                 <!--<input name="nombre" type="text"  style="width:175px;" class="form-control" id="nombre" pattern="[A-Za-z]{4-16}" required="required"/>-->
               </td>
               <td>CLIENTE:</td>
@@ -46,21 +46,21 @@
             <tr>
               <td>PROBABILIDAD:</td>
               <td>
-                {{ Form::selectRange('number', 10, 100,['class'=>'form-control','readOnly']) }}
+                {{ Form::text('probabilidad',null,['id'=>'probabilidad','class'=>'form-control','readOnly','style'=>'width:175px']) }}
               </td>
               <td>TASA:</td>
               <td>
-                {{ Form::number('tasa',null,['class'=>'form-control']) }}
+                {{ Form::number('tasa',null,['class'=>'form-control','style'=>'width:175px']) }}
               </td>
             </tr>
             <tr>
               <td>MONEDA: </td>
               <td >
-                {!! Form::select('moneda',$moneda,null,['id'=>'moneda']) !!}
+                {!! Form::select('moneda',$moneda,null,['id'=>'moneda','style'=>'width:175px','class'=>'form-control']) !!}
               </td>
               <td>TOTAL estimado: </td>
               <td >
-                {{ Form::number('total',null,['class'=>'form-control', 'required']) }}
+                {{ Form::number('total',null,['class'=>'form-control', 'required','style'=>'width:175px']) }}
                 <!--<input  type="text"  name="total" id="total" style="width:175px;" class="form-control" required/>-->
               </td>
             </tr>
@@ -99,7 +99,7 @@
           $("#procneg").on("change", function(){
               let procneg = $(this).val();
               $("#etapa").empty();
-              $.get("https://plataforma.sgrchile.com/api/etapa/" + procneg).done(function(data){
+              $.get("http://127.0.0.1:8000/api/etapa/" + procneg).done(function(data){
                   if (data !== null){
                       if (Object.keys(data).length > 0 ){
                           $.each(data, function( index, value ){
@@ -111,7 +111,11 @@
                   }
               });
           });
-
+          $("#etapa").on("change", function(){
+              let etapa = $(this).val();
+              alert(etapa);
+              
+          });
       });
   </script>
 

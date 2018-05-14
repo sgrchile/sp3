@@ -46,7 +46,7 @@ class OportunidadController extends Controller
         //$etapa = Etapa::all();
         //dd($etapa);
         $moneda = Moneda::pluck('DESC_MONEDA', 'ID_MONEDA')->prepend('Seleccione');
-        $centneg = CentroNegocio::pluck('CT_PROCESO', 'CT_ID')->prepend('Seleccione');
+        $centneg = CentroNegocio::all()->where('CT_EMP_ID','=',Auth::user()->PRO_EMP)->pluck('CT_PROCESO', 'CT_ID')->prepend('Seleccione');
         $estprop = Estado::pluck('EST_DESC', 'EST_ID')->prepend('Seleccione');
         //dd($procneg);
 
@@ -62,30 +62,32 @@ class OportunidadController extends Controller
      */
     public function store(Request $request)
     {
-        $oportunidad = new Oportunidad();
+        $create = $this->createOportunidad($request->all());
+        if (!$create) {
+            return back()->with('error', 'Oportunidad NO fue creada');
+        }
 
-        $oportunidad->setAttribute('NOMBRE', $request->get('nombre', null));
-        $cliente = Cliente::pluck('CLI_RUT', 'CLI_RUT');
-        $oportunidad->setAttribute('ID_CLIENTE', $cliente{$request->get('clientes')});
-        $proneg = Proceso::find($request->get('procneg'));
-        $oportunidad->setAttribute('PROC_NEGOCIO', $proneg->getAttribute('PRO_DESC'));
-        $etap = Etapa::find($request->get('etapa'));
-        $oportunidad->setAttribute('ETAPA', $etap->getAttribute('DESC_ETAPA'));
-        $oportunidad->setAttribute('PROBABILIDAD', $request->get('probabilidad', null));
-        $oportunidad->setAttribute('TASA', $request->get('tasa', null));
-        $mon = Moneda::find($request->get('moneda'));
-        $oportunidad->setAttribute('MONEDA', $mon->getAttribute('DESC_MONEDA'));
-        $oportunidad->setAttribute('TOTAL', $request->get('total', null));
-        $oportunidad->setAttribute('FEC_INGRESO', $request->get('fechingreso', null));
-        $oportunidad->setAttribute('FEC_CIERRE', $request->get('fechcierre', null));
-        $ceneg = CentroNegocio::find($request->get('centneg'));
-        $oportunidad->setAttribute('CENT_NEGOCIO', $ceneg->getAttribute('CT_PROCESO'));
-        $oportunidad->setAttribute('SIG_PASO', $request->getAttribute('sig_paso'));
-        $oportunidad->OPORT_EMP = Auth::user()->PRO_EMP;
+        return back()->with('success', 'Oportunidad fue creada exitosamente.');
 
-        $oportunidad->save();
-        //return view('CRM');
-        return redirect()->back();
+    }
+
+    public function createOportunidad(array $data)
+    {
+
+        return Oportunidad::create([
+            'NOMBRE' => $data['nombre'],
+            'ID_CLIENTE' => $data['clientes'],
+            'PROC_NEGOCIO' => $data['procneg'],
+            'ETAPA' => $data['etapa'],
+            'PROBABILIDAD' => $data['probabilidad'],
+            'TASA' => $data['tasa'],
+            'MONEDA' => $data['moneda'],
+            'TOTAL' => $data['total'],
+            'FEC_INGRESO' => $data['fechingreso'],
+            'FEC_CIERRE' => $data['fechcierre'],
+            'CENT_NEGOCIO' => $data['centneg'],
+            'SIG_PASO' => $data['sig_paso'],
+        ]);
     }
 
     /**

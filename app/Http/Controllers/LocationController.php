@@ -48,4 +48,9 @@ class LocationController extends Controller
         return response()
             ->json(AreaServicio::where('ID_AREA', '=', (int) $serv_req)->get(), 200);
     }
+    public function getprob($etapa)
+    {
+        return response()
+            ->json(Etapa::find($etapa)->PORCENTAJE, 200);
+    }
 }

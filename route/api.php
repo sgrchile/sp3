@@ -75,3 +75,7 @@ Route::get('/area/{serv_req}', [
     'uses' => 'LocationController@getServ',
     'as' => 'get.area',
 ]);
+Route::get('/probabilidad/{etapa}', [
+    'uses' => 'LocationController@getprob',
+    'as' => 'get.prob',
+]);

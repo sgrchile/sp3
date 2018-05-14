@@ -13,8 +13,6 @@ class TpActividad extends Model
      */
     protected $table = 'TP_ACTIVIDAD';
 
-    protected $fillable = 'DESC_TP_ACTIVIDAD';
-
     /**
      * Llave primaria de la tabla
      *
