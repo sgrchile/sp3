@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\AreaServicio;
 use App\Etapa;
 use App\Proceso;
 use App\Region;
@@ -41,5 +42,10 @@ class LocationController extends Controller
     {
         return response()
             ->json(Etapa::where('ID_PROCESO', '=', (int) $proceso)->get(), 200);
+    }
+    public function getServ($serv_req)
+    {
+        return response()
+            ->json(AreaServicio::where('ID_AREA', '=', (int) $serv_req)->get(), 200);
     }
 }

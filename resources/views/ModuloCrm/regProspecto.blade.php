@@ -28,20 +28,20 @@
                                         {{ Form::text('nombre',null,['class'=>'form-control','style'=>'width:175px', 'required', 'pattern'=>'[A-Za-z]{4-16}']) }}
                                     </td>
 
-                                    <td><a style="color: #9A0000">* </a> APELLIDO PATERNO:</td>
+                                    <td> APELLIDO PATERNO:</td>
                                     <td>
-                                        {{ Form::text('ape_pat',null,['class'=>'form-control','style'=>'width:175px', 'required', 'pattern'=>'[A-Za-z]{4-16}']) }}
+                                        {{ Form::text('ape_pat',null,['class'=>'form-control','style'=>'width:175px', 'pattern'=>'[A-Za-z]{4-16}']) }}
                                     </td>
-                                    <td><a style="color: #9A0000">* </a> APELLIDO MATERNO:</td>
+                                    <td> APELLIDO MATERNO:</td>
                                     <td>
-                                        {{ Form::text('ape_mat',null,['class'=>'form-control','style'=>'width:175px', 'required', 'pattern'=>'[A-Za-z]{4-16}']) }}
+                                        {{ Form::text('ape_mat',null,['class'=>'form-control','style'=>'width:175px', 'pattern'=>'[A-Za-z]{4-16}']) }}
                                     </td>
 
                                 </tr>
                                 <tr>
                                     <td>DENOMINACION:</td>
                                     <td>
-                                        {{ Form::text('denomin',null,['class'=>'form-control', 'required', 'pattern'=>'[A-Za-z]{4-16}','style'=>'width:175px']) }}
+                                        {{ Form::text('denomin',null,['class'=>'form-control', 'pattern'=>'[A-Za-z]{4-16}','style'=>'width:175px']) }}
                                     </td>
 
                                     <td><a style="color: #9A0000">* </a> IDENTIFICADOR:</td>
@@ -52,7 +52,7 @@
                                     </td>
                                     <td><a style="color: #9A0000">* </a> TELEFONO:</td>
                                     <td>
-                                        {{ Form::number('telefono',null,['class'=>'form-control','style'=>'width:175px']) }}
+                                        {{ Form::number('telefono',null,['class'=>'form-control','style'=>'width:175px','required']) }}
                                     </td>
                                 </tr>
                                 <tr>
@@ -61,9 +61,9 @@
                                         {{ Form::email('email', null,['class'=>'form-control','placeholder'=>'example@gmail.com','required','style'=>'width:175px']) }}
                                     </td>
 
-                                    <td> TELEFONO 2:</td>
+                                    <td><a style="color: #9A0000">* </a> TELEFONO 2:</td>
                                     <td>
-                                        {{ Form::number('telefono2',null,['class'=>'form-control','style'=>'width:175px']) }}
+                                        {{ Form::number('telefono2',null,['class'=>'form-control','required','style'=>'width:175px']) }}
                                     </td>
                                     <td> FECHA DE NACIMIENTO:</td>
                                     <td>
@@ -75,37 +75,26 @@
                                 <tr>
                                     <td>EMPRESA : </td>
                                     <td>
-                                        {{ Form::text('emp',App\Empresa::pluck('EMP_DESC','EMP_ID'),null,
+                                        {{ Form::text('emp',null,
                                         ['class'=>'form-control','style'=>'width:175px']) }}
                                     </td>
-
-                                    <td><a style="color: #9A0000">* </a> ACTIVIDAD COMERCIAL: </td>
-                                    <td >
-                                        {{ Form::text('actcomercial',null,['class'=>'form-control', 'required','style'=>'width:175px']) }}
-                                    </td>
-
-                                    <td>SITIO WEB: </td>
+                                    <td> SITIO WEB: </td>
                                     <td >
                                         {{ Form::text('sitioweb',null,['class'=>'form-control', 'required','style'=>'width:175px']) }}
+                                    </td>
+                                    <td> CARGO : </td>
+                                    <td >
+                                        {{ Form::select('cargo',$cargos,null,['class'=>'form-control','style'=>'width:175px']) }}
                                     </td>
 
                                 </tr>
 
                                 <tr>
-                                    <td>GLOSA: </td>
-                                    <td >
-                                        {{ Form::text('glosa',null,['class'=>'form-control','class'=>'form-control', 'required','style'=>'width:175px']) }}
-                                    </td>
 
                                     <td>RUBRO:</td>
                                     <td>
                                         {!! Form::select('rubro',$rubro,null,['class'=>'form-control','style'=>'width:175px']) !!}
                                     </td>
-
-                                </tr>
-
-                                <tr>
-
                                     <td>SUB RUBRO:</td>
                                     <td>
                                         {!! Form::select('subrubro',$subrubro,null ,['class'=>'form-control','style'=>'width:175px','placeholder'=>'Seleccione']) !!}
@@ -116,36 +105,57 @@
                                     </td>
 
                                 </tr>
-                                <tr>
-
-                                    <td>BANCO:</td>
-                                    <td>
-                                        {!! Form::select('banco',$banco,null,['class'=>'form-control','id'=>'banco','style'=>'width:175px']) !!}
-                                    </td>
-
-                                    <td>TIPO DE CUENTA:</td>
-                                    <td>
-                                        {!! Form::select('tipocuenta',$tipocuenta,null,['class'=>'form-control','id'=>'tipocuenta','style'=>'width:175px']) !!}
-                                    </td>
-
-                                </tr>
 
                                 <tr>
-
-                                    <td>Nº DE CUENTA: </td>
+                                    <td>ZIP:</td>
                                     <td >
-                                        {{ Form::number('nrocuenta',null,['class'=>'form-control','required','style'=>'width:175px']) }}
+                                        {{ Form::text('zip',null,['class'=>'form-control', 'required','style'=>'width:175px']) }}
                                     </td>
-
-                                    <td>ORIGEN: </td>
+                                    <td>CASILLA : </td>
                                     <td >
-                                        {{ Form::text('origen',null,['class'=>'form-control', 'required','style'=>'width:175px']) }}
+                                        {{ Form::text('casilla',null,['class'=>'form-control','class'=>'form-control', 'required','style'=>'width:175px']) }}
+                                    </td>
+                                    <td><a style="color: #9A0000">* </a> DIRECCION:</td>
+                                    <td>
+                                        {{ Form::text('direccion',null,['class'=>'form-control', 'required','style'=>'width:175px']) }}
                                     </td>
                                 </tr>
-
-
                                 <tr>
-
+                                    <td>AREA :</td>
+                                    <td>
+                                        <select name="area" required class="form-control" id="area">
+                                            <option value="">Seleccione</option>
+                                            @foreach($area as $proc)
+                                                <option value="{{ $proc->ID_AREA }}">{{ $proc->DESC_AREA }}</option>
+                                            @endforeach
+                                        </select>
+                                    </td>
+                                    <td>SERVICIO REQUERIDO :</td>
+                                    <td>
+                                        <select name="serv_req" required class="form-control" id="serv_req" >
+                                            <option value="">Seleccione</option>
+                                        </select>
+                                    </td>
+                                    <td>PROCEDENCIA :</td>
+                                    <td>
+                                        {!! Form::select('procedencia',$proc,null,['class'=>'form-control','id'=>'procedencia','style'=>'width:175px']) !!}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>CATEGORIA :</td>
+                                    <td>
+                                        {!! Form::select('categoria',$categoria,null,['class'=>'form-control','id'=>'categoria','style'=>'width:175px']) !!}
+                                    </td>
+                                    <td>URGENCIA : </td>
+                                    <td >
+                                        {{ Form::text('urgencia',null,['class'=>'form-control','style'=>'width:175px']) }}
+                                    </td>
+                                    <td> TEMPERATURA:</td>
+                                    <td>
+                                        {{ Form::select('temperatura',App\Temperatura::pluck('desc_temp','id_temp'),null,['class'=>'form-control','style'=>'width:175px']) }}
+                                    </td>
+                                </tr>
+                                <tr>
                                     <td>PAIS:</td>
                                     <td>
                                         {!! Form::select('pais',$pais,null,['class'=>'form-control','id'=>'pais','style'=>'width:175px']) !!}
@@ -154,30 +164,29 @@
                                     <td>
                                         {!! Form::select('region',$region,null,['class'=>'form-control','id'=>'region','style'=>'width:175px']) !!}
                                     </td>
-
-                                </tr>
-
-                                <tr>
-
                                     <td>PROVINCIA:</td>
                                     <td>
                                         {!! Form::select('provincia',$provincia,null,['class'=>'form-control','id'=>'provincia','style'=>'width:175px']) !!}
                                     </td>
+                                </tr>
 
+                                <tr>
                                     <td>CIUDAD:</td>
                                     <td>
                                         {!! Form::select('ciudad',$ciudad,null,['class'=>'form-control','id'=>'ciudad','style'=>'width:175px']) !!}
                                     </td>
+                                    <td>RUT COTIZACION :</td>
+                                    <td>
+                                        {!! Form::text('rut_cot',null,['class'=>'form-control','id'=>'rut_cot','style'=>'width:175px']) !!}
+                                    </td>
+                                    <td>COMENTARIOS :</td>
+                                    <td>
+                                        {!! Form::text('comentario',null,['class'=>'form-control','id'=>'comentario','style'=>'width:175px']) !!}
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td><a style="color: #9A0000">* </a> DIRECCION:</td>
-                                    <td>
-                                        {{ Form::text('direccion',null,['class'=>'form-control', 'required','style'=>'width:175px']) }}
-                                    </td>
-                                    <td><a style="color: #9A0000">* </a> TEMPERATURA:</td>
-                                    <td>
-                                        {{ Form::select('temperatura',App\Temperatura::pluck('desc_temp','id_temp'),['class'=>'form-control','style'=>'width:175px']) }}
-                                    </td>
+
+
                                 </tr>
 
                             </table>
@@ -191,10 +200,28 @@
                 </div><!--/block-web-->
             </div><!--/col-md-12-->
         </div><!--/row-->
-
-
-
     </div>
     <br>
     <div class="container">  <a href="{{ route('CRM') }}"><button class="btn btn-primary btn-lg">Volver</button></a></div>
+
+    <script  type='text/javascript'>
+        $(document).ready(function(){
+            $("#area").on("change", function(){
+                let serv_req = $(this).val();
+                $("#serv_req").empty();
+                $.get("https://plataforma.sgrchile.com/api/area/" + serv_req).done(function(data){
+                    if (data !== null){
+                        if (Object.keys(data).length > 0 ){
+                            $.each(data, function( index, value ){
+                                let option = "<option value='"+ value.ID_AREA_SERV + "'>" + value.DESC_AREA_SERV+ "</option>";
+                                $("#serv_req").append(option);
+                            });
+                            $("#serv_req").trigger("change");
+                        }
+                    }
+                });
+            });
+
+        });
+    </script>
 @endsection

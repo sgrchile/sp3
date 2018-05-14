@@ -4,21 +4,21 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Categoria extends Model
+class Cargos extends Model
 {
     /**
      * El nombre de la tabla en la BD
      *
      * @var string
      */
-    protected $table = "CATEGORIA";
+    protected $table = "CARGOS";
 
     /**
      * Llave primaria de la tabla
      *
      * @var string
      */
-    protected $primaryKey = "ID_CATEGORIA";
+    protected $primaryKey = "ID_CARGO";
 
     /**
      * Declara que la tabla no tenga timestamps

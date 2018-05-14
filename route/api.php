@@ -71,3 +71,7 @@ Route::get('/etapa/{proceso}', [
     'uses' => 'LocationController@getEtapa',
     'as' => 'get.etapa',
 ]);
+Route::get('/area/{serv_req}', [
+    'uses' => 'LocationController@getServ',
+    'as' => 'get.area',
+]);

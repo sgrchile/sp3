@@ -93,10 +93,6 @@
     </div><!--/col-md-12-->
   </div><!--/row-->
 
-  <script>
-
-  </script>
-
 
   <script  type='text/javascript'>
       $(document).ready(function(){
