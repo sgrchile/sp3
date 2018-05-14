@@ -113,8 +113,13 @@
           });
           $("#etapa").on("change", function(){
               let etapa = $(this).val();
-              alert(etapa);
-              
+              $("#probabilidad").empty();
+              $.get("http://127.0.0.1:8000/api/probabilidad/" + etapa).done(function(data){
+                  if (data !== null){
+                      $("#probabilidad").val(data);
+
+                  }
+              });
           });
       });
   </script>
