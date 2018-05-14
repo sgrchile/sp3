@@ -363,7 +363,7 @@ Route::group(['prefix' => 'modulo'], function () {
                     'as' => 'result',
                     ]);
 
-            Route::post('/', [
+            Route::post('/Registrar', [
                  'uses' => 'ClientesController@store',
                 'as' => 'post.clientes',
             ]);
@@ -1053,6 +1053,10 @@ Route::group(['prefix' => 'modulo'], function () {
         Route::get('/Clientes', [
             'uses' => 'ClientesController@index',
             'as' => 'clientes',
+        ]);
+        Route::post('/Registrar', [
+            'uses' => 'ClientesController@store',
+            'as' => 'post.clientes',
         ]);
 
         Route::get('/Prospectos', [

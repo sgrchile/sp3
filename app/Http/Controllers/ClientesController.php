@@ -106,11 +106,11 @@ class ClientesController extends Controller
             $cliente->save();
             //dd("true");
             //return view('ModuloOt.result')->with('success', true);
-            return redirect()->route('regCliente')->with('success', "El cliente ha sido creado exitosamente.");
+            return back()->with('success', 'Cliente creado exitosamente.');
             //return redirect()->route('result')->with('success', true);
         }else{
             //dd("false");
-            return redirect()->route('regCliente')->with('error', "El CLIENTE ya existe.");
+            return back()->with('error', 'Cliente NO creado');
             //return view('ModuloOt.result')->with('success', false);
         }
 
