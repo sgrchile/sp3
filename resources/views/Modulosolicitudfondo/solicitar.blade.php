@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
+    {!! Html::script('js/jquery-2.1.1.min.js') !!}
 <div class="row">
   <div class="col-xs-12 col-md-12 col-sm-12">
     <div class="block-web">
@@ -19,7 +20,7 @@
           {{ csrf_field() }}
 
           <h4 class="text-center text-uppercase">DATOS EMPRESA</h4>
-          <table class="table-condensed"  align="center" style="text-align:right" >
+          <table class="table-condensed form-group text-right text-uppercase"  align="center" style="text-align:right" >
           <tr>
 
           <td><label>TIPO DE CUENTA</label></td>
@@ -49,9 +50,10 @@
           <td><label>CAUSA:</label></td>
           <td>
 
-          <select  style="width:275px" name="emp_causa" class="form-control" id="sol_tipocuenta" >
+          <select  style="width:275px" name="emp_causa" class="form-control" id="emp_causa" >
         <!--Este select se llena segun empresa con la tabla CTAE_CUENTA_EMPRESA-->
           <!-- CAUSA 1 ES IGUAL A OT-->
+              <option value="">Seleccione</option>
           @foreach($causas as $causa)
           	<option value="{{ $causa->CAU_ID }}">{{ $causa->CAU_DESC }}</option>
           @endforeach
@@ -59,20 +61,24 @@
           </td>
           </tr>
 
-          <tr>
-          <td><label>ASOCIADO A:</label></td>
-          <!--id de la orden de trabajo, esto solo aplica cuando la causa es igual a 1 y cuando no aplica se rellena el valor con 0,
-          agregar una  condcicion para saber cuando es orden de trabajo, de otra manera este control no se muestra
-          -->
+          <tr id="asociado">
 
-          <td align="left"><input  style="width:275px" id="ot" name="emp_ot" class="form-control" readonly></td>
-          <td><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#selOt" >Seleccionar OT</button></td>
-          </tr>
-          <tr>
-          <td><label>SOLICITANTE:</label></td><!--id del login que esta logueado-->
+              <td><label>ASOCIADO A:</label></td>
+              <!--id de la orden de trabajo, esto solo aplica cuando la causa es igual a 1 y cuando no aplica se rellena el valor con 0,
+              agregar una  condcicion para saber cuando es orden de trabajo, de otra manera este control no se muestra
+              -->
+              <td align="left"><input  style="width:275px" id="ot" name="emp_ot" class="form-control" readonly></td>
+              <td><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#selOt" >Seleccionar OT</button></td>
 
-          <td><input  style="width:275px" type="text" class="form-control" id="solRut" name="emp_solicitante" value={{ Auth::user()->PRO_RUN }} readonly></td>
           </tr>
+
+              <tr>
+                  <td><label>SOLICITANTE:</label></td><!--id del login que esta logueado-->
+
+                  <td>
+                      <input  style="width:275px" type="text" class="form-control" id="solRut" name="emp_solicitante" value={{ Auth::user()->PRO_RUN }} readonly>
+                  </td>
+              </tr>
 
           </table>
 
@@ -130,7 +136,7 @@
           </tr>
 
           <tr>
-          <td colspan="2" align="center"> <input class="btn btn-primary btn-lg" name="adsol_boton" type="submit" id="adsol_boton" value="Solicitar" /></td>
+          <td colspan="2" align="center"> <input class="btn btn-primary btn-lg"  onclick="return confirm('¿Desea Hacer la Solicitud de fondos?')" name="adsol_boton" type="submit" id="adsol_boton" value="Solicitar" /></td>
           </tr>
 
           </table>
@@ -226,7 +232,28 @@
   </div><!--/col-md-12-->
 </div><!--/row-->
 
+<script  type='text/javascript'>
+    $(document).ready(function(){
+        $("#emp_causa").on("change", function(){
+            let causa = $(this).val();
 
+            if (causa == 2 || causa == 5 || causa == 7){
+                $("#ot").empty();
+                $('#asociado').hide();
+            }else{
+                $('#asociado').show();
+            }
+        });
+        $("#mostrar").on( "click", function() {
+            $('#target').show(); //muestro mediante id
+            $('.target').show(); //muestro mediante clase
+        });
+        $("#ocultar").on( "click", function() {
+            $('#target').hide(); //oculto mediante id
+            $('.target').hide(); //muestro mediante clase
+        });
+    });
+</script>
 
 
 @endsection

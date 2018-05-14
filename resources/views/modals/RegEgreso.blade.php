@@ -68,7 +68,7 @@
 
                         <tr>
                             <td><label>FOLIO:</label></td>
-                            <td><input type="text" style="width:175px;" class="form-control" name="folio" required></td>
+                            <td><input type="text" style="width:175px;" value="{{isset($solicitud) ? $solicitud->SF_SOLICITUD_ID : ''}}" class="form-control" name="folio" required></td>
                         </tr>
 
                         <tr>
@@ -100,7 +100,7 @@
                         </tr>
                         <tr>
                             <td colspan="2" align="center">
-                                <input class="btn btn-primary btn-lg" name="egreso_boton" type="submit" id="egreso_boton" value="REGISTRAR EGRESO" /></td>
+                                <input class="btn btn-primary btn-lg" onclick="return confirm('¿Esta Seguro?')" name="egreso_boton" type="submit" id="egreso_boton" value="REGISTRAR EGRESO" /></td>
                             </td>
                         </tr>
                     </table>

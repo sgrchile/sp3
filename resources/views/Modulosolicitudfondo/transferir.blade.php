@@ -23,7 +23,7 @@
     <tr>
 
         <td><label>Número de Solicitud:</label></td>
-        <td><input style="width:175px" class="form-control" type="number" id="nro_solicitud" value="{{ isset($solicitud) ? $solicitud->SF_SOLICITUD_ID : '' }}" id="idsol" readonly></td>
+        <td><input style="width:175px" class="form-control" required type="number" id="nro_solicitud" value="{{ isset($solicitud) ? $solicitud->SF_SOLICITUD_ID : '' }}" id="idsol" readonly></td>
         <td><a class="btn btn-primary" data-toggle="modal" data-target="#selTransferir">traer</a></td>
     </tr>
 
@@ -96,10 +96,12 @@
     <option value="1" data-toggle="modal" data-target="#regEgreso">Transferido</option>
     <option value="2">En espera</option>
 
+<a href={{ route('patch.modificar.espera', isset($solicitud) ? $solicitud->SF_SOLICITUD_ID : '')}}><button class="btn btn-primary btn-lg">atrás</button></a>
     </select>
     -->
-    <a href={{ route('patch.modificar.espera', isset($solicitud) ? $solicitud->SF_SOLICITUD_ID : '')}}><button class="btn btn-primary btn-lg">atrás</button></a>
-    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#regEgreso" data-backdrop="static">  Transferido </button>
+
+    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#regEgreso"
+            data-solicitud-id="{{ isset($solicitud) ? $solicitud->SF_SOLICITUD_ID : ''}}" data-backdrop="static">  Transferido </button>
     </td>
     </tr>
   </table>
@@ -174,4 +176,11 @@ function fAgrega() {
 </div>
 
 <br>
+    <script>
+        $estado = Estado::where('EST_DESC', 'POR RENDIR')->first();
+
+        $updateTransferir = SolicitudFondo::findOrFail($id)->update([
+            'SF_EST' => $estado->EST_ID,
+        ]);
+    </script>
 @endsection

@@ -88,7 +88,7 @@
 
         </table>
 
-        <button class="btn btn-primary btn-lg">RENDIR</button>
+        <button onclick="return confirm('¿Desea Hacer la Rendicion de fondos?')" class="btn btn-primary btn-lg">RENDIR</button>
 
         <button class="btn btn-primary btn-lg">INGRESAR DOCUMENTOS </button>
 

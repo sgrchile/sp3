@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
+    {!! Html::script('js/jquery-2.1.1.min.js') !!}
 <div class="row">
   <div class="col-xs-12 col-md-12 col-sm-12">
     <div class="block-web">
@@ -23,8 +24,8 @@
     <tr>
 
         <td><label>Número de Solicitud:</label></td>
-        <td><input style="width:175px" class="form-control" type="number" id="nro_solicitud" value="{{ isset($solicitud) ? $solicitud->SF_SOLICITUD_ID : '' }}" id="idsol" readonly></td>
-        <td><a class="btn btn-primary" data-toggle="modal" data-target="#selTransferir">traer</a></td>
+        <td><input style="width:175px" class="form-control" required type="number" id="nro_solicitud" value="{{ isset($solicitud) ? $solicitud->SF_SOLICITUD_ID : '' }}" id="idsol" readonly></td>
+        <td><a class="btn btn-primary" id="traer" data-toggle="modal" data-target="#selTransferir">traer</a></td>
     </tr>
 
     <tr>
@@ -39,7 +40,7 @@
 
     <tr>
       <td><label>ASOCIADO A:</label></td>
-      <td><input  style="width:175px"  type="text" id="asoc" class="form-control" readonly value="{{ isset($solicitud) ? $solicitud->SF_ASOCIADO_A : '' }}"/></td>
+      <td><input  style="width:175px"  type="text" id="asoc" required class="form-control" readonly value="{{ isset($solicitud) ? $solicitud->SF_ASOCIADO_A : '' }}"/></td>
     </tr>
 
     <tr>
@@ -89,7 +90,7 @@
   <table class="table-condensed"  align="center" style="text-align:right" >
     <tr>
       <td>
-        <select  class="form-control" required name="slcambiarestado" style="width:175px" >
+        <select  class="form-control" id="estado" required name="slcambiarestado" style="width:175px" >
         <option value="0">Seleccione</option>
         <option value="5">Aprobar</option>
         <option value="4">Rechazar</option>
@@ -97,7 +98,7 @@
       </td>
 
       <td>
-        <input type="submit" class="btn btn-primary btn-lg" value="Aplicar" />
+        <input type="submit" id="aplicar" class="btn btn-primary btn-lg" value="Aplicar" />
         </form>
       </td>
     </tr>
@@ -166,4 +167,24 @@
 </div>
 
 <br>
+<script  type='text/javascript'>
+    $(document).ready(function(){
+        $('#aplicar').hide();
+        $("#traer").on("click", function(){
+            $('#estado').show();
+        });
+        $("#estado").on("change", function(){
+            $('#aplicar').show();
+
+        });
+        $("#mostrar").on( "click", function() {
+            $('#target').show(); //muestro mediante id
+            $('.target').show(); //muestro mediante clase
+        });
+        $("#ocultar").on( "click", function() {
+            $('#target').hide(); //oculto mediante id
+            $('.target').hide(); //muestro mediante clase
+        });
+    });
+</script>
 @endsection

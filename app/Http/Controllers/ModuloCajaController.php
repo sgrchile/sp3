@@ -73,7 +73,7 @@ class ModuloCajaController extends Controller
         }
 
         $this->createAsiento($request->all());
-      return redirect()->route('Finanzas')->with('success', 'Registro de movimiento fue creado exitosamente.');
+      return redirect()->back()->with('success', 'Registro de movimiento fue creado exitosamente.');
     }
 
     protected function validateRegistro(Request $request)
@@ -140,6 +140,10 @@ class ModuloCajaController extends Controller
 
         switch ((int)$data['causa']){
             case 1:
+                $estado = Estado::where('EST_DESC', 'POR RENDIR')->first();
+
+                $updateTransferir = SolicitudFondo::findOrFail((int)$data['folio'])->update([
+                    'SF_EST' => $estado->EST_ID,]);
                 $asicta = new AsientoCuenta();
                 //$asicta->EMP_CTA_CONT = (int)$data['empresa'];
                 $asicta->ID_ASIENTO_CONT = $asiento->ID_ASIENTO_CONT;

@@ -24,23 +24,13 @@
                   </tr>
 
                   <tr>
-                  <td class="text-right">EMPRESA:</td>
-                  <td colspan="5">
-
-                  <input type="radio" name="empresa" value="1" checked="checked"> BIOGEST
-                  <input type="radio" name="empresa" value="2"> TRENER
-                  <input type="radio" name="empresa" value="3"> LOICA
-                  <input type="radio" name="empresa" value="4"> KUTRALCO
-                  <input type="radio" name="empresa" value="5"> IMPROTOUR
-                  </td>
-                  </tr>
-                  <tr>
                   <td colspan="5" align="center">
                   <button type="submit" class="btn btn-primary btn-lg" value="Submit">Buscar</button>
                   </td>
                   </tr>
-                  </form>
                 </table>
+                </form>
+
                 <br>
                 <table class="display table-hover table-condensed table-bordered table-striped text-uppercase" id="dynamic-table">
                   <tr>

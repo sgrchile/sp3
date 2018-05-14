@@ -174,7 +174,7 @@ class SolicitudFondoController extends Controller
     public function showEvaluar()
     {
         $id = null;
-        $sfondos = SolicitudFondo::where('SF_EST', '3')->get();
+        $sfondos = SolicitudFondo::where('SF_EST', '=',3)->get();
         $empresas = Empresa::all();
         $tipo_cuentas = TipoCuenta::all();
         $cuentas = CuentaEmpresa::all();
@@ -236,7 +236,7 @@ class SolicitudFondoController extends Controller
     public function showTransferirSf()
     {
         $id = null;
-        $sfondos = SolicitudFondo::all();
+        $sfondos = SolicitudFondo::all()->where('SF_EST','=',5);
         $empresas = Empresa::all();
         $tipo_cuentas = TipoCuenta::all();
         $cuentas = CuentaEmpresa::all();
@@ -401,7 +401,7 @@ class SolicitudFondoController extends Controller
         $id = null;
         $desde = $request->input('fecha1');
         $hasta = $request->input('fecha2');
-        $empresa = $request->input('empresa');
+        $empresa = Auth::user()->PRO_EMP;
         $documentos = DocumentoRendicion::where('DOC_SOLICITUD_ID', $id)->get();
 
         if (!$desde == null or !$hasta==null){
@@ -423,7 +423,7 @@ class SolicitudFondoController extends Controller
   }
   public function verDocs(Request $request, $id)
   {
-    $documentos = DocumentoRendicion::where('DOC_SOLICITUD_ID', $id)->get();
+    $documentos = DocumentoRendicion::where('DOC_SOLICITUD_ID','=', $id)->get();
 
     return view('Modulosolicitudfondo.historico')
     ->with('documentos', $documentos);

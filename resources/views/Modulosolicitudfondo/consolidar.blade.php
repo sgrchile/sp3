@@ -81,7 +81,7 @@
           <table class="table-condensed"  align="center" style="text-align:right" >
             <tr>
               <td>
-              <input type="submit" class="btn btn-primary btn-lg" value="Consolidar"></a>
+              <input type="submit" onclick="return confirm('¿Desea Consolidar los fondos?')" class="btn btn-primary btn-lg" value="Consolidar"></a>
               </form>
 
               <a class="btn btn-primary btn-lg" data-toggle="modal" data-target="#documentos">Ver Documentos</a></td>
