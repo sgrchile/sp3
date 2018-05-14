@@ -99,7 +99,7 @@
           $("#procneg").on("change", function(){
               let procneg = $(this).val();
               $("#etapa").empty();
-              $.get("http://plataforma.sgrchile.com/api/etapa/" + procneg).done(function(data){
+              $.get("https://plataforma.sgrchile.com/api/etapa/" + procneg).done(function(data){
                   if (data !== null){
                       if (Object.keys(data).length > 0 ){
                           $.each(data, function( index, value ){
@@ -114,7 +114,7 @@
           $("#etapa").on("change", function(){
               let etapa = $(this).val();
               $("#probabilidad").empty();
-              $.get("http://plataforma.sgrchile.com/api/probabilidad/" + etapa).done(function(data){
+              $.get("https://plataforma.sgrchile.com/api/probabilidad/" + etapa).done(function(data){
                   if (data !== null){
                       $("#probabilidad").val(data);
 
