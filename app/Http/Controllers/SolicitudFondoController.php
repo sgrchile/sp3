@@ -375,7 +375,7 @@ class SolicitudFondoController extends Controller
 
     public function showPrepRendicionSf()
     {
-        $sfondos = SolicitudFondo::all();
+        $sfondos = SolicitudFondo::all()->where('SF_EST','=',6);
         return view('Modulosolicitudfondo.rendicion')
             ->with('sfondos', $sfondos);
 
