@@ -46,11 +46,11 @@
             <tr>
               <td>PROBABILIDAD:</td>
               <td>
-                {{ Form::selectRange('number', 10, 100,['class'=>'form-control','required']) }}
+                {{ Form::selectRange('number', 10, 100,['class'=>'form-control','readOnly']) }}
               </td>
               <td>TASA:</td>
               <td>
-                {{ Form::number('tasa',null,['class'=>'form-control', 'required']) }}
+                {{ Form::number('tasa',null,['class'=>'form-control']) }}
               </td>
             </tr>
             <tr>
@@ -58,7 +58,7 @@
               <td >
                 {!! Form::select('moneda',$moneda,null,['id'=>'moneda']) !!}
               </td>
-              <td>TOTAL: </td>
+              <td>TOTAL estimado: </td>
               <td >
                 {{ Form::number('total',null,['class'=>'form-control', 'required']) }}
                 <!--<input  type="text"  name="total" id="total" style="width:175px;" class="form-control" required/>-->
@@ -67,21 +67,21 @@
             <tr>
               <td>FECHA DE INGRESO:</td>
               <td>
-                {{ Form::date('fechaingreso',\Carbon\Carbon::now()->format('d-m-Y')) }}
+                {{ Form::date('fechaingreso',\Carbon\Carbon::now(),['class'=>'form-control','style'=>'width:175px','readOnly']) }}
               </td>
               <td>FECHA DE CIERRRE:</td>
               <td>
-                {{ Form::date('fechacierre',\Carbon\Carbon::now()->format('d-m-Y')) }}
+                {{ Form::date('fechacierre',\Carbon\Carbon::now(),['class'=>'form-control','style'=>'width:175px']) }}
               </td>
             </tr>
             <tr>
               <td>CENTRO DE NEGOCIO:</td>
               <td>
-                {!! Form::select('centneg',$centneg,null,['id'=>'centneg']) !!}
+                {!! Form::select('centneg',$centneg,null,['id'=>'centneg','class'=>'form-control','style'=>'width:175px']) !!}
               </td>
-              <td>ESTADO DE PROPUESTA:</td>
+              <td>SIGUIENTE PASO:</td>
               <td>
-                {!! Form::select('estprop',$estprop,null,['id'=>'estprop']) !!}
+                {!! Form::text('sig_paso',null,['id'=>'sig_paso','class'=>'form-control','style'=>'width:175px']) !!}
               </td>
             </tr>
           </table>

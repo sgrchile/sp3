@@ -80,8 +80,7 @@ class OportunidadController extends Controller
         $oportunidad->setAttribute('FEC_CIERRE', $request->get('fechcierre', null));
         $ceneg = CentroNegocio::find($request->get('centneg'));
         $oportunidad->setAttribute('CENT_NEGOCIO', $ceneg->getAttribute('CT_PROCESO'));
-        $espro = Estado::find($request->get('estprop'));
-        $oportunidad->setAttribute('EST_PROP', $espro->getAttribute('EST_DESC'));
+        $oportunidad->setAttribute('SIG_PASO', $request->getAttribute('sig_paso'));
         $oportunidad->OPORT_EMP = Auth::user()->PRO_EMP;
 
         $oportunidad->save();
