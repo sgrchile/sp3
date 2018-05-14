@@ -45,7 +45,7 @@ class ClientesController extends Controller
         $rubro = Rubro::pluck('RUB_DESC','RUB_COD')->prepend('seleccione');
         $subrubro = SubRubro::pluck('SUB_RUB_DESC', 'SUB_RUB_COD')->prepend('seleccione');
         $banco = Banco::pluck('BCO_DESC','BCO_ID')->prepend('seleccione');
-        $pais = Pais::pluck('PAI_DESC','PAI_COD')->prepend('seleccione');
+        $pais = Pais::all();
         $region = Region::pluck('REG_DESC','REG_COD')->prepend('seleccione');
         $provincia = Provincia::pluck('PV_DESC', 'PV_COD')->prepend('seleccione');
         $ciudad = Ciudad::pluck('CIU_DESC', 'CIU_COD')->prepend('seleccione');

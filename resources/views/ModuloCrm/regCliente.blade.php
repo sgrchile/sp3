@@ -127,10 +127,19 @@
                 <td>PAIS:</td>
                 <td>
                   {!! Form::select('pais',$pais,null,['class'=>'form-control','id'=>'pais','style'=>'width:175px']) !!}
+                  <select name="pais" required class="form-control" id="pais">
+                    <option value="">Seleccione</option>
+                    @foreach($pais as $pai)
+                      <option value="{{ $pai->PAI_COD }}">{{ $pai->PAI_DESC }}</option>
+                    @endforeach
+                  </select>
                 </td>
                 <td>REGION:</td>
                 <td>
                   {!! Form::select('region',$region,null,['class'=>'form-control','id'=>'region','style'=>'width:175px']) !!}
+                  <select name="region" required class="form-control" id="region">
+                    <option value="">Seleccione</option>
+                  </select>
                 </td>
 
               </tr>
@@ -140,11 +149,17 @@
                 <td>PROVINCIA:</td>
                 <td>
                   {!! Form::select('provincia',$provincia,null,['class'=>'form-control','id'=>'provincia','style'=>'width:175px']) !!}
+                  <select name="provincia" required class="form-control" id="provincia">
+                    <option value="">Seleccione</option>
+                  </select>
                 </td>
 
                 <td>CIUDAD:</td>
                 <td>
                   {!! Form::select('ciudad',$ciudad,null,['class'=>'form-control','id'=>'ciudad','style'=>'width:175px']) !!}
+                  <select name="ciudad" required class="form-control" id="ciudad">
+                    <option value="">Seleccione</option>
+                  </select>
                 </td>
               </tr>
               <tr>
@@ -152,26 +167,8 @@
                 <td>
                   {{ Form::text('direccion',null,['class'=>'form-control', 'required','style'=>'width:175px']) }}
                 </td>
-                <td><a style="color: #9A0000">* </a> TEMPERATURA:</td>
-                <td>
-                  {{ Form::select('temperatura',App\Temperatura::pluck('desc_temp','id_temp'),['class'=>'form-control','style'=>'width:175px']) }}
-                </td>
               </tr>
 
-             <!-- <script>
-                  $(document).ready(function(){
-                      $('#rubro').change(function(){
-                          $.get("{{ url('dropdown')}}",
-                              { option: $(this).val() },
-                              function(data) {
-                                  $('#proceso_id').empty();
-                                  $.each(data, function(key, element) {
-                                      $('#proceso_id').append("<option value='" + key + "'>" + element + "</option>");
-                                  });
-                              });
-                      });
-                  });
-              </script> -->
 
             </table>
             <button class="btn btn-primary btn-lg">REGISTRAR</button>
@@ -184,10 +181,80 @@
       </div><!--/block-web-->
     </div><!--/col-md-12-->
   </div><!--/row-->
-
-
-
   </div>
   <br>
   <div class="container">  <a href="{{ route('CRM') }}"><button class="btn btn-primary btn-lg">Volver</button></a></div>
+
+  <script>
+      $.get("https://plataforma.sgrchile.com/api/pais").done(function(data){
+          let option = "<option value='0'>Seleccione</option>";
+          $("#pais").append(option);
+          if (data !== null){
+              if (Object.keys(data).length > 0 ){
+                  $.each(data, function( index, value ){
+                      let option = "<option value='"+ value.PAI_COD + "'>" + value.PAI_DESC+ "</option>";
+                      $("#pais").append(option);
+                  });
+              }
+          }
+      });
+      $("#pais").on("change", function(){
+          let pais = $(this).val();
+
+          if (pais == 1){
+              $("#region").empty();
+              $.get("https://plataforma.sgrchile.com/api/region").done(function(data){
+                  if (data !== null){
+                      if (Object.keys(data).length > 0 ){
+                          $.each(data, function( index, value ){
+                              let option = "<option value='"+ value.REG_COD + "'>" + value.REG_DESC+ "</option>";
+                              $("#region").append(option);
+                          });
+                          $("#region").trigger("change");
+                      }
+                  }
+              });
+          }
+          else{
+              $("#region").empty();
+              $("#provincia").empty();
+              $("#ciudad").empty();
+              let option = "<option value='0'>No corresponde</option>";
+              $("#region").append(option);
+              $("#provincia").append(option);
+              $("#ciudad").append(option);
+          }
+      });
+      $("#region").on("change", function(){
+          let region = $(this).val();
+          $("#provincia").empty();
+          $.get("https://plataforma.sgrchile.com/api/provincia/" + region).done(function(data){
+              if (data !== null){
+                  if (Object.keys(data).length > 0 ){
+                      $.each(data, function( index, value ){
+                          let option = "<option value='"+ value.PV_COD + "'>" + value.PV_DESC+ "</option>";
+                          $("#provincia").append(option);
+                      });
+                      $("#provincia").trigger("change");
+                  }
+              }
+          });
+      });
+
+      $("#provincia").on("change", function(){
+          let provincia = $(this).val();
+          $("#ciudad").empty();
+          $.get("https://plataforma.sgrchile.com/api/ciudad/" + provincia).done(function(data){
+              if (data !== null){
+                  if (Object.keys(data).length > 0 ){
+                      $.each(data, function( index, value ){
+                          let option = "<option value='"+ value.CIU_COD + "'>" + value.CIU_DESC+ "</option>";
+                          $("#ciudad").append(option);
+                      });
+                      $("#ciudad").trigger("change");
+                  }
+              }
+          });
+      });
+  </script>
 @endsection

@@ -38,7 +38,7 @@ class OportunidadController extends Controller
     {
         $user = Auth::user();
         $clientes = Cliente::all()
-            ->where('CLI_EMP','=',$user>PRO_EMP)
+            ->where('CLI_EMP','=',Auth::user()->PRO_EMP)
             ->pluck('CLI_NOMBRE','CLI_RUT')
             ->prepend('Seleccione');
         $procneg = Proceso::all()->where('PRO_JERARQUIA','=',$user->PRO_EMP );
@@ -132,7 +132,7 @@ class OportunidadController extends Controller
     public function destroy($id)
     {
         $oport = Oportunidad::find($id);
-        //$oport->delete();
+        $oport->delete();
         return redirect()->back()->with('status_oportunidad', 'Oportunidad Eliminada!');
         //dd($id);
     }

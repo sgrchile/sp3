@@ -8,17 +8,19 @@
       <div class="block-web">
         <div class="header">
           <div class="actions"></div>
-          <h1 class="text-center text-uppercase">LISTADO DE CLIENTES</h1>
+          <h1 class="text-center text-uppercase">CLIENTES</h1>
 
         </div>
         <div class="porlets-content">
           <!-- FORM INICIO -->
-          <h1>CLIENTES CONSOLIDADOS</h1>
           @if (session('status_cliente'))
             <div class="alert alert-success">
               {{ session('status_cliente') }}
             </div>
           @endif
+          <tr>
+            <td><a href="{{route('regCliente')}}"><button class='btn btn-primary btn-lg'   style="width:250px; margin-bottom: 15px;">NUEVO</button></a></td>
+          </tr>
           <table class="table table-bordered table-hover" id="clients-table">
             <thead>
             <tr>

@@ -8,7 +8,7 @@
       <div class="block-web">
         <div class="header">
           <div class="actions"></div>
-          <H1 class="text-center"><strong> REGISTRO DE OPORTUNIDADES </strong></H1>
+          <H1 class="text-center"><strong> OPORTUNIDADES </strong></H1>
         </div>
         <div class="porlets-content">
           <!-- FORM INICIO -->
@@ -21,7 +21,7 @@
                 {{ Form::text('nombre', Auth::user()->PRO_NOMBRE ,['class'=>'form-control','required','pattern'=>'[A-Za-z]{4-16}']) }}
                 <!--<input name="nombre" type="text"  style="width:175px;" class="form-control" id="nombre" pattern="[A-Za-z]{4-16}" required="required"/>-->
               </td>
-              <td>CUENTA ASOCIADA:</td>
+              <td>CLIENTE:</td>
               <td>
                 {!! Form::select('clientes',$clientes,null,['id'=>'clientes']) !!}
               </td>
@@ -85,7 +85,7 @@
               </td>
             </tr>
           </table>
-          {!! Form::submit('REGISTRO', ['class' => 'btn btn-primary btn-lg']) !!}
+          {!! Form::submit('REGISTRAR', ['class' => 'btn btn-primary btn-lg']) !!}
           {!! Form::close() !!}
           <!-- FORM FINAL -->
         </div><!--/porlets-content-->

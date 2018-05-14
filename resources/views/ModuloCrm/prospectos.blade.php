@@ -12,12 +12,15 @@
                     </div>
                     <div class="header">
                         <div class="actions"></div>
-                        <h1 class="text-center text-uppercase">LISTADO DE PROSPECTOS</h1>
+                        <h1 class="text-center text-uppercase">PROSPECTOS</h1>
                         @if (session('status_contacto'))
                             <div class="alert alert-warning">
                                 {{ session('status_contacto') }}
                             </div>
                         @endif
+                        <tr>
+                            <td><a href="{{route('regProspecto')}}"><button class='btn btn-primary btn-lg' style="width:250px; margin-bottom: 15px;">NUEVO</button></a></td>
+                        </tr>
                     </div>
                     <div class="porlets-content">
                         <!-- FORM INICIO -->

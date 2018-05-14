@@ -20,7 +20,7 @@
 
                             <table class="table-condensed">
                                 <tr>
-                                    <td><a href="{{route('regCliente')}}"><button class='btn btn-primary btn-lg'   style="width:250px; margin-bottom: 15px;">REGISTRAR CLIENTES</button></a></td>
+                                    <td><a href="{{route('regCliente')}}"><button class='btn btn-primary btn-lg'   style="width:250px; margin-bottom: 15px;">REGISTRAR CLIENTE</button></a></td>
                                 </tr>
                                 <tr>
                                     <td><a href="{{route('regProspecto')}}"><button class='btn btn-primary btn-lg' style="width:250px; margin-bottom: 15px;"> REGISTRAR PROSPECTO</button></a></td>

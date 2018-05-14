@@ -5,7 +5,7 @@
     <div class="block-web">
       <div class="header">
         <div class="actions"></div>
-        <h1 class=" text-center text-uppercase" >LISTA GENERAL DE OPORTUNIDADES</h1>
+        <h1 class=" text-center text-uppercase" >OPORTUNIDADES</h1>
         @if (session('status_oportunidad'))
           <div class="alert alert-warning">
             {{ session('status_oportunidad') }}
@@ -17,7 +17,7 @@
         <!-- FORM INICIO -->
           <table align="center">
             <tr>
-              <td><label style="font-size:30px;">BUSCAR OPORTUNIDAD:</label> </td>
+              <td><label style="font-size:30px;">BUSCAR</label> </td>
               <td>
                 <input type="text"  style="width:175px;" class="form-control" required/>
               </td>
@@ -33,7 +33,7 @@
           <br >
           <br>
 
-          <h3 class="text-center text-uppercase">OPORTUNIDADES</h3>
+          <h3 class="text-center text-uppercase">LISTADO</h3>
 
           <table class="table table-bordered table-hover">
             <THEAD>
