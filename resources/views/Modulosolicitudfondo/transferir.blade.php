@@ -177,10 +177,6 @@ function fAgrega() {
 
 <br>
     <script>
-        $estado = Estado::where('EST_DESC', 'POR RENDIR')->first();
 
-        $updateTransferir = SolicitudFondo::findOrFail($id)->update([
-            'SF_EST' => $estado->EST_ID,
-        ]);
     </script>
 @endsection
