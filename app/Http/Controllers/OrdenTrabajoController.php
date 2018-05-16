@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Factura;
+use App\RegistroMovimiento;
 use App\Remuneracion;
 use DB;
 use Carbon\Carbon;
@@ -137,6 +138,7 @@ class OrdenTrabajoController extends Controller
         $porcobrar = Factura::where('FCT_EST_ID','=',2);
         $porliquidar = Remuneracion::where('RH_REM_EST','=',1);
         $porpagar = Remuneracion::where('RH_REM_EST','=',1);
+        $porconciliar = RegistroMovimiento::where('RMOV_EST_ID','=',1);
 
         return view('ModuloOt.Graficos')
             ->with('aprobadas', $aprobadas)

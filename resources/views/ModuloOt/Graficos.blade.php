@@ -122,7 +122,7 @@
                   </tr>
                   <tr>
                   <td><h2>###</h2></td>
-                  <td><h2>###</h2></td>
+                  <td><h2>{{$porconciliar->count()}}</h2></td>
                   </tr>
                   <tr>
                   <td>
