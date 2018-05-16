@@ -49,7 +49,7 @@
               </div>
 
               <div class="col-sm-6 col-md-4">
-              <h4>CONTACTO SECUNDARIO:</h4>
+              <h4>CONTACTO EMERGENCIA:</h4>
               <input type="number " class="form-control" name="celular_dos" required>
               </div>
 
@@ -83,7 +83,7 @@
                   </div>
 
               <div class="col-sm-6 col-md-4">
-              <h4>SEXO:</h4>
+              <h4>GENERO:</h4>
                 <select class="form-control" name="sexo">
                   <option>Seleccionar</option>
                   <option value="HOMBRE">HOMBRE</option>

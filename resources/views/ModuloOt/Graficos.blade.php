@@ -42,7 +42,7 @@
                   </tr>
                   <tr>
                   <td>
-                  <a href="{{route('verTransferir')}}"<button class="btn btn-primary btn-sm" style="width:139px;" >Transferir</button>
+                  <a href="{{route('verTransferir')}}"></a><button class="btn btn-primary btn-sm" style="width:139px;" >Transferir</button>
 
 
                   </td>
@@ -65,8 +65,8 @@
                   <td>Por cobrar</th>
                   </tr>
                   <tr>
-                  <td><h2>###</h2></td>
-                  <td><h2>###</h2></td>
+                  <td><h2>{{ $porfacturar->count() }}</h2></td>
+                  <td><h2>{{ $porcobrar->count() }}</h2></td>
                   </tr>
                   <tr>
                   <td>
@@ -94,8 +94,8 @@
                 <td>Por pagar</td>
                 </tr>
                 <tr>
-                  <td><h2>###</h2></td>
-                  <td><h2>###</h2></td>
+                  <td><h2>{{$porliquidar->count()}}</h2></td>
+                  <td><h2>{{$porpagar->count()}}</h2></td>
                 </tr>
 
                 <tr>
@@ -114,7 +114,7 @@
               <div class="col-sm-6">
                 <table class="table table-bordered text-center"  align="center" >
                   <tr>
-                  <th colspan="2"><h3 class="text-center">  MOVIMIENTO</h3></th>
+                  <th colspan="2"><h3 class="text-center">MOVIMIENTO</h3></th>
                   </tr>
                   <tr>
                   <td>Cartolas por subir</td>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Cliente;
 use App\CentroNegocio;
 use App\Estado;
+use App\EstadoOt;
 use App\OrdenTrabajo;
 use App\Proveedor;
 use App\SolicitudFondo;
@@ -43,10 +44,10 @@ class ListaOtController extends Controller
     public function getModificarOt($id)
     {
         $ot = OrdenTrabajo::find($id);
-        $clientes = Cliente::all();
-        $centro_negocios = CentroNegocio::all();
+        $clientes = Cliente::all()->where('CLI_EMP','=',Auth::user()->PRO_EMP);
+        $centro_negocios = CentroNegocio::all()->where('CT_EMP_ID','=',Auth::user()->PRO_EMP);
         $encargados = Proveedor::all()->where('PRO_RUN','=',Auth::user()->PRO_RUN);
-        $estados = Estado::all();
+        $estados = EstadoOt::all();
         $sfondo = SolicitudFondo::where('SF_OT_ID', $id)->get();
         $sumaSF = $sfondo->map(function ($document) {
             return $document->SF_MONTO;

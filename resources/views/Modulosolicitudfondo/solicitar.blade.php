@@ -68,7 +68,7 @@
               agregar una  condcicion para saber cuando es orden de trabajo, de otra manera este control no se muestra
               -->
               <td align="left"><input  style="width:275px" id="ot" name="emp_ot" class="form-control" readonly></td>
-              <td><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#selOt" >Seleccionar OT</button></td>
+              <td><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#selOt" >Seleccionar</button></td>
 
           </tr>
 

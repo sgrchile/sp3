@@ -78,15 +78,16 @@
                 <td ><label>ESTADO:</label></td>
                 <td>
                   <select name="id_estado" class="form-control">
+                    <option value="0">Seleccione</option>
                     @foreach($estados as $estado)
                     <option
-                    value="{{ $estado->EST_ID}}"
+                    value="{{ $estado->ID_EST_OT}}"
                     {{
-                      $orden_trabajo->OT_EST_ID == $estado->EST_DESC
+                      $orden_trabajo->ID_EST_OT == $estado->DESC_EST_OT
                       ? 'selected'
                       : ''
                     }}
-                    >{{ $estado->EST_DESC }}</option>
+                    >{{ $estado->DESC_EST_OT }}</option>
                     @endforeach
                   </select>
                 </td>

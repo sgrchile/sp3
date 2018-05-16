@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Factura;
+use App\Remuneracion;
 use DB;
 use Carbon\Carbon;
 use App\CentroNegocio;
@@ -10,6 +12,8 @@ use App\OrdenTrabajo;
 use App\TipoCuenta;
 use App\SolicitudFondo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use PhpParser\Node\Stmt\Return_;
 
 class OrdenTrabajoController extends Controller
 {
@@ -20,8 +24,8 @@ class OrdenTrabajoController extends Controller
 
     public function getAgregarOrdenTrabajo()
     {
-        $clientes = Cliente::all();
-        $centro_negocios = CentroNegocio::all();
+        $clientes = Cliente::all()->where('CLI_EMP','=',Auth::user()->PRO_EMP);
+        $centro_negocios = CentroNegocio::all()->where('CT_EMP_ID','=',Auth::user()->PRO_EMP);
 
         return view('ModuloOt.ingresoOt')
             ->with('clientes', $clientes)
@@ -129,9 +133,22 @@ class OrdenTrabajoController extends Controller
     {
         $aprobadas = SolicitudFondo::where('SF_EST', '5');
         $porconciliar = SolicitudFondo::where('SF_EST', '7');
+        $porfacturar = Factura::where('FCT_EST_ID','=',1);
+        $porcobrar = Factura::where('FCT_EST_ID','=',2);
+        $porliquidar = Remuneracion::where('RH_REM_EST','=',1);
+        $porpagar = Remuneracion::where('RH_REM_EST','=',1);
 
         return view('ModuloOt.Graficos')
             ->with('aprobadas', $aprobadas)
+            ->with('porfacturar', $porfacturar)
+            ->with('porcobrar', $porcobrar)
+            ->with('porliquidar', $porliquidar)
+            ->with('porpagar', $porpagar)
             ->with('porconciliar', $porconciliar);
+    }
+    public function confOt(){
+        $cetro_negocios = CentroNegocio::all()->where('CT_EMP_ID','=',Auth::user()->PRO_EMP);
+        //dd($cetro_negocios);
+        Return view('ModuloOt.confOT')->with('centro_negocios',$cetro_negocios);
     }
 }

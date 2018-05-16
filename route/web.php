@@ -344,9 +344,11 @@ Route::group(['prefix' => 'modulo'], function () {
             'as' => 'patch.orden_trabajo',
         ]);
 
-        Route::get('/configurar', function () {
-            return view('ModuloOt.confOT');
-        })->name('confOT');
+        Route::get('/configurar', [
+            'uses' => 'OrdenTrabajoController@confOt',
+            'as' => 'confOT',
+        ]);
+
 
         Route::get('/graficos', [
             'uses' => 'OrdenTrabajoController@getGrafico',
@@ -442,6 +444,11 @@ Route::group(['prefix' => 'modulo'], function () {
             Route::get('/reset/password', function () {
                 return view('ModuloRRHH.MicarpetaRRHH.cambioContrasena');
             })->name('resetpass');
+
+            Route::post('/reset/', [
+                'uses' => 'RrhhMiCarpetaController@resetPass',
+                'as' => 'post.resetpass',
+            ]);
         });
 
         Route::group(['prefix' => 'solicitudes'], function () {
