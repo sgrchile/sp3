@@ -1189,13 +1189,24 @@ Route::group(['prefix' => 'modulo'], function () {
             'as' => 'contacto.destroy',
         ]);
 
-      /*Route::get('/cotizaciones', function () {
-        return view('ModuloCrm.cotizaciones');
-      })->name('cotizaciones');*/
-
         Route::get('/cotizaciones', [
-            'uses' => 'CotizacionController@create',
+            'uses' => 'CotizacionController@index',
             'as' => 'cotizaciones',
+        ]);
+
+        Route::get('/RegistroCotizacion', [
+            'uses' => 'CotizacionController@create',
+            'as' => 'regCotizacion',
+        ]);
+
+        Route::post('/RegistroCotizacion', [
+            'uses' => 'CotizacionController@store',
+            'as' => 'post.cotizacion',
+        ]);
+
+        Route::get('/VerCotizacion/{id}', [
+            'uses' => 'CotizacionController@show',
+            'as' => 'get.cotizacion',
         ]);
 
         Route::get('/listaActividades', [

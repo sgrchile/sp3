@@ -48,7 +48,8 @@
                                                 <option value="2">TRENER </option>
                                                 <option value="3">LOICA </option>
                                                 <option value="4">KUTRALCO </option>
-                                                <option value="5">IMPROTOUR </option>
+                                                <option value="5">HOSTEL EIRL </option>
+                                                <option value="5">SGR </option>
                                             </select>
                                             @if ($errors->has('PRO_RUN'))
                                                 <span class="help-block">

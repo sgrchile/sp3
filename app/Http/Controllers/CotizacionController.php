@@ -15,7 +15,9 @@ class CotizacionController extends Controller
      */
     public function index()
     {
-        //
+        $cliente = Cliente::pluck('CLI_NOMBRE','CLI_RUT');
+
+        return view('ModuloCrm.listaCotizaciones');
     }
 
     /**
@@ -25,9 +27,7 @@ class CotizacionController extends Controller
      */
     public function create()
     {
-        $cliente = Cliente::pluck('CLI_NOMBRE','CLI_RUT');
 
-        return view('ModuloCrm.listaCotizaciones');
     }
 
     /**
@@ -38,7 +38,7 @@ class CotizacionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
     }
 
     /**
@@ -49,7 +49,7 @@ class CotizacionController extends Controller
      */
     public function show($id)
     {
-        //
+        dd($id);
     }
 
     /**
