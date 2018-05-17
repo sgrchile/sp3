@@ -13,6 +13,7 @@
         <a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i> <span>Logout</span></a>
                     <table class="table-condensed" align="center" style="text-align:center; color:#000000; " cellpadding="0">
 
+                        {!! \Illuminate\Support\Facades\Auth::user()->PRO_NOMBRE !!}
                         <tr>
                             <td id="contable" class="menu">
                                 <a  href="{{route('Contable')}}"><img src="{{ asset('images/contabilidad.png') }}"   class="img-responsive menu" width="113" height="128 " border="0"/>
