@@ -10,7 +10,7 @@
       </div>
       <div class="porlets-content">
         <!-- FORM INICIO -->
-        <a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i> <span>Logout</span></a>
+        <a href="{{link_to('https://plataforma.sgrchile.com/login')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i> <span>Logout</span></a>
                     <table class="table-condensed" align="center" style="text-align:center; color:#000000; " cellpadding="0">
 
                         {!! \Illuminate\Support\Facades\Auth::user()->PRO_NOMBRE !!}
