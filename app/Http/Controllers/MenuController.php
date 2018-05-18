@@ -13,19 +13,7 @@ class MenuController extends Controller
 
     public function getMenus()
     {
-        $mns = MenuModel::get();
-        $mnmvs = MenuNivel::where('NIVEL_ID','=',Auth::user()->PRO_NIVEL)->get();
-        $list = [];
-        $count = 0;
-        for ($i=0;$i<$mns->count();$i++){
-            for($e=0;$e<$mnmvs->count();$e++){
-                if ($mnmvs[$e]->MENU_ID == $mns[$i]->MENU_ID){
-                    $list[$count]=$mns[$i];
-                    $count++;
-
-                }
-            }
-        }
+        
         $mn = MenuModel::get();
 
         return response()->json($mn);
