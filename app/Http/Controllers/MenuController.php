@@ -26,7 +26,9 @@ class MenuController extends Controller
                 }
             }
         }
-        return response()->json($list);
+        $mn = MenuModel::get();
+
+        return response()->json($mn);
     }
 
     public function getVerOt($id)
