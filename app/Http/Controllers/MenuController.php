@@ -13,10 +13,18 @@ class MenuController extends Controller
 
     public function getMenus()
     {
-        
-        $mn = MenuModel::get();
+        $user = 3;
+        $mns = MenuModel::get();
+        $mnmvs = MenuNivel::where('NIVEL_ID','=',$user)->get();
+
+        $mn = MenuModel::whereIn('MENU_ID',$mnmvs)->get();
 
         return response()->json($mn);
+    }
+
+    public function login(Request $request){
+        dd($request);
+        return view('auth/login');
     }
 
     public function getVerOt($id)
