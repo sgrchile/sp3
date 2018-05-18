@@ -1,9 +1,11 @@
 $(document).ready(function(){
     $.get("https://plataforma.sgrchile.com/api/menus/all").done(function(data){
         if (data !== null){
+            alert((data));
             if (Object.keys(data).length > 0 ){
                 $.each(data, function( index, value ){
                     let li = "<li id='menu"+ value.MENU_ID + "'><a href='" +location.protocol + "//" +window.location.hostname + "/" + value.MENU_URL +"'>" + value.MENU_NAME +"</a></li>";
+                    //alert(li);
                     if (value.MENU_PARENT == null){
                         $("#menu\\.principal").append(li);
                     }

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\MenuModel;
+use App\MenuNivel;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -11,9 +13,20 @@ class MenuController extends Controller
 
     public function getMenus()
     {
-        $mn = MenuModel::get();
+        $mns = MenuModel::get();
+        $mnmvs = MenuNivel::where('NIVEL_ID','=',Auth::user()->PRO_NIVEL)->get();
+        $list = [];
+        $count = 0;
+        for ($i=0;$i<$mns->count();$i++){
+            for($e=0;$e<$mnmvs->count();$e++){
+                if ($mnmvs[$e]->MENU_ID == $mns[$i]->MENU_ID){
+                    $list[$count]=$mns[$i];
+                    $count++;
 
-        return response()->json($mn);
+                }
+            }
+        }
+        return response()->json($list);
     }
 
     public function getVerOt($id)
