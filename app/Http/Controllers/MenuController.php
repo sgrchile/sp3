@@ -19,7 +19,7 @@ class MenuController extends Controller
 
         $mn = MenuModel::whereIn('MENU_ID',$mnmvs)->get();
 
-        return response()->json($mn);
+        return response()->json($mns);
     }
 
     public function login(Request $request){
