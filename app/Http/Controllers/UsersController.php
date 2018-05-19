@@ -154,11 +154,7 @@ class UsersController extends Controller
                     ->format('d/m/Y') : '';
             })
             ->make(true);
-
-
-      
     }
-
 
     /**
      * @return mixed

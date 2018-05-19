@@ -97,6 +97,7 @@ class ClientesController extends Controller
         $cliente->setAttribute('CLI_CIUDAD',$request->get('ciudad',null));
         $cliente->setAttribute('CLI_PROVINCIA',$request->get('provincia', null));
         $cliente->setAttribute('CLI_TEMP',$request->get('temperatura', null));
+        $cliente->CLI_PROPIETARIO = Auth::user()->PRO_RUN;
 
 
         //dd($this->regcliente($cliente->getAttribute('CLI_RUT')));
