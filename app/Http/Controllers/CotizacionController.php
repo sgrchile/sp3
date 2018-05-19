@@ -3,7 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Cliente;
+use App\Cotizaciones;
+use App\InventarioProducto;
+use App\InventarioServicio;
+use App\ItemCotizaciones;
+use App\MenuModel;
+use App\MenuNivel;
+use App\Producto;
+use App\Proveedor;
+use App\TipoVenta;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use PhpParser\Node\Stmt\Return_;
 
 class CotizacionController extends Controller
@@ -15,9 +26,11 @@ class CotizacionController extends Controller
      */
     public function index()
     {
-        $cliente = Cliente::pluck('CLI_NOMBRE','CLI_RUT');
+        $cotizaciones = Cotizaciones::where('EMP_COTIZ','=',Auth::user()->PRO_EMP)
+            ->orderby('FEC_COTIZ','ASC')->paginate();
+        //dd($cotizaciones);
 
-        return view('ModuloCrm.listaCotizaciones');
+        return view('ModuloCrm.listaCotizaciones')->with('cotizaciones',$cotizaciones);
     }
 
     /**
@@ -27,6 +40,14 @@ class CotizacionController extends Controller
      */
     public function create()
     {
+        $lstcliente = Cliente::where('CLI_PROPIETARIO','=',Auth::user()
+            ->PRO_RUN)->pluck('CLI_NOMBRE','CLI_RUT');
+        $clientes = Cliente::all()-where('CLI_PROPIETARIO','=',Auth::user()
+                ->PRO_RUN);
+        $tpventa = TipoVenta::all();
+        $lstprod = InventarioProducto::all();
+        $lstserv = InventarioServicio::all();
+
 
     }
 
@@ -38,7 +59,8 @@ class CotizacionController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+
+        dd(Auth::user()->PRO_NIVEL);
     }
 
     /**
@@ -49,7 +71,16 @@ class CotizacionController extends Controller
      */
     public function show($id)
     {
-        dd($id);
+        $cotizacion = Cotizaciones::find($id);
+        $cliente = Cliente::all()->where('CLI_RUT','=',$cotizacion->CLI_COTIZ)->first();
+        $vendedor = Proveedor::all()->where('PRO_RUN','=',$cotizacion->ID_VENDEDOR)->first();
+        $items = ItemCotizaciones::all()->where('ID_COTIZACION','=',$id);
+        //dd($id);
+        return view('ModuloCrm.cotizaciones')
+            ->with('cotizacion',$cotizacion)
+            ->with('cliente',$cliente)
+            ->with('vendedor',$vendedor)
+            ->with('items',$items);
     }
 
     /**
@@ -60,7 +91,7 @@ class CotizacionController extends Controller
      */
     public function edit($id)
     {
-        //
+        dd(Auth::user()->PRO_NIVEL);
     }
 
     /**
@@ -72,7 +103,7 @@ class CotizacionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        dd($id);
     }
 
     /**
@@ -83,6 +114,6 @@ class CotizacionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        dd($id);
     }
 }

@@ -28,8 +28,6 @@ class LoginController extends Controller
      */
     protected $redirectTo = '/';
 
-
-
     /**
      * Create a new controller instance.
      *
@@ -43,11 +41,6 @@ class LoginController extends Controller
     public function username()
     {
         return 'PRO_RUN';
-    }
-
-    public function usernv()
-    {
-        return 'PRO_NIVEL';
     }
 
     public function authenticated(Request $request, $user)

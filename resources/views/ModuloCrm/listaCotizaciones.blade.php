@@ -15,64 +15,53 @@
           <!-- FORM INICIO -->
           <table align="center">
             <tr>
-              <td><label style="font-size:30px;">BUSCAR COTIZACION:</label> </td>
+             <!-- <td><label style="font-size:30px;">BUSCAR COTIZACION:</label> </td>
               <td>
                 <input type="text"  style="width:175px;" class="form-control" required/>
               </td>
-              <td><button type="button" class="btn btn-primary btn-xs">  <i class="fa fa-search" style="font-size:30px;"></i></button></td>
+              <td><button type="button" class="btn btn-primary btn-xs">  <i class="fa fa-search" style="font-size:30px;"></i></button></td>-->
+            </tr>
+            <tr>
+              <td>
+                <a href="{{route('regCotizacion')}}"><button class="btn btn-primary btn-lg" style="width:120px;">NUEVO</button></a>
+              </td>
             </tr>
           </table>
-
-
           <table class="table table-bordered table-hover">
 
               <tr>
                 <td>FOLIO</td>
-                <td>CLIENTE</td>
-                <td>CONTACTO</td>
-                <td>OPORTUNIDAD</td>
+                <td>RUT CLIENTE</td>
+                <td>NOMBRE CLIENTE</td>
                 <td>VENDEDOR</td>
                 <td>VALOR NETO</td>
+                <td>FECHA DE CREACION</td>
                 <td>FECHA DE CIERRE</td>
                 <td>ESTADO</td>
                   <td colspan="2">ACCION</td>
               </tr>
+            @foreach($cotizaciones as $cotiza)
               <tr>
-
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>{{ $cotiza->ID_COTIZ }}</td>
+                <td>{{ $cotiza->CLI_COTIZ }}</td>
+                <td>{{ (App\Cliente::find($cotiza->CLI_COTIZ))->CLI_NOMBRE }}</td>
+                <td>{{ $cotiza->ID_VENDEDOR }}</td>
+                <td>{{ $cotiza->VAL_NETO_COTIZ }}</td>
+                <td>{{ $cotiza->CREATED_AT }}</td>
+                <td>{{ $cotiza->FEC_COTIZ }}</td>
+                <td>{{ (App\EstadoCotizacion::find($cotiza->EST_COTIZ))->DESC_EST_COTIZ }}</td>
                 <td>
-                  <button class="btn btn-primary btn-xs" style="width:90px; margin-bottom:5px;">BORRAR</button>
-                  <br />
-                  <button class="btn btn-primary btn-xs" style="width:90px; margin-bottom:5px;">MODIFICAR</button>
-
-                  <br />
-                  <a href="{{route('cotizaciones')}}"></a><button class="btn btn-primary btn-xs" style="width:90px; margin-bottom:5px;">VER FICHA</button><br />
+                  <a href="{{route('cotiz.destroy',$cotiza->ID_COTIZ)}}" onclick="return confirm('¿Desea eliminar éste contacto?')">
+                  <button class="btn btn-primary btn-xs" style="width:70px; margin-bottom:5px;"> BORRAR</button></a>
+                  <a href="{{route('cotiz.edit',$cotiza->ID_COTIZ)}}">
+                  <button class="btn btn-primary btn-xs" style="width:70px; margin-bottom:5px;">EDITAR</button></a>
+                  <a href="{{route('get.cotizacion',$cotiza->ID_COTIZ)}}">
+                  <button class="btn btn-primary btn-xs" style="width:70px; margin-bottom:5px;">VER FICHA</button></a>
                 </td>
-
               </tr>
-
-              <tr>
-
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-
-
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td colspan="3"><a href="{{route('CRM')}}"></a><button class="btn btn-primary btn-xs" style="width:90px;">AGREGAR</button></td>
-              </tr>
+            @endforeach
             </table>
+            {{ $cotizaciones->links() }}
           <!-- FORM FINAL -->
           </div><!--/container-->
         </div><!--/porlets-content-->
