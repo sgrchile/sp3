@@ -11,8 +11,8 @@ Route::get('/',function(){
      return redirect('login');
    })->name('home');
 
- Route::get('/login', function () {
-       return view('auth/login');
+Route::get('/', function () {
+      return view('auth/login');
    })->name('login');
 
 Route::get('/configuracion', [
@@ -1207,6 +1207,21 @@ Route::group(['prefix' => 'modulo'], function () {
         Route::get('/VerCotizacion/{id}', [
             'uses' => 'CotizacionController@show',
             'as' => 'get.cotizacion',
+        ]);
+
+        Route::get('/EliminarCotizacion/{id}', [
+            'uses' => 'CotizacionController@destroy',
+            'as' => 'cotiz.destroy',
+        ]);
+
+        Route::get('/EditarCotizacion/{id}', [
+            'uses' => 'CotizacionController@edit',
+            'as' => 'cotiz.edit',
+        ]);
+
+        Route::get('/{id}', [
+            'uses' => 'CotizacionController@update',
+            'as' => 'cotiz.update',
         ]);
 
         Route::get('/listaActividades', [
