@@ -12,11 +12,6 @@
         <!-- FORM INICIO -->
         <!--<a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i> <span>Logout</span></a>-->
                     <table class="table-condensed" align="center" style="text-align:center; color:#000000; " cellpadding="0">
-                        <?php
-                            $niv = Auth::user()->PRO_NIVEL;
-                            $mnmvs = App\MenuNivel::where('NIVEL_ID','=',$niv)->get();
-                            $mn = App\MenuModel::whereIn('MENU_ID',$mnmvs)->get();
-                        ?>
 
                         <tr>
                             <td id="3" hidden class="menu">
@@ -141,7 +136,7 @@
 <script  type='text/javascript'>
 
     $(document).ready(function(){
-        
+
 
     });
 </script>
