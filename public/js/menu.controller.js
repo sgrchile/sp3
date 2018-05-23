@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $.get("https://plataforma.sgrchile.com/api/menus/all/").done(function(data){
+    $.get("https://plataforma.sgrchile.com/api/menus/all/"+window.nivel).done(function(data){
         if (data !== null){
             if (Object.keys(data).length > 0 ){
                 $.each(data, function( index, value ){

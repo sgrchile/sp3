@@ -5,14 +5,20 @@ namespace App\Http\Controllers;
 use App\MenuModel;
 use App\MenuNivel;
 use App\Proveedor;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class MenuController extends Controller
 {
 
     public function getMenus($id)
     {
-        //$mns = MenuModel::get();
+        //return $id;
+        //$niv = Auth::user()->PRO_NIVEL;
+        $mns = MenuModel::get();
         $mnmvs = MenuNivel::where('NIVEL_ID','=',$id)->get();
 
         $mn = MenuModel::whereIn('MENU_ID',$mnmvs)->get();
