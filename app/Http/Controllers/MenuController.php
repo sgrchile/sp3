@@ -4,26 +4,24 @@ namespace App\Http\Controllers;
 
 use App\MenuModel;
 use App\MenuNivel;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+use App\Proveedor;
 use Illuminate\Http\Request;
 
 class MenuController extends Controller
 {
 
-    public function getMenus()
+    public function getMenus($id)
     {
-        $user = 3;
-        $mns = MenuModel::get();
-        $mnmvs = MenuNivel::where('NIVEL_ID','=',$user)->get();
+        //$mns = MenuModel::get();
+        $mnmvs = MenuNivel::where('NIVEL_ID','=',$id)->get();
 
         $mn = MenuModel::whereIn('MENU_ID',$mnmvs)->get();
 
-        return response()->json($mns);
+        return response()->json($mn);
     }
 
     public function login(Request $request){
-        dd($request);
+        //dd($request);
         return view('auth/login');
     }
 

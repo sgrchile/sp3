@@ -42,7 +42,7 @@ Route::get('/crm/oportunidades', function(){
     return response()->json($db);
 });
 
-Route::get('/menus/all', [
+Route::get('/menus/all/{id}', [
     'uses' => 'MenuController@getMenus',
     'as' => 'get.menus',
 ]);

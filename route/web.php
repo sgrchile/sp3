@@ -15,6 +15,11 @@ Route::get('/login', function () {
       return view('auth/login');
    })->name('login');
 
+/*Route::get('/login', [
+    'uses' => 'Auth\LoginController@login',
+    'as' => 'login',
+]);*/
+
 Route::get('/configuracion', [
     'uses' => 'ConfiguracionController@admin',
     'as' => 'get.configuracion.admin',

@@ -23,6 +23,9 @@
   <link href="{{ asset('plugins/bootstrap-datepicker/css/datepicker.css') }}" rel="stylesheet" type="text/css"  />
   <link href="{{ asset('plugins/bootstrap-timepicker/compiled/timepicker.css') }}" rel="stylesheet" type="text/css"  />
   <link href="{{ asset('plugins/bootstrap-colorpicker/css/colorpicker.css') }}" rel="stylesheet" type="text/css"  />
+  <script>
+    window.nivel = "{{\Auth::user()->PRO_NIVEL}}"
+  </script>
 </head>
 
 <body class="dark_theme  fixed_header left_nav_fixed">
