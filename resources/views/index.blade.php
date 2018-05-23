@@ -147,7 +147,7 @@
         function mostrar() {
 
         }
-        $.get("http://127.0.0.1:8000/api/menus/all/"+window.nivel).done(function(data){
+        $.get("https://plataforma.sgrchile.com/api/menus/all/"+window.nivel).done(function(data){
             if (data !== null) {
                 if (Object.keys(data).length > 0) {
                     $.each(data, function( index, value ){
