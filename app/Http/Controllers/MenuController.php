@@ -16,14 +16,18 @@ class MenuController extends Controller
 
     public function getMenus($id)
     {
-        //return $id;
-        //$niv = Auth::user()->PRO_NIVEL;
-        $mns = MenuModel::get();
-        $mnmvs = MenuNivel::where('NIVEL_ID','=',$id)->get();
+        if ($id == 14){
+            $mns = MenuModel::get();
+            return response()->json($mns);
+        }else {
 
-        $mn = MenuModel::whereIn('MENU_ID',$mnmvs)->get();
+            $mnmvs = MenuNivel::where('NIVEL_ID', '=', $id)->get();
 
-        return response()->json($mn);
+            $mn = MenuModel::whereIn('MENU_ID', $mnmvs)->get();
+
+            return response()->json($mn);
+        }
+
     }
 
     public function login(Request $request){
