@@ -141,21 +141,7 @@
 <script  type='text/javascript'>
 
     $(document).ready(function(){
-        $("[id*=nombre]").hide();
-        $('#myTest').prop("required", true);
-        $('#myTest').removeAttr("hidden");
-        function mostrar() {
-
-        }
-        $.get("https://plataforma.sgrchile.com/api/menus/all/"+window.nivel).done(function(data){
-            if (data !== null) {
-                if (Object.keys(data).length > 0) {
-                    $.each(data, function( index, value ){
-
-                    });
-                }
-            }
-        });
+        
 
     });
 </script>
