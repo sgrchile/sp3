@@ -1555,7 +1555,7 @@ Route::group(['prefix' => 'modulo'], function () {
      // INICIO DE RUTAS MEJORA CONTINUA
       Route::group(['prefix' => 'MejoraContinua'], function () {
            Route::get('/', function () {
-               return view('ModuloMejoraContinua.IndexMejoraContinua');
+               return view('ModuloMejoraContinua.indexMejoraContinua');
            })->name('IndexMejoraContinua');
 
            Route::get('resumenEvaluacion', function () {
