@@ -73,8 +73,8 @@
             <td>
               <select style="width:175px;" class="form-control" name="nacionalidad">
                 <option>Seleccionar</option>
-                <option value="Chilena">Chilena</option>
-                <option value="Extranjera">Extranjera</option>
+                <option value="1">Chilena</option>
+                <option value="2">Extranjera</option>
               </select>
             </td>
 
@@ -82,9 +82,9 @@
             <td>
               <select style="width:175px;" class="form-control" name="sexo">
                 <option>Seleccionar</option>
-                <option value="HOMBRE">HOMBRE</option>
-                <option value="MUJER">MUJER</option>
-                <option value="INDEFINIDO">INDEFINIDO</option>
+                <option value="1">HOMBRE</option>
+                <option value="2">MUJER</option>
+                <option value="3">INDEFINIDO</option>
               </select>
             </td>
 
@@ -179,7 +179,12 @@
 
           <td>RUBRO</td>
             <td>
-                {{ Form::select('rubro',App\Rubro::pluck('RUB_DESC','RUB_COD'),['class'=>'form-control','style'=>'width:175px','placeholder'=>'Seleccione']) }}
+                <select style="width:175px;" class="form-control" name="rubro">
+                    <option>Seleccionar</option>
+                    @foreach( $rubros as $rubro)
+                        <option value="{{ $rubro->RUB_COD }}">{{ $rubro->RUB_DESC }}</option>
+                    @endforeach
+                </select>
             </td>
           <td>SUB-RUBRO</td>
           <td>
@@ -188,7 +193,7 @@
             </select>
           </td>
           <td>Nº CUENTA:</td>
-          <td><input type="text" class="form-control" name="nro_cuenta" required  style="width:175px;"></td>
+          <td><input type="text" class="form-control" name="nro_cuenta"  style="width:175px;"></td>
         </tr>
         <tr>
             <td>BANCO:</td>

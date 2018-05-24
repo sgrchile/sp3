@@ -16,7 +16,7 @@
                             <td><h4 class="modal-title text-center">SELECIONE EMPRESA</h4></td>
                         </tr>
                         <tr>
-                            <td>{!! Form::select('empresa',App\Empresa::pluck('EMP_DESC','EMP_ID'),null,['class'=>'form-control','style'=>'width:175px','placeholder'=>'Seleccione']) !!}</td>
+                            <td>{!! Form::select('empresa',App\Empresa::pluck('EMP_DESC','EMP_ID'),null,['class'=>'form-control','required','style'=>'width:175px','placeholder'=>'Seleccione']) !!}</td>
                         </tr>
 
                     </table>

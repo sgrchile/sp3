@@ -34,6 +34,10 @@ Route::post('/registrar_action', [
     'as' => 'registrar.proveedor.persona',
 ]);
 
+Route::get('/desarrollo',function (){
+   return view('enDesarrollo');
+})->name('desarrollo');
+
 Route::get('/menu', function () {
          return view('index');
      })->name('menu');
