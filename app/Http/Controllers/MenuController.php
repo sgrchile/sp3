@@ -20,12 +20,21 @@ class MenuController extends Controller
             $mns = MenuModel::get();
             return response()->json($mns);
         }else {
+            $mns = MenuModel::orderby('MENU_ID','ASC')->get();
+            $mnmvs = MenuNivel::orderby('MENU_ID','ASC')->where('NIVEL_ID', '=', $id)->get();
+            $list = [];
+            $count = 0;
+            for ($i=0;$i<$mns->count();$i++){
+                for($e=0;$e<$mnmvs->count();$e++){
+                    if ($mnmvs[$e]->MENU_ID == $mns[$i]->MENU_ID){
+                        $list[$count]=$mns[$i];
+                        $count++;
+                    }
+                }
+            }
+            //$mn = MenuModel::whereIn('MENU_ID', $list)->get();
 
-            $mnmvs = MenuNivel::where('NIVEL_ID', '=', $id)->get();
-
-            $mn = MenuModel::whereIn('MENU_ID', $mnmvs)->get();
-
-            return response()->json($mn);
+            return response()->json($list);
         }
 
     }
