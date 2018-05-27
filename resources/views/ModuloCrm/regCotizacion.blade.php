@@ -108,7 +108,7 @@
                         <tr>
 
                             <td colspan="6" align="right">DESCUENTO:</td>
-                            <td><input type="number" min="0" id="desc" name="descuento" style="width:100px;" class="form-control" /></td>
+                            <td><input type="text" min="0" id="desc" placeholder="0%" name="descuento" style="width:100px;" class="form-control" /></td>
                         </tr>
                         <tr>
 
