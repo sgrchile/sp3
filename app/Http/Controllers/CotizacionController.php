@@ -40,15 +40,38 @@ class CotizacionController extends Controller
      */
     public function create()
     {
-        $lstcliente = Cliente::where('CLI_PROPIETARIO','=',Auth::user()
-            ->PRO_RUN)->pluck('CLI_NOMBRE','CLI_RUT');
-        $clientes = Cliente::all()-where('CLI_PROPIETARIO','=',Auth::user()
+        $id = null;
+        $lstcliente = Cliente::find($id);
+        $clientes = Cliente::all()->where('CLI_PROPIETARIO','=',Auth::user()
                 ->PRO_RUN);
         $tpventa = TipoVenta::all();
         $lstprod = InventarioProducto::all();
         $lstserv = InventarioServicio::all();
 
+        return view('ModuloCrm.regCotizacion')
+            ->with('lstcliente',$lstcliente)
+            ->with('clientes',$clientes)
+            ->with('tpventa',$tpventa)
+            ->with('lstprod',$lstprod)
+            ->with('lstserv',$lstserv);
 
+    }
+
+    public function getModificarCotizar($id){
+
+        $lstcliente = Cliente::find($id);
+        $clientes = Cliente::all()->where('CLI_PROPIETARIO','=',Auth::user()
+            ->PRO_RUN);
+        $tpventa = TipoVenta::all();
+        $lstprod = InventarioProducto::all();
+        $lstserv = InventarioServicio::all();
+
+        return view('ModuloCrm.regCotizacion')
+            ->with('lstcliente',$lstcliente)
+            ->with('clientes',$clientes)
+            ->with('tpventa',$tpventa)
+            ->with('lstprod',$lstprod)
+            ->with('lstserv',$lstserv);
     }
 
     /**
@@ -60,7 +83,7 @@ class CotizacionController extends Controller
     public function store(Request $request)
     {
 
-        dd(Auth::user()->PRO_NIVEL);
+        dd($request);
     }
 
     /**

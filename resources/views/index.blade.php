@@ -10,8 +10,10 @@
       </div>
       <div class="porlets-content">
         <!-- FORM INICIO -->
-        <!--<a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i> <span>Logout</span></a>-->
+        <a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i> <span>Logout</span></a>
                     <table class="table-condensed" align="center" style="text-align:center; color:#000000; " cellpadding="0">
+
+                        {!! \Illuminate\Support\Facades\Auth::user()->PRO_NIVEL !!}
 
                         <tr>
                             <td id="3" hidden class="menu">
@@ -22,7 +24,7 @@
                               <td id="4" hidden class="menu"><a  href="{{route('Finanzas')}}"><img src="{{ asset('images/Finanzas.png') }}" class="img-responsive menu"  width="113" height="128"/>
                                   <p style="text-align:center;">FINANZAS</p></a>
                               </td>
-                              <td id="5" hidden class="menu"><a  href="{{route('Finanzas')}}"><img src="{{ asset('images/presupuesto.png') }}" class="img-responsive menu"  width="113" height="128"/>
+                              <td id="5"  class="menu"><a  href="{{route('desarrollo')}}"><img src="{{ asset('images/presupuesto.png') }}" class="img-responsive menu"  width="113" height="128"/>
                                   <p style="text-align:center;">PRESUPUESTO</p></a>
                               </td>
                         </tr>
@@ -35,7 +37,7 @@
                                   <a  href="{{route('SolFon')}}"><img src="{{ asset('images/solicitud-fondos.png') }}" class="img-responsive menu" width="113" height="128"/>
                                   <p>SOLICITUD DE FONDOS</p></a>
                               </td>
-                              <td id="11" hidden class="menu">
+                              <td id="11" class="menu">
                                   <a  href="{{route('CRM')}}"><img src="{{ asset('images/Marketing.png') }}" class="img-responsive menu" width="113" height="128"/>
                                   <p style="text-align:center;">CRM</p></a>
                               </td>

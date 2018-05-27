@@ -126,7 +126,6 @@
 
                 <td>PAIS:</td>
                 <td>
-                  {!! Form::select('pais',$pais,null,['class'=>'form-control','id'=>'pais','style'=>'width:175px']) !!}
                   <select name="pais" required class="form-control" id="pais">
                     <option value="">Seleccione</option>
                     @foreach($pais as $pai)
@@ -136,7 +135,6 @@
                 </td>
                 <td>REGION:</td>
                 <td>
-                  {!! Form::select('region',$region,null,['class'=>'form-control','id'=>'region','style'=>'width:175px']) !!}
                   <select name="region" required class="form-control" id="region">
                     <option value="">Seleccione</option>
                   </select>
@@ -148,7 +146,6 @@
 
                 <td>PROVINCIA:</td>
                 <td>
-                  {!! Form::select('provincia',$provincia,null,['class'=>'form-control','id'=>'provincia','style'=>'width:175px']) !!}
                   <select name="provincia" required class="form-control" id="provincia">
                     <option value="">Seleccione</option>
                   </select>
@@ -156,7 +153,6 @@
 
                 <td>CIUDAD:</td>
                 <td>
-                  {!! Form::select('ciudad',$ciudad,null,['class'=>'form-control','id'=>'ciudad','style'=>'width:175px']) !!}
                   <select name="ciudad" required class="form-control" id="ciudad">
                     <option value="">Seleccione</option>
                   </select>

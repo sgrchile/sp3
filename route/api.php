@@ -79,3 +79,19 @@ Route::get('/probabilidad/{etapa}', [
     'uses' => 'LocationController@getprob',
     'as' => 'get.prob',
 ]);
+Route::get('/servicio', [
+    'uses' => 'LocationController@getservicio',
+    'as' => 'get.serv',
+]);
+Route::get('/producto', [
+    'uses' => 'LocationController@getproducto',
+    'as' => 'get.prod',
+]);
+Route::get('/itemserv/{prod}', [
+    'uses' => 'LocationController@getitemserv',
+    'as' => 'get.itemserv',
+]);
+Route::get('/itemprod/{prod}', [
+    'uses' => 'LocationController@getitemprod',
+    'as' => 'get.itemprod',
+]);

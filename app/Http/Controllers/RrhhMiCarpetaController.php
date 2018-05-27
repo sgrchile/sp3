@@ -89,7 +89,7 @@ class RrhhMiCarpetaController extends Controller
         //
         if ($request->pass1 == $request->pass2 ){
             $prov = Proveedor::find(Auth::user()->PRO_RUN);
-            $prov->password = $request->pass1;
+            $prov->password = Hash::make($request->pass1);
             //dd($request);
             $prov->save();
             return redirect()->route('resetpass')->with('success', 'contraseña cambiada con exito.');

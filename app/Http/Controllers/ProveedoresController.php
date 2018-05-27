@@ -69,6 +69,7 @@ class ProveedoresController extends Controller
         $estado_proveedores = EstadoProveedor::all();
         $tipo_cuentas = TipoCuenta::all();
         $tipo_proveedores = TipoProveedor::all();
+        $rubros = Rubro::all();
 
         return view('ModuloProv.regPerAct')
             ->with('bancos', $bancos)
@@ -80,6 +81,7 @@ class ProveedoresController extends Controller
             ->with('tipo_proveedores', $tipo_proveedores)
             ->with('regiones', $regiones)
             ->with('ciudades', $ciudades)
+            ->with('rubros', $rubros)
             ->with('provincias', $provincias);
     }
 
@@ -150,25 +152,11 @@ class ProveedoresController extends Controller
             'rut' => 'required|unique:PRO_PROVEEDOR,PRO_RUN',
             'fecha_nacimiento' => 'required',
             'celular' => 'required',
-            'celular_dos' => 'required',
-            'referencia' => 'required',
             'nacionalidad' => 'required',
             'sexo' => 'required',
             'direccion' => 'required',
             'pais' => 'required',
-            'region' => 'required',
-            'provincia' => 'required',
-            'ciudad' => 'required',
-            'seguro_medico' => 'required',
             'afp' => 'required',
-            'fecha_pago' => 'required',
-            'rubro' => 'required',
-            'sub_rubro' => 'required',
-            'nro_cuenta' => 'required',
-            'banco' => 'required',
-            'tipo_cuenta' => 'required',
-            'sitio_web' => 'required|url',
-            'facebook' => 'required',
             'password' => 'required|min:6|confirmed',
             'email' => 'required|email|unique:PRO_PROVEEDOR,PRO_EMAIL',
         ]);

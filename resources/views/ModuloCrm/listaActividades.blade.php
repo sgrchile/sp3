@@ -36,7 +36,6 @@
                 <td>FECHA </td>
                 <td>HORA</td>
                 <td>CLIENTE</td>
-                <td>CONTACTO</td>
               </tr>
               </THEAD>
               <tbody>
@@ -47,8 +46,8 @@
                   <td>{{ $actividad->FECHA_ACT }}</td>
                   <td>{{ $actividad->HORA }}</td>
                   <td>{{ $actividad->ID_CLIENTE_ACT }}</td>
-                  <td>{{ $actividad->CONTACT_ACT }}</td>
-                  <td></td>
+                  <td><a href="{{ route('actividad.destroy',$actividad->ID_ACT) }}" onclick="return confirm('¿Desea eliminar ésta Actividad?')" >
+                      <button class="btn btn-primary btn-xs" style="width:90px; margin-bottom:5px;">ELIMINAR</button></a></td>
                 </tr>
               @endforeach
               </tbody>

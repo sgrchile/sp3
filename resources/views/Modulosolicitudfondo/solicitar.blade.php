@@ -207,8 +207,12 @@
              			<td>{{ $personal->PRO_RUN }}</td>
              			<td>{{ $personal->PRO_NOMBRE }}</td>
              			<td>{{ $personal->PRO_APE_PAT }}</td>
-                  <td>{{ App\Empresa::find($personal->PRO_EMP)->EMP_DESC }}</td>
+                        <td>{{ App\Empresa::find($personal->PRO_EMP)->EMP_DESC }}</td>
+                        @if(App\Cargo::find($personal->PRO_CAR_ID) != null)
              			<td>{{ App\Cargo::find($personal->PRO_CAR_ID)->CAR_DESC }}</td>
+                        @else
+                            <td>{!! 'Ninguno' !!}</td>
+                        @endif
              			<td><button data-personal-id="{{ $personal->PRO_RUN }}" class="btn btn-primary btn-sm" data-dismiss="modal">&#10004;</button></td>
              		</tr>
              	@endforeach

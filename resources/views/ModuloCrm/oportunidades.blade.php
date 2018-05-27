@@ -75,10 +75,6 @@
               </td>
             </tr>
             <tr>
-              <td>CENTRO DE NEGOCIO:</td>
-              <td>
-                {!! Form::select('centneg',$centneg,null,['id'=>'centneg','class'=>'form-control','style'=>'width:175px']) !!}
-              </td>
               <td>SIGUIENTE PASO:</td>
               <td>
                 {!! Form::text('sig_paso',null,['id'=>'sig_paso','class'=>'form-control','style'=>'width:175px']) !!}

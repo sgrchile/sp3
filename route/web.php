@@ -1202,6 +1202,9 @@ Route::group(['prefix' => 'modulo'], function () {
             'uses' => 'CotizacionController@index',
             'as' => 'cotizaciones',
         ]);
+        Route::group(['prefix' => 'cotizar'], function () {
+            Route::get('/{id}','CotizacionController@getModificarCotizar')->name('get.modificar.cotizar');
+        });
 
         Route::get('/RegistroCotizacion', [
             'uses' => 'CotizacionController@create',

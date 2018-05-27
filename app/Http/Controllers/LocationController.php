@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use App\AreaServicio;
 use App\Etapa;
 use App\Proceso;
+use App\Producto;
 use App\Region;
 use App\Provincia;
 use App\Ciudad;
 use App\Rubro;
 
+use App\Servicio;
 use Illuminate\Http\Request;
 
 class LocationController extends Controller
@@ -52,5 +54,25 @@ class LocationController extends Controller
     {
         return response()
             ->json(Etapa::find($etapa)->PORCENTAJE, 200);
+    }
+    public function getservicio()
+    {
+            return response()
+                ->json(Servicio::all());
+    }
+    public function getproducto()
+    {
+            return response()
+                ->json(Producto::all());
+    }
+    public function getitemserv($prod)
+    {
+        return response()
+            ->json(Servicio::find($prod), 200);
+    }
+    public function getitemprod($prod)
+    {
+        return response()
+            ->json(Producto::find($prod), 200);
     }
 }
