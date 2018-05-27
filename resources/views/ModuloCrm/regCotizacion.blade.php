@@ -243,7 +243,6 @@
                         }
                     });
                 } if (tpventa == 2) {
-                    alert(tpventa);
                     $.get("https://plataforma.sgrchile.com/api/itemprod/" + prod).done(function(data){
                         if (data !== null){
                             $("#item").val(data('PROD_DESC'));

@@ -63,7 +63,7 @@ class LocationController extends Controller
     public function getproducto()
     {
             return response()
-                ->json(Producto::all());
+                ->json(Producto::all()->where('PROD_ESTADO','=',1));
     }
     public function getitemserv($prod)
     {
@@ -73,7 +73,6 @@ class LocationController extends Controller
     public function getitemprod($prod)
     {
         return response()
-            ->json(Producto::find($prod)
-                ->where('PROD_ESTADO','=',1), 200);
+            ->json(Producto::find($prod), 200);
     }
 }
