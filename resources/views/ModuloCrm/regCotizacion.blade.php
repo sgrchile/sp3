@@ -19,7 +19,7 @@
                             <h4 class="text-left text-uppercase">FECHA:</h4>
                         </div>
                         <div class="col-sm-6">
-                            <h4 class="text-right text-uppercase">{!! Carbon\Carbon::now() !!} </h4>
+                            <h4 class="text-right text-uppercase">{!! Carbon\Carbon::now()->toFormattedDateString() !!} </h4>
                         </div>
                     </div>
 
@@ -49,6 +49,15 @@
                         <tr>
                             <td>EMAIL:</td>
                             <td><input type="text" name="email"  value="{{ isset($lstcliente) ? $lstcliente->CLI_EMAIL : '' }}" style="width:175px;" class="form-control"  readOnly/></td>
+
+                            <td>FECHA CADUCIDAD :</td>
+                            <td>
+                                {{ Form::date('fecha',Carbon\Carbon::now()->addDays(29),['class'=>'form-control','style'=>'width:175px;']) }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>COMENTARIO</td>
+                            <td> <textarea id="comentario" name="comentario" class="form-control" style=" width:175px; max-width:175px; max-height:175px;" required></textarea></td>
                         </tr>
 
                     </table>
@@ -205,6 +214,7 @@
                                 });
                                 $("#idpro").trigger("change");
                             }
+
                         }
                     });
                 }if (tpventa == 2){
@@ -219,27 +229,26 @@
                             }
                         }
                     });
-                    $("#idpro").on("change", function(){
-                        let prod = $(this).val();
-                        $("#item").empty();
-                        let tpventa = $("#tpventa").val();
-                        if (tpventa == 1){
-                            $.get("https://plataforma.sgrchile.com/api/itemserv/" + prod).done(function(data){
-                                if (data !== null){
-                                    $("#item").val(data('SER_DESC'));
-                                    $("#costouni").val(data('PROD_PRECIO_VENTA'));
-                                }
-                            });
-                        } if (tpventa == 2) {
-                            alert(tpventa);
-                            $.get("https://plataforma.sgrchile.com/api/itemprod/" + prod).done(function(data){
-                                if (data !== null){
-                                    $("#item").val(data('PROD_DESC'));
-                                    $("#costouni").val(data('PROD_PRECIO_VENTA'));
-                                }
-                            });
+                }
+            });
+            $("#idpro").on("change", function(){
+                let prod = $(this).val();
+                $("#item").empty();
+                let tpventa = $("#tpventa").val();
+                if (tpventa == 1){
+                    $.get("https://plataforma.sgrchile.com/api/itemserv/" + prod).done(function(data){
+                        if (data !== null){
+                            $("#item").val(data('SER_DESC'));
+                            $("#costouni").val(data('PROD_PRECIO_VENTA'));
                         }
-
+                    });
+                } if (tpventa == 2) {
+                    alert(tpventa);
+                    $.get("https://plataforma.sgrchile.com/api/itemprod/" + prod).done(function(data){
+                        if (data !== null){
+                            $("#item").val(data('PROD_DESC'));
+                            $("#costouni").val(data('PROD_PRECIO_VENTA'));
+                        }
                     });
                 }
 

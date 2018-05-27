@@ -82,9 +82,49 @@ class CotizacionController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validateCotizacion($request);
+        $cotizacion = new Cotizaciones();
+        $cotizacion->FEC_COTIZ = $request->fecha;
+        $cotizacion->CLI_COTIZ = $request->rut;
+        $cotizacion->VAL_NETO_COTIZ = $request->totalneto;
+        $cotizacion->ID_VENDEDOR = $vend = Auth::user()->PRO_RUN;
+        $cotizacion->EST_COTIZ = 1;
+        $cotizacion->COMENT_COTIZ = $request->comentario;
+        $cotizacion->EMP_COTIZ = Auth::user()->PRO_EMP;
+        $cotizacion->save();
 
-        dd($request);
+        if (! $cotizacion->exists) {
+            return redirect()->route('regCotizacion')->with('error', "Hubo un problema al crear la Cotizacion.");
+        }
+        $count=0;
+        $nreg=(($request->request->count())-13)/7;
+        for ($i=0;$i<$nreg;$i++) {
+            if ($request->exists("idpro$count")) {
+                $item = new ItemCotizaciones();
+                $item->ID_COTIZACION = $cotizacion->ID_COTIZ;
+                $item->TP_ITEM = $request->get("tpventa$count");
+                $item->ID_ITEM_COTIZ = $request->get("idpro$count");
+                $item->CANT_ITEM = $request->get("cantidad$count");
+                $item->VALOR_UNIT = $request->get("costouni$count");
+                $item->DESC_ITEM = $request->get("dsctouni$count");
+                $item->DESC_ITEM_COTIZ = $request->get("item$count");
+                $item->VALOR_TOTAL = $request->get("costototal$count");
+                $item->save();
+
+            }
+            $count++;
+        }
+        return redirect()->route('regCotizacion')->with('success', "La Cotizacion ha sido creado exitosamente.");
     }
+
+    public function validateCotizacion(Request $request) {
+        $this->validate($request, [
+            'CLI_COTIZ' => 'required',
+            'VAL_NETO_COTIZ' => 'required',
+            'COMENT_COTIZ' => 'required',
+        ]);
+    }
+
 
     /**
      * Display the specified resource.

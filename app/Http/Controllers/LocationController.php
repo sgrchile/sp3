@@ -73,6 +73,7 @@ class LocationController extends Controller
     public function getitemprod($prod)
     {
         return response()
-            ->json(Producto::find($prod), 200);
+            ->json(Producto::find($prod)
+                ->where('PROD_ESTADO','=',1), 200);
     }
 }
