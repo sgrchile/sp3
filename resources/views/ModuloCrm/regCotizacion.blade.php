@@ -29,26 +29,26 @@
                         <tr>
                             <td>RUT:</td>
                             <td>
-                            <input style="width:175px" NAME="rut" class="form-control" required type="number" id="nro_solicitud" value="{{ isset($lstcliente) ? $lstcliente->CLI_RUT : '' }}" id="idsol" readonly>
+                            <input style="width:175px" name="rut" class="form-control" required type="text" id="nro_solicitud" value="{{ isset($lstcliente) ? $lstcliente->CLI_RUT : '' }}" readonly>
                             </td>
                             <td><a class="btn btn-primary" data-toggle="modal" data-target="#selCliente">traer</a></td>
                         </tr>
                         <tr>
                             <td>NOMBRE:</td>
-                            <td><input type="text" name="nombre" value="" style="width:175px;" class="form-control"  readOnly/></td>
+                            <td><input type="text" name="nombre" value="{{ isset($lstcliente) ? $lstcliente->CLI_NOMBRE : '' }}" style="width:175px;" class="form-control"  readOnly/></td>
 
                             <td>TELEFONO:</td>
-                            <td><input type="text" name="telefono"  value="" style="width:175px;" class="form-control"  readOnly/></td>
+                            <td><input type="text" name="telefono"  value="{{ isset($lstcliente) ? $lstcliente->CLI_FONO : '' }}" style="width:175px;" class="form-control"  readOnly/></td>
                         </tr>
                         <tr>
                             <td>DIRECCION:</td>
-                            <td><input type="text" name="direccion" value="" style="width:175px;" class="form-control"  readOnly/></td>
+                            <td><input type="text" name="direccion" value="{{ isset($lstcliente) ? $lstcliente->CLI_DIRECCION : '' }}" style="width:175px;" class="form-control"  readOnly/></td>
                             <td>ACT. COMERCIAL:</td>
-                            <td><input type="text" name="act_comercial" value="" style="width:175px;" class="form-control"  readOnly/></td>
+                            <td><input type="text" name="act_comercial" value="{{ isset($lstcliente) ? $lstcliente->CLI_ACT_COMERCIAL : '' }}" style="width:175px;" class="form-control"  readOnly/></td>
                         </tr>
                         <tr>
                             <td>EMAIL:</td>
-                            <td><input type="text" name="email"  value="" style="width:175px;" class="form-control"  readOnly/></td>
+                            <td><input type="text" name="email"  value="{{ isset($lstcliente) ? $lstcliente->CLI_EMAIL : '' }}" style="width:175px;" class="form-control"  readOnly/></td>
                         </tr>
 
                     </table>
@@ -190,6 +190,7 @@
     </a>
     <br>
     <script  type='text/javascript'>
+        var count = 0;
         $(document).ready(function(){
             $("#tpventa").on("change", function(){
                 let tpventa = $(this).val();
@@ -206,7 +207,7 @@
                             }
                         }
                     });
-                }else{
+                }if (tpventa == 2){
                     $.get("https://plataforma.sgrchile.com/api/producto/").done(function(data){
                         if (data !== null){
                             if (Object.keys(data).length > 0 ){
@@ -229,7 +230,8 @@
                                     $("#costouni").val(data('PROD_PRECIO_VENTA'));
                                 }
                             });
-                        }else {
+                        } if (tpventa == 2) {
+                            alert(tpventa);
                             $.get("https://plataforma.sgrchile.com/api/itemprod/" + prod).done(function(data){
                                 if (data !== null){
                                     $("#item").val(data('PROD_DESC'));
@@ -243,27 +245,26 @@
 
             });
         });
-        var count = 0;
         function masfilas(arg) {
             if (document.getElementById(arg)) {
                 count++;
                 var texto =
                     '<tr id="fila' + count + '">' +
                     '              <td>' +
-                    '                <select name="tpventa' + count + '" required class="form-control" id="tpventa' + count + '">' +
+                    '                <select name="tpventa' + count + '" required class="form-control" id="tpventa">' +
+                    '                    <option value="">Seleccione</option>' +
                     '                  @foreach($tpventa as $tpv)' +
-                    '                       <option value="">Seleccione</option>' +
                     '                    <option value="{{ $tpv->ID_TP_VENTA }}">{{ $tpv->DESC_TP_VENTA }}</option>' +
                     '                  @endforeach' +
                     '                </select>' +
                     '              </td>' +
                     '              <td>' +
-                    '                <select name="idpro' + count + '" required class="form-control" id="idpro' + count + '">' +
+                    '                <select name="idpro' + count + '" required class="form-control" id="idpro">' +
                     '                    <option value="">Seleccione</option>' +
                     '                </select>' +
                     '              </td>' +
 
-                    '<td><input type="text" style="width:175px;" class="form-control" readOnly id="item' + count + '" name="item' + count + '"></td>' +
+                    '<td><input type="text" style="width:175px;" class="form-control" readOnly id="item" name="item' + count + '"></td>' +
 
                     '<td><input type="number" style="width:85px;" required min="0" class="form-control" id="cantidad" name="cantidad' + count + '"></td>' +
 
@@ -284,9 +285,9 @@
         function calcular_costo() {
             var total = 0;
             $('#cantidad').keyup(function (){
-                total = ($('#costouni').val() * eval($(this).val()))-($('#dsctouni'+'%'));
+                total = ($('#costouni').val() * eval($(this).val()))-($('#dsctouni')*$('#costouni').val());
             });
-            $("#subtotal").val(total);
+            $("#costototal").val(total);
         }
         function calcular_totales() {
 
