@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use \Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,7 +39,9 @@ Route::get('/rubro/{rubro}', [
 
 Route::get('/crm/oportunidades', function(){
 
-    $db = App\Oportunidad::orderBy('CREATED_AT','DESC')->take(10)->get();
+    $db = App\Oportunidad::orderBy('CREATED_AT','DESC')
+        ->where('OPORT_EMP','=',Auth::user()->PRO_EMP)
+        ->take(10)->get();
     return response()->json($db);
 });
 

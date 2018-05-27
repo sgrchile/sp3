@@ -77,11 +77,11 @@
             <tr>
               <td>SIGUIENTE PASO:</td>
               <td>
-                {!! Form::text('sig_paso',null,['id'=>'sig_paso','class'=>'form-control','style'=>'width:175px']) !!}
+                <textarea id="sig_paso" name="sig_paso" class="form-control" style=" width:175px; max-width:175px; max-height:175px;"></textarea>
               </td>
             </tr>
           </table>
-          {!! Form::submit('REGISTRAR', ['class' => 'btn btn-primary btn-lg']) !!}
+          {!! Form::submit('NUEVO', ['class' => 'btn btn-primary btn-lg']) !!}
           {!! Form::close() !!}
           <!-- FORM FINAL -->
         </div><!--/porlets-content-->

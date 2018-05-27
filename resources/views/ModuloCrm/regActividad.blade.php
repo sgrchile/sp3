@@ -36,7 +36,7 @@
                                     </td>
                                     <td>DESCRIPCION:</td>
                                     <td>
-                                        <input type="text" id="descripcion" name="descripcion" style="width:175px;" class="form-control" required/>
+                                        <textarea id="descripcion" name="descripcion" class="form-control" style=" width:175px; max-width:175px; max-height:175px;" required></textarea>
                                     </td>
                                 </tr>
                                 </tr>
@@ -49,7 +49,7 @@
                                 </tr>
 
                             </table>
-                            <button class="btn btn-primary btn-lg">REGISTRAR</button>
+                            <button class="btn btn-primary btn-lg">CREAR</button>
                         </form>
 
                         <!-- FORM FINAL -->

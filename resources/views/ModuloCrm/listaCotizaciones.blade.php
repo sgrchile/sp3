@@ -8,7 +8,7 @@
       <div class="block-web">
         <div class="header">
           <div class="actions"></div>
-          <h1 class=" text-center text-uppercase" >LISTA GENERAL DE COTIZACIONES</h1>
+          <h1 class=" text-center text-uppercase" >COTIZACIONES</h1>
         </div>
         <div class="porlets-content">
           <div class="container-fluid" align="center">

@@ -25,7 +25,7 @@
             </tr>
             <tr>
               <td>
-                <div class="container" align="center">  <a href="{{ route('Oportunidades') }}"><button class="btn btn-primary btn-lg">AGREGAR</button></a></div>
+                <div class="container" align="center">  <a href="{{ route('Oportunidades') }}"><button class="btn btn-primary btn-lg">NUEVO</button></a></div>
               </td>
             </tr>
           </table>

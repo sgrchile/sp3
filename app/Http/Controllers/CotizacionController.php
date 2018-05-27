@@ -154,7 +154,7 @@ class CotizacionController extends Controller
      */
     public function edit($id)
     {
-        dd(Auth::user()->PRO_NIVEL);
+        dd('en construccion');
     }
 
     /**
@@ -177,6 +177,8 @@ class CotizacionController extends Controller
      */
     public function destroy($id)
     {
-        dd($id);
+        $cotizacion = Cotizaciones::find($id);
+        $cotizacion->delete();
+        return redirect()->back()->with('success', 'Cotizacion eliminada con exito!');
     }
 }

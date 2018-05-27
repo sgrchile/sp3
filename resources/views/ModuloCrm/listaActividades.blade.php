@@ -8,7 +8,7 @@
       <div class="block-web">
         <div class="header">
           <div class="actions"></div>
-            <H1 class="text-center"><strong>LISTA DE ACTIVIDADES </strong></H1>
+            <H1 class="text-center"><strong>ACTIVIDADES </strong></H1>
         </div>
         <div class="porlets-content">
           <!-- FORM INICIO -->
@@ -22,7 +22,7 @@
                 </td>
                 <td><button type="button" class="btn btn-primary btn-xs">  <i class="fa fa-search" style="font-size:30px;"></i></button></td>
                 <td>
-                  <a href="{{ route('RegActividad') }}"><button class="btn btn-primary btn-lg">AGREGAR</button></a>
+                  <a href="{{ route('RegActividad') }}"><button class="btn btn-primary btn-lg">NUEVO</button></a>
                 </td>
               </tr>
             </table>
