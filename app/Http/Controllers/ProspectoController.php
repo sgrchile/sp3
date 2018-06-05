@@ -34,11 +34,16 @@ class ProspectoController extends Controller
      */
     public function index()
     {
-        $prosp = Prospecto::orderBy('CLI_IDENT','ASC')
-            ->where('CLI_PROPIETARIO','=',Auth::user()->PRO_RUN)
-            ->where('CLI_ESTADO','=',1)
-            ->paginate(20);
-
+        if (Auth::user()->PRO_NIVEL ==14){
+            $prosp = Prospecto::orderBy('CLI_IDENT','ASC')
+                ->where('CLI_ESTADO','=',1)
+                ->paginate(20);
+        }else{
+            $prosp = Prospecto::orderBy('CLI_IDENT','ASC')
+                ->where('CLI_PROPIETARIO','=',Auth::user()->PRO_RUN)
+                ->where('CLI_ESTADO','=',1)
+                ->paginate(20);
+        }
         //dd($prosp);
 
         return view('ModuloCrm.prospectos')->with('clientes',$prosp);

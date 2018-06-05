@@ -28,10 +28,13 @@ class ClientesController extends Controller
      */
     public function index()
     {
-        $clientes = Cliente::orderBy('CLI_NOMBRE','ASC')
-            ->where('CLI_PROPIETARIO','=',Auth::user()->PRO_RUN)
-            ->paginate(10);
-
+        if (Auth::user()->PRO_NIVEL == 14){
+            $clientes = Cliente::orderBy('CLI_NOMBRE','ASC')->paginate(10);
+        }else{
+            $clientes = Cliente::orderBy('CLI_NOMBRE','ASC')
+                ->where('CLI_PROPIETARIO','=',Auth::user()->PRO_RUN)
+                ->paginate(10);
+        }
         //dd($clientes);
 
         return view('ModuloCrm.clientes')->with('clientes',$clientes);
