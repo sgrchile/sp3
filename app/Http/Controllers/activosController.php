@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\ActivoInterno;
 use app\ActivoAsignado;
-use app\Proveedor;
-
+use App\Proveedor;
 use Carbon\Carbon;
-
+use Illuminate\Http\Request;
 
 class ActivosController extends Controller
 {
@@ -21,7 +19,7 @@ class ActivosController extends Controller
     public function showActivos()
     {
           //DESDE WEB SE LLAMA ESTE METODO, PUES CONTIENE LA RUTA
-          return view('ModuloInventario.Activos.IndexActivos');
+          return view('ModuloInventario.Activos.indexActivos');
     }
 
     // INICIO REGISTRO DE ACTIVO
@@ -119,7 +117,7 @@ class ActivosController extends Controller
 
       public function showAsignarActivo()
       {
-          $proveedor = Proveedor::all();
+          $proveedor = Proveedor::orderby('PRO_NOMBRE','ASC');
           return view('ModuloInventario.Activos.Asignar')
           ->with('prov', $proveedor);
       }

@@ -18,6 +18,14 @@ use App\ServicioProfesional;
 use App\ArriendoMaquinaria;
 use App\OfertaServicio;
 use App\OfertaArticulo;
+use App\CategoriaEmpresa;
+use App\CoberturaEmpresa;
+use App\NroEmpleados;
+use App\Pagos;
+use App\PersonaJuridica;
+use App\PreguntasCerradas;
+use App\Tp_Cuenta;
+use App\VentasAnuales;
 use App\EstadoOfertaAdministrador;
 use App\EstadoOfertaProveedor;
 use App\Orientacion;
@@ -174,6 +182,14 @@ class ProveedoresController extends Controller
       $regiones = Region::all();
       $tipo_cuentas = TipoCuenta::all();
       $tipo_proveedores = TipoProveedor::all();
+        $nro_empleados = NroEmpleados::all();
+        $categoria = CategoriaEmpresa::all();
+        $ventas_anuales = VentasAnuales::all();
+        $cobertura = CoberturaEmpresa::all();
+        $tpcuenta = TipoCuenta::all();
+        $pagos = Pagos::all();
+        $preguntas = PreguntasCerradas::all();
+        $pers_juridica = PersonaJuridica::all();
 
       return view('ModuloProv.regProv')
       ->with('bancos', $bancos)
@@ -185,7 +201,15 @@ class ProveedoresController extends Controller
       ->with('regiones', $regiones)
       ->with('tipo_cuentas', $tipo_cuentas)
       ->with('paises', $paises)
-      ->with('tipo_proveedores', $tipo_proveedores);
+      ->with('tipo_proveedores', $tipo_proveedores)
+          ->with('categoria',$categoria)
+          ->with('ventas',$ventas_anuales)
+          ->with('cobertura',$cobertura)
+          ->with('tpcuenta',$tpcuenta)
+          ->with('pagos',$pagos)
+          ->with('preguntas',$preguntas)
+          ->with('pers_juridica',$pers_juridica)
+          ->with('nro_empleados',$nro_empleados);
     }
 
     public function postProveedorEmpresa(Request $request)
@@ -241,16 +265,19 @@ class ProveedoresController extends Controller
             'subrubro' => 'required',
             'tipo_cuenta' => 'required',
             'pais' => 'required',
-            'region' => 'required',
-            'provincia' => 'required',
-            'ciudad' => 'required',
-            'contacto_secundario' => 'required',
             'email' => 'required',
             'telefono' => 'required',
-            'facebook' => 'required',
             'nro_cuenta' => 'required',
             'banco' => 'required',
             'password' => 'required|min:6|confirmed',
+            'pagos' => 'required',
+            'oficina' => 'required',
+            'pers_juridica' => 'required',
+            'rep_legal' => 'required',
+            'ventas_anuales' => 'required',
+            'nro_empleados' => 'required',
+            'cobertura' => 'required',
+            'categoria' => 'required'
         ]);
     }
 

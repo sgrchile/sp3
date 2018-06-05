@@ -1,8 +1,6 @@
 @extends('layouts.app')
 @section('content')
 
-<h1 class="text-center text-uppercase">COMPRAR PRODUCTOS</h1>
-
 <div class="container-fluid"  align="center">
 
   <div class="row">

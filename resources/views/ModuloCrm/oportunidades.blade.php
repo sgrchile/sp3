@@ -16,7 +16,7 @@
           {{ csrf_field() }}
           <table class="table-condensed text-right" align="center">
             <tr>
-              <td>NOMBRE:</td>
+              <td>ETIQUETA:</td>
               <td>
                 {{ Form::text('nombre', null ,['class'=>'form-control','required','pattern'=>'[A-Za-z]{4-16}']) }}
                 <!--<input name="nombre" type="text"  style="width:175px;" class="form-control" id="nombre" pattern="[A-Za-z]{4-16}" required="required"/>-->
@@ -81,7 +81,7 @@
               </td>
             </tr>
           </table>
-          {!! Form::submit('NUEVO', ['class' => 'btn btn-primary btn-lg']) !!}
+          {!! Form::submit('CREAR', ['class' => 'btn btn-primary btn-lg']) !!}
           {!! Form::close() !!}
           <!-- FORM FINAL -->
         </div><!--/porlets-content-->

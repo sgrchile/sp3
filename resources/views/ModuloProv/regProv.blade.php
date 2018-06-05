@@ -76,20 +76,21 @@
           <td>
             {{ Form::select('ciudad',App\Ciudad::pluck('CIU_DESC','CIU_COD'),null,['class'=>'form-control','placeholder'=>'Seleccione','style'=>'width:175px']) }}
           </td>
-          <td><label>CONTACTO SECUNDARIO:</label></td>
-          <td><input type="text"  name="contacto_secundario" style="width:175px;" class="form-control"></td>
-
-          <td><label>EMAIL:</label></td>
-          <td><input type="email" required name="email" style="width:175px;" class="form-control"></td>
-        </tr>
-        <tr>
           <td><label>TELEFONO:</label></td>
           <td>
             {{ Form::number('telefono',null,['class'=>'form-control','required','style'=>'width:175px']) }}
           </td>
 
-          <td><label>FACEBOOK:</label></td>
-          <td><input type="text" name="facebook" style="width:175px;" class="form-control"></td>
+          <td><label>EMAIL:</label></td>
+          <td><input type="email" required name="email" style="width:175px;" class="form-control"></td>
+        </tr>
+        <tr>
+          <td><label>TELEFONO SECUNDARIO:</label></td>
+          <td><input type="text"  name="telefono_secundario" style="width:175px;" class="form-control"></td>
+
+
+          <td><label>REDES SOCIALES:</label></td>
+          <td><textarea name="redes"  class="form-control" style ="max-width:175px; max-height:175px;" placeholder="instagram,linkedin"></textarea></td>
 
           <td><label>PASSWORD:</label></td>
           <td><input type="password" class="form-control" name="password" required  style="width:175px;"></td>
@@ -113,6 +114,121 @@
           </select>
         </td>
         </tr>
+        <tr>
+          <td><label>PAGOS:</label></td>
+          <td>
+            <select style="width:175px;" class="form-control" name="pagos">
+              <option>Seleccionar</option>
+              @foreach($pagos as $pago)
+                <option value="{{ $pago->ID_PAGOS }}">{{ $pago->DESC_PAGOS }}</option>
+              @endforeach
+            </select>
+          </td>
+          <td><label>SITIO WEB:</label></td>
+          <td><input type="text" class="form-control" name="sitioweb" style="width:175px;"></td>
+          <td><label>DICOM:</label></td>
+          <td>
+            <select style="width:175px;" class="form-control" name="dicom">
+              <option>Seleccionar</option>
+              @foreach($preguntas as $pregunta)
+                <option value="{{ $pregunta->ID_PREG_CERRADA }}">{{ $pregunta->DESC_PREG }}</option>
+              @endforeach
+            </select>
+          </td>
+        </tr>
+          <tr>
+            <td><label>LOGO:</label></td>
+            <td>
+              {{ Form::file('logo',null,
+              ['class' => 'form-control','style' => 'width:175px']) }}
+            </td>
+            <td><label>VIDEO:</label></td>
+            <td>
+              {{ Form::file('video',null,
+              ['class' => 'form-control','style' => 'width:175px']) }}
+            </td>
+            <td><label>CERTIFICACIONES</label></td>
+            <td>
+              <textarea name="certificaciones"  class="form-control" style ="max-width:175px; max-height:175px;" placeholder="indique sus certificaciones"></textarea>
+            </td>
+
+          </tr>
+          <tr>
+            <td><label>VEHICULO(S)</label></td>
+            <td>
+              <textarea name="vehiculo"  class="form-control" style ="max-width:175px; max-height:175px;" placeholder="indique modelo,marca y año"></textarea>
+            </td>
+            <td><label>DIRECCION OFICINA:</label></td>
+            <td><input type="text" class="form-control" name="oficina" style="width:175px;"></td>
+            <td><label>MAQUINARIA(S)</label></td>
+            <td>
+              <textarea name="maquinaria"  class="form-control" style ="max-width:175px; max-height:175px;" placeholder="indique tipo,marca y año"></textarea>
+            </td>
+          </tr>
+          <tr>
+            <td><label>EQUIPO(S)</label></td>
+            <td>
+              <textarea name="maquinaria"  class="form-control" style ="max-width:175px; max-height:175px;" placeholder="indique marca,modelo y año"></textarea>
+            </td>
+            <td><label>PERSONA JURIDICA:</label></td>
+            <td>
+              <select style="width:175px;" class="form-control" name="pers_juridica">
+                <option>Seleccionar</option>
+                @foreach($pers_juridica as $pers_jurid)
+                  <option value="{{ $pers_jurid->ID_PERS_JURIDICA }}">{{ $pers_jurid->DESC_PERS_JURIDICA }}</option>
+                @endforeach
+              </select>
+            </td>
+            <td><label>FECHA CONTITUCION</label></td>
+            <td>{{ Form::date('fecha_contitucion',Carbon\Carbon::now()->toDateString(),['class'=>'form-control','style'=>'width:175px']) }}</td>
+          </tr>
+          <tr>
+            <td><label>REPRECENTANTE LEGAL:</label></td>
+            <td><input type="text" class="form-control" name="rep_legal" style="width:175px;"></td>
+            <td><label>SISTEMA ERP</label></td>
+            <td>
+              <textarea name="sistemaerp"  class="form-control" style ="max-width:175px; max-height:175px;" placeholder="indique detalles de su sistema"></textarea>
+            </td>
+            <td><label>VENTAS ANUALES:</label></td>
+            <td>
+            <select style="width:175px;" class="form-control" name="ventas_anuales">
+              <option>Seleccionar</option>
+              @foreach($ventas as $vents)
+                <option value="{{ $vents->ID_VTAS_ANUALES }}">{{ $vents->DESC_VTAS_ANUALES }}</option>
+              @endforeach
+            </select>
+            </td>
+          </tr>
+          <tr>
+            <td><label>NUMERO DE EMPLEADOS:</label></td>
+            <td>
+              <select style="width:175px;" class="form-control" name="nro_empleados">
+                <option>Seleccionar</option>
+                @foreach($nro_empleados as $nro_empleado)
+                  <option value="{{ $nro_empleado->ID_NRO_EMPLE }}">{{ $nro_empleado->DESC_NRO_EMPLE }}</option>
+                @endforeach
+              </select>
+            </td>
+            <td><label>COBERTURA:</label></td>
+            <td>
+              <select style="width:175px;" class="form-control" name="cobertura">
+                <option>Seleccionar</option>
+                @foreach($cobertura as $cobert)
+                  <option value="{{ $cobert->ID_COBERTURA }}">{{ $cobert->DESC_COBERTURA }}</option>
+                @endforeach
+              </select>
+            </td>
+            <td><label>CATEGORIA:</label></td>
+            <td>
+              <select style="width:175px;" class="form-control" name="categoria">
+                <option>Seleccionar</option>
+                @foreach($categoria as $categ)
+                  <option value="{{ $categ->ID_CATEG_EMP }}">{{ $categ->DESC_CATEG }}</option>
+                @endforeach
+              </select>
+            </td>
+          </tr>
+
         </table>
         <br>
 

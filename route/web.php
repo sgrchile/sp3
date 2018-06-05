@@ -11,14 +11,14 @@ Route::get('/',function(){
      return redirect('login');
    })->name('home');
 
-Route::get('/login', function () {
+/*Route::get('/login', function () {
       return view('auth/login');
-   })->name('login');
+   })->name('login');*/
 
-/*Route::get('/login', [
-    'uses' => 'Auth\LoginController@login',
+Route::get('/login', [
+    'uses' => 'LoginController@index',
     'as' => 'login',
-]);*/
+]);
 
 Route::get('/configuracion', [
     'uses' => 'ConfiguracionController@admin',
@@ -32,6 +32,11 @@ Route::get('/registrar', function () {
 Route::post('/registrar_action', [
     'uses' => 'ProveedoresPublicController@NewProveedor',
     'as' => 'registrar.proveedor.persona',
+]);
+
+Route::get('/empresa', [
+    'uses' => 'LoginController@createemp',
+    'as' => 'empresa',
 ]);
 
 Route::get('/desarrollo',function (){
@@ -892,6 +897,11 @@ Route::group(['prefix' => 'modulo'], function () {
                       return view('ModuloInventario.Insumos.registrarInsumo');
                     })->name('RegistrarInsumo');
 
+                      Route::post('/RegistrarInsumo', [
+                          'uses' => 'insumosController@store',
+                          'as' => 'post.registrarInsumo',
+                      ]);
+
                     Route::get('/SolicitarInsumo', function () {
                       return view('ModuloInventario.Insumos.SolicitudInsumo');
                     })->name('SolicitudDeInsumo');
@@ -991,7 +1001,7 @@ Route::group(['prefix' => 'modulo'], function () {
                     })->name('ListaGuiasDeDespacho');
 
                     Route::get('/Compras', function () {
-                      return view('ModuloInventario.Adquisiciones.Compras');
+                      return view('ModuloInventario.Adquisiciones.compras');
                     })->name('Compras');
 
                     Route::get('/indexOC', function () {

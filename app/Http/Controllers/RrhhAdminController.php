@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Afp;
+use App\DatosAdicionalesProv;
 use App\Salud;
 use Illuminate\Http\Request;
 use App\Proveedor;
@@ -67,14 +68,15 @@ class RrhhAdminController extends Controller
 
      public function postRegistroRh(Request $request)
      {
-         $this->validateNuevoRh($request);
-         $createNuevoRh = $this->createNuevoRh($request->all());
+         //dd($request);
+         $this->validateDatosAdic($request);
+         $createNuevoRh = $this->createDatosAdic($request->all());
 
          if (! $createNuevoRh) {
-             return redirect()->route('regPersonal')->with('error', "Hubo un problema al crear el proveedor persona.");
+             return redirect()->route('regPersonal')->with('error', "Hubo un problema al guardar sus datos.");
          }
 
-         return redirect()->route('regPersonal')->with('success', "El proveedor ha sido creado exitosamente.");
+         return redirect()->route('regPersonal')->with('success', "Sus datos han sido guardados exitosamente.");
      }
 
      public function createNuevoRh($data) {
@@ -121,6 +123,67 @@ class RrhhAdminController extends Controller
          ]);
      }
 
+     public function createDatosAdic($data){
+         $intituciones='';
+
+         if (isset($data['chilepais'])){
+             $intituciones = $intituciones.','.$data['chilepais'];
+         }
+         if (isset($data['greenpeace'])){
+             $intituciones = $intituciones.','.$data['greenpeace'];
+         }
+         if (isset($data['bomberos'])){
+             $intituciones = $intituciones.','.$data['bomberos'];
+         }
+         if (isset($data['ffaa'])){
+             $intituciones = $intituciones.','.$data['ffaa'];
+         }
+         if (isset($data['scouts'])){
+             $intituciones = $intituciones.','.$data['scouts'];
+         }
+         if (isset($data['cruzroja'])){
+             $intituciones = $intituciones.','.$data['cruzroja'];
+         }
+
+         return DatosAdicionalesProv::updateOrCreate([
+             'MP_HOBBY' => $data['hobby'],
+             'MP_DEPORTES' => $data['deporte'],
+             'MP_ZONA_PREF_TRABAJAR' => $data['zona_lab_pref'],
+             'MP_AREA_MEJOR_DESEMPEÑO' => $data['area_mejor_desemp'],
+             'MP_TRABAJO_EQUIPO' => $data['trab_equipo'],
+             'MP_EMPRENDIMIENTOS' => $data['emprendimiento'],
+             'MP_LUGAR_NACIMIENTO' => $data['lug_nac'],
+             'MP_ESTABLECIMIENTO_ED_SUP' => $data['est_ed_superior'],
+             'MP_ESTABLECIMIENTO_ED_MEDIA' => $data['est_ed_media'],
+             'MP_RESIDENCIA_ACTUAL' => $data['resid_actual'],
+             'MP_LUGAR_IDEAL_VIVIR_TRABAJAR' => $data['lug_ideal'],
+             'MP_EQUIPO_PERSONAL' => $data['compu'],
+             'MP_INTERNET' => $data['internet'],
+             'MP_ESPACIO_ADECUADO_PARA_TRABAJAR' => $data['lug_trabajo'],
+             'MP_VEHICULO' => $data['vehiculo'],
+             'MP_LISTA_INSTRUMENTAL' => $data['instrumental'],
+             'MP_MARCA' => $data['marca'],
+             'MP_MOD' =>$data['modelo'],
+             'MP_PERTENENCIA_INSTITUCIONES' => $intituciones,
+             'MP_PRO_RUN' => Auth::user()->PRO_RUN,
+             'MP_AREA_DESEMP' => $data['area_desemp'],
+             'MP_SIT_LAB' => $data['sit_lab'],
+             'MP_AÑOS_EXP' => $data['años_exp'],
+             'MP_REDES' => $data['redes'],
+             'MP_CAPACITACIONES' => $data['capacitaciones'],
+             'MP_DOM_INGLES' => $data['dom_ingles'],
+             'MP_DOM_COMPUTACIONAL' => $data['dom_compu'],
+             'MP_DOM_SOFTWARE' => $data['dom_software'],
+             'MP_LIC_CONDUCIR' => $data['lic_conducir'],
+             'MP_MOV_PROPIA' => $data['mov_propia'],
+             'MP_DISCAPACIDAD' => $data['discapacidad'],
+             'MP_JORNADA' => $data['jornada'],
+             'MP_COMENTARIOS' => $data['comentarios'],
+             'MP_FOTO' => $data['foto'],
+             'MP_CERTIFICADO_ANT' => $data['cert_antec'],
+         ]);
+     }
+
      public function validateNuevoRh(Request $request) {
          $this->validate($request, [
              'nombre' => 'required',
@@ -149,6 +212,41 @@ class RrhhAdminController extends Controller
              'personal' => 'required',
          ]);
      }
+
+    public function validateDatosAdic(Request $request) {
+        $this->validate($request, [
+            'deporte' => 'required',
+            'hobby' => 'required',
+            'zona_lab_pref' => 'required',
+            'emprendimiento' => 'required',
+            'area_mejor_desemp' => 'required',
+            'lug_ideal' => 'required',
+            'instrumental' => 'required',
+            'lug_nac' => 'required',
+            'trab_equipo' => 'required',
+            'compu' => 'required',
+            'lug_trabajo' => 'required',
+            'internet' => 'required',
+            'est_enseñanza' => 'required',
+            'area_desemp' => 'required',
+            'est_ed_media' => 'required',
+            'est_ed_superior' => 'required',
+            'sit_lab' => 'required',
+            'años_exp' => 'required',
+            'redes' => 'required',
+            'capacitaciones' => 'required',
+            'dom_ingles' => 'required',
+            'dom_compu' => 'required',
+            'dom_software' => 'required',
+            'lic_conducir' => 'required',
+            'mov_propia' => 'required',
+            'discapacidad' => 'required',
+            'jornada' => 'required',
+            'resid_actual' => 'required',
+            'vehiculo' => 'required',
+            'comentarios' => 'required',
+        ]);
+    }
 
      public function getConsultaRh(Request $request)
      {

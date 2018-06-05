@@ -3,7 +3,7 @@
 <div class="container" >
 
 <div class="col-sm-6">
-<h3 class="text-center text-uppercase">Centros de COSTOS</h3>
+<h3 class="text-center text-uppercase">Centros de NEGOCIOS</h3>
 <table class="table-condensed table-bordered" id="mytable" align="center" >
 
 <!--aqui debe llamar a base de datos-->

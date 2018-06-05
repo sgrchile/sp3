@@ -21,10 +21,10 @@
 
               <td align="center">
 
-                <a href="{{route('validar')}}"><button class="btn btn-primary btn-lg"  style="width:160px;">VALIDAR OC</button></a>
-                <a href="{{route('OCparaLiquidar')}}"><button class="btn btn-primary btn-lg"  style="width:160px;">LIQUIDAR OC</button></a>
-                <a href="{{route('recibir')}}"><button class="btn btn-primary btn-lg" style="width:160px;">RECIBIR  OC</button></a>
-                <a href="{{route('Historico')}}"><button class="btn btn-primary btn-lg" style="width:160px;">HISTORICO  OC</button></a>
+                <a href="{{route('validar')}}"><button class="btn btn-primary btn-lg"  style="width:160px;">VALIDAR</button></a>
+                <a href="{{route('OCparaLiquidar')}}"><button class="btn btn-primary btn-lg"  style="width:160px;">LIQUIDAR</button></a>
+                <a href="{{route('recibir')}}"><button class="btn btn-primary btn-lg" style="width:160px;">RECIBIR </button></a>
+                <a href="{{route('Historico')}}"><button class="btn btn-primary btn-lg" style="width:160px;">HISTORICO </button></a>
 
               </td>
 

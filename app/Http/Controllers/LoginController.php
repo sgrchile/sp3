@@ -2,11 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Insumo;
+use App\CategoriaEmpresa;
+use App\CoberturaEmpresa;
+use App\Empresa;
+use App\NroEmpleados;
+use App\Pagos;
+use App\PersonaJuridica;
+use App\PreguntasCerradas;
+use App\TipoCuenta;
+use App\Tp_Cuenta;
+use App\VentasAnuales;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class InsumosController extends Controller
+class LoginController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +23,8 @@ class InsumosController extends Controller
      */
     public function index()
     {
-        //
+        $emp = Empresa::all();
+        return view('auth/login')->with('emp',$emp);
     }
 
     /**
@@ -23,9 +32,25 @@ class InsumosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function createemp()
     {
-        //
+        $nro_empleados = NroEmpleados::all();
+        $categoria = CategoriaEmpresa::all();
+        $ventas_anuales = VentasAnuales::all();
+        $cobertura = CoberturaEmpresa::all();
+        $tpcuenta = TipoCuenta::all();
+        $pagos = Pagos::all();
+        $preguntas = PreguntasCerradas::all();
+        $pers_juridica = PersonaJuridica::all();
+        return view('ModuloUsuarios/registerEmpresa')
+            ->with('categoria',$categoria)
+            ->with('ventas',$ventas_anuales)
+            ->with('cobertura',$cobertura)
+            ->with('tpcuenta',$tpcuenta)
+            ->with('pagos',$pagos)
+            ->with('preguntas',$preguntas)
+            ->with('pers_juridica',$pers_juridica)
+            ->with('nro_empleados',$nro_empleados);
     }
 
     /**
@@ -36,15 +61,7 @@ class InsumosController extends Controller
      */
     public function store(Request $request)
     {
-        $insumo = new Insumo();
-        $insumo->INS_DESC = $request->nombre;
-        $insumo->INS_PRO_RUN = Auth::user()->PRO_RUN;
-        $insumo->INS_INFO = $request->informacion;
-        $insumo->INS_MARCA = $request->marca;
-        $insumo->INS_TIPO = $request->tipo;
-        $insumo->INS_CANTIDAD = $request->cantidad;
-        $insumo->INS_COSTO = $request->costo;
-        $insumo->save();
+        //
     }
 
     /**

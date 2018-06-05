@@ -44,12 +44,9 @@
                                             <label for="rut">Empresa</label>
                                             <select class="form-control" required autofocus>
                                                 <option value="0">Seleccione </option>
-                                                <option value="1">BIOGEST </option>
-                                                <option value="2">TRENER </option>
-                                                <option value="3">LOICA </option>
-                                                <option value="4">KUTRALCO </option>
-                                                <option value="5">HOSTEL EIRL </option>
-                                                <option value="5">SGR </option>
+                                                @foreach ($emp as $e)
+                                                    <option value="{{ $e->EMP_ID }}">{{ $e->EMP_DESC }}</option>
+                                                @endforeach
                                             </select>
                                             @if ($errors->has('PRO_RUN'))
                                                 <span class="help-block">

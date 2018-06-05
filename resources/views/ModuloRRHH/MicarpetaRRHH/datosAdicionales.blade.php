@@ -28,10 +28,10 @@
           </tr>
 
           <tr>
-            <td>ZONA LABORAL DE PREF.:</td>
+            <td>ZONA LABORAL DE PREFERENTE:</td>
             <td><textarea name="zona_lab_pref"  class="form-control" style ="max-width:175px; max-height:175px;" placeholder="¿zona laboral de preferencia?"></textarea></td>
             <td>EMPRENDIMIENTOS:</td>
-            <td><textarea name="emprendimiento" class="form-control" style ="max-width:175px; max-height:175px;" placeholder="¿Que deportes practica?"></textarea></td>
+            <td><textarea name="emprendimiento" class="form-control" style ="max-width:175px; max-height:175px;" placeholder="¿Tiene ideas emprendedoras?"></textarea></td>
           </tr>
 
           <tr>
@@ -106,6 +106,19 @@
             </td>
           </tr>
           <tr>
+            <td>ESTABLECIMIENTO ED. MEDIA:</td>
+            <td>
+              {{ Form::text('est_ed_media',null,
+              ['class' => 'form-control','style' => 'width:175px','placeholder'=>'Nombre del establecimiento']) }}
+            </td>
+
+            <td>ESTABLECIMIENTO UNIVERSITARIO:</td>
+            <td>
+              {{ Form::text('est_ed_superior',null,
+              ['class' => 'form-control','style' => 'width:175px','placeholder'=>'Nombre del establecimiento']) }}
+            </td>
+          </tr>
+          <tr>
             <td>SITUACION LABORAL</td>
             <td>
               {{ Form::select('sit_lab',App\SituacionLaboral::pluck('DESC_SIT_LAB','ID_SIT_LAB'),null,
@@ -119,8 +132,7 @@
           <tr>
             <td>REDES SOCIALES</td>
             <td>
-              {{ Form::text('redes',null,
-              ['class' => 'form-control','style' => 'width:175px','placeholder'=>'instagram,linkedin']) }}
+              <textarea name="redes"  class="form-control" style ="max-width:175px; max-height:175px;" placeholder="instagram,linkedin"></textarea>
             </td>
             <td>CAPACITACIONES</td>
             <td>
@@ -142,8 +154,7 @@
           <tr>
             <td>DOMINIO SOFTWARE</td>
             <td>
-              {{ Form::select('dom_software',App\Dominio::pluck('DESC_DOMINIO','ID_DOMINIO'),null,
-              ['class' => 'form-control','style' => 'width:175px','placeholder'=>'Seleccione']) }}
+              <textarea name="dom_software" class="form-control" style ="max-width:175px; max-height:175px;" placeholder="¿Cuales son los sotfware que domina?"></textarea>
             </td>
             <td>LICENCIA CONDUCIR</td>
             <td>
@@ -165,11 +176,7 @@
             </td>
             <td>DISCAPACIDAD</td>
             <td>
-              <select id=discapacidad name="discapacidad" class="form-control" style="width:175px;">
-                <option>Seleccione</option>
-                <option value="1">SI</option>
-                <option value="0">NO</option>
-              </select>
+              <textarea name="discapacidad" class="form-control" style ="max-width:175px; max-height:175px;" placeholder="Describa"></textarea>
             </td>
           </tr>
           <tr>
@@ -206,7 +213,7 @@
 
             <td>VEHICULO:</td>
             <td>
-              <select id=Selvehiculo class="form-control" style="width:175px;">
+              <select id=Selvehiculo name="vehiculo" class="form-control" style="width:175px;">
                 <option>Seleccione</option>
                 <option value="1">SI</option>
                 <option value="0">NO</option>
@@ -218,26 +225,26 @@
             <td>COMENTARIOS</td>
             <td><textarea name="comentarios"  class="form-control" style ="max-width:175px; max-height:175px;" placeholder="Otras competencias y/o habilidades"></textarea></td>
             <td>MODELO:</td>
-            <td><input type="text"  class="form-control" style="width:175px;"></td>
+            <td><input type="text" name="modelo" class="form-control" style="width:175px;"></td>
           </tr>
 
           <tr>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td>MARCA:</td>
-            <td><input type="text"  class="form-control"  visible="false" style="width:175px;"></td>
+            <td><input type="text" name="marca" class="form-control"  visible="false" style="width:175px;"></td>
           </tr>
 
 
           <tr>
             <td>PERTENENCIA A INSTITUCIONES:</td>
-            <td colspan="3">
-              <input type="checkbox" name="chilepais" value="Car">CHILE PAIS
-              <input type="checkbox" name="greenpeace" value="Car">GREEN PEACE
-              <input type="checkbox" name="bomberos" value="Car">BOMBEROS
-              <input type="checkbox" name="ffaa" value="Car">FFAA
-              <input type="checkbox" name="scouts" value="Car">SCOUTS
-              <input type="checkbox" name="cruzroja" value="Car">CRUZ ROJA
+            <td colspan="2">
+              <input type="checkbox" name="chilepais" value="chilepais">CHILE PAIS
+              <input type="checkbox" name="greenpeace" value="greenpeace">GREEN PEACE
+              <input type="checkbox" name="bomberos" value="bomberos">BOMBEROS
+              <input type="checkbox" name="ffaa" value="ffaa">FFAA
+              <input type="checkbox" name="scouts" value="scouts">SCOUTS
+              <input type="checkbox" name="cruzroja" value="cruzroja">CRUZ ROJA
             </td>
           </tr>
 

@@ -28,7 +28,9 @@ class ClientesController extends Controller
      */
     public function index()
     {
-        $clientes = Cliente::orderBy('CLI_NOMBRE','ASC')->paginate(10);
+        $clientes = Cliente::orderBy('CLI_NOMBRE','ASC')
+            ->where('CLI_PROPIETARIO','=',Auth::user()->PRO_RUN)
+            ->paginate(10);
 
         //dd($clientes);
 
@@ -212,26 +214,30 @@ class ClientesController extends Controller
     {
         $cliente = Cliente::find($id);
         //dd($request);
-        $cliente->setAttribute('CLI_FONO',$request->get('telefono'));
-        $cliente->setAttribute('CLI_EMAIL',$request->get('email'));
-        $cliente->setAttribute('CLI_FONO2',$request->get('telefono2'));
-        $cliente->setAttribute('CLI_ACT_COMERCIAL',$request->get('actcomercial'));
-        $cliente->setAttribute('CLI_SITIO_WEB',$request->get('sitioweb'));
-        $cliente->setAttribute('CLI_GLOSA',$request->get('glosa'));
-        $cliente->setAttribute('CLI_RUBRO',$request->get('rubro'));
-        $cliente->setAttribute('CLI_SUB_RUBRO',$request->get('subrubro'));
-        $cliente->setAttribute('CLI_ACTIVIDAD',$request->get('actividad'));
-        $cliente->setAttribute('CLI_BANCO',$request->get('banco'));
-        $cliente->setAttribute('CLI_TCTA_BCO',$request->get('tipocuenta'));
-        $cliente->setAttribute('CLI_NRO_CTA',$request->get('nrocuenta'));
-        $cliente->setAttribute('CLI_ORIGEN',$request->get('origen'));
-        $cliente->setAttribute('CLI_PAIS',$request->get('pais'));
-        $cliente->setAttribute('CLI_REGION',$request->get('region'));
-        $cliente->setAttribute('CLI_PROVINCIA',$request->get('provincia'));
-        $cliente->setAttribute('CLI_CIUDAD',$request->get('ciudad'));
-        $cliente->setAttribute('CLI_DIRECCION',$request->get('direccion'));
-        $cliente->save();
-        return redirect()->back()->with('status_cliente', 'Cliente Actualizado Correctamente');
+        if ($request != null){
+            $cliente->setAttribute('CLI_FONO',$request->get('telefono',null));
+            $cliente->setAttribute('CLI_EMAIL',$request->get('email',null));
+            $cliente->setAttribute('CLI_FONO2',$request->get('telefono2',null));
+            $cliente->setAttribute('CLI_ACT_COMERCIAL',$request->get('actcomercial',null));
+            $cliente->setAttribute('CLI_SITIO_WEB',$request->get('sitioweb',null));
+            $cliente->setAttribute('CLI_GLOSA',$request->get('glosa',null));
+            $cliente->setAttribute('CLI_RUBRO',$request->get('rubro',null));
+            $cliente->setAttribute('CLI_SUB_RUBRO',$request->get('subrubro',null));
+            $cliente->setAttribute('CLI_ACTIVIDAD',$request->get('actividad',null));
+            $cliente->setAttribute('CLI_BANCO',$request->get('banco',null));
+            $cliente->setAttribute('CLI_TCTA_BCO',$request->get('tipocuenta',null));
+            $cliente->setAttribute('CLI_NRO_CTA',$request->get('nrocuenta',null));
+            $cliente->setAttribute('CLI_ORIGEN',$request->get('origen',null));
+            $cliente->setAttribute('CLI_PAIS',$request->get('pais',null));
+            $cliente->setAttribute('CLI_REGION',$request->get('region',null));
+            $cliente->setAttribute('CLI_PROVINCIA',$request->get('provincia',null));
+            $cliente->setAttribute('CLI_CIUDAD',$request->get('ciudad',null));
+            $cliente->setAttribute('CLI_DIRECCION',$request->get('direccion',null));
+            $cliente->save();
+            return redirect()->back()->with('status_cliente', 'Cliente Actualizado Correctamente');
+        }else{
+            return redirect()->back()->with('status_cliente', 'Problemas al actualizar el cliente');
+        }
 
     }
 
@@ -252,25 +258,42 @@ class ClientesController extends Controller
     public function fichaclicons($rut)
     {
         $cliente = Cliente::find($rut);
-        $rubro = Rubro::find($cliente->getAttribute('CLI_RUBRO'));
-        $subrub = SubRubro::find($cliente->getAttribute('CLI_SUB_RUBRO'));
-        $ACT = Actividad::find($cliente->getAttribute('CLI_ACTIVIDAD'));
-        $BCO = Banco::find($cliente->getAttribute('CLI_BANCO'));
-        $TCTA = TipoCuenta::find($cliente->getAttribute('CLI_TCTA_BCO'));
-        $Pais = Pais::find($cliente->getAttribute('CLI_PAIS'));
-        $Reg = Region::find($cliente->getAttribute('CLI_REGION'));
-        $CIU = Ciudad::find($cliente->getAttribute('CLI_CIUDAD'));
-        $pro = Provincia::find($cliente->getAttribute('CLI_PROVINCIA'));
-        $cliente->setAttribute('CLI_RUBRO', $rubro->getAttribute('RUB_DESC'));
-        $cliente->setAttribute('CLI_SUB_RUBRO', $subrub->getAttribute('SUB_RUB_DESC'));
-        $cliente->setAttribute('CLI_ACTIVIDAD', $ACT->getAttribute('ACT_DESC'));
-        $cliente->setAttribute('CLI_BANCO', $BCO->getAttribute('BCO_DESC'));
-        $cliente->setAttribute('CLI_TCTA_BCO', $TCTA->getAttribute('TCTA_DESC'));
-        $cliente->setAttribute('CLI_PAIS', $Pais->getAttribute('PAI_DESC'));
-        $cliente->setAttribute('CLI_REGION', $Reg->getAttribute('REG_DESC'));
-        $cliente->setAttribute('CLI_CIUDAD', $CIU->getAttribute('CIU_DESC'));
-        $cliente->setAttribute('CLI_PROVINCIA', $pro->getAttribute('PV_DESC'));
-
+        if ($cliente->getAttribute('CLI_RUBRO') != null && $cliente->getAttributes('CLI_RUBRO')!=0){
+            $rubro = Rubro::find($cliente->getAttribute('CLI_RUBRO'));
+            $cliente->setAttribute('CLI_RUBRO', $rubro->RUB_DESC);
+        }
+        if ($cliente->getAttribute('CLI_SUB_RUBRO') != null && $cliente->getAttribute('CLI_SUB_RUBRO') != 0){
+            $subrub = SubRubro::find($cliente->getAttribute('CLI_SUB_RUBRO'));
+            $cliente->setAttribute('CLI_SUB_RUBRO', $subrub->SUB_RUB_DESC);
+        }
+        if ($cliente->getAttribute('CLI_ACTIVIDAD')!=null && $cliente->getAttribute('CLI_ACTIVIDAD') != 0){
+            $ACT = Actividad::find($cliente->getAttribute('CLI_ACTIVIDAD'));
+            $cliente->setAttribute('CLI_ACTIVIDAD', $ACT->ACT_DESC);
+        }
+        if ($cliente->getAttribute('CLI_BANCO') != null){
+            $BCO = Banco::find($cliente->getAttribute('CLI_BANCO'));
+            $cliente->setAttribute('CLI_BANCO', $BCO->BCO_DESC);
+        }
+        if ($cliente->getAttribute('CLI_TCTA_BCO') != null){
+            $TCTA = TipoCuenta::find($cliente->getAttribute('CLI_TCTA_BCO'));
+            $cliente->setAttribute('CLI_TCTA_BCO', $TCTA->TCTA_DESC);
+        }
+        if ($cliente->getAttribute('CLI_PAIS') != null && $cliente->getAttribute('CLI_PAIS') != 0){
+            $Pais = Pais::find($cliente->getAttribute('CLI_PAIS'));
+            $cliente->setAttribute('CLI_PAIS', $Pais->PAI_DESC);
+        }
+        if ($cliente->getAttribute('CLI_REGION') != null && $cliente->getAttribute('CLI_REGION') != 0){
+            $Reg = Region::find($cliente->getAttribute('CLI_REGION'));
+            $cliente->setAttribute('CLI_REGION', $Reg->REG_DESC);
+        }
+        if ($cliente->getAttribute('CLI_CIUDAD') != null && $cliente->getAttribute('CLI_CIUDAD') != 0){
+            $CIU = Ciudad::find($cliente->getAttribute('CLI_CIUDAD'));
+            $cliente->setAttribute('CLI_CIUDAD', $CIU->CIU_DESC);
+        }
+        if ($cliente->getAttribute('CLI_PROVINCIA') != null && $cliente->getAttribute('CLI_PROVINCIA') != 0){
+            $pro = Provincia::find($cliente->CLI_PROVINCIA);
+            $cliente->setAttribute('CLI_PROVINCIA', $pro->PV_DESC);
+        }
         $cli = $cliente->getAttributes();
 
         //dd($cliente);
@@ -294,24 +317,42 @@ class ClientesController extends Controller
     public function fichaclipros($rut)
     {
         $cliente = Cliente::find($rut);
-        $rubro = Rubro::find($cliente->getAttribute('CLI_RUBRO'));
-        $subrub = SubRubro::find($cliente->getAttribute('CLI_SUB_RUBRO'));
-        $ACT = Actividad::find($cliente->getAttribute('CLI_ACTIVIDAD'));
-        $BCO = Banco::find($cliente->getAttribute('CLI_BANCO'));
-        $TCTA = TipoCuenta::find($cliente->getAttribute('CLI_TCTA_BCO'));
-        $Pais = Pais::find($cliente->getAttribute('CLI_PAIS'));
-        $Reg = Region::find($cliente->getAttribute('CLI_REGION'));
-        $CIU = Ciudad::find($cliente->getAttribute('CLI_CIUDAD'));
-        $pro = Provincia::find($cliente->getAttribute('CLI_PROVINCIA'));
-        $cliente->setAttribute('CLI_RUBRO', $rubro->getAttribute('RUB_DESC'));
-        $cliente->setAttribute('CLI_SUB_RUBRO', $subrub->getAttribute('SUB_RUB_DESC'));
-        $cliente->setAttribute('CLI_ACTIVIDAD', $ACT->getAttribute('ACT_DESC'));
-        $cliente->setAttribute('CLI_BANCO', $BCO->getAttribute('BCO_DESC'));
-        $cliente->setAttribute('CLI_TCTA_BCO', $TCTA->getAttribute('TCTA_DESC'));
-        $cliente->setAttribute('CLI_PAIS', $Pais->getAttribute('PAI_DESC'));
-        $cliente->setAttribute('CLI_REGION', $Reg->getAttribute('REG_DESC'));
-        $cliente->setAttribute('CLI_CIUDAD', $CIU->getAttribute('CIU_DESC'));
-        $cliente->setAttribute('CLI_PROVINCIA', $pro->getAttribute('PV_DESC'));
+        if ($cliente->getAttribute('CLI_RUBRO') != null){
+            $rubro = Rubro::find($cliente->CLI_RUBRO);
+            $cliente->setAttribute('CLI_RUBRO', $rubro->RUB_DESC);
+        }
+        if ($cliente->getAttribute('CLI_SUB_RUBRO') != null){
+            $subrub = SubRubro::find($cliente->CLI_SUB_RUBRO);
+            $cliente->setAttribute('CLI_SUB_RUBRO', $subrub->SUB_RUB_DESC);
+        }
+        if ($cliente->getAttribute('CLI_ACTIVIDAD')!=null){
+            $ACT = Actividad::find($cliente->CLI_ACTIVIDAD);
+            $cliente->setAttribute('CLI_ACTIVIDAD', $ACT->ACT_DESC);
+        }
+        if ($cliente->getAttribute('CLI_BANCO') != null){
+            $BCO = Banco::find($cliente->get('CLI_BANCO',null));
+            $cliente->setAttribute('CLI_BANCO', $BCO->BCO_DESC);
+        }
+        if ($cliente->getAttribute('CLI_TCTA_BCO') != null){
+            $TCTA = TipoCuenta::find($cliente->get('CLI_TCTA_BCO',null));
+            $cliente->setAttribute('CLI_TCTA_BCO', $TCTA->TCTA_DESC);
+        }
+        if ($cliente->getAttribute('CLI_PAIS') != null){
+            $Pais = Pais::find($cliente->get('CLI_PAIS',null));
+            $cliente->setAttribute('CLI_PAIS', $Pais->PAI_DESC);
+        }
+        if ($cliente->getAttribute('CLI_REGION') != null){
+            $Reg = Region::find($cliente->get('CLI_REGION',null));
+            $cliente->setAttribute('CLI_REGION', $Reg->REG_DESC);
+        }
+        if ($cliente->getAttribute('CLI_CIUDAD') != null){
+            $CIU = Ciudad::find($cliente->get('CLI_CIUDAD',null));
+            $cliente->setAttribute('CLI_CIUDAD', $CIU->CIU_DESC);
+        }
+        if ($cliente->getAttribute('CLI_PROVINCIA') != null){
+            $pro = Provincia::find($cliente->get('CLI_PROVINCIA',null));
+            $cliente->setAttribute('CLI_PROVINCIA', $pro->PV_DESC);
+        }
 
         $contacto = Contactos::orderBy('CONT_CLI_ID','ASC')->where('CONT_CLI_ID','=',$rut)->paginate(10);
         $oportunidades = Oportunidad::orderBY('ID_CLIENTE','ASC')->where('ID_CLIENTE','=',$rut)->paginate(10);
@@ -330,29 +371,29 @@ class ClientesController extends Controller
     public function regcontac(Request $request)
     {
         $contacto = new Contactos();
-        $contacto->setAttribute('CONT_NOM',$request->get('nombre',null));
-        $contacto->setAttribute('CONT_CEL',$request->get('celular',null));
-        $contacto->setAttribute('CONT_EMAIL_EMP',$request->get('email_empresarial',null));
-        $contacto->setAttribute('CONT_EMAIL',$request->get('email',null));
-        $contacto->setAttribute('CONT_CLI_ID', $request->get('cliente'));
-        $ciu = Ciudad::find($request->get('ciudad'));
-        $contacto->setAttribute('CONT_SUCURSAL', $ciu->getAttribute('CIU_DESC'));
+        if ($request != null){
+            $contacto->setAttribute('CONT_NOM',$request->get('nombre',null));
+            $contacto->setAttribute('CONT_CEL',$request->get('celular',null));
+            $contacto->setAttribute('CONT_EMAIL_EMP',$request->get('email_empresarial',null));
+            $contacto->setAttribute('CONT_EMAIL',$request->get('email',null));
+            $contacto->setAttribute('CONT_CLI_ID', $request->get('cliente'));
+            $ciu = Ciudad::find($request->get('ciudad'));
+            $contacto->setAttribute('CONT_SUCURSAL', $ciu->getAttribute('CIU_DESC'));
+            $contacto->save();
+            return redirect()->back()->with('success', "Registrado exitosamente.");
+        }
 
-        //dd($contacto);
-        $contacto->save();
-
-
-        return redirect()->back();
+        return redirect()->back()->with('error', "Problema al registrar contacto");
     }
 
     public function convertir(Request $request, $id){
         $cliente = Cliente::find($id);
         //dd($id);
         $cliente->setAttribute('CLI_NOMBRE',$request->get('nombre',null));
-        $cliente->setAttribute('CLI_RUT',$request->get('rut'));
-        $cliente->setAttribute('CLI_RUBRO',$request->get('rubro'));
-        $cliente->setAttribute('CLI_SUB_RUBRO',$request->get('subrubro'));
-        $cliente->setAttribute('CLI_ACTIVIDAD',$request->get('actividad'));
+        $cliente->setAttribute('CLI_RUT',$request->get('rut',null));
+        $cliente->setAttribute('CLI_RUBRO',$request->get('rubro',null));
+        $cliente->setAttribute('CLI_SUB_RUBRO',$request->get('subrubro',null));
+        $cliente->setAttribute('CLI_ACTIVIDAD',$request->get('actividad',null));
 
         //dd($cliente);
 
