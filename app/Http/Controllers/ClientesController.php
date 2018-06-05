@@ -29,11 +29,11 @@ class ClientesController extends Controller
     public function index()
     {
         if (Auth::user()->PRO_NIVEL == 14){
-            $clientes = Cliente::orderBy('CLI_NOMBRE','ASC')->paginate(10);
+            $clientes = Cliente::orderBy('CLI_NOMBRE','ASC')->paginate(20);
         }else{
             $clientes = Cliente::orderBy('CLI_NOMBRE','ASC')
                 ->where('CLI_PROPIETARIO','=',Auth::user()->PRO_RUN)
-                ->paginate(10);
+                ->paginate(20);
         }
         //dd($clientes);
 

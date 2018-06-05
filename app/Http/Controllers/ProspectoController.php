@@ -191,4 +191,57 @@ class ProspectoController extends Controller
         //dd($contac);
         return redirect()->back()->with('status_prosp', 'Cliente eliminado!');
     }
+
+    public function convertir(Request $request, $id){
+        $cliente = Cliente::find($id);
+        //dd($id);
+        $cliente->setAttribute('CLI_NOMBRE',$request->get('nombre',null));
+        $cliente->setAttribute('CLI_RUT',$request->get('rut',null));
+        $cliente->setAttribute('CLI_RUBRO',$request->get('rubro',null));
+        $cliente->setAttribute('CLI_SUB_RUBRO',$request->get('subrubro',null));
+        $cliente->setAttribute('CLI_ACTIVIDAD',$request->get('actividad',null));
+
+        //dd($cliente);
+
+        if ($this->regcliente($cliente->getAttribute('CLI_RUT'))){
+
+            $cliente->save();
+            //dd("true");
+            //return view('ModuloOt.result')->with('success', true);
+            return redirect()->action(fichaclicons)->with('success', "ha sido convertido exitosamente.");
+            //return redirect()->route('result')->with('success', true);
+        }else{
+            //dd("false");
+            return redirect()->back()->with('error', "El CLIENTE ya está registrado favor comunicarce con administrador.");
+            //return view('ModuloOt.result')->with('success', false);
+        }
+        return redirect();
+    }
+
+    function valida_rut($rut)
+    {
+        $rut = preg_replace('/[^k0-9]/i', '', $rut);
+        $dv  = substr($rut, -1);
+        $numero = substr($rut, 0, strlen($rut)-1);
+        $i = 2;
+        $suma = 0;
+        foreach(array_reverse(str_split($numero)) as $v)
+        {
+            if($i==8)
+                $i = 2;
+            $suma += $v * $i;
+            ++$i;
+        }
+        $dvr = 11 - ($suma % 11);
+
+        if($dvr == 11)
+            $dvr = 0;
+        if($dvr == 10)
+            $dvr = 'K';
+        if($dvr == strtoupper($dv))
+            return true;
+        else
+            return false;
+    }
+
 }

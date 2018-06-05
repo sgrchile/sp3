@@ -28,30 +28,28 @@
                         <table class="table table-bordered table-hover">
 
                             <tr>
-                                <td>{{ __('RUT') }}</td>
+                                <td>{{ __('IDENTIFICADOR') }}</td>
                                 <td>{{ __('NOMBRE') }}</td>
                                 <td>{{ __('EMAIL') }}</td>
                                 <td>{{ __('TELEFONO') }}</td>
-                                <td>{{ __('CONTACTO') }}</td>
+                                <td>{{ __('COMENTARIO') }}</td>
                                 <td style="width:210px;">ACCION</td>
                             </tr>
 
                             <tbody>
                             @foreach($clientes as $cliente)
                                 <tr>
-                                    @if(!valida_rut($cliente->CLI_RUT))
-                                        <td>{{ $cliente->CLI_RUT }}</td>
+                                        <td>{{ $cliente->CLI_IDENT }}</td>
                                         <td>{{ $cliente->CLI_NOMBRE }}</td>
                                         <td>{{ $cliente->CLI_EMAIL }}</td>
                                         <td>{{ $cliente->CLI_FONO }}</td>
-                                        <td>{{ $cliente->CLI_CONTACTO }}</td>
+                                        <td>{{ $cliente->CLI_COMENTARIO }}</td>
                                         <td>
                                             <a href="{{route('editarcliente', $cliente)}}"><button class="btn btn-primary btn-xs" style="width:130px; margin-bottom:10px;"> CONVERTIR</button></a>
                                             <a href="{{route('fichaClienteProspecto', $cliente)}}"><button class="btn btn-primary btn-xs" style="width:130px;"> VER FICHA</button></a>
                                             <a href="{{ route('prospecto.destroy',$cliente->ID_CONT) }}" onclick="return confirm('¿Desea eliminar éste cliente?')" ><button class="btn btn-primary btn-xs"
                                                                                                                                                                           style="width:65px;" >ELIMINAR</button></a>
                                         </td>
-                                    @endif
                                 </tr>
                             @endforeach
                             </tbody>
