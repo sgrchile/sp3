@@ -29,96 +29,76 @@
                 <td>
                   <input name="nombre" type="text" value="{{ $cliente->CLI_NOMBRE }}" style="width:175px;" class="form-control" id="nombre" pattern="[A-Za-z]{4-16}" readOnly/>
                 </td>
-
-                <td>RUT:</td>
+                <td>IDENTIFICADOR:</td>
                 <td>
-
-                  <input type="text" id="rut" name="rut" value="{{ $cliente->CLI_RUT }}" style="width:175px;" class="form-control" maxlength="10" readOnly oninput="checkRut(this)" />
-                  <script src="{{asset('js/validarRUT.js')}}"></script>
-
+                  <input type="text" id="rut" name="rut" value="{{ $cliente->CLI_IDENT }}" style="width:175px;" class="form-control" maxlength="10" readOnly  />
                 </td>
-
+                <td>APELLIDO PATERNO:</td>
+                <td>
+                  <input type="text" id="rut" name="rut" value="{{ $cliente->CLI_APE_PATERNO }}" style="width:175px;" class="form-control" maxlength="10" readOnly  />
+                </td>
               </tr>
               <tr>
-
                 <td>TELEFONO:</td>
                 <td>
                   <input type="text" value="{{ $cliente->CLI_FONO }}"  style="width:175px;" class="form-control" readOnly/>
                 </td>
-
-
-
                 <td>EMAIL:</td>
                 <td>
                   <input type="text" value="{{ $cliente->CLI_EMAIL }}"  style="width:175px;" class="form-control" readOnly/>
                 </td>
-
                 <td>TELEFONO 2:</td>
                 <td>
                   <input type="text" value="{{ $cliente->CLI_FONO2 }}" style="width:175px;" class="form-control" readOnly/>
                 </td>
-
               </tr>
               <tr>
-
                 <td>ACTIVIDAD COMERCIAL: </td>
                 <td >
                   <input name="actividad" type="text" value="{{ $cliente->CLI_ACT_COMERCIAL }}"  style="width:175px;" id="actividad" class="form-control" readOnly/>
                 </td>
-
                 <td>SITIO WEB: </td>
                 <td >
                   <input  type="text" value="{{ $cliente->CLI_SITIO_WEB }}"  style="width:175px;" class="form-control" readOnly/>
                 </td>
-
                 <td>GLOSA: </td>
                 <td >
                   <input  type="text" value="{{ $cliente->CLI_GLOSA }}"  style="width:175px;" class="form-control" readOnly/>
                 </td>
-
               </tr>
               <tr>
                 <td>RUBRO:</td>
                 <td>
                   <input  type="text"  value="{{ $cliente->CLI_RUBRO }}" style="width:175px;" class="form-control" readOnly/>
                 </td>
-
                 <td>SUB RUBRO:</td>
                 <td>
                   <input  type="text" value="{{ $cliente->CLI_SUB_RUBRO }}"  style="width:175px;" class="form-control" readOnly/>
                 </td>
-
                 <td>ACTIVIDAD:</td>
                 <td>
                   <input  type="text"  value="{{ $cliente->CLI_ACTIVIDAD }}" style="width:175px;" class="form-control" readOnly/>
                 </td>
-
               </tr>
               <tr>
-
                 <td>BANCO:</td>
                 <td>
                   <input  type="text" value="{{ $cliente->CLI_BANCO }}"  style="width:175px;" class="form-control" readOnly/>
                 </td>
-
                 <td>TIPO DE CUENTA:</td>
                 <td>
                   <input  type="text" value="{{ $cliente->CLI_TCTA_BCO }}"  style="width:175px;" class="form-control" readOnly/>
                 </td>
-
                 <td>Nº DE CUENTA: </td>
                 <td >
                   <input  type="text"  value="{{ $cliente->CLI_NRO_CTA }}" style="width:175px;" class="form-control" readOnly/>
                 </td>
-
               </tr>
               <tr>
-
                 <td>ORIGEN: </td>
                 <td >
                   <input  type="text" value="{{ $cliente->CLI_ORIGEN }}"  style="width:175px;" class="form-control" readOnly/>
                 </td>
-
                 <td>PAIS:</td>
                 <td>
                   <input  type="text" value="{{ $cliente->CLI_PAIS }}"  style="width:175px;" class="form-control" readOnly/>
@@ -127,25 +107,34 @@
                 <td>
                   <input  type="text" value="{{ $cliente->CLI_REGION }}"  style="width:175px;" class="form-control" readOnly/>
                 </td>
-
               </tr>
               <tr>
-
                 <td>PROVINCIA:</td>
                 <td>
                   <input  type="text" value="{{ $cliente->CLI_PROVINCIA }}"  style="width:175px;" class="form-control" readOnly/>
                 </td>
-
                 <td>CIUDAD:</td>
                 <td>
                   <input  type="text" value="{{ $cliente->CLI_CIUDAD }}"  style="width:175px;" class="form-control" readOnly/>
                 </td>
-
                 <td>DIRECCION:</td>
                 <td>
                   <input  type="text" value="{{ $cliente->CLI_DIRECCION }}"  style="width:175px;" class="form-control" readOnly/>
                 </td>
-
+              </tr>
+              <tr>
+                <td>TEMPERATURA:</td>
+                <td>
+                  <input  type="text" value="{{ $cliente->CLI_TEMP }}"  style="width:175px;" class="form-control" readOnly/>
+                </td>
+                <td>COMENTARIO:</td>
+                <td>
+                  <textarea style="width:175px;" class="form-control" readOnly>{{ $cliente->CLI_COMENTARIO }}</textarea>
+                </td>
+                <td>SERVICIO REQUERIDO:</td>
+                <td>
+                  <textarea style="width:175px;" class="form-control" readOnly>{{ $cliente->CLI_SERV_REQUERIDO }}</textarea>
+                </td>
               </tr>
             </table>
             <br>

@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\DatosAdicionalesProv;
+use App\Empresa;
 use App\Proveedor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\VarDumper\Cloner\Data;
+use Illuminate\Support\Facades\Hash;
 
 class RrhhMiCarpetaController extends Controller
 {
@@ -16,7 +19,11 @@ class RrhhMiCarpetaController extends Controller
      */
     public function index()
     {
-        //
+        $emp = Empresa::find(Auth::user()->PRO_EMP);
+        $datos = DatosAdicionalesProv::all()->where('MP_PRO_RUN','=',Auth::user()->PRO_EMP);
+        return view('ModuloRRHH.MicarpetaRRHH.misDatos')
+            ->with('emp',$emp)
+            ->with('datos',$datos);
     }
 
     /**
@@ -87,13 +94,23 @@ class RrhhMiCarpetaController extends Controller
 
     public function resetPass(Request $request){
         //
-        if ($request->pass1 == $request->pass2 ){
-            $prov = Proveedor::find(Auth::user()->PRO_RUN);
-            $prov->password = Hash::make($request->pass1);
-            //dd($request);
-            $prov->save();
+        $prov = $this->actualizarpass($request->all());
+        if (!$prov){
+            return redirect()->route('resetpass')->with('error', 'Hubo un error al cambiar la contraseña.');
+        }else{
             return redirect()->route('resetpass')->with('success', 'contraseña cambiada con exito.');
         }
-        return redirect()->route('resetpass')->with('error', 'Hubo un error al cambiar la contraseña.');
+    }
+
+    public function actualizarpass($data){
+        if ($data['pass1'] == $data['pass2']){
+            $prov = Proveedor::find(Auth::user()->PRO_RUN);
+            $prov->password = Hash::make($data['pass1']);
+            $prov->save();
+            return true;
+        }else{
+            return false;
+        }
+
     }
 }

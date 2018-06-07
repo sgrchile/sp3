@@ -75,27 +75,27 @@
 
                                     <td>RUBRO:</td>
                                     <td>
-                                        {!! Form::select('rubro',App\Rubro::where('RUB_COD','=',$cliente->CLI_RUBRO)->pluck('RUB_DESC','RUB_COD'),['class'=>'form-control','style'=>'width:175px']) !!}
+                                        {!! Form::select('rubro',App\Rubro::pluck('RUB_DESC','RUB_COD'),$cliente->CLI_RUBRO,['class'=>'form-control','style'=>'width:175px']) !!}
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>SUB RUBRO:</td>
                                     <td>
-                                        {!! Form::select('subrubro',App\SubRubro::where('SUB_RUB_COD','=',$cliente->CLI_SUB_RUBRO)->pluck('SUB_RUB_DESC','SUB_RUB_COD'),['class'=>'form-control','style'=>'width:175px']) !!}
+                                        {!! Form::select('subrubro',App\SubRubro::pluck('SUB_RUB_DESC','SUB_RUB_COD'),$cliente->CLI_SUB_RUBRO,['class'=>'form-control','style'=>'width:175px']) !!}
                                     </td>
                                     <td>ACTIVIDAD:</td>
                                     <td>
-                                        {!! Form::select('actividad',App\Actividad::where('ACT_COD_COD','=',$cliente->CLI_ACTIVIDAD)->pluck('ACT_DESC','ACT_COD_COD'),['class'=>'form-control','id'=>'actividad','style'=>'width:175px']) !!}
+                                        {!! Form::select('actividad',App\Actividad::pluck('ACT_DESC','ACT_COD_COD'),$cliente->CLI_ACTIVIDAD,['class'=>'form-control','id'=>'actividad','style'=>'width:175px']) !!}
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>BANCO:</td>
                                     <td>
-                                        {!! Form::select('banco',App\Banco::where('BCO_ID','=',$cliente->CLI_BANCO)->pluck('BCO_DESC','BCO_ID'),['class'=>'form-control','id'=>'banco','style'=>'width:175px']) !!}
+                                        {!! Form::select('banco',App\Banco::pluck('BCO_DESC','BCO_ID'),$cliente->CLI_BANCO,['class'=>'form-control','id'=>'banco','style'=>'width:175px']) !!}
                                     </td>
                                     <td>TIPO DE CUENTA:</td>
                                     <td>
-                                        {!! Form::select('tipocuenta',App\TipoCuenta::where('TCTA_BCO','=',$cliente->CLI_TCTA_BCO)->pluck('TCTA_DESC','TCTA_BCO'),['class'=>'form-control','id'=>'tipocuenta','style'=>'width:175px']) !!}
+                                        {!! Form::select('tipocuenta',App\TipoCuenta::pluck('TCTA_DESC','TCTA_BCO'),$cliente->CLI_TCTA_BCO,['class'=>'form-control','id'=>'tipocuenta','style'=>'width:175px']) !!}
                                     </td>
                                 </tr>
                                 <tr>
@@ -111,21 +111,21 @@
                                 <tr>
                                     <td>PAIS:</td>
                                     <td>
-                                        {!! Form::select('pais',App\Pais::where('PAI_COD','=',$cliente->CLI_PAIS)->pluck('PAI_DESC','PAI_COD'),['class'=>'form-control','id'=>'pais','style'=>'width:175px']) !!}
+                                        {!! Form::select('pais',App\Pais::pluck('PAI_DESC','PAI_COD'),$cliente->CLI_PAIS,['class'=>'form-control','id'=>'pais','style'=>'width:175px']) !!}
                                     </td>
                                     <td>REGION:</td>
                                     <td>
-                                        {!! Form::select('region',App\Region::where('REG_COD','=',$cliente->CLI_REGION)->pluck('REG_DESC','REG_COD'),['class'=>'form-control','id'=>'region','style'=>'width:175px']) !!}
+                                        {!! Form::select('region',App\Region::pluck('REG_DESC','REG_COD'),$cliente->CLI_REGION,['class'=>'form-control','id'=>'region','style'=>'width:175px']) !!}
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>PROVINCIA:</td>
                                     <td>
-                                        {!! Form::select('provincia',App\Provincia::where('PV_COD','=',$cliente->CLI_PROVINCIA)->pluck('PV_DESC','PV_COD'),['class'=>'form-control','id'=>'provincia','style'=>'width:175px']) !!}
+                                        {!! Form::select('provincia',App\Provincia::pluck('PV_DESC','PV_COD'),$cliente->CLI_PROVINCIA,['class'=>'form-control','id'=>'provincia','style'=>'width:175px']) !!}
                                     </td>
                                     <td>CIUDAD:</td>
                                     <td>
-                                        {!! Form::select('ciudad',App\Ciudad::where('CIU_COD','=',$cliente->CLI_CIUDAD)->pluck('CIU_DESC','CIU_COD'),['class'=>'form-control','id'=>'ciudad','style'=>'width:175px']) !!}
+                                        {!! Form::select('ciudad',App\Ciudad::pluck('CIU_DESC','CIU_COD'),$cliente->CLI_CIUDAD,['class'=>'form-control','id'=>'ciudad','style'=>'width:175px']) !!}
                                     </td>
                                 </tr>
                                 <tr>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\ActActividad;
+use App\Prospecto;
+use App\Temperatura;
 use Illuminate\Support\Facades\Auth;
 use App\Cliente;
 use App\Oportunidad;
@@ -30,6 +32,10 @@ class ClientesController extends Controller
     {
         if (Auth::user()->PRO_NIVEL == 14){
             $clientes = Cliente::orderBy('CLI_NOMBRE','ASC')->paginate(20);
+        }if (Auth::user()->PRO_NIVEL == 1){
+            $clientes = Cliente::orderBy('CLI_NOMBRE','ASC')
+                ->where('CLI_EMP','=',Auth::user()->PRO_EMP)
+                ->paginate(20);
         }else{
             $clientes = Cliente::orderBy('CLI_NOMBRE','ASC')
                 ->where('CLI_PROPIETARIO','=',Auth::user()->PRO_RUN)
@@ -319,7 +325,7 @@ class ClientesController extends Controller
 
     public function fichaclipros($rut)
     {
-        $cliente = Cliente::find($rut);
+        $cliente = Prospecto::find($rut);
         if ($cliente->getAttribute('CLI_RUBRO') != null){
             $rubro = Rubro::find($cliente->CLI_RUBRO);
             $cliente->setAttribute('CLI_RUBRO', $rubro->RUB_DESC);
@@ -341,7 +347,7 @@ class ClientesController extends Controller
             $cliente->setAttribute('CLI_TCTA_BCO', $TCTA->TCTA_DESC);
         }
         if ($cliente->getAttribute('CLI_PAIS') != null){
-            $Pais = Pais::find($cliente->get('CLI_PAIS',null));
+            $Pais = Pais::find($cliente->CLI_PAIS);
             $cliente->setAttribute('CLI_PAIS', $Pais->PAI_DESC);
         }
         if ($cliente->getAttribute('CLI_REGION') != null){
@@ -349,12 +355,18 @@ class ClientesController extends Controller
             $cliente->setAttribute('CLI_REGION', $Reg->REG_DESC);
         }
         if ($cliente->getAttribute('CLI_CIUDAD') != null){
-            $CIU = Ciudad::find($cliente->get('CLI_CIUDAD',null));
+            $CIU = Ciudad::find($cliente->CLI_CIUDAD);
             $cliente->setAttribute('CLI_CIUDAD', $CIU->CIU_DESC);
         }
         if ($cliente->getAttribute('CLI_PROVINCIA') != null){
-            $pro = Provincia::find($cliente->get('CLI_PROVINCIA',null));
+            $pro = Provincia::find($cliente->CLI_PROVINCIA);
             $cliente->setAttribute('CLI_PROVINCIA', $pro->PV_DESC);
+        }
+        if ($cliente->CLI_TEMP != null){
+            $temp = Temperatura::find($cliente->CLI_TEMP);
+            if ($temp != null){
+                $cliente->CLI_TEMP = $temp->desc_temp;
+            }
         }
 
         $contacto = Contactos::orderBy('CONT_CLI_ID','ASC')->where('CONT_CLI_ID','=',$rut)->paginate(10);

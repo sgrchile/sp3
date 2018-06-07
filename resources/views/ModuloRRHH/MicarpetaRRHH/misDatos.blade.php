@@ -20,13 +20,13 @@
 
             <tr>
               <td>NOMBRE:</td>
-              <td><input type="text" class="form-control" readonly  style="width:175px;"></td>
+              <td><input type="text" value="{{ \Illuminate\Support\Facades\Auth::user()->PRO_NOMBRE }}" class="form-control" readonly  style="width:175px;"></td>
 
-              <td>APELLIDOS:</td>
-              <td><input type="text" readonly  class="form-control" style="width:175px;"></td>
+              <td>APELLIDO:</td>
+              <td><input type="text" value="{{ \Illuminate\Support\Facades\Auth::user()->PRO_APE_PAT  }}" readonly  class="form-control" style="width:175px;"></td>
 
               <td>RUT:</td>
-              <td><input type="text" readonly class="form-control" style="width:175px;"></td>
+              <td><input type="text" value="{{ \Illuminate\Support\Facades\Auth::user()->PRO_RUN }}" readonly class="form-control" style="width:175px;"></td>
 
 
             </tr>
@@ -36,18 +36,22 @@
               <td>EMPRESA:</td>
 
               <td>
-                <input type="text" readonly   class="form-control" style="width:175px;">
+                <input type="text" readonly VALUE="{{ \Illuminate\Support\Facades\Auth::user()->PRO_EMP }}"  class="form-control" style="width:175px;">
               </td>
 
               <td>CARGO:</td>
 
               <td>
-                <input type="text" readonly class="form-control"  style="width:175px;">
+                <input type="text" value="{{ \Illuminate\Support\Facades\Auth::user()->PRO_CAR }}" readonly class="form-control"  style="width:175px;">
               </td>
 
               <td>TIPO DE PERSONAL:</td>
               <td>
-                <input type="text" readonly class="form-control"  style="width:175px;">
+                @if($datos->MP_JORNADA != null)
+                <input type="text" value="{{ App\Jornada::find($datos->MP_JORNADA)->DESC_JORNADA }}" readonly class="form-control"  style="width:175px;">
+                  @else
+                  <input type="text" value="" readonly class="form-control"  style="width:175px;">
+                  @endif
               </td>
 
             </tr>

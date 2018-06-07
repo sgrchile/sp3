@@ -443,9 +443,14 @@ Route::group(['prefix' => 'modulo'], function () {
                 return view('ModuloRRHH.MicarpetaRRHH.CarpetaPersonal');
             })->name('CarpetaPersonal');
 
-            Route::get('/datos', function () {
+            /*Route::get('/datos', function () {
                 return view('ModuloRRHH.MicarpetaRRHH.misDatos');
-            })->name('misdatos');
+            })->name('misdatos');*/
+
+            Route::get('/datos', [
+                'uses' => 'RrhhMiCarpetaController@index',
+                'as' => 'misdatos',
+            ]);
 
             Route::get('/datos_adicionales', function () {
                 return view('ModuloRRHH.MicarpetaRRHH.datosAdicionales');
