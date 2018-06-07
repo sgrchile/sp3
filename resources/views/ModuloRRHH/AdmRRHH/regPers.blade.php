@@ -86,8 +86,8 @@
               <h4>GENERO:</h4>
                 <select class="form-control" name="sexo">
                   <option>Seleccionar</option>
-                  <option value="HOMBRE">HOMBRE</option>
-                  <option value="MUJER">MUJER</option>
+                  <option value="HOMBRE">MASCU</option>
+                  <option value="MUJER">FEMENINO</option>
                   <option value="INDEFINIDO">INDEFINIDO</option>
                 </select>
                 </div>
