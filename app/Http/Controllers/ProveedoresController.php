@@ -233,6 +233,11 @@ class ProveedoresController extends Controller
       $provincia = Provincia::find($data['provincia'])->first()->PV_COD;
       $ciudad = Ciudad::find($data['ciudad'])->first()->CIU_COD;
       $tipo_cuenta = TipoCuenta::find($data['tipo_cuenta'])->first()->TCTA_BCO;
+        $nro_empleados = NroEmpleados::all();
+        $categoria = CategoriaEmpresa::all();
+        $ventas_anuales = VentasAnuales::all();
+        $cobertura = CoberturaEmpresa::all();
+        $pers_juridica = PersonaJuridica::all();
 
       return Proveedor::create([
           'PRO_RUN' => $data['rut'],
