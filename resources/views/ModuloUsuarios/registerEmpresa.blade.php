@@ -460,7 +460,6 @@
             rut: $("#rut").val(),
             fecha: $("#fecha").val(),
             rasonsocial: $("#razonsocial").val(),
-            estado: $("#estado").val(),
             email: $("#email").val(),
             nacionalidad: $("#nacionalidad").val(),
             contrasena: $("#contrasena").val(),
@@ -523,18 +522,6 @@
             if (i == "fecha"){
                 let nacimiento = new Date($("#fecha").val()).getTime();
                 let hoy = new Date().getTime();
-
-                let diff = hoy - nacimiento;
-                diff = diff/(1000*60*60*24*365);
-
-                if (diff < 18){
-                    alert("Debes ser mayor de 18 años");
-                    $('#collapseOne').collapse('show');
-                    $("#"+i).focus();
-                    $("#"+i).addClass("is-invalid");
-                    respuesta = false;
-                    return false;
-                }
             }
 
             if (i == "email"){
