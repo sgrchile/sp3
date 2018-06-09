@@ -182,6 +182,9 @@ class ProveedoresPublicController extends Controller
           'PRO_PV_COD' => $data['provincia'],
           'PRO_REG_COD' => $data['region'],
           'PRO_CIU_COD' => $data['ciudad'],
+          'PRO_PERS_JURID' => $data['juridica'],
+          'PRO_REP_LEGAL' => $data['repleg'],
+          'PRO_PAGINA_WEB' => $data['pagweb'],
       ]);
     }
 

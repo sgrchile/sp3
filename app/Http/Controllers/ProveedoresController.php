@@ -233,11 +233,15 @@ class ProveedoresController extends Controller
       $provincia = Provincia::find($data['provincia'])->first()->PV_COD;
       $ciudad = Ciudad::find($data['ciudad'])->first()->CIU_COD;
       $tipo_cuenta = TipoCuenta::find($data['tipo_cuenta'])->first()->TCTA_BCO;
-        $nro_empleados = NroEmpleados::all();
-        $categoria = CategoriaEmpresa::all();
-        $ventas_anuales = VentasAnuales::all();
-        $cobertura = CoberturaEmpresa::all();
-        $pers_juridica = PersonaJuridica::all();
+        $nro_empleados = NroEmpleados::find($data['empleados'])->first();
+        $categoria = CategoriaEmpresa::find($data['categoria'])->first();
+        $ventas_anuales = VentasAnuales::find($data['ventas'])->first();
+        $cobertura = CoberturaEmpresa::find($data['cobertura'])->first();
+        $pers_juridica = PersonaJuridica::find($data['persjuridica'])->first();
+        $empresas = Empresa::find($data['empresa'])->first();
+        $estado_proveedores = EstadoProveedor::find($data['estprov'])->first();
+        $tipo_proveedores = TipoProveedor::find($data['tpprov'])->first();
+        $pagos = Pagos::find($data['pagos'])->first();
 
       return Proveedor::create([
           'PRO_RUN' => $data['rut'],
@@ -258,6 +262,9 @@ class ProveedoresController extends Controller
           'PRO_PV_COD' => $data['provincia'],
           'PRO_REG_COD' => $data['region'],
           'PRO_CIU_COD' => $data['ciudad'],
+          'PRO_PERS_JURID' => $data['juridica'],
+          'PRO_REP_LEGAL' => $data['repleg'],
+          'PRO_PAGINA_WEB' => $data['pagweb'],
       ]);
     }
 
@@ -268,21 +275,14 @@ class ProveedoresController extends Controller
             'razon_social' => 'required',
             'rubro' => 'required',
             'subrubro' => 'required',
-            'tipo_cuenta' => 'required',
             'pais' => 'required',
             'email' => 'required',
             'telefono' => 'required',
-            'nro_cuenta' => 'required',
-            'banco' => 'required',
             'password' => 'required|min:6|confirmed',
             'pagos' => 'required',
             'oficina' => 'required',
             'pers_juridica' => 'required',
             'rep_legal' => 'required',
-            'ventas_anuales' => 'required',
-            'nro_empleados' => 'required',
-            'cobertura' => 'required',
-            'categoria' => 'required'
         ]);
     }
 

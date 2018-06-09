@@ -54,7 +54,7 @@
                                             <label for="razonsocial">Razon Social</label>
                                             <input type="text" class="form-control" id="paterno">
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group col-12 col-md-6">
                                             <label for="juridica">Persona Juridica</label>
                                             <select class="form-control" id="juridica">
                                             </select>
@@ -228,6 +228,11 @@
                                             <label for="logo">Logo</label>
                                             <input type="file" class="form-control" id="logo">
                                         </div>
+                                        <!--<div class="form-group">
+                                            <label for="ventas">Tipo de cuenta</label>
+                                            <select class="form-control" id="ventas">
+                                            </select>
+                                        </div>-->
                                     </div>
                                     {{ csrf_field() }}
                                     <div class="card-footer">
@@ -408,14 +413,14 @@
                 _token: $('input[name="_token"]').val()
             };
             if (validos == true){
-                $.post("{{ route('registrar.proveedor.persona') }}",inputs).done(function(data){
+                $.post("{{ route('registrar.proveedor.empresa') }}",inputs).done(function(data){
                     alert(data.respuesta);
                     alert("Su cuenta fue creada, validaremos sus datos a la brevedad para activar su cuenta");
                     location.href ="https://plataforma.sgrchile.com/";
                 }).fail(function(data){
                     $.each( data.responseJSON, function( i, val ) {
                         alert(val);
-                        if (i =="nombre" || i =="rut" || i =="fecha" || i =="email" || i =="nacionalidad" || i =="contrasena" || i =="contrasenar"){
+                        if (i =="nombre" || i =="rut" || i =="fecha" || i =="email" || i =="contrasena" || i =="contrasenar"){
                             $('#collapseOne').collapse('show');
                         }
                         else if (i == "telefono" || i == "telefonodos"){
@@ -472,7 +477,7 @@
 
             if (value.length < 1 && i !== "telefonodos"){
                 alert("Falta un campo obligatorio");
-                if (i =="nombre" || i =="paterno" || i =="materno" || i =="rut" || i =="fecha" || i =="genero" || i =="estado" || i =="email" || i =="nacionalidad" || i =="contrasena" || i =="contrasenar"){
+                if (i =="nombre" || i =="rut" || i =="fecha" || i =="estado" || i =="email" || i =="nacionalidad" || i =="contrasena" || i =="contrasenar"){
                     $('#collapseOne').collapse('show');
                 }
                 else if (i == "telefono" || i == "telefonodos"){
