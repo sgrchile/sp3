@@ -105,7 +105,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="redes">Redes Sociales</label>
-                                            <input type="text" class="form-control" id="direccion">
+                                            <input type="text" class="form-control" id="redes">
                                         </div>
                                     </div>
                                     <div class="card-footer">
