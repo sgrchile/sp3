@@ -315,6 +315,18 @@
                 }
             }
         });
+        $.get("https://plataforma.sgrchile.com/api/persjuridica").done(function(data){
+            let option = "<option value='0'>Seleccione</option>";
+            $("#juridica").append(option);
+            if (data !== null){
+                if (Object.keys(data).length > 0 ){
+                    $.each(data, function( index, value ){
+                        let option = "<option value='"+ value.ID_PERS_JURIDICA + "'>" + value.DESC_PERS_JURIDICA+ "</option>";
+                        $("#juridica").append(option);
+                    });
+                }
+            }
+        });
         $("#pais").on("change", function(){
             let pais = $(this).val();
 
