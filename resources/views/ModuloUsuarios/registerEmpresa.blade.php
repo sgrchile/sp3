@@ -488,7 +488,7 @@
 
             if (value.length < 1 && i !== "telefonodos"){
                 alert("Falta un campo obligatorio");
-                if (i =="nombre" || i =="rut" || i =="fecha" || i =="estado" || i =="email" || i =="nacionalidad" || i =="contrasena" || i =="contrasenar"){
+                if (i =="nombre" || i =="rut" || i =="fecha" || i =="email" || i =="nacionalidad" || i =="contrasena" || i =="contrasenar"){
                     $('#collapseOne').collapse('show');
                 }
                 else if (i == "telefono" || i == "telefonodos"){
