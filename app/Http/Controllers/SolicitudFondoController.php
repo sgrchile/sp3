@@ -68,18 +68,37 @@ class SolicitudFondoController extends Controller
 
     public function validateSolicitudFondo(Request $request)
     {
-        $this->validate($request, [
-            'emp_tipocuenta' => 'required|',
-            'emp_nrocuenta' => 'required',
-            'emp_causa' => 'required',
-            'emp_solicitante' => 'required',
-            'rec_id' => 'required',
-            'rec_banco' => 'required',
-            'rec_tipocuenta' => 'required',
-            'rec_nrocuenta' => 'required',
-            'rec_monto' => 'required',
-            'rec_descripcion' => 'required',
-        ]);
+        //dd($request);
+        if ($request->emp_causa == 2 || $request->emp_causa == 5 || $request->emp_causa == 7) {
+            $this->validate($request, [
+                'emp_tipocuenta' => 'required|',
+                'emp_nrocuenta' => 'required',
+                'emp_causa' => 'required',
+                'emp_solicitante' => 'required',
+                'rec_id' => 'required',
+                'rec_banco' => 'required',
+                'rec_tipocuenta' => 'required',
+                'rec_nrocuenta' => 'required',
+                'rec_monto' => 'required',
+                'rec_descripcion' => 'required',
+
+            ]);
+        }else{
+            $this->validate($request, [
+                'emp_tipocuenta' => 'required|',
+                'emp_nrocuenta' => 'required',
+                'emp_causa' => 'required',
+                'emp_solicitante' => 'required',
+                'rec_id' => 'required',
+                'rec_banco' => 'required',
+                'rec_tipocuenta' => 'required',
+                'rec_nrocuenta' => 'required',
+                'rec_monto' => 'required',
+                'rec_descripcion' => 'required',
+                'emp_ot' => 'required',
+            ]);
+        }
+
     }
 
     public function createSolicitudFondo(array $data)
@@ -99,7 +118,7 @@ class SolicitudFondoController extends Controller
             'SF_FECHA' => Carbon::now(),
             'SF_DESC' => $data['rec_descripcion'],
             'SF_CAU_ID' => $data['emp_causa'],
-            'SF_EMP_ID' => 1,
+            'SF_EMP_ID' => Auth::user()->PRO_EMP,
             'SF_BCO_ID' => $data['rec_banco'],
             'SF_TIPO_CTA_BCO' => $data['rec_tipocuenta'],
             'SF_EST' => 3,
