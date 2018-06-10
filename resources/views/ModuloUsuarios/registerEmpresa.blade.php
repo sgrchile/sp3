@@ -52,7 +52,7 @@
                                         </div>
                                         <div class="form-group col-12 col-md-6">
                                             <label for="razonsocial">Razon Social</label>
-                                            <input type="text" class="form-control" id="paterno">
+                                            <input type="text" class="form-control" id="razonsocial">
                                         </div>
                                         <div class="form-group col-12 col-md-6">
                                             <label for="juridica">Persona Juridica</label>
@@ -215,7 +215,7 @@
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label for="pagweb">Pagina Web</label>
-                                            <input type="text" class="form-control" id="ncuenta">
+                                            <input type="text" class="form-control" id="pagweb">
                                         </div>
                                        <div class="form-group">
                                             <label for="dicom">Dicom</label>
