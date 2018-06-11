@@ -475,7 +475,7 @@
             $.each( inputs, function( i, val ) {
                 let value = $.trim(val);
 
-                if (value.length < 1 && i !== "telefonodos"){
+                if (value.length < 1){
                     alert("Falta un campo obligatorio");
                     if (i =="nombre" || i =="paterno" || i =="materno" || i =="rut" || i =="fecha" || i =="genero" || i =="estado" || i =="email" || i =="nacionalidad" || i =="contrasena" || i =="contrasenar"){
                         $('#collapseOne').collapse('show');
