@@ -488,10 +488,10 @@
 
             if (value.length < 1 && i !== "telefonodos"){
                 alert("Falta un campo obligatorio");
-                if (i =="nombre" || i =="rut" || i =="fecha" || i =="email" || i =="nacionalidad" || i =="contrasena" || i =="contrasenar"){
+                if (i =="nombre" || i =="rut" || i =="fecha" || i =="razonsocial" || i =="repleg" || i =="email" || i =="nacionalidad" || i =="contrasena" || i =="contrasenar"){
                     $('#collapseOne').collapse('show');
                 }
-                else if (i == "telefono" || i == "telefonodos"){
+                else if (i == "telefono" || i == "telefonodos" || i == "redes"){
                     $('#collapseTwo').collapse('show');
                 }
                 else if (i == "direccion" || i == "pais" || i == "region" || i == "provincia" || i == "ciudad"){
@@ -499,6 +499,9 @@
                 }
                 else if(i == "pago" || i == "fechapago" || i == "ncuenta" || i == "banco" || i == "bancocuenta"){
                     $('#collapsefour').collapse('show');
+                }
+                else if (i == "pagweb" || i == "dicom" || i == "logo"){
+                    $('#collapsefive').collapse('show');
                 }
                 $("#"+i).focus();
                 $("#"+i).addClass("is-invalid");
