@@ -34,11 +34,6 @@ Route::post('/registrar_action', [
     'as' => 'registrar.proveedor.persona',
 ]);
 
-Route::post('/registrar_act', [
-    'uses' => 'ProveedoresPublicController@postProveedorEmpresa',
-    'as' => 'registrar.proveedor.empresa',
-]);
-
 Route::get('/empresa', [
     'uses' => 'LoginController@createemp',
     'as' => 'empresa',
