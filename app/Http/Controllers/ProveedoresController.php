@@ -78,6 +78,7 @@ class ProveedoresController extends Controller
         $tipo_cuentas = TipoCuenta::all();
         $tipo_proveedores = TipoProveedor::all();
         $rubros = Rubro::all();
+        $pagos = Pagos::all();
 
         return view('ModuloProv.regPerAct')
             ->with('bancos', $bancos)
@@ -90,6 +91,7 @@ class ProveedoresController extends Controller
             ->with('regiones', $regiones)
             ->with('ciudades', $ciudades)
             ->with('rubros', $rubros)
+            ->with('pagos', $pagos)
             ->with('provincias', $provincias);
     }
 

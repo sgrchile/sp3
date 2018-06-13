@@ -104,6 +104,7 @@ class ModuloCajaController extends Controller
             : $type_mov = TipoMovimiento::find(2);
 
         $nro_cuenta = CuentaEmpresa::find($data['nro_cuenta'])->CTAE_NUMERO_CUENTA;
+        $emp = Auth::user()->PRO_EMP;
 
         return RegistroMovimiento::create([
             'RMOV_FECHA' => $data['fecha'],
@@ -111,7 +112,7 @@ class ModuloCajaController extends Controller
             'RMOV_N_CTA' => $nro_cuenta,
             'RMOV_FOLIO' => $data['folio'],
             'RMOV_DESC' => $data['descripcion'],
-            'RMOV_EMP_ID' => $data['empresa'],
+            'RMOV_EMP_ID' => $emp,
             'RMOV_FTE_ID' => $data['fuente'],
             'RMOV_CAU_ID' => $data['causa'],
             'RMOV_CTAE' => $data['nro_cuenta'],
@@ -132,7 +133,7 @@ class ModuloCajaController extends Controller
         $asiento->TP_MOVIMIENTO = $type_mov->TMOV_ID;
         $asiento->FECHA_CONT = $data['fecha'];
         $asiento->ID_USUARIO_ASIENTO = Auth::user()->PRO_RUN;
-        $asiento->ID_EMP_ASIENTO = (int)$data['empresa'];
+        $asiento->ID_EMP_ASIENTO = Auth::user()->PRO_EMP;
         $asiento->TOTAL_DEBE = (int)$data['monto'];
         $asiento->TOTAL_HABER = (int)$data['monto'];
         //dd($type_mov->TMOV_ID);
