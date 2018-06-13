@@ -406,12 +406,14 @@
                 rut: $("#rut").val(),
                 fecha: $("#fecha").val(),
                 rasonsocial: $("#razonsocial").val(),
+                repleg: $("#repleg").val(),
                 email: $("#email").val(),
                 nacionalidad: $("#nacionalidad").val(),
                 contrasena: $("#contrasena").val(),
                 contrasenar: $("#contrasenar").val(),
                 telefono: $("#telefono").val(),
                 telefonodos: $("#telefonodos").val(),
+                redes: $("#redes").val(),
                 direccion: $("#direccion").val(),
                 pais: $("#pais").val(),
                 region: $("#region").val(),
@@ -422,6 +424,9 @@
                 ncuenta: $("#ncuenta").val(),
                 banco: $("#banco").val(),
                 bancocuenta: $("#bancocuenta").val(),
+                pagweb: $("#pagweb").val(),
+                dicom: $("#dicom").val(),
+                logo: $("#logo").val(),
                 _token: $('input[name="_token"]').val()
             };
             if (validos == true){
@@ -432,10 +437,10 @@
                 }).fail(function(data){
                     $.each( data.responseJSON, function( i, val ) {
                         alert(val);
-                        if (i =="nombre" || i =="rut" || i =="fecha" || i =="email" || i =="contrasena" || i =="contrasenar"){
+                        if (i =="nombre" || i =="rut" || i =="fecha" || i =="razonsocial" || i =="repleg" || i =="email" || i =="contrasena" || i =="contrasenar"){
                             $('#collapseOne').collapse('show');
                         }
-                        else if (i == "telefono" || i == "telefonodos"){
+                        else if (i == "telefono" || i == "telefonodos" || i == "redes"){
                             $('#collapseTwo').collapse('show');
                         }
                         else if (i == "direccion" || i == "pais" || i == "region" || i == "provincia" || i == "ciudad"){
@@ -443,6 +448,9 @@
                         }
                         else if(i == "pago" || i == "fechapago" || i == "ncuenta" || i == "banco" || i == "bancocuenta"){
                             $('#collapsefour').collapse('show');
+                        }
+                        else if (i == "pagweb" || i == "dicom" || i == "logo"){
+                            $('#collapsefive').collapse('show');
                         }
                         $("#"+i).focus();
                         $("#"+i).addClass("is-invalid");
@@ -460,12 +468,14 @@
             rut: $("#rut").val(),
             fecha: $("#fecha").val(),
             rasonsocial: $("#razonsocial").val(),
+            repleg: $("#repleg").val(),
             email: $("#email").val(),
             nacionalidad: $("#nacionalidad").val(),
             contrasena: $("#contrasena").val(),
             contrasenar: $("#contrasenar").val(),
             telefono: $("#telefono").val(),
             telefonodos: $("#telefonodos").val(),
+            redes: $("#redes").val(),
             direccion: $("#direccion").val(),
             pais: $("#pais").val(),
             region: $("#region").val(),
@@ -476,6 +486,9 @@
             ncuenta: $("#ncuenta").val(),
             banco: $("#banco").val(),
             bancocuenta: $("#bancocuenta").val(),
+            pagweb: $("#pagweb").val(),
+            dicom: $("#dicom").val(),
+            logo: $("#logo").val(),
             _token: $('input[name="_token"]').val()
         };
 
