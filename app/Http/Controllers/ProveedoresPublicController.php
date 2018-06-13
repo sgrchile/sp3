@@ -143,7 +143,7 @@ class ProveedoresPublicController extends Controller
 
     public function postProveedorEmpresa(Request $request)
     {
-      // dd($request->all());
+      //dd($request->all());
       $this->validateProveedorEmpresa($request);
       $createProveedorEmpresa = $this->createProveedorEmpresa($request->all());
 
@@ -179,9 +179,9 @@ class ProveedoresPublicController extends Controller
           'PRO_BCO_ID' => $banco,
           'PRO_TCTA_BCO' => $tipo_cuenta,
           'PRO_PAI_COD' => $pais,
-          'PRO_PV_COD' => $data['provincia'],
-          'PRO_REG_COD' => $data['region'],
-          'PRO_CIU_COD' => $data['ciudad'],
+          'PRO_PV_COD' => $provincia,
+          'PRO_REG_COD' => $region,
+          'PRO_CIU_COD' => $ciudad,
           'PRO_PERS_JURID' => $data['juridica'],
           'PRO_REP_LEGAL' => $data['repleg'],
           'PRO_PAGINA_WEB' => $data['pagweb'],
