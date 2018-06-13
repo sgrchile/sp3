@@ -73,11 +73,6 @@ Route::get('/test', function () {
        })->name('test');
 
 Route::get('/send', 'EmailController@send');
-
-
-
-
-
 /**
  * Todas las rutas con prefijo 'modulo'
  */
@@ -91,33 +86,26 @@ Route::group(['prefix' => 'modulo'], function () {
             'uses'  => 'ModuloCajaController@getIndex',
             'as'    => 'moduloCaja',
         ]);
-
         Route::post('/registro', [
             'uses' => 'ModuloCajaController@postRegistro',
             'as' => 'moduloCaja.registro.post',
         ]);
-
         Route::get('/historico', [
             'uses' => 'ListaMovimientosController@ListaMovimientos',
             'as' => 'historicoMov',
         ]);
-
         Route::post('/searchMov', [
             'uses' => 'ListaMovimientosController@PostMovs',
             'as' => 'searchMov',
         ]);
-
         Route::post('/flujo',[
             'uses' => 'LibrosContablesController@flujodecaja',
             'as' => 'post.flujo',
         ]);
-
-
         Route::get('/Finanzas', [
             'uses' => 'ModuloCajaController@financiero',
             'as' => 'Finanzas',
         ]);
-
         //RUTAS DE CONTABILIDAD
         Route::get('/Contable', function () {
           return view('ModuloCaja.contable');
@@ -131,12 +119,10 @@ Route::group(['prefix' => 'modulo'], function () {
             'uses' => 'LibrosContablesController@index',
             'as' => 'post.lbs',
         ]);
-
         Route::post('/BalanceGeneral', [
             'uses' => 'LibrosContablesController@balance',
             'as' => 'post.balance',
         ]);
-
         /*Route::get('/AsientosContables', function () {
             return view('ModuloCaja.AsientosContables');
         })->name('AsientosContables');*/
@@ -145,7 +131,6 @@ Route::group(['prefix' => 'modulo'], function () {
             'uses' => 'AsientoContableController@index',
             'as' => 'post.asients',
         ]);
-
         /*Route::get('/NuevoAsientoContable', function () {
             return view('ModuloCaja.NuevoAsientoContable');
         })->name('NuevoAsientoContable');*/
@@ -154,55 +139,42 @@ Route::group(['prefix' => 'modulo'], function () {
             'uses' => 'AsientoContableController@create',
             'as' => 'NuevoAsientoContable',
         ]);
-
         Route::post('/AgregaAsientoContable', [
             'uses' => 'AsientoContableController@store',
             'as' => 'post.asientocontable',
         ]);
-
         Route::post('/', [
             'uses' => 'AsientoContableController@update',
             'as' => 'post.cuentacontable',
         ]);
-
         Route::get('EliminarAsiento/{id}', [
             'uses' => 'AsientoContableController@destroy',
             'as' => 'asiento.destroy',
         ]);
-
         Route::get('EditarAsientoContable/{id}', [
             'uses' => 'AsientoContableController@edit',
             'as' => 'asiento.edit',
         ]);
-
         Route::get('VerAsientoContable/{id}', [
             'uses' => 'AsientoContableController@show',
             'as' => 'asiento.ver',
         ]);
-
         /*Route::get('/editarAsientoContable', function () {
             return view('ModuloCaja.editarAsientoContable');
         })->name('editarAsientoContable');*/
-
 
         Route::post('/PlanDeCuentas', [
             'uses' => 'CuentaContableController@index',
             'as' => 'post.cta',
         ]);
-
         Route::post('/CrearCuenta', [
             'uses' => 'CuentaContableController@store',
             'as' => 'post.ctacontable',
         ]);
-
         Route::put('/EditarCuenta', [
             'uses' => 'CuentaContableController@update',
             'as' => 'put.editarCuenta',
         ]);
-
-
-
-
 
 // Inicio Rutas del Modulo Solicitud de Fondo
         Route::group(['prefix' => 'solicitud_fondo'], function () {
@@ -210,7 +182,6 @@ Route::group(['prefix' => 'modulo'], function () {
                 'uses' => 'SolicitudFondoController@index',
                 'as' => 'SolFon',
             ]);
-
             Route::get('/create', [
                 'uses' => 'SolicitudFondoController@getAllOts',
                 'as' => 'createSolFon',

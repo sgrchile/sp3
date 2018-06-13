@@ -22,7 +22,7 @@
             <div class="col-8 my-3">
                 <div class="card" style="border:1px solid #000;background: linear-gradient(white, #cfcdce);">
                     <div class="card-body">
-                        <h5 class="card-title text-center">Registro de Personas</h5>
+                        <h5 class="card-title text-center">Registro de Empresa</h5>
                         <div id="accordion">
                             <div class="card">
                                 <div id="collapseOne" class="collapse show" data-parent="#accordion">
@@ -224,11 +224,11 @@
                                                 <option value="no">no</option>
                                             </select>
                                         </div>
-                                        <div class="form-group">
+                                        <!--<div class="form-group">
                                             <label for="logo">Logo</label>
                                             <input type="file" class="form-control" id="logo">
                                         </div>
-                                        <!--<div class="form-group">
+                                        <div class="form-group">
                                             <label for="ventas">Tipo de cuenta</label>
                                             <select class="form-control" id="ventas">
                                             </select>
@@ -413,7 +413,6 @@
                 contrasenar: $("#contrasenar").val(),
                 telefono: $("#telefono").val(),
                 telefonodos: $("#telefonodos").val(),
-                redes: $("#redes").val(),
                 direccion: $("#direccion").val(),
                 pais: $("#pais").val(),
                 region: $("#region").val(),
@@ -424,9 +423,6 @@
                 ncuenta: $("#ncuenta").val(),
                 banco: $("#banco").val(),
                 bancocuenta: $("#bancocuenta").val(),
-                pagweb: $("#pagweb").val(),
-                dicom: $("#dicom").val(),
-                logo: $("#logo").val(),
                 _token: $('input[name="_token"]').val()
             };
             if (validos == true){
@@ -440,7 +436,7 @@
                         if (i =="nombre" || i =="rut" || i =="fecha" || i =="razonsocial" || i =="repleg" || i =="email" || i =="contrasena" || i =="contrasenar"){
                             $('#collapseOne').collapse('show');
                         }
-                        else if (i == "telefono" || i == "telefonodos" || i == "redes"){
+                        else if (i == "telefono" || i == "telefonodos"){
                             $('#collapseTwo').collapse('show');
                         }
                         else if (i == "direccion" || i == "pais" || i == "region" || i == "provincia" || i == "ciudad"){
@@ -448,9 +444,6 @@
                         }
                         else if(i == "pago" || i == "fechapago" || i == "ncuenta" || i == "banco" || i == "bancocuenta"){
                             $('#collapsefour').collapse('show');
-                        }
-                        else if (i == "pagweb" || i == "dicom" || i == "logo"){
-                            $('#collapsefive').collapse('show');
                         }
                         $("#"+i).focus();
                         $("#"+i).addClass("is-invalid");
@@ -475,7 +468,6 @@
             contrasenar: $("#contrasenar").val(),
             telefono: $("#telefono").val(),
             telefonodos: $("#telefonodos").val(),
-            redes: $("#redes").val(),
             direccion: $("#direccion").val(),
             pais: $("#pais").val(),
             region: $("#region").val(),
@@ -486,9 +478,6 @@
             ncuenta: $("#ncuenta").val(),
             banco: $("#banco").val(),
             bancocuenta: $("#bancocuenta").val(),
-            pagweb: $("#pagweb").val(),
-            dicom: $("#dicom").val(),
-            logo: $("#logo").val(),
             _token: $('input[name="_token"]').val()
         };
 
@@ -504,7 +493,7 @@
                 if (i =="nombre" || i =="rut" || i =="fecha" || i =="razonsocial" || i =="repleg" || i =="email" || i =="nacionalidad" || i =="contrasena" || i =="contrasenar"){
                     $('#collapseOne').collapse('show');
                 }
-                else if (i == "telefono" || i == "telefonodos" || i == "redes"){
+                else if (i == "telefono" || i == "telefonodos"){
                     $('#collapseTwo').collapse('show');
                 }
                 else if (i == "direccion" || i == "pais" || i == "region" || i == "provincia" || i == "ciudad"){
@@ -512,9 +501,6 @@
                 }
                 else if(i == "pago" || i == "fechapago" || i == "ncuenta" || i == "banco" || i == "bancocuenta"){
                     $('#collapsefour').collapse('show');
-                }
-                else if (i == "pagweb" || i == "dicom" || i == "logo"){
-                    $('#collapsefive').collapse('show');
                 }
                 $("#"+i).focus();
                 $("#"+i).addClass("is-invalid");
