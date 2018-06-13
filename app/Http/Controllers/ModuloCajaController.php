@@ -12,7 +12,7 @@ use DB;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use App\Estado;
 use App\SolicitudFondo;
 use App\Banco;
 use App\OrdenTrabajo;
