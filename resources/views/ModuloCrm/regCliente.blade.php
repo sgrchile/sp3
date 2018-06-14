@@ -21,19 +21,19 @@
               <tr>
                 <td><a style="color: #9A0000">* </a> NOMBRE:</td>
                 <td>
-                  {{ Form::text('nombre',null,['class'=>'form-control','style'=>'width:175px', 'required', 'pattern'=>'[A-Za-z]{4-16}']) }}
+                  {{ Form::text('nombre',null,['class'=>'form-control','style'=>'width:175px', 'required']) }}
                 </td>
 
                 <td>NOMBRE DE FANTASIA:</td>
                 <td>
-                  {{ Form::text('nombref',null,['class'=>'form-control', 'pattern'=>'[A-Za-z]{4-16}','style'=>'width:175px']) }}
+                  {{ Form::text('nombref',null,['class'=>'form-control','style'=>'width:175px']) }}
                 </td>
               </tr>
               <tr>
 
                 <td><a style="color: #9A0000">* </a> RUT:</td>
                 <td>
-                  {{ Form::text('rut',null,['class'=>'form-control', 'required', 'pattern'=>'[A-Za-z]{4-16}','maxlength'=>'11','style'=>'width:175px']) }}
+                  {{ Form::text('rut',null,['class'=>'form-control', 'required','maxlength'=>'11','style'=>'width:175px']) }}
                   <!--<input type="text" id="rut" name="rut"  style="width:175px;" class="form-control" maxlength="10" required /><!--oninput="checkRut(this)"-->
                   <!--<script src="{{asset('js/validarRUT.js')}}"></script>-->
                 </td>
@@ -97,7 +97,7 @@
               <tr>
                   <td>ORIGEN: </td>
                   <td >
-                      {{ Form::text('origen',null,['class'=>'form-control', 'required','style'=>'width:175px']) }}
+                      {{ Form::text('origen',null,['class'=>'form-control','style'=>'width:175px']) }}
                   </td>
               </tr>
               <tr>
