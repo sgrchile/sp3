@@ -39,6 +39,11 @@ Route::get('/empresa', [
     'as' => 'empresa',
 ]);
 
+Route::post('/registrar_act', [
+    'uses' => 'ProveedoresPublicController@postProveedorEmpresa',
+    'as' => 'registrar.proveedor.empresa',
+]);
+
 Route::get('/desarrollo',function (){
    return view('enDesarrollo');
 })->name('desarrollo');
