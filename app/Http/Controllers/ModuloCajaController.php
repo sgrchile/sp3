@@ -142,7 +142,7 @@ class ModuloCajaController extends Controller
         switch ((int)$data['causa']){
             case 1:
                 $updateTransferir = SolicitudFondo::findOrFail((int)$data['folio'])->update([
-                    'SF_EST' => 5,]);
+                    'SF_EST' => 6,]);
                 $asicta = new AsientoCuenta();
                 //$asicta->EMP_CTA_CONT = (int)$data['empresa'];
                 $asicta->ID_ASIENTO_CONT = $asiento->ID_ASIENTO_CONT;
