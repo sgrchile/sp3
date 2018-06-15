@@ -70,27 +70,35 @@
               </tr>
 
               <tr>
-                <td>GLOSA: </td>
+                <td>CUMPLEAÑOS: </td>
                 <td >
-                  {{ Form::text('glosa',null,['class'=>'form-control','class'=>'form-control','style'=>'width:175px']) }}
+                  {{ Form::date('cumpleaños',Carbon\Carbon::now(),['class'=>'form-control','style'=>'width:175px']) }}
                 </td>
 
                 <td>RUBRO:</td>
                 <td>
-                  {!! Form::select('rubro',$rubro,null,['class'=>'form-control','style'=>'width:175px']) !!}
+                    <select name="rubro" required class="form-control" id="rubro" STYLE="width: 175px;">
+                        <option value="">Seleccione</option>
+                        @foreach($rubro as $rub)
+                            <option value="{{ $rub->RUB_COD }}">{{ $rub->RUB_DESC }}</option>
+                        @endforeach
+                    </select>
                 </td>
-
               </tr>
 
               <tr>
 
                 <td>SUB RUBRO:</td>
                 <td>
-                  {!! Form::select('subrubro',$subrubro,null ,['class'=>'form-control','style'=>'width:175px','placeholder'=>'Seleccione']) !!}
+                    <select name="subrubro" required class="form-control" style="width:175px;" id="subrubro">
+                        <option value="">Seleccione</option>
+                    </select>
                 </td>
                 <td>ACTIVIDAD:</td>
                 <td>
-                  {!! Form::select('actividad',$actividad,null ,['class'=>'form-control','id'=>'actividad','style'=>'width:175px']) !!}
+                    <select name="actividad" required class="form-control" style="width:175px;" id="actividad">
+                        <option value="">Seleccione</option>
+                    </select>
                 </td>
 
               </tr>
@@ -101,7 +109,6 @@
                   </td>
               </tr>
               <tr>
-
                 <td>PAIS:</td>
                 <td>
                   <select name="pais" required class="form-control" id="pais">
@@ -117,11 +124,8 @@
                     <option value="">Seleccione</option>
                   </select>
                 </td>
-
               </tr>
-
               <tr>
-
                 <td>PROVINCIA:</td>
                 <td>
                   <select name="provincia" required class="form-control" id="provincia">
@@ -226,6 +230,38 @@
                           $("#ciudad").append(option);
                       });
                       $("#ciudad").trigger("change");
+                  }
+              }
+          });
+      });
+
+      $("#rubro").on("change", function(){
+          let rubro = $(this).val();
+          $("#subrubro").empty();
+          $.get("https://plataforma.sgrchile.com/api/subrubro/" + rubro).done(function(data){
+              if (data !== null){
+                  if (Object.keys(data).length > 0 ){
+                      $.each(data, function( index, value ){
+                          let option = "<option value='"+ value.SUB_RUB_COD + "'>" + value.SUB_RUB_DESC+ "</option>";
+                          $("#subrubro").append(option);
+                      });
+                      $("#subrubro").trigger("change");
+                  }
+              }
+          });
+      });
+
+      $("#subrubro").on("change", function(){
+          let subrubro = $(this).val();
+          $("#actividad").empty();
+          $.get("https://plataforma.sgrchile.com/api/actividad/" + subrubro).done(function(data){
+              if (data !== null){
+                  if (Object.keys(data).length > 0 ){
+                      $.each(data, function( index, value ){
+                          let option = "<option value='"+ value.ACT_COD_COD + "'>" + value.ACT_DESC+ "</option>";
+                          $("#actividad").append(option);
+                      });
+                      $("#actividad").trigger("change");
                   }
               }
           });
