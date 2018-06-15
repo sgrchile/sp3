@@ -29,7 +29,7 @@
               </td>
           <td>APELLIDO MATERNO:</td>
               <td>
-                  {{ Form::text('apellido_materno',null,['class'=>'form-control','required','style'=>'width:175px']) }}
+                  {{ Form::text('apellido_materno',null,['class'=>'form-control','style'=>'width:175px']) }}
               </td>
 
         </tr>
@@ -42,8 +42,8 @@
 
             <td>FECHA DE NAC.:</td>
             <td>
-                {{ Form::date('fecha_nacimiento', \Carbon\Carbon::now()->format('d-m-Y'),['class'=>'form-control form-control-inline input-medium default-date-picker',
-                'required','style'=>'width:175px']) }}
+                {{ Form::date('fecha_nacimiento', \Carbon\Carbon::now()->format('d-m-Y'),['class'=>'form-control form-control-inline input-medium default-date-picker'
+              ,'style'=>'width:175px']) }}
             </td>
 
             <td>CELULAR:</td>
@@ -55,7 +55,7 @@
 
             <td>FONO EMERGENCIA:</td>
               <td>
-                  {{ Form::number('celular_dos',null,['class'=>'form-control','style'=>'width:175px']) }}
+                  {{ Form::number('celular_dos',null,['class'=>'form-control','required','style'=>'width:175px']) }}
               </td>
 
             <td>REFERENCIA:</td>
@@ -78,13 +78,12 @@
               </select>
             </td>
 
-            <td>SEXO:</td>
+            <td>GENERO:</td>
             <td>
               <select style="width:175px;" class="form-control" name="sexo">
                 <option>Seleccionar</option>
                 <option value="1">HOMBRE</option>
                 <option value="2">MUJER</option>
-                <option value="3">INDEFINIDO</option>
               </select>
             </td>
 
@@ -115,58 +114,17 @@
 
             <td>PROVINCIA:</td>
             <td>
-                {{ Form::select('provincia',App\Provincia::pluck('PV_DESC','PV_COD'),null,['class'=>'form-control','style'=>'width:175px;','placeholder'=>'Seleccione']) }}
+                {{ Form::select('provincia',App\Provincia::pluck('PV_DESC','PV_COD'),null,['class'=>'form-control','required','style'=>'width:175px;','placeholder'=>'Seleccione']) }}
             </td>
         </tr>
          <tr>
             <td>CIUDAD:</td>
             <td>
-                {{ Form::select('ciudad',App\Ciudad::pluck('CIU_DESC','CIU_COD'),null,['class'=>'form-control','style'=>'width:175px','placeholder'=>'Seleccione']) }}
+                {{ Form::select('ciudad',App\Ciudad::pluck('CIU_DESC','CIU_COD'),null,['class'=>'form-control','required','style'=>'width:175px','placeholder'=>'Seleccione']) }}
             </td>
-          <td>PASSWORD:</td>
-              <td>
-                  {{ Form::password('password',['class'=>'form-control','required'=>'required','style'=>'width:175px','placeholder'=>'******']) }}
-              </td>
-          <td>CONFIRMAR PASSWORD:</td>
-              <td>
-                  {{ Form::password('password_confirmation',['class'=>'form-control','required'=>'required','style'=>'width:175px','placeholder'=>'******']) }}
-              </td>
 
         </tr>
-        <tr>
-          <td>SEGURO MEDICO:</td>
-          <td>
-            <select style="width:175px;" class="form-control" name="seguro_medico">
-              <option>Seleccionar</option>
-              <option value="Banmédica S.A.">Banmédica S.A.</option>
-              <option value="Chuquicamata Ltda.">Chuquicamata Ltda.</option>
-              <option value="Colmena Golden Cross S.A.">Colmena Golden Cross S.A.</option>
-              <option value="Consalud S.A.">Consalud S.A.</option>
-              <option value="Cruz Blanca S.A.">Cruz Blanca S.A.</option>
-              <option value="Cruz del Norte Ltda.">Cruz del Norte Ltda.</option>
-              <option value="Optima S.A.">Optima S.A.</option>
-              <option value="Fundación Ltda.">Fundación Ltda.</option>
-              <option value="Fusat Ltda.">Fusat Ltda.</option>
-              <option value="Masvida S.A.">Masvida S.A.</option>
-              <option value="Río Blanco Ltda.">Río Blanco Ltda.</option>
-              <option value="San Lorenzo Ltda.">San Lorenzo Ltda.</option>
-              <option value="Vida Tres S.A.">Vida Tres S.A.</option>
-            </select>
-          </td>
-
-          <td>AFP:</td>
-          <td>
-              <select style="width:175px;" class="form-control" name="afp">
-                <option>Seleccionar</option>
-                <option value="Bansander S.A.">Bansander S.A.</option>
-                <option value="Cuprum S.A.">Cuprum S.A.</option>
-                <option value="Habitat S.A.">Habitat S.A.</option>
-                <option value="Planvital S.A.">Planvital S.A.</option>
-                <option value="Provida S.A.">Provida S.A.</option>
-                <option value="Santa María S.A.">Santa María S.A.</option>
-              </select>
-          </td>
-          <td>FECHA DE PAGO:</td>
+          <td>FORMA DE PAGO:</td>
           <td>
             <select style="width:175px;" class="form-control" name="fecha_pago">
             <option>Seleccionar</option>

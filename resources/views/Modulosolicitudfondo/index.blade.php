@@ -20,8 +20,14 @@
 
           <tr>
             <td><a href={{route('createSolFon')}}><button class='btn btn-primary btn-lg' style="width:160px;margin-bottom: 15px;"> Solicitar fondo</button></a></td>
-            <td><a href={{route('verEvaluar')}}><button class='btn btn-primary btn-lg'   style="width:160px;margin-bottom: 15px;"> Evaluar</button></a></td>
-            <td><a href={{route('verTransferir')}}><button class='btn btn-primary btn-lg'  style="width:160px;margin-bottom: 15px;">Transferir</button></a></td>
+            @if(\Illuminate\Support\Facades\Auth::user()->PRO_NIVEL == 14
+            || \Illuminate\Support\Facades\Auth::user()->PRO_NIVEL == 2)
+             <td><a href={{route('verEvaluar')}}><button class='btn btn-primary btn-lg'   style="width:160px;margin-bottom: 15px;"> Evaluar</button></a></td>
+            @endif
+            @if(\Illuminate\Support\Facades\Auth::user()->PRO_NIVEL == 14 || \Illuminate\Support\Facades\Auth::user()->PRO_NIVEL == 5)
+              <td><a href={{route('verTransferir')}}><button class='btn btn-primary btn-lg'  style="width:160px;margin-bottom: 15px;">Transferir</button></a></td>
+            @endif
+
           </tr>
           <tr>
 

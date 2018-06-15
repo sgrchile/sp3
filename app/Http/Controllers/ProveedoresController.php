@@ -78,6 +78,7 @@ class ProveedoresController extends Controller
         $tipo_cuentas = TipoCuenta::all();
         $tipo_proveedores = TipoProveedor::all();
         $rubros = Rubro::all();
+        $pagos = Pagos::all();
 
         return view('ModuloProv.regPerAct')
             ->with('bancos', $bancos)
@@ -90,6 +91,7 @@ class ProveedoresController extends Controller
             ->with('regiones', $regiones)
             ->with('ciudades', $ciudades)
             ->with('rubros', $rubros)
+            ->with('pagos', $pagos)
             ->with('provincias', $provincias);
     }
 
@@ -233,6 +235,15 @@ class ProveedoresController extends Controller
       $provincia = Provincia::find($data['provincia'])->first()->PV_COD;
       $ciudad = Ciudad::find($data['ciudad'])->first()->CIU_COD;
       $tipo_cuenta = TipoCuenta::find($data['tipo_cuenta'])->first()->TCTA_BCO;
+        $nro_empleados = NroEmpleados::find($data['empleados'])->first();
+        $categoria = CategoriaEmpresa::find($data['categoria'])->first();
+        $ventas_anuales = VentasAnuales::find($data['ventas'])->first();
+        $cobertura = CoberturaEmpresa::find($data['cobertura'])->first();
+        $pers_juridica = PersonaJuridica::find($data['persjuridica'])->first();
+        $empresas = Empresa::find($data['empresa'])->first();
+        $estado_proveedores = EstadoProveedor::find($data['estprov'])->first();
+        $tipo_proveedores = TipoProveedor::find($data['tpprov'])->first();
+        $pagos = Pagos::find($data['pagos'])->first();
 
       return Proveedor::create([
           'PRO_RUN' => $data['rut'],
@@ -253,6 +264,9 @@ class ProveedoresController extends Controller
           'PRO_PV_COD' => $data['provincia'],
           'PRO_REG_COD' => $data['region'],
           'PRO_CIU_COD' => $data['ciudad'],
+          'PRO_PERS_JURID' => $data['juridica'],
+          'PRO_REP_LEGAL' => $data['repleg'],
+          'PRO_PAGINA_WEB' => $data['pagweb'],
       ]);
     }
 
@@ -263,21 +277,14 @@ class ProveedoresController extends Controller
             'razon_social' => 'required',
             'rubro' => 'required',
             'subrubro' => 'required',
-            'tipo_cuenta' => 'required',
             'pais' => 'required',
             'email' => 'required',
             'telefono' => 'required',
-            'nro_cuenta' => 'required',
-            'banco' => 'required',
             'password' => 'required|min:6|confirmed',
             'pagos' => 'required',
             'oficina' => 'required',
             'pers_juridica' => 'required',
             'rep_legal' => 'required',
-            'ventas_anuales' => 'required',
-            'nro_empleados' => 'required',
-            'cobertura' => 'required',
-            'categoria' => 'required'
         ]);
     }
 

@@ -25,7 +25,7 @@ class OrdenTrabajoController extends Controller
 
     public function getAgregarOrdenTrabajo()
     {
-        $clientes = Cliente::all()->where('CLI_EMP','=',Auth::user()->PRO_EMP);
+        $clientes = Cliente::all()->where('CLI_PROPIETARIO','=',Auth::user()->PRO_RUN);
         $centro_negocios = CentroNegocio::all()->where('CT_EMP_ID','=',Auth::user()->PRO_EMP);
 
         return view('ModuloOt.ingresoOt')

@@ -22,7 +22,7 @@
             <div class="col-8 my-3">
                 <div class="card" style="border:1px solid #000;background: linear-gradient(white, #cfcdce);">
                     <div class="card-body">
-                        <h5 class="card-title text-center">Registro de Personas</h5>
+                        <h5 class="card-title text-center">Registro de Empresa</h5>
                         <div id="accordion">
                             <div class="card">
                                 <div id="collapseOne" class="collapse show" data-parent="#accordion">
@@ -34,39 +34,34 @@
                                             <label for="nombre">Nombre</label>
                                             <input type="text" class="form-control" id="nombre">
                                         </div>
-                                        <div class="form-group col-12 col-md-6">
+                                       <!-- <div class="form-group col-12 col-md-6">
                                             <label for="paterno">Apellido Paterno</label>
                                             <input type="text" class="form-control" id="paterno">
-                                        </div>
-                                        <div class="form-group col-12 col-md-6">
+                                        </div> -->
+                                        <!--<div class="form-group col-12 col-md-6">
                                             <label for="materno">Apellido Materno</label>
                                             <input type="text" class="form-control" id="materno">
-                                        </div>
+                                        </div>-->
                                         <div class="form-group col-12 col-md-6">
                                             <label for="rut">R.U.T</label>
                                             <input type="text" class="form-control" id="rut">
                                         </div>
                                         <div class="form-group col-12 col-md-6">
-                                            <label for="fecha">Fecha de Nacimiento</label>
+                                            <label for="fecha">Fecha Fundación</label>
                                             <input type="date" class="form-control" id="fecha">
                                         </div>
                                         <div class="form-group col-12 col-md-6">
-                                            <label for="genero">Género</label>
-                                            <select class="form-control" id="genero">
-                                                <option value="1">Masculino</option>
-                                                <option value="2">Femenino</option>
+                                            <label for="razonsocial">Razon Social</label>
+                                            <input type="text" class="form-control" id="razonsocial">
+                                        </div>
+                                        <div class="form-group col-12 col-md-6">
+                                            <label for="juridica">Persona Juridica</label>
+                                            <select class="form-control" id="juridica">
                                             </select>
                                         </div>
                                         <div class="form-group col-12 col-md-6">
-                                            <label for="estado">Estado civil</label>
-                                            <select class="form-control" id="estado">
-                                                <option value="1">Viudo (a)</option>
-                                                <option value="2">Soltero (a)</option>
-                                                <option value="3">Separado (a)</option>
-                                                <option value="4">Divorciado (a)</option>
-                                                <option value="5">Convive</option>
-                                                <option value="6">Casado (a)</option>
-                                            </select>
+                                            <label for="repleg">Reprecentante Legal</label>
+                                            <input type="text" class="form-control" id="repleg">
                                         </div>
                                         <div class="form-group col-12 col-md-6">
                                             <label for="email">Email</label>
@@ -107,6 +102,10 @@
                                         <div class="form-group">
                                             <label for="telefonodos">Teléfono secundario</label>
                                             <input type="number" class="form-control" id="telefonodos">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="redes">Redes Sociales</label>
+                                            <input type="text" class="form-control" id="redes">
                                         </div>
                                     </div>
                                     <div class="card-footer">
@@ -215,15 +214,25 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="form-group">
-                                            <label for="medico">Seguro Médico</label>
-                                            <select class="form-control" id="medico">
+                                            <label for="pagweb">Pagina Web</label>
+                                            <input type="text" class="form-control" id="pagweb">
+                                        </div>
+                                       <div class="form-group">
+                                            <label for="dicom">Dicom</label>
+                                            <select class="form-control" id="dicom">
+                                                <option value="si">si</option>
+                                                <option value="no">no</option>
                                             </select>
+                                        </div>
+                                        <!--<div class="form-group">
+                                            <label for="logo">Logo</label>
+                                            <input type="file" class="form-control" id="logo">
                                         </div>
                                         <div class="form-group">
-                                            <label for="afp">AFP</label>
-                                            <select class="form-control" id="afp">
+                                            <label for="ventas">Tipo de cuenta</label>
+                                            <select class="form-control" id="ventas">
                                             </select>
-                                        </div>
+                                        </div>-->
                                     </div>
                                     {{ csrf_field() }}
                                     <div class="card-footer">
@@ -306,6 +315,18 @@
                 }
             }
         });
+        $.get("https://plataforma.sgrchile.com/api/persjuridica").done(function(data){
+            let option = "<option value='0'>Seleccione</option>";
+            $("#juridica").append(option);
+            if (data !== null){
+                if (Object.keys(data).length > 0 ){
+                    $.each(data, function( index, value ){
+                        let option = "<option value='"+ value.ID_PERS_JURIDICA + "'>" + value.DESC_PERS_JURIDICA+ "</option>";
+                        $("#juridica").append(option);
+                    });
+                }
+            }
+        });
         $("#pais").on("change", function(){
             let pais = $(this).val();
 
@@ -382,12 +403,10 @@
 
             let inputs = {
                 nombre: $("#nombre").val(),
-                paterno: $("#paterno").val(),
-                materno: $("#materno").val(),
                 rut: $("#rut").val(),
                 fecha: $("#fecha").val(),
-                genero: $("#genero").val(),
-                estado: $("#estado").val(),
+                rasonsocial: $("#razonsocial").val(),
+                repleg: $("#repleg").val(),
                 email: $("#email").val(),
                 nacionalidad: $("#nacionalidad").val(),
                 contrasena: $("#contrasena").val(),
@@ -404,19 +423,17 @@
                 ncuenta: $("#ncuenta").val(),
                 banco: $("#banco").val(),
                 bancocuenta: $("#bancocuenta").val(),
-                medico: $("#medico").val(),
-                afp: $("#afp").val(),
                 _token: $('input[name="_token"]').val()
             };
             if (validos == true){
-                $.post("{{ route('registrar.proveedor.persona') }}",inputs).done(function(data){
+                $.post("{{ route('registrar.proveedor.empresa') }}",inputs).done(function(data){
                     alert(data.respuesta);
                     alert("Su cuenta fue creada, validaremos sus datos a la brevedad para activar su cuenta");
                     location.href ="https://plataforma.sgrchile.com/";
                 }).fail(function(data){
                     $.each( data.responseJSON, function( i, val ) {
                         alert(val);
-                        if (i =="nombre" || i =="paterno" || i =="materno" || i =="rut" || i =="fecha" || i =="genero" || i =="estado" || i =="email" || i =="nacionalidad" || i =="contrasena" || i =="contrasenar"){
+                        if (i =="nombre" || i =="rut" || i =="fecha" || i =="razonsocial" || i =="repleg" || i =="email" || i =="contrasena" || i =="contrasenar"){
                             $('#collapseOne').collapse('show');
                         }
                         else if (i == "telefono" || i == "telefonodos"){
@@ -441,12 +458,10 @@
 
         let inputs = {
             nombre: $("#nombre").val(),
-            paterno: $("#paterno").val(),
-            materno: $("#materno").val(),
             rut: $("#rut").val(),
             fecha: $("#fecha").val(),
-            genero: $("#genero").val(),
-            estado: $("#estado").val(),
+            rasonsocial: $("#razonsocial").val(),
+            repleg: $("#repleg").val(),
             email: $("#email").val(),
             nacionalidad: $("#nacionalidad").val(),
             contrasena: $("#contrasena").val(),
@@ -463,8 +478,6 @@
             ncuenta: $("#ncuenta").val(),
             banco: $("#banco").val(),
             bancocuenta: $("#bancocuenta").val(),
-            medico: $("#medico").val(),
-            afp: $("#afp").val(),
             _token: $('input[name="_token"]').val()
         };
 
@@ -477,7 +490,7 @@
 
             if (value.length < 1 && i !== "telefonodos"){
                 alert("Falta un campo obligatorio");
-                if (i =="nombre" || i =="paterno" || i =="materno" || i =="rut" || i =="fecha" || i =="genero" || i =="estado" || i =="email" || i =="nacionalidad" || i =="contrasena" || i =="contrasenar"){
+                if (i =="nombre" || i =="rut" || i =="fecha" || i =="razonsocial" || i =="repleg" || i =="email" || i =="nacionalidad" || i =="contrasena" || i =="contrasenar"){
                     $('#collapseOne').collapse('show');
                 }
                 else if (i == "telefono" || i == "telefonodos"){
@@ -511,18 +524,6 @@
             if (i == "fecha"){
                 let nacimiento = new Date($("#fecha").val()).getTime();
                 let hoy = new Date().getTime();
-
-                let diff = hoy - nacimiento;
-                diff = diff/(1000*60*60*24*365);
-
-                if (diff < 18){
-                    alert("Debes ser mayor de 18 años");
-                    $('#collapseOne').collapse('show');
-                    $("#"+i).focus();
-                    $("#"+i).addClass("is-invalid");
-                    respuesta = false;
-                    return false;
-                }
             }
 
             if (i == "email"){

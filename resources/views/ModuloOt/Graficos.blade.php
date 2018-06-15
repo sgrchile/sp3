@@ -42,7 +42,7 @@
                   </tr>
                   <tr>
                   <td>
-                  <a href="{{route('verTransferir')}}"></a><button class="btn btn-primary btn-sm" style="width:139px;" >Transferir</button>
+                  <a href="{{route('verTransferir')}}"><button class="btn btn-primary btn-sm" style="width:139px;" >Transferir</button></a>
 
 
                   </td>

@@ -41,18 +41,13 @@
             <td>LUGAR IDEAL PARA VIVIR:</td>
             <td><textarea name="lug_ideal" class="form-control" style ="max-width:175px; max-height:175px;" placeholder="¿Cuál es su lugar ideal para vivir?"></textarea></td>
           </tr>
-
           <tr>
-
             <td>INSTRUMENTAL:</td>
             <td><textarea name="instrumental" class="form-control" style ="max-width:175px; max-height:175px;" placeholder="¿Que instrumentos técnicos posee?"></textarea></td>
             <td>LUGAR DE NACIMIENTO:</td>
             <td><textarea name="lug_nac" class="form-control" style ="max-width:175px; max-height:175px;" placeholder="¿Donde nació?"></textarea></td>
-
           </tr>
-
           <tr>
-
             <td>TRABAJO EN EQUIPO:</td>
             <td>
               <select style="width:175px;" name="trab_equipo" class="form-control">

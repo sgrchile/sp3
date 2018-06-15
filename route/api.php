@@ -70,6 +70,10 @@ Route::get('/afp', [
     'uses' => 'AfpController@getAfps',
     'as' => 'get.afp',
 ]);
+Route::get('/persjuridica', [
+    'uses' => 'LocationController@getpersjuridicas',
+    'as' => 'get.persjuridica',
+]);
 Route::get('/etapa/{proceso}', [
     'uses' => 'LocationController@getEtapa',
     'as' => 'get.etapa',

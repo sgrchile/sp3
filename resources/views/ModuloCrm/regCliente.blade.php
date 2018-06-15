@@ -21,19 +21,19 @@
               <tr>
                 <td><a style="color: #9A0000">* </a> NOMBRE:</td>
                 <td>
-                  {{ Form::text('nombre',null,['class'=>'form-control','style'=>'width:175px', 'required', 'pattern'=>'[A-Za-z]{4-16}']) }}
+                  {{ Form::text('nombre',null,['class'=>'form-control','style'=>'width:175px', 'required']) }}
                 </td>
 
                 <td>NOMBRE DE FANTASIA:</td>
                 <td>
-                  {{ Form::text('nombref',null,['class'=>'form-control', 'required', 'pattern'=>'[A-Za-z]{4-16}','style'=>'width:175px']) }}
+                  {{ Form::text('nombref',null,['class'=>'form-control','style'=>'width:175px']) }}
                 </td>
               </tr>
               <tr>
 
                 <td><a style="color: #9A0000">* </a> RUT:</td>
                 <td>
-                  {{ Form::text('rut',null,['class'=>'form-control', 'required', 'pattern'=>'[A-Za-z]{4-16}','maxlength'=>'11','style'=>'width:175px']) }}
+                  {{ Form::text('rut',null,['class'=>'form-control', 'required','maxlength'=>'11','style'=>'width:175px']) }}
                   <!--<input type="text" id="rut" name="rut"  style="width:175px;" class="form-control" maxlength="10" required /><!--oninput="checkRut(this)"-->
                   <!--<script src="{{asset('js/validarRUT.js')}}"></script>-->
                 </td>
@@ -64,7 +64,7 @@
 
                 <td>SITIO WEB: </td>
                 <td >
-                  {{ Form::text('sitioweb',null,['class'=>'form-control', 'required','style'=>'width:175px']) }}
+                  {{ Form::text('sitioweb',null,['class'=>'form-control','style'=>'width:175px']) }}
                 </td>
 
               </tr>
@@ -72,7 +72,7 @@
               <tr>
                 <td>GLOSA: </td>
                 <td >
-                  {{ Form::text('glosa',null,['class'=>'form-control','class'=>'form-control', 'required','style'=>'width:175px']) }}
+                  {{ Form::text('glosa',null,['class'=>'form-control','class'=>'form-control','style'=>'width:175px']) }}
                 </td>
 
                 <td>RUBRO:</td>
@@ -95,33 +95,11 @@
 
               </tr>
               <tr>
-
-                <td>BANCO:</td>
-                <td>
-                  {!! Form::select('banco',$banco,null,['class'=>'form-control','id'=>'banco','style'=>'width:175px']) !!}
-                </td>
-
-                <td>TIPO DE CUENTA:</td>
-                <td>
-                  {!! Form::select('tipocuenta',$tipocuenta,null,['class'=>'form-control','id'=>'tipocuenta','style'=>'width:175px']) !!}
-                </td>
-
+                  <td>ORIGEN: </td>
+                  <td >
+                      {{ Form::text('origen',null,['class'=>'form-control','style'=>'width:175px']) }}
+                  </td>
               </tr>
-
-              <tr>
-
-                <td>Nº DE CUENTA: </td>
-                <td >
-                  {{ Form::number('nrocuenta',null,['class'=>'form-control','required','style'=>'width:175px']) }}
-                </td>
-
-                <td>ORIGEN: </td>
-                <td >
-                  {{ Form::text('origen',null,['class'=>'form-control', 'required','style'=>'width:175px']) }}
-                </td>
-              </tr>
-
-
               <tr>
 
                 <td>PAIS:</td>
