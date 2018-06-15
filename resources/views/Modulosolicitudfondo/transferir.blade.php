@@ -132,18 +132,20 @@
     <tr>
     <td>ID</td>
     <td>FECHA</td>
-    <td>RECEPTOR</td>
+    <td>SOLICITANTE</td>
     <td>MONTO</td>
     <td>DESCRIPCIÓN</td>
+    <td>EMPRESA</td>
     <td>SELECCIONAR</td>
     </tr>
     @foreach($sfondos as $sfondo)
     <tr>
     <td>{{ $sfondo->SF_SOLICITUD_ID  }}</td>
     <td>{{ $sfondo->SF_FECHA }}</td>
-    <td>{{ $sfondo->SF_RECEPTOR }}</td>
+    <td>{{ App\Proveedor::find($sfondo->SF_SOLICITANTE_RUT)->PRO_NOMBRE }}</td>
     <td>{{ $sfondo->SF_MONTO }}</td>
     <td>{{ $sfondo->SF_DESC }}</td>
+    <td>{{ App\Empresa::find($sfondo->SF_EMP_ID)->EMP_DESC }}</td>
     <td><a href={{route('get.modificar.transferir', $sfondo->SF_SOLICITUD_ID)}}><button class="btn btn-primary btn-sm"> &#10004;</button></a></td>
     </tr>
     @endforeach

@@ -131,7 +131,7 @@
 
           <tr>
           <td colspan="2" align="center">
-          <textarea  style="max-width:600px;" class="form-control" rows="5" type="text" id="descripcion" name="rec_descripcion" required/></textarea>
+          <textarea  style="max-width:600px;" class="form-control" placeholder="desglose aquí su solicitud" rows="5" type="text" id="descripcion" name="rec_descripcion" required/></textarea>
           </td>
           </tr>
 
@@ -191,6 +191,8 @@
              <h4 class="modal-title">Seleccionar Proveedor</h4>
              </div>
              <div class="modal-body">
+
+
 
              <table align="center" class="table table-bordered" id="table_personal">
 
