@@ -53,7 +53,7 @@
           </tr>
           <tr>
 
-            <td>CONTACTO SECUNDARIO:</td>
+            <td>FONO EMERGENCIA:</td>
               <td>
                   {{ Form::number('celular_dos',null,['class'=>'form-control','style'=>'width:175px']) }}
               </td>
