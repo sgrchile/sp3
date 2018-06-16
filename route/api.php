@@ -37,6 +37,16 @@ Route::get('/rubro/{rubro}', [
     'as' => 'get.rubro',
 ]);
 
+Route::get('/subrubro/{rubro}', [
+    'uses' => 'LocationController@getSubRubro',
+    'as' => 'get.subrubro',
+]);
+
+Route::get('/actividad/{subrubro}', [
+    'uses' => 'LocationController@getActividad',
+    'as' => 'get.actividad',
+]);
+
 Route::get('/crm/oportunidades', function(){
 
     $db = App\Oportunidad::orderBy('CREATED_AT','DESC')

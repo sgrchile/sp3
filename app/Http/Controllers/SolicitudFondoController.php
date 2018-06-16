@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ProveedorExterno;
 use DB;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -40,7 +41,9 @@ class SolicitudFondoController extends Controller
         $causas = Causa::all();
         $ordenes_trabajo = OrdenTrabajo::all()->where('OT_PER_RUT_ENCARGADO','=',Auth::user()->PRO_RUN);
         $bancos = Banco::all();
-        $personales = Proveedor::all()->where('PRO_RUN','=',Auth::user()->PRO_RUN);
+        $personales = Proveedor::all()
+            ->where('PRO_ALTA','=',1);
+        //dd($personales);
         $sfondos = SolicitudFondo::all();
 
         //dd( Auth::user());

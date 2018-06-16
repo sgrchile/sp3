@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Actividad;
 use App\AreaServicio;
 use App\Etapa;
 use App\PersonaJuridica;
@@ -13,6 +14,7 @@ use App\Ciudad;
 use App\Rubro;
 
 use App\Servicio;
+use App\SubRubro;
 use Illuminate\Http\Request;
 
 class LocationController extends Controller
@@ -40,6 +42,18 @@ class LocationController extends Controller
 		return response()
 			->json(Rubro::where('RUB_COD', '=', (int) $rubro)->get(), 200);
 	}
+
+    public function getSubRubro($rubro)
+    {
+        return response()
+            ->json(SubRubro::where('RUB_COD', '=', (int) $rubro)->get(), 200);
+    }
+
+    public function getActividad($subrubro)
+    {
+        return response()
+            ->json(Actividad::where('SUB_RUB_COD', '=', (int) $subrubro)->get(), 200);
+    }
 
     public function getEtapa($proceso)
     {

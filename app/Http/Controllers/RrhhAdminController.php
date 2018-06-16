@@ -250,13 +250,22 @@ class RrhhAdminController extends Controller
 
      public function getConsultaRh(Request $request)
      {
-        $buscar = $request->input('buscarRh');
-        $method = $request->method();
+         if ($request != null){
+             $buscar = $request->input('buscarRh');
+         }else{
+             $buscar = 0;
+         }
+         $method = $request->method();
 
         if ($request->isMethod('post')) {
-          $personal = Proveedor::where('PRO_RUN', 'LIKE', '%' . $buscar . '%')
-          ->orWhere('PRO_NOMBRE', 'LIKE', '%' . $buscar . '%')->get();
-
+            if ($buscar == 0){
+                $personal = Proveedor::where('PRO_TP_COD', '=', 1)
+                    ->get();
+            }else{
+                $personal = Proveedor::where('PRO_TP_COD', '=', 1)
+                    ->where('PRO_RUN', 'LIKE', '%' . $buscar . '%')
+                    ->orWhere('PRO_NOMBRE', 'LIKE', '%' . $buscar . '%')->get();
+            }
            return view('ModuloRRHH.AdmRRHH.consRRHH')
            ->with('personal', $personal);
         }
@@ -275,12 +284,22 @@ class RrhhAdminController extends Controller
 
      public function showEditarRh(Request $request)
      {
-        $buscar = $request->input('buscarRh');
-        $method = $request->method();
+         if ($request != null){
+             $buscar = $request->input('buscarRh');
+         }else{
+             $buscar = 0;
+         }
+         $method = $request->method();
 
         if ($request->isMethod('post')) {
-          $personal = Proveedor::where('PRO_RUN', 'LIKE', '%' . $buscar . '%')
-          ->orWhere('PRO_NOMBRE', 'LIKE', '%' . $buscar . '%')->get();
+            if ($buscar == 0){
+                $personal = Proveedor::where('PRO_TP_COD', '=', 1)
+                    ->get();
+            }else{
+                $personal = Proveedor::where('PRO_TP_COD', '=', 1)
+                    ->where('PRO_RUN', 'LIKE', '%' . $buscar . '%')
+                    ->orWhere('PRO_NOMBRE', 'LIKE', '%' . $buscar . '%')->get();
+            }
 
            return view('ModuloRRHH.AdmRRHH.modPers')
            ->with('personal', $personal);
