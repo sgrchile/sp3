@@ -16,11 +16,12 @@
 
           <table class="table-responsive">
             <tr>
-              <td><a href="{{route('horario')}}"><button class="btn btn-primary btn-lg" style="margin-right:15px;">HORARIO</button></a></td>
 
+              <iframe src="https://sagenda.net/Frontend/5b2738811ae6cc65a8211e27?retrieveFromCookies=False" width="1050" height="1200" frameborder="0" allowtransparency="true" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-top-navigation allow-scripts allow-forms"></iframe>
 
-              <td><a href="{{route('Reservar')}}"><button class="btn btn-primary btn-lg" style="margin-right:15px;">RESERVAR</button></a></td>
-              <td><a href="{{route('sala')}}"><button class="btn btn-primary btn-lg" style="margin-right:15px;">SALAS</button></a></td>
+              <!--<td><a href="{{route('horario')}}"><button class="btn btn-primary btn-lg" style="margin-right:15px;">HORARIO</button></a></td>
+              <td><a href="{{link_to('https://sagenda.net/Frontend/5b2738811ae6cc65a8211e27?retrieveFromCookies=False')}}"><button class="btn btn-primary btn-lg" style="margin-right:15px;">RESERVAR</button></a></td>
+              <td><a href="{{route('sala')}}"><button class="btn btn-primary btn-lg" style="margin-right:15px;">SALAS</button></a></td>-->
             </tr>
 
           </table>
