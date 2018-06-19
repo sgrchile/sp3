@@ -58,7 +58,7 @@
 
             <td>FONO EMERGENCIA:</td>
               <td>
-                  {{ Form::number('celular_dos',null,['class'=>'form-control','required','style'=>'width:175px']) }}
+                  {{ Form::number('celular_dos',null,['class'=>'form-control','style'=>'width:175px']) }}
               </td>
 
             <td>REFERENCIA:</td>
@@ -98,7 +98,7 @@
         <tr>
             <td>PAIS:</td>
             <td>
-                <select style="width:175px;" name="pais" required class="form-control" id="pais">
+                <select style="width:175px;" name="pais" class="form-control" id="pais">
                     <option value="">Seleccione</option>
                     @foreach($pais as $pai)
                         <option value="{{ $pai->PAI_COD }}">{{ $pai->PAI_DESC }}</option>
@@ -107,13 +107,13 @@
             </td>
             <td>REGION:</td>
             <td>
-                <select style="width:175px;" name="region" required class="form-control" id="region">
+                <select style="width:175px;" name="region" class="form-control" id="region">
                     <option value="">Seleccione</option>
                 </select>
             </td>
             <td>PROVINCIA:</td>
             <td>
-                <select style="width:175px;" name="provincia" required class="form-control" id="provincia">
+                <select style="width:175px;" name="provincia" class="form-control" id="provincia">
                     <option value="">Seleccione</option>
                 </select>
             </td>
@@ -121,7 +121,7 @@
          <tr>
             <td>CIUDAD:</td>
              <td>
-                 <select style="width:175px;" name="ciudad" required class="form-control" id="ciudad">
+                 <select style="width:175px;" name="ciudad" class="form-control" id="ciudad">
                      <option value="">Seleccione</option>
                  </select>
              </td>
@@ -135,7 +135,7 @@
           </td>
           <td>RUBRO</td>
              <td>
-                 <select name="rubro" required class="form-control" id="rubro" STYLE="width: 175px;">
+                 <select name="rubro" class="form-control" id="rubro" STYLE="width: 175px;">
                      <option value="">Seleccione</option>
                      @foreach($rubro as $rub)
                          <option value="{{ $rub->RUB_COD }}">{{ $rub->RUB_DESC }}</option>
@@ -146,13 +146,13 @@
          <tr>
           <td>SUB-RUBRO</td>
              <td>
-                 <select name="subrubro" required class="form-control" style="width:175px;" id="subrubro">
+                 <select name="subrubro" class="form-control" style="width:175px;" id="subrubro">
                      <option value="">Seleccione</option>
                  </select>
              </td>
              <td>ACTIVIDAD:</td>
              <td>
-                 <select name="actividad" required class="form-control" style="width:175px;" id="actividad">
+                 <select name="actividad" class="form-control" style="width:175px;" id="actividad">
                      <option value="">Seleccione</option>
                  </select>
              </td>
@@ -187,7 +187,7 @@
          <tr>
               <td>EMPRESA:</td>
               <td>
-                  <select class="form-control" name="empresa">
+                  <select class="form-control" required name="empresa">
                       <option>Seleccionar</option>
                       @foreach ($empresas as $empresa)
                           <option value="{{ $empresa->EMP_ID }}">{{ $empresa->EMP_DESC }}</option>
