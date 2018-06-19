@@ -33,9 +33,9 @@
 
                 <td><a style="color: #9A0000">* </a> RUT:</td>
                 <td>
-                  {{ Form::text('rut',null,['class'=>'form-control', 'required','maxlength'=>'11','style'=>'width:175px']) }}
-                  <!--<input type="text" id="rut" name="rut"  style="width:175px;" class="form-control" maxlength="10" required /><!--oninput="checkRut(this)"-->
-                  <!--<script src="{{asset('js/validarRUT.js')}}"></script>-->
+                <!--{{ Form::text('rut',null,['class'=>'form-control', 'required','maxlength'=>'11','style'=>'width:175px']) }}-->
+                  <input type="text" id="rut" name="rut"  style="width:175px;" class="form-control" maxlength="11" required oninput="checkRut(this)"/>
+                  <script src="{{asset('js/validarRUT.js')}}"></script>
                 </td>
                 <td><a style="color: #9A0000">* </a> TELEFONO:</td>
                 <td>

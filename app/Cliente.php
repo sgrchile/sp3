@@ -11,14 +11,14 @@ class Cliente extends Model
      *
      * @var string
      */
-    protected $table = "CLI_CLIENTE";
+    protected $table = "CLI_CLIENTE2";
 
     /**
      * Llave primaria de la tabla
      *
      * @var string
      */
-    protected $primaryKey = "CLI_RUT";
+    protected $primaryKey = "CLI_ID";
 
 
     /**

@@ -24,6 +24,19 @@ class OportunidadController extends Controller
     public function index()
     {
         $oportunidades = Oportunidad::orderBy('ID_OPORTUNIDAD','ASC')->paginate(10);
+
+        if (Auth::user()->PRO_ROL == 1){
+            $clientes = Cliente::orderBy('CLI_NOMBRE','ASC')->paginate(20);
+        }if (Auth::user()->PRO_ROL == 2){
+        $clientes = Cliente::orderBy('CLI_NOMBRE','ASC')
+            ->where('CLI_EMP','=',Auth::user()->PRO_EMP)
+            ->paginate(20);
+    }if (Auth::user()->PRO_ROL == 3){
+        $clientes = Cliente::orderBy('CLI_NOMBRE','ASC')
+            ->where('CLI_PROPIETARIO','=',Auth::user()->PRO_RUN)
+            ->paginate(20);
+    }
+
         //dd($oportunidades);
         return view('ModuloCrm.listaOportunidades')->with('oportunidades',$oportunidades);
         //return view('ModuloCrm.Oportunidades');
