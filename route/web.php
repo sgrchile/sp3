@@ -1071,6 +1071,11 @@ Route::group(['prefix' => 'modulo'], function () {
             'as' => 'prospectos',
         ]);
 
+        Route::patch('/Reasignar/{id}', [
+            'uses' => 'ClientesController@reasignar',
+            'as' => 'reasignar',
+        ]);
+
         /**
          * Clients
          */

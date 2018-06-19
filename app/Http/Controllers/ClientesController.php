@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\ActActividad;
 use App\Prospecto;
+use App\Proveedor;
 use App\Temperatura;
 use Illuminate\Support\Facades\Auth;
 use App\Cliente;
@@ -108,6 +109,7 @@ class ClientesController extends Controller
         $cliente->setAttribute('CLI_PROVINCIA',$request->get('provincia', null));
         $cliente->setAttribute('CLI_TEMP',$request->get('temperatura', null));
         $cliente->CLI_PROPIETARIO = Auth::user()->PRO_RUN;
+        $cliente->CLI_EMP = Auth::user()->PRO_EMP;
 
 
         //dd($this->regcliente($cliente->getAttribute('CLI_RUT')));
@@ -304,6 +306,7 @@ class ClientesController extends Controller
         }
         $cli = $cliente->getAttributes();
         $rut = $cliente->CLI_RUT;
+        $proveedores = Proveedor::pluck('PRO_NOMBRE','PRO_RUN')->prepend('Seleccione');
 
         //dd($cliente);
         //$contacto = Contactos::find($rut)->get();
@@ -319,7 +322,9 @@ class ClientesController extends Controller
 
         //return view('ModuloCrm.fichaClienteConsolidado',compact('contacto','oportunidades','actividades'));
         //return view('ModuloCrm.fichaClienteConsolidado')->with('cliente',$cliente);
-        return view('ModuloCrm.fichaClienteConsolidado',compact('contacto','oportunidades','actividades'))->with('cliente',$cliente);
+        return view('ModuloCrm.fichaClienteConsolidado',compact('contacto','oportunidades','actividades'))
+            ->with('proveedores',$proveedores)
+            ->with('cliente',$cliente);
 
     }
 
@@ -426,6 +431,12 @@ class ClientesController extends Controller
             //return view('ModuloOt.result')->with('success', false);
         }
         return redirect();
+    }
+
+    public function reasignar(Request $request,$rut){
+        $cliente = Cliente::find($rut);
+        $cliente->CLI_PROPIETARIO = $request->prov;
+        return redirect()->back()->with('success', "el cliente ha sido reasignado a". $request->prov);
     }
 
     function valida_rut($rut)

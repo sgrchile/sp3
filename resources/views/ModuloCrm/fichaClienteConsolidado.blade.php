@@ -327,8 +327,38 @@
           </div>
 
           <div>
-            <div class="container">  <a href="{{route('clientes')}}"><button class="btn btn-primary btn-lg">Reasignar</button></a></div>
+            <td>
+              <button class="btn btn-primary btn-lg" style="width:90px;" data-toggle="modal" data-target="#Reasignar" >Reasignar</button>
+            </td>
             <div class="container">  <a href="{{route('editarcliente',$cliente)}}"><button class="btn btn-primary btn-lg">Editar</button></a></div>
+          </div>
+
+          <!-- Modal -->
+          <div class="modal fade" id="Reasignar" role="dialog" >
+            <div class="modal-dialog modal-lg">
+
+              <!-- Modal content-->
+              <div class="modal-content" >
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Seleccionar	</h4>
+                </div>
+                <div class="modal-body">
+                  <form id="form1" name="form1" method="patch">
+                    {{ csrf_field() }}
+                  <table class="table table-bordered" id="table_ot">
+                      <tr>
+                        <td>{{ Form::select('prov',$proveedores,null) }}</td>
+                      </tr>
+                  </table>
+                    <button class="btn btn-primary btn-lg">OK</button>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
           </div>
 
           <!--<h3 class="text-center text-uppercase">COTIZACIONES</h3>

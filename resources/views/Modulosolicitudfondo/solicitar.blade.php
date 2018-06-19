@@ -169,8 +169,8 @@
                <tr>
                  <td>{{ $ot->OT_ID }}</td>
                  <td>{{ $ot->OT_OC }}</td>
-                 <td>{{ $ot->cliente->CLI_NOMBRE }}</td>
-                 <td>{{ $ot->cliente->CLI_RUT }}</td>
+                 <td>{{ App\Cliente::find($ot->OT_CLI_RUT)->CLI_NOMBRE }}</td>
+                 <td>{{ App\Cliente::find($ot->OT_CLI_RUT)->CLI_RUT }}</td>
                  <td><button data-ot-id="{{ $ot->OT_ID }}" class="btn btn-primary btn-sm" data-dismiss="modal">&#10004;</button></td>
                </tr>
              @endforeach

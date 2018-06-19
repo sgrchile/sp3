@@ -21,9 +21,9 @@ class ActividadesController extends Controller
         $clientes = Cliente::all()->where('CLI_EMP','=',Auth::user()->PRO_EMP);
 
         if ($clientes != null){
-            $actividades = ActActividad::all()
+            $actividades = ActActividad::orderBy('ID_ACT','ASC')
                 ->whereIn('ID_CLIENTE_ACT',$clientes)
-                ->orderBy('ID_ACT','ASC')->paginate(20);
+                ->paginate(20);
         }
         if (Auth::user()->PRO_ROL == 1){
             $actividades = ActActividad::orderBy('ID_ACT','ASC')
@@ -32,14 +32,14 @@ class ActividadesController extends Controller
         //$actividades = DB::table('ACT_ACTIVIDAD')
           //  ->join('CLI_CLIENTE2','ACT_ACTIVIDAD.ID_CLIENTE_ACT','=','CLI_CLIENTE2.CLI_RUT')
             //->paginate(20);
-        $actividades = ActActividad::all()
+        $actividades = ActActividad::orderBy('ID_ACT','ASC')
             ->whereIn('ID_CLIENTE_ACT',$clientes)
-            ->orderBy('ID_ACT','ASC')->paginate(20);
+            ->paginate(20);
     }if (Auth::user()->PRO_ROL == 3){
             $clientes = Cliente::all()->where('CLI_PROPIETARIO','=',Auth::user()->PRO_RUN);
-        $actividades = ActActividad::all()
+        $actividades = ActActividad::orderBy('ID_ACT','ASC')
             ->whereIn('ID_CLIENTE_ACT',$clientes)
-            ->orderBy('ID_ACT','ASC')->paginate(20);
+            ->paginate(20);
     }
         $actividades = ActActividad::orderBy('ID_ACT','ASC')->paginate(5);
         //dd($actividades);
