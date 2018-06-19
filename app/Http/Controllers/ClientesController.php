@@ -137,10 +137,8 @@ class ClientesController extends Controller
     {
         $this->validate($request, [
             'nombre' => 'required',
-            'tipo_cuenta' => 'required',
             'rut' => 'required',
             'actividad' => 'required',
-            'direccion' => 'required',
             'email' => 'required',
             'fono' => 'required',
         ]);
