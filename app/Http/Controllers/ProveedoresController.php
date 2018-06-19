@@ -109,15 +109,6 @@ class ProveedoresController extends Controller
     }
 
     public function createProveedorPersona($data) {
-        $cargo = Cargo::where('CAR_DESC', '=', 'PROVEEDOR NO EVALUADO')->first()->CAR_ID;
-        $estado = EstadoProveedor::where('EP_DESC', '=', 'OPERATIVO')->first()->EP_ID;
-        $empresa = Empresa::find($data['empresa'])->first()->EMP_ID;
-        $banco = Banco::find($data['banco'])->first()->BCO_ID;
-        $pais = Pais::find($data['pais'])->first()->PAI_COD;
-        $region = Region::find($data['region'])->first()->REG_COD;
-        $provincia = Provincia::find($data['provincia'])->first()->PV_COD;
-        $ciudad = Ciudad::find($data['ciudad'])->first()->CIU_COD;
-        $tipo_cuenta = TipoCuenta::find($data['tipo_cuenta'])->first()->TCTA_BCO;
 
         return ProveedorExterno::create([
             'PRO_RUN' => $data['rut'],
