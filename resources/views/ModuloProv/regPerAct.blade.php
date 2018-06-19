@@ -1,7 +1,9 @@
 @extends('layouts.app')
 @section('content')
 
-
+    {!! Html::script('js/jquery-2.1.1.min.js') !!}
+    {!! Html::script('js/dropdown.js') !!}
+    
 <div class="row">
   <div class="col-xs-12 col-md-12 col-sm-12">
     <div class="block-web">
