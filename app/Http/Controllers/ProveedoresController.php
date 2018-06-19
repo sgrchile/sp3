@@ -159,12 +159,13 @@ class ProveedoresController extends Controller
         $this->validate($request, [
             'nombre' => 'required',
             'apellido_paterno' => 'required',
-            'rut' => 'required|unique:PRO_PROVEEDOR,PRO_RUN',
+            'rut' => 'required|unique:PROVEEDOR_EXTERNO,PRO_RUN',
             'celular' => 'required',
             'nacionalidad' => 'required',
             'direccion' => 'required',
             'pais' => 'required',
-            'email' => 'required|email|unique:PRO_PROVEEDOR,PRO_EMAIL',
+            'email' => 'required|email|unique:PROVEEDOR_EXTERNO,PRO_EMAIL',
+            'empresa' => 'required',
         ]);
     }
 

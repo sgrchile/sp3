@@ -3,7 +3,7 @@
 
     {!! Html::script('js/jquery-2.1.1.min.js') !!}
     {!! Html::script('js/dropdown.js') !!}
-    
+
 <div class="row">
   <div class="col-xs-12 col-md-12 col-sm-12">
     <div class="block-web">
@@ -38,7 +38,8 @@
         <tr>
             <td>RUT:</td>
             <td>
-                {{ Form::text('rut',null,['class'=>'form-control','required','style'=>'width:175px','oninput'=>'checkRut(this)']) }}
+                <input type="text" id="rut" name="rut"  style="width:175px;" class="form-control" maxlength="11" required oninput="checkRut(this)"/>
+                <script src="{{asset('js/validarRUT.js')}}"></script>
             </td>
 
 
@@ -97,7 +98,7 @@
         <tr>
             <td>PAIS:</td>
             <td>
-                <select name="pais" required class="form-control" id="pais">
+                <select style="width:175px;" name="pais" required class="form-control" id="pais">
                     <option value="">Seleccione</option>
                     @foreach($pais as $pai)
                         <option value="{{ $pai->PAI_COD }}">{{ $pai->PAI_DESC }}</option>
@@ -106,13 +107,13 @@
             </td>
             <td>REGION:</td>
             <td>
-                <select name="region" required class="form-control" id="region">
+                <select style="width:175px;" name="region" required class="form-control" id="region">
                     <option value="">Seleccione</option>
                 </select>
             </td>
             <td>PROVINCIA:</td>
             <td>
-                <select name="provincia" required class="form-control" id="provincia">
+                <select style="width:175px;" name="provincia" required class="form-control" id="provincia">
                     <option value="">Seleccione</option>
                 </select>
             </td>
@@ -120,7 +121,7 @@
          <tr>
             <td>CIUDAD:</td>
              <td>
-                 <select name="ciudad" required class="form-control" id="ciudad">
+                 <select style="width:175px;" name="ciudad" required class="form-control" id="ciudad">
                      <option value="">Seleccione</option>
                  </select>
              </td>
