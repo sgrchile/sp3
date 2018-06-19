@@ -526,9 +526,29 @@ Route::group(['prefix' => 'modulo'], function () {
                     return view('ModuloRRHH.AdmRRHH.configuracion');
                 })->name('configuracion');
 
-                Route::get('/cargos', function () {
+                /*Route::get('/cargos', function () {
                     return view('ModuloRRHH.AdmRRHH.Cargo');
-                })->name('Cargos');
+                })->name('Cargos');*/
+
+                Route::get('/cargos', [
+                    'uses' => 'RrhhAdminController@cargos',
+                    'as' => 'Cargos',
+                ]);
+
+                Route::post('/afp', [
+                    'uses' => 'AfpController@store',
+                    'as' => 'post.afp',
+                ]);
+
+                Route::get('/DeleteCargo/{id}', [
+                    'uses' => 'RrhhAdminController@elimnivel',
+                    'as' => 'nivel.destroy',
+                ]);
+
+                Route::get('/DeleteAfp/{id}', [
+                    'uses' => 'AfpController@destroy',
+                    'as' => 'afp.destroy',
+                ]);
 
                 Route::get('/afp', function () {
                     return view('ModuloRRHH.AdmRRHH.AFP');

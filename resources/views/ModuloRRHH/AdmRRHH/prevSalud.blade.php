@@ -32,7 +32,6 @@
               <td><button class="btn btn-primary btn-xs">AGREGAR</button></td>
             </tr>
 
-            configuracion
           </table>
 
           <!-- FORM FINAL -->

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Afp;
 use App\DatosAdicionalesProv;
+use App\Niveles;
 use App\Salud;
 use Illuminate\Http\Request;
 use App\Proveedor;
@@ -364,6 +365,19 @@ class RrhhAdminController extends Controller
              return redirect()->route('modificarRh', $id)->with('error', 'Hubo un error al modificar personal');
            }
              return redirect()->route('modificarRh', $id)->with('success', 'Personal modificado exitosamente.');
+         }
+
+         public function cargos(){
+
+                $cargos = Niveles::all();
+                return view('ModuloRRHH.AdmRRHH.Cargo')
+                    ->with('cargos',$cargos);
+         }
+
+         public function elimnivel($id){
+             $nivel = Niveles::find($id);
+             $nivel->delete();
+             return redirect()->back()->with('success','Nivel Eliminado');
          }
 
 }

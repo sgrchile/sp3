@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Proveedor;
+use App\ProveedorExterno;
 use App\Region;
 use App\Provincia;
 use App\Ciudad;
@@ -84,13 +85,13 @@ class ProveedoresController extends Controller
             ->with('bancos', $bancos)
             ->with('cargos', $cargos)
             ->with('empresas', $empresas)
-            ->with('paises', $paises)
+            ->with('pais', $paises)
             ->with('estado_proveedores', $estado_proveedores)
             ->with('tipo_cuentas', $tipo_cuentas)
             ->with('tipo_proveedores', $tipo_proveedores)
             ->with('regiones', $regiones)
             ->with('ciudades', $ciudades)
-            ->with('rubros', $rubros)
+            ->with('rubro', $rubros)
             ->with('pagos', $pagos)
             ->with('provincias', $provincias);
     }
@@ -118,7 +119,7 @@ class ProveedoresController extends Controller
         $ciudad = Ciudad::find($data['ciudad'])->first()->CIU_COD;
         $tipo_cuenta = TipoCuenta::find($data['tipo_cuenta'])->first()->TCTA_BCO;
 
-        return Proveedor::create([
+        return ProveedorExterno::create([
             'PRO_RUN' => $data['rut'],
             'PRO_NOMBRE' => $data['nombre'],
             'PRO_APE_PAT' => $data['apellido_paterno'],
@@ -158,16 +159,11 @@ class ProveedoresController extends Controller
         $this->validate($request, [
             'nombre' => 'required',
             'apellido_paterno' => 'required',
-            'apellido_materno' => 'required',
             'rut' => 'required|unique:PRO_PROVEEDOR,PRO_RUN',
-            'fecha_nacimiento' => 'required',
             'celular' => 'required',
             'nacionalidad' => 'required',
-            'sexo' => 'required',
             'direccion' => 'required',
             'pais' => 'required',
-            'afp' => 'required',
-            'password' => 'required|min:6|confirmed',
             'email' => 'required|email|unique:PRO_PROVEEDOR,PRO_EMAIL',
         ]);
     }

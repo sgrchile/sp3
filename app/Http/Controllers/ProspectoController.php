@@ -56,10 +56,10 @@ class ProspectoController extends Controller
      */
     public function create()
     {
-        $rubro = Rubro::pluck('RUB_DESC','RUB_COD')->prepend('seleccione');
+        $rubro = Rubro::all();
         $subrubro = SubRubro::pluck('SUB_RUB_DESC', 'SUB_RUB_COD')->prepend('seleccione');
         $banco = Banco::pluck('BCO_DESC','BCO_ID')->prepend('seleccione');
-        $pais = Pais::pluck('PAI_DESC','PAI_COD')->prepend('seleccione');
+        $pais = Pais::all();
         $region = Region::pluck('REG_DESC','REG_COD')->prepend('seleccione');
         $provincia = Provincia::pluck('PV_DESC', 'PV_COD')->prepend('seleccione');
         $ciudad = Ciudad::pluck('CIU_DESC', 'CIU_COD')->prepend('seleccione');
@@ -71,19 +71,15 @@ class ProspectoController extends Controller
 
         //dd($rubro->all());
 
-        return view('ModuloCrm.regProspecto',
-            ['pais'=>$pais,
-                'rubro'=>$rubro,
-                'subrubro'=>$subrubro,
-                'banco'=>$banco,
-                'region'=>$region,
-                'provincia'=>$provincia ,
-                'ciudad'=>$ciudad ,
-                'proc'=>$proc,
-                'actividad'=>$actividad,
-                'categoria'=>$categoria,
-                'cargos'=>$cargos,
-                'area'=>$area]);
+        return view('ModuloCrm.regProspecto')
+            ->with('pais',$pais)
+            ->with('rubro',$rubro)
+            ->with('banco',$banco)
+            ->with('procedencia',$proc)
+            ->with('actividad',$actividad)
+            ->with('categoria',$categoria)
+            ->with('cargos',$cargos)
+            ->with('area',$area);
     }
 
     /**
@@ -115,7 +111,7 @@ class ProspectoController extends Controller
             'CLI_APE_MATERNO' => $data['ape_mat'],
             'CLI_APE_PATERNO' => $data['ape_pat'],
             'CLI_FECH_NAC' => $data['fec_nac'],
-            'CLI_ID_EMP' => $data['emp'],
+            'CLI_ID_EMP' => Auth::user()->PRO_EMP,
             'CLI_PROPIETARIO' => Auth::user()->PRO_RUN,
             'CLI_ZIP' => $data['zip'],
             'CLI_CASILLA' => $data['casilla'],
@@ -205,6 +201,7 @@ class ProspectoController extends Controller
 
         if ($this->regcliente($cliente->getAttribute('CLI_RUT'))){
 
+            $cliente->CLI_ESTADO=2;
             $cliente->save();
             //dd("true");
             //return view('ModuloOt.result')->with('success', true);

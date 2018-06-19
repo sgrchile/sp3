@@ -13,7 +13,7 @@ class Afp extends Model
      */
     protected $table = "AFP";
 
-    protected $fillable = ['AFP_NOMBRE'];
+    protected $fillable = ['AFP_NOMBRE','AFP_TASA','AFP_SIS','AFP_TASA_INDEPENDIENTE'];
 
     /**
      * Llave primaria de la tabla
