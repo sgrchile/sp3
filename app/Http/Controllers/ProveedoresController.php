@@ -129,7 +129,7 @@ class ProveedoresController extends Controller
             'PRO_REFERENCIA' => $data['referencia'],
             'PRO_FECHA_NAC' => $data['fecha_nacimiento'],
             'PRO_RUBRO' => $data['rubro'],
-            'PRO_SUBRUBRO' => $data['sub_rubro'],
+            'PRO_SUBRUBRO' => $data['subrubro'],
             'PRO_CAR_ID' => 37,
             'PRO_EMP' => $data['empresa'],
             'PRO_ESTADO_PERSONAL' => 1,
