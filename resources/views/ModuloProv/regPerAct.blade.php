@@ -75,7 +75,7 @@
             <td>NACIONALIDAD:</td>
             <td>
               <select style="width:175px;" class="form-control" name="nacionalidad">
-                <option>Seleccionar</option>
+                <option value="0">Seleccionar</option>
                 <option value="1">Chilena</option>
                 <option value="2">Extranjera</option>
               </select>
@@ -84,7 +84,7 @@
             <td>GENERO:</td>
             <td>
               <select style="width:175px;" class="form-control" name="sexo">
-                <option>Seleccionar</option>
+                <option value="0">Seleccionar</option>
                 <option value="1">HOMBRE</option>
                 <option value="2">MUJER</option>
               </select>
@@ -128,7 +128,7 @@
           <td>FORMA DE PAGO:</td>
           <td>
             <select style="width:175px;" class="form-control" name="fecha_pago">
-            <option>Seleccionar</option>
+            <option value="">Seleccionar</option>
             <option value="Quincena">Quincena</option>
             <option value="Fin de mes">Fin de mes</option>
             </select>
@@ -164,7 +164,7 @@
              <td>BANCO:</td>
              <td>
                  <select style="width:175px;" class="form-control" name="banco">
-                     <option>Seleccionar</option>
+                     <option value="">Seleccionar</option>
                      @foreach($bancos as $banco)
                          <option value="{{ $banco->BCO_ID }}">{{ $banco->BCO_DESC }}</option>
                      @endforeach
@@ -173,7 +173,7 @@
             <td>TIPO DE CUENTA:</td>
             <td>
               <select style="width:175px;" class="form-control" name="tipo_cuenta">
-                <option>Seleccionar</option>
+                <option value="">Seleccionar</option>
                 @foreach($tipo_cuentas as $tipo_cuenta)
                   <option value="{{ $tipo_cuenta->TCTA_BCO }}">{{ $tipo_cuenta->TCTA_DESC }}</option>
                 @endforeach

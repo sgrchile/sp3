@@ -111,7 +111,7 @@ class ProveedoresController extends Controller
     public function createProveedorPersona($data) {
 
         return ProveedorExterno::create([
-            'PRO_RUN' => $data['rut'],
+            'PRO_EXT_RUT' => $data['rut'],
             'PRO_EXT_NOM' => $data['nombre'],
             'PRO_EXT_APE_PAT' => $data['apellido_paterno'],
             'PRO_EXT_APE_MAT' => $data['apellido_materno'],
