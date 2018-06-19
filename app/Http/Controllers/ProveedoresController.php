@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Proveedor;
+use App\ProveedorExterno;
 use App\Region;
 use App\Provincia;
 use App\Ciudad;
@@ -84,13 +85,13 @@ class ProveedoresController extends Controller
             ->with('bancos', $bancos)
             ->with('cargos', $cargos)
             ->with('empresas', $empresas)
-            ->with('paises', $paises)
+            ->with('pais', $paises)
             ->with('estado_proveedores', $estado_proveedores)
             ->with('tipo_cuentas', $tipo_cuentas)
             ->with('tipo_proveedores', $tipo_proveedores)
             ->with('regiones', $regiones)
             ->with('ciudades', $ciudades)
-            ->with('rubros', $rubros)
+            ->with('rubro', $rubros)
             ->with('pagos', $pagos)
             ->with('provincias', $provincias);
     }
@@ -108,49 +109,33 @@ class ProveedoresController extends Controller
     }
 
     public function createProveedorPersona($data) {
-        $cargo = Cargo::where('CAR_DESC', '=', 'PROVEEDOR NO EVALUADO')->first()->CAR_ID;
-        $estado = EstadoProveedor::where('EP_DESC', '=', 'OPERATIVO')->first()->EP_ID;
-        $empresa = Empresa::find($data['empresa'])->first()->EMP_ID;
-        $banco = Banco::find($data['banco'])->first()->BCO_ID;
-        $pais = Pais::find($data['pais'])->first()->PAI_COD;
-        $region = Region::find($data['region'])->first()->REG_COD;
-        $provincia = Provincia::find($data['provincia'])->first()->PV_COD;
-        $ciudad = Ciudad::find($data['ciudad'])->first()->CIU_COD;
-        $tipo_cuenta = TipoCuenta::find($data['tipo_cuenta'])->first()->TCTA_BCO;
 
-        return Proveedor::create([
-            'PRO_RUN' => $data['rut'],
-            'PRO_NOMBRE' => $data['nombre'],
-            'PRO_APE_PAT' => $data['apellido_paterno'],
-            'PRO_APE_MAT' => $data['apellido_materno'],
-            'PRO_SEXO' => $data['sexo'],
-            'PRO_DIRECCION' => $data['direccion'],
-            'PRO_NACIONALIDAD' => $data['nacionalidad'],
-            'PRO_SEG_MED' => $data['seguro_medico'],
-            'PRO_AFP' => $data['afp'],
-            'PRO_N_CUENTA' => $data['nro_cuenta'],
-            'PRO_CELULAR' => $data['celular'],
-            'PRO_TEL' => $data['celular_dos'],
-            'PRO_FECHA_PAGO' => $data['fecha_pago'],
-            'PRO_CONTACTO_SECUNDARIO' => $data['celular_dos'],
-            'PRO_PAGINA_WEB' => $data['sitio_web'],
-            'PRO_FACEBOOK' => $data['facebook'],
-            'PRO_EMAIL' => $data['email'],
-            'PRO_REFERENCIA' => $data['referencia'],
-            'PRO_FECHA_NAC' => $data['fecha_nacimiento'],
-            'PRO_RUBRO' => $data['rubro'],
-            'PRO_SUBRUBRO' => $data['sub_rubro'],
-            'password' => Hash::make($data['password']),
-            'PRO_CAR_ID' => $cargo,
-            'PRO_EMP' => $empresa,
-            'PRO_ESTADO_PERSONAL' => $estado,
-            'PRO_TP_COD' => '2',
-            'PRO_BCO_ID' => $banco,
-            'PRO_TCTA_BCO' => $tipo_cuenta,
-            'PRO_PAI_COD' => $pais,
-            'PRO_PV_COD' => $provincia,
-            'PRO_REG_COD' => $region,
-            'PRO_CIU_COD' => $ciudad,
+        return ProveedorExterno::create([
+            'PRO_EXT_RUT' => $data['rut'],
+            'PRO_EXT_NOM' => $data['nombre'],
+            'PRO_EXT_APE_PAT' => $data['apellido_paterno'],
+            'PRO_EXT_APE_MAT' => $data['apellido_materno'],
+            'PRO_EXT_GENERO' => $data['sexo'],
+            'PRO_EXT_DIRECCION' => $data['direccion'],
+            'PRO_EXT_NACIONALIDAD' => $data['nacionalidad'],
+            'PRO_EXT_NRO_CTA' => $data['nro_cuenta'],
+            'PRO_EXT_TELEFONO' => $data['celular'],
+            'PRO_EXT_TEL_EMERG' => $data['celular_dos'],
+            'PRO_EXT_FORM_PAGO' => $data['fecha_pago'],
+            'PRO_EXT_WEB' => $data['sitio_web'],
+            'PRO_EXT_REDES' => $data['facebook'],
+            'PRO_EXT_EMAIL' => $data['email'],
+            'PRO_EXT_FEC_NAC' => $data['fecha_nacimiento'],
+            'PRO_EXT_RUBRO' => $data['rubro'],
+            'PRO_EXT_SUB_RUBRO' => $data['subrubro'],
+            'PRO_EXT_ACTIVIDAD' => $data['actividad'],
+            'PRO_EXT_EMP' => $data['empresa'],
+            'PRO_EXT_BCO' => $data['banco'],
+            'PRO_EXT_TP_CTA' => $data['tipo_cuenta'],
+            'PRO_EXT_PAIS' => $data['pais'],
+            'PRO_EXT_PROVINCIA' => $data['provincia'],
+            'PRO_EXT_COMUNA' => $data['region'],
+            'PRO_EXT_CIUDAD' => $data['ciudad'],
         ]);
     }
 
@@ -158,17 +143,13 @@ class ProveedoresController extends Controller
         $this->validate($request, [
             'nombre' => 'required',
             'apellido_paterno' => 'required',
-            'apellido_materno' => 'required',
-            'rut' => 'required|unique:PRO_PROVEEDOR,PRO_RUN',
-            'fecha_nacimiento' => 'required',
+            'rut' => 'required|unique:PROVEEDOR_EXTERNO,PRO_EXT_RUT',
             'celular' => 'required',
             'nacionalidad' => 'required',
-            'sexo' => 'required',
             'direccion' => 'required',
             'pais' => 'required',
-            'afp' => 'required',
-            'password' => 'required|min:6|confirmed',
-            'email' => 'required|email|unique:PRO_PROVEEDOR,PRO_EMAIL',
+            'email' => 'required|email|unique:PROVEEDOR_EXTERNO,PRO_EXT_EMAIL',
+            'empresa' => 'required',
         ]);
     }
 

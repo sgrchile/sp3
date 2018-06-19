@@ -94,7 +94,7 @@ DATOS QUE SE REGISTRAN POR DEFECTO
                 <div class="modal-body">
                   <ul id="clients">
                     @foreach($clientes as $cliente)
-                      <li><a href="#" data-dismiss="modal" data-client-id="{{ $cliente->CLI_RUT }}">{{ $cliente->CLI_NOMBRE }}</a></li>
+                      <li><a href="#" data-dismiss="modal" data-client-id="{{ $cliente->CLI_ID }}">{{ $cliente->CLI_NOMBRE }}</a></li>
                     @endforeach
                   </ul>
                 </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\DatosAdicionalesProv;
 use App\Empresa;
+use App\LicenciaMedica;
 use App\Proveedor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,9 +21,12 @@ class RrhhMiCarpetaController extends Controller
     public function index()
     {
         $emp = Empresa::find(Auth::user()->PRO_EMP);
-        $datos = DatosAdicionalesProv::all()->where('MP_PRO_RUN','=',Auth::user()->PRO_EMP);
+        $licencias = LicenciaMedica::all()->where('LM_PER_RUT','=',Auth::user()->PRO_RUN);
+        $datos = DatosAdicionalesProv::all()->where('MP_PRO_RUN','=',Auth::user()->PRO_RUN);
+        //dd($datos);
         return view('ModuloRRHH.MicarpetaRRHH.misDatos')
             ->with('emp',$emp)
+            ->with('licencias',$licencias)
             ->with('datos',$datos);
     }
 

@@ -47,8 +47,8 @@
 
               <td>TIPO DE PERSONAL:</td>
               <td>
-                @if($datos->MP_JORNADA != null)
-                <input type="text" value="{{ App\Jornada::find($datos->MP_JORNADA)->DESC_JORNADA }}" readonly class="form-control"  style="width:175px;">
+                @if(isset($datos['MP_JORNADA']))
+                <input type="text" value="{{ App\Jornada::find($datos['MP_JORNADA'])->DESC_JORNADA }}" readonly class="form-control"  style="width:175px;">
                   @else
                   <input type="text" value="" readonly class="form-control"  style="width:175px;">
                   @endif
@@ -85,7 +85,16 @@
               <td>FIN</td>
               <td>ESTADO</td>
             </tr>
-
+           <tbody>
+           @foreach($licencias as $licencia)
+             <tr>
+               <td>{{ $licencia->CREATED_AT }}</td>
+               <td> {{ $licencia->LM_MLC_ID }}</td>
+               <td> {{ $licencia->LM_INICIO }}</td>
+               <td> {{ $licencia->LM_FIN }}</td>
+             </tr>
+             @endif
+           </tbody>
             <tr>
               <td></td>
               <td></td>

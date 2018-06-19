@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\ActActividad;
+use App\Cliente;
 use App\Contactos;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ActividadesController extends Controller
 {
@@ -15,6 +18,29 @@ class ActividadesController extends Controller
      */
     public function index()
     {
+        $clientes = Cliente::all()->where('CLI_EMP','=',Auth::user()->PRO_EMP);
+
+        if ($clientes != null){
+            $actividades = ActActividad::orderBy('ID_ACT','ASC')
+                ->whereIn('ID_CLIENTE_ACT',$clientes)
+                ->paginate(20);
+        }
+        if (Auth::user()->PRO_ROL == 1){
+            $actividades = ActActividad::orderBy('ID_ACT','ASC')
+                ->paginate(20);
+        }if (Auth::user()->PRO_ROL == 2){
+        //$actividades = DB::table('ACT_ACTIVIDAD')
+          //  ->join('CLI_CLIENTE2','ACT_ACTIVIDAD.ID_CLIENTE_ACT','=','CLI_CLIENTE2.CLI_RUT')
+            //->paginate(20);
+        $actividades = ActActividad::orderBy('ID_ACT','ASC')
+            ->whereIn('ID_CLIENTE_ACT',$clientes)
+            ->paginate(20);
+    }if (Auth::user()->PRO_ROL == 3){
+            $clientes = Cliente::all()->where('CLI_PROPIETARIO','=',Auth::user()->PRO_RUN);
+        $actividades = ActActividad::orderBy('ID_ACT','ASC')
+            ->whereIn('ID_CLIENTE_ACT',$clientes)
+            ->paginate(20);
+    }
         $actividades = ActActividad::orderBy('ID_ACT','ASC')->paginate(5);
         //dd($actividades);
         return view('ModuloCrm.listaActividades')->with('actividades',$actividades);

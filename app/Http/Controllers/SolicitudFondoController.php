@@ -45,6 +45,7 @@ class SolicitudFondoController extends Controller
             ->where('PRO_ALTA','=',1);
         //dd($personales);
         $sfondos = SolicitudFondo::all();
+        $provext = ProveedorExterno::all();
 
         //dd( Auth::user());
 
@@ -55,6 +56,7 @@ class SolicitudFondoController extends Controller
             ->with('bancos', $bancos)
             ->with('personales', $personales)
             ->with('tipo_cuentas', $tipo_cuentas)
+            ->with('provext', $provext)
             ->with('sfondos', $sfondos);
     }
 

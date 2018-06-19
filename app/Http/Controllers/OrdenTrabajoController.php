@@ -57,7 +57,7 @@ class OrdenTrabajoController extends Controller
 
     protected function createOrdenTrabajo(array $data)
     {
-        $cliente = Cliente::find($data['idcliente'])->CLI_RUT;
+        $cliente = Cliente::find($data['idcliente'])->CLI_ID;
         $centro_negocio = CentroNegocio::find($data['centro_negocio'])->CT_ID;
 
         return OrdenTrabajo::create([

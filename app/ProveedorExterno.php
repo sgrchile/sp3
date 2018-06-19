@@ -52,6 +52,7 @@ class ProveedorExterno extends Model
         'PRO_EXT_CERTF_ANT',
         'PRO_EXT_FOTO',
         'PRO_EXT_COMENTARIO',
-        'PRO_EXT_LICENCIA'
+        'PRO_EXT_LICENCIA',
+        'PRO_EXT_EMAIL'
     ];
 }

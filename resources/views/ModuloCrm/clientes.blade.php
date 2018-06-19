@@ -41,7 +41,7 @@
                 <td>{{ $cliente->CLI_FONO }}</td>
                 <td>{{ $cliente->CLI_CONTACTO }}</td>
                 <td>
-                  <a href="{{route('fichaClienteConsolidado',$cliente->CLI_RUT)}}"><button class="btn btn-primary btn-xs" onclick="" style="width:130px;"> VER FICHA</button></a>
+                  <a href="{{route('fichaClienteConsolidado',$cliente->CLI_ID)}}"><button class="btn btn-primary btn-xs" onclick="" style="width:130px;"> VER FICHA</button></a>
                   <a href="{{route('cliente.destroy',$cliente->CLI_RUT) }}" onclick="return confirm('¿Desea eliminar éste cliente?')" ><button class="btn btn-primary btn-xs"
                                                                                                                                                  style="width:65px;" >ELIMINAR</button></a>
                 </td>

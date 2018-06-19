@@ -4,23 +4,21 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Afp extends Model
+class Niveles extends Model
 {
     /**
      * El nombre de la tabla en la BD
      *
      * @var string
      */
-    protected $table = "AFP";
-
-    protected $fillable = ['AFP_NOMBRE','AFP_TASA','AFP_SIS','AFP_TASA_INDEPENDIENTE'];
+    protected $table = "NV_NIVELES";
 
     /**
      * Llave primaria de la tabla
      *
      * @var string
      */
-    protected $primaryKey = "AFP_ID";
+    protected $primaryKey = "NIVELES_ID";
 
     /**
      * Declara que la tabla no tenga timestamps

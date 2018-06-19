@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\ActActividad;
 use App\Prospecto;
+use App\Proveedor;
 use App\Temperatura;
 use Illuminate\Support\Facades\Auth;
 use App\Cliente;
@@ -30,13 +31,13 @@ class ClientesController extends Controller
      */
     public function index()
     {
-        if (Auth::user()->PRO_NIVEL == 14){
+        if (Auth::user()->PRO_ROL == 1){
             $clientes = Cliente::orderBy('CLI_NOMBRE','ASC')->paginate(20);
-        }if (Auth::user()->PRO_NIVEL == 1){
+        }if (Auth::user()->PRO_ROL == 2){
             $clientes = Cliente::orderBy('CLI_NOMBRE','ASC')
                 ->where('CLI_EMP','=',Auth::user()->PRO_EMP)
                 ->paginate(20);
-        }else{
+        }if (Auth::user()->PRO_ROL == 3){
             $clientes = Cliente::orderBy('CLI_NOMBRE','ASC')
                 ->where('CLI_PROPIETARIO','=',Auth::user()->PRO_RUN)
                 ->paginate(20);
@@ -53,20 +54,19 @@ class ClientesController extends Controller
      */
     public function create()
     {
-        $rubro = Rubro::pluck('RUB_DESC','RUB_COD')->prepend('seleccione');
-        $subrubro = SubRubro::pluck('SUB_RUB_DESC', 'SUB_RUB_COD')->prepend('seleccione');
+        $rubro = Rubro::all();
         $banco = Banco::pluck('BCO_DESC','BCO_ID')->prepend('seleccione');
         $pais = Pais::all();
-        $region = Region::pluck('REG_DESC','REG_COD')->prepend('seleccione');
-        $provincia = Provincia::pluck('PV_DESC', 'PV_COD')->prepend('seleccione');
-        $ciudad = Ciudad::pluck('CIU_DESC', 'CIU_COD')->prepend('seleccione');
+        //$region = Region::pluck('REG_DESC','REG_COD')->prepend('seleccione');
+        //$provincia = Provincia::pluck('PV_DESC', 'PV_COD')->prepend('seleccione');
+        //$ciudad = Ciudad::pluck('CIU_DESC', 'CIU_COD')->prepend('seleccione');
         $tcta = TipoCuenta::pluck('TCTA_DESC', 'TCTA_BCO')->prepend('seleccione');
-        $actividad = Actividad::pluck('ACT_DESC', 'ACT_COD_COD')->prepend('seleccione');
+        //$actividad = Actividad::pluck('ACT_DESC', 'ACT_COD_COD')->prepend('seleccione');
 
         //dd($rubro->all());
 
-        return view('ModuloCrm.regCliente', ['pais'=>$pais, 'rubro'=>$rubro, 'subrubro'=>$subrubro, 'banco'=>$banco,
-            'region'=>$region, 'provincia'=>$provincia , 'ciudad'=>$ciudad , 'tipocuenta'=>$tcta, 'actividad'=>$actividad]);
+        return view('ModuloCrm.regCliente', ['pais'=>$pais, 'rubro'=>$rubro, 'banco'=>$banco,
+             'tipocuenta'=>$tcta]);
     }
 
     /*public function getSubRubro(Request $request, $id){
@@ -109,11 +109,12 @@ class ClientesController extends Controller
         $cliente->setAttribute('CLI_PROVINCIA',$request->get('provincia', null));
         $cliente->setAttribute('CLI_TEMP',$request->get('temperatura', null));
         $cliente->CLI_PROPIETARIO = Auth::user()->PRO_RUN;
+        $cliente->CLI_EMP = Auth::user()->PRO_EMP;
 
 
         //dd($this->regcliente($cliente->getAttribute('CLI_RUT')));
 
-        if ($this->regcliente($cliente->getAttribute('CLI_RUT'))){
+        if ($this->regcliente($cliente->getAttribute('CLI_ID'))){
 
             $cliente->save();
             //dd("true");
@@ -166,9 +167,9 @@ class ClientesController extends Controller
      * @param  int  $rut
      * @return \Illuminate\Http\Response
      */
-    public function show($rut)
+    public function show($id)
     {
-        $results = Cliente::select('select * from cli_cliente where CLI_RUT = ?', [$rut]);
+        $results = Cliente::select('select * from cli_cliente where CLI_ID = ?', [$id]);
         $cliente = new Client();
         if ($results=! null){
             $cliente = new Client();
@@ -186,9 +187,9 @@ class ClientesController extends Controller
         }
     }
 
-    public function regcliente($rut){
+    public function regcliente($id){
 
-        $cliente = Cliente::find($rut);
+        $cliente = Cliente::find($id);
 
         //dd($cliente);
         if (empty($cliente)){
@@ -264,9 +265,9 @@ class ClientesController extends Controller
         return redirect()->back()->with('status_cliente', 'Cliente eliminado!');
     }
 
-    public function fichaclicons($rut)
+    public function fichaclicons($id)
     {
-        $cliente = Cliente::find($rut);
+        $cliente = Cliente::find($id);
         if ($cliente->getAttribute('CLI_RUBRO') != null && $cliente->getAttributes('CLI_RUBRO')!=0){
             $rubro = Rubro::find($cliente->getAttribute('CLI_RUBRO'));
             $cliente->setAttribute('CLI_RUBRO', $rubro->RUB_DESC);
@@ -304,6 +305,8 @@ class ClientesController extends Controller
             $cliente->setAttribute('CLI_PROVINCIA', $pro->PV_DESC);
         }
         $cli = $cliente->getAttributes();
+        $rut = $cliente->CLI_RUT;
+        $proveedores = Proveedor::pluck('PRO_NOMBRE','PRO_RUN')->prepend('Seleccione');
 
         //dd($cliente);
         //$contacto = Contactos::find($rut)->get();
@@ -319,13 +322,16 @@ class ClientesController extends Controller
 
         //return view('ModuloCrm.fichaClienteConsolidado',compact('contacto','oportunidades','actividades'));
         //return view('ModuloCrm.fichaClienteConsolidado')->with('cliente',$cliente);
-        return view('ModuloCrm.fichaClienteConsolidado',compact('contacto','oportunidades','actividades'))->with('cliente',$cliente);
+        return view('ModuloCrm.fichaClienteConsolidado',compact('contacto','oportunidades','actividades'))
+            ->with('proveedores',$proveedores)
+            ->with('cliente',$cliente);
 
     }
 
-    public function fichaclipros($rut)
+    public function fichaclipros($id)
     {
-        $cliente = Prospecto::find($rut);
+        $cliente = Prospecto::find($id);
+        $rut = $cliente->CLI_RUT;
         if ($cliente->getAttribute('CLI_RUBRO') != null){
             $rubro = Rubro::find($cliente->CLI_RUBRO);
             $cliente->setAttribute('CLI_RUBRO', $rubro->RUB_DESC);
@@ -412,7 +418,7 @@ class ClientesController extends Controller
 
         //dd($cliente);
 
-        if ($this->regcliente($cliente->getAttribute('CLI_RUT'))){
+        if ($this->regcliente($cliente->getAttribute('CLI_ID'))){
 
             $cliente->save();
             //dd("true");
@@ -425,6 +431,12 @@ class ClientesController extends Controller
             //return view('ModuloOt.result')->with('success', false);
         }
         return redirect();
+    }
+
+    public function reasignar(Request $request,$rut){
+        $cliente = Cliente::find($rut);
+        $cliente->CLI_PROPIETARIO = $request->prov;
+        return redirect()->back()->with('success', "el cliente ha sido reasignado a". $request->prov);
     }
 
     function valida_rut($rut)
