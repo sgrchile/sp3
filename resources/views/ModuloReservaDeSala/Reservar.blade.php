@@ -24,43 +24,8 @@
               </div>
             @endif
             <table class="table-condensed text-right">
-              <tr>
-                <td>SALA:</td>
-                <td>
-                  {{ Form::select('sala',App\Sala::pluck('SALA_DESC','SALA_ID'),['class'=>'form-control','style'=>'max-width:175px']) }}
-
-                </td>
-              </tr>
-              <tr>
-                <td>MOTIVO :</td>
-                  <td>
-                    {{ Form::select('motivo',App\ReservaMotivo::pluck('RES_MOT_DESC','ID_RES_MOTIVO'),['class'=>'form-control','style'=>'max-width:175px']) }}
-                  </td>
-
-              </tr>
-              <tr>
-                <td>DESCRIPCION:</td>
-                <td>
-                  <textarea rows="10" name="descripcion" id="descripcion" style="max-width:175px;"  class="form-control"></textarea>
-                </td>
-              </tr>
-              <tr>
-                <td>FECHA</td>
-                <td>
-                  {{ Form::date('fecha',\Carbon\Carbon::now(),['class'=>'form-control','style'=>'max-width:175px']) }}
-                </td>
-              </tr>
-
-              <tr>
-                <td>HORA INICIO </td>
-                <td><input type="time" style="max-width:175px;" name="hrinicio" class="form-control"  /> </td>
-              </tr>
-              <tr>
-                <td>HORA TERMINO</td>
-                <td><input type="time" style="max-width:175px;" name="hrtermino" class="form-control"  /> </td>
-              </tr>
+              <iframe src="https://sagenda.net/Frontend/5b2932a91ae6cc65a8213cf2?retrieveFromCookies=False" width="1050" height="1200" frameborder="0" allowtransparency="true" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-top-navigation allow-scripts allow-forms"></iframe>
             </table>
-            <button class="btn btn-primary btn-lg">RESERVAR</button>
 
             {!! Form::close() !!}
 
