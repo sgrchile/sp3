@@ -77,24 +77,13 @@
           </tr>
 
 
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-
-            <td style="width:100px;">
-              <button type="button" class="btn btn-primary btn-xs">DESASIGNAR</button>
-            </td>
-          </tr>
 
         </table>
 
           <h3 class="text-uppercase text-center ">ACTIVOS DISPONIBLES</h3>
           <table class="table table-bordered" align="center">
 
-
+          <tr>
             <td>ID</td>
             <td>DESCRIPCION</td>
             <td>INFO</td>
@@ -102,16 +91,17 @@
             <td>ENCARGADO</td>
             <td>ACCION</td>
           </tr>
-
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td style="width:100px;"><button type="button" class="btn btn-primary btn-xs">ASIGNAR</button></td>
-
+            @foreach($actdisp as $actd)
+            <tr>
+              <td>{{ $actd->ACT_ID }}</td>
+              <td>{{ $actd->ACT_DESC }}</td>
+              <td>{{ $actd->ACT_INFO }}</td>
+              <td>{{ $actd->ACT_ESTADO }}</td>
+              <td>{{ $actd->ACT_PROPIETARIO }}</td>
+              <td style="width:100px;"><button type="button" class="btn btn-primary btn-xs">ASIGNAR</button></td>
+            </tr>
+              @endforeach
         </table>
-
 
           <!-- FORM FINAL -->
 

@@ -39,10 +39,6 @@ Route::get('/empresa', [
     'as' => 'empresa',
 ]);
 
-Route::post('/registrar_act', [
-    'uses' => 'ProveedoresPublicController@postProveedorEmpresa',
-    'as' => 'registrar.proveedor.empresa',
-]);
 
 Route::get('/desarrollo',function (){
    return view('enDesarrollo');
@@ -186,6 +182,8 @@ Route::group(['prefix' => 'modulo'], function () {
                 'uses' => 'SolicitudFondoController@getAllOts',
                 'as' => 'createSolFon',
             ]);
+
+            Route::get('/{id}','SolicitudFondoController@getModificarSolicitar')->name('get.modificar.solicitar');
 
             Route::post('/insert', [
                 'uses' => 'SolicitudFondoController@postSolicitudFondo',
@@ -902,6 +900,11 @@ Route::group(['prefix' => 'modulo'], function () {
                           'uses' => 'insumosController@store',
                           'as' => 'post.registrarInsumo',
                       ]);
+
+                      Route::get('/actualizar','insumosController@showActualizarInsumo')->name('actualizar.insumo');
+                      Route::any('/lista','insumosController@showListaGeneralInsumo')->name('listar.insumo');
+                      Route::get('/actualizar/{id}','insumosController@edit')->name('get.modificar.insumo');
+                      Route::patch('/actualizar/{id}','insumosController@patchModificarInsumo')->name('patch.modificar.insumo');
 
                     Route::get('/SolicitarInsumo', function () {
                       return view('ModuloInventario.Insumos.SolicitudInsumo');

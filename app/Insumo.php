@@ -23,6 +23,13 @@ class Insumo extends Model
     protected $primaryKey = "INS_COD";
 
     /**
+     * Declara que la tabla no tenga timestamps
+     *
+     * @var boolean
+     */
+    public $timestamps = false;
+
+    /**
      * Atributos que pueden ser asignados masivamente
      *
      * @var array
@@ -34,25 +41,16 @@ class Insumo extends Model
         'INS_MARCA',
         'INS_TIPO',
         'INS_CANTIDAD',
-        'INS_COSTO'
+        'INS_COSTO',
     ];
-
-    /**
-     * Declara que la tabla no tenga timestamps
-     *
-     * @var boolean
-     */
-    public $timestamps = false;
 
     /**
      * Obtiene el proveedor  asociado al insumo
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * */
     public function proveedor()
-    */
     {
         return $this->hasOne('App\Proveedor', 'PRO_RUN', 'PRO_PROVEEDOR');
     }
-}
-
 }

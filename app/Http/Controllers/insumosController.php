@@ -45,6 +45,7 @@ class InsumosController extends Controller
         $insumo->INS_CANTIDAD = $request->cantidad;
         $insumo->INS_COSTO = $request->costo;
         $insumo->save();
+        return redirect()->route('RegistrarInsumo')->with('success', 'Insumo Registrado');
     }
 
     /**

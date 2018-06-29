@@ -15,7 +15,7 @@
         </div>
         <div class="porlets-content">
 
-          <form action="{{ route('ModuloInventario.Activos.Listado')}}" method="post">
+          <form action="{{ route('buscadorActivos')}}" method="post">
           <!-- FORM INICIO -->
           {{csrf_field()}}
           <table class="table-condensed">
@@ -23,10 +23,10 @@
                   <td>BUSCAR POR ESTADO:</td>
                   <td>
                     <select required name="estadoActivos" class="form-control" style="width:175px;">
-                      <option value="OPERATIVO">EN USO</option>
-                      <option>DISPONIBLE</option>
-                      <option>EN REPARACION</option>
-                      <option>DESCARTADO</option>
+                      <option value="EN USO">EN USO</option>
+                      <option VALUE="DISPONIBLE">DISPONIBLE</option>
+                      <option VALUE="EN REPARACION">EN REPARACION</option>
+                      <option VALUE="DESCARTADO">DESCARTADO</option>
                     </select>
                   </td>
                   <td><button type="submit" class="btn btn-primary btn-xs">  <i class="fa fa-search" style="font-size:29px"></i></button></td>

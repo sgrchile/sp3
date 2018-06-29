@@ -21,6 +21,7 @@ class ActivoInterno extends Model
     'ACT_VALOR_ACTUAL',
     'ACT_SEGUROS',
     'ACT_VALOR_DE_SALVAMENTO',
-    'ACT_VIGENCIA'
+    'ACT_VIGENCIA',
+    'ACT_PROPIETARIO'
   ];
 }

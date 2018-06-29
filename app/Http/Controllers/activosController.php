@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\ActivoInterno;
-use app\ActivoAsignado;
+use App\ActivoAsignado;
 use App\Proveedor;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ActivosController extends Controller
 {
@@ -27,6 +28,7 @@ class ActivosController extends Controller
     public function postRegistrarActivo(Request $request)
     {
         $this->validarRegistroActivo($request);
+        //dd(Auth::user()->PRO_RUN);
         $createRegistro = $this->createRegistro($request->all());
         if (!$createRegistro) {
             return redirect()->route('indexActivos')->with('error', 'Activo no Creado');
@@ -56,7 +58,7 @@ class ActivosController extends Controller
             'ACT_DESC' => $data['desc'],
             'ACT_INFO' => $data['info'],
             'ACT_MARCA' => $data['marca'],
-            'ACT_ESTADO' => 'EN USO',
+            'ACT_ESTADO' => 'DISPONIBLE',
             'ACT_FECHA_INGRESO' => Carbon::now(),
             'ACT_VALOR_COMPRA' => $data['valorCompra'],
             'ACT_TASA_DESPRECIACION' => '20',
@@ -64,13 +66,16 @@ class ActivosController extends Controller
             'ACT_SEGUROS' => $data['seguros'],
             'ACT_VALOR_DE_SALVAMENTO' => $salvamento ,
             'ACT_VIGENCIA' => $data['vigencia'],
+            'ACT_PROPIETARIO' => Auth::user()->PRO_RUN,
         ]);
     }
     // FIN REGISTRO DE ACTIVO
 
     public function buscadorActivos(Request $request)
     {
-      $estAct = $request->input('estadoActivos');
+        //dd($request->estadoActivos);
+      //$estAct = $request->input('estadoActivos');
+        $estAct = $request->estadoActivos;
       $actint =  ActivoInterno::where('ACT_ESTADO' , $estAct)->get();
       return view('ModuloInventario.Activos.Listado')
       ->with('actint', $actint);
@@ -117,9 +122,19 @@ class ActivosController extends Controller
 
       public function showAsignarActivo()
       {
+          $activos = ActivoAsignado::all();
+          //$actasig = ActivoAsignado::all();
+          //dd($actasig);
+          //$activos = ActivoInterno::whereIn('ACT_ID',$actasig);
+          $actdisp = ActivoInterno::all()
+              ->where('ACT_ESTADO','=','DISPONIBLE')
+              ->where('ACT_PROPIETARIO','=',Auth::user()->PRO_RUN)
+              ;
+          //dd($actdisp);
           $proveedor = Proveedor::orderby('PRO_NOMBRE','ASC');
           return view('ModuloInventario.Activos.Asignar')
-          ->with('prov', $proveedor);
+              ->with('actdisp', $actdisp)
+              ->with('prov', $proveedor);
       }
 
 
