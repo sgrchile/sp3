@@ -34,12 +34,6 @@ class OrdenCompra extends Model
       'OC_ESTADO',
       'OC_EJECUCION'
   ];
-  **
-   * Declara que la tabla no tenga timestamps
-   *
-   * @var boolean
-   */
-  public $timestamps = false;
 
   /**
    * Obtiene el proveedor asociado a la orden de compra

@@ -17,12 +17,11 @@
         <div class="container"  ng-app="">
 
           <table class="table-condensed text-right" align="center">
-            <tr>
+            <!--<tr>
               <td>BUSCAR PROVEEDOR DE SERVICIOS:</td>
               <td ><input type="text" required class="form-control" style="width:175px;"/></td>
               <td align="left"><button type="button" class="btn btn-primary btn-xs">  <i class="fa fa-search" style="font-size:29px"></i></button></td>
-            </tr>
-
+            </tr>-->
 
             <tr>
               <td style="text-align:right">ORIENTADO A:</td>
@@ -47,19 +46,18 @@
                   <option value="4">Oferta de Artículos</option>
                 </select>
               </td>
-              <td align="left"><button type="button" class="btn btn-primary btn-xs">  <i class="fa fa-search" style="font-size:29px"></i></button></td>
+              <!--<td align="left"><button type="button" class="btn btn-primary btn-xs">  <i class="fa fa-search" style="font-size:29px"></i></button></td>-->
             </tr>
           </table>
 
         <div class="container" align="center" ng-switch="myVar">
 
-            <div ng-switch-when="1">
+            <div ng-switch-when="4">
               <h3 class=" text-center text-uppercase" >PRODUCTOS</h3>
 
               <table class="table-condensed table-bordered">
 
                 <tr>
-                  <td>ID</td>
                   <td>COD. OFERTA</td>
                   <td>RUT PROVEEDOR</td>
                   <td>DESC.</td>
@@ -67,26 +65,25 @@
                   <td>DIAS DE ENTREGA</td>
                   <td>HORARIO INICIO</td>
                   <td>HORARIO FIN</td>
-                  <td>COBERTURA DE SERVICIO</td>
+                  <td>ORIENTACION</td>
                   <td>VALOR</td>
 
                 </tr>
-
+                @foreach($ofertaarts as $ofertaart)
                 <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-
+                  <td>{{ $ofertaart->OFAR_ID }}</td>
+                  <td>{{ $ofertaart->OFAR_PRO_RUN }}</td>
+                  <td>{{ $ofertaart->OFAR_DESC }}</td>
+                  <td>{{ $ofertaart->OFAR_RAZON_COBRO }}</td>
+                  <td>{{ $ofertaart->OFAR_DIAS_ENTREGA }}</td>
+                  <td>{{ $ofertaart->OFAR_HORARIO_ENT_INI }}</td>
+                  <td>{{ $ofertaart->OFAR_HORARIO_ENT_FIN }}</td>
+                  <td>{{ App\Orientacion::find($ofertaart->OFAR_OR_COD)->OR_DESC }}</td>
+                  <td>{{ $ofertaart->OFAR_VALOR }}</td>
                 </tr>
-
+                  @endforeach
               </table>
+              {{ $ofertaarts->links() }}
             </div>
 
             <div ng-switch-when="2">
@@ -94,7 +91,6 @@
               <table class="table-condensed table-bordered">
 
                 <tr>
-                  <td>ID</td>
                   <td>COD. OFERTA</td>
                   <td>RUT PROVEEDOR</td>
                   <td>TIPO VEHICULO</td>
@@ -107,36 +103,35 @@
                   <td>HORARIO FIN</td>
                   <td>COBERTURA DE SERVICIO</td>
                   <td>RAZON DE COBRO</td>
+                  <td>VALOR</td>
 
                 </tr>
-
+                @foreach($maquinas as $maquina)
                 <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-
+                  <td>{{ $maquina->ARM_ID }}</td>
+                  <td>{{ $maquina->ARM_PRO_RUN }}</td>
+                  <td>{{ $maquina->ARM_TP_VEHICULO }}</td>
+                  <td>{{ $maquina->ARM_SEGUROS_ASOCIADOS }}</td>
+                  <td>{{ $maquina->ARM_OPERARIO }}</td>
+                  <td>{{ $maquina->ARM_LICENCIAS_CONDUCIR }}</td>
+                  <td>{{ $maquina->ARM_CURSOS }}</td>
+                  <td>{{ $maquina->ARM_DIAS_LABORALES }}</td>
+                  <td>{{ $maquina->ARM_HOR_INI }}</td>
+                  <td>{{ $maquina->ARM_HOR_FIN }}</td>
+                  <td>{{ $maquina->ARM_COB_SERVICIO }}</td>
+                  <td>{{ $maquina->ARM_RAZON_COBRO }}</td>
+                  <td>{{ $maquina->ARM_VALOR }}</td>
                 </tr>
-
-
+                  @endforeach
               </table>
+              {{ $maquinas->links() }}
             </div>
 
-            <div ng-switch-when="3">
+            <div ng-switch-when="1">
               <h3 class=" text-center text-uppercase" >SERVICIOS TECNICO-PROFESIONALES</h3>
               <table class=" table-bordered">
 
                 <tr>
-                  <td>ID</td>
                   <td>COD. OFERTA</td>
                   <td>RUT PROVEEDOR</td>
                   <td>FORMACION</td>
@@ -151,34 +146,31 @@
                   <td>VALOR</td>
 
                 </tr>
-
+                @foreach($servpro as $serprof)
                 <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-
+                  <td>{{ $serprof->STP_COD }}</td>
+                  <td>{{ $serprof->STP_PRO_RUN }}</td>
+                  <td>{{ $serprof->STP_FORMACION }}</td>
+                  <td>{{ $serprof->STP_FORMACION_ESTABLECIMIENTO }}</td>
+                  <td>{{ $serprof->STP_ANHOS_EXPERIENCIA }}</td>
+                  <td>{{ $serprof->STP_FORTALEZAS }}</td>
+                  <td>{{ $serprof->STP_DEBILIDADES }}</td>
+                  <td>{{ $serprof->STP_DESC_EXP_LABORAL }}</td>
+                  <td>{{ $serprof->STP_BUSC_O_OF }}</td>
+                  <td>{{ $serprof->STP_CURSOS_PST_GRADOS }}</td>
+                  <td>{{ $serprof->STP_COB_SERV }}</td>
+                  <td>{{ $serprof->STP_VALOR }}</td>
                 </tr>
-
-
+                @endforeach
               </table>
+              {{ $servpro->links() }}
             </div>
 
-            <div ng-switch-when="4">
+            <div ng-switch-when="3">
               <h3 class=" text-center text-uppercase">SERVICIOS</h3>
               <table class="table-condensed table-bordered">
 
                 <tr>
-                  <td>ID</td>
                   <td>COD. OFERTA</td>
                   <td>RUT PROVEEDOR</td>
                   <td>DESCRIPCION</td>
@@ -190,22 +182,21 @@
                   <td>VALOR</td>
 
                 </tr>
-
+                @foreach($servicios as $serv)
                 <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-
+                  <td>{{ $serv->OFSER_COD }}</td>
+                  <td>{{ $serv->OFSER_PRO_RUN }}</td>
+                  <td>{{ $serv->OFSER_DESCRIPCION }}</td>
+                  <td>{{ $serv->OFSER_DIAS_LABORALES }}</td>
+                  <td>{{ $serv->OFSER_HORARIOS_TRABAJO_INI }}</td>
+                  <td>{{ $serv->OFSER_HORARIOS_TRABAJO_FIN }}</td>
+                  <td>{{ $serv->OFSER_COBERTURA_SERVICIO }}</td>
+                  <td>{{ $serv->OFSER_RAZ_COBRO }}</td>
+                  <td>{{ $serv->OFSER_VALOR }}</td>
                 </tr>
-
+                  @endforeach
               </table>
+              {{ $servicios->links() }}
             </div>
           </div>
 
@@ -222,7 +213,7 @@
 
 <div class="container">
 
-<a href="javascript:history.back(1)"><button class="btn btn-primary btn-lg">Volver</button></a>
+<a href="{{ route('inventario') }}"><button class="btn btn-primary btn-lg">Volver</button></a>
 
 </div>
 </a>

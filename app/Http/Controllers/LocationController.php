@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Actividad;
 use App\AreaServicio;
 use App\Etapa;
+use App\OfertaArticulo;
 use App\PersonaJuridica;
 use App\Proceso;
 use App\Producto;
@@ -95,5 +96,10 @@ class LocationController extends Controller
         $mn = PersonaJuridica::get();
 
         return response()->json($mn);
+    }
+    public function getoferta($cod)
+    {
+        return response()
+            ->json(OfertaArticulo::find($cod));
     }
 }

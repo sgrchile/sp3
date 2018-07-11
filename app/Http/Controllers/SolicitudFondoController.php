@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\AreaDesempeño;
+use App\Cargo;
 use App\ProveedorExterno;
 use DB;
 use Carbon\Carbon;
@@ -41,11 +43,38 @@ class SolicitudFondoController extends Controller
         $causas = Causa::all();
         $ordenes_trabajo = OrdenTrabajo::all()->where('OT_PER_RUT_ENCARGADO','=',Auth::user()->PRO_RUN);
         $bancos = Banco::all();
-        $personales = Proveedor::all()
+        $personales = new Proveedor();
+        $provexternos = ProveedorExterno::all();
+        $prov = Proveedor::all()
             ->where('PRO_ALTA','=',1);
-        //dd($personales);
+        $cont = 0;
+        if ($prov != null && $prov->count()>0){
+            for ($i=0;$i<$prov->count();$i++){
+                $personales->PRO_RUN = $prov[$i]->PRO_RUN;
+                $personales->PRO_NOMBRE = $prov[$i]->PRO_NOMBRE;
+                $personales->PRO_APE_PAT = $prov[$i]->PRO_APE_PAT;
+                $personales->PRO_EMP = $prov[$i]->PRO_EMP;
+                if ($prov[$i]->PRO_CAR_ID != null){
+                    $personales->PRO_CAR_ID = Cargo::find($prov[$i]->PRO_CAR_ID)->CAR_DESC;
+                }
+                $cont++;
+            }
+        }
+        /*if ($provexternos != null && $provexternos->count()>0){
+            for ($i=0;$i<$provexternos->count();$i++){
+                $personales->PRO_RUN = $provexternos[$i]->PRO_EXT_RUT;
+                $personales->PRO_NOMBRE = $provexternos[$i]->PRO_EXT_NOM;
+                $personales->PRO_APE_PAT = $provexternos[$i]->PRO_EXT_APE_PAT;
+                $personales->PRO_EMP = $provexternos[$i]->PRO_EXT_EMP;
+                if ($provexternos[$i]->PRO_EXT_AREA_DESEMP != null){
+                    $personales->PRO_CAR_ID = AreaDesempeño::find($provexternos[$i]->PRO_EXT_AREA_DESEMP)->DESC_AREA_DESEMP;
+                }
+            }
+        }*/
+
+        //dd($prov);
         $sfondos = SolicitudFondo::all();
-        $provext = ProveedorExterno::all();
+        $provext = null;
 
         //dd( Auth::user());
 
@@ -54,7 +83,62 @@ class SolicitudFondoController extends Controller
             ->with('causas', $causas)
             ->with('ordenes_trabajo', $ordenes_trabajo)
             ->with('bancos', $bancos)
-            ->with('personales', $personales)
+            ->with('personales', $prov)
+            ->with('tipo_cuentas', $tipo_cuentas)
+            ->with('provext', $provext)
+            ->with('sfondos', $sfondos);
+    }
+
+    public function getModificarSolicitar($id)
+    {
+        $tipo_cuentas = TipoCuenta::all();
+        $cuentas = CuentaEmpresa::all()->where('CTAE_EMP_ID','=',Auth::user()->PRO_EMP);
+        $causas = Causa::all();
+        $ordenes_trabajo = OrdenTrabajo::all()->where('OT_PER_RUT_ENCARGADO','=',Auth::user()->PRO_RUN);
+        $bancos = Banco::all();
+        $personales = new Proveedor();
+        $provexternos = ProveedorExterno::all();
+        $prov = Proveedor::all()
+            ->where('PRO_ALTA','=',1);
+        if ($prov != null && $prov->count()>0){
+            foreach ($prov as $pro){
+                $personales->PRO_RUN = $pro->PRO_RUN;
+                $personales->PRO_NOMBRE = $pro->PRO_NOMBRE;
+                $personales->PRO_APE_PAT = $pro->PRO_APE_PAT;
+                $personales->PRO_EMP = $pro->PRO_EMP;
+                if ($pro->PRO_CAR_ID != null){
+                    $personales->PRO_CAR_ID = Cargo::find($pro->PRO_CAR_ID)->CAR_DESC;
+                }
+            }
+        }
+        if ($provexternos != null && $provexternos->count()>0){
+            foreach ($provexternos as $proex){
+                $personales->PRO_RUN = $proex->PRO_EXT_RUT;
+                $personales->PRO_NOMBRE = $proex->PRO_EXT_NOM;
+                $personales->PRO_APE_PAT = $proex->PRO_EXT_APE_PAT;
+                $personales->PRO_EMP = $proex->PRO_EXT_EMP;
+                if ($proex->PRO_EXT_AREA_DESEMP != null){
+                    $personales->PRO_CAR_ID = AreaDesempeño::find($proex->PRO_EXT_AREA_DESEMP)->DESC_AREA_DESEMP;
+                }
+            }
+        }
+
+        $sfondos = SolicitudFondo::all();
+        $provext = Proveedor::find($id);
+        //dd($provext->PRO_RUN);
+        //if ($provext == null){
+          //  $provext = ProveedorExterno::all()->where('PRO_EXT_RUT','=',$id);
+        //}
+        /*if (!$provext) {
+            return redirect()->view('Modulosolicitudfondo.solicitar')->with('error', 'el proveedor que intenta obtener, no existe.');
+        }*/
+
+        return view('Modulosolicitudfondo.solicitar')
+            ->with('cuentas', $cuentas)
+            ->with('causas', $causas)
+            ->with('ordenes_trabajo', $ordenes_trabajo)
+            ->with('bancos', $bancos)
+            ->with('personales', $prov)
             ->with('tipo_cuentas', $tipo_cuentas)
             ->with('provext', $provext)
             ->with('sfondos', $sfondos);

@@ -112,3 +112,7 @@ Route::get('/itemprod/{prod}', [
     'uses' => 'LocationController@getitemprod',
     'as' => 'get.itemprod',
 ]);
+Route::get('/ofertaprod/{cod}', [
+    'uses' => 'LocationController@getoferta',
+    'as' => 'get.ofertapro',
+]);

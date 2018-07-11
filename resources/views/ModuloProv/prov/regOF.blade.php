@@ -246,6 +246,12 @@
          <form id="form1" name="form1" method="post" action="{{ route('post.registrarOfertaServicio') }}">
          {{ csrf_field() }}
          <table class="table-condensed text-right" style="text-align:right" align="center">
+             <tr>
+                 <td style="text-align:right"><label>NOMBRE :</label></td>
+                 <td>
+                     <input type="text" id="nombre" class="form-control" name="nombre" required>
+                 </td>
+             </tr>
            <tr>
            <td style="text-align:right"><label>ORIENTADO A:</label></td>
            <td style="text-align:right">
@@ -331,7 +337,7 @@
         </tr>
         <tr>
         <td><label>Capacidad:</label></td>
-        <td><input type="text" class="form-control" name="capacidad" required></td>
+        <td><input type="number" class="form-control" name="capacidad" required></td>
         </tr>
         <tr>
         <td colspan="2" style="text-align:center"><label> Dia de Entrega:</label></td>

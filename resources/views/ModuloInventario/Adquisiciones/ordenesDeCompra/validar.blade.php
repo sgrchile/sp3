@@ -47,28 +47,25 @@
                   <td>VALOR</td>
                   <td>TOTAL</td>
                   <td>FECHA DE CREACION</td>
-                  <td>ESTADO</td>
                   <td>ACCION</td>
-
-
                 </tr>
 
+                @foreach($ocv as $val)
                 <tr>
-
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td><a href="{{route('DescripcionDeOC')}}"><button class="btn btn-primary btn-xs">VER OC</button></a> </td>
+                  <td>{{ $val->OC_EMP }}</td>
+                  <td>{{ $val->OC_FOLIO }}</td>
+                  <td>{{ $val->OC_COD }}</td>
+                  <td>{{ $val->OC_ARTICULO_ID }}</td>
+                  <td>{{ App\OfertaArticulo::find($val->OC_ARTICULO_ID)->OFAR_DESC }}</td>
+                  <td>{{ $val->OC_CANTIDAD }}</td>
+                  <td>{{ $val->OC_VALOR }}</td>
+                  <td>{{ $val->OC_TOTAL }}</td>
+                  <td>{{ $val->CREATED_AT }}</td>
+                  <td><a href="{{route('DescripcionDeOC',$val->OC_COD)}}"><button class="btn btn-primary btn-xs">VER OC</button></a> </td>
                 </tr>
-
+                  @endforeach
               </table>
+              {!! $ocv->links() !!}
             </div>
 
             <div ng-switch-when="APROBADO">

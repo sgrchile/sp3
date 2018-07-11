@@ -846,9 +846,14 @@ Route::group(['prefix' => 'modulo'], function () {
         return view('ModuloInventario.index');
       })->name('inventario');
 
-      Route::get('/Catalogo', function () {
+      /*Route::get('/Catalogo', function () {
         return view('ModuloInventario.Catalogo');
-      })->name('Catalogo');
+      })->name('Catalogo');*/
+
+        Route::get('Catalogo', [
+            'uses' => 'CatalogoController@index',
+            'as' => 'Catalogo',
+        ]);
 
       Route::get('/GuiasDeDespacho', function () {
         return view('ModuloInventario.GuiasDeDespacho');
@@ -1004,8 +1009,18 @@ Route::group(['prefix' => 'modulo'], function () {
                       return view('ModuloInventario.Adquisiciones.ordenesDeCompra.ListaGuiasDeDespacho');
                     })->name('ListaGuiasDeDespacho');
 
+                      Route::post('/Compras', [
+                          'uses' => 'AdquisicionesController@create',
+                          'as' => 'post.selpro',
+                      ]);
+
+                      Route::post('/CreateOrdenCompra', [
+                          'uses' => 'AdquisicionesController@store',
+                          'as' => 'post.compra',
+                      ]);
+
                     Route::get('/Compras', function () {
-                      return view('ModuloInventario.Adquisiciones.compras');
+                      return view('ModuloInventario.Adquisiciones.SelProveedor');
                     })->name('Compras');
 
                     Route::get('/indexOC', function () {
@@ -1016,9 +1031,11 @@ Route::group(['prefix' => 'modulo'], function () {
                       return view('ModuloInventario.Adquisiciones.ordenesDeCompra.verificar');
                     })->name('verificar');
 
-                    Route::get('/validar', function () {
-                      return view('ModuloInventario.Adquisiciones.ordenesDeCompra.validar');
-                    })->name('validar');
+
+                      Route::get('/validar', [
+                          'uses' => 'AdquisicionesController@index',
+                          'as' => 'validar',
+                      ]);
 
                     Route::get('/recibir', function () {
                       return view('ModuloInventario.Adquisiciones.ordenesDeCompra.recibir');
@@ -1043,6 +1060,11 @@ Route::group(['prefix' => 'modulo'], function () {
                     Route::get('/DescripcionDeOC', function () {
                       return view('ModuloInventario.Adquisiciones.ordenesDeCompra.DescripcionOC');
                     })->name('DescripcionDeOC');
+
+                      Route::get('/DescripcionDeOC', [
+                          'uses' => 'AdquisicionesController@show',
+                          'as' => 'DescripcionDeOC',
+                      ]);
 
                     Route::get('/liquidacionDeOc', function () {
                       return view('ModuloInventario.Adquisiciones.ordenesDeCompra.OCparaLiquidar');
@@ -1355,8 +1377,18 @@ Route::group(['prefix' => 'modulo'], function () {
       ]);
 
       Route::get('Reservar', function () {
-        return view('ModuloReservaDeSala.Reservar');
+        return view('ModuloReservaDeSala.Fecha');
       })->name('Reservar');
+
+      Route::get('/Horario/{id}', [
+          'uses' => 'ReservaSalaController@reserva',
+          'as' => 'reg.reserva',
+      ]);
+
+      Route::post('Fecha', [
+          'uses' => 'ReservaSalaController@create',
+          'as' => 'post.fecha',
+      ]);
 
       Route::post('Reservar', [
           'uses' => 'ReservaSalaController@store',

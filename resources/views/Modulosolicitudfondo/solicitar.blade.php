@@ -88,7 +88,7 @@
 
           <tr>
           <td><label>RECEPTOR RUT:</label></td>
-          <td><input type="text" style="width:275px" class="form-control" id="id_receptor" name="rec_id" readonly></td>
+          <td><input type="text" style="width:275px" class="form-control" id="id_receptor" value="{{ isset($provext) ? $provext->PRO_RUN : '' }}" name="rec_id" readonly></td>
           <td> <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-backdrop="static" data-target="#selRecep">Seleccionar</button></td>
           </tr>
           <tr>
@@ -117,7 +117,7 @@
 
           <tr>
           <td><label>Nº DE CUENTA:</label></td>
-          <td><input type="text" style="width:275px" value="{{ Auth::user()->PRO_N_CUENTA}}" id="nCuenta" required class="form-control" name="rec_nrocuenta"></td>
+          <td><input type="text" style="width:275px" value="{{ isset($provext) ? $provext->PRO_N_CUENTA : '' }}" id="nCuenta" required class="form-control" name="rec_nrocuenta"></td>
           </tr>
 
           <tr>
@@ -210,12 +210,13 @@
              			<td>{{ $personal->PRO_NOMBRE }}</td>
              			<td>{{ $personal->PRO_APE_PAT }}</td>
                         <td>{{ App\Empresa::find($personal->PRO_EMP)->EMP_DESC }}</td>
-                        @if(App\Cargo::find($personal->PRO_CAR_ID) != null)
+                        @if($personal->PRO_CAR_ID != null)
              			<td>{{ App\Cargo::find($personal->PRO_CAR_ID)->CAR_DESC }}</td>
                         @else
                             <td>{!! 'Ninguno' !!}</td>
                         @endif
-             			<td><button data-personal-id="{{ $personal->PRO_RUN }}" class="btn btn-primary btn-sm" data-dismiss="modal">&#10004;</button></td>
+             			<!--<td><button data-personal-id="{{ $personal->PRO_RUN }}" class="btn btn-primary btn-sm" data-dismiss="modal">&#10004;</button></td>-->
+                        <td><a href={{route('get.modificar.solicitar', $personal->PRO_RUN)}}><button class="btn btn-primary btn-sm"> &#10004;</button></a></td>
              		</tr>
              	@endforeach
              </table>

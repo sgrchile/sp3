@@ -17,24 +17,22 @@
 
             <table class= " table table-bordered table-condensed" >
               <tr>
-                <td>SALA</td>
-                <td>PARTICIPANTES</td>
-                <td>DESCRIPCION</td>
-                <td>FECHA</td>
-                <td>HORA INICIO</td>
-                <td>HORA TERMINO</td>
+                <td>fecha</td>
+                <td>hora inicio</td>
+                <td>hora fin</td>
+                <td>sala</td>
+                <td>estado</td>
                 <td style="width:300px;">ACCION</td>
               </tr>
               @foreach($reservas as $reserva)
               <tr>
-                <td>{{ (App\Sala::find($reserva->RES_SALA))['SALA_DESC'] }}</td>
-                <td></td>
-                <td>{{ $reserva->RES_DESC }}</td>
-                <td>{{ $reserva->RES_FECHA }}</td>
-                <td>{{ $reserva->RES_HR_INICIO }}</td>
-                <td>{{ $reserva->RES_HR_FIN }}</td>
+                <td>{{ $reserva->RS_FECHA }}</td>
+                <td>{{ $reserva->RS_HORA }}</td>
+                <td>{{ $reserva->RS_HORA2 }}</td>
+                <td>{{ App\Sala::find($reserva->RS_MODULO)->SALA_DESC }}</td>
+                <td>{{ App\EstadoReserva::find($reserva->RS_DISPONIBLE)->DESC_EST_RES }}</td>
                 <td><button class="btn btn-primary btn-xs" style="margin-left:10px;">ELIMNAR</button>
-                  <a href="{{route('AgregarParticipantes')}}"></a><button class="btn btn-primary btn-xs" style="margin-left:10px;">AGREGAR PARTICIPANTES</button></td>
+                </td>
               </tr>
               @endforeach
 
