@@ -171,11 +171,11 @@
                 @endforeach
               </select>
             </td>
-            <td><label>FECHA CONTITUCION</label></td>
+            <td><label>FECHA CONSTITUCION</label></td>
             <td>{{ Form::date('fecha_contitucion',Carbon\Carbon::now()->toDateString(),['class'=>'form-control','style'=>'width:175px']) }}</td>
           </tr>
           <tr>
-            <td><label>REPRECENTANTE LEGAL:</label></td>
+            <td><label>REPRESENTANTE LEGAL:</label></td>
             <td><input type="text" class="form-control" name="rep_legal" style="width:175px;"></td>
             <td><label>SISTEMA ERP</label></td>
             <td>
