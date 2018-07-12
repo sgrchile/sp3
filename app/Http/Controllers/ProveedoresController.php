@@ -261,7 +261,7 @@ class ProveedoresController extends Controller
             'pais' => 'required',
             'email' => 'required',
             'telefono' => 'required',
-            'password' => 'required|min:6|confirmed',
+            //'password' => 'required|min:6|confirmed',
             'pagos' => 'required',
             'oficina' => 'required',
             'pers_juridica' => 'required',

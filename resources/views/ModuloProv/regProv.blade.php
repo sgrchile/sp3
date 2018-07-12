@@ -92,14 +92,6 @@
           <td><label>REDES SOCIALES:</label></td>
           <td><textarea name="redes"  class="form-control" style ="max-width:175px; max-height:175px;" placeholder="instagram,linkedin"></textarea></td>
 
-          <td><label>PASSWORD:</label></td>
-          <td><input type="password" class="form-control" name="password" required  style="width:175px;"></td>
-          </tr>
-
-        <tr>
-          <td><label>CONFIRMAR PASSWORD:</label></td>
-          <td><input type="password" class="form-control" name="password_confirmation" required  style="width:175px;"></td>
-
           <td><label>Nº CUENTA:</label></td>
           <td>
             {{ Form::number('nro_cuenta',null,['class'=>'form-control','required','style'=>'width:175px']) }}
