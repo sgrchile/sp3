@@ -33,7 +33,7 @@
 
                   <tr>
                   <td>Por Transferir</td>
-                  <td>Por consiliar</td>
+                  <td>Por conciliar</td>
                   </tr>
 
                   <tr>
