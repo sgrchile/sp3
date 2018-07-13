@@ -472,7 +472,7 @@ Route::group(['prefix' => 'modulo'], function () {
             })->name('bonos');
 
             Route::get('/remuneracion', function () {
-                return view('ModuloRRHH.AdmRRHH.liquidaciones');
+                return view('ModuloRRHH.AdmRRHH.Liquidaciones');
             })->name('Liquidaciones');
 
             Route::get('/consultar/liquidaciones', function () {
@@ -549,7 +549,7 @@ Route::group(['prefix' => 'modulo'], function () {
                 ]);
 
                 Route::get('/afp', function () {
-                    return view('ModuloRRHH.AdmRRHH.AFP');
+                    return view('ModuloRRHH.AdmRRHH.afp');
                 })->name('AFP');
 
                 Route::get('/prevision_salud', function () {

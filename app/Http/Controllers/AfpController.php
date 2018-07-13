@@ -27,5 +27,6 @@ class AfpController extends Controller
         $afp->AFP_SIS = $request->sis;
         $afp->AFP_TASA_INDEPENDIENTE = $request->tasaind;
         $afp->save();
+        return redirect()->back()->with('success', 'Afp creada exitosamente');
     }
 }
