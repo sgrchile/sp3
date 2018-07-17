@@ -119,7 +119,7 @@
             $("#valor").empty();
             $("#cant").empty();
             $("#total").empty();
-            $.get("http://127.0.0.1:8000/api/ofertaprod/" + cod).done(function(data){
+            $.get("https://35.193.38.242/api/ofertaprod/" + cod).done(function(data){
                 if (data !== null){
                     //alert(data['OFAR_CAPACIDAD']);
                     $("#desc").val(data['OFAR_DESC']);

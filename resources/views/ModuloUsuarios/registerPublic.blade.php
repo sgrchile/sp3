@@ -413,7 +413,7 @@
                     $.post("{{ route('registrar.proveedor.persona') }}",inputs).done(function(data){
                         alert(data.respuesta);
                         alert("Su cuenta fue creada, validaremos sus datos a la brevedad para activar su cuenta");
-                        location.href ="https://plataforma.sgrchile.com/";
+                        location.href ="https://35.193.38.242/";
                     }).fail(function(data){
                         $.each( data.responseJSON, function( i, val ) {
                             alert(val);

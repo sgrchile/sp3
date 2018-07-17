@@ -70,8 +70,8 @@ class RrhhAdminController extends Controller
      public function postRegistroRh(Request $request)
      {
          //dd($request);
-         $this->validateDatosAdic($request);
-         $createNuevoRh = $this->createDatosAdic($request->all());
+         $this->validateNuevoRh($request);
+         $createNuevoRh = $this->createNuevoRh($request->all());
 
          if (! $createNuevoRh) {
              return redirect()->route('regPersonal')->with('error', "Hubo un problema al guardar sus datos.");
@@ -110,7 +110,6 @@ class RrhhAdminController extends Controller
              'PRO_EMAIL' => $data['email'],
              'PRO_REFERENCIA' => $data['referencia'],
              'PRO_FECHA_NAC' => $data['fecha_nacimiento'],
-             'password' => Hash::make($data['password']),
              'PRO_CAR_ID' => $cargo,
              'PRO_EMP' => $empresa,
              'PRO_ESTADO_PERSONAL' => $estado,
@@ -121,6 +120,7 @@ class RrhhAdminController extends Controller
              'PRO_PV_COD' => $provincia,
              'PRO_REG_COD' => $region,
              'PRO_CIU_COD' => $ciudad,
+             'PRO_CONTRATO' => $data['contrato'],
          ]);
      }
 
@@ -208,7 +208,6 @@ class RrhhAdminController extends Controller
              'nro_cuenta' => 'required',
              'banco' => 'required',
              'tipo_cuenta' => 'required',
-             'password' => 'required|min:6|confirmed',
              'email' => 'required|email|unique:PRO_PROVEEDOR,PRO_EMAIL',
              'personal' => 'required',
          ]);

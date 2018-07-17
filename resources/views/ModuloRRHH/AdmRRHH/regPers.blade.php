@@ -86,9 +86,8 @@
               <h4>GENERO:</h4>
                 <select class="form-control" name="sexo">
                   <option>Seleccionar</option>
-                  <option value="HOMBRE">MASCU</option>
+                  <option value="HOMBRE">MASCULINO</option>
                   <option value="MUJER">FEMENINO</option>
-                  <option value="INDEFINIDO">INDEFINIDO</option>
                 </select>
                 </div>
 
@@ -200,33 +199,23 @@
               </div>
 
               <div class="col-sm-6 col-md-4">
-              <h4>PASSWORD:</h4>
-              <input type="password" class="form-control" name="password" required>
-              </div>
-
-              <div class="col-sm-6 col-md-4">
-              <h4>CONFIRMAR PASSWORD:</h4>
-              <input type="password" class="form-control" name="password_confirmation" required>
-              </div>
-
-              <div class="col-sm-6 col-md-4">
               <h4>TELÉFONO:</h4>
               <input type="text" class="form-control" name="telefono" required>
               </div>
 
               <div class="col-sm-6 col-md-4">
               <h4>SUELDO BASE:</h4>
-              <input type="number" min="0" class="form-control" name="telefono" required>
+              <input type="number" min="0" class="form-control" name="sueldo" required>
               </div>
 
               <div class="col-sm-6 col-md-4">
-              <h4>DURACION DE CONTRATO:</h4>
-              <input type="number" min="0" class="form-control" name="telefono" required>
+              <h4>DURACION DE CONTRATO(meses):</h4>
+              <input type="number" min="0" class="form-control" name="duracion" required>
               </div>
 
               <div class="col-sm-6 col-md-4">
               <h4>FECHA DE INGRESO:</h4>
-              <input type="date" readonly class="form-control" name="telefono" >
+              <input type="date" class="form-control" name="fechaing" >
               </div>
 
               <div class="col-sm-12">

@@ -209,11 +209,15 @@
              			<td>{{ $personal->PRO_RUN }}</td>
              			<td>{{ $personal->PRO_NOMBRE }}</td>
              			<td>{{ $personal->PRO_APE_PAT }}</td>
+                        @if($personal->PRO_EMP != null)
                         <td>{{ App\Empresa::find($personal->PRO_EMP)->EMP_DESC }}</td>
+                        @else
+                            <td>{!! 'sin asignar' !!}</td>
+                        @endif
                         @if($personal->PRO_CAR_ID != null)
              			<td>{{ App\Cargo::find($personal->PRO_CAR_ID)->CAR_DESC }}</td>
                         @else
-                            <td>{!! 'Ninguno' !!}</td>
+                            <td>{!! 'sin asignar' !!}</td>
                         @endif
              			<!--<td><button data-personal-id="{{ $personal->PRO_RUN }}" class="btn btn-primary btn-sm" data-dismiss="modal">&#10004;</button></td>-->
                         <td><a href={{route('get.modificar.solicitar', $personal->PRO_RUN)}}><button class="btn btn-primary btn-sm"> &#10004;</button></a></td>

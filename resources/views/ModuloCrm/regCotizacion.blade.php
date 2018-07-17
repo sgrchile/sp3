@@ -205,7 +205,7 @@
                 let tpventa = $(this).val();
                 $("#idpro").empty();
                 if (tpventa == 1){
-                    $.get("https://plataforma.sgrchile.com/api/servicio/").done(function(data){
+                    $.get("https://35.193.38.242/api/servicio/").done(function(data){
                         if (data !== null){
                             if (Object.keys(data).length > 0 ){
                                 $.each(data, function( index, value ){
@@ -218,7 +218,7 @@
                         }
                     });
                 }if (tpventa == 2){
-                    $.get("https://plataforma.sgrchile.com/api/producto/").done(function(data){
+                    $.get("https://35.193.38.242/api/producto/").done(function(data){
                         if (data !== null){
                             if (Object.keys(data).length > 0 ){
                                 $.each(data, function( index, value ){
@@ -236,14 +236,14 @@
                 $("#item").empty();
                 let tpventa = $("#tpventa").val();
                 if (tpventa == 1){
-                    $.get("https://plataforma.sgrchile.com/api/itemserv/" + prod).done(function(data){
+                    $.get("https://35.193.38.242/api/itemserv/" + prod).done(function(data){
                         if (data !== null){
                             $("#item").val(data('SER_DESC'));
                             $("#costouni").val(data('PROD_PRECIO_VENTA'));
                         }
                     });
                 } if (tpventa == 2) {
-                    $.get("https://plataforma.sgrchile.com/api/itemprod/" + prod).done(function(data){
+                    $.get("https://35.193.38.242/api/itemprod/" + prod).done(function(data){
                         if (data !== null){
                             $("#item").val(data('PROD_DESC'));
                             $("#costouni").val(data('PROD_PRECIO_VENTA'));
