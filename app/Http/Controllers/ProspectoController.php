@@ -124,7 +124,7 @@ class ProspectoController extends Controller
             'CLI_URGENCIA' => $data['urgencia'],
             'CLI_RUT_COTIZ' => $data['rut_cot'],
             'CLI_FONO2' => $data['telefono2'],
-            'CLI_ESTADO' => $data['emp_ot'],
+            'CLI_ESTADO' => 1,
             'CLI_DIRECCION' => $data['direccion'],
             'CLI_SITIO_WEB' => $data['sitioweb'],
             'CLI_RUBRO' => $data['rubro'],
