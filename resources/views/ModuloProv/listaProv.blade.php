@@ -38,8 +38,8 @@
                                     <td>{{ $proveedor->PRO_TEL }}</td>
                                     <td>{{ $proveedor->PRO_EMAIL }}</td>
                                     <td>
-                                        <!--<a href="{{route('cliente.destroy',$proveedor->CLI_RUT)}}"><button class="btn btn-primary btn-xs" onclick="" style="width:130px;"> VER FICHA</button></a>-->
-                                        <a href="{{ route('cliente.destroy',$proveedor->CLI_RUT) }}" onclick="return confirm('¿Desea eliminar éste proveedor?')" ><button class="btn btn-primary btn-xs"
+                                        <!--<a href="{{route('cliente.destroy',$proveedor->PRO_RUN)}}"><button class="btn btn-primary btn-xs" onclick="" style="width:130px;"> VER FICHA</button></a>-->
+                                        <a href="{{ route('prov.destroy',$proveedor->PRO_RUN) }}" onclick="return confirm('¿Desea eliminar éste proveedor?')" ><button class="btn btn-primary btn-xs"
                                                                                                                                                                       style="width:65px;" >ELIMINAR</button></a>
                                     </td>
                                 </tr>

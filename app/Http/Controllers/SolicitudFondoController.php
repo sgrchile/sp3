@@ -40,8 +40,7 @@ class SolicitudFondoController extends Controller
         $bancos = Banco::all();
         $personales = new Proveedor();
         $provexternos = ProveedorExterno::all();
-        $prov = Proveedor::all()
-            ->where('PRO_ALTA','=',1);
+        $prov = Proveedor::all();
         $cont = 0;
         //dd($prov);
         /*if ($prov != null && $prov->count()>0){

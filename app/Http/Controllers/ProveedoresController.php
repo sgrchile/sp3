@@ -100,6 +100,7 @@ class ProveedoresController extends Controller
     {
         $this->validateProveedorPersona($request);
         $createProveedorPersona = $this->createProveedorPersona($request->all());
+        dd($createProveedorPersona);
 
         if (! $createProveedorPersona) {
             return redirect()->route('regPerAct')->with('error', "Hubo un problema al crear el proveedor persona.");
@@ -801,5 +802,11 @@ public function getEvaluarOfertas(Request $request)
                       return redirect()->route('EvaluarServicio', $id)->with('error', 'Hubo un error al evaluar oferta');
                     }
                       return redirect()->route('EvaluarServicio', $id)->with('success', 'Oferta evaluada exitosamente.');
-                  }
+              }
+      public function destroy($id){
+          $prov = Proveedor::find($id);
+          //dd($cliente);
+          $prov->delete();
+          return redirect()->back()->with('success', 'Proveedor eliminado!');
+      }
 }

@@ -41,7 +41,7 @@
 
 
             <a href="{{ route('regPerAct')}}" >
-            <button type="button" class="btn btn-primary btn-lg">REGISTRO PERSONA PROVEEDOR</button>
+            <button type="button" class="btn btn-primary btn-lg">REGISTRO PERSONA</button>
             </a>
 
             </div>

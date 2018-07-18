@@ -644,6 +644,10 @@ Route::group(['prefix' => 'modulo'], function () {
             'uses' => 'ProveedoresController@index',
             'as' => 'listapro',
         ]);
+        Route::get('/proveedores/{id}', [
+            'uses' => 'ProveedoresController@destroy',
+            'as' => 'prov.destroy',
+        ]);
 
         Route::get('evaluarArticulo/{id}', [
             'uses' => 'ProveedoresController@getEvaluarArticulo',
