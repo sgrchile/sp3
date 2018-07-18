@@ -47,7 +47,7 @@ class ProveedoresController extends Controller
      */
     public function index()
     {
-        $prov = Proveedor::orderBy('PRO_NOMBRE','ASC')->paginate(10);
+        $prov = Proveedor::orderBy('PRO_NOMBRE','ASC')->where('PRO_ALTA','=',0)->paginate(10);
 
         //dd($clientes);
 
