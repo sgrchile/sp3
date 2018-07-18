@@ -51,7 +51,7 @@ class ProveedoresController extends Controller
 
         //dd($clientes);
 
-        return view('ModuloProv.prov.listaProv')->with('proveedores',$prov);
+        return view('ModuloProv.listaProv')->with('proveedores',$prov);
     }
 
     public function admin()
