@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\InventarioProducto;
-use App\Producto;
+use App\Articulo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class ProductosController extends Controller
+class ArticuloController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +15,10 @@ class ProductosController extends Controller
      */
     public function index()
     {
-        $invprod = InventarioProducto::orderBy('PROD_COD')->where('PROD_EXISTENCIAS','>',0)->paginate(20);
+        $invart = Articulo::orderBy('ART_DESC')->where('ART_EMP','=',Auth::user()->PRO_EMP)->paginate(20);
         //$prod = Producto::find($invprod->PROD_PRO_COD)->get();
         //dd($invprod);
-        return view('ModuloInventario.Productos.catalogoProductos')->with('invprod',$invprod);
+        return view('ModuloInventario.Productos.catalogoDeArticulos')->with('invart',$invart);
     }
 
     /**

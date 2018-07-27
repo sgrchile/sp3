@@ -91,8 +91,8 @@ class ProspectoController extends Controller
     public function store(Request $request)
     {
 
-        $createSolicitudFondo = $this->createProspecto($request->all());
-        if (!$createSolicitudFondo) {
+        $createProspecto = $this->createProspecto($request->all());
+        if (!$createProspecto) {
             return back()->with('error', 'Prospecto NO creado');
         }
 
@@ -122,7 +122,6 @@ class ProspectoController extends Controller
             'CLI_TEMP' => $data['temperatura'],
             'CLI_AREA_SERV' => $data['serv_req'],
             'CLI_URGENCIA' => $data['urgencia'],
-            'CLI_RUT_COTIZ' => $data['rut_cot'],
             'CLI_FONO2' => $data['telefono2'],
             'CLI_ESTADO' => 1,
             'CLI_DIRECCION' => $data['direccion'],

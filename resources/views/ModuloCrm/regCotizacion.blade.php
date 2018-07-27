@@ -5,25 +5,19 @@
 
     <div class="row">
         <div class="col-xs-12 col-md-12 col-sm-12">
-            <div class="block-web">
+            <div class="block-web" align="center">
                 <div class="header">
                     <div class="actions"></div>
+                    <h4 class="text-left text-uppercase">{!! Carbon\Carbon::now()->toFormattedDateString() !!} </h4>
+                    <br>
+                    <h4 class="text-left text-uppercase">{{$ultcot}}</h4>
+                    <br>
                     <h1 class="text-center text-uppercase">COTIZACION</h1>
                 </div>
                 <div class="porlets-content">
                     <!-- FORM INICIO -->
                     {!! Form::open(['route' => 'post.cotizacion']) !!}
-                    <div class="row">
-                        <div class="col-sm-6">
 
-                            <h4 class="text-left text-uppercase">FECHA:</h4>
-                        </div>
-                        <div class="col-sm-6">
-                            <h4 class="text-right text-uppercase">{!! Carbon\Carbon::now()->toFormattedDateString() !!} </h4>
-                        </div>
-                    </div>
-
-                    <h4>DATOS DE CLIENTE</h4>
                     <table class="table table-condensed  text-right" align="center">
 
                         <tr>
@@ -56,23 +50,23 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>COMENTARIO</td>
+                            <td>ALCANCE</td>
                             <td> <textarea id="comentario" name="comentario" class="form-control" style=" width:175px; max-width:175px; max-height:175px;" required></textarea></td>
                         </tr>
 
                     </table>
-                    <a href="#" class="btn btn-primary btn-sm" onclick='masfilas("mytable")'>Agregar</a>
+                    <div align="left"><a href="#" class="btn btn-primary btn-sm"  onclick='masfilas("mytable")'>Agregar</a></div>
 
                     <table class="table-condensed table-bordered" id="mytable" >
                         <tr>
-                            <td>TIPO</td>
-                            <td>ID</td>
-                            <td>ITEM</td>
-                            <td>CANTIDAD</td>
-                            <td>COSTO UNITARIO</td>
-                            <td>DSCTO.</td>
-                            <td>COSTO</td>
-                            <td>ACCION</td>
+                            <td>tipo</td>
+                            <td>id</td>
+                            <td>item</td>
+                            <td>cabtidad</td>
+                            <td>precio lista</td>
+                            <td>descuento</td>
+                            <td>precio unitario</td>
+                            <td>acción</td>
                         </tr>
 
                             <tr>
@@ -141,12 +135,14 @@
                             <td colspan="6" align="right">BRUTO:</td>
                             <td><input type="text" name="totalbruto" style="width:100px;" class="form-control"  readOnly/></td>
                         </tr>
-
-
                     </table>
-                    <div class="container" align="center">
-                    <button class="btn btn-primary btn-lg">REGISTAR</button>
+                    <div align="center">
+                        <textarea id="glosa" name="glosa" class="form-control" style=" width:900px; height:500px; max-width:1000px; max-height:1000px;" required></textarea>
                     </div>
+                    <div class="container" align="center">
+                        <button class="btn btn-primary btn-lg">REGISTAR</button>
+                    </div>
+
                 {!! Form::close() !!}
 
                     <!-- FORM FINAL -->
@@ -332,3 +328,4 @@
     </script>
 
 @endsection
+                                                                                                                                                                  

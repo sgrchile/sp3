@@ -7,6 +7,7 @@ use App\Cotizaciones;
 use App\InventarioProducto;
 use App\InventarioServicio;
 use App\ItemCotizaciones;
+use App\Folios;
 use App\MenuModel;
 use App\MenuNivel;
 use App\Producto;
@@ -47,12 +48,15 @@ class CotizacionController extends Controller
         $tpventa = TipoVenta::all();
         $lstprod = InventarioProducto::all();
         $lstserv = InventarioServicio::all();
+        $nrocot = Folios::all()->where('FOL_DOC','=','cotizacion')
+            ->where('FOL_ID_EMP','=',Auth::user()->PRO_EMP)->first()->FOL_ULT;
 
         return view('ModuloCrm.regCotizacion')
             ->with('lstcliente',$lstcliente)
             ->with('clientes',$clientes)
             ->with('tpventa',$tpventa)
             ->with('lstprod',$lstprod)
+            ->with('ultcot',$nrocot)
             ->with('lstserv',$lstserv);
 
     }
@@ -92,6 +96,11 @@ class CotizacionController extends Controller
         $cotizacion->COMENT_COTIZ = $request->comentario;
         $cotizacion->EMP_COTIZ = Auth::user()->PRO_EMP;
         $cotizacion->save();
+        $folio = Folios::all()->where('FOL_ID_EMP','=',Auth::user()->PRO_EMP)
+            ->where('FOL_DOC','=','cotizacon')->first();
+        $ultnro = $folio->FOL_ULT;
+        $folio->FOL_ULT = $ultnro+1;
+        $folio->save();
 
         if (! $cotizacion->exists) {
             return redirect()->route('regCotizacion')->with('error', "Hubo un problema al crear la Cotizacion.");

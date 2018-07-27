@@ -62,22 +62,25 @@
 
             </tr>
 
+            @foreach($ordcompra as $oc)
             <tr>
 
+              <td>{{ $oc->OC_EMP }}</td>
+              <td>{{ $oc->OC_FOLIO }}</td>
+              <td>{{ $oc->OC_COD }}</td>
+              <td>{{ $oc->OC_ARTICULO_ID }}</td>
               <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td>{{ $oc->OC_CANTIDAD }}</td>
+              <td>{{ $oc->OC_VALOR }}</td>
+              <td>{{ $oc->OC_TOTAL }}</td>
+              <td>{{ $oc->CREATED_AT }}</td>
+              <td>{{ $oc->OC_ESTADO }}</td>
 
             </tr>
+              @endforeach
 
           </table>
+          {!! $ordcompra->linck() !!}
 
           <!-- FORM FINAL -->
 

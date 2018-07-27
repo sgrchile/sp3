@@ -32,16 +32,26 @@
               <td>DESC. ART.</td>
               <td>CANTIDAD</td>
               <td>VALOR</td>
-              <td>TOTAL</td>
               <td>FECHA DE CREACION</td>
-              <td>ESTADO</td>
+              <!--<td>ESTADO</td>
               <td>ESTADO DE EJECUCION</td>
-              <td colspan="2">ACCION</td>
-
-
+              <td colspan="2">ACCION</td>-->
             </tr>
-
+            @foreach( $invart as $art)
+            <tr>
+              <td>{{ $art->ART_OC_COD }}</td>
+              <td>{{ $art->ART_ID }}</td>
+              <td>{{ $art->ART_DESC }}</td>
+              <td>{{ $art->ART_CANTIDAD }}</td>
+              <td>{{ $art->ART_COSTO }}</td>
+              <td>{{ $art->CREATED_AT }}</td>
+              <!--<td>{{ $art->ART_OC_COD }}</td>
+              <td>{{ $art->ART_OC_COD }}</td>
+              <td></td>-->
+            </tr>
+              @endforeach
           </table>
+          {!! $invart->links() !!}
 
           <!-- FORM FINAL -->
 

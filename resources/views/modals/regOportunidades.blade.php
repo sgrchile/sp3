@@ -6,7 +6,7 @@
         <div class="modal-content ">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">×</button>
-                <h4 class="modal-title">REGISTRAR OPORTUNIDAD  </h4>
+                <h4 class="modal-title">REGISTRO DE OPORTUNIDAD  </h4>
             </div>
             <div class="modal-body">
 
@@ -34,13 +34,8 @@
                   <td>
                     {{ Form::select('etapa', App\Etapa::pluck('DESC_ETAPA','ID_ETAPA')) }}
                   </td>
-
-
-
                 </tr>
-
                 <tr>
-
                   <td>PROBABILIDAD:</td>
                   <td>
                     {{ Form::selectRange('number', 10, 100) }}
@@ -87,10 +82,10 @@
                     {{ Form::select('centoneg', App\CentroNegocio::pluck('CT_PROCESO','CT_ID')) }}
                   </td>
 
-                  <td>ESTADO DE PROPUESTA:</td>
+                  <!--<td>ESTADO DE PROPUESTA:</td>
                   <td>
                     {{ Form::select('estpro', App\Estado::pluck('EST_DESC','EST_ID')) }}
-                  </td>
+                  </td>-->
 
                 </tr>
                 <tr>
@@ -103,7 +98,7 @@
 
               </table>
 
-              <button class="btn btn-primary btn-lg">REGISTRO</button>
+              <button class="btn btn-primary btn-lg">REGISTRAR</button>
             </div>
           <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>

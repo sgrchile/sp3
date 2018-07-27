@@ -122,7 +122,7 @@ class ActivosController extends Controller
 
       public function showAsignarActivo()
       {
-          $activos = ActivoAsignado::all();
+          $actasig = ActivoAsignado::all();
           //$actasig = ActivoAsignado::all();
           //dd($actasig);
           //$activos = ActivoInterno::whereIn('ACT_ID',$actasig);

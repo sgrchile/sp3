@@ -6,7 +6,7 @@
       <div class="block-web">
         <div class="header">
           <div class="actions"></div>
-          <h1 class=" text-center text-uppercase" >FICHA CLIENTE CONSOLIDADO</h1>
+          <h1 class=" text-center text-uppercase" >FICHA CLIENTE</h1>
         </div>
         <div class="porlets-content">
           <!-- FORM INICIO -->
@@ -148,7 +148,7 @@
           <br>
           <br>
 
-          <h3 class="text-center text-uppercase">CONTACTOS DE CLIENTE</h3>
+          <h3 class="text-center text-uppercase">CONTACTOS</h3>
           <div class="table-responsive">
           <table class="display  table-bordered text-uppercase" id="dynamic-table">
 
@@ -262,8 +262,10 @@
                 <td></td>
                 <td></td>
                 <td colspan="1">
-                  <!--<button class="btn btn-primary btn-xs" style="width:90px; margin-bottom:5px;" data-toggle="modal" data-target="#Oportunidades" data-backdrop="false">AGREGAR</button>-->
-                  <button class="btn btn-primary btn-xs" style="width:90px; margin-bottom:5px;" data-toggle="modal" data-target="#regOportunidad" data-backdrop="false">NUEVO</button></td>
+                  <a href="{{ route('Oportunidades') }}">
+                    <button class="btn btn-primary btn-xs" style="width:90px;">NUEVO</button></a>
+                  <!--<button class="btn btn-primary btn-xs" style="width:90px; margin-bottom:5px;" data-toggle="modal" data-target="#Oportunidades" data-backdrop="false">AGREGAR</button>
+                  <button class="btn btn-primary btn-xs" style="width:90px; margin-bottom:5px;" data-toggle="modal" data-target="#regOportunidad" data-backdrop="false">NUEVO</button></td>-->
               </tr>
             </table>
             {{ $oportunidades->links() }}
@@ -326,11 +328,12 @@
             @include('modals.modActividad',$cliente)
           </div>
 
-          <div>
+          <div align="center">
             <td>
-              <button class="btn btn-primary btn-lg" style="width:90px;" data-toggle="modal" data-target="#Reasignar" >Reasignar</button>
+              <button class="btn btn-primary btn-lg" style="width:150px;" data-toggle="modal" data-target="#Reasignar" >Reasignar</button>
+
+            <a href="{{route('editarcliente',$cliente)}}"><button class="btn btn-primary btn-lg">Editar</button></a>
             </td>
-            <div class="container">  <a href="{{route('editarcliente',$cliente)}}"><button class="btn btn-primary btn-lg">Editar</button></a></div>
           </div>
 
           <!-- Modal -->

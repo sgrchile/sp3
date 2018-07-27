@@ -22,12 +22,12 @@
               <a href="{{ route('ModuloOt.IngresoOt') }}" ><button type="button" class="btn btn-primary btn-lg" style="width:250px; margin-bottom:15px;">AGREGAR OT</button></a> </td>
              <a href="{{ route('ModuloOt.listaOt')}}"><button type="button" class="btn btn-primary btn-lg" style="width:250px; margin-bottom:15px;">PROCESAR OT</button></a>
              <a href="{{ route('Graficos')}}"><button type="button" class="btn btn-primary btn-lg" style="width:250px; margin-bottom:15px;">ESTADO OT</button></a>
-             <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" style="width:250px; margin-bottom:15px;">CLIENTES</button>
-             <button type="button" class="btn btn-primary btn-lg" style="width:250px; margin-bottom:15px;">REPORTAR</button>
+             <!--<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" style="width:250px; margin-bottom:15px;">CLIENTES</button>
+             <button type="button" class="btn btn-primary btn-lg" style="width:250px; margin-bottom:15px;">REPORTAR</button>-->
 
 
 
-        <div class="container" align="right" > <a  href="{{ route('confOT')}}"><i  style="font-size:30px; color:#000000;" class="fa">&#xf013;</i></a></div>
+        <!--<div class="container" align="right" > <a  href="{{ route('confOT')}}"><i  style="font-size:30px; color:#000000;" class="fa">&#xf013;</i></a></div>-->
 
         </div>
 

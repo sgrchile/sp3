@@ -969,9 +969,14 @@ Route::group(['prefix' => 'modulo'], function () {
                       return view('ModuloInventario.Productos.indexProductos');
                     })->name('Productos');
 
-                    Route::get('/catalogoDeArticulos', function () {
+                    /*Route::get('/catalogoDeArticulos', function () {
                       return view('ModuloInventario.Productos.catalogoDeArticulos');
-                    })->name('catalogoDeArticulos');
+                    })->name('catalogoDeArticulos');*/
+
+                      Route::get('/catalogoDeArticulos', [
+                          'uses' => 'ArticuloController@index',
+                          'as' => 'catalogoDeArticulos',
+                      ]);
 
                     Route::get('/fichaDeProductos', function () {
                       return view('ModuloInventario.Productos.fichaDeProductos');

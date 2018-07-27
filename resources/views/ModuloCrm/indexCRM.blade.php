@@ -24,13 +24,13 @@
               <td><a href="{{route('resumen')}}"><button class='btn btn-primary btn-lg' style="width:185px; margin-bottom: 15px;"> RESUMEN</button></a></td>
               <td><a href="{{route('clientes')}}"><button class='btn btn-primary btn-lg'   style="width:185px; margin-bottom: 15px;"> CLIENTES</button></a></td>
               <td><a href="{{route('prospectos')}}"><button class='btn btn-primary btn-lg'   style="width:185px; margin-bottom: 15px;">PROSPECTOS</button></a></td>
-              <td><a href="{{route('listaOportunidades')}}"><button class='btn btn-primary btn-lg'  style="width:185px; margin-bottom: 15px;">OPORTUNIDADES</button></a></td>
             </tr>
             <tr>
 
               <td><a href="{{route('listaActividades')}}"><button class='btn btn-primary btn-lg' style="width:185px; margin-bottom: 15px;"> ACTIVIDADES</button></a></td>
-              <td><a href="{{route('registro')}}"><button class='btn btn-primary btn-lg' style="width:185px; margin-bottom: 15px;"> REGISTRO</button></a></td>
-              <td><a href="{{route('ajustes')}}"><button class='btn btn-primary btn-lg' style="width:185px; margin-bottom: 15px;"> AJUSTES</button></a></td>
+              <td><a href="{{route('listaOportunidades')}}"><button class='btn btn-primary btn-lg'  style="width:185px; margin-bottom: 15px;">OPORTUNIDADES</button></a></td>
+              <!--<td><a href="{{route('registro')}}"><button class='btn btn-primary btn-lg' style="width:185px; margin-bottom: 15px;"> REGISTRO</button></a></td>-->
+              <!--<td><a href="{{route('ajustes')}}"><button class='btn btn-primary btn-lg' style="width:185px; margin-bottom: 15px;"> AJUSTES</button></a></td>-->
               <td><a href="{{route('cotizaciones')}}"><button class='btn btn-primary btn-lg' style="width:185px; margin-bottom: 15px;"> COTIZACIONES</button></a></td>
 
             </tr>

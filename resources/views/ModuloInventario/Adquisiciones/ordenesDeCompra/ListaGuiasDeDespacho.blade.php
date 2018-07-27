@@ -38,17 +38,17 @@
 
 
             </tr>
-
+            @foreach($guiadesp as $gdesp)
             <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td>{{ $gdesp->COD_GD }}</td>
+              <td>{{ $gdesp->COD_GD }}</td>
+              <td>{{ $gdesp->COD_GD }}</td>
+              <td>{{ $gdesp->COD_GD }}</td>
+              <td>{{ $gdesp->COD_GD }}</td>
+              <td>{{ $gdesp->COD_GD }}</td>
+              <td>{{ $gdesp->COD_GD }}</td>
+              <td>{{ $gdesp->COD_GD }}</td>
+              <td>{{ $gdesp->COD_GD }}</td>
             </tr>
 
           </table>

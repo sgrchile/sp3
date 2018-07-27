@@ -46,7 +46,7 @@
 
               <a href={{route('modificaOt', $ot->OT_ID)}}><button class='btn btn-primary btn-sm'> Procesar </button></a>
               <a href={{route('verOT', $ot->OT_ID)}}> <button class='btn btn-primary btn-sm'> Ficha </button></a>
-              <a href=""> <button class='btn btn-primary btn-sm'> Proveedor </button></a>
+              <!--<a href=""> <button class='btn btn-primary btn-sm'> Proveedor </button></a>-->
               </td>
               </tr>
 

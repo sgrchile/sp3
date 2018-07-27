@@ -80,7 +80,7 @@
                                     </td>
                                     <td> SITIO WEB: </td>
                                     <td >
-                                        {{ Form::text('sitioweb',null,['class'=>'form-control', 'required','style'=>'width:175px']) }}
+                                        {{ Form::text('sitioweb',null,['class'=>'form-control','style'=>'width:175px']) }}
                                     </td>
                                     <td> CARGO : </td>
                                     <td >
@@ -92,7 +92,7 @@
                                 <tr>
                                     <td>RUBRO:</td>
                                     <td>
-                                        <select name="rubro" required class="form-control" id="rubro" STYLE="width: 175px;">
+                                        <select name="rubro"  class="form-control" id="rubro" STYLE="width: 175px;">
                                             <option value="">Seleccione</option>
                                             @foreach($rubro as $rub)
                                                 <option value="{{ $rub->RUB_COD }}">{{ $rub->RUB_DESC }}</option>
@@ -101,13 +101,13 @@
                                     </td>
                                     <td>SUB RUBRO:</td>
                                     <td>
-                                        <select name="subrubro" required class="form-control" style="width:175px;" id="subrubro">
+                                        <select name="subrubro"  class="form-control" style="width:175px;" id="subrubro">
                                             <option value="">Seleccione</option>
                                         </select>
                                     </td>
                                     <td>ACTIVIDAD:</td>
                                     <td>
-                                        <select name="actividad" required class="form-control" style="width:175px;" id="actividad">
+                                        <select name="actividad"  class="form-control" style="width:175px;" id="actividad">
                                             <option value="">Seleccione</option>
                                         </select>
                                     </td>
@@ -116,11 +116,11 @@
                                 <tr>
                                     <td>ZIP:</td>
                                     <td >
-                                        {{ Form::text('zip',null,['class'=>'form-control', 'required','style'=>'width:175px']) }}
+                                        {{ Form::text('zip',null,['class'=>'form-control','style'=>'width:175px']) }}
                                     </td>
                                     <td>CASILLA : </td>
                                     <td >
-                                        {{ Form::text('casilla',null,['class'=>'form-control','class'=>'form-control', 'required','style'=>'width:175px']) }}
+                                        {{ Form::text('casilla',null,['class'=>'form-control','class'=>'form-control','style'=>'width:175px']) }}
                                     </td>
                                     <td><a style="color: #9A0000">* </a> DIRECCION:</td>
                                     <td>
@@ -130,7 +130,7 @@
                                 <tr>
                                     <td>AREA :</td>
                                     <td>
-                                        <select name="area" required class="form-control" id="area">
+                                        <select name="area"  class="form-control" id="area">
                                             <option value="">Seleccione</option>
                                             @foreach($area as $proc)
                                                 <option value="{{ $proc->ID_AREA }}">{{ $proc->DESC_AREA }}</option>
@@ -139,7 +139,7 @@
                                     </td>
                                     <td>SERVICIO REQUERIDO :</td>
                                     <td>
-                                        <select name="serv_req" required class="form-control" id="serv_req" >
+                                        <select name="serv_req"  class="form-control" id="serv_req" >
                                             <option value="">Seleccione</option>
                                         </select>
                                     </td>
@@ -166,7 +166,7 @@
                                 <tr>
                                     <td>PAIS:</td>
                                     <td>
-                                        <select name="pais" required class="form-control" id="pais">
+                                        <select name="pais"  class="form-control" id="pais">
                                             <option value="">Seleccione</option>
                                             @foreach($pais as $pai)
                                                 <option value="{{ $pai->PAI_COD }}">{{ $pai->PAI_DESC }}</option>
@@ -175,13 +175,13 @@
                                     </td>
                                     <td>REGION:</td>
                                     <td>
-                                        <select name="region" required class="form-control" id="region">
+                                        <select name="region"  class="form-control" id="region">
                                             <option value="">Seleccione</option>
                                         </select>
                                     </td>
                                     <td>PROVINCIA:</td>
                                     <td>
-                                        <select name="provincia" required class="form-control" id="provincia">
+                                        <select name="provincia"  class="form-control" id="provincia">
                                             <option value="">Seleccione</option>
                                         </select>
                                     </td>
@@ -190,14 +190,14 @@
                                 <tr>
                                     <td>CIUDAD:</td>
                                     <td>
-                                        <select name="ciudad" required class="form-control" id="ciudad">
+                                        <select name="ciudad"  class="form-control" id="ciudad">
                                             <option value="">Seleccione</option>
                                         </select>
                                     </td>
-                                    <td>RUT COTIZACION :</td>
+                                    <!--<td>RUT COTIZACION :</td>
                                     <td>
                                         {!! Form::text('rut_cot',null,['class'=>'form-control','id'=>'rut_cot','style'=>'width:175px']) !!}
-                                    </td>
+                                    </td>-->
                                     <td>COMENTARIOS :</td>
                                     <td>
                                         {!! Form::text('comentario',null,['class'=>'form-control','id'=>'comentario','style'=>'width:175px']) !!}

@@ -144,5 +144,5 @@
         </div><!--/row-->
     </div>
     <br>
-    <div class="container">  <a href="{{ route('CRM') }}"><button class="btn btn-primary btn-lg">Volver</button></a></div>
+    <div class="container">  <a href="{{ route('fichaClienteConsolidado',$cliente->CLI_ID) }}"><button class="btn btn-primary btn-lg">Volver</button></a></div>
 @endsection

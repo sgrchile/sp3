@@ -14,8 +14,8 @@
           <!-- FORM INICIO -->
           <table class=" table-condensed table-bordered ">
             <tr>
-              <td>RUT PROV. </td>
-              <td>DESC</td>
+              <td>DESC </td>
+              <td>MARCA</td>
               <td>COSTO</td>
               <td>CANTIDAD</td>
               <td>VALOR </td>
@@ -23,12 +23,18 @@
             </tr>
 
             <tr>
+              <td>
+                <select name="descprod"  class="form-control" id="descprod">
+                  <option value="">Seleccione</option>
+                  @foreach($invprod as $prod)
+                    <option value="{{ $prod->PROD_COD }}">{{ $prod->PROD_DESC }}</option>
+                  @endforeach
+                </select>
+              </td>
               <td></td>
               <td></td>
               <td></td>
               <td></td>
-              <td></td>
-
               <td>
                 <a href="{{route('registrarServicio')}}"><button type="button" class="btn btn-primary btn-xs">ELIMINAR</button></a>
               </td>

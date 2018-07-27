@@ -43,13 +43,15 @@
                       <td>CARGO</td>
                       <td>ACCION</td>
                     </tr>
-                    @foreach($prov as $proveedores)
+                    @foreach($proveedores as $prov )
                     <tr>
-                      <td>{{ $proveedores->PRO_RUN }}</td>
-                      <td>{{ $proveedores->PRO_NOMBRE }}</td>
-                      <td>{{ $proveedores->PRO_APE_PAT }}</td>
-                      <td>{{ $proveedores->PRO_APE_MAT }}</td>
-                      <td>{{ $proveedores->PRO_CAR_ID }}</td>
+                      <td>{{ $prov->PRO_RUN }}</td>
+                      <td>{{ $prov->PRO_NOMBRE }}</td>
+                      <td>{{ $prov->PRO_APE_PAT }}</td>
+                      <td>{{ $prov->PRO_APE_MAT }}</td>
+                      @if($prov->PRO_CAR_ID != null)
+                      <td>{{ $prov->PRO_CAR_ID }}</td>
+                      @endif
                       <td>ACCION</td>
                     </tr>
                     @endforeach
@@ -67,15 +69,28 @@
           <h3 class="text-uppercase text-center ">ACTIVOS ASIGNADOS</h3>
           <table class="table table-bordered" align="center">
 
-
+            @foreach($actasig as $acta)
+          <tr>
             <td>ID</td>
             <td>DESCRIPCION</td>
             <td>INFO</td>
-            <td>ESTADO</td>
             <td>ENCARGADO</td>
-            <td>ACCION</td>
+            <!--<td>ACCION</td>-->
           </tr>
-
+            @foreach($actasig as $acta)
+            <tr>
+              <td>{{ $actd->AA_COD }}</td>
+              <td>{{ $actd->AA_FECHA_ASIG }}</td>
+              @if($actd->AA_ACT_ID != null)
+              <td>{{ App\ActivoInterno::find($actd->AA_ACT_ID)->ACT_DESC }}</td>
+              @endif
+              <td>{{ $actd->AA_PRO_RUN }}</td>
+              <!--<td style="width:100px;">
+                <button type="button" class="btn btn-primary btn-xs"  data-toggle="modal" data-target="#selPer" data-backdrop="static">ASIGNAR</button>
+              </td>
+              <td style="width:100px;"><button type="button" class="btn btn-primary btn-xs">ASIGNAR</button></td>-->
+            </tr>
+          @endforeach
 
 
         </table>
@@ -98,7 +113,10 @@
               <td>{{ $actd->ACT_INFO }}</td>
               <td>{{ $actd->ACT_ESTADO }}</td>
               <td>{{ $actd->ACT_PROPIETARIO }}</td>
-              <td style="width:100px;"><button type="button" class="btn btn-primary btn-xs">ASIGNAR</button></td>
+              <td style="width:100px;">
+                <button type="button" class="btn btn-primary btn-xs"  data-toggle="modal" data-target="#selPer" data-backdrop="static">ASIGNAR</button>
+              </td>
+              <!--<td style="width:100px;"><button type="button" class="btn btn-primary btn-xs">ASIGNAR</button></td>-->
             </tr>
               @endforeach
         </table>

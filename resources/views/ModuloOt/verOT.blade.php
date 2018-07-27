@@ -151,8 +151,8 @@
               </table>
 
               <div class="container " align="center">
-                <button type="submit" id="ingDoc" class="btn btn-primary btn-lg">Modificar</button>
-                <button type="submit" id="ingDoc" class="btn btn-primary btn-lg">Imprimir</button>
+                <!--<button type="submit" id="ingDoc" class="btn btn-primary btn-lg">Modificar</button>-->
+                <!--<button type="submit" id="ingDoc" class="btn btn-primary btn-lg">Imprimir</button>-->
               </div>
 
           <!-- FORM FINAL -->

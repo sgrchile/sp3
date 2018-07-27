@@ -19,7 +19,7 @@ class InventarioProducto extends Model
      *
      * @var string
      */
-    protected $primaryKey = "SER_COD";
+    protected $primaryKey = "PROD_COD";
 
     /**
      * Atributos que pueden ser asignados masivamente

@@ -22,9 +22,10 @@
               <td>
                   <input type="text" value="{{ $cliente->CLI_RUT }}" name="cliente" style="width:175px;" class="form-control" id="cliente" readOnly/>
               </td>
-              <td>DESCRIPCION:</td>
+              <td>ACTIVIDAD</td>
               <td>
-                  <input type="text" id="descripcion" name="descripcion" style="width:175px;" class="form-control" required/>
+                  {{ Form::select('tp_act',App\TpActividad::pluck('DESC_TP_ACTIVIDAD','ID_TP_ACTIVIDAD'),null,
+                  ['class'=>'form-control','style'=>'width:175px','placeholder'=>'Seleccione']) }}
               </td>
 
           </tr>
@@ -42,9 +43,9 @@
           </td>
         </tr>
           <tr>
-              <td>CONTACTO</td>
+              <td>DESCRIPCION:</td>
               <td>
-                  {{ Form::select('contacto',App\Contactos::where('CONT_CLI_ID','=',$cliente->CLI_RUT)->pluck('CONT_NOM','ID_CONT'),null,['class'=>'form-control','style'=>'width:175px']) }}
+                  <textarea id="descripcion" name="descripcion" class="form-control" style=" width:175px; max-width:175px; max-height:175px;" required></textarea>
               </td>
           </tr>
 

@@ -48,17 +48,17 @@
               <td>
                 {{ Form::text('probabilidad',null,['id'=>'probabilidad','class'=>'form-control','readOnly','style'=>'width:175px']) }}
               </td>
-              <td>TASA:</td>
+              <!--<td>TASA:</td>
               <td>
                 {{ Form::number('tasa',null,['class'=>'form-control','style'=>'width:175px']) }}
-              </td>
+              </td>-->
             </tr>
             <tr>
               <td>MONEDA: </td>
               <td >
                 {!! Form::select('moneda',$moneda,null,['id'=>'moneda','style'=>'width:175px','class'=>'form-control']) !!}
               </td>
-              <td>TOTAL estimado: </td>
+              <td>TOTAL ESTIMADO: </td>
               <td >
                 {{ Form::number('total',null,['class'=>'form-control', 'required','style'=>'width:175px']) }}
                 <!--<input  type="text"  name="total" id="total" style="width:175px;" class="form-control" required/>-->

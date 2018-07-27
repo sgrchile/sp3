@@ -422,21 +422,23 @@
                         <tr>
                           <td><label>TIPO DE FACTURA:</label></td>
                           <td>
-                            <select style="width:175px;">
-                              <option>1</option>
-                              <option>2</option>
-                            </select>
+                            {{ Form::select('tpfac',App\TipoFactura::pluck('TFCT_DESC','TFCT_ID'),
+                            ['class'=>'form-control','placeholder'=>'Seleccione','style'=>'width:175px']) }}
                           </td>
                         </tr>
 
                         <tr>
                           <td><label>GLOSA:</label></td>
-                          <td><input type="text" required></td>
+                          <td>
+                            <textarea id="glosa" name="glosa" class="form-control" style=" width:175px; max-width:175px; max-height:175px;" required></textarea>
+                          </td>
                         </tr>
 
                         <tr>
                           <td><label>MONTO NETO:</label></td>
-                          <td><input type="text" required></td>
+                          <td>
+                            <input type="number" style="width:175px;" name="neto" id="neto" required>
+                          </td>
                         </tr>
 
                         <tr>

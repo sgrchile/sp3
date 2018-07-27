@@ -89,12 +89,12 @@
             <td></td>
             <td></td>
             <td></td>
-            <td></td>
             <td colspan=3>
               <a href="{{route('registrarProductos')}}"><button type="button" class="btn btn-primary btn-xs">AGREGAR</button></a>
             </td>
           </tr>
         </table>
+          {!! $invprod->links() !!}
 
           <!-- FORM FINAL -->
 

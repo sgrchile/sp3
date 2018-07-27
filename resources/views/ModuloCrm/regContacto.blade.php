@@ -18,12 +18,12 @@
               <table class="table-condensed text-right" align="center">
 
                 <tr>
-                  <td>NOMBRE:</td>
+                  <td><a style="color: #9A0000">* </a>NOMBRE:</td>
                   <td>
                     <input name="nombre" type="text"  style="width:175px;" class="form-control" id="nombre" required/>
                   </td>
 
-                  <td>CELULAR:</td>
+                  <td><a style="color: #9A0000">* </a>CELULAR:</td>
                   <td>
                     <input type="text"  style="width:175px;" class="form-control" required/>
                   </td>
@@ -32,11 +32,11 @@
 
                   <td>EMAIL EMPRESARIAL:</td>
                   <td>
-                    <input type="email"  style="width:175px;" class="form-control"  required/>
+                    <input type="email"  style="width:175px;" class="form-control" />
 
                   </td>
 
-                  <td>EMAIL PERSONAL:</td>
+                  <td><a style="color: #9A0000">* </a>EMAIL PERSONAL:</td>
                   <td><input type="email"  style="width:175px;" class="form-control" required/></td>
                 </tr>
 
