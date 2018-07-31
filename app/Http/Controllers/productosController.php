@@ -19,7 +19,7 @@ class ProductosController extends Controller
         $invprod = InventarioProducto::orderBy('PROD_COD')->where('PROD_EXISTENCIAS','>',0)->paginate(20);
         //$prod = Producto::find($invprod->PROD_PRO_COD)->get();
         //dd($invprod);
-        return view('ModuloInventario.Productos.catalogoProductos')->with('invprod',$invprod);
+        return view('ModuloInventario.productos.catalogoProductos')->with('invprod',$invprod);
     }
 
     /**
@@ -30,7 +30,7 @@ class ProductosController extends Controller
     public function create()
     {
         $invprod = InventarioProducto::all()->where('PROD_PRO_RUN','=',Auth::user()->PRO_RUN);
-        return view('ModuloInventario.Productos.registrarProductos')
+        return view('ModuloInventario.productos.registrarProductos')
             ->with('invprod',$invprod);
     }
 
