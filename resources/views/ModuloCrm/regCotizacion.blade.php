@@ -206,8 +206,10 @@
                     $.get("https://35.193.38.242/api/producto/").done(function(data){
                         if (data !== null){
                             if (Object.keys(data).length > 0 ){
+                                let option = "<option value=''>seleccione</option>";
                                 $.each(data, function( index, value ){
-                                    let option = "<option value='"+ value.PROD_COD + "'>" + value.PROD_DESC+ "</option>";
+                                    option = "<option value='"+ value.PROD_COD + "'>" + value.PROD_DESC+ "</option>";
+
                                     $("#idpro").append(option);
                                 });
                                 $("#idpro").trigger("change");
