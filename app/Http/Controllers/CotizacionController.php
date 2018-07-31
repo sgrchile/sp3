@@ -51,6 +51,7 @@ class CotizacionController extends Controller
         $nrocot = Folios::all()->where('FOL_DOC','=','cotizacion')
             ->where('FOL_ID_EMP','=',Auth::user()->PRO_EMP)->first()->FOL_ULT;
 
+
         return view('ModuloCrm.regCotizacion')
             ->with('lstcliente',$lstcliente)
             ->with('clientes',$clientes)
@@ -63,18 +64,22 @@ class CotizacionController extends Controller
 
     public function getModificarCotizar($id){
 
-        $lstcliente = Cliente::find($id);
+        $lstcliente = Cliente::where('CLI_RUT','=',$id)->first();
         $clientes = Cliente::all()->where('CLI_PROPIETARIO','=',Auth::user()
             ->PRO_RUN);
+        //dd($lstcliente);
         $tpventa = TipoVenta::all();
         $lstprod = InventarioProducto::all();
         $lstserv = InventarioServicio::all();
+        $nrocot = Folios::all()->where('FOL_DOC','=','cotizacion')
+            ->where('FOL_ID_EMP','=',Auth::user()->PRO_EMP)->first()->FOL_ULT;
 
         return view('ModuloCrm.regCotizacion')
             ->with('lstcliente',$lstcliente)
             ->with('clientes',$clientes)
             ->with('tpventa',$tpventa)
             ->with('lstprod',$lstprod)
+            ->with('ultcot',$nrocot)
             ->with('lstserv',$lstserv);
     }
 

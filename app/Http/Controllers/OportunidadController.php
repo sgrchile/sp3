@@ -52,7 +52,7 @@ class OportunidadController extends Controller
         $user = Auth::user();
         $clientes = Cliente::all()
             ->where('CLI_EMP','=',Auth::user()->PRO_EMP)
-            ->where('CLI_PROPIETARIO','=',$user->PRO_RUT)
+            ->where('CLI_PROPIETARIO','=',$user->PRO_RUN)
             ->pluck('CLI_NOMBRE','CLI_RUT')
             ->prepend('Seleccione');
         $procneg = Proceso::all()->where('PRO_JERARQUIA','=',$user->PRO_EMP );

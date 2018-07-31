@@ -69,17 +69,6 @@
                             <td>acción</td>
                         </tr>
 
-                            <tr>
-                                <td>  </td>
-                                <td>  </td>
-                                <td>  </td>
-                                <td>  </td>
-                                <td>  </td>
-                                <td>  </td>
-                                <td>  </td>
-                                <td></td>
-                            </tr>
-
                         <tr id="fila0">
                             <td>
                                 <select name="tpventa0" required class="form-control" id="tpventa">

@@ -133,7 +133,7 @@ class ProspectoController extends Controller
             'CLI_REGION' => $data['region'],
             'CLI_PROVINCIA' => $data['provincia'],
             'CLI_CIUDAD' => $data['ciudad'],
-            'CLI_SOLIC_POR' => $data['solic_por'],
+            'CLI_SOLIC_POR' => Auth::user()->PRO_RUN,
             'CLI_COMENTARIO' => $data['comentario'],
 
         ]);
