@@ -966,7 +966,7 @@ Route::group(['prefix' => 'modulo'], function () {
                   // INICIO PRODUCTOS
                   Route::group(['prefix' => 'Productos'], function () {
                     Route::get('/Productos', function () {
-                      return view('ModuloInventario.Productos.indexProductos');
+                      return view('ModuloInventario.productos.indexProductos');
                     })->name('Productos');
 
                     /*Route::get('/catalogoDeArticulos', function () {
