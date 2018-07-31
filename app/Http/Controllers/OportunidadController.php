@@ -93,7 +93,6 @@ class OportunidadController extends Controller
             'PROC_NEGOCIO' => $data['procneg'],
             'ETAPA' => $data['etapa'],
             'PROBABILIDAD' => $data['probabilidad'],
-            'TASA' => $data['tasa'],
             'MONEDA' => $data['moneda'],
             'TOTAL' => $data['total'],
             'FEC_INGRESO' => $data['fechingreso'],
