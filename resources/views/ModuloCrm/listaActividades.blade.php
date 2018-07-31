@@ -31,21 +31,19 @@
             <table class="table table-bordered" align="center">
               <THEAD>
               <tr>
-                <td>ID </td>
-                <td>DESCRIPCION</td>
+                <td>CLIENTE </td>
+                <td>ACTIVIDAD</td>
                 <td>FECHA </td>
-                <td>HORA</td>
-                <td>CLIENTE</td>
+                <td>ESTADO</td>
               </tr>
               </THEAD>
               <tbody>
               @foreach($actividades as $actividad)
                 <tr>
-                  <td>{{ $actividad->ID_ACT }}</td>
+                  <td>{{ $actividad->ID_CLIENTE_ACT }}</td>
                   <td>{{ $actividad->DESC_ACT }}</td>
                   <td>{{ $actividad->FECHA_ACT }}</td>
-                  <td>{{ $actividad->HORA }}</td>
-                  <td>{{ $actividad->ID_CLIENTE_ACT }}</td>
+                  <td>{{ $actividad->EST_ACTIVIDAD }}</td>
                   <td><a href="{{ route('actividad.destroy',$actividad->ID_ACT) }}" onclick="return confirm('¿Desea eliminar ésta Actividad?')" >
                       <button class="btn btn-primary btn-xs" style="width:90px; margin-bottom:5px;">ELIMINAR</button></a></td>
                 </tr>
