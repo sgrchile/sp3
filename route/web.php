@@ -979,7 +979,7 @@ Route::group(['prefix' => 'modulo'], function () {
                       ]);
 
                     Route::get('/fichaDeProductos', function () {
-                      return view('ModuloInventario.Productos.fichaDeProductos');
+                      return view('ModuloInventario.productos.fichaDeProductos');
                     })->name('fichaDeProducto');
 
                     /*Route::get('/catalogoDeProductos', function () {
@@ -992,7 +992,7 @@ Route::group(['prefix' => 'modulo'], function () {
                       ]);
 
                     Route::get('/modificarProductos', function () {
-                      return view('ModuloInventario.Productos.modificarProductos');
+                      return view('ModuloInventario.productos.modificarProductos');
                     })->name('modificarProductos');
 
                     /*Route::get('/registrarProductos', function () {
