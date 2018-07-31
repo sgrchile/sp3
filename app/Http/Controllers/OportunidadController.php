@@ -51,7 +51,6 @@ class OportunidadController extends Controller
     {
         $user = Auth::user();
         $clientes = Cliente::all()
-            ->where('CLI_EMP','=',Auth::user()->PRO_EMP)
             ->where('CLI_PROPIETARIO','=',$user->PRO_RUN)
             ->pluck('CLI_NOMBRE','CLI_RUT')
             ->prepend('Seleccione');

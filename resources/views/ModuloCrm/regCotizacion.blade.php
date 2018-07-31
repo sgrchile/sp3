@@ -62,7 +62,7 @@
                             <td>tipo</td>
                             <td>id</td>
                             <td>item</td>
-                            <td>cabtidad</td>
+                            <td>cantidad</td>
                             <td>precio lista</td>
                             <td>descuento</td>
                             <td>precio unitario</td>
@@ -84,7 +84,7 @@
                                 </select>
                             </td>
                             <td><input type="text" name="item0" id="item" style="width:175px;" class="form-control"  readOnly/></td>
-                            <td><input type="number" min="0" name="cantidad0" class="form-control" id="cantidad" style="width:85px;"  required/></td>
+                            <td><input type="number" min="0" name="cantidad0" class="form-control" id="cantidad0" style="width:85px;"  required/></td>
                             <td><input type="text" name="costouni0" id="costouni" style="width:85px;" class="form-control"  readOnly/></td>
                             <td><input type="number" name="dsctouni0" id="dsctouni" style="width:85px;" class="form-control"  readOnly/></td>
                             <td> <input type="text" name="costototal0" id="costototal" style="width:85px;" class="form-control numero"  readOnly/></td>
@@ -125,8 +125,53 @@
                             <td><input type="text" name="totalbruto" style="width:100px;" class="form-control"  readOnly/></td>
                         </tr>
                     </table>
+
                     <div align="center">
-                        <textarea id="glosa" name="glosa" class="form-control" style=" width:900px; height:500px; max-width:1000px; max-height:1000px;" required></textarea>
+                        @if(\Illuminate\Support\Facades\Auth::user()->PRO_EMP = 3)
+                            <textarea id="glosa" name="glosa" href="CotizacionLoica.txt" class="form-control" style=" width:900px; height:500px; max-width:1000px; max-height:1000px;" required
+                            >Loica  dispondrá  de  profesionales  especialistas  en  cada  una  de  las  áreas  abordadas  en  esta  cotización  y  aplicará  una  adecuada  estrategia  de  trabajo  para  asegurar  una  óptima  calidad  de  este  servicio.
+
+Condiciones  Generales
+1.  IVA
+19%  sobre  el  total  neto
+
+2.  Condiciones  de  pago  /  post  servicio
+50%  de  apertura  y  50%  contra  cierre  del  servicio  /  pago  30  días  solo  en  caso  de  Licitaciones  Públicas
+
+3.  Plazo  de  entrega
+Ajustada  al  requerimiento
+
+4.  Garantía
+Servicio  de  excelencia,  ejecutado  por  profesionales  del  área,  que  incluye  una  asesoría  permanente  hasta  la  satisfacción  total  del  cliente
+
+5.  Datos  para  la  Transferencia
+Cuenta  Corriente,  6936151-0  Banco  Santander
+
+6.  Vigencia  de  la  cotización
+La  presente  cotización  tiene  una  vigencia  de  15  días  desde  la  fecha  de  su  elaboración
+
+
+            PREPARÓ                                                 APROBÓ
+            VENDEDOR                                           Waldemar  Cepeda
+        Ejecutivo  de  Ventas                                  Gerente  General
+_________________________________________________________________________________________________
+Casa  Matriz:  Prat  815  Temuco  -  Fono:  45-2730069  - www.loicaproducciones.cl
+</textarea>
+                        @endif
+                        @if(\Illuminate\Support\Facades\Auth::user()->PRO_EMP = 1)
+                            <textarea id="glosa" name="glosa" class="form-control" style=" width:900px; height:500px; max-width:1000px; max-height:1000px;" required>Todas  las  actividades  serán  realizadas  de  acuerdo  a  procedimientos  y  protocolos  formales  contemplados  en  la  institucionalidad  ambiental  vigente.  Biogest  dispondrá  de  profesionales  expertos  en  cada  uno  de  los  componentes  ambientales  abordados  y  aplicará  una  adecuada  estrategia  de  trabajo  para  asegurar  una  óptima  calidad  de  este  servicio.  Condiciones  Generales  1.  IVA  Servicio  profesional  exento  de  iva  o  19%  sobre  el  neto  según  corresponda  2.  Condiciones  de  pago  40%  al  inicio,  40%  contra  entrega  y  20%  contra  cierre  del  servicio.  Se  emitirá  una  factura  para  cada  etapa.  3.  Plazo  de  entrega  15  días  hábiles  contados  desde  el  recibo  del  total  de  documentos  solicitados  al  cliente.  4.  Garantía  Servicio  de  excelencia,  ejecutado  por  profesionales  del  área  ambiental,  que  incluye  una  asesoría  permanente  hasta  la  obtención  del  objetivo  del  servicio.  5.  Referencias  Biogest  Ltda,  asesora  al  grupo  ISA  en  las  concesiones  viales  del  sur  de  Chile,  Universidad  Católica  y  MOP,  entre  otros  6.  Vigencia  de  la  cotización  La  presente  cotización  tiene  una  vigencia  de  20  días  contados  desde  la  fecha  de  emisión.PREPARÓ  APROBÓBeatriz  Osorio  Ejecutivo  de  Ventas  Agnes  Ugarte  Potter  Coordinador  General  _________________________________________________________________________________________________Biogest  Ltda.  Casa  Matriz:  Prat  815  Temuco  Fono:  45-2741910,  sucursal  Santiago:  El  director  6000  oficina  207  sucursal  La  Serena:  Avenida  Costanera  5425  Oficina  1110  - www.biogest.cl
+</textarea>
+                        @endif
+                        @if(\Illuminate\Support\Facades\Auth::user()->PRO_EMP = 4)
+                            <textarea id="glosa" name="glosa" class="form-control" style=" width:900px; height:500px; max-width:1000px; max-height:1000px;" required>Alcances  del  servicio  Kutralco  dispone  de  profesionales  especialistas  en  turismo,  quienes  brindar  án  a  Usted  una  asesoría  permanente  para  asegurar  una  óptima  calidad  de  este  servicio.  Condiciones  Generales  1.  IVA  19%  sobre  el  total  neto  (cuando  corresponda)  2.Condiciones  de  pago  Pago  contado  presencial,  transferencia  bancaria  o  webpay.  Se  emitir  á  una  factura  o  boleta  según  requerimiento  3.  Fecha  de  ejecución  del  servicio  Se  coordinará  directamente  con  el  cliente  o  agencia  según  corresponda  4.  Garantía  Servicio  de  excelencia,  ejecutado  por  profesionales  del  turismo,  con  amplia  trayectoria  nacional  e  internacional  5.  Datos  para  la  Transferencia  Titular:  KUTRALCO  S.P.A.  Rut:  76.171.597-6  CTA.  CTE:  6565720-1  Banco  Santander.  6.  Vigencia  de  la  cotización  La  presente  cotización  tiene  una  vigencia  de  24  horas  contadas  desde  su  elaboración  /  solicite  mayor  vigencia  con  el  vendedor  PREPARÓ  APROBÓ  Graciela  Fuentealba  Ejecutivo  de  Ventas  Yohanna  Barría  Jefe  de  Ventas  _________________________________________________________________________________________________Tour  Operador  y  Agencia  de  Viajes  -  Casa  Matriz:  Prat  815  -  Temuco  -  sucursal  La  Serena:  Av  del  Mar  5425  (+56)  45  2  405010  /  45  2  320034  - ventas@kutralco.com  - www.kutralco.com - ventas@andinotravel.cl -  www.andinotravel.cl
+</textarea>
+                        @endif
+                        @if(\Illuminate\Support\Facades\Auth::user()->PRO_EMP != 3 &&
+                        \Illuminate\Support\Facades\Auth::user()->PRO_EMP != 4 &&
+                        \Illuminate\Support\Facades\Auth::user()->PRO_EMP != 1)
+                            <textarea id="glosa" name="glosa" class="form-control" style=" width:900px; height:500px; max-width:1000px; max-height:1000px;" required>
+                            </textarea>
+                        @endif
                     </div>
                     <div class="container" align="center">
                         <button class="btn btn-primary btn-lg">REGISTAR</button>
@@ -190,7 +235,7 @@
                 let tpventa = $(this).val();
                 $("#idpro").empty();
                 if (tpventa == 1){
-                    $.get("https://35.193.38.242/api/servicio/").done(function(data){
+                    $.get("http://127.0.0.1:8000/api/servicio/").done(function(data){
                         if (data !== null){
                             if (Object.keys(data).length > 0 ){
                                 $.each(data, function( index, value ){
@@ -203,7 +248,7 @@
                         }
                     });
                 }if (tpventa == 2){
-                    $.get("https://35.193.38.242/api/producto/").done(function(data){
+                    $.get("http://127.0.0.1:8000/api/producto/").done(function(data){
                         if (data !== null){
                             if (Object.keys(data).length > 0 ){
                                 $.each(data, function( index, value ){
@@ -221,17 +266,18 @@
                 let prod = $(this).val();
                 $("#item").empty();
                 let tpventa = $("#tpventa").val();
+                //alert(prod);
                 if (tpventa == 1){
-                    $.get("https://35.193.38.242/api/itemserv/" + prod).done(function(data){
+                    $.get("http://127.0.0.1:8000/api/itemserv/" + prod).done(function(data){
                         if (data !== null){
                             $("#item").val(data('SER_DESC'));
                             $("#costouni").val(data('PROD_PRECIO_VENTA'));
                         }
                     });
                 } if (tpventa == 2) {
-                    $.get("https://35.193.38.242/api/itemprod/" + prod).done(function(data){
+                    $.get("http://127.0.0.1:8000/api/itemprod/" + prod).done(function(data){
                         if (data !== null){
-                            $("#item").val(data('PROD_DESC'));
+                            $("#item").val(data('PROD_INFO'));
                             $("#costouni").val(data('PROD_PRECIO_VENTA'));
                         }
                     });
