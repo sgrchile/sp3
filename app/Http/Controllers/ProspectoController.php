@@ -12,6 +12,7 @@ use App\Oportunidad;
 use App\Provincia;
 use App\Rubro;
 use App\Servicio;
+use App\Temperatura;
 use App\SubRubro;
 use App\Banco;
 use App\Pais;
@@ -142,12 +143,23 @@ class ProspectoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Prospecto  $prospecto
+     * @param  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Prospecto $prospecto)
+    public function show($id)
     {
-        //
+        $cliente = Prospecto::find($id);
+        //dd($cliente);
+        //$rut = $cliente->CLI_RUT;
+
+        //$contacto = Contactos::orderBy('CONT_CLI_ID','ASC')->where('CONT_CLI_ID','=',$rut)->paginate(10);
+        //$oportunidades = Oportunidad::orderBY('ID_CLIENTE','ASC')->where('ID_CLIENTE','=',$rut)->paginate(10);
+        $actividades = ActActividad::orderBy('ID_ACT','ASC')->where('ID_CLIENTE_ACT','=',$id)->paginate(10);
+
+        //dd($actividades);
+        return view('ModuloCrm.fichaClienteProspecto',compact('actividades'))
+            ->with('cliente',$cliente);
+        //return view('ModuloCrm.fichaClienteProspecto',compact('contacto','oportunidades','actividades'))->with('cliente',$cliente);
     }
 
     /**

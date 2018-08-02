@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-
+  {!! Html::script('js/jquery-2.1.1.min.js') !!}
 <div class="container" align="center">
 
   <div class="row">
@@ -56,7 +56,7 @@
                   </select>
                 </td>
                 <td><label>MONTO NETO:</label></td>
-                <td><input type="number" name="monto_neto" class="form-control" value="{{ $orden_trabajo->OT_MONTO_NETO }}"/></td>
+                <td><input type="number" name="monto_neto" id="monto_neto" class="form-control" value="{{ $orden_trabajo->OT_MONTO_NETO }}"/></td>
               </tr>
               <tr>
                 <td><label>ENCARGADO:</label></td>
@@ -189,7 +189,7 @@
                         <tr>
                           <td><label>CAUSA:</label></td>
                           <td>
-                            {{ Form::select('emp_causa',  App\Causa::pluck('CAU_DESC','CAU_ID'),
+                            {{ Form::select('emp_causa',  ['1' => 'ORDEN DE TRABAJO'],1,
                             ['id'=>'emp_causa','style'=>'width:175px','required']) }}
                           </td>
                         </tr>
@@ -244,7 +244,7 @@
 
                         <tr>
                           <td><label>MONTO:</label></td>
-                          <td><input  style="width:175px" name="rec_monto" required="required" type="number"  min="0" id="rec_monto"></td>
+                          <td><input  style="width:175px" name="rec_monto" required="required" type="number"  min="0" max="{{ $orden_trabajo->OT_MONTO_NETO }}*0,6" id="rec_monto"></td>
                         </tr>
 
                         <tr>
@@ -327,30 +327,34 @@
                     </div>
                     <div class="modal-body">
 
-                      <form id="form1" name="form1" method="post" action="">
+                      <form id="form1" name="form1" method="post" action="{{ route('insertDocOt') }}">
+                        {{ csrf_field() }}
 
                         <table  class="table-condensed" style="text-align:right; border:none" >
 
                           <tr>
                             <td><label>FECHA DE DOCUMENTO</label></td>
-                            <td><input type="date" required style="width:175px;"></td>
+                            <td>
+                              {{ Form::date('fecdoc',Carbon\Carbon::now(),['class'=>'form-control','style'=>'width:175px','required']) }}
+                            </td>
                           </tr>
-
-
+                          <tr hidden>
+                            <td>
+                              {{ Form::text('otid',$orden_trabajo->OT_ID,['class'=>'form-control','style'=>'width:175px','required']) }}
+                            </td>
+                          </tr>
                           <tr>
                             <td><label>TIPO DOCUMENTO:</label></td>
                             <td>
-                              <select  style="width:175px;">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                              </select>
+                              {{ Form::select('tpdoc',$tpdoc,['class'=>'form-control','style'=>'width:165px','placeholder'=>'Seleccione','required']) }}
                             </td>
                           </tr>
 
                           <tr>
                             <td><label>FOLIO:</label></td>
-                            <td><input type="text" required style="width:175px;"></td>
+                            <td>
+                              {{ Form::text('foliodoc',null,['class'=>'form-control','style'=>'width:175px','required']) }}
+                            </td>
                           </tr>
 
                           <tr>
@@ -362,27 +366,27 @@
 
                           -->
                           <td><label>RUT PROVEEDOR:</label></td>
-                          <td><input type="text" required style="width:175px;"></td>
+                          <td><input type="text" required id="rutdoc" class="form-control" name="rutdoc" readonly value="{{ Auth::user()->PRO_RUN }}" style="width:175px;"></td>
                         </tr>
 
                         <tr>
                           <td><label>GLOSA:</label></td>
-                          <td><input type="number" required style="width:175px;"></td>
-                        </tr>
-
-                        <tr>
-                          <td><label>TOTAL:</label></td>
-                          <td><input type="number" required style="width:175px;"></td>
+                          <td><input type="text" id="glosadoc" name="glosadoc" class="form-control" style="width:175px;"></td>
                         </tr>
 
                         <tr>
                           <td><label>NETO:</label></td>
-                          <td><input type="number" required style="width:175px;"></td>
+                          <td><input type="number" required name="netodoc" id="netodoc" class="form-control" style="width:175px;"></td>
                         </tr>
 
                         <tr>
                           <td><label>IMPUESTO:</label></td>
-                          <td><input type="number" required style="width:175px;"></td>
+                          <td><input type="number" name="impdoc" id="impdoc" class="form-control" required style="width:175px;"></td>
+                        </tr>
+
+                        <tr>
+                          <td><label>TOTAL:</label></td>
+                          <td><input type="number" name="totaldoc" id="totaldoc" class="form-control" required style="width:175px;"></td>
                         </tr>
 
                         <tr><td colspan="2" align="center"><button type="submit" id="ingDoc" class="btn btn-primary btn-lg">Ingresar documento</button></td></tr>
@@ -415,7 +419,7 @@
                   </div>
                   <div class="modal-body">
 
-                    <form id="form1" name="form1" method="post" action="">
+                    <form id="form1" name="form1" method="post" action="{{ route('facturacionOt') }}">
 
                       <table  class="table-condensed" style="text-align:right; border:none" >
 
@@ -479,5 +483,18 @@
 
 <br>
 <br>
+<script type="text/javascript">
+    // verifica que sea no sea mayor que el 60% del valor neto de la ot
+    $("#rec_monto").on("change", function(){
+        var val = $(this).val();
+        var monto = $("#monto_neto").val()*0.60;
+        //alert(prod);
+        if(val > monto){
+            alert("exede el máximo permitido por la OT. " + monto);
+            $("#rec_monto").val(monto);
+        }
+    });
+    //<![CDATA[
+</script>
 
 @endsection

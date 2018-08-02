@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Cliente;
 use App\CentroNegocio;
+use App\DocumentoPendiente;
 use App\Estado;
 use App\EstadoOt;
+use App\Factura;
 use App\OrdenTrabajo;
 use App\Proveedor;
 use App\SolicitudFondo;
+use App\TipoDocumento;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -54,6 +57,7 @@ class ListaOtController extends Controller
         })->sum();
         $margen_pesos=$ot->OT_MONTO_NETO - $sumaSF;
         $margen_porcentual=$margen_pesos/$ot->OT_MONTO_NETO;
+        $tpdoc = TipoDocumento::pluck('TDC_DESC','TDC_ID');
 
         if (!$ot) {
             return redirect()->route('ModuloOt.listaOt')->with('error', 'Orden de Trabajo no encontrada.');
@@ -64,6 +68,7 @@ class ListaOtController extends Controller
             ->with('centro_negocios', $centro_negocios)
             ->with('encargados', $encargados)
             ->with('estados', $estados)
+            ->with('tpdoc',$tpdoc)
             ->with('sumaSF', $sumaSF)
             ->with('margen_pesos', $margen_pesos)
             ->with('margen_porcentual', $margen_porcentual)
@@ -72,6 +77,7 @@ class ListaOtController extends Controller
 
     public function putModificarOt(Request $request, $id)
     {
+        dd($request);
         $ot = OrdenTrabajo::findOrFail($id)->update([
             'OT_OC' => $request->input('oc'),
             'OT_DESC' => $request->input('descripcion'),
@@ -88,5 +94,52 @@ class ListaOtController extends Controller
         }
 
         return redirect()->route('modificaOt', $id)->with('success', 'Orden de Trabajo modificada exitosamente.');
+    }
+    public function ingresoDoc(Request $request)
+    {
+        //dd((int)$request->input('foliodoc'));
+        $docOT = DocumentoPendiente::created([
+            'DCP_FOLIO' => $request->input('foliodoc'),
+            'DCP_GLOSA' => $request->input('glosadoc'),
+            'DCP_FECHA' => $request->input('fecdoc'),
+            'DCP_NETO' => (int)$request->input('netodoc'),
+            'DCP_IVA' => (int)$request->input('impdoc'),
+            'DCP_TOTAL' => (int)$request->input('totaldoc'),
+            'EMP_EMPRESA_EMP_ID' => Auth::user()->PRO_EMP,
+            'OT_ORDEN_TRABAJO_OT_ID' => (int)$request->input('otid'),
+            'TDC_TIPO_DOC_TDC_ID' => (int)$request->input('tpdoc'),
+            'DCP_EST' => 10,
+            'DCP_PRO_RUN' => Auth::user()->PRO_RUN
+        ]);
+        if (!$docOT){
+            return redirect()->back()->with('error', 'Hubo un error al ingresar el documento.');
+        }
+        return redirect()->back()->with('success', 'Documento ingresado correctamente.');
+    }
+
+    /*
+     * metodo post para guarar la factura de OT
+     */
+    public function facturaOt(Request $request){
+        $docOT = Factura::created([
+            'FCT_FECHA' => $request->input('foliodoc'),
+            'FCT_FOLIO' => $request->input('glosadoc'),
+            'FCT_GLOSA' => $request->input('fecdoc'),
+            'FCT_NETO' => (int)$request->input('netodoc'),
+            'FCT_IVA' => (int)$request->input('impdoc'),
+            'FACT_TOTAL' => (int)$request->input('totaldoc'),
+            'FCT_EMP_ID' => Auth::user()->PRO_EMP,
+            'FCT_TP_ID' => (int)$request->input('otid'),
+            'TDC_TIPO_DOC_TDC_ID' => (int)$request->input('tpdoc'),
+            'FCT_CLI_RUT' => 10,
+            'FCT_EST_ID' => Auth::user()->PRO_RUN,
+            'FCT_OT_ID' => $request->input('foliodoc'),
+            'FCT_EMPRESA' => $request->input('glosadoc'),
+            'FCT_NRO_BOLETAS' => $request->input('foliodoc')
+        ]);
+        if (!$docOT){
+            return redirect()->back()->with('error', 'Hubo un error al ingresar el documento.');
+        }
+        return redirect()->back()->with('success', 'Documento ingresado correctamente.');
     }
 }

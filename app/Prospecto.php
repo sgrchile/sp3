@@ -18,7 +18,7 @@ class Prospecto extends Model
      *
      * @var string
      */
-    protected $primaryKey = "CLI_IDENT";
+    protected $primaryKey = "CLI_PROSP_ID";
 
 
     /**

@@ -332,6 +332,16 @@ Route::group(['prefix' => 'modulo'], function () {
             'as' => 'patch.orden_trabajo',
         ]);
 
+        Route::post('/DocumentosOT',[
+            'uses' => 'ListaOtController@ingresoDoc',
+            'as' => 'insertDocOt',
+        ]);
+
+        Route::post('/Facturacion',[
+            'uses' => 'ListaOtController@facturaOt',
+            'as' => 'facturacionOt',
+        ]);
+
         Route::get('/configurar', [
             'uses' => 'OrdenTrabajoController@confOt',
             'as' => 'confOT',
@@ -1161,7 +1171,7 @@ Route::group(['prefix' => 'modulo'], function () {
         ]);
 
         Route::get('/FichaClienteProspecto/{cliente}', [
-            'uses' => 'ClientesController@fichaclipros',
+            'uses' => 'ProspectoController@show',
             'as' => 'fichaClienteProspecto',
         ]);
 

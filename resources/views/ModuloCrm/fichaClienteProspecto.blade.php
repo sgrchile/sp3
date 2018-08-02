@@ -165,7 +165,6 @@
                   <td>{{ $actividad->HORA }}</td>
                   <td>{{ $actividad->NOM_CONT_ACT }}</td>
                   <td>{{ $actividad->CONTACT_ACT }}</td>
-
                   <td>
                     <a href="{{ route('actividad.destroy',$actividad->ID_ACT) }}" onclick="return confirm('¿Desea eliminar ésta Actividad?')" >
                       <button class="btn btn-primary btn-xs" style="width:90px; margin-bottom:5px;">ELIMINAR</button></a>
@@ -183,13 +182,78 @@
                 <td></td>
                 <td></td>
                 <td>
-                  <button class="btn btn-primary btn-xs" style="width:90px;" data-toggle="modal" data-target="#regActividad" >NUEVO</button>
+                  <button class="btn btn-primary btn-xs" style="width:90px;" data-toggle="modal" data-target="#regActividad"  data-backdrop="static">NUEVO</button>
+
+                  <!-- Modal REGISTRO DE ACTIVIDAD-->
+                  <div class="modal fade " id="regActividad" role="dialog" >
+                    <div class="modal-dialog modal-lg" align="center">
+
+                      <!-- Modal content-->
+                      <div class="modal-content " >
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal">×</button>
+                          <h4 class="modal-title">REGISTRAR ACTIVIDAD</h4>
+                        </div>
+                        <div class="modal-body">
+
+                          <form id="form1" name="form1" method="post" action="{{ route('post.actividad') }}">
+
+                            <table  class="table-condensed" style="text-align:right; border:none" >
+
+                              <tr>
+
+                                <td>CLIENTE:</td>
+                                <td>
+                                  <input type="text" value="{{ $cliente->CLI_NOMBRE }}" name="nom" style="width:175px;" class="form-control" id="nom" readOnly/>
+                                </td>
+                                <td hidden>
+                                  <input type="text" value="{{ $cliente->CLI_PROSP_ID }}" name="cliente" style="width:175px;" class="form-control" id="cliente" readOnly/>
+                                </td>
+                                <td>ACTIVIDAD</td>
+                                <td>
+                                  {{ Form::select('tp_act',App\TpActividad::pluck('DESC_TP_ACTIVIDAD','ID_TP_ACTIVIDAD'),null,
+                                  ['class'=>'form-control','style'=>'width:175px','placeholder'=>'Seleccione']) }}
+                                </td>
+
+                              </tr>
+                              <tr>
+                                <td>FECHA:</td>
+                                <td>
+                                {{ Form::date('fecha', \Carbon\Carbon::now()->format('d-m-Y'),['class'=>'form-control','style'=>'width:175px']) }}
+                                <!--<input type="date"  style="width:175px;" class="form-control" required="required"/>-->
+                                </td>
+
+                                <td>HORA:</td>
+                                <td>
+                                {{ Form::time('hora', \Carbon\Carbon::now(),['class'=>'form-control','style'=>'width:175px']) }}
+                                <!-- <input type="text"  style="width:175px;" class="form-control"required="required"/>-->
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>DESCRIPCION:</td>
+                                <td>
+                                  <textarea id="descripcion" name="descripcion" class="form-control" style=" width:175px; max-width:175px; max-height:175px;" required></textarea>
+                                </td>
+                              </tr>
+                            </table>
+                            <button class="btn btn-primary btn-lg">REGISTRAR</button>
+                          </form>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!--// Modal REGISTRO ACTIVIDAD-->
+
                 </td>
               </tr>
             </table>
             {{ $actividades->links() }}
-            @include('modals.RegActividad',$cliente)
-            @include('modals.modActividad',$cliente)
+
+            @include('modals.modActividad',$cliente->CLI_PROSP_ID)
           </div>
 
         <!--FORM FINAL -->

@@ -45,9 +45,9 @@
                                         <td>{{ $cliente->CLI_FONO }}</td>
                                         <td>{{ $cliente->CLI_COMENTARIO }}</td>
                                         <td>
-                                            <a href="{{route('editarcliente', $cliente)}}"><button class="btn btn-primary btn-xs" style="width:130px; margin-bottom:10px;"> CONVERTIR</button></a>
-                                            <a href="{{route('fichaClienteProspecto', $cliente)}}"><button class="btn btn-primary btn-xs" style="width:130px;"> VER FICHA</button></a>
-                                            <a href="{{ route('prospecto.destroy',$cliente->ID_CONT) }}" onclick="return confirm('¿Desea eliminar éste cliente?')" ><button class="btn btn-primary btn-xs"
+                                            <a href="{{route('editarcliente', $cliente->CLI_PROSP_ID)}}"><button class="btn btn-primary btn-xs" style="width:130px; margin-bottom:10px;"> CONVERTIR</button></a>
+                                            <a href="{{route('fichaClienteProspecto', $cliente->CLI_PROSP_ID)}}"><button class="btn btn-primary btn-xs" style="width:130px;"> VER FICHA</button></a>
+                                            <a href="{{ route('prospecto.destroy',$cliente->CLI_PROSP_ID) }}" onclick="return confirm('¿Desea eliminar éste cliente?')" ><button class="btn btn-primary btn-xs"
                                                                                                                                                                           style="width:65px;" >ELIMINAR</button></a>
                                         </td>
                                 </tr>

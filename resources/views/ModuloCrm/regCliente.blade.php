@@ -102,11 +102,11 @@
                 </td>
 
               </tr>
-              <tr>
+              <!--<tr>
                   <td>ORIGEN: </td>
                   <td >
                       {{ Form::text('origen',null,['class'=>'form-control','style'=>'width:175px']) }}
-                  </td>
+                  </td>-->
               </tr>
               <tr>
                 <td>PAIS:</td>

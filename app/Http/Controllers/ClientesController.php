@@ -102,7 +102,7 @@ class ClientesController extends Controller
         $cliente->setAttribute('CLI_ACTIVIDAD',$request->get('actividad',null));
         $cliente->setAttribute('CLI_BANCO',$request->get('banco',null));
         $cliente->setAttribute('CLI_NRO_CTA',$request->get('nrocuenta',null));
-        $cliente->setAttribute('CLI_ORIGEN',$request->get('origen',null));
+        //$cliente->setAttribute('CLI_ORIGEN',$request->get('origen',null));
         $cliente->setAttribute('CLI_PAIS',$request->get('pais',null));
         $cliente->setAttribute('CLI_REGION',$request->get('region',null));
         $cliente->setAttribute('CLI_CIUDAD',$request->get('ciudad',null));
@@ -314,7 +314,7 @@ class ClientesController extends Controller
         $oportunidades = Oportunidad::orderBY('ID_CLIENTE','ASC')->where('ID_CLIENTE','=',$rut)->paginate(10);
         $actividades = ActActividad::orderBy('ID_ACT','ASC')->where('ID_CLIENTE_ACT','=',$rut)->paginate(10);
 
-        //dd($cliente);
+        //dd($actividades);
         //dd($cli);
         //dd($contacto);
 
@@ -326,60 +326,6 @@ class ClientesController extends Controller
 
     }
 
-    public function fichaclipros($id)
-    {
-        $cliente = Prospecto::find($id);
-        $rut = $cliente->CLI_RUT;
-        if ($cliente->getAttribute('CLI_RUBRO') != null){
-            $rubro = Rubro::find($cliente->CLI_RUBRO);
-            $cliente->setAttribute('CLI_RUBRO', $rubro->RUB_DESC);
-        }
-        if ($cliente->getAttribute('CLI_SUB_RUBRO') != null){
-            $subrub = SubRubro::find($cliente->CLI_SUB_RUBRO);
-            $cliente->setAttribute('CLI_SUB_RUBRO', $subrub->SUB_RUB_DESC);
-        }
-        if ($cliente->getAttribute('CLI_ACTIVIDAD')!=null){
-            $ACT = Actividad::find($cliente->CLI_ACTIVIDAD);
-            $cliente->setAttribute('CLI_ACTIVIDAD', $ACT->ACT_DESC);
-        }
-        if ($cliente->getAttribute('CLI_BANCO') != null){
-            $BCO = Banco::find($cliente->get('CLI_BANCO',null));
-            $cliente->setAttribute('CLI_BANCO', $BCO->BCO_DESC);
-        }
-        if ($cliente->getAttribute('CLI_TCTA_BCO') != null){
-            $TCTA = TipoCuenta::find($cliente->get('CLI_TCTA_BCO',null));
-            $cliente->setAttribute('CLI_TCTA_BCO', $TCTA->TCTA_DESC);
-        }
-        if ($cliente->getAttribute('CLI_PAIS') != null){
-            $Pais = Pais::find($cliente->CLI_PAIS);
-            $cliente->setAttribute('CLI_PAIS', $Pais->PAI_DESC);
-        }
-        if ($cliente->getAttribute('CLI_REGION') != null){
-            $Reg = Region::find($cliente->get('CLI_REGION',null));
-            $cliente->setAttribute('CLI_REGION', $Reg->REG_DESC);
-        }
-        if ($cliente->getAttribute('CLI_CIUDAD') != null){
-            $CIU = Ciudad::find($cliente->CLI_CIUDAD);
-            $cliente->setAttribute('CLI_CIUDAD', $CIU->CIU_DESC);
-        }
-        if ($cliente->getAttribute('CLI_PROVINCIA') != null){
-            $pro = Provincia::find($cliente->CLI_PROVINCIA);
-            $cliente->setAttribute('CLI_PROVINCIA', $pro->PV_DESC);
-        }
-        if ($cliente->CLI_TEMP != null){
-            $temp = Temperatura::find($cliente->CLI_TEMP);
-            if ($temp != null){
-                $cliente->CLI_TEMP = $temp->desc_temp;
-            }
-        }
-
-        $contacto = Contactos::orderBy('CONT_CLI_ID','ASC')->where('CONT_CLI_ID','=',$rut)->paginate(10);
-        $oportunidades = Oportunidad::orderBY('ID_CLIENTE','ASC')->where('ID_CLIENTE','=',$rut)->paginate(10);
-        $actividades = ActActividad::orderBy('ID_ACT','ASC')->where('ID_CLIENTE_ACT','=',$rut)->paginate(10);
-
-        //return view('ModuloCrm.fichaClienteProspecto',compact('contacto','oportunidades','actividades'));
-        return view('ModuloCrm.fichaClienteProspecto',compact('contacto','oportunidades','actividades'))->with('cliente',$cliente);
-    }
 
     /**
      * Store a newly created resource in storage.
