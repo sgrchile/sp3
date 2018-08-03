@@ -21,7 +21,9 @@
 
               <a href="{{ route('ModuloOt.IngresoOt') }}" ><button type="button" class="btn btn-primary btn-lg" style="width:250px; margin-bottom:15px;">AGREGAR OT</button></a> </td>
              <a href="{{ route('ModuloOt.listaOt')}}"><button type="button" class="btn btn-primary btn-lg" style="width:250px; margin-bottom:15px;">PROCESAR OT</button></a>
+          @if(\Illuminate\Support\Facades\Auth::user()->PRO_NIVEL == 5)
              <a href="{{ route('Graficos')}}"><button type="button" class="btn btn-primary btn-lg" style="width:250px; margin-bottom:15px;">ESTADO OT</button></a>
+          @endif
              <!--<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" style="width:250px; margin-bottom:15px;">CLIENTES</button>
              <button type="button" class="btn btn-primary btn-lg" style="width:250px; margin-bottom:15px;">REPORTAR</button>-->
 

@@ -178,17 +178,19 @@ Route::group(['prefix' => 'modulo'], function () {
                 'uses' => 'SolicitudFondoController@index',
                 'as' => 'SolFon',
             ]);
-            Route::get('/create', [
-                'uses' => 'SolicitudFondoController@getAllOts',
-                'as' => 'createSolFon',
-            ]);
 
-            Route::get('/{id}','SolicitudFondoController@getModificarSolicitar')->name('get.modificar.solicitar');
+            Route::group(['prefix' => 'crear'], function () {
+                Route::get('/create', [
+                    'uses' => 'SolicitudFondoController@getAllOts',
+                    'as' => 'createSolFon',
+                ]);
+                Route::get('/{id}','SolicitudFondoController@getModificarSolicitar')->name('get.modificar.solicitar');
 
-            Route::post('/insert', [
-                'uses' => 'SolicitudFondoController@postSolicitudFondo',
-                'as' => 'insertSolFon',
-            ]);
+                Route::post('/insert', [
+                    'uses' => 'SolicitudFondoController@postSolicitudFondo',
+                    'as' => 'insertSolFon',
+                ]);
+            });
 
             Route::group(['prefix' => 'evaluar'], function () {
                 Route::get('/','SolicitudFondoController@showEvaluar')->name('verEvaluar');

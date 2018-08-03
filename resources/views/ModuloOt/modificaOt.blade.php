@@ -128,11 +128,12 @@
 
 
                   <tr>
-
-                    <td colspan="8" align="center"><label>
-                      <button type="submit" class="btn btn-primary btn-md" id="myBtn3">Procesar</button>
-                    </label>
-                  </td>
+                    @if(\Illuminate\Support\Facades\Auth::user()->PRO_NIVEL == 2)
+                      <td colspan="8" align="center"><label>
+                          <button type="submit" class="btn btn-primary btn-md" id="myBtn3">editar</button>
+                        </label>
+                      </td>
+                      @endif
                 </tr>
               </table>
 
@@ -405,7 +406,9 @@
             <!--// Modal INGRESO DE DOCUMENTO PENDIENTE-->
 
 
+          @if(\Illuminate\Support\Facades\Auth::user()->PRO_NIVEL == 2)
             <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#solfact" data-backdrop="static">Solicitar facturación</button>
+          @endif
 
             <!-- Modal SOLICITAR FACTURACION-->
             <div class="modal fade " id="solfact" role="dialog" >
@@ -420,6 +423,7 @@
                   <div class="modal-body">
 
                     <form id="form1" name="form1" method="post" action="{{ route('facturacionOt') }}">
+                      {{ csrf_field() }}
 
                       <table  class="table-condensed" style="text-align:right; border:none" >
 
@@ -444,15 +448,16 @@
                             <input type="number" style="width:175px;" name="neto" id="neto" required>
                           </td>
                         </tr>
-
+                        <input type="text" hidden name="cliente" id="cliente" value="{{ $orden_trabajo->OT_CLI_RUT }}">
+                        <input type="text" hidden name="ot" id="ot" value="{{ $orden_trabajo->OT_ID }}">
                         <tr>
                           <td colspan="2" align="center"><button type="submit" id="ingDoc" class="btn btn-primary btn-lg">Solicitar facturación</button>
                           </td>
                         </tr>
-                        <tr>
+                        <!--<tr>
                           <td colspan="2" align="center"><a href=""> <button type="submit" class="btn btn-primary btn-lg"> Proveedor </button></a>
                           </td>
-                        </tr>
+                        </tr>-->
                       </table>
 
                     </form>

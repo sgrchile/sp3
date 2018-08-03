@@ -12,6 +12,7 @@ use App\OrdenTrabajo;
 use App\Proveedor;
 use App\SolicitudFondo;
 use App\TipoDocumento;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -121,25 +122,34 @@ class ListaOtController extends Controller
      * metodo post para guarar la factura de OT
      */
     public function facturaOt(Request $request){
-        $docOT = Factura::created([
-            'FCT_FECHA' => $request->input('foliodoc'),
-            'FCT_FOLIO' => $request->input('glosadoc'),
-            'FCT_GLOSA' => $request->input('fecdoc'),
-            'FCT_NETO' => (int)$request->input('netodoc'),
-            'FCT_IVA' => (int)$request->input('impdoc'),
-            'FACT_TOTAL' => (int)$request->input('totaldoc'),
-            'FCT_EMP_ID' => Auth::user()->PRO_EMP,
-            'FCT_TP_ID' => (int)$request->input('otid'),
-            'TDC_TIPO_DOC_TDC_ID' => (int)$request->input('tpdoc'),
-            'FCT_CLI_RUT' => 10,
-            'FCT_EST_ID' => Auth::user()->PRO_RUN,
-            'FCT_OT_ID' => $request->input('foliodoc'),
-            'FCT_EMPRESA' => $request->input('glosadoc'),
-            'FCT_NRO_BOLETAS' => $request->input('foliodoc')
-        ]);
-        if (!$docOT){
-            return redirect()->back()->with('error', 'Hubo un error al ingresar el documento.');
+
+        //dd($request->neto);
+        $facOT = new Factura();
+        $facOT->FCT_FECHA = Carbon::now()->toDateString();
+        $facOT->FCT_GLOSA = $request->glosa;
+        $facOT->FCT_NETO = (int)$request->neto;
+        $facOT->FCT_EMP_ID = (int)Auth::user()->PRO_EMP;
+        $facOT->FCT_TP_ID = (int)$request->tpfac;
+        $facOT->TDC_TIPO_DOC_TDC_ID = 4;
+        $facOT->FCT_CLI_RUT = $request->cliente;
+        $facOT->FCT_EST_ID = 1;
+        $facOT->FCT_OT_ID = (int)$request->ot;
+        /*$facOT = Factura::created([
+            'FCT_FECHA' => Carbon::now()->toDateString(),
+            'FCT_GLOSA' => $request->input('glosa'),
+            'FCT_NETO' => (int)$request->input('neto'),
+            'FCT_EMP_ID' => (int)Auth::user()->PRO_EMP,
+            'FCT_TP_ID' => (int)$request->input('tpfac'),
+            'TDC_TIPO_DOC_TDC_ID' => 4,
+            'FCT_CLI_RUT' => $request->input('cliente'),
+            'FCT_EST_ID' => 1,
+            'FCT_OT_ID' => (int)$request->input('ot'),
+        ]);*/
+        //dd($facOT);
+        if (!$facOT){
+            return redirect()->back()->with('error', 'Hubo un error al ingresar la facturación.');
         }
-        return redirect()->back()->with('success', 'Documento ingresado correctamente.');
+        $facOT->save();
+        return redirect()->back()->with('success', 'Se ha enviado la factración.');
     }
 }
