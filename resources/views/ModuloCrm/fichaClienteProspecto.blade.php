@@ -69,7 +69,11 @@
               <tr>
                 <td>RUBRO:</td>
                 <td>
-                  <input  type="text"  value="{{ $cliente->CLI_RUBRO }}" style="width:175px;" class="form-control" readOnly/>
+                  @if($cliente->CLI_RUBRO)
+                  <input  type="text"  value="{{ App\Rubro::find($cliente->CLI_RUBRO)->RUB_DESC }}" style="width:175px;" class="form-control" readOnly/>
+                    @else
+                    <input  type="text"  value="{{ $cliente->CLI_RUBRO }}" style="width:175px;" class="form-control" readOnly/>
+                    @endif
                 </td>
                 <td>SUB RUBRO:</td>
                 <td>
@@ -125,7 +129,11 @@
               <tr>
                 <td>TEMPERATURA:</td>
                 <td>
+                  @if($cliente->CLI_TEMP != null)
                   <input  type="text" value="{{ App\Temperatura::find($cliente->CLI_TEMP)->desc_temp }}"  style="width:175px;" class="form-control" readOnly/>
+                    @else
+                    <input  type="text" value="{{ $cliente->CLI_TEMP }}"  style="width:175px;" class="form-control" readOnly/>
+                    @endif
                 </td>
                 <td>COMENTARIO:</td>
                 <td>
