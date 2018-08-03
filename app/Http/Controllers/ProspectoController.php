@@ -156,8 +156,9 @@ class ProspectoController extends Controller
         //$oportunidades = Oportunidad::orderBY('ID_CLIENTE','ASC')->where('ID_CLIENTE','=',$rut)->paginate(10);
         $actividades = ActActividad::orderBy('ID_ACT','ASC')->where('ID_CLIENTE_ACT','=',$id)->paginate(10);
 
-        //dd($actividades);
-        return view('ModuloCrm.fichaClienteProspecto',compact('actividades'))
+
+        return view('ModuloCrm.fichaClienteProspecto')
+            ->with('actividades',$actividades)
             ->with('cliente',$cliente);
         //return view('ModuloCrm.fichaClienteProspecto',compact('contacto','oportunidades','actividades'))->with('cliente',$cliente);
     }

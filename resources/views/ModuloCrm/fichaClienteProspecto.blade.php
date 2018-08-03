@@ -125,7 +125,7 @@
               <tr>
                 <td>TEMPERATURA:</td>
                 <td>
-                  <input  type="text" value="{{ $cliente->CLI_TEMP }}"  style="width:175px;" class="form-control" readOnly/>
+                  <input  type="text" value="{{ App\Temperatura::find($cliente->CLI_TEMP)->desc_temp }}"  style="width:175px;" class="form-control" readOnly/>
                 </td>
                 <td>COMENTARIO:</td>
                 <td>
@@ -253,7 +253,6 @@
             </table>
             {{ $actividades->links() }}
 
-            @include('modals.modActividad',$cliente->CLI_PROSP_ID)
           </div>
 
         <!--FORM FINAL -->
