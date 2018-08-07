@@ -32,15 +32,16 @@ class ClientesController extends Controller
     public function index()
     {
         if (Auth::user()->PRO_ROL == 1){
-            $clientes = Cliente::orderBy('CLI_NOMBRE','ASC')->paginate(20);
+            $clientes = Cliente::orderBy('CLI_NOMBRE','ASC')->paginate(50);
+            //dd($clientes);
         }if (Auth::user()->PRO_ROL == 2){
             $clientes = Cliente::orderBy('CLI_NOMBRE','ASC')
                 ->where('CLI_EMP','=',Auth::user()->PRO_EMP)
-                ->paginate(20);
+                ->paginate(50);
         }if (Auth::user()->PRO_ROL == 3){
             $clientes = Cliente::orderBy('CLI_NOMBRE','ASC')
                 ->where('CLI_PROPIETARIO','=',Auth::user()->PRO_RUN)
-                ->paginate(20);
+                ->paginate(50);
         }
         //dd($clientes);
 
@@ -114,7 +115,7 @@ class ClientesController extends Controller
 
         //dd($this->regcliente($cliente->getAttribute('CLI_RUT')));
 
-        if ($this->regcliente($cliente->getAttribute('CLI_ID'))){
+        if ($this->regcliente($cliente->getAttribute('CLI_RUT'))){
 
             $cliente->save();
             //dd("true");
@@ -123,7 +124,7 @@ class ClientesController extends Controller
             //return redirect()->route('result')->with('success', true);
         }else{
             //dd("false");
-            return back()->with('error', 'Cliente NO creado');
+            return back()->with('error', 'El Cliente que intenta registrar ya existe');
             //return view('ModuloOt.result')->with('success', false);
         }
 
@@ -187,10 +188,12 @@ class ClientesController extends Controller
 
     public function regcliente($id){
 
-        $cliente = Cliente::find($id);
-
+        $cliente = Cliente::all()
+            ->where('CLI_EMP','=',Auth::user()->PRO_EMP)
+            ->where('CLI_RUT','=',$id)
+            ->count();
         //dd($cliente);
-        if (empty($cliente)){
+        if ($cliente == 0){
             return true;
         }else{
             return false;

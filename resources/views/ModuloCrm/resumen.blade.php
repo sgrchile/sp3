@@ -30,6 +30,10 @@
                                         <div class="form-group">
                                             <label>Equipo</label>
                                             <select class="form-control">
+                                                <option value="">Seleccione</option>
+                                                @foreach(App\Empresa::all() as $emp)
+                                                    <option value="{{ $emp->EMP_ID }}">{{ $emp->EMP_DESC }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                         <div class="form-group">
@@ -42,6 +46,10 @@
                                         <div class="form-group">
                                             <label>Proceso de negocio</label>
                                             <select class="form-control">
+                                                <option value="">Seleccione</option>
+                                                @foreach(App\Proceso::all() as $proc)
+                                                    <option value="{{ $proc->PRO_ID }}">{{ $proc->PRO_DESC }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
@@ -50,8 +58,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Mes</label>
-                                            <select class="form-control">
-                                            </select>
+                                            {{ Form::selectMonth('mes',null,['class'=>'form-control']) }}
                                         </div>
                                     </div>
                                     <div class="col-md-6">

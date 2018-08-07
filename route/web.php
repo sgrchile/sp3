@@ -1243,8 +1243,13 @@ Route::group(['prefix' => 'modulo'], function () {
             'as' => 'update.cliente',
         ]);
 
-        Route::post('/Convertir,{id}', [
-            'uses' => 'ClientesController@convertir',
+        Route::get('/EditarProsp,{id}', [
+            'uses' => 'ProspectoController@edit',
+            'as' => 'editarprosp',
+        ]);
+
+        Route::post('/Convertir', [
+            'uses' => 'ProspectoController@convertir',
             'as' => 'convertir',
         ]);
 

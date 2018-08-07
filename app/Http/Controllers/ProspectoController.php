@@ -38,12 +38,23 @@ class ProspectoController extends Controller
         if (Auth::user()->PRO_NIVEL ==14){
             $prosp = Prospecto::orderBy('CLI_IDENT','ASC')
                 ->where('CLI_ESTADO','=',1)
-                ->paginate(20);
+                ->paginate(50);
         }else{
-            $prosp = Prospecto::orderBy('CLI_IDENT','ASC')
-                ->where('CLI_PROPIETARIO','=',Auth::user()->PRO_RUN)
-                ->where('CLI_ESTADO','=',1)
-                ->paginate(20);
+            if (Auth::user()->PRO_ROL == 1){
+                $prosp = Prospecto::orderBy('CLI_IDENT','ASC')
+                    ->where('CLI_ESTADO','=',1)
+                    ->paginate(50);
+            }if (Auth::user()->PRO_ROL == 2){
+                $prosp = Prospecto::orderBy('CLI_IDENT','ASC')
+                    ->where('CLI_ESTADO','=',1)
+                    ->where('CLI_EMP','=',Auth::user()->PRO_EMP)
+                    ->paginate(50);
+            }if (Auth::user()->PRO_ROL == 3){
+                $prosp = Prospecto::orderBy('CLI_IDENT','ASC')
+                    ->where('CLI_ESTADO','=',1)
+                    ->where('CLI_PROPIETARIO','=',Auth::user()->PRO_RUN)
+                    ->paginate(50);
+            }
         }
         //dd($prosp);
 
@@ -166,12 +177,23 @@ class ProspectoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Prospecto  $prospecto
+     * @param  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Prospecto $prospecto)
+    public function edit($id)
     {
-        //
+        $cliente = Prospecto::find($id);
+        $rubro = Rubro::all();
+        $banco = Banco::pluck('BCO_DESC','BCO_ID')->prepend('seleccione');
+        $pais = Pais::all();
+        $tcta = TipoCuenta::pluck('TCTA_DESC', 'TCTA_BCO')->prepend('seleccione');
+        //dd($cliente);
+        return view('ModuloCrm.convertirCliente')
+            ->with('rubro',$rubro)
+            ->with('banco',$banco)
+            ->with('pais',$pais)
+            ->with('tcta',$tcta)
+            ->with('cliente',$cliente);
     }
 
     /**
@@ -200,31 +222,47 @@ class ProspectoController extends Controller
         return redirect()->back()->with('status_prosp', 'Cliente eliminado!');
     }
 
-    public function convertir(Request $request, $id){
-        $cliente = Cliente::find($id);
-        //dd($id);
-        $cliente->setAttribute('CLI_NOMBRE',$request->get('nombre',null));
-        $cliente->setAttribute('CLI_RUT',$request->get('rut',null));
-        $cliente->setAttribute('CLI_RUBRO',$request->get('rubro',null));
-        $cliente->setAttribute('CLI_SUB_RUBRO',$request->get('subrubro',null));
-        $cliente->setAttribute('CLI_ACTIVIDAD',$request->get('actividad',null));
-
-        //dd($cliente);
-
-        if ($this->regcliente($cliente->getAttribute('CLI_RUT'))){
-
-            $cliente->CLI_ESTADO=2;
+    public function convertir(Request $request){
+        $existe = Cliente::all()
+            ->where('CLI_EMP','=',$request->emp)
+            ->where('CLI_RUT','=',$request->rut)
+            ->count();
+        if ($existe == 0){
+            $cliente = new Cliente();
+            $cliente->setAttribute('CLI_RUT',$request->get('rut',null));
+            $cliente->setAttribute('CLI_NOMBRE',$request->get('nombre',null));
+            $cliente->setAttribute('CLI_NOM_FANT',$request->get('nombref',null));
+            $cliente->setAttribute('CLI_FONO',$request->get('telefono',null));
+            $cliente->setAttribute('CLI_EMAIL',$request->get('email',null));
+            $cliente->setAttribute('CLI_FONO2',$request->get('telefono2',null));
+            $cliente->setAttribute('CLI_ACT_COMERCIAL',$request->get('actcomercial',null));
+            $cliente->setAttribute('CLI_DIRECCION',$request->get('direccion',null));
+            $cliente->setAttribute('CLI_TCTA_BCO',$request->get('tipocuenta',null));
+            $cliente->setAttribute('CLI_SITIO_WEB',$request->get('sitioweb',null));
+            $cliente->setAttribute('CLI_GLOSA',$request->get('glosa',null));
+            $cliente->setAttribute('CLI_RUBRO',$request->get('rubro',null));
+            $cliente->setAttribute('CLI_SUB_RUBRO',$request->get('subrubro',null));
+            $cliente->setAttribute('CLI_ACTIVIDAD',$request->get('actividad',null));
+            $cliente->setAttribute('CLI_BANCO',$request->get('banco',null));
+            $cliente->setAttribute('CLI_NRO_CTA',$request->get('nrocuenta',null));
+            $cliente->setAttribute('CLI_PAIS',$request->get('pais',null));
+            $cliente->setAttribute('CLI_REGION',$request->get('region',null));
+            $cliente->setAttribute('CLI_CIUDAD',$request->get('ciudad',null));
+            $cliente->setAttribute('CLI_PROVINCIA',$request->get('provincia', null));
+            $cliente->setAttribute('CLI_TEMP',$request->get('temperatura', null));
+            $cliente->CLI_PROPIETARIO = $request->prop;
+            $cliente->CLI_EMP = $request->emp;
+            $cliente->CLI_PROSP = $request->idprosp;
+            //dd($cliente);
             $cliente->save();
-            //dd("true");
-            //return view('ModuloOt.result')->with('success', true);
-            return redirect()->action(fichaclicons)->with('success', "ha sido convertido exitosamente.");
-            //return redirect()->route('result')->with('success', true);
+            return redirect()->back()->with('success', "ha sido convertido exitosamente.");
+            $pros = Prospecto::find($request->idprosp);
+            $pros->CLI_ESTADO = 2;
+            $pros->save();
+
         }else{
-            //dd("false");
             return redirect()->back()->with('error', "El CLIENTE ya está registrado favor comunicarce con administrador.");
-            //return view('ModuloOt.result')->with('success', false);
         }
-        return redirect();
     }
 
     function valida_rut($rut)
