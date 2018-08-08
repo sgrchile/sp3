@@ -96,8 +96,7 @@ class OportunidadController extends Controller
             'MONEDA' => $data['moneda'],
             'TOTAL' => $data['total'],
             'FEC_INGRESO' => $data['fechaingreso'],
-            'FEC_CIERRE' => $data['fechcierre'],
-            'CENT_NEGOCIO' => $data['centneg'],
+            'FEC_CIERRE' => $data['fechacierre'],
             'SIG_PASO' => $data['sig_paso'],
         ]);
     }
