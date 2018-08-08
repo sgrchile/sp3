@@ -6,6 +6,7 @@ use App\Actividad;
 use App\AreaServicio;
 use App\Etapa;
 use App\OfertaArticulo;
+use App\Oportunidad;
 use App\PersonaJuridica;
 use App\Proceso;
 use App\Producto;
@@ -54,6 +55,19 @@ class LocationController extends Controller
     {
         return response()
             ->json(Actividad::where('SUB_RUB_COD', '=', (int) $subrubro)->get(), 200);
+    }
+
+    public function getOportunidad($emp)
+    {
+        return response()
+            ->json(Oportunidad::
+                where('OPORT_EMP', '=', (int) $emp), 200);
+    }
+
+    public function getProceso($emp)
+    {
+        return response()
+            ->json(Proceso::where('PRO_JERARQUIA', '=', (int) $emp)->get(), 200);
     }
 
     public function getEtapa($proceso)

@@ -55,6 +55,11 @@ Route::get('/crm/oportunidades', function(){
     return response()->json($db);
 });
 
+Route::get('/oportunidades/{emp}',[
+    'uses' => 'LocationController@getOportunidad',
+    'as' => 'get.oportunidad',
+]);
+
 Route::get('/menus/all/{id}', [
     'uses' => 'MenuController@getMenus',
     'as' => 'get.menus',
@@ -83,6 +88,10 @@ Route::get('/afp', [
 Route::get('/persjuridica', [
     'uses' => 'LocationController@getpersjuridicas',
     'as' => 'get.persjuridica',
+]);
+Route::get('/procneg/{emp}', [
+    'uses' => 'LocationController@getProceso',
+    'as' => 'get.proceso',
 ]);
 Route::get('/etapa/{proceso}', [
     'uses' => 'LocationController@getEtapa',

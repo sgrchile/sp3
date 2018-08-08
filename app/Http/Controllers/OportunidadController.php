@@ -98,6 +98,8 @@ class OportunidadController extends Controller
             'FEC_INGRESO' => $data['fechaingreso'],
             'FEC_CIERRE' => $data['fechacierre'],
             'SIG_PASO' => $data['sig_paso'],
+            'OPORT_EMP' => (int)Auth::user()->PRO_EMP,
+            'OPORT_RESP' => Auth::user()->PRO_RUN,
         ]);
     }
 

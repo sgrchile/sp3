@@ -81,6 +81,8 @@ class ActividadesController extends Controller
             'HORA' => $data['hora'],
             'ID_CLIENTE_ACT' => $data['cliente'],
             'TP_ACTIVIDAD' => (int)$data['tp_act'],
+            'EMP_ACT' => (int)Auth::user()->PRO_EMP,
+            'RESPONSABLE_ACT' => Auth::user()->PRO_RUN,
         ]);
     }
 

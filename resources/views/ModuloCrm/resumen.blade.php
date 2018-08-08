@@ -28,28 +28,36 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Equipo</label>
-                                            <select class="form-control">
+                                            <label>Empresa</label>
+                                            @if(\Illuminate\Support\Facades\Auth::user()->PRO_NIVEL == 14)
+                                            <select class="form-control" id="emp" name="emp">
                                                 <option value="">Seleccione</option>
                                                 @foreach(App\Empresa::all() as $emp)
                                                     <option value="{{ $emp->EMP_ID }}">{{ $emp->EMP_DESC }}</option>
                                                 @endforeach
                                             </select>
+                                                @else
+                                                <select class="form-control" id="emp" name="emp">
+                                                    <option value="">Seleccione</option>
+                                                    @foreach(App\Empresa::all()->where('EMP_ID','=',\Illuminate\Support\Facades\Auth::user()->PRO_EMP) as $emp)
+                                                        <option value="{{ $emp->EMP_ID }}">{{ $emp->EMP_DESC }}</option>
+                                                    @endforeach
+                                                </select>
+                                                @endif
+
                                         </div>
                                         <div class="form-group">
-                                            <label>Periodicidad de cierre</label>
-                                            <select class="form-control">
+                                            <label>Etapas</label>
+                                            <select class="form-control" id="etapa" name="etapa">
+                                                <option value="">Seleccione</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Proceso de negocio</label>
-                                            <select class="form-control">
+                                            <select class="form-control" id="procneg" name="procneg">
                                                 <option value="">Seleccione</option>
-                                                @foreach(App\Proceso::all() as $proc)
-                                                    <option value="{{ $proc->PRO_ID }}">{{ $proc->PRO_DESC }}</option>
-                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
@@ -65,12 +73,17 @@
                                         <div class="form-group">
                                             <label>Año</label>
                                             <select class="form-control">
+                                                <?php $year = date("Y");
+                                                for ($i=2015; $i<=$year; $i++){
+                                                    echo '<option value="'.$i.'">'.$i.'</option>';
+                                                }
+                                                ?>
                                             </select>
                                         </div>
                                     </div>
                                 </div>
                                 <button type="button" class="btn btn-default">Limpiar</button>
-                                <button type="button" class="btn btn-primary">Buscar</button>
+                                <button type="button" id="btnbuscar" class="btn btn-primary">Buscar</button>
                             </div>
                             <div class="col-md-6">
                                 <div id="funel"></div>
@@ -93,12 +106,33 @@
                                     <th scope="col"></th>
                                     <th scope="col">Proceso de negocio</th>
                                     <th scope="col">Etapa</th>
-                                    <th scope="col">Probabilidad</th>
-                                    <th scope="col">Esperado</th>
-                                    <th scope="col">Real</th>
+                                    <th scope="col">Probabilidad %</th>
+                                    <th scope="col">Esperado $</th>
                                 </tr>
                             </thead>
                             <tbody id="oportunidades.table">
+                            @if(\Illuminate\Support\Facades\Auth::user()->PRO_NIVEL == 14)
+                                @foreach(App\Oportunidad::all() as $oport)
+                                    <tr>
+                                        <th scope="col">{{ $oport->ID_OPORTUNIDAD }}</th>
+                                        <th scope="col">{{ App\Proceso::find($oport->PROC_NEGOCIO)->PRO_DESC }}</th>
+                                        <th scope="col">{{ App\Etapa::find($oport->ETAPA)->DESC_ETAPA }}</th>
+                                        <th scope="col">{{ $oport->PROBABILIDAD }}</th>
+                                        <th scope="col">{{ $oport->TOTAL }}</th>
+                                    </tr>
+                                @endforeach
+                                @else
+                                @foreach(App\Oportunidad::all()->where('OPORT_RESP','=',\Illuminate\Support\Facades\Auth::user()->PRO_RUN) as $oport)
+                                    <tr>
+                                        <th scope="col">{{ $oport->ID_OPORTUNIDAD }}</th>
+                                        <th scope="col">{{ App\Proceso::find($oport->PROC_NEGOCIO)->PRO_DESC }}</th>
+                                        <th scope="col">{{ App\Etapa::find($oport->ETAPA)->DESC_ETAPA }}</th>
+                                        <th scope="col">{{ $oport->PROBABILIDAD }}</th>
+                                        <th scope="col">{{ $oport->TOTAL }}</th>
+                                    </tr>
+                                @endforeach
+                                @endif
+
                             </tbody>
                         </table>
                     </div>
@@ -116,7 +150,7 @@
                             <thead>
                                 <tr>
                                     <th scope="col"></th>
-                                    <th scope="col">Equipo</th>
+                                    <th scope="col">Empresa</th>
                                     <th scope="col">Responsable</th>
                                     <th scope="col">Asunto</th>
                                     <th scope="col">Actividad</th>
@@ -125,9 +159,31 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row" colspan="7">(sin datos)</th>
-                                </tr>
+                            @if(\Illuminate\Support\Facades\Auth::user()->PRO_NIVEL == 14)
+                                @foreach(App\ActActividad::all() as $act)
+                                    <tr>
+                                        <th scope="col"></th>
+                                        <th scope="col">{{ App\Empresa::find($act->EMP_ACT)->EMP_DESC }}</th>
+                                        <th scope="col">{{ $act->RESPONSABLE_ACT }}</th>
+                                        <th scope="col">{{ $act->DESC_ACT }}</th>
+                                        <th scope="col">{{ App\TpActividad::find($act->TP_ACTIVIDAD)->DESC_TP_ACTIVIDAD }}</th>
+                                        <th scope="col">{{ $act->FECHA_ACT }}</th>
+                                        <th scope="col">{{ $act->EST_ACTIVIDAD }}</th>
+                                    </tr>
+                                @endforeach
+                                @else
+                                @foreach(App\ActActividad::all()->where('RESPONSABLE_ACT','=',\Illuminate\Support\Facades\Auth::user()->PRO_RUN) as $act)
+                                    <tr>
+                                        <th scope="col"></th>
+                                        <th scope="col">{{ App\Empresa::find($act->EMP_ACT)->EMP_DESC }}</th>
+                                        <th scope="col">{{ $act->RESPONSABLE_ACT }}</th>
+                                        <th scope="col">{{ $act->DESC_ACT }}</th>
+                                        <th scope="col">{{ App\TpActividad::find($act->TP_ACTIVIDAD)->DESC_TP_ACTIVIDAD }}</th>
+                                        <th scope="col">{{ $act->FECHA_ACT }}</th>
+                                        <th scope="col">{{ $act->EST_ACTIVIDAD }}</th>
+                                    </tr>
+                                @endforeach
+                            @endif
                             </tbody>
                         </table>
                     </div>
@@ -139,7 +195,7 @@
                 <div class="panel-group" id="candidatos" role="tablist">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h3 class="panel-title" style="color:#FFF;"><a role="button" data-toggle="collapse" data-parent="#candidatos" href="#candidatosT">Últimos candidatos</a></h3>
+                            <h3 class="panel-title" style="color:#FFF;"><a role="button" data-toggle="collapse" data-parent="#candidatos" href="#candidatosT">Últimos Prospectos</a></h3>
                         </div>
                         <div id="candidatosT" class="panel-collapse collapse in" role="tabpanel">
                             <div class="panel-body">
@@ -155,9 +211,29 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <th scope="row" colspan="6">(sin datos)</th>
-                                        </tr>
+                                    @if(\Illuminate\Support\Facades\Auth::user()->PRO_NIVEL == 14)
+                                        @foreach(App\Prospecto::all() as $prosp)
+                                            <tr>
+                                                <td>{{ $prosp->CLI_PROSP_ID }}</td>
+                                                <td>{{ $prosp->CLI_IDENT }}</td>
+                                                <td>{{ $prosp->CLI_NOMBRE }}</td>
+                                                <td>{{ App\Empresa::find($prosp->CLI_ID_EMP)->EMP_DESC }}</td>
+                                                <td>{{ $prosp->CLI_PROPIETARIO }}</td>
+                                                <td>{{ $prosp->CREATED_AT }}</td>
+                                            </tr>
+                                        @endforeach
+                                        @else
+                                        @foreach(App\Prospecto::all()->where('CLI_PROPIETARIO','=',\Illuminate\Support\Facades\Auth::user()->PRO_RUN) as $prosp)
+                                            <tr>
+                                                <td>{{ $prosp->CLI_PROSP_ID }}</td>
+                                                <td>{{ $prosp->CLI_IDENT }}</td>
+                                                <td>{{ $prosp->CLI_NOMBRE }}</td>
+                                                <td>{{ App\Empresa::find($prosp->CLI_ID_EMP)->EMP_DESC }}</td>
+                                                <td>{{ $prosp->CLI_PROPIETARIO }}</td>
+                                                <td>{{ $prosp->CREATED_AT }}</td>
+                                            </tr>
+                                        @endforeach
+                                    @endif
                                     </tbody>
                                 </table>
                             </div>
@@ -169,7 +245,7 @@
                 <div class="panel-group" id="cuentas" role="tablist">
                     <div class="panel panel-primary"> 
                         <div class="panel-heading">
-                            <h3 class="panel-title" style="color:#FFF;"><a role="button" data-toggle="collapse" data-parent="#cuentas" href="#cuentasT">Últimas cuentas</a></h3>
+                            <h3 class="panel-title" style="color:#FFF;"><a role="button" data-toggle="collapse" data-parent="#cuentas" href="#cuentasT">Últimas Clientes</a></h3>
                         </div>
                         <div id="cuentasT" class="panel-collapse collapse in" role="tabpanel">
                             <div class="panel-body">
@@ -184,9 +260,27 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    @if(\Illuminate\Support\Facades\Auth::user()->PRO_NIVEL == 14)
+                                        @foreach(App\Cliente::all() as $prosp)
+                                            <tr>
+                                                <td>{{ $prosp->CLI_ID }}</td>
+                                                <td>{{ $prosp->CLI_RUT }}</td>
+                                                <td>{{ $prosp->CLI_NOMBRE }}</td>
+                                                <td>{{ App\Empresa::find($prosp->CLI_EMP)->EMP_DESC }}</td>
+                                                <td>{{ $prosp->CLI_PROPIETARIO }}</td>
+                                            </tr>
+                                        @endforeach
+                                        @else
+                                    @foreach(App\Cliente::all()->where('CLI_PROPIETARIO','=',\Illuminate\Support\Facades\Auth::user()->PRO_RUN) as $prosp)
                                         <tr>
-                                            <th scope="row" colspan="5">(sin datos)</th>
+                                            <td>{{ $prosp->CLI_ID }}</td>
+                                            <td>{{ $prosp->CLI_RUT }}</td>
+                                            <td>{{ $prosp->CLI_NOMBRE }}</td>
+                                            <td>{{ App\Empresa::find($prosp->CLI_EMP)->EMP_DESC }}</td>
+                                            <td>{{ $prosp->CLI_PROPIETARIO }}</td>
                                         </tr>
+                                        @endforeach
+                                        @endif
                                     </tbody>
                                 </table>
                             </div>
@@ -241,26 +335,63 @@ $(document).ready(function(){
             ]
         }]
     });
-
-    $.get("https://35.193.38.242/api/crm/oportunidades").done(function(data){
-        if (data !== null){
-            if (Object.keys(data).length > 0 ){
-                $.each(data, function( index, value ){
-                    let row = "<tr><th scope='row'>" + (index + 1) +"</th><td>" + value.PROC_NEGOCIO +"</td><td>" + value.ETAPA +"</td><td>" + value.PROBABILIDAD +"</td><td>" + value.TASA +"</td><td>" + value.TOTAL +"</td></tr>";
-                    $("#oportunidades\\.table").append(row);
-                });
+    $("#emp").on("change", function(){
+        let emp = $(this).val();
+        $("#procneg").empty();
+        $.get("https://35.193.38.242/api/procneg/" + emp).done(function(data){
+            if (data !== null){
+                if (Object.keys(data).length > 0 ){
+                    $.each(data, function( index, value ){
+                        let option = "<option value='"+ value.PRO_ID + "'>" + value.PRO_DESC+ "</option>";
+                        $("#procneg").append(option);
+                    });
+                    $("#procneg").trigger("change");
+                }
             }
-            else
-            {
-                let row = "<tr><th scope='row' colspan='6'>(sin datos)</th></tr>";
-                $("oportunidades\\.table").append(row);  
-            }
-        }
-        else{
-            let row = "<tr><th scope='row' colspan='6'>(sin datos)</th></tr>";
-            $("oportunidades\\.table").append(row);  
-        }
+        });
     });
+    $("#procneg").on("change", function(){
+        let procneg = $(this).val();
+        $("#etapa").empty();
+        $.get("https://35.193.38.242/api/etapa/" + procneg).done(function(data){
+            if (data !== null){
+                if (Object.keys(data).length > 0 ){
+                    $.each(data, function( index, value ){
+                        let option = "<option value='"+ value.ID_ETAPA + "'>" + value.DESC_ETAPA+ "</option>";
+                        $("#etapa").append(option);
+                    });
+                    $("#etapa").trigger("change");
+                }
+            }
+        });
+    });
+
+    $("#btnbuscar").on("click", function () {
+        //alert($("#emp").val());
+        let emp = $("#emp").val();
+        $.get("https://35.193.38.242/api/oportunidades/" + emp).done(function(data){
+            if (data !== null){
+                alert(data);
+                if (Object.keys(data).length > 0 ){
+                    $.each(data, function( index, value ){
+                        alert(value);
+                        let row = "<tr><th scope='row'>" + (index + 1) +"</th><td>" + value.PROC_NEGOCIO +"</td><td>" + value.ETAPA +"</td><td>" + value.PROBABILIDAD +"</td><td>" + value.TASA +"</td><td>" + value.TOTAL +"</td></tr>";
+                        $("#oportunidades.table").append(row);
+                    });
+                }
+                else
+                {
+                    let row = "<tr><th scope='row' colspan='6'>(sin datos)</th></tr>";
+                    $("oportunidades.table").append(row);
+                }
+            }
+            else{
+                let row = "<tr><th scope='row' colspan='6'>(sin datos)</th></tr>";
+                $("oportunidades.table").append(row);
+            }
+        });
+    });
+
 });
 </script>
 </body>

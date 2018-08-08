@@ -47,8 +47,11 @@ class ProveedoresController extends Controller
      */
     public function index()
     {
-        $prov = Proveedor::orderBy('PRO_NOMBRE','ASC')->where('PRO_ALTA','=',0)->paginate(10);
-
+        if (Auth::user()->PRO_NIVEL == 14){
+            $prov = Proveedor::orderBy('PRO_NOMBRE','ASC')->paginate(20);
+        }else{
+            $prov = Proveedor::orderBy('PRO_NOMBRE','ASC')->where('PRO_ALTA','=',0)->paginate(10);
+        }
         //dd($clientes);
 
         return view('ModuloProv.listaProv')->with('proveedores',$prov);
