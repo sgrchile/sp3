@@ -167,7 +167,6 @@
                                 <table class="table table-hover table-striped">
                                     <thead>
                                         <tr>
-                                            <th scope="col"></th>
                                             <th scope="col">Nombre</th>
                                             <th scope="col">Empresa</th>
                                             <th scope="col">Procedencia</th>
@@ -177,12 +176,17 @@
                                     <tbody>
                                         @foreach($prospectos as $prosp)
                                             <tr>
-                                                <td>{{ $prosp->CLI_PROSP_ID }}</td>
                                                 <td>{{ $prosp->CLI_NOMBRE }}</td>
                                                 @if($prosp->CLI_ID_EMP != null)
                                                 <td>{{ App\Empresa::find($prosp->CLI_ID_EMP)->EMP_DESC }}</td>
+                                                    @else
+                                                    <td>sin datos</td>
                                                 @endif
-                                                <td>{{ $prosp->CLI_PROPIETARIO }}</td>
+                                                @if($prosp->CLI_PROCEDENCIA != null)
+                                                <td>{{ App\Procedencia::find($prosp->CLI_PROCEDENCIA)->DESC_PROCEDENCIA }}</td>
+                                                    @else
+                                                    <td>sin datos</td>
+                                                @endif
                                                 <td>{{ $prosp->CREATED_AT }}</td>
                                             </tr>
                                         @endforeach
@@ -197,7 +201,7 @@
                 <div class="panel-group" id="cuentas" role="tablist">
                     <div class="panel panel-primary"> 
                         <div class="panel-heading">
-                            <h3 class="panel-title" style="color:#FFF;"><a role="button" data-toggle="collapse" data-parent="#cuentas" href="#cuentasT">Últimas Clientes</a></h3>
+                            <h3 class="panel-title" style="color:#FFF;"><a role="button" data-toggle="collapse" data-parent="#cuentas" href="#cuentasT">Últimos Clientes</a></h3>
                         </div>
                         <div id="cuentasT" class="panel-collapse collapse in" role="tabpanel">
                             <div class="panel-body">
