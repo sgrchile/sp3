@@ -29,22 +29,12 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Empresa</label>
-                                            @if(\Illuminate\Support\Facades\Auth::user()->PRO_NIVEL == 14)
                                             <select class="form-control" id="emp" name="emp">
                                                 <option value="">Seleccione</option>
-                                                @foreach(App\Empresa::all() as $emp)
+                                                @foreach($empresa as $emp)
                                                     <option value="{{ $emp->EMP_ID }}">{{ $emp->EMP_DESC }}</option>
                                                 @endforeach
                                             </select>
-                                                @else
-                                                <select class="form-control" id="emp" name="emp">
-                                                    <option value="">Seleccione</option>
-                                                    @foreach(App\Empresa::all()->where('EMP_ID','=',\Illuminate\Support\Facades\Auth::user()->PRO_EMP) as $emp)
-                                                        <option value="{{ $emp->EMP_ID }}">{{ $emp->EMP_DESC }}</option>
-                                                    @endforeach
-                                                </select>
-                                                @endif
-
                                         </div>
                                         <div class="form-group">
                                             <label>Etapas</label>
@@ -111,8 +101,7 @@
                                 </tr>
                             </thead>
                             <tbody id="oportunidades.table">
-                            @if(\Illuminate\Support\Facades\Auth::user()->PRO_NIVEL == 14)
-                                @foreach(App\Oportunidad::all() as $oport)
+                                @foreach($oportunidad as $oport)
                                     <tr>
                                         <th scope="col">{{ $oport->ID_OPORTUNIDAD }}</th>
                                         <th scope="col">{{ App\Proceso::find($oport->PROC_NEGOCIO)->PRO_DESC }}</th>
@@ -121,18 +110,6 @@
                                         <th scope="col">{{ $oport->TOTAL }}</th>
                                     </tr>
                                 @endforeach
-                                @else
-                                @foreach(App\Oportunidad::all()->where('OPORT_RESP','=',\Illuminate\Support\Facades\Auth::user()->PRO_RUN) as $oport)
-                                    <tr>
-                                        <th scope="col">{{ $oport->ID_OPORTUNIDAD }}</th>
-                                        <th scope="col">{{ App\Proceso::find($oport->PROC_NEGOCIO)->PRO_DESC }}</th>
-                                        <th scope="col">{{ App\Etapa::find($oport->ETAPA)->DESC_ETAPA }}</th>
-                                        <th scope="col">{{ $oport->PROBABILIDAD }}</th>
-                                        <th scope="col">{{ $oport->TOTAL }}</th>
-                                    </tr>
-                                @endforeach
-                                @endif
-
                             </tbody>
                         </table>
                     </div>
@@ -159,11 +136,12 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            @if(\Illuminate\Support\Facades\Auth::user()->PRO_NIVEL == 14)
-                                @foreach(App\ActActividad::all() as $act)
+                                @foreach($actividad as $act)
                                     <tr>
                                         <th scope="col"></th>
+                                        @if($act->EMP_ACT != null)
                                         <th scope="col">{{ App\Empresa::find($act->EMP_ACT)->EMP_DESC }}</th>
+                                        @endif
                                         <th scope="col">{{ $act->RESPONSABLE_ACT }}</th>
                                         <th scope="col">{{ $act->DESC_ACT }}</th>
                                         <th scope="col">{{ App\TpActividad::find($act->TP_ACTIVIDAD)->DESC_TP_ACTIVIDAD }}</th>
@@ -171,19 +149,6 @@
                                         <th scope="col">{{ $act->EST_ACTIVIDAD }}</th>
                                     </tr>
                                 @endforeach
-                                @else
-                                @foreach(App\ActActividad::all()->where('RESPONSABLE_ACT','=',\Illuminate\Support\Facades\Auth::user()->PRO_RUN) as $act)
-                                    <tr>
-                                        <th scope="col"></th>
-                                        <th scope="col">{{ App\Empresa::find($act->EMP_ACT)->EMP_DESC }}</th>
-                                        <th scope="col">{{ $act->RESPONSABLE_ACT }}</th>
-                                        <th scope="col">{{ $act->DESC_ACT }}</th>
-                                        <th scope="col">{{ App\TpActividad::find($act->TP_ACTIVIDAD)->DESC_TP_ACTIVIDAD }}</th>
-                                        <th scope="col">{{ $act->FECHA_ACT }}</th>
-                                        <th scope="col">{{ $act->EST_ACTIVIDAD }}</th>
-                                    </tr>
-                                @endforeach
-                            @endif
                             </tbody>
                         </table>
                     </div>
@@ -203,7 +168,6 @@
                                     <thead>
                                         <tr>
                                             <th scope="col"></th>
-                                            <th scope="col">Idetificador</th>
                                             <th scope="col">Nombre</th>
                                             <th scope="col">Empresa</th>
                                             <th scope="col">Procedencia</th>
@@ -211,29 +175,17 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    @if(\Illuminate\Support\Facades\Auth::user()->PRO_NIVEL == 14)
-                                        @foreach(App\Prospecto::all() as $prosp)
+                                        @foreach($prospectos as $prosp)
                                             <tr>
                                                 <td>{{ $prosp->CLI_PROSP_ID }}</td>
-                                                <td>{{ $prosp->CLI_IDENT }}</td>
                                                 <td>{{ $prosp->CLI_NOMBRE }}</td>
+                                                @if($prosp->CLI_ID_EMP != null)
                                                 <td>{{ App\Empresa::find($prosp->CLI_ID_EMP)->EMP_DESC }}</td>
+                                                @endif
                                                 <td>{{ $prosp->CLI_PROPIETARIO }}</td>
                                                 <td>{{ $prosp->CREATED_AT }}</td>
                                             </tr>
                                         @endforeach
-                                        @else
-                                        @foreach(App\Prospecto::all()->where('CLI_PROPIETARIO','=',\Illuminate\Support\Facades\Auth::user()->PRO_RUN) as $prosp)
-                                            <tr>
-                                                <td>{{ $prosp->CLI_PROSP_ID }}</td>
-                                                <td>{{ $prosp->CLI_IDENT }}</td>
-                                                <td>{{ $prosp->CLI_NOMBRE }}</td>
-                                                <td>{{ App\Empresa::find($prosp->CLI_ID_EMP)->EMP_DESC }}</td>
-                                                <td>{{ $prosp->CLI_PROPIETARIO }}</td>
-                                                <td>{{ $prosp->CREATED_AT }}</td>
-                                            </tr>
-                                        @endforeach
-                                    @endif
                                     </tbody>
                                 </table>
                             </div>
@@ -252,35 +204,23 @@
                                 <table class="table table-hover table-striped">
                                     <thead>
                                         <tr>
-                                            <th scope="col"></th>
-                                            <th scope="col">Idetificador</th>
+                                            <th scope="col">Rut</th>
                                             <th scope="col">Nombre</th>
                                             <th scope="col">Empresa</th>
                                             <th scope="col">Propietario</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    @if(\Illuminate\Support\Facades\Auth::user()->PRO_NIVEL == 14)
-                                        @foreach(App\Cliente::all() as $prosp)
+                                        @foreach($clientes as $cli)
                                             <tr>
-                                                <td>{{ $prosp->CLI_ID }}</td>
-                                                <td>{{ $prosp->CLI_RUT }}</td>
-                                                <td>{{ $prosp->CLI_NOMBRE }}</td>
-                                                <td>{{ App\Empresa::find($prosp->CLI_EMP)->EMP_DESC }}</td>
-                                                <td>{{ $prosp->CLI_PROPIETARIO }}</td>
+                                                <td>{{ $cli->CLI_RUT }}</td>
+                                                <td>{{ $cli->CLI_NOMBRE }}</td>
+                                                @if($cli->CLI_EMP != null)
+                                                <td>{{ App\Empresa::find($cli->CLI_EMP)->EMP_DESC }}</td>
+                                                @endif
+                                                <td>{{ $cli->CLI_PROPIETARIO }}</td>
                                             </tr>
                                         @endforeach
-                                        @else
-                                    @foreach(App\Cliente::all()->where('CLI_PROPIETARIO','=',\Illuminate\Support\Facades\Auth::user()->PRO_RUN) as $prosp)
-                                        <tr>
-                                            <td>{{ $prosp->CLI_ID }}</td>
-                                            <td>{{ $prosp->CLI_RUT }}</td>
-                                            <td>{{ $prosp->CLI_NOMBRE }}</td>
-                                            <td>{{ App\Empresa::find($prosp->CLI_EMP)->EMP_DESC }}</td>
-                                            <td>{{ $prosp->CLI_PROPIETARIO }}</td>
-                                        </tr>
-                                        @endforeach
-                                        @endif
                                     </tbody>
                                 </table>
                             </div>

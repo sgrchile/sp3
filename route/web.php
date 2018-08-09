@@ -34,6 +34,11 @@ Route::post('/registrar_action', [
     'as' => 'registrar.proveedor.persona',
 ]);
 
+Route::post('/registrar_action', [
+    'uses' => 'ProveedoresPublicController@postProveedorEmpresa',
+    'as' => 'registrar.proveedor.empresa',
+]);
+
 Route::get('/empresa', [
     'uses' => 'LoginController@createemp',
     'as' => 'empresa',
@@ -1313,9 +1318,11 @@ Route::group(['prefix' => 'modulo'], function () {
         return view('ModuloCrm.listaCotizaciones');
       })->name('listaCotizaciones');
 
-      Route::get('resumen', function () {
-        return view('ModuloCrm.resumen');
-      })->name('resumen');
+
+        Route::get('/Resumen', [
+            'uses' => 'ResumenController@index',
+            'as' => 'resumen',
+        ]);
 
         Route::get('/listaClientes', [
             'uses' => 'ClientesController@index',
