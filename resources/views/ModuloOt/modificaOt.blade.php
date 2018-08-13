@@ -24,7 +24,7 @@
                 <td><input type="text" name="id_servicio" class="form-control" value="{{ $orden_trabajo->OT_ID }}" readonly/></td>
                 <td><label>ID CLIENTE:</label></td>
                 <td>
-                  <select name="id_cliente" class="form-control">
+                  <select name="id_cliente" class="form-control" readonly="{{ $orden_trabajo->OT_CLI_RUT }}">
                     @foreach($clientes as $cliente)
                     <option
                     value="{{ $cliente->CLI_RUT }}"
@@ -42,7 +42,7 @@
               <tr>
                 <td><label>CENTRO DE NEGOCIO:</label></td>
                 <td>
-                  <select name="centro_negocio" class="form-control">
+                  <select name="centro_negocio" class="form-control" readonly="{{ $orden_trabajo->OT_CENTRO_NEGOCIO_ID }}">
                     @foreach($centro_negocios as $centro_negocio)
                     <option
                     value="{{ $centro_negocio->CT_ID }}"
@@ -56,12 +56,12 @@
                   </select>
                 </td>
                 <td><label>MONTO NETO:</label></td>
-                <td><input type="number" name="monto_neto" id="monto_neto" class="form-control" value="{{ $orden_trabajo->OT_MONTO_NETO }}"/></td>
+                <td><input type="number" name="monto_neto" id="monto_neto" readonly class="form-control" value="{{ $orden_trabajo->OT_MONTO_NETO }}"/></td>
               </tr>
               <tr>
                 <td><label>ENCARGADO:</label></td>
                 <td>
-                  <select name="id_encargado" class="form-control">
+                  <select name="id_encargado" class="form-control" readonly="{{ $orden_trabajo->OT_PER_RUT_ENCARGADO}}">
                     @foreach($encargados as $encargado)
                     <option
                     value="{{ $encargado->PRO_RUN}}"
@@ -77,7 +77,7 @@
                 <!--esto debe ser un select-->
                 <td ><label>ESTADO:</label></td>
                 <td>
-                  <select name="id_estado" class="form-control">
+                  <select name="id_estado" class="form-control" readonly="{{ $orden_trabajo->ID_EST_OT}}">
                     <option value="0">Seleccione</option>
                     @foreach($estados as $estado)
                     <option
@@ -103,9 +103,9 @@
               </tr>
               <tr>
                 <td><label> SOLICITUD FONDO $</label></td>
-                <td><input type="text" readonly class="form-control" value="{{$sumaSF}}" /></td>
+                <td><input type="text" readonly class="form-control" name="sumasf" id="sumasf" value="{{$sumaSF}}" /></td>
                 <td><label> MARGEN $</label></td>
-                <td><input type="text" readonly class="form-control" value="{{$margen_pesos}}" /></td>
+                <td><input type="text" readonly class="form-control" name="margen" id="margen" value="{{$margen_pesos}}" /></td>
               </tr>
 
               <tr>
@@ -122,18 +122,16 @@
                 <tr>
                   <td colspan="8" align="center"><label>Descripción:</label>
                     <br>
-                    <textarea rows="4" cols="50" style="width:500px; max-width:500px" name="descripcion" class="form-control">{{ $orden_trabajo->OT_DESC }}</textarea></td>
+                    <textarea rows="4" cols="50" style="width:500px; max-width:500px" name="descripcion" id="descripcion" class="form-control">{{ $orden_trabajo->OT_DESC }}</textarea></td>
                   </tr>
 
 
 
                   <tr>
-                    @if(\Illuminate\Support\Facades\Auth::user()->PRO_NIVEL == 2)
                       <td colspan="8" align="center"><label>
-                          <button type="submit" class="btn btn-primary btn-md" id="myBtn3">editar</button>
+                          <button type="submit" class="btn btn-primary btn-md" id="myBtn3">Guardar</button>
                         </label>
                       </td>
-                      @endif
                 </tr>
               </table>
 
@@ -144,7 +142,7 @@
             <br>
 
 
-            <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#solFondo" data-backdrop="static">Solicitar fondos</button>
+            <button class="btn btn-primary btn-lg" data-toggle="modal" id="solicitar" hidden data-target="#solFondo" data-backdrop="static">Solicitar fondos</button>
 
             <!-- Modal SOLICITAR FONDO-->
             <div class="modal fade " id="solFondo" role="dialog" >
@@ -489,14 +487,29 @@
 <br>
 <br>
 <script type="text/javascript">
+    $(document).ready(function() {
+        var monto = $("#monto_neto").val()*0.60;
+        var sumasf = $("#sumasf").val();
+        var difsf = parseInt(monto) - parseInt(sumasf);
+        //alert(difsf);
+        if (parseInt(difsf) != 0){
+            $('#solicitar').show();
+        }else {
+            $('#solicitar').hide();
+        }
+
+
+    });
     // verifica que sea no sea mayor que el 60% del valor neto de la ot
     $("#rec_monto").on("change", function(){
         var val = $(this).val();
+        var sumasf = $("#sumasf").val();
         var monto = $("#monto_neto").val()*0.60;
+        var difsf = parseInt(monto) - parseInt(sumasf);
         //alert(prod);
-        if(val > monto){
-            alert("exede el máximo permitido por la OT. " + monto);
-            $("#rec_monto").val(monto);
+        if(val > difsf){
+            alert("exede el máximo permitido por la OT. " + difsf);
+            $("#rec_monto").val(difsf);
         }
     });
     //<![CDATA[

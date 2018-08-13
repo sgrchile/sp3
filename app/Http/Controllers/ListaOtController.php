@@ -89,7 +89,7 @@ class ListaOtController extends Controller
             'OT_FECHA_FIN' => $request->input('fecha_fin'),
             //'OT_CLI_RUT' => $request->input('id_cliente'),
             'OT_PER_RUT_ENCARGADO' => $request->input('id_encargado'),
-            'OT_MONTO_NETO' => $request->input('monto_neto'),
+            //'OT_MONTO_NETO' => $request->input('monto_neto'),
             //'OT_CENTRO_NEGOCIO_ID' => $request->input('centro_negocio'),
             'OT_EST_ID' => $request->input('id_estado'),
         ]);
