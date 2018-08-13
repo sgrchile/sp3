@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\ActivoAsignado;
+use App\AdelantoProveedor;
 use App\DatosAdicionalesProv;
 use App\Empresa;
 use App\LicenciaMedica;
@@ -23,9 +25,11 @@ class RrhhMiCarpetaController extends Controller
         $emp = Empresa::find(Auth::user()->PRO_EMP);
         $licencias = LicenciaMedica::all()->where('LM_PER_RUT','=',Auth::user()->PRO_RUN);
         $datos = DatosAdicionalesProv::all()->where('MP_PRO_RUN','=',Auth::user()->PRO_RUN);
+        $actasig = ActivoAsignado::all()->where('AA_PRO_RUN','=',Auth::user()->PRO_RUN);
         //dd($datos);
         return view('ModuloRRHH.MicarpetaRRHH.misDatos')
             ->with('emp',$emp)
+            ->with('actasig',$actasig)
             ->with('licencias',$licencias)
             ->with('datos',$datos);
     }
@@ -116,5 +120,20 @@ class RrhhMiCarpetaController extends Controller
             return false;
         }
 
+    }
+
+    public function doclaboales(){
+        $prov = Proveedor::find(Auth::user()->PRO_RUN);
+        return view('ModuloRRHH.MicarpetaRRHH.docLaborales')
+            ->with('prov',$prov);
+    }
+
+    public function adelantos(Request $request){
+        $adelanto = new AdelantoProveedor();
+        $adelanto->ADPROV_VALOR = $request->valor;
+        $adelanto->ADPROV_MOTIVO = $request->motivo;
+        $adelanto->BONOS_PRO_RUN = Auth::user()->PRO_RUN;
+        $adelanto->save();
+        return redirect()->back()->with('success', 'solicitud realizada con exito');
     }
 }
