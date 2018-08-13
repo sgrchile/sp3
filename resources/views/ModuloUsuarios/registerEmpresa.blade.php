@@ -161,29 +161,12 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="form-group">
-                                            <label for="fechapago">Pago</label>
-                                            <select class="form-control" id="pago">
-                                                <option value="1">Día</option>
-                                                <option value="2">Semana</option>
-                                                <option value="3">Quincena</option>
-                                                <option value="4">Mes</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group" id="select.fecha">
-                                            <label for="fechapago">Fecha de Pago</label>
-                                            <select class="form-control" id="fechapago">
-                                                <option value="0">No corresponde</option>
-                                                <option value="1">25</option>
-                                                <option value="2">26</option>
-                                                <option value="3">27</option>
-                                                <option value="4">28</option>
-                                                <option value="5">29</option>
-                                                <option value="6">30</option>
-                                                <option value="7">1</option>
-                                                <option value="8">2</option>
-                                                <option value="9">3</option>
-                                                <option value="10">4</option>
-                                                <option value="11">5</option>
+                                            <label for="emp">Empresa</label>
+                                            <select class="form-control" id="emp">
+                                                <option value="0">Seleccione</option>
+                                                @foreach($empresa as $emp)
+                                                <option value="{{ $emp->EMP_ID }}">{{ $emp->EMP_DESC }}</option>
+                                                    @endforeach
                                             </select>
                                         </div>
                                         <div class="form-group">
@@ -418,8 +401,7 @@
                 region: $("#region").val(),
                 provincia: $("#provincia").val(),
                 ciudad: $("#ciudad").val(),
-                pago: $("#pago").val(),
-                fechapago: $("#fechapago").val(),
+                emp: $("#emp").val(),
                 ncuenta: $("#ncuenta").val(),
                 banco: $("#banco").val(),
                 bancocuenta: $("#bancocuenta").val(),
@@ -427,7 +409,7 @@
             };
             if (validos == true){
                 $.post("{{ route('registrar.proveedor.empresa') }}",inputs).done(function(data){
-                    alert(data.respuesta);
+                    //alert(data.respuesta);
                     alert("Su cuenta fue creada, validaremos sus datos a la brevedad para activar su cuenta");
                     location.href ="https://35.193.38.242/";
                 }).fail(function(data){
@@ -442,7 +424,7 @@
                         else if (i == "direccion" || i == "pais" || i == "region" || i == "provincia" || i == "ciudad"){
                             $('#collapseThree').collapse('show');
                         }
-                        else if(i == "pago" || i == "fechapago" || i == "ncuenta" || i == "banco" || i == "bancocuenta"){
+                        else if(i == "emp" || i == "ncuenta" || i == "banco" || i == "bancocuenta"){
                             $('#collapsefour').collapse('show');
                         }
                         $("#"+i).focus();
@@ -473,8 +455,7 @@
             region: $("#region").val(),
             provincia: $("#provincia").val(),
             ciudad: $("#ciudad").val(),
-            pago: $("#pago").val(),
-            fechapago: $("#fechapago").val(),
+            emp: $("#emp").val(),
             ncuenta: $("#ncuenta").val(),
             banco: $("#banco").val(),
             bancocuenta: $("#bancocuenta").val(),
@@ -499,7 +480,7 @@
                 else if (i == "direccion" || i == "pais" || i == "region" || i == "provincia" || i == "ciudad"){
                     $('#collapseThree').collapse('show');
                 }
-                else if(i == "pago" || i == "fechapago" || i == "ncuenta" || i == "banco" || i == "bancocuenta"){
+                else if(i == "emp" || i == "ncuenta" || i == "banco" || i == "bancocuenta"){
                     $('#collapsefour').collapse('show');
                 }
                 $("#"+i).focus();
