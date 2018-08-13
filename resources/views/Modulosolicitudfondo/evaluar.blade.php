@@ -99,7 +99,6 @@
 
       <td>
         <input type="submit" id="aplicar" class="btn btn-primary btn-lg" value="Aplicar" />
-        </form>
       </td>
     </tr>
   </table>

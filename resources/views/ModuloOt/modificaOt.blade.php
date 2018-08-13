@@ -77,8 +77,7 @@
                 <!--esto debe ser un select-->
                 <td ><label>ESTADO:</label></td>
                 <td>
-                  <select name="id_estado" class="form-control" readonly="{{ $orden_trabajo->ID_EST_OT}}">
-                    <option value="0">Seleccione</option>
+                  <select name="id_estado" class="form-control" placeholder="{{ $orden_trabajo->ID_EST_OT }}">
                     @foreach($estados as $estado)
                     <option
                     value="{{ $estado->ID_EST_OT}}"
