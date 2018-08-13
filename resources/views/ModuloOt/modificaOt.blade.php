@@ -101,16 +101,23 @@
 
               </tr>
               <tr>
-                <td><label> SOLICITUD FONDO $</label></td>
+                <td><label> FONDOS GASTADOS $</label></td>
                 <td><input type="text" readonly class="form-control" name="sumasf" id="sumasf" value="{{$sumaSF}}" /></td>
-                <td><label> MARGEN $</label></td>
+                <td><label> MARGEN DE VENTA $</label></td>
                 <td><input type="text" readonly class="form-control" name="margen" id="margen" value="{{$margen_pesos}}" /></td>
               </tr>
 
+              @if(\Illuminate\Support\Facades\Auth::user()->PRO_NIVEL != 14)
               <tr>
-                <td><label>MARGEN %</label></td>
-                <td><input type="text" readonly class="form-control" value="{{$margen_porcentual}}" /></td>
+                <td><label>GASTOS OPERACIONALES %</label></td>
+                <td><input type="text" readonly id="porcentaje" name="porcentaje" class="form-control" value="{{$margen_porcentual}}" /></td>
               </tr>
+              @else
+                <tr>
+                  <td><label>GASTOS OPERACIONALES %</label></td>
+                  <td><input type="text" id="porcentaje" name="porcentaje" class="form-control" value="{{$margen_porcentual}}" /></td>
+                </tr>
+              @endif
 
               <tr>
                 <td colspan="8" align="center"><label>OC/CONTRATO:</label>
@@ -487,7 +494,7 @@
 <br>
 <script type="text/javascript">
     $(document).ready(function() {
-        var monto = $("#monto_neto").val()*0.60;
+        var monto = $("#monto_neto").val()*($("#porcentaje").val());
         var sumasf = $("#sumasf").val();
         var difsf = parseInt(monto) - parseInt(sumasf);
         //alert(difsf);
@@ -503,7 +510,7 @@
     $("#rec_monto").on("change", function(){
         var val = $(this).val();
         var sumasf = $("#sumasf").val();
-        var monto = $("#monto_neto").val()*0.60;
+        var monto = $("#monto_neto").val()*($("#porcentaje").val());
         var difsf = parseInt(monto) - parseInt(sumasf);
         //alert(prod);
         if(val > difsf){

@@ -58,9 +58,11 @@ class ListaOtController extends Controller
             return $document->SF_MONTO;
         })->sum();
         $margen_pesos=$ot->OT_MONTO_NETO - $sumaSF;
-        $margen_porcentual=$margen_pesos/$ot->OT_MONTO_NETO;
+        $emp = Empresa::all()->where('EMP_ID','=',Auth::user()->PRO_EMP)->first();
+        //dd($emp);
+        $margen_porcentual = $ot->OT_MARGEN_PORCENTUAL;
         $tpdoc = TipoDocumento::pluck('TDC_DESC','TDC_ID');
-        $emp = Empresa::where('EMP_ID','=',Auth::user()->PRO_EMP);
+
 
         if (!$ot) {
             return redirect()->route('ModuloOt.listaOt')->with('error', 'Orden de Trabajo no encontrada.');
@@ -92,6 +94,7 @@ class ListaOtController extends Controller
             //'OT_MONTO_NETO' => $request->input('monto_neto'),
             //'OT_CENTRO_NEGOCIO_ID' => $request->input('centro_negocio'),
             'OT_EST_ID' => $request->input('id_estado'),
+            'OT_MARGEN_PORCENTUAL' => $request->input('porcentaje'),
         ]);
 
         if (!$ot) {

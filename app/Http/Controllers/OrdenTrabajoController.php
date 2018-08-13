@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Empresa;
 use App\Factura;
 use App\RegistroMovimiento;
 use App\Remuneracion;
@@ -59,13 +60,14 @@ class OrdenTrabajoController extends Controller
     {
         $cliente = Cliente::find($data['idcliente'])->CLI_ID;
         $centro_negocio = CentroNegocio::find($data['centro_negocio'])->CT_ID;
+        $emp = Empresa::find(Auth::user()->PRO_EMP);
 
         return OrdenTrabajo::create([
             'OT_OC' => $data['oContrato'],
             'OT_DESC' => $data['descripcion'],
             'OT_FECHA_INI' => Carbon::now(),
             'OT_MONTO_NETO' => $data['MontoNeto'],
-            'OT_MARGEN_PORCENTUAL' => 100,
+            'OT_MARGEN_PORCENTUAL' => $emp->MARGEN_OT_EMP,
             'OT_EST_ID' => 1,
             'OT_CLI_RUT' => $cliente,
             'OT_PER_RUT_ENCARGADO' => Auth::user()->PRO_RUN,
