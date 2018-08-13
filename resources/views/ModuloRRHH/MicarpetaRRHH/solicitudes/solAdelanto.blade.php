@@ -11,22 +11,24 @@
         <div class="porlets-content">
           <div class="container-fluid" align="center">
           <!-- FORM INICIO -->
-
+            {!! Form::open(['route' => 'post.adelanto']) !!}
 
           <table class="table-condensed">
             <tr>
               <td>VALOR:</td>
-              <td><input type="number" min="0"  class="form-control" style="width:175px;"></td>
+              <td><input type="number" min="0" name="valor"  class="form-control" style="width:175px;"></td>
             </tr>
 
             <tr>
               <td>MOTIVO:</td>
-              <td><textarea  class="form-control" style ="width:175px; height:200px;  max-width:175px;  max-height:200px;"></textarea></td>
+              <td><textarea  class="form-control" name="motivo" style ="width:175px; height:200px;  max-width:175px;  max-height:200px;"></textarea></td>
             </tr>
 
 
           </table>
           <button class="btn btn-primary btn-lg">SOLICITAR</button>
+
+            {!! Form::close() !!}
 
           <!-- FORM FINAL -->
         </div><!--/container-->

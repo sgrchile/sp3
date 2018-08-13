@@ -155,87 +155,80 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="panel-group" id="candidatos" role="tablist">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <h3 class="panel-title" style="color:#FFF;"><a role="button" data-toggle="collapse" data-parent="#candidatos" href="#candidatosT">Últimos Prospectos</a></h3>
-                        </div>
-                        <div id="candidatosT" class="panel-collapse collapse in" role="tabpanel">
-                            <div class="panel-body">
-                                <table class="table table-hover table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Nombre</th>
-                                            <th scope="col">Empresa</th>
-                                            <th scope="col">Procedencia</th>
-                                            <th scope="col">Fecha</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach($prospectos as $prosp)
-                                            <tr>
-                                                <td>{{ $prosp->CLI_NOMBRE }}</td>
-                                                @if($prosp->CLI_ID_EMP != null)
-                                                <td>{{ App\Empresa::find($prosp->CLI_ID_EMP)->EMP_DESC }}</td>
-                                                    @else
-                                                    <td>sin datos</td>
-                                                @endif
-                                                @if($prosp->CLI_PROCEDENCIA != null)
-                                                <td>{{ App\Procedencia::find($prosp->CLI_PROCEDENCIA)->DESC_PROCEDENCIA }}</td>
-                                                    @else
-                                                    <td>sin datos</td>
-                                                @endif
-                                                <td>{{ $prosp->CREATED_AT }}</td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+        <div class="panel-group" id="candidatos" role="tablist">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title" style="color:#FFF;"><a role="button" data-toggle="collapse" data-parent="#candidatos" href="#candidatosT">Últimos Prospectos</a></h3>
+                </div>
+                <div id="candidatosT" class="panel-collapse collapse in" role="tabpanel">
+                    <div class="panel-body">
+                        <table class="table table-hover table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Empresa</th>
+                                    <th scope="col">Procedencia</th>
+                                    <th scope="col">Fecha</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($prospectos as $prosp)
+                                    <tr>
+                                        <td>{{ $prosp->CLI_NOMBRE }}</td>
+                                        @if($prosp->CLI_ID_EMP != null)
+                                        <td>{{ App\Empresa::find($prosp->CLI_ID_EMP)->EMP_DESC }}</td>
+                                            @else
+                                            <td>sin datos</td>
+                                        @endif
+                                        @if($prosp->CLI_PROCEDENCIA != null)
+                                        <td>{{ App\Procedencia::find($prosp->CLI_PROCEDENCIA)->DESC_PROCEDENCIA }}</td>
+                                            @else
+                                            <td>sin datos</td>
+                                        @endif
+                                        <td>{{ ($prosp->CREATED_AT) }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="panel-group" id="cuentas" role="tablist">
-                    <div class="panel panel-primary"> 
-                        <div class="panel-heading">
-                            <h3 class="panel-title" style="color:#FFF;"><a role="button" data-toggle="collapse" data-parent="#cuentas" href="#cuentasT">Últimos Clientes</a></h3>
-                        </div>
-                        <div id="cuentasT" class="panel-collapse collapse in" role="tabpanel">
-                            <div class="panel-body">
-                                <table class="table table-hover table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Rut</th>
-                                            <th scope="col">Nombre</th>
-                                            <th scope="col">Empresa</th>
-                                            <th scope="col">Propietario</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach($clientes as $cli)
-                                            <tr>
-                                                <td>{{ $cli->CLI_RUT }}</td>
-                                                <td>{{ $cli->CLI_NOMBRE }}</td>
-                                                @if($cli->CLI_EMP != null)
-                                                <td>{{ App\Empresa::find($cli->CLI_EMP)->EMP_DESC }}</td>
-                                                @endif
-                                                <td>{{ $cli->CLI_PROPIETARIO }}</td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+        </div>
+        <div class="panel-group" id="cuentas" role="tablist">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title" style="color:#FFF;"><a role="button" data-toggle="collapse" data-parent="#cuentas" href="#cuentasT">Últimos Clientes</a></h3>
+                </div>
+                <div id="cuentasT" class="panel-collapse collapse in" role="tabpanel">
+                    <div class="panel-body">
+                        <table class="table table-hover table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Rut</th>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Empresa</th>
+                                    <th scope="col">Propietario</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($clientes as $cli)
+                                    <tr>
+                                        <td>{{ $cli->CLI_RUT }}</td>
+                                        <td>{{ $cli->CLI_NOMBRE }}</td>
+                                        @if($cli->CLI_EMP != null)
+                                        <td>{{ App\Empresa::find($cli->CLI_EMP)->EMP_DESC }}</td>
+                                        @endif
+                                        <td>{{ $cli->CLI_PROPIETARIO }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 
 @endsection
 <script>

@@ -17,22 +17,30 @@
           <table class="table-condensed text-right" align="center">
             <tr>
               <td>NOMBRE:</td>
-              <td><input type="text" readonly class="form-control"  style="width:175px;"></td>
+              <td><input type="text" value="{{ $prov->PRO_NOMBRE }}" readonly class="form-control"  style="width:175px;"></td>
 
               <td>APELLIDO PATERNO:</td>
-              <td><input type="text" readonly class="form-control"  style="width:175px;"></td>
+              <td><input type="text" readonly value="{{ $prov->PRO_APE_PAT }}" class="form-control"  style="width:175px;"></td>
 
-              <td>APELLIDO PATERNO:</td>
-              <td><input type="text" readonly class="form-control"  style="width:175px;"></td>
+              <td>APELLIDO MATERNO:</td>
+              <td><input type="text" readonly value="{{ $prov->PRO_APE_MAT }}" class="form-control"  style="width:175px;"></td>
             </tr>
             <tr>
               <td>CARGO:</td>
-              <td><input type="text" readonly class="form-control" style="width:175px;"></td>
+              @if( $prov->PRO_CAR_ID != null)
+              <td><input type="text" readonly value="{{ App\Cargos::find($prov->PRO_CAR_ID)->DESC_CARGO }}" class="form-control" style="width:175px;"></td>
+                @else
+                <td><input type="text" readonly value="sin datos" class="form-control" style="width:175px;"></td>
+              @endif
 
-              <td>TIPO PERSONAL:</td>
-              <td><input type="text" readonly class="form-control" style="width:175px;"></td>
+              <!--<td>TIPO PERSONAL:</td>
+              <td><input type="text" readonly class="form-control" style="width:175px;"></td>-->
               <td>ESTADO:</td>
-              <td><input type="text" readonly class="form-control" style="width:175px;"></td>
+              @if($prov->PRO_ESTADO_PERSONAL != null)
+              <td><input type="text" value="{{ App\EstadoProveedor::find($prov->PRO_ESTADO_PERSONAL)->EP_DESC }}" readonly class="form-control" style="width:175px;"></td>
+                @else
+                <td><input type="text" value="sin datos" readonly class="form-control" style="width:175px;"></td>
+              @endif
             </tr>
           </table>
 

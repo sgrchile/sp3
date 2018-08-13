@@ -51,7 +51,7 @@
                 <input type="text" value="{{ App\Jornada::find($datos['MP_JORNADA'])->DESC_JORNADA }}" readonly class="form-control"  style="width:175px;">
                   @else
                   <input type="text" value="" readonly class="form-control"  style="width:175px;">
-                  @endif
+                 @endif
               </td>
 
             </tr>
@@ -93,7 +93,7 @@
                <td> {{ $licencia->LM_INICIO }}</td>
                <td> {{ $licencia->LM_FIN }}</td>
              </tr>
-             @endif
+             @endforeach
            </tbody>
             <tr>
               <td></td>
@@ -155,10 +155,12 @@
 
             </tr>
 
+            @foreach($actasig as $act)
             <tr>
-              <td></td>
-              <td></td>
+              <td>{{ $act->AA_ACT_ID }}</td>
+              <td>{{ App\ActivoInterno::find($act->AA_ACT_ID)->ACT_DESC }}</td>
             </tr>
+              @endforeach
 
           </table>
 

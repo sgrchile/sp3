@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Cliente;
 use App\CentroNegocio;
 use App\DocumentoPendiente;
+use App\Empresa;
 use App\Estado;
 use App\EstadoOt;
 use App\Factura;
@@ -59,6 +60,7 @@ class ListaOtController extends Controller
         $margen_pesos=$ot->OT_MONTO_NETO - $sumaSF;
         $margen_porcentual=$margen_pesos/$ot->OT_MONTO_NETO;
         $tpdoc = TipoDocumento::pluck('TDC_DESC','TDC_ID');
+        $emp = Empresa::where('EMP_ID','=',Auth::user()->PRO_EMP);
 
         if (!$ot) {
             return redirect()->route('ModuloOt.listaOt')->with('error', 'Orden de Trabajo no encontrada.');
@@ -70,23 +72,25 @@ class ListaOtController extends Controller
             ->with('encargados', $encargados)
             ->with('estados', $estados)
             ->with('tpdoc',$tpdoc)
+            ->WITH('emp',$emp)
             ->with('sumaSF', $sumaSF)
             ->with('margen_pesos', $margen_pesos)
             ->with('margen_porcentual', $margen_porcentual)
+            ->with('solfon',$sfondo)
             ->with('orden_trabajo', $ot);
     }
 
     public function putModificarOt(Request $request, $id)
     {
-        dd($request);
+        //dd($request);
         $ot = OrdenTrabajo::findOrFail($id)->update([
             'OT_OC' => $request->input('oc'),
             'OT_DESC' => $request->input('descripcion'),
             'OT_FECHA_FIN' => $request->input('fecha_fin'),
-            'OT_CLI_RUT' => $request->input('id_cliente'),
+            //'OT_CLI_RUT' => $request->input('id_cliente'),
             'OT_PER_RUT_ENCARGADO' => $request->input('id_encargado'),
             'OT_MONTO_NETO' => $request->input('monto_neto'),
-            'OT_CENTRO_NEGOCIO_ID' => $request->input('centro_negocio'),
+            //'OT_CENTRO_NEGOCIO_ID' => $request->input('centro_negocio'),
             'OT_EST_ID' => $request->input('id_estado'),
         ]);
 

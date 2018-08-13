@@ -447,9 +447,14 @@ Route::group(['prefix' => 'modulo'], function () {
                 return view('ModuloRRHH.MicarpetaRRHH.datosAdicionales');
             })->name('datosAdicionales');
 
-            Route::get('/documentos_laborales', function () {
+            /*Route::get('/documentos_laborales', function () {
                 return view('ModuloRRHH.MicarpetaRRHH.docLaborales');
-            })->name('docLaborales');
+            })->name('docLaborales');*/
+
+            Route::get('/documentos_laborales', [
+                'uses' => 'RrhhMiCarpetaController@doclaboales',
+                'as' => 'docLaborales',
+            ]);
 
             Route::get('/reset/password', function () {
                 return view('ModuloRRHH.MicarpetaRRHH.cambioContrasena');
@@ -465,6 +470,11 @@ Route::group(['prefix' => 'modulo'], function () {
             Route::get('/adelanto', function () {
                 return view('ModuloRRHH.MicarpetaRRHH.solicitudes.solAdelanto');
             })->name('solAdelanto');
+
+            Route::post('/adelanto', [
+                'uses' => 'RrhhMiCarpetaController@adelantos',
+                'as' => 'post.adelanto',
+            ]);
 
             Route::get('/licencia_medica', function () {
                 return view('ModuloRRHH.MicarpetaRRHH.solicitudes.solLcMed');
