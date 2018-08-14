@@ -43,6 +43,7 @@ class LoginController extends Controller
         $preguntas = PreguntasCerradas::all();
         $pers_juridica = PersonaJuridica::all();
         $emp = Empresa::all();
+        //dd($nro_empleados);
         return view('ModuloUsuarios.registerEmpresa')
             ->with('categoria',$categoria)
             ->with('ventas',$ventas_anuales)

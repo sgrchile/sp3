@@ -201,10 +201,21 @@
                                             <input type="text" class="form-control" id="pagweb">
                                         </div>
                                        <div class="form-group">
-                                            <label for="dicom">Dicom</label>
-                                            <select class="form-control" id="dicom">
-                                                <option value="si">si</option>
-                                                <option value="no">no</option>
+                                            <label for="nro_empleados">Nro de Trabajadores</label>
+                                            <select class="form-control" id="nro_empleados">
+                                                <option value="0">Seleccione</option>
+                                                @foreach($nro_empleados as $emp)
+                                                    <option value="{{ $emp->ID_NRO_EMPLE }}">{{ $emp->DESC_NRO_EMPLE }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="ventas">Ventas Anuales</label>
+                                            <select class="form-control" id="ventas">
+                                                <option value="0">Seleccione</option>
+                                                @foreach($ventas as $venta)
+                                                    <option value="{{ $venta->ID_VTAS_ANUALES }}">{{ $venta->DESC_VTAS_ANUALES }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                         <!--<div class="form-group">
@@ -405,9 +416,12 @@
                 ncuenta: $("#ncuenta").val(),
                 banco: $("#banco").val(),
                 bancocuenta: $("#bancocuenta").val(),
+                nro_empleados: $("#nro_empleados").val(),
+                ventas: $("#ventas").val(),
                 _token: $('input[name="_token"]').val()
             };
             if (validos == true){
+                //alert(inputs);
                 $.post("{{ route('registrar.proveedor.empresa') }}",inputs).done(function(data){
                     //alert(data.respuesta);
                     alert("Su cuenta fue creada, validaremos sus datos a la brevedad para activar su cuenta");
@@ -459,6 +473,8 @@
             ncuenta: $("#ncuenta").val(),
             banco: $("#banco").val(),
             bancocuenta: $("#bancocuenta").val(),
+            nro_empleados: $("#nro_empleados").val(),
+            ventas: $("#ventas").val(),
             _token: $('input[name="_token"]').val()
         };
 

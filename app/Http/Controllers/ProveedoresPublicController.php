@@ -134,7 +134,7 @@ class ProveedoresPublicController extends Controller
     }
     public function postProveedorEmpresa(Request $request)
     {
-        // dd($request->all());
+        dd($request);
         $this->validateProveedorEmpresa($request);
         $createProveedorEmpresa = $this->createProveedorEmpresa($request->all());
         if (! $createProveedorEmpresa) {
@@ -142,6 +142,32 @@ class ProveedoresPublicController extends Controller
         }
         return redirect()->route('registroProv')->with('success', "El proveedor ha sido creado exitosamente.");
     }
+
+    public function validateProveedorEmpresa(Request $request) {
+        $this->validate($request, [
+            'nombre' => 'required',
+            'rut' => 'required|unique:PRO_PROVEEDOR,PRO_RUN',
+            'fecha' => 'required',
+            'rasonsocial' => 'required',
+            'repleg' => 'required',
+            'email' => 'required|email|unique:PRO_PROVEEDOR,PRO_EMAIL',
+            'nacionalidad' => 'required',
+            'contrasena' => 'required|min:6',
+            'telefono' => 'required',
+            'direccion' => 'required',
+            'pais' => 'required',
+            'region' => 'required',
+            'provincia' => 'required',
+            'ciudad' => 'required',
+            'ncuenta' => 'required',
+            'banco' => 'required',
+            'bancocuenta' => 'required',
+            'emp' => 'required',
+            'nro_empleados' => 'required',
+            'ventas' => 'required'
+        ]);
+    }
+
     public function createProveedorEmpresa($data)
     {
         $banco = Banco::find($data['banco'])->first()->BCO_ID;
