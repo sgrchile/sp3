@@ -10,15 +10,45 @@
         <h1 class="text-center text-uppercase">ORDEN DE COMPRA</h1>
       </div>
       <div class="porlets-content">
+        <form id="form1" name="form1" method="post" action="{{ route('patch.estadoOC', $oc->OC_COD) }}">
+        {{ csrf_field() }}
+        {{ method_field('PATCH') }}
         <!-- FORM INICIO -->
 
         <div class="row">
           <div class="col-sm-6">
             <h4 class="text-left text-uppercase">FOLIO: {{ $oc->OC_FOLIO }}</h4>
           </div>
-          <div class="col-sm-6">
-            <h4 class="text-right text-uppercase">LOGO </h4>
-          </div>
+          @if(\Illuminate\Support\Facades\Auth::user()->PRO_EMP == 1)
+            <div class="col-2 pl-0 pr-0 mr-2">
+              <img src="images/empresas/Biogest Ing Ambiental-01.png" class="img-fluid" alt="Logo biogest">
+            </div>
+            @endif
+          @if(\Illuminate\Support\Facades\Auth::user()->PRO_EMP == 2)
+            <div class="col-2 pl-0 pr-0 mr-2">
+              <img src="images/empresas/Trener Ing Civil-03.png" class="img-fluid" alt="Logo Trener">
+            </div>
+          @endif
+          @if(\Illuminate\Support\Facades\Auth::user()->PRO_EMP == 3)
+            <div class="col-2 pl-0 pr-0 mr-2">
+              <img src="images/empresas/logo_loica.png" class="img-fluid" alt="Logo Loica">
+            </div>
+          @endif
+          @if(\Illuminate\Support\Facades\Auth::user()->PRO_EMP == 4)
+            <div class="col-2 pl-0 pr-0 mr-2">
+              <img src="images/empresas/Kutralco Turismo-05.png" class="img-fluid" alt="Logo Kutralco">
+            </div>
+          @endif
+          @if(\Illuminate\Support\Facades\Auth::user()->PRO_EMP == 5)
+            <div class="col-2 pl-0 pr-0 mr-2">
+              <img src="images/empresas/Logo-EcoHoste-Medianol.png" class="img-fluid" alt="Logo EcoHoste">
+            </div>
+          @endif
+          @if(\Illuminate\Support\Facades\Auth::user()->PRO_EMP == 6)
+            <div class="col-2 pl-0 pr-0 mr-2">
+              <img src="images/empresas/logo_sgr.png" class="img-fluid" alt="Logo SGR">
+            </div>
+          @endif
         </div>
 
         <h3 class="text-center">DATOS PROVEEDOR</h3>
@@ -86,15 +116,8 @@
               REALIZADA POR DEFECTO EL CBX DEBE MOSTRAR: VERIFICADO Y RECHAZAR
               VERIFICADO POR DEFECTO EL CBX DEBE MOSTRAR: APROBAR Y RECHAZAR
               APROBAR POR DEFECTO EL CBX DEBE MOSTRAR: PEDIR
-
-
             -->
-            <select class="form-control" style="width:175px;" >
-              <option value="VERIFICADO">VERIFICADO</option>
-              <option value="APROBADO">APROBADO</option>
-              <option value="RECHAZADO">RECHAZADO</option>
-              <option value="PEDIR">PEDIR</option>
-            </select>
+              {{ Form::select('estado',$estados,$oc->OC_ESTADO,['class'=>'form-contol','style'=>'width:175px']) }}
 
           </td>
 
@@ -104,6 +127,7 @@
 
       </table>
 
+        </form>
         <!-- FORM FINAL -->
 
       </div><!--/porlets-content-->

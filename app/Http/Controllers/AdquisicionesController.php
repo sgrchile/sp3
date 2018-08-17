@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\EstadoEjecucionOC;
+use App\EstadoOC;
 use App\Folios;
+use App\GuiaDespacho;
 use App\OfertaArticulo;
 use App\OrdenCompra;
 use App\Proveedor;
@@ -19,9 +22,38 @@ class AdquisicionesController extends Controller
      */
     public function index()
     {
-        $ocv = OrdenCompra::orderby('OC_COD','asc')->where('OC_ESTADO','=',1);
-        $oca = OrdenCompra::orderby('OC_COD','asc')->where('OC_ESTADO','=',2);
-        $ocr = OrdenCompra::orderby('OC_COD','asc')->where('OC_ESTADO','=',3);
+        $rol = Auth::user()->PRO_ROL;
+        if ($rol == 1){
+            $ocv = OrdenCompra::orderby('OC_COD','asc')
+                ->where('OC_ESTADO','=',1)->paginate(20);
+            $oca = OrdenCompra::orderby('OC_COD','asc')
+                ->where('OC_ESTADO','=',2)->paginate(20);
+            $ocr = OrdenCompra::orderby('OC_COD','asc')
+                ->where('OC_ESTADO','=',3)->paginate(20);
+        }
+        if ($rol == 2){
+            $ocv = OrdenCompra::orderby('OC_COD','asc')
+                ->where('OC_EMP','=',Auth::user()->PRO_EMP)
+                ->where('OC_ESTADO','=',1)->paginate(20);
+            $oca = OrdenCompra::orderby('OC_COD','asc')
+                ->where('OC_EMP','=',Auth::user()->PRO_EMP)
+                ->where('OC_ESTADO','=',2)->paginate(20);
+            $ocr = OrdenCompra::orderby('OC_COD','asc')
+                ->where('OC_EMP','=',Auth::user()->PRO_EMP)
+                ->where('OC_ESTADO','=',3)->paginate(20);
+        }
+        if ($rol == 3){
+            $ocv = OrdenCompra::orderby('OC_COD','asc')
+                ->where('OC_PRO_RUN','=',Auth::user()->PRO_RUN)
+                ->where('OC_ESTADO','=',1)->paginate(20);
+            $oca = OrdenCompra::orderby('OC_COD','asc')
+                ->where('OC_PRO_RUN','=',Auth::user()->PRO_RUN)
+                ->where('OC_ESTADO','=',2)->paginate(20);
+            $ocr = OrdenCompra::orderby('OC_COD','asc')
+                ->where('OC_PRO_RUN','=',Auth::user()->PRO_RUN)
+                ->where('OC_ESTADO','=',3)->paginate(20);
+        }
+
         return view('ModuloInventario.Adquisiciones.ordenesDeCompra.validar')
             ->with('ocv',$ocv)
             ->with('oca',$oca)
@@ -64,7 +96,7 @@ class AdquisicionesController extends Controller
                 $oc->OC_PRO_RUN = Auth::user()->PRO_RUN;
                 $oc->OC_COMPRADOR = $request->prov;
                 $oc->OC_ARTICULO_ID = $request->codart;
-                $oc->OC_FECHA_CREACION = Carbon::now()->format('aaaa-mm-dd');
+                //$oc->OC_FECHA_CREACION = Carbon::now()->toFormattedDateString();
                 $oc->OC_CANTIDAD = $request->cant;
                 $oc->OC_VALOR = $request->valor;
                 $oc->OC_TOTAL = $request->total;
@@ -86,11 +118,26 @@ class AdquisicionesController extends Controller
      */
     public function show($id)
     {
+        //dd($id);
+        $estados = EstadoOC::pluck('EST_OC_DESC','EST_OC_ID');
         $oc = OrdenCompra::find($id);
         $art = OfertaArticulo::all()->where('OFAR_ID','=',$oc->OC_ARTICULO_ID);
         return view('ModuloInventario.Adquisiciones.ordenesDeCompra.DescripcionOC')
+            ->with('estados',$estados)
             ->with('articulos',$art)
             ->with('oc',$oc);
+    }
+
+    public function recibir(){
+
+        $ordenC = OrdenCompra::orderBy('UPDATED_AT','asc')
+            ->where('OC_PRO_RUN','=',Auth::user()->PRO_RUN)
+            ->where('OC_ESTADO','=',4)
+            ->where('OC_EJECUCION','=',1)->paginate(20);
+        $estados = EstadoEjecucionOC::pluck('DESC_EST_EJEC','ID_EST_EJEC');
+        return view('ModuloInventario.Adquisiciones.ordenesDeCompra.recibir')
+            ->with('ordenC',$ordenC)
+            ->with('estados',$estados);
     }
 
     /**
@@ -99,9 +146,25 @@ class AdquisicionesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function historico()
     {
-        //
+        $rol = Auth::user()->PRO_ROL;
+        if ($rol == 1){
+            $oc = OrdenCompra::orderby('OC_COD','asc')
+                ->where('OC_EJECUCION','=',2)->paginate(20);
+        }
+        if ($rol == 2){
+            $oc = OrdenCompra::orderby('OC_COD','asc')
+                ->where('OC_EMP','=',Auth::user()->PRO_EMP)
+                ->where('OC_EJECUCION','=',2)->paginate(20);
+        }
+        if ($rol == 3){
+            $oc = OrdenCompra::orderby('OC_COD','asc')
+                ->where('OC_PRO_RUN','=',Auth::user()->PRO_RUN)
+                ->where('OC_EJECUCION','=',2)->paginate(20);
+        }
+        return view('ModuloInventario.Adquisiciones.ordenesDeCompra.Historico')
+            ->with('ordcompra',$oc);
     }
 
     /**
@@ -113,7 +176,59 @@ class AdquisicionesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $oc = OrdenCompra::findOrFail($id)->update([
+            'OC_ESTADO' => $request->input('estado'),
+        ]);
+
+        if (!$oc) {
+            return redirect()->route('validar', $id)->with('error', 'Hubo un error al Actualizar la Orden de Compra.');
+        }
+
+        return redirect()->route('validar', $id)->with('success', 'Estado de la Orden De Compra Actualizado Correctamente.');
+    }
+
+    public function ListaGuiasDeDespacho(){
+        $rol = Auth::user()->PRO_ROL;
+        if ($rol == 1){
+            $oc = OrdenCompra::all();
+            $gp = GuiaDespacho::orderby('GD_COD','asc')
+                ->whereIn('GD_OC_COD',$oc)
+                ->paginate(20);
+        }
+        if ($rol == 2){
+            $oc = OrdenCompra::all()->where('OC_EMP','=',Auth::user()->PRO_EMP);
+            $gp = GuiaDespacho::orderby('GD_COD','asc')
+                ->whereIn('GD_OC_COD',$oc)
+                ->paginate(20);
+        }
+        if ($rol == 3){
+            $oc = OrdenCompra::all()->where('OC_PRO_RUN','=',Auth::user()->PRO_RUN);
+            $gp = GuiaDespacho::orderby('GD_COD','asc')
+                ->whereIn('GD_OC_COD',$oc)
+                ->paginate(20);
+        }
+        return view('ModuloInventario.Adquisiciones.ordenesDeCompra.ListaGuiasDeDespacho')
+            ->with('guiadesp',$gp);
+    }
+
+    public function ListaLiquidar(){
+        $rol = Auth::user()->PRO_ROL;
+        if ($rol == 1){
+            $oc = OrdenCompra::orderby('OC_COD','asc')
+                ->where('OC_ESTADO','=',2)->paginate(20);
+        }
+        if ($rol == 2){
+            $oc = OrdenCompra::orderby('OC_COD','asc')
+                ->where('OC_EMP','=',Auth::user()->PRO_EMP)
+                ->where('OC_ESTADO','=',2)->paginate(20);
+        }
+        if ($rol == 3){
+            $oc = OrdenCompra::orderby('OC_COD','asc')
+                ->where('OC_PRO_RUN','=',Auth::user()->PRO_RUN)
+                ->where('OC_ESTADO','=',2)->paginate(20);
+        }
+        return view('ModuloInventario.Adquisiciones.ordenesDeCompra.OCparaLiquidar')
+            ->with('ordenC',$oc);
     }
 
     /**

@@ -36,35 +36,26 @@
               <td>VALOR</td>
               <td>TOTAL</td>
               <td>FECHA DE CREACION</td>
-              <td>ESTADO</td>
-              <td>ESTADO DE EJECUCION</td>
               <td colspan="2">ACCION</td>
-
-
             </tr>
 
+            @foreach($ordenC as $oc)
             <tr>
-
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td>{{ $oc->OC_COD }}</td>
+              <td>{{ $oc->OC_ARTICULO_ID }}</td>
+              <td>{{ App\OfertaArticulo::find($oc->OC_ARTICULO_ID)->OFAR_DESC }}</td>
+              <td>{{ $oc->OC_CANTIDAD }}</td>
+              <td>{{ $oc->OC_VALOR }}</td>
+              <td>{{ $oc->OC_TOTAL }}</td>
+              <td>{{ $oc->CREATED_AT }}</td>
               <td style="text-align:right">
-                <select class="form-control" style="width:175px;">
-                  <option>PENDIENTE</option>
-                  <option>EJECUTADO/RECIBIDO</option>
-                </select>
+                {{ Form::select('estado',$estados,1,['class'=>'form-control','style'=>'width:175px']) }}
               </td>
-
               <td><button class="btn btn-primary btn-xs">></button> </td>
             </tr>
-
+              @endforeach
           </table>
+        {!! $ordenC->links() !!}
 
           <!-- FORM FINAL -->
 

@@ -18,11 +18,7 @@
 
             <h4 class="text-center text-uppercase">DATOS EMPRESA</h4>
             <table class="table-condensed"  align="center" style="text-align:right" >
-
-
               <tr>
-
-
                 <td><label>TIPO DE CUENTA</label></td>
 
                 <td>

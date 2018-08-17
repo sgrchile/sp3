@@ -15,7 +15,7 @@
         <div class="porlets-content">
           <!-- FORM INICIO -->
 
-          <table class="table-condensed text-right" align="center">
+          <!--<table class="table-condensed text-right" align="center">
             <tr>
               <td>BUSCAR OC POR ESTADO:</td>
               <td>
@@ -29,22 +29,7 @@
               </td>
               <td align="left"><button type="button" class="btn btn-primary btn-xs">  <i class="fa fa-search" style="font-size:29px"></i></button></td>
             </tr>
-
-            <tr>
-              <td>BUSCAR OC POR EMPRESA:</td>
-              <td>
-                <select class="form-control" style="width:175px;">
-                  <option>BIOGEST</option>
-                  <option>TRENER</option>
-                  <option>LOICA</option>
-                  <option>KUTRALCO</option>
-                  <option>IMPROTOUR</option>
-                </select>
-
-              </td>
-              <td align="left"><button type="button" class="btn btn-primary btn-xs">  <i class="fa fa-search" style="font-size:29px"></i></button></td>
-            </tr>
-          </table>
+          </table>-->
 
           <table class="table-condensed table-bordered">
 
@@ -69,7 +54,7 @@
               <td>{{ $oc->OC_FOLIO }}</td>
               <td>{{ $oc->OC_COD }}</td>
               <td>{{ $oc->OC_ARTICULO_ID }}</td>
-              <td></td>
+              <td>{{  App\OfertaArticulo::find($oc->OC_ARTICULO_ID)->OFAR_DESC }}</td>
               <td>{{ $oc->OC_CANTIDAD }}</td>
               <td>{{ $oc->OC_VALOR }}</td>
               <td>{{ $oc->OC_TOTAL }}</td>
@@ -80,7 +65,7 @@
               @endforeach
 
           </table>
-          {!! $ordcompra->linck() !!}
+          {!! $ordcompra->links() !!}
 
           <!-- FORM FINAL -->
 

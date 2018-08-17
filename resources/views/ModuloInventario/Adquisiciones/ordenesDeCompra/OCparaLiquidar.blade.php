@@ -36,22 +36,19 @@
               <td>ESTADO</td>
               <td>ESTADO DE EJECUCION</td>
               <td >ACCION</td>
-
-
             </tr>
 
+            @foreach($ordenC as $oc)
             <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-
-
+              <td>{{ $oc->OC_COD }}</td>
+              <td>{{ $oc->OC_ARTICULO_ID }}</td>
+              <td>{{ App\OfertaArticulo::find($oc->OC_ARTICULO_ID)->OFAR_DESC }}</td>
+              <td>{{ $oc->OC_CANTIDAD }}</td>
+              <td>{{ $oc->OC_VALOR }}</td>
+              <td>{{ $oc->OC_TOTAL }}</td>
+              <td>{{ $oc->CREATED_AT }}</td>
+              <td>{{ App\EstadoOC::find($oc->OC_ESTADO)->EST_OC_DESC }}</td>
+              <td>{{ App\EstadoEjecucionOC::find($oc->OC_EJECUCION)->DESC_EST_EJEC }}</td>
               <td><a href="{{route('liquidar')}}"><button class="btn btn-primary btn-xs">SOLICITAR FONDO</button></a></td>
             </tr>
 

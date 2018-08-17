@@ -82,28 +82,25 @@
                   <td>VALOR</td>
                   <td>TOTAL</td>
                   <td>FECHA DE CREACION</td>
-                  <td>ESTADO</td>
                   <td>ACCION</td>
-
-
                 </tr>
 
-                <tr>
-
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td><a href="{{route('DescripcionDeOC')}}"><button class="btn btn-primary btn-xs">VER OC</button></a> </td>
-                </tr>
-
+                @foreach($oca as $aprov)
+                  <tr>
+                    <td>{{ $aprov->OC_EMP }}</td>
+                    <td>{{ $aprov->OC_FOLIO }}</td>
+                    <td>{{ $aprov->OC_COD }}</td>
+                    <td>{{ $aprov->OC_ARTICULO_ID }}</td>
+                    <td>{{ App\OfertaArticulo::find($aprov->OC_ARTICULO_ID)->OFAR_DESC }}</td>
+                    <td>{{ $aprov->OC_CANTIDAD }}</td>
+                    <td>{{ $aprov->OC_VALOR }}</td>
+                    <td>{{ $aprov->OC_TOTAL }}</td>
+                    <td>{{ $aprov->CREATED_AT }}</td>
+                    <td><a href="{{route('DescripcionDeOC',$aprov->OC_COD)}}"><button class="btn btn-primary btn-xs">VER OC</button></a> </td>
+                  </tr>
+                @endforeach
               </table>
+              {!! $oca->links() !!}
             </div>
 
             <div ng-switch-when="RECHAZADO">
@@ -120,32 +117,28 @@
                   <td>VALOR</td>
                   <td>TOTAL</td>
                   <td>FECHA DE CREACION</td>
-                  <td>ESTADO</td>
                   <td>ACCION</td>
 
 
                 </tr>
 
-                <tr>
-
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td><a href="{{route('DescripcionDeOC')}}"><button class="btn btn-primary btn-xs">VER OC</button></a> </td>
-                </tr>
-
+                @foreach($ocr as $rech)
+                  <tr>
+                    <td>{{ $rech->OC_EMP }}</td>
+                    <td>{{ $rech->OC_FOLIO }}</td>
+                    <td>{{ $rech->OC_COD }}</td>
+                    <td>{{ $rech->OC_ARTICULO_ID }}</td>
+                    <td>{{ App\OfertaArticulo::find($rech->OC_ARTICULO_ID)->OFAR_DESC }}</td>
+                    <td>{{ $rech->OC_CANTIDAD }}</td>
+                    <td>{{ $rech->OC_VALOR }}</td>
+                    <td>{{ $rech->OC_TOTAL }}</td>
+                    <td>{{ $rech->CREATED_AT }}</td>
+                    <td><a href="{{route('DescripcionDeOC',$rech->OC_COD)}}"><button class="btn btn-primary btn-xs">VER OC</button></a> </td>
+                  </tr>
+                @endforeach
               </table>
+              {!! $ocr->links() !!}
             </div>
-
-
-
           </div>
 
           <!-- FORM FINAL -->

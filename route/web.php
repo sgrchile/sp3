@@ -1041,9 +1041,14 @@ Route::group(['prefix' => 'modulo'], function () {
                       return view('ModuloInventario.Adquisiciones.indexAdquisiciones');
                     })->name('Adquisiciones');
 
-                    Route::get('/ListaGuiasDeDespacho', function () {
+                    /*Route::get('/ListaGuiasDeDespacho', function () {
                       return view('ModuloInventario.Adquisiciones.ordenesDeCompra.ListaGuiasDeDespacho');
-                    })->name('ListaGuiasDeDespacho');
+                    })->name('ListaGuiasDeDespacho');*/
+
+                      Route::get('/ListaGuiasDeDespacho', [
+                          'uses' => 'AdquisicionesController@ListaGuiasDeDespacho',
+                          'as' => 'ListaGuiasDeDespacho',
+                      ]);
 
                       Route::post('/Compras', [
                           'uses' => 'AdquisicionesController@create',
@@ -1073,9 +1078,14 @@ Route::group(['prefix' => 'modulo'], function () {
                           'as' => 'validar',
                       ]);
 
-                    Route::get('/recibir', function () {
+                      Route::get('/recibir', [
+                          'uses' => 'AdquisicionesController@recibir',
+                          'as' => 'recibir',
+                      ]);
+
+                    /*Route::get('/recibir', function () {
                       return view('ModuloInventario.Adquisiciones.ordenesDeCompra.recibir');
-                    })->name('recibir');
+                    })->name('recibir');*/
 
                     Route::get('/pedir', function () {
                       return view('ModuloInventario.Adquisiciones.ordenesDeCompra.pedir');
@@ -1093,22 +1103,37 @@ Route::group(['prefix' => 'modulo'], function () {
                       return view('ModuloInventario.Adquisiciones.ordenesDeCompra.solFondoOc');
                     })->name('SolicitudDeFondoOc');
 
-                    Route::get('/DescripcionDeOC', function () {
+                    /*Route::get('/DescripcionDeOC', function () {
                       return view('ModuloInventario.Adquisiciones.ordenesDeCompra.DescripcionOC');
-                    })->name('DescripcionDeOC');
+                    })->name('DescripcionDeOC');*/
 
-                      Route::get('/DescripcionDeOC', [
+                      Route::get('/DescripcionDeOC/{id}', [
                           'uses' => 'AdquisicionesController@show',
                           'as' => 'DescripcionDeOC',
+                      ]);
+
+                      Route::patch('/ModificarOC/{id}', [
+                          'uses' => 'AdquisicionesController@update',
+                          'as' => 'patch.estadoOC',
                       ]);
 
                     Route::get('/liquidacionDeOc', function () {
                       return view('ModuloInventario.Adquisiciones.ordenesDeCompra.OCparaLiquidar');
                     })->name('OCparaLiquidar');
 
-                    Route::get('/Historico', function () {
+                      Route::get('/liquidacionDeOc', [
+                          'uses' => 'AdquisicionesController@ListaLiquidar',
+                          'as' => 'OCparaLiquidar',
+                      ]);
+
+                    /*Route::get('/Historico', function () {
                       return view('ModuloInventario.Adquisiciones.ordenesDeCompra.Historico');
-                    })->name('Historico');
+                    })->name('Historico');*/
+
+                      Route::get('/Historico', [
+                          'uses' => 'AdquisicionesController@historico',
+                          'as' => 'Historico',
+                      ]);
 
                   });
                   // FIN ADQUISICIONES

@@ -50,8 +50,9 @@
               <td>{{ $gdesp->COD_GD }}</td>
               <td>{{ $gdesp->COD_GD }}</td>
             </tr>
-
+              @endforeach
           </table>
+          {!! $guiadesp->links() !!}
 
           <!-- FORM FINAL -->
 
