@@ -1463,9 +1463,12 @@ Route::group(['prefix' => 'modulo'], function () {
           'as' => 'post.reserva',
       ]);
 
-      Route::get('sala', function () {
-        return view('ModuloReservaDeSala.sala');
-      })->name('sala');
+      Route::get('sala', [
+          'uses' => 'ReservaSalaController@sala',
+          'as' => 'sala',
+      ]);
+
+      Route::get('/{id}','ReservaSalaController@getModificarSala')->name('get.modificar.sala');
 
       Route::get('AgregarParticipantes', function () {
         return view('ModuloReservaDeSala.AgregarParticipantes');
