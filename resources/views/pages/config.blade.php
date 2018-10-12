@@ -59,7 +59,7 @@
                 if ($(val).hasClass('active') == true){
                     let user = $(val).children("th").html();
                     $.get('admin/autorizar/' + user).done(function(){
-                        location.href ="https://35.193.38.242/modulo/proveedores/admin";
+                        location.href ="https://plataforma.sgrchile.com/modulo/proveedores/admin";
                     });
                 }
             });

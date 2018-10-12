@@ -217,7 +217,7 @@
 
 
 <script>
-    $.get("https://35.193.38.242/api/pais").done(function(data){
+    $.get("https://plataforma.sgrchile.com/api/pais").done(function(data){
         let option = "<option value='0'>Seleccione</option>";
         $("#pais").append(option);
         if (data !== null){
@@ -234,7 +234,7 @@
 
         if (pais == 1){
             $("#region").empty();
-            $.get("https://35.193.38.242/api/region").done(function(data){
+            $.get("https://plataforma.sgrchile.com/api/region").done(function(data){
                 if (data !== null){
                     if (Object.keys(data).length > 0 ){
                         $.each(data, function( index, value ){
@@ -259,7 +259,7 @@
     $("#region").on("change", function(){
         let region = $(this).val();
         $("#provincia").empty();
-        $.get("https://35.193.38.242/api/provincia/" + region).done(function(data){
+        $.get("https://plataforma.sgrchile.com/api/provincia/" + region).done(function(data){
             if (data !== null){
                 if (Object.keys(data).length > 0 ){
                     $.each(data, function( index, value ){
@@ -275,7 +275,7 @@
     $("#provincia").on("change", function(){
         let provincia = $(this).val();
         $("#ciudad").empty();
-        $.get("https://35.193.38.242/api/ciudad/" + provincia).done(function(data){
+        $.get("https://plataforma.sgrchile.com/api/ciudad/" + provincia).done(function(data){
             if (data !== null){
                 if (Object.keys(data).length > 0 ){
                     $.each(data, function( index, value ){
@@ -291,7 +291,7 @@
     $("#rubro").on("change", function(){
         let rubro = $(this).val();
         $("#subrubro").empty();
-        $.get("https://35.193.38.242/api/subrubro/" + rubro).done(function(data){
+        $.get("https://plataforma.sgrchile.com/api/subrubro/" + rubro).done(function(data){
             if (data !== null){
                 if (Object.keys(data).length > 0 ){
                     $.each(data, function( index, value ){
@@ -307,7 +307,7 @@
     $("#subrubro").on("change", function(){
         let subrubro = $(this).val();
         $("#actividad").empty();
-        $.get("https://35.193.38.242/api/actividad/" + subrubro).done(function(data){
+        $.get("https://plataforma.sgrchile.com/api/actividad/" + subrubro).done(function(data){
             if (data !== null){
                 if (Object.keys(data).length > 0 ){
                     $.each(data, function( index, value ){

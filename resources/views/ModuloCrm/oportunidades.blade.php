@@ -52,11 +52,15 @@
               <td>
                 {{ Form::number('tasa',null,['class'=>'form-control','style'=>'width:175px']) }}
               </td>-->
-            </tr>
-            <tr>
               <td>MONEDA: </td>
               <td >
                 {!! Form::select('moneda',$moneda,null,['id'=>'moneda','style'=>'width:175px','class'=>'form-control']) !!}
+              </td>
+            </tr>
+            <tr>
+              <td>FECHA DE INGRESO:</td>
+              <td>
+                {{ Form::date('fechaingreso',\Carbon\Carbon::now(),['class'=>'form-control','style'=>'width:175px','readOnly']) }}
               </td>
               <td>TOTAL ESTIMADO: </td>
               <td >
@@ -65,16 +69,10 @@
               </td>
             </tr>
             <tr>
-              <td>FECHA DE INGRESO:</td>
-              <td>
-                {{ Form::date('fechaingreso',\Carbon\Carbon::now(),['class'=>'form-control','style'=>'width:175px','readOnly']) }}
-              </td>
               <td>FECHA DE CIERRRE:</td>
               <td>
                 {{ Form::date('fechacierre',\Carbon\Carbon::now(),['class'=>'form-control','style'=>'width:175px']) }}
               </td>
-            </tr>
-            <tr>
               <td>SIGUIENTE PASO:</td>
               <td>
                 <textarea id="sig_paso" name="sig_paso" class="form-control" style=" width:175px; max-width:175px; max-height:175px;"></textarea>
@@ -95,7 +93,7 @@
           $("#procneg").on("change", function(){
               let procneg = $(this).val();
               $("#etapa").empty();
-              $.get("https://35.193.38.242/api/etapa/" + procneg).done(function(data){
+              $.get("https://plataforma.sgrchile.com/api/etapa/" + procneg).done(function(data){
                   if (data !== null){
                       if (Object.keys(data).length > 0 ){
                           $.each(data, function( index, value ){
@@ -110,7 +108,7 @@
           $("#etapa").on("change", function(){
               let etapa = $(this).val();
               $("#probabilidad").empty();
-              $.get("https://35.193.38.242/api/probabilidad/" + etapa).done(function(data){
+              $.get("https://plataforma.sgrchile.com/api/probabilidad/" + etapa).done(function(data){
                   if (data !== null){
                       $("#probabilidad").val(data);
 

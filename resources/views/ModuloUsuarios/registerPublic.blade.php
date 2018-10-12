@@ -246,7 +246,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
     <script>
         $(document).ready(function(){
-            $.get("https://35.193.38.242/api/pais").done(function(data){
+            $.get("https://plataforma.sgrchile.com/api/pais").done(function(data){
                 let option = "<option value='0'>Seleccione</option>";
                 $("#pais").append(option);
                 if (data !== null){
@@ -258,7 +258,7 @@
                     }
                 }
             });
-            $.get("https://35.193.38.242/api/bancos").done(function(data){
+            $.get("https://plataforma.sgrchile.com/api/bancos").done(function(data){
                 let option = "<option value='0'>Seleccione</option>";
                 $("#banco").append(option);
                 if (data !== null){
@@ -270,7 +270,7 @@
                     }
                 }
             });
-            $.get("https://35.193.38.242/api/bancos/cuentas").done(function(data){
+            $.get("https://plataforma.sgrchile.com/api/bancos/cuentas").done(function(data){
                 let option = "<option value='0'>Seleccione</option>";
                 $("#bancocuenta").append(option);
                 if (data !== null){
@@ -282,7 +282,7 @@
                     }
                 }
             });
-            $.get("https://35.193.38.242/api/salud").done(function(data){
+            $.get("https://plataforma.sgrchile.com/api/salud").done(function(data){
                 let option = "<option value='0'>Seleccione</option>";
                 $("#medico").append(option);
                 if (data !== null){
@@ -294,7 +294,7 @@
                     }
                 }
             });
-            $.get("https://35.193.38.242/api/afp").done(function(data){
+            $.get("https://plataforma.sgrchile.com/api/afp").done(function(data){
                 let option = "<option value='0'>Seleccione</option>";
                 $("#afp").append(option);
                 if (data !== null){
@@ -311,7 +311,7 @@
 
                 if (pais == 1){
                     $("#region").empty();
-                    $.get("https://35.193.38.242/api/region").done(function(data){
+                    $.get("https://plataforma.sgrchile.com/api/region").done(function(data){
                         if (data !== null){
                             if (Object.keys(data).length > 0 ){
                                 $.each(data, function( index, value ){
@@ -336,7 +336,7 @@
             $("#region").on("change", function(){
                 let region = $(this).val();
                 $("#provincia").empty();
-                $.get("https://35.193.38.242/api/provincia/" + region).done(function(data){
+                $.get("https://plataforma.sgrchile.com/api/provincia/" + region).done(function(data){
                     if (data !== null){
                         if (Object.keys(data).length > 0 ){
                             $.each(data, function( index, value ){
@@ -352,7 +352,7 @@
             $("#provincia").on("change", function(){
                 let provincia = $(this).val();
                 $("#ciudad").empty();
-                $.get("https://35.193.38.242/api/ciudad/" + provincia).done(function(data){
+                $.get("https://plataforma.sgrchile.com/api/ciudad/" + provincia).done(function(data){
                     if (data !== null){
                         if (Object.keys(data).length > 0 ){
                             $.each(data, function( index, value ){
@@ -413,7 +413,7 @@
                     $.post("{{ route('registrar.proveedor.persona') }}",inputs).done(function(data){
                         alert(data.respuesta);
                         alert("Su cuenta fue creada, validaremos sus datos a la brevedad para activar su cuenta");
-                        location.href ="https://35.193.38.242/";
+                        location.href ="https://plataforma.sgrchile.com/";
                     }).fail(function(data){
                         $.each( data.responseJSON, function( i, val ) {
                             alert(val);

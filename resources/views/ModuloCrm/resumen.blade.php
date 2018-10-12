@@ -275,7 +275,7 @@ $(document).ready(function(){
     $("#emp").on("change", function(){
         let emp = $(this).val();
         $("#procneg").empty();
-        $.get("https://35.193.38.242/api/procneg/" + emp).done(function(data){
+        $.get("https://plataforma.sgrchile.com/api/procneg/" + emp).done(function(data){
             if (data !== null){
                 if (Object.keys(data).length > 0 ){
                     $.each(data, function( index, value ){
@@ -290,7 +290,7 @@ $(document).ready(function(){
     $("#procneg").on("change", function(){
         let procneg = $(this).val();
         $("#etapa").empty();
-        $.get("https://35.193.38.242/api/etapa/" + procneg).done(function(data){
+        $.get("https://plataforma.sgrchile.com/api/etapa/" + procneg).done(function(data){
             if (data !== null){
                 if (Object.keys(data).length > 0 ){
                     $.each(data, function( index, value ){
@@ -306,7 +306,7 @@ $(document).ready(function(){
     $("#btnbuscar").on("click", function () {
         //alert($("#emp").val());
         let emp = $("#emp").val();
-        $.get("https://35.193.38.242/api/oportunidades/" + emp).done(function(data){
+        $.get("https://plataforma.sgrchile.com/api/oportunidades/" + emp).done(function(data){
             if (data !== null){
                 alert(data);
                 if (Object.keys(data).length > 0 ){
