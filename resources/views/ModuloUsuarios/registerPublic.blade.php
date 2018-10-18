@@ -151,11 +151,11 @@
                                         </div>
                                         <div class="card-footer">
                                             <a href="#" class="btn btn-secondary" data-toggle="collapse" data-target="#collapseTwo">Volver al paso 2</a>
-                                            <a href="#" class="btn btn-primary" data-toggle="collapse" data-target="#collapsefour">Paso 4</a>
+                                            <a href="#" class="btn btn-primary" data-toggle="collapse" data-target="#collapsefive">Paso 4</a>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card">
+                                <!--<div class="card">
                                     <div id="collapsefour" class="collapse" data-parent="#accordion">
                                         <div class="card-header">
                                             <h5 class="mb-0">Pagos</h5>
@@ -207,7 +207,7 @@
                                             <a href="#" class="btn btn-primary" data-toggle="collapse" data-target="#collapsefive">Paso 5</a>
                                         </div>
                                     </div>
-                                </div>
+                                </div>-->
                                 <div class="card">
                                     <div id="collapsefive" class="collapse" data-parent="#accordion">
                                         <div class="card-header">
@@ -227,7 +227,7 @@
                                         </div>
                                         {{ csrf_field() }}
                                         <div class="card-footer">
-                                            <a href="#" class="btn btn-secondary" data-toggle="collapse" data-target="#collapsefour">Volver al paso 4</a>
+                                            <a href="#" class="btn btn-secondary" data-toggle="collapse" data-target="#collapsefour">Volver al paso 3</a>
                                             <button type="button" class="btn btn-primary" id="btnRegistrar">Registrar</button>
                                         </div>
                                     </div>

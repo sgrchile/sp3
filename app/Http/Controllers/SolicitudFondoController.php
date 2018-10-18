@@ -439,7 +439,17 @@ class SolicitudFondoController extends Controller
     }
     public function showEstadoSf(Request $request)
     {
-        $sfondos = SolicitudFondo::all();
+        if (Auth::user()->PRO_ROL == 1){
+            $sfondos = SolicitudFondo::all();
+        }
+        if (Auth::user()->PRO_ROL == 2){
+            $sfondos = SolicitudFondo::all()->where('SF_EMP_ID','=',Auth::user()->PRO_EMP);
+        }
+        if (Auth::user()->PRO_ROL == 3){
+            $sfondos = SolicitudFondo::all()->where('SF_SOLICITANTE_RUT','=',Auth::user()->PRO_RUN);
+        }
+
+
         if ($request->isMethod('post')) {
             $fondo_id = $request->input('idsol');
             $sfondosearch = SolicitudFondo::find($fondo_id);
