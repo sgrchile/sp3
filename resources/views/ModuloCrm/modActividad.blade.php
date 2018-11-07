@@ -6,12 +6,12 @@
                 <div class="block-web">
                     <div class="header">
                         <div class="actions"></div>
-                        <H1 class="text-center"><strong>REGISTRO DE ACTIVIDAD </strong></H1>
+                        <H1 class="text-center"><strong>MODIFICAR ACTIVIDAD </strong></H1>
                     </div>
                     <div class="porlets-content">
                         <!-- FORM INICIO -->
 
-                        <form id="form1" name="form1" method="post" action="{{ route('post.actividad') }}">
+                        <form id="form1" name="form1" method="post" action="{{ route('path.actividad') }}">
                             {{ csrf_field() }}
                             <table class="table-condensed text-right" align="center">
 

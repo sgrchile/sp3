@@ -70,13 +70,13 @@
         </tr>
 
         <tr>
-          <td>CENTRO DE NEGOCIOS:</td>
-          <td>    <select required class="form-control" style="width:175px;">
-            <option></option>
-            <option></option>
-            <option></option>
-            <option></option>
-            <option></option>
+          <td>ESTADO:</td>
+          <td>
+            <select required class="form-control" style="width:175px;">
+            <option>Seleccione</option>
+              @foreach(App\EstadoOfertaProveedor::all() as $estofert)
+                <option id="{{ $estofert->ESTP_COD }}">{{ $estofert->ESTP_DESC }}</option>
+              @endforeach
           </select>
         </td>
       </tr>

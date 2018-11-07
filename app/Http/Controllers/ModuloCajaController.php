@@ -68,12 +68,21 @@ class ModuloCajaController extends Controller
             #return redirect()->route('moduloCaja')->with('success', false);
             return response()->json([
                 'success' => false,
-                'message' => 'Hubo un error al registrar el registro de movimiento.'
+                'message' => 'Hubo un error al registrar el movimiento.'
             ], 400);
+        }else{
+            $createAsiento = $this->createAsiento($request->all());
+            dd('adsd1');
+            if (!$createAsiento){
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Hubo un error al registrar el asiento.'
+                ], 400);
+            }else{
+                dd('adsd');
+                return redirect()->back()->with('success', 'Registro de movimiento fue creado exitosamente.');
+            }
         }
-
-        $this->createAsiento($request->all());
-      return redirect()->back()->with('success', 'Registro de movimiento fue creado exitosamente.');
     }
 
     protected function validateRegistro(Request $request)

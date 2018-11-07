@@ -399,11 +399,11 @@
                     region: $("#region").val(),
                     provincia: $("#provincia").val(),
                     ciudad: $("#ciudad").val(),
-                    pago: $("#pago").val(),
-                    fechapago: $("#fechapago").val(),
-                    ncuenta: $("#ncuenta").val(),
-                    banco: $("#banco").val(),
-                    bancocuenta: $("#bancocuenta").val(),
+                    //pago: $("#pago").val(),
+                    //fechapago: $("#fechapago").val(),
+                    //ncuenta: $("#ncuenta").val(),
+                    //banco: $("#banco").val(),
+                    //bancocuenta: $("#bancocuenta").val(),
                     medico: $("#medico").val(),
                     afp: $("#afp").val(),
                     _token: $('input[name="_token"]').val()
@@ -426,9 +426,9 @@
                             else if (i == "direccion" || i == "pais" || i == "region" || i == "provincia" || i == "ciudad"){
                                 $('#collapseThree').collapse('show');
                             }
-                            else if(i == "pago" || i == "fechapago" || i == "ncuenta" || i == "banco" || i == "bancocuenta"){
+                            /*else if(i == "pago" || i == "fechapago" || i == "ncuenta" || i == "banco" || i == "bancocuenta"){
                                 $('#collapsefour').collapse('show');
-                            }
+                            }*/
                             $("#"+i).focus();
                             $("#"+i).addClass("is-invalid");
                         });
@@ -459,11 +459,11 @@
                 region: $("#region").val(),
                 provincia: $("#provincia").val(),
                 ciudad: $("#ciudad").val(),
-                pago: $("#pago").val(),
+                /*pago: $("#pago").val(),
                 fechapago: $("#fechapago").val(),
                 ncuenta: $("#ncuenta").val(),
                 banco: $("#banco").val(),
-                bancocuenta: $("#bancocuenta").val(),
+                bancocuenta: $("#bancocuenta").val(),*/
                 medico: $("#medico").val(),
                 afp: $("#afp").val(),
                 _token: $('input[name="_token"]').val()
@@ -487,9 +487,9 @@
                     else if (i == "direccion" || i == "pais" || i == "region" || i == "provincia" || i == "ciudad"){
                         $('#collapseThree').collapse('show');
                     }
-                    else if(i == "pago" || i == "fechapago" || i == "ncuenta" || i == "banco" || i == "bancocuenta"){
+                    /*else if(i == "pago" || i == "fechapago" || i == "ncuenta" || i == "banco" || i == "bancocuenta"){
                         $('#collapsefour').collapse('show');
-                    }
+                    }*
                     $("#"+i).focus();
                     $("#"+i).addClass("is-invalid");
                     respuesta = false;

@@ -164,7 +164,7 @@
   <div class="container">  <a href="{{ route('CRM') }}"><button class="btn btn-primary btn-lg">Volver</button></a></div>
 
   <script>
-      $.get("https://plataforma.sgrchile.com/api/pais").done(function(data){
+      /*$.get("https://plataforma.sgrchile.com/api/pais").done(function(data){
           let option = "<option value='0'>Seleccione</option>";
           $("#pais").append(option);
           if (data !== null){
@@ -175,7 +175,7 @@
                   });
               }
           }
-      });
+      });*/
       $("#pais").on("change", function(){
           let pais = $(this).val();
 

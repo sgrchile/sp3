@@ -25,8 +25,15 @@
             </tr>
 
             <tr>
-              <td></td>
-              <td></td>
+              <td>
+                <select id="tpoferta" name="tpoferta">
+                  <option>Seleccione</option>
+                  @foreach($tiposofert as $value)
+                      <option {{ $value-> }}>{{ $value-> }}</option>
+                  @endforeach
+                </select>
+              </td>
+              <td>{{  }}</td>
               <td></td>
               <td></td>
               <td></td>

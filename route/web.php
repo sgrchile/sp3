@@ -1345,6 +1345,11 @@ Route::group(['prefix' => 'modulo'], function () {
             'as' => 'RegActividad',
         ]);
 
+        Route::get('/RegistroActividad', [
+            'uses' => 'ActividadesController@create',
+            'as' => 'RegActividad',
+        ]);
+
       /*Route::get('/listaActividades', function () {
         return view('ModuloCrm.listaActividades');
       })->name('listaActividades');*/
